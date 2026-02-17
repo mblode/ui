@@ -1,0 +1,76 @@
+---
+title: Phone Input
+date: 2025-05-07
+description: Input field for phone numbers with country code selection.
+author: fingertip
+published: true
+---
+
+<ComponentPreview name="phone-input-demo" />
+
+## Examples
+
+### Default
+
+<ComponentPreview name="phone-input-demo" />
+
+### Disabled
+
+<ComponentPreview name="phone-input-disabled" />
+
+### Clearable
+
+<ComponentPreview name="phone-input-clearable" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ui.fingertip.com/r/styles/default/one-input"
+```
+
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource name="phone-input" />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { PhoneInput } from "@/components/ui/phone-input";
+```
+
+```tsx
+<PhoneInput
+  value={phoneNumber}
+  onChange={setPhoneNumber}
+  placeholder="Enter your phone number"
+  defaultCountry="US"
+/>
+```
+
+## Props
+
+| Prop              | Type                      | Default              | Description                                     |
+| ----------------- | ------------------------- | -------------------- | ----------------------------------------------- |
+| `className`       | `string`                  | `-`                  | The class name to apply to the component.       |
+| `placeholder`     | `string`                  | `Enter phone number` | Placeholder text for the input field.           |
+| `onChange`        | `(value: string) => void` | `-`                  | Callback when phone number value changes.       |
+| `value`           | `string`                  | `-`                  | The phone number value.                         |
+| `clearable`       | `boolean`                 | `false`              | Whether to show a clear button.                 |
+| `onClear`         | `() => void`              | `-`                  | Callback when clear button is clicked.          |
+| `clearClassName`  | `string`                  | `-`                  | Class name to apply to the clear button.        |
+| `defaultCountry`  | `string`                  | `-`                  | The default country code (e.g., "US").          |
+| `fallbackCountry` | `string`                  | `"AU"`               | The fallback country if no default is provided. |
+| `disabled`        | `boolean`                 | `false`              | Whether the input is disabled.                  |

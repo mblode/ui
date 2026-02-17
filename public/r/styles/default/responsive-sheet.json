@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.fingertip.com/schema/registry-item.json",
+  "name": "responsive-sheet",
+  "author": "fingertip (https://ui.fingertip.com)",
+  "registryDependencies": [
+    "dialog",
+    "sheet"
+  ],
+  "files": [
+    {
+      "path": "ui/responsive-sheet.tsx",
+      "content": "\"use client\";\nimport { useBreakpoint } from \"@/hooks/use-breakpoint\";\n\nimport { Dialog } from \"./dialog\";\nimport { Sheet } from \"./sheet\";\n\ntype Props = {\n  open: boolean;\n  onOpenChange: (open: boolean) => void;\n  children: React.ReactNode;\n  modal?: boolean;\n  defaultOpen?: boolean;\n};\n\nexport const ResponsiveSheet = ({\n  open,\n  onOpenChange,\n  children,\n  modal,\n  defaultOpen,\n}: Props) => {\n  const breakpoint = useBreakpoint();\n  const isDesktop = [\"lg\", \"xl\"].includes(breakpoint);\n\n  if (!isDesktop) {\n    return (\n      <Sheet\n        open={open}\n        onOpenChange={onOpenChange}\n        modal={modal}\n        defaultOpen={defaultOpen}\n      >\n        {children}\n      </Sheet>\n    );\n  }\n\n  return (\n    <Dialog\n      open={open}\n      onOpenChange={onOpenChange}\n      modal={modal}\n      defaultOpen={defaultOpen}\n    >\n      {children}\n    </Dialog>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:ui"
+}

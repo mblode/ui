@@ -1,0 +1,49 @@
+---
+title: Stat
+date: 2025-05-07
+description: Displays a statistic with a label.
+author: fingertip
+published: true
+---
+
+<ComponentPreview name="stat-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ui.fingertip.com/r/styles/default/stat"
+```
+
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource name="stat" />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { Stat } from "@/components/ui/stat";
+```
+
+```tsx
+<Stat>{/* Example usage */}</Stat>
+```
+
+## Props
+
+| Prop        | Type        | Default | Description                               |
+| ----------- | ----------- | ------- | ----------------------------------------- |
+| `className` | `string`    | `-`     | The class name to apply to the component. |
+| `children`  | `ReactNode` | `-`     | The content to display in the component.  |

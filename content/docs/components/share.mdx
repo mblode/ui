@@ -1,0 +1,55 @@
+---
+title: Share
+date: 2025-05-07
+description: Interface for sharing content.
+author: fingertip
+published: true
+---
+
+<ComponentPreview name="share-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ui.fingertip.com/r/styles/default/share"
+```
+
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource name="share" />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { Share } from "@/components/ui/share";
+```
+
+```tsx
+<Share>{/* Example usage */}</Share>
+```
+
+## Props
+
+| Prop           | Type         | Default                       | Description                                              |
+| -------------- | ------------ | ----------------------------- | -------------------------------------------------------- |
+| `className`    | `string`     | `-`                           | The class name to apply to the component.                |
+| `children`     | `ReactNode`  | `<Icon />`                    | The content to display in the component.                 |
+| `value`        | `string`     | `window.location.href`        | The URL or content to share.                             |
+| `valuePrefix`  | `string`     | `-`                           | Prefix text to add before the value when sharing.        |
+| `displayValue` | `string`     | `-`                           | Title to use when sharing (for native share API).        |
+| `description`  | `string`     | `"Copied and ready to share"` | Toast message shown after copying.                       |
+| `asChild`      | `boolean`    | `false`                       | Whether to merge props onto the immediate child element. |
+| `onShare`      | `() => void` | `-`                           | Callback function invoked when sharing is triggered.     |

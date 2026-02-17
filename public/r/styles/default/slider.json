@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.fingertip.com/schema/registry-item.json",
+  "name": "slider",
+  "author": "fingertip (https://ui.fingertip.com)",
+  "dependencies": [
+    "@radix-ui/react-slider"
+  ],
+  "files": [
+    {
+      "path": "ui/slider.tsx",
+      "content": "\"use client\";\n\nimport * as SliderPrimitive from \"@radix-ui/react-slider\";\nimport * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nconst Slider = React.forwardRef<\n  React.ElementRef<typeof SliderPrimitive.Root>,\n  React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root> & {\n    showValue?: boolean;\n    showOrigin?: boolean;\n  }\n>(({ className, showOrigin, showValue, ...props }, ref) => (\n  <SliderPrimitive.Root\n    ref={ref}\n    className={cn(\n      \"relative flex w-full h-[52px] touch-none select-none items-center cursor-grab\",\n      className,\n    )}\n    {...props}\n  >\n    <SliderPrimitive.Track className=\"relative h-[12px] w-full grow overflow-hidden rounded-full bg-muted\">\n      <SliderPrimitive.Range className=\"absolute h-full bg-primary\" />\n      {showOrigin && (\n        <div className=\"pointer-events-none absolute left-1/2 top-1/2 h-[12px] w-[2px] -translate-x-1/2 -translate-y-1/2 bg-foreground/30\" />\n      )}\n    </SliderPrimitive.Track>\n    <SliderPrimitive.Thumb className=\"block size-[28px] rounded-full border-[0.5px] border-border hover:border-input-hover focus:border-ring bg-white shadow-lg ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50\">\n      {showValue && (\n        <div className=\"absolute left-1/2 top-[36px] h-[32px] w-fit -translate-x-1/2 text-center text-xs text-foreground\">\n          {props.value}\n        </div>\n      )}\n    </SliderPrimitive.Thumb>\n  </SliderPrimitive.Root>\n));\nSlider.displayName = SliderPrimitive.Root.displayName;\n\nexport { Slider };\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:ui"
+}

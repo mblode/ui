@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.fingertip.com/schema/registry-item.json",
+  "name": "avatar",
+  "author": "fingertip (https://ui.fingertip.com)",
+  "dependencies": [
+    "@radix-ui/react-avatar"
+  ],
+  "files": [
+    {
+      "path": "ui/avatar.tsx",
+      "content": "\"use client\";\n\nimport * as AvatarPrimitive from \"@radix-ui/react-avatar\";\nimport * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nconst Avatar = React.forwardRef<\n  React.ElementRef<typeof AvatarPrimitive.Root>,\n  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root>\n>(({ className, ...props }, ref) => (\n  <AvatarPrimitive.Root\n    ref={ref}\n    className={cn(\n      \"relative flex size-10 shrink-0 overflow-hidden rounded-full\",\n      className,\n    )}\n    {...props}\n  />\n));\nAvatar.displayName = AvatarPrimitive.Root.displayName;\n\nconst AvatarImage = React.forwardRef<\n  React.ElementRef<typeof AvatarPrimitive.Image>,\n  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Image>\n>(({ className, ...props }, ref) => (\n  <AvatarPrimitive.Image\n    ref={ref}\n    className={cn(\"aspect-square size-full object-cover\", className)}\n    {...props}\n  />\n));\nAvatarImage.displayName = AvatarPrimitive.Image.displayName;\n\nconst AvatarFallback = React.forwardRef<\n  React.ElementRef<typeof AvatarPrimitive.Fallback>,\n  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Fallback> & {\n    value: string;\n    noColor?: boolean;\n  }\n>(({ className, noColor, value, ...props }, ref) => {\n  const colors = [\n    \"#FA2C37\",\n    \"#FF6900\",\n    \"#FD9A00\",\n    \"#EFB100\",\n    \"#7CCE00\",\n    \"#00C950\",\n    \"#00BC7D\",\n    \"#00BBA7\",\n    \"#00B8DB\",\n    \"#00A6F5\",\n    \"#615FFF\",\n    \"#8D51FF\",\n    \"#AD47FF\",\n    \"#E12BFB\",\n    \"#F7339A\",\n    \"#FF1F57\",\n  ];\n\n  const colorIndex = value ? value.charCodeAt(0) % colors.length : 0;\n\n  return (\n    <AvatarPrimitive.Fallback\n      ref={ref}\n      className={cn(\n        \"flex size-full items-center justify-center rounded-full text-sm font-semibold uppercase\",\n        className,\n        {\n          \"bg-gray-50 dark:bg-muted text-muted-foreground border border-border\":\n            noColor,\n          \"text-white\": !noColor,\n        },\n      )}\n      {...props}\n      style={{ backgroundColor: !noColor ? colors[colorIndex] : undefined }}\n    >\n      {value}\n    </AvatarPrimitive.Fallback>\n  );\n});\nAvatarFallback.displayName = AvatarPrimitive.Fallback.displayName;\n\nexport { Avatar, AvatarImage, AvatarFallback };\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:ui"
+}

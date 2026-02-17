@@ -1,0 +1,139 @@
+---
+title: Stepper
+date: 2025-05-07
+description: Shows progress through a sequence of steps.
+author: fingertip
+published: true
+---
+
+<ComponentPreview name="stepper-demo" />
+
+A stepper displays progress through a sequence of logical and numbered steps. They may also be used for navigation.
+
+## Examples
+
+### Horizontal (Default)
+
+### Vertical
+
+<ComponentPreview name="stepper-vertical" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ui.fingertip.com/r/styles/default/stepper"
+```
+
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource name="stepper" />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { Stepper } from "@/components/ui/stepper";
+```
+
+```tsx
+import {
+  Stepper,
+  Step,
+  StepIndicator,
+  StepLabel,
+  StepDescription,
+  StepContent,
+} from "@/components/ui/stepper";
+
+export function StepperExample() {
+  const [activeStep, setActiveStep] = React.useState(0);
+
+  return (
+    <Stepper activeStep={activeStep}>
+      <Step>
+        <StepIndicator>1</StepIndicator>
+        <div className="ml-3">
+          <StepLabel>Step 1</StepLabel>
+          <StepDescription>Description for step 1</StepDescription>
+        </div>
+      </Step>
+      <Step>
+        <StepIndicator>2</StepIndicator>
+        <div className="ml-3">
+          <StepLabel>Step 2</StepLabel>
+          <StepDescription>Description for step 2</StepDescription>
+        </div>
+      </Step>
+      <Step>
+        <StepIndicator>3</StepIndicator>
+        <div className="ml-3">
+          <StepLabel>Step 3</StepLabel>
+          <StepDescription>Description for step 3</StepDescription>
+        </div>
+      </Step>
+    </Stepper>
+  );
+}
+```
+
+## Props
+
+### Stepper
+
+| Prop          | Type                       | Default      | Description                               |
+| ------------- | -------------------------- | ------------ | ----------------------------------------- |
+| `activeStep`  | `number`                   | `required`   | The active step index (zero-based).       |
+| `orientation` | `horizontal` \| `vertical` | `horizontal` | The orientation of the stepper.           |
+| `className`   | `string`                   | `-`          | The class name to apply to the component. |
+| `children`    | `ReactNode`                | `-`          | The Step components to display.           |
+
+### Step
+
+| Prop          | Type                       | Default      | Description                                           |
+| ------------- | -------------------------- | ------------ | ----------------------------------------------------- |
+| `orientation` | `horizontal` \| `vertical` | `horizontal` | The orientation of the step (inherited from Stepper). |
+| `isLast`      | `boolean`                  | `-`          | Whether this is the last step (auto-set by Stepper).  |
+| `className`   | `string`                   | `-`          | The class name to apply to the component.             |
+| `children`    | `ReactNode`                | `-`          | The content to display in the step.                   |
+
+### StepIndicator
+
+| Prop        | Type        | Default | Description                                           |
+| ----------- | ----------- | ------- | ----------------------------------------------------- |
+| `active`    | `boolean`   | `-`     | Whether this step is active (auto-set by Stepper).    |
+| `completed` | `boolean`   | `-`     | Whether this step is completed (auto-set by Stepper). |
+| `className` | `string`    | `-`     | The class name to apply to the component.             |
+| `children`  | `ReactNode` | `-`     | The content to display in the indicator.              |
+
+### StepLabel
+
+| Prop        | Type        | Default | Description                               |
+| ----------- | ----------- | ------- | ----------------------------------------- |
+| `className` | `string`    | `-`     | The class name to apply to the component. |
+| `children`  | `ReactNode` | `-`     | The content to display in the label.      |
+
+### StepDescription
+
+| Prop        | Type        | Default | Description                                |
+| ----------- | ----------- | ------- | ------------------------------------------ |
+| `className` | `string`    | `-`     | The class name to apply to the component.  |
+| `children`  | `ReactNode` | `-`     | The content to display in the description. |
+
+### StepContent
+
+| Prop        | Type        | Default | Description                                 |
+| ----------- | ----------- | ------- | ------------------------------------------- |
+| `className` | `string`    | `-`     | The class name to apply to the component.   |
+| `children`  | `ReactNode` | `-`     | The content to display in the step content. |

@@ -1,0 +1,66 @@
+---
+title: Currency Input
+date: 2025-05-07
+description: Input field for currency values with formatting.
+author: fingertip
+published: true
+---
+
+<ComponentPreview name="currency-input-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ui.fingertip.com/r/styles/default/rrency-input"
+```
+
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource name="currency-input" />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { CurrencyInput } from "@/components/ui/currency-input";
+```
+
+```tsx
+<CurrencyInput>{/* Example usage */}</CurrencyInput>
+```
+
+## Props
+
+CurrencyInput extends the functionality of [react-currency-input-field](https://github.com/cchanxzy/react-currency-input-field) with additional styling and features.
+
+| Prop               | Type                                                  | Default | Description                                   |
+| ------------------ | ----------------------------------------------------- | ------- | --------------------------------------------- |
+| `className`        | `string`                                              | `-`     | The class name to apply to the component.     |
+| `clearClassName`   | `string`                                              | `-`     | Class name for the clear button.              |
+| `hasError`         | `boolean`                                             | `false` | Shows error state with red border.            |
+| `clearable`        | `boolean`                                             | `false` | Enables clearing the input value.             |
+| `onClear`          | `() => void`                                          | `-`     | Callback when clear button is clicked.        |
+| `leftAddon`        | `ReactNode`                                           | `-`     | Content to display before the input.          |
+| `rightAddon`       | `ReactNode`                                           | `-`     | Content to display after the input.           |
+| `leftControl`      | `ReactNode`                                           | `-`     | Control to display at the left of the input.  |
+| `rightControl`     | `ReactNode`                                           | `-`     | Control to display at the right of the input. |
+| `prefix`           | `string`                                              | `-`     | The prefix to display before the value.       |
+| `suffix`           | `string`                                              | `-`     | The suffix to display after the value.        |
+| `decimalsLimit`    | `number`                                              | `-`     | Maximum number of decimal places allowed.     |
+| `decimalSeparator` | `string`                                              | `.`     | Character used as decimal separator.          |
+| `groupSeparator`   | `string`                                              | `,`     | Character used to separate thousands.         |
+| `value`            | `string \| undefined`                                 | `-`     | The controlled value of the input.            |
+| `defaultValue`     | `string \| undefined`                                 | `-`     | The default uncontrolled value of the input.  |
+| `onValueChange`    | `(value: string \| undefined, name?: string) => void` | `-`     | Callback when value changes.                  |

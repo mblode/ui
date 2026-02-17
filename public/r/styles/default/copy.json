@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.fingertip.com/schema/registry-item.json",
+  "name": "copy",
+  "author": "fingertip (https://ui.fingertip.com)",
+  "dependencies": [
+    "@fingertip/icons",
+    "@radix-ui/react-slot",
+    "copy-to-clipboard"
+  ],
+  "registryDependencies": [
+    "tooltip"
+  ],
+  "files": [
+    {
+      "path": "ui/copy.tsx",
+      "content": "\"use client\";\n\nimport { CircleCheckIcon, SquareBehindSquare1Icon } from \"@fingertip/icons\";\nimport { Slot } from \"@radix-ui/react-slot\";\nimport copy from \"copy-to-clipboard\";\nimport React, {\n  forwardRef,\n  HTMLAttributes,\n  useCallback,\n  useEffect,\n  useState,\n} from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipProvider,\n  TooltipTrigger,\n} from \"./tooltip\";\n\ntype CopyProps = HTMLAttributes<HTMLButtonElement> & {\n  content: string;\n  asChild?: boolean;\n  onCopy?: () => void;\n  copyMode?: \"PLAIN_TEXT\" | \"HTML\";\n};\n\n/**\n * This component is based on the `button` element and supports all of its props\n */\nconst Copy = forwardRef<HTMLButtonElement, CopyProps>(\n  (\n    {\n      children,\n      className,\n      /**\n       * The content to copy.\n       */\n      content,\n      /**\n       * Whether to remove the wrapper `button` element and use the\n       * passed child element instead.\n       */\n      asChild = false,\n      onCopy,\n      copyMode = \"PLAIN_TEXT\",\n      ...props\n    }: CopyProps,\n    ref,\n  ) => {\n    const [showTooltip, setShowTooltip] = useState(false);\n    const [done, setDone] = useState(false);\n    const [open, setOpen] = useState(false);\n    const [text, setText] = useState(\"Copy\");\n\n    const copyToClipboard = useCallback(() => {\n      setDone(true);\n\n      if (copyMode === \"HTML\") {\n        const parser = new DOMParser();\n        const doc = parser.parseFromString(content, \"text/html\");\n        const text = doc.body.textContent || \"\";\n\n        copy(text);\n      } else {\n        copy(content);\n      }\n\n      onCopy?.();\n\n      setTimeout(() => {\n        setDone(false);\n      }, 2000);\n    }, [content, copyMode, onCopy]);\n\n    useEffect(() => {\n      if (done) {\n        setText(\"Copied\");\n        return;\n      }\n\n      setTimeout(() => {\n        setText(\"Copy\");\n      }, 500);\n    }, [done]);\n\n    const Component = asChild ? Slot : \"button\";\n\n    return (\n      <TooltipProvider>\n        <Tooltip defaultOpen={false} open={done || open} onOpenChange={setOpen}>\n          <TooltipTrigger asChild>\n            <Component\n              ref={ref}\n              aria-label=\"Copy code snippet\"\n              type=\"button\"\n              className={cn(\"h-fit w-fit\", className)}\n              onClick={copyToClipboard}\n              onPointerEnter={() => setShowTooltip(true)}\n              onPointerLeave={() => setShowTooltip(false)}\n              {...props}\n            >\n              {children ? (\n                children\n              ) : done ? (\n                <CircleCheckIcon />\n              ) : (\n                <SquareBehindSquare1Icon />\n              )}\n            </Component>\n          </TooltipTrigger>\n          {showTooltip && <TooltipContent>{text}</TooltipContent>}\n        </Tooltip>\n      </TooltipProvider>\n    );\n  },\n);\nCopy.displayName = \"Copy\";\n\nexport { Copy };\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:ui"
+}

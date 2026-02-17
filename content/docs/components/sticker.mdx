@@ -1,0 +1,49 @@
+---
+title: Sticker
+date: 2025-05-07
+description: A decorative element that can be positioned anywhere.
+author: fingertip
+published: true
+---
+
+<ComponentPreview name="sticker-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ui.fingertip.com/r/styles/default/sticker"
+```
+
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource name="sticker" />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { Sticker } from "@/components/ui/sticker";
+```
+
+```tsx
+<Sticker>{/* Example usage */}</Sticker>
+```
+
+## Props
+
+| Prop        | Type        | Default | Description                               |
+| ----------- | ----------- | ------- | ----------------------------------------- |
+| `className` | `string`    | `-`     | The class name to apply to the component. |
+| `children`  | `ReactNode` | `-`     | The content to display in the component.  |

@@ -1,0 +1,79 @@
+---
+title: Multi Combobox
+date: 2025-05-07
+description: A combobox component that allows selecting multiple options from a list.
+author: fingertip
+published: true
+---
+
+<ComponentPreview name="multi-combobox-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ui.fingertip.com/r/styles/default/lti-combobox"
+```
+
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource name="multi-combobox" />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+The Multi Combobox component combines a popover, command menu, and badge system to create a component that allows users to select multiple options from a searchable dropdown list.
+
+```tsx
+import { MultiCombobox } from "@/components/ui/multi-combobox";
+```
+
+```tsx
+// Example usage
+const frameworks = [
+  { value: "react", label: "React" },
+  { value: "vue", label: "Vue" },
+  { value: "angular", label: "Angular" },
+  // ...more options
+];
+
+const [selectedValues, setSelectedValues] = React.useState<string[]>([]);
+
+<MultiCombobox
+  placeholder="Select frameworks..."
+  options={frameworks}
+  selectedValues={selectedValues}
+  onValueChange={(values) => setSelectedValues(values)}
+/>;
+```
+
+## Features
+
+- Search through available options
+- Select multiple items from a dropdown
+- Display selected items as removable badges
+- Fully keyboard accessible
+- Customizable styling
+
+## Props
+
+| Prop                | Type                                 | Default             | Description                                  |
+| ------------------- | ------------------------------------ | ------------------- | -------------------------------------------- |
+| `className`         | `string`                             | `-`                 | The class name to apply to the component.    |
+| `placeholder`       | `string`                             | `Select options...` | Placeholder text for the combobox button.    |
+| `options`           | `{ value: string; label: string }[]` | `-`                 | Array of options to display in the dropdown. |
+| `selectedValues`    | `string[]`                           | `[]`                | Array of selected option values.             |
+| `onValueChange`     | `(values: string[]) => void`         | `-`                 | Callback when selection changes.             |
+| `disabled`          | `boolean`                            | `false`             | Whether the combobox is disabled.            |
+| `searchPlaceholder` | `string`                             | `Search...`         | Placeholder text for the search input.       |

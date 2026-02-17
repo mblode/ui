@@ -1,0 +1,76 @@
+---
+title: Prompt
+date: 2025-05-07
+description: A dialog that prompts the user for input.
+author: fingertip
+published: true
+---
+
+<ComponentPreview name="prompt-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ui.fingertip.com/r/styles/default/prompt"
+```
+
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource name="prompt" />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { Prompt } from "@/components/ui/prompt";
+```
+
+```tsx
+<Prompt open={isOpen}>
+  <Prompt.Content>
+    <Prompt.Header>
+      <Prompt.Title>Delete Account</Prompt.Title>
+      <Prompt.Description>
+        This action cannot be undone. This will permanently delete your account.
+      </Prompt.Description>
+    </Prompt.Header>
+    <Prompt.Footer>
+      <Prompt.Cancel onClick={() => setIsOpen(false)}>Cancel</Prompt.Cancel>
+      <Prompt.Action onClick={() => handleDelete()}>Delete</Prompt.Action>
+    </Prompt.Footer>
+  </Prompt.Content>
+</Prompt>
+```
+
+## Props
+
+### Root
+
+| Prop       | Type        | Default | Description                                   |
+| ---------- | ----------- | ------- | --------------------------------------------- |
+| `open`     | `boolean`   | `-`     | Controls the visibility of the prompt dialog. |
+| `children` | `ReactNode` | `-`     | The content to display in the dialog.         |
+
+### Content, Header, Footer
+
+These are layout components that help structure the dialog content.
+
+### Title, Description
+
+Used to display the main text content in the dialog.
+
+### Action, Cancel
+
+Button components for confirming or canceling the prompt action.

@@ -1,0 +1,99 @@
+---
+title: Bar List
+description: Displays a list of items with horizontal bars representing values.
+component: true
+---
+
+<ComponentPreview name="bar-list-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ui.fingertip.com/r/styles/default/bar-list"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="bar-list" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { BarList } from "@/components/ui/bar-list";
+```
+
+```tsx
+const data = [
+  {
+    name: "New Users",
+    value: 2453,
+    icon: UserCircle2Icon,
+  },
+  {
+    name: "Purchases",
+    value: 1830,
+    icon: ShoppingCartIcon,
+  },
+]
+
+<BarList
+  data={data}
+  valueFormatter={(value) => `${value.toLocaleString()}`}
+/>
+```
+
+## Examples
+
+### Basic usage
+
+<ComponentPreview name="bar-list-demo" />
+
+## Props
+
+| Prop             | Type                           | Default                  | Description                              |
+| ---------------- | ------------------------------ | ------------------------ | ---------------------------------------- |
+| `data`           | `Bar<T>[]`                     | `[]`                     | Array of objects for each bar to display |
+| `valueFormatter` | `(value: number) => string`    | `value.toLocaleString()` | Function to format the displayed value   |
+| `labelFormatter` | `(label: string) => ReactNode` | `label => label`         | Function to format the displayed label   |
+| `color`          | `string`                       | `hsl(var(--chart-1))`    | Color of the bars                        |
+| `showAnimation`  | `boolean`                      | `false`                  | Whether to animate the bars on render    |
+| `sortOrder`      | `'ascending' \| 'descending'`  | `'descending'`           | Order to sort the bars by value          |
+| `className`      | `string`                       | -                        | Additional CSS class name                |
+
+### Bar Data Type
+
+The `data` prop takes an array of objects with the following properties:
+
+```tsx
+type Bar<T> = T & {
+  key?: string; // Optional unique key
+  value: number; // Value represented by the bar
+  name: string; // Name label for the bar
+  icon?: React.JSXElementConstructor<any>; // Optional icon component
+  href?: string; // Optional link URL
+  target?: string; // Optional link target
+  color?: string; // Optional custom color for specific bar
+};
+```

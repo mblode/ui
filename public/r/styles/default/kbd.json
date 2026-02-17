@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.fingertip.com/schema/registry-item.json",
+  "name": "kbd",
+  "author": "fingertip (https://ui.fingertip.com)",
+  "files": [
+    {
+      "path": "ui/kbd.tsx",
+      "content": "import {\n  ArrowCornerDownLeftIcon,\n  ArrowDownIcon,\n  ArrowLeftXIcon,\n  ArrowUpIcon,\n  ArrowWall2RightIcon,\n  CmdIcon,\n  ShiftIcon,\n} from \"@fingertip/icons\";\nimport { cva, VariantProps } from \"class-variance-authority\";\nimport * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ntype KbdIcon =\n  | \"mod\"\n  | \"shift\"\n  | \"enter\"\n  | \"command\"\n  | \"ctrl\"\n  | \"alt\"\n  | \"tab\"\n  | \"backspace\"\n  | \"up\"\n  | \"down\";\n\nconst kbdVariants = cva(\n  \"pointer-events-none h-5 select-none justify-center items-center gap-0.5 px-1.5 rounded-sm ring-1 ring-inset flex font-mono text-[10px] font-medium\",\n  {\n    variants: {\n      variant: {\n        default: \"bg-muted text-foreground ring-border\",\n        tooltip: \"bg-gray-700 text-white ring-gray-600\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n    },\n  },\n);\n\ninterface KbdProps\n  extends React.HTMLAttributes<HTMLElement>, VariantProps<typeof kbdVariants> {\n  children?: React.ReactNode;\n  icon?: KbdIcon;\n}\n\nconst iconMap: Record<KbdIcon, React.ReactNode> = {\n  mod: <CmdIcon className=\"size-3\" />,\n  shift: <ShiftIcon className=\"size-3\" />,\n  enter: <ArrowCornerDownLeftIcon className=\"size-3\" />,\n  command: <CmdIcon className=\"size-3\" />,\n  ctrl: \"Ctrl\",\n  alt: \"Alt\",\n  tab: <ArrowWall2RightIcon className=\"size-3\" />,\n  backspace: <ArrowLeftXIcon className=\"size-3\" />,\n  up: <ArrowUpIcon className=\"size-3\" />,\n  down: <ArrowDownIcon className=\"size-3\" />,\n};\n\nconst Kbd = React.forwardRef<HTMLElement, KbdProps>(\n  ({ className, variant, children, icon, ...props }, ref) => {\n    const content = icon ? iconMap[icon] : children;\n\n    return (\n      <kbd\n        ref={ref}\n        className={cn(kbdVariants({ variant, className }))}\n        {...props}\n      >\n        {content}\n      </kbd>\n    );\n  },\n);\nKbd.displayName = \"Kbd\";\n\nexport { Kbd };\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.fingertip.com/schema/registry-item.json",
+  "name": "utils",
+  "author": "fingertip (https://ui.fingertip.com)",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "lib/utils.ts",
+      "content": "import { registryItemSchema } from \"shadcn/schema\";\nimport { z } from \"zod\";\n\nexport const lib: z.infer<typeof registryItemSchema>[] = [\n  {\n    name: \"utils\",\n    type: \"registry:lib\",\n    dependencies: [\"clsx\", \"tailwind-merge\"],\n    files: [\n      {\n        path: \"lib/utils.ts\",\n        type: \"registry:lib\",\n      },\n    ],\n  },\n];\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:lib"
+}

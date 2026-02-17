@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.fingertip.com/schema/registry-item.json",
+  "name": "stat",
+  "author": "fingertip (https://ui.fingertip.com)",
+  "files": [
+    {
+      "path": "ui/stat.tsx",
+      "content": "\"use client\";\n\nimport { ReactNode } from \"react\";\n\ntype Props = {\n  title: ReactNode;\n  value: ReactNode;\n  description?: ReactNode;\n};\n\nexport const Stat = ({ title, value, description }: Props) => {\n  return (\n    <div className=\"flex flex-col rounded-3xl border-0.5 text-center border-border bg-card p-4\">\n      <dd className=\"h1\">{value}</dd>\n      <dt className=\"truncate font-medium\">{title}</dt>\n      {description && (\n        <div className=\"text-sm text-muted-foreground\">{description}</div>\n      )}\n    </div>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:ui"
+}

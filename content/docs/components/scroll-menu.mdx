@@ -1,0 +1,70 @@
+---
+title: Scroll Menu
+date: 2025-05-07
+description: A horizontally scrollable menu.
+author: fingertip
+published: true
+---
+
+<ComponentPreview name="scroll-menu-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ui.fingertip.com/r/styles/default/sroll-menu"
+```
+
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource name="scroll-menu" />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { ScrollMenu } from "@/components/ui/scroll-menu";
+```
+
+```tsx
+<ScrollMenu
+  scrollAmount={150}
+  showScrollButtons={true}
+  leftButtonLabel="Previous items"
+  rightButtonLabel="More items"
+>
+  {/* Your scrollable menu items */}
+  <Button variant="secondary" className="mx-1">
+    Item 1
+  </Button>
+  <Button variant="secondary" className="mx-1">
+    Item 2
+  </Button>
+  <Button variant="secondary" className="mx-1">
+    Item 3
+  </Button>
+  {/* ...more items */}
+</ScrollMenu>
+```
+
+## Props
+
+| Prop                | Type        | Default          | Description                                             |
+| ------------------- | ----------- | ---------------- | ------------------------------------------------------- |
+| `className`         | `string`    | `-`              | The class name to apply to the component.               |
+| `children`          | `ReactNode` | `-`              | The content to display in the component.                |
+| `leftButtonLabel`   | `string`    | `"Scroll left"`  | Accessible label for the left scroll button.            |
+| `rightButtonLabel`  | `string`    | `"Scroll right"` | Accessible label for the right scroll button.           |
+| `scrollAmount`      | `number`    | `200`            | Amount to scroll horizontally when buttons are clicked. |
+| `showScrollButtons` | `boolean`   | `true`           | Whether to show the scroll buttons.                     |

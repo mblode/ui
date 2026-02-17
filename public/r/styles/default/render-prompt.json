@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.fingertip.com/schema/registry-item.json",
+  "name": "render-prompt",
+  "author": "fingertip (https://ui.fingertip.com)",
+  "registryDependencies": [
+    "prompt",
+    "input",
+    "label"
+  ],
+  "files": [
+    {
+      "path": "ui/render-prompt.tsx",
+      "content": "\"use client\";\n\nimport * as React from \"react\";\n\nimport { Input } from \"./input\";\nimport { Label } from \"./label\";\nimport { Prompt } from \"./prompt\";\n\nexport interface RenderPromptProps {\n  open: boolean;\n  title: string;\n  description: string;\n  verificationText?: string;\n  cancelText?: string;\n  confirmText?: string;\n  onConfirmAction: () => void;\n  onCancelAction: () => void;\n}\n\nexport const RenderPrompt = ({\n  /**\n   * @ignore\n   */\n  open,\n  /**\n   * The prompt's title.\n   */\n  title,\n  /**\n   * The prompt's description.\n   */\n  description,\n  /**\n   * The text the user has to input in order to confirm the action.\n   */\n  verificationText,\n  /**\n   * The label for the Cancel button.\n   */\n  cancelText = \"Cancel\",\n  /**\n   * Label for the Confirm button.\n   */\n  confirmText = \"Confirm\",\n  /**\n   * @ignore\n   */\n  onConfirmAction,\n  /**\n   * @ignore\n   */\n  onCancelAction,\n}: RenderPromptProps) => {\n  const [userInput, setUserInput] = React.useState(\"\");\n\n  const handleUserInput = (event: React.ChangeEvent<HTMLInputElement>) => {\n    setUserInput(event.target.value);\n  };\n\n  const validInput = React.useMemo(() => {\n    if (!verificationText) {\n      return true;\n    }\n\n    return userInput === verificationText;\n  }, [userInput, verificationText]);\n\n  const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {\n    event.preventDefault();\n\n    if (!verificationText) {\n      return;\n    }\n\n    if (validInput) {\n      onConfirmAction();\n    }\n  };\n\n  React.useEffect(() => {\n    const handleEscape = (event: KeyboardEvent) => {\n      if (event.key === \"Escape\" && open) {\n        onCancelAction();\n      }\n    };\n\n    document.addEventListener(\"keydown\", handleEscape);\n\n    return () => {\n      document.removeEventListener(\"keydown\", handleEscape);\n    };\n  }, [onCancelAction, open]);\n\n  return (\n    <Prompt open={open}>\n      <Prompt.Content>\n        <form onSubmit={handleFormSubmit}>\n          <Prompt.Header>\n            <Prompt.Title>{title}</Prompt.Title>\n            <Prompt.Description>{description}</Prompt.Description>\n          </Prompt.Header>\n\n          {verificationText && (\n            <div className=\"mb-4 mt-6 flex flex-col gap-y-4\">\n              <Label htmlFor=\"verificationText\">\n                Please type{\" \"}\n                <span className=\"font-bold\">{verificationText}</span> to confirm\n              </Label>\n\n              <Input\n                autoFocus\n                autoComplete=\"off\"\n                id=\"verificationText\"\n                placeholder={verificationText}\n                onChange={handleUserInput}\n              />\n            </div>\n          )}\n\n          <Prompt.Footer>\n            <Prompt.Cancel onClick={onCancelAction}>{cancelText}</Prompt.Cancel>\n            <Prompt.Action\n              disabled={!validInput}\n              type={verificationText ? \"submit\" : \"button\"}\n              onClick={verificationText ? undefined : onConfirmAction}\n            >\n              {confirmText}\n            </Prompt.Action>\n          </Prompt.Footer>\n        </form>\n      </Prompt.Content>\n    </Prompt>\n  );\n};\nRenderPrompt.displayName = \"RenderPrompt\";\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:ui"
+}

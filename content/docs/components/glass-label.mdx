@@ -1,0 +1,116 @@
+---
+title: Glass Label
+description: A glass-morphism style label with optional icon and rotation.
+component: true
+---
+
+<ComponentPreview name="glass-label-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ui.fingertip.com/r/styles/default/glass-label"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="glass-label" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { GlassLabel } from "@/components/ui/glass-label";
+```
+
+```tsx
+<GlassLabel title="Default" />
+```
+
+## Examples
+
+### Variants
+
+GlassLabel comes with multiple variants to suit different design needs.
+
+```tsx
+<GlassLabel title="Default" />
+<GlassLabel title="Primary" variant="primary" />
+<GlassLabel title="Success" variant="success" />
+<GlassLabel title="Warning" variant="warning" />
+<GlassLabel title="Destructive" variant="destructive" />
+<GlassLabel title="Info" variant="info" />
+<GlassLabel title="Magic" variant="magic" />
+<GlassLabel title="Muted" variant="muted" />
+<GlassLabel title="Purple" variant="purple" />
+```
+
+### Sizes
+
+The component supports multiple sizes to fit different contexts.
+
+```tsx
+<GlassLabel title="Extra Small" size="xs" />
+<GlassLabel title="Small" size="sm" />
+<GlassLabel title="Default" />
+<GlassLabel title="Large" size="lg" />
+```
+
+### With Icons
+
+You can add icons to enhance visual communication.
+
+```tsx
+import { RocketIcon } from "@fingertip/icons";
+
+<GlassLabel
+  title="New Feature"
+  icon={<RocketIcon className="h-4 w-4" />}
+  variant="primary"
+/>;
+```
+
+### Rotation
+
+GlassLabel supports custom rotation for dynamic presentation.
+
+```tsx
+<GlassLabel title="Rotate -5°" rotate={-5} />
+<GlassLabel title="No Rotation" rotate={0} />
+<GlassLabel title="Rotate 5°" rotate={5} />
+```
+
+## API Reference
+
+### GlassLabel
+
+| Prop                 | Type                                                                                                            | Default     | Description                                    |
+| -------------------- | --------------------------------------------------------------------------------------------------------------- | ----------- | ---------------------------------------------- |
+| `title`              | `string`                                                                                                        | `undefined` | The text content to display in the label       |
+| `icon`               | `ReactNode`                                                                                                     | `undefined` | Optional icon to show before the title         |
+| `variant`            | `"default" \| "primary" \| "success" \| "warning" \| "destructive" \| "info" \| "magic" \| "muted" \| "purple"` | `"default"` | Controls the visual style of the label         |
+| `size`               | `"xs" \| "sm" \| "default" \| "lg"`                                                                             | `"default"` | Controls the size of the label                 |
+| `rotate`             | `number`                                                                                                        | `2`         | Rotation angle in degrees                      |
+| `containerClassName` | `string`                                                                                                        | `undefined` | Additional class names for the outer container |
+| `className`          | `string`                                                                                                        | `undefined` | Additional class names for the inner content   |

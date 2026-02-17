@@ -1,0 +1,121 @@
+---
+title: Typography
+description: Explore the Glide font system used throughout Fingertip UI.
+---
+
+## Font family
+
+The default font family in Fingertip UI is "Glide", a variable font that supports weights from 400 (regular) to 900 (black). This versatile font is applied using Tailwind's `font-sans` utility class.
+
+```tsx
+<p className="font-sans">This text uses the Glide font</p>
+```
+
+## Variable font
+
+Glide is a variable font, which means it contains all weights in a single file, allowing for precise typography with minimal file size impact. This technology enables smooth transitions between font weights and provides greater design flexibility.
+
+## Font weights
+
+Explore how Glide looks at different font weights:
+
+<div className="space-y-6">
+  <div>
+    <div className="text-sm text-muted-foreground mb-2">Font weight: 400 (Regular)</div>
+    <p className="font-sans font-normal text-xl">The quick brown fox jumps over the lazy dog.</p>
+  </div>
+
+<div>
+  <div className="text-sm text-muted-foreground mb-2">
+    Font weight: 500 (Medium)
+  </div>
+  <p className="font-sans font-medium text-xl">
+    The quick brown fox jumps over the lazy dog.
+  </p>
+</div>
+
+<div>
+  <div className="text-sm text-muted-foreground mb-2">
+    Font weight: 600 (Semibold)
+  </div>
+  <p className="font-sans font-semibold text-xl">
+    The quick brown fox jumps over the lazy dog.
+  </p>
+</div>
+
+<div>
+  <div className="text-sm text-muted-foreground mb-2">
+    Font weight: 700 (Bold)
+  </div>
+  <p className="font-sans font-bold text-xl">
+    The quick brown fox jumps over the lazy dog.
+  </p>
+</div>
+
+<div>
+  <div className="text-sm text-muted-foreground mb-2">
+    Font weight: 800 (Extrabold)
+  </div>
+  <p className="font-sans font-extrabold text-xl">
+    The quick brown fox jumps over the lazy dog.
+  </p>
+</div>
+
+  <div>
+    <div className="text-sm text-muted-foreground mb-2">Font weight: 900 (Black)</div>
+    <p className="font-sans font-black text-xl">The quick brown fox jumps over the lazy dog.</p>
+  </div>
+</div>
+
+## Heading elements
+
+Fingertip UI provides consistent styling for all heading levels:
+
+<div className="space-y-4">
+  <h1 className="h1">Heading 1</h1>
+  <h2 className="h2">Heading 2</h2>
+  <h3 className="h3">Heading 3</h3>
+  <h4 className="h4">Heading 4</h4>
+  <h5 className="h5">Heading 5</h5>
+  <h6 className="h6">Heading 6</h6>
+</div>
+
+## Paragraph text
+
+The default paragraph text uses the Glide font at weight 400 (regular):
+
+<p>
+  This is a standard paragraph with the Glide font. The font provides excellent
+  readability at various sizes while maintaining a modern, clean aesthetic. The
+  variable font technology ensures that characters remain crisp and balanced
+  across different weights and sizes.
+</p>
+
+<p className="text-sm">
+  This is a smaller paragraph showing how Glide performs at reduced sizes. Even
+  at smaller sizes, the font maintains its legibility and character.
+</p>
+
+## Usage in Tailwind
+
+Fingertip UI has configured Tailwind CSS to use Glide as the default sans-serif font. You can apply it using the `font-sans` utility class:
+
+```tsx
+// Examples of using font-sans with different weights
+<p className="font-sans font-normal">Regular text (400)</p>
+<p className="font-sans font-medium">Medium text (500)</p>
+<p className="font-sans font-semibold">Semibold text (600)</p>
+<p className="font-sans font-bold">Bold text (700)</p>
+<p className="font-sans font-extrabold">Extra Bold text (800)</p>
+<p className="font-sans font-black">Black text (900)</p>
+```
+
+## Technical details
+
+Glide is loaded as a variable font using Next.js's `localFont` utility. This ensures optimal performance by:
+
+- Loading the font locally rather than from an external CDN
+- Utilizing the variable font format to reduce file size
+- Enabling the full range of weights (400-900) in a single file
+
+The font is applied site-wide via CSS variables, making it consistent across all components and pages.

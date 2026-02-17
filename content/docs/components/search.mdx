@@ -1,0 +1,67 @@
+---
+title: Search
+date: 2025-05-07
+description: Input field designed for search queries.
+author: fingertip
+published: true
+---
+
+<ComponentPreview name="search-demo" />
+
+## Installation
+
+<Tabs defaultValue="cli">
+  <TabsList>
+    <TabsTrigger value="cli">CLI</TabsTrigger>
+    <TabsTrigger value="manual">Manual</TabsTrigger>
+  </TabsList>
+  <TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ui.fingertip.com/r/styles/default/search"
+```
+
+  </TabsContent>
+  <TabsContent value="manual">
+    <Steps>
+      <Step>Copy and paste the following code into your project.</Step>
+      <ComponentSource name="search" />
+      <Step>Update the import paths to match your project setup.</Step>
+    </Steps>
+  </TabsContent>
+</Tabs>
+
+## Usage
+
+```tsx
+import { Search } from "@/components/ui/search";
+```
+
+```tsx
+const [value, setValue] = useState("");
+
+<Search
+  label="Search"
+  value={value}
+  onSearch={setValue}
+  placeholder="Search products..."
+/>;
+```
+
+## Props
+
+| Prop                     | Type                      | Default       | Description                                    |
+| ------------------------ | ------------------------- | ------------- | ---------------------------------------------- |
+| `label`                  | `ReactNode`               | `-`           | Label displayed above the search input         |
+| `caption`                | `ReactNode`               | `-`           | Caption displayed below the search input       |
+| `value`                  | `string`                  | `""`          | Current value of the search input              |
+| `onSearch`               | `(value: string) => void` | `-`           | Callback when search value changes             |
+| `fullWidth`              | `boolean`                 | `false`       | Whether the search should take up full width   |
+| `className`              | `string`                  | `-`           | The class name to apply to the component       |
+| `inputClassName`         | `string`                  | `-`           | Class name applied to the input element        |
+| `clearClassName`         | `string`                  | `-`           | Class name applied to the clear button         |
+| `searchClassName`        | `string`                  | `-`           | Class name applied to the search icon wrapper  |
+| `placeholder`            | `string`                  | `"Search..."` | Placeholder text when no input is present      |
+| `placeholderSuggestions` | `string[]`                | `[]`          | Suggestions that cycle through the placeholder |
+| `typingSpeed`            | `number`                  | `150`         | Speed of typing animation in ms                |
+| `deletingSpeed`          | `number`                  | `100`         | Speed of deleting animation in ms              |

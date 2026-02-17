@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.fingertip.com/schema/registry-item.json",
+  "name": "checkbox",
+  "author": "fingertip (https://ui.fingertip.com)",
+  "dependencies": [
+    "@radix-ui/react-checkbox"
+  ],
+  "files": [
+    {
+      "path": "ui/checkbox.tsx",
+      "content": "\"use client\";\n\nimport * as CheckboxPrimitive from \"@radix-ui/react-checkbox\";\nimport * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nimport \"./checkbox.css\";\n\nexport interface CheckboxProps extends React.ComponentPropsWithoutRef<\n  typeof CheckboxPrimitive.Root\n> {\n  hasError?: boolean;\n}\n\nconst Checkbox = React.forwardRef<\n  React.ElementRef<typeof CheckboxPrimitive.Root>,\n  CheckboxProps\n>(({ className, ...props }, ref) => (\n  <CheckboxPrimitive.Root\n    ref={ref}\n    className={cn(\n      \"ft-checkbox cursor-pointer peer size-5 shrink-0 relative overflow-hidden rounded-[6px] bg-card shadow-input transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:text-primary-foreground data-[state=indeterminate]:text-primary-foreground\",\n      className,\n    )}\n    {...props}\n  >\n    <div className=\"flex items-center justify-center text-current\">\n      <svg\n        aria-hidden=\"true\"\n        role=\"presentation\"\n        viewBox=\"0 0 17 18\"\n        className=\"z-10 h-3 w-4\"\n      >\n        <polyline\n          fill=\"none\"\n          points=\"1 9 7 14 15 4\"\n          stroke=\"currentColor\"\n          strokeDasharray={22}\n          strokeLinecap=\"round\"\n          strokeLinejoin=\"round\"\n          strokeWidth={2}\n          className=\"ft-checkbox-polyline\"\n        />\n        <line\n          x1=\"3\"\n          y1=\"9\"\n          x2=\"13\"\n          y2=\"9\"\n          stroke=\"currentColor\"\n          strokeWidth={2}\n          strokeLinecap=\"round\"\n          className=\"ft-checkbox-line\"\n        />\n      </svg>\n    </div>\n  </CheckboxPrimitive.Root>\n));\nCheckbox.displayName = CheckboxPrimitive.Root.displayName;\n\nexport { Checkbox };\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:ui"
+}

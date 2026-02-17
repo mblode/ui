@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.fingertip.com/schema/registry-item.json",
+  "name": "form-control",
+  "author": "fingertip (https://ui.fingertip.com)",
+  "dependencies": [
+    "label",
+    "validation"
+  ],
+  "files": [
+    {
+      "path": "ui/form-control.tsx",
+      "content": "\"use client\";\nimport React, { ReactNode } from \"react\";\n\nimport { Label } from \"./label\";\nimport { cn } from \"@/lib/utils\";\n\nimport { Validation } from \"@/registry/default/ui/validation\";\n\nexport type FormControlProps = {\n  name: string;\n  label?: ReactNode;\n  labelRight?: ReactNode;\n  error?: ReactNode;\n  success?: ReactNode;\n  warning?: ReactNode;\n  loading?: ReactNode;\n  caption?: ReactNode;\n  controlLeft?: ReactNode;\n  children: ReactNode;\n  className?: string;\n  validationPosition?: \"left\" | \"right\";\n  validationClassName?: string;\n  captionClassName?: string;\n  labelClassName?: string;\n};\n\nexport const FormControl = ({\n  label,\n  labelRight,\n  controlLeft,\n  name,\n  caption,\n  error,\n  loading,\n  success,\n  warning,\n  children,\n  className,\n  validationPosition = \"left\",\n  validationClassName,\n  captionClassName,\n  labelClassName,\n}: FormControlProps) => {\n  return (\n    <div className={cn(\"mb-4 flex flex-col\", className)}>\n      {(label || labelRight) && (\n        <div className=\"mb-2 flex justify-between items-center gap-1\">\n          <div>\n            {label && (\n              <Label\n                htmlFor={name}\n                className={cn(\"cursor-pointer\", labelClassName)}\n              >\n                {label}\n              </Label>\n            )}\n          </div>\n\n          <div>{labelRight}</div>\n        </div>\n      )}\n\n      {children}\n\n      {caption && (\n        <span\n          className={cn(\"mt-1 text-sm text-muted-foreground\", captionClassName)}\n        >\n          {caption}\n        </span>\n      )}\n\n      {controlLeft && <div className=\"mt-1\">{controlLeft}</div>}\n\n      <div\n        className={cn(\"flex flex-row\", {\n          \"justify-end\": validationPosition === \"right\",\n          \"justify-start\": validationPosition === \"left\",\n        })}\n      >\n        {success && (\n          <Validation variant=\"success\" className={validationClassName}>\n            {success}\n          </Validation>\n        )}\n        {warning && (\n          <Validation variant=\"warning\" className={validationClassName}>\n            {warning}\n          </Validation>\n        )}\n        {error && (\n          <Validation variant=\"error\" className={validationClassName}>\n            {error}\n          </Validation>\n        )}\n        {loading && (\n          <Validation variant=\"loading\" className={validationClassName}>\n            {loading}\n          </Validation>\n        )}\n      </div>\n    </div>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:ui"
+}

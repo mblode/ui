@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.fingertip.com/schema/registry-item.json",
+  "name": "responsive-sheet-content",
+  "author": "fingertip (https://ui.fingertip.com)",
+  "registryDependencies": [
+    "dialog",
+    "sheet"
+  ],
+  "files": [
+    {
+      "path": "ui/responsive-sheet-content.tsx",
+      "content": "\"use client\";\nimport { MutableRefObject } from \"react\";\n\nimport { useBreakpoint } from \"@/hooks/use-breakpoint\";\nimport { cn } from \"@/lib/utils\";\n\nimport { DialogContent } from \"./dialog\";\nimport { SheetContent } from \"./sheet\";\n\ntype Props = {\n  children: React.ReactNode;\n  ref?: MutableRefObject<any>;\n  mobileClassName?: string;\n  desktopClassName?: string;\n  className?: string;\n  overlayClassName?: string;\n};\n\nexport const ResponsiveSheetContent = ({\n  children,\n  ref,\n  mobileClassName,\n  desktopClassName,\n  overlayClassName,\n  className,\n}: Props) => {\n  const breakpoint = useBreakpoint();\n  const isDesktop = [\"lg\", \"xl\"].includes(breakpoint);\n\n  if (!isDesktop) {\n    return (\n      <SheetContent\n        side=\"bottom\"\n        ref={ref}\n        className={cn(className, \"rounded-t-[32px]\", mobileClassName)}\n        overlayClassName={overlayClassName}\n      >\n        {children}\n      </SheetContent>\n    );\n  }\n\n  return (\n    <DialogContent\n      className={cn(className, desktopClassName)}\n      ref={ref}\n      overlayClassName={overlayClassName}\n    >\n      {children}\n    </DialogContent>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:ui"
+}

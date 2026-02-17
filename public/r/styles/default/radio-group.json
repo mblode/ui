@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.fingertip.com/schema/registry-item.json",
+  "name": "radio-group",
+  "author": "fingertip (https://ui.fingertip.com)",
+  "dependencies": [
+    "@radix-ui/react-radio-group"
+  ],
+  "files": [
+    {
+      "path": "ui/radio-group.tsx",
+      "content": "\"use client\";\n\nimport { CirclePlaceholderOnIcon } from \"@fingertip/icons\";\nimport * as RadioGroupPrimitive from \"@radix-ui/react-radio-group\";\nimport * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nconst RadioGroup = React.forwardRef<\n  React.ElementRef<typeof RadioGroupPrimitive.Root>,\n  React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>\n>(({ className, ...props }, ref) => {\n  return (\n    <RadioGroupPrimitive.Root className={className} {...props} ref={ref} />\n  );\n});\nRadioGroup.displayName = RadioGroupPrimitive.Root.displayName;\n\nconst RadioGroupItem = React.forwardRef<\n  React.ElementRef<typeof RadioGroupPrimitive.Item>,\n  React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item>\n>(({ className, ...props }, ref) => {\n  return (\n    <RadioGroupPrimitive.Item\n      ref={ref}\n      className={cn(\n        \"aspect-square cursor-pointer size-5 rounded-full bg-card shadow-input border border-input hover:border-input-hover text-primary-foreground ring-offset-background transition-colors\",\n        \"data-[state=checked]:bg-primary data-[state=checked]:border-primary\",\n        \"focus:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2\",\n        \"disabled:cursor-not-allowed disabled:opacity-50\",\n        className,\n      )}\n      {...props}\n    >\n      <RadioGroupPrimitive.Indicator className=\"flex items-center justify-center\">\n        <CirclePlaceholderOnIcon className=\"size-2.5 fill-current text-primary-foreground\" />\n      </RadioGroupPrimitive.Indicator>\n    </RadioGroupPrimitive.Item>\n  );\n});\nRadioGroupItem.displayName = RadioGroupPrimitive.Item.displayName;\n\nexport { RadioGroup, RadioGroupItem };\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:ui"
+}

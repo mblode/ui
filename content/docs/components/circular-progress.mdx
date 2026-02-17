@@ -1,0 +1,107 @@
+---
+title: Circular Progress
+description: Displays an ongoing process or activity in a circular format.
+component: true
+---
+
+<ComponentPreview name="circular-progress-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ui.fingertip.com/r/styles/default/circular-progress"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="circular-progress" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { CircularProgress } from "@/components/ui/circular-progress";
+```
+
+```tsx
+<CircularProgress value={75} />
+```
+
+## Examples
+
+### Basic
+
+<ComponentPreview name="circular-progress-demo" />
+
+### Without Text
+
+You can hide the percentage text by using the `hideText` prop:
+
+```tsx
+<CircularProgress value={75} hideText />
+```
+
+### Custom Stroke Width
+
+You can customize the thickness of the progress ring:
+
+```tsx
+<CircularProgress value={75} strokeWidth={8} />
+```
+
+### Dynamic Progress
+
+You can update the value programmatically to show progress:
+
+```tsx
+const [progress, setProgress] = useState(0);
+
+useEffect(() => {
+  const timer = setInterval(() => {
+    setProgress((prevProgress) => {
+      const newProgress = prevProgress + 5;
+      if (newProgress >= 100) {
+        clearInterval(timer);
+        return 100;
+      }
+      return newProgress;
+    });
+  }, 500);
+
+  return () => {
+    clearInterval(timer);
+  };
+}, []);
+
+return <CircularProgress value={progress} />;
+```
+
+## Props
+
+| Prop          | Type      | Default | Description                             |
+| ------------- | --------- | ------- | --------------------------------------- |
+| `value`       | `number`  | -       | The progress value (0-100)              |
+| `strokeWidth` | `number`  | `4`     | The width of the progress circle stroke |
+| `hideText`    | `boolean` | `false` | Whether to hide the percentage text     |
+| `className`   | `string`  | -       | Additional CSS class name               |

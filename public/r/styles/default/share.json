@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.fingertip.com/schema/registry-item.json",
+  "name": "share",
+  "author": "fingertip (https://ui.fingertip.com)",
+  "dependencies": [
+    "@fingertip/icons",
+    "@radix-ui/react-slot",
+    "copy-to-clipboard"
+  ],
+  "registryDependencies": [
+    "tooltip"
+  ],
+  "files": [
+    {
+      "path": "ui/share.tsx",
+      "content": "\"use client\";\n\nimport { ArrowOutOfBoxIcon, CircleCheckIcon } from \"@fingertip/icons\";\nimport { Slot } from \"@radix-ui/react-slot\";\nimport copy from \"copy-to-clipboard\";\nimport {\n  forwardRef,\n  HTMLAttributes,\n  useCallback,\n  useEffect,\n  useState,\n} from \"react\";\nimport { toast } from \"sonner\";\n\nimport { cn } from \"@/lib/utils\";\n\nimport {\n  Tooltip,\n  TooltipContent,\n  TooltipProvider,\n  TooltipTrigger,\n} from \"./tooltip\";\n\ntype ShareProps = HTMLAttributes<HTMLButtonElement> & {\n  value: string;\n  valuePrefix?: string;\n  displayValue?: string;\n  description?: string;\n  asChild?: boolean;\n  onShare?: () => void;\n};\n\nconst Share = forwardRef<HTMLButtonElement, ShareProps>(\n  (\n    {\n      children,\n      className,\n      value,\n      valuePrefix,\n      displayValue,\n      description,\n      /**\n       * Whether to remove the wrapper `button` element and use the\n       * passed child element instead.\n       */\n      asChild = false,\n      onShare,\n      ...props\n    }: ShareProps,\n    ref,\n  ) => {\n    const [showTooltip, setShowTooltip] = useState(false);\n    const [done, setDone] = useState(false);\n    const [open, setOpen] = useState(false);\n    const [text, setText] = useState(\"Share\");\n\n    const handleShare = useCallback(async () => {\n      setDone(true);\n      onShare?.();\n\n      let urlToShare = value ?? window.location.href;\n\n      // Remove 'preview' query param\n      const urlObj = new URL(urlToShare);\n      urlToShare = urlObj.toString();\n\n      try {\n        await navigator.share({\n          title: displayValue,\n          url: valuePrefix && urlToShare ? undefined : urlToShare,\n          text:\n            valuePrefix && urlToShare\n              ? `${valuePrefix} ${urlToShare}`\n              : undefined,\n        });\n      } catch (_err: any) {}\n\n      copy(urlToShare);\n      toast.success(description || \"Copied and ready to share\");\n\n      setTimeout(() => {\n        setDone(false);\n      }, 2000);\n    }, [description, displayValue, onShare, value, valuePrefix]);\n\n    useEffect(() => {\n      if (done) {\n        setText(\"Shared\");\n        return;\n      }\n\n      setTimeout(() => {\n        setText(\"Share\");\n      }, 500);\n    }, [done]);\n\n    const Component = asChild ? Slot : \"button\";\n\n    return (\n      <TooltipProvider>\n        <Tooltip defaultOpen={false} open={done || open} onOpenChange={setOpen}>\n          <TooltipTrigger asChild>\n            <Component\n              ref={ref}\n              aria-label=\"Share\"\n              type=\"button\"\n              className={cn(\"h-fit w-fit\", className)}\n              onClick={handleShare}\n              onPointerEnter={() => setShowTooltip(true)}\n              onPointerLeave={() => setShowTooltip(false)}\n              {...props}\n            >\n              {children ? (\n                children\n              ) : done ? (\n                <CircleCheckIcon />\n              ) : (\n                <ArrowOutOfBoxIcon />\n              )}\n            </Component>\n          </TooltipTrigger>\n          {showTooltip && <TooltipContent>{text}</TooltipContent>}\n        </Tooltip>\n      </TooltipProvider>\n    );\n  },\n);\nShare.displayName = \"Share\";\n\nexport { Share };\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:ui"
+}

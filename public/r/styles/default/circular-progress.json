@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.fingertip.com/schema/registry-item.json",
+  "name": "circular-progress",
+  "author": "fingertip (https://ui.fingertip.com)",
+  "files": [
+    {
+      "path": "ui/circular-progress.tsx",
+      "content": "\"use client\";\nimport * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ninterface Props extends React.HTMLAttributes<HTMLDivElement> {\n  value: number;\n  strokeWidth?: number;\n  hideText?: boolean;\n}\n\nexport const CircularProgress = React.forwardRef<HTMLDivElement, Props>(\n  ({ value, strokeWidth = 4, className, hideText, ...props }, ref) => {\n    const percentage = Math.min(Math.max(value, 0), 100);\n    const radius = 16;\n    const circumference = 2 * Math.PI * radius;\n    const strokeDashoffset = circumference - (percentage / 100) * circumference;\n\n    return (\n      <div ref={ref} className={cn(\"relative\", className)} {...props}>\n        <svg\n          className=\"size-full -rotate-90\"\n          viewBox=\"0 0 36 36\"\n          xmlns=\"http://www.w3.org/2000/svg\"\n        >\n          {/* Background Circle */}\n          <circle\n            cx=\"18\"\n            cy=\"18\"\n            r={radius}\n            fill=\"none\"\n            className=\"stroke-current text-primary/30\"\n            strokeWidth={strokeWidth}\n          />\n          {/* Progress Circle */}\n          <circle\n            cx=\"18\"\n            cy=\"18\"\n            r={radius}\n            fill=\"none\"\n            className=\"stroke-current text-primary\"\n            strokeWidth={strokeWidth}\n            strokeDasharray={circumference}\n            strokeDashoffset={strokeDashoffset}\n            strokeLinecap=\"round\"\n            style={{\n              transition: `stroke-dashoffset 300ms ease-in-out`,\n            }}\n          />\n        </svg>\n\n        {/* Percentage Text */}\n        {!hideText && (\n          <div className=\"absolute start-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 leading-none\">\n            <span className=\"text-center font-bold leading-none text-primary dark:text-foreground\">\n              {percentage}%\n            </span>\n          </div>\n        )}\n      </div>\n    );\n  },\n);\n\nCircularProgress.displayName = \"CircularProgress\";\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:ui"
+}

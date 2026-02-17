@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.fingertip.com/schema/registry-item.json",
+  "name": "validation",
+  "author": "fingertip (https://ui.fingertip.com)",
+  "files": [
+    {
+      "path": "ui/validation.tsx",
+      "content": "\"use client\";\n\nimport { CheckIcon, TriangleExclamationIcon } from \"@fingertip/icons\";\nimport { cva, VariantProps } from \"class-variance-authority\";\nimport * as React from \"react\";\nimport { ReactNode } from \"react\";\n\nimport { Spinner } from \"./spinner\";\nimport { cn } from \"@/lib/utils\";\n\nexport const validationVariants = cva(\n  \"mt-2 flex flex-row items-center text-sm\",\n  {\n    variants: {\n      variant: {\n        error: \"text-destructive-foreground\",\n        warning: \"text-warning-foreground\",\n        success: \"text-success-foreground\",\n        loading: \"text-muted-foreground\",\n      },\n    },\n    defaultVariants: {\n      variant: \"error\",\n    },\n  },\n);\n\ntype Props = {\n  children: ReactNode;\n  className?: string;\n} & VariantProps<typeof validationVariants>;\n\nexport const Validation = ({ children, className, variant }: Props) => {\n  return (\n    <p className={cn(validationVariants({ variant, className }))}>\n      {children}\n      {variant === \"error\" && (\n        <TriangleExclamationIcon className=\"size-4 ml-1\" />\n      )}\n      {variant === \"success\" && <CheckIcon className=\"size-4 ml-1\" />}\n      {variant === \"warning\" && (\n        <TriangleExclamationIcon className=\"size-4 ml-1\" />\n      )}\n      {variant === \"loading\" && (\n        <span className=\"ml-1 \">\n          <Spinner size={16} />\n        </span>\n      )}\n    </p>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.fingertip.com/schema/registry-item.json",
+  "name": "sticker",
+  "author": "fingertip (https://ui.fingertip.com)",
+  "files": [
+    {
+      "path": "ui/sticker.tsx",
+      "content": "\"use client\";\n\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nconst stickerVariants = cva(\n  \"inline-flex items-center rounded-[12px] px-[35px] py-2.5 text-[24px] font-bold leading-none tracking-tight text-white shadow-[0px_10px_20px_0px_rgba(0,0,0,0.15)] ring-4 ring-[rgba(255,255,255,0.5)]\",\n  {\n    variants: {\n      variant: {\n        default: \"rotate-[-3.21deg] bg-primary\",\n        purple: \"rotate-[-3.21deg] bg-[#8B52F8]\",\n        blue: \"rotate-[-1.5deg] bg-[#60A5FA]\",\n        yellow: \"-rotate-2 bg-[#FACC0B]\",\n        green: \"rotate-[2.352deg] bg-[#4ADE80]\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n    },\n  },\n);\n\nexport interface StickerProps\n  extends\n    React.HTMLAttributes<HTMLDivElement>,\n    VariantProps<typeof stickerVariants> {}\n\nfunction Sticker({ className, variant, ...props }: StickerProps) {\n  return (\n    <div className={cn(stickerVariants({ variant }), className)} {...props} />\n  );\n}\n\nexport { Sticker, stickerVariants };\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:ui"
+}

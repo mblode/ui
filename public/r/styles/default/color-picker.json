@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.fingertip.com/schema/registry-item.json",
+  "name": "color-picker",
+  "author": "fingertip (https://ui.fingertip.com)",
+  "dependencies": [
+    "@fingertip/icons"
+  ],
+  "registryDependencies": [
+    "button",
+    "label",
+    "popover"
+  ],
+  "files": [
+    {
+      "path": "ui/color-picker.tsx",
+      "content": "\"use client\";\n\nimport { CheckIcon, ChevronDownIcon } from \"@fingertip/icons\";\nimport React, { useCallback, useState } from \"react\";\n\nimport { Button } from \"./button\";\nimport { Label } from \"./label\";\nimport { Popover, PopoverContent, PopoverTrigger } from \"./popover\";\n\nconst calendarColorSwatches = [\n  { hex: \"#AD1457\", title: \"Beetroot\" },\n  { hex: \"#F4511E\", title: \"Tangerine\" },\n  { hex: \"#E4C441\", title: \"Citron\" },\n  { hex: \"#0B8043\", title: \"Basil\" },\n  { hex: \"#3F51B5\", title: \"Blueberry\" },\n  { hex: \"#8E24AA\", title: \"Grape\" },\n  { hex: \"#D81B60\", title: \"Cherry\" },\n  { hex: \"#EF6C00\", title: \"Pumpkin\" },\n  { hex: \"#C0CA33\", title: \"Avocado\" },\n  { hex: \"#009688\", title: \"Eucalyptus\" },\n  { hex: \"#7986CB\", title: \"Lavender\" },\n  { hex: \"#795548\", title: \"Cocoa\" },\n  { hex: \"#D50000\", title: \"Tomato\" },\n  { hex: \"#F09300\", title: \"Mango\" },\n  { hex: \"#7CB342\", title: \"Pistachio\" },\n  { hex: \"#039BE5\", title: \"Peacock\" },\n  { hex: \"#B39DDB\", title: \"Wisteria\" },\n  { hex: \"#616161\", title: \"Graphite\" },\n  { hex: \"#E67C73\", title: \"Flamingo\" },\n  { hex: \"#F6BF26\", title: \"Banana\" },\n  { hex: \"#33B679\", title: \"Sage\" },\n  { hex: \"#4285F4\", title: \"Cobalt\" },\n  { hex: \"#9E69AF\", title: \"Amethyst\" },\n  { hex: \"#A79B8E\", title: \"Birch\" },\n];\n\ntype Props = {\n  color: string;\n  onSelectAction: (color: string) => void;\n  label?: string;\n};\n\nexport const ColorPicker = ({\n  color,\n  onSelectAction,\n  label = \"Colour\",\n}: Props) => {\n  const [open, setOpen] = useState(false);\n\n  const onSelectColor = useCallback(\n    (value: string) => {\n      onSelectAction(value);\n      setOpen(false);\n    },\n    [onSelectAction],\n  );\n\n  return (\n    <Popover\n      open={open}\n      onOpenChange={(value) => {\n        setOpen(value);\n      }}\n    >\n      <PopoverTrigger\n        onClick={(e) => {\n          e.preventDefault();\n          setOpen(!open);\n        }}\n        className=\"flex items-center space-x-1\"\n      >\n        <div\n          className=\"size-5 max-h-5 min-w-5\"\n          id=\"color-picker-swatch\"\n          style={{\n            backgroundColor: color,\n          }}\n        />\n\n        <ChevronDownIcon className=\"size-4\" />\n      </PopoverTrigger>\n\n      <PopoverContent className=\"w-full p-2\" align=\"center\">\n        <div className=\"mb-2\">\n          <Label>{label}</Label>\n        </div>\n\n        <div className=\"grid grid-cols-6 grid-rows-4 gap-2\">\n          {calendarColorSwatches.map((item, index) => {\n            return (\n              <Button\n                type=\"button\"\n                onClick={() => onSelectColor(item.hex)}\n                variant=\"ghost\"\n                className=\"relative h-6 p-0!\"\n                key={index}\n              >\n                <div\n                  className=\"size-6 max-h-6 min-w-6 rounded-full\"\n                  style={{ backgroundColor: item.hex }}\n                />\n                {item.hex === color && (\n                  <CheckIcon className=\"size-4 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-white\" />\n                )}\n              </Button>\n            );\n          })}\n        </div>\n      </PopoverContent>\n    </Popover>\n  );\n};\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:ui"
+}
