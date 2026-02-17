@@ -1,22 +1,20 @@
-"use client";
-
 import { Label } from "@/registry/default/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/registry/default/ui/radio-group";
 
 export default function RadioGroupDemo() {
   return (
-    <RadioGroup defaultValue="option-one">
-      <div className="flex items-center space-x-2">
-        <RadioGroupItem value="option-one" id="option-one" />
-        <Label htmlFor="option-one">Option One</Label>
+    <RadioGroup defaultValue="comfortable">
+      <div className="flex items-center gap-3">
+        <RadioGroupItem id="r1" value="default" />
+        <Label htmlFor="r1">Default</Label>
       </div>
-      <div className="flex items-center space-x-2">
-        <RadioGroupItem value="option-two" id="option-two" />
-        <Label htmlFor="option-two">Option Two</Label>
+      <div className="flex items-center gap-3">
+        <RadioGroupItem id="r2" value="comfortable" />
+        <Label htmlFor="r2">Comfortable</Label>
       </div>
-      <div className="flex items-center space-x-2">
-        <RadioGroupItem value="option-three" id="option-three" />
-        <Label htmlFor="option-three">Option Three</Label>
+      <div className="flex items-center gap-3">
+        <RadioGroupItem id="r3" value="compact" />
+        <Label htmlFor="r3">Compact</Label>
       </div>
     </RadioGroup>
   );

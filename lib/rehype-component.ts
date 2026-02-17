@@ -1,14 +1,37 @@
-import fs from "fs";
-import path from "path";
-import { UnistNode, UnistTree } from "types/unist";
+import fs from "node:fs";
+import path from "node:path";
+import type { UnistNode, UnistTree } from "types/unist";
 import { u } from "unist-builder";
 import { visit } from "unist-util-visit";
 
 import { Index } from "../__registry__";
 import { styles } from "../registry/registry-styles";
 
+interface RegistryComponent {
+  files?: Array<
+    | string
+    | {
+        path?: string;
+      }
+  >;
+}
+
+type RegistryByStyle = Record<string, Record<string, RegistryComponent>>;
+const registryIndex = Index as RegistryByStyle;
+
+function getFilePath(
+  file: NonNullable<RegistryComponent["files"]>[number] | undefined
+) {
+  if (!file) {
+    return undefined;
+  }
+
+  return typeof file === "string" ? file : file.path;
+}
+
 export function rehypeComponent() {
-  return async (tree: UnistTree) => {
+  return (tree: UnistTree) => {
+    // biome-ignore lint/complexity/noExcessiveCognitiveComplexity: This visitor handles multiple MDX component transformations in one traversal.
     visit(tree, (node: UnistNode) => {
       // src prop overrides both name and fileName.
       const { value: srcPath } =
@@ -24,38 +47,53 @@ export function rehypeComponent() {
           | string
           | undefined;
 
-        if (!name && !srcPath) {
+        if (!(name || srcPath)) {
           return null;
         }
 
         try {
           for (const style of styles) {
-            let src: string;
+            let src = "";
 
             if (srcPath) {
               src = path.join(process.cwd(), srcPath);
             } else {
-              const component = Index[style.name]?.[name];
-              if (!component || !component.files) {
-                console.warn(`Component "${name}" not found in registry or has no files.`);
+              const component = registryIndex[style.name]?.[name];
+              if (!component?.files) {
+                console.warn(
+                  `Component "${name}" not found in registry or has no files.`
+                );
                 return;
               }
-              src = fileName
-                ? component.files.find((file: unknown) => {
-                    if (typeof file === "string") {
-                      return (
-                        file.endsWith(`${fileName}.tsx`) ||
-                        file.endsWith(`${fileName}.ts`)
-                      );
-                    }
-                    return false;
-                  }) || component.files[0]?.path
-                : component.files[0]?.path;
+              if (fileName) {
+                const matchedFile = component.files.find((file) => {
+                  const filePath = getFilePath(file);
+
+                  return Boolean(
+                    filePath &&
+                      (filePath.endsWith(`${fileName}.tsx`) ||
+                        filePath.endsWith(`${fileName}.ts`))
+                  );
+                });
+                src =
+                  getFilePath(matchedFile) ??
+                  getFilePath(component.files[0]) ??
+                  "";
+              } else {
+                src = getFilePath(component.files[0]) ?? "";
+              }
+
+              if (!src) {
+                console.warn(
+                  `Could not resolve source path for component "${name}".`
+                );
+                return;
+              }
             }
 
             // Read the source file.
             const filePath = src;
-            let source;
+            let source = "";
             try {
               source = fs.readFileSync(filePath, "utf8");
             } catch (error) {
@@ -68,7 +106,7 @@ export function rehypeComponent() {
             // For now a simple regex should do.
             source = source.replaceAll(
               `@/registry/${style.name}/`,
-              "@/components/",
+              "@/components/"
             );
             source = source.replaceAll("export default", "export");
 
@@ -101,7 +139,7 @@ export function rehypeComponent() {
                     ],
                   }),
                 ],
-              }),
+              })
             );
           }
         } catch (error) {
@@ -118,16 +156,25 @@ export function rehypeComponent() {
 
         try {
           for (const style of styles) {
-            const component = Index[style.name]?.[name];
-            if (!component || !component.files || !component.files.length) {
-              console.warn(`Component "${name}" not found in registry or has no files.`);
+            const component = registryIndex[style.name]?.[name];
+            if (!component?.files?.length) {
+              console.warn(
+                `Component "${name}" not found in registry or has no files.`
+              );
               continue;
             }
-            const src = component.files[0]?.path;
+            const src = getFilePath(component.files[0]);
+
+            if (!src) {
+              console.warn(
+                `Could not resolve source path for component "${name}".`
+              );
+              continue;
+            }
 
             // Read the source file.
             const filePath = src;
-            let source;
+            let source = "";
             try {
               source = fs.readFileSync(filePath, "utf8");
             } catch (error) {
@@ -140,7 +187,7 @@ export function rehypeComponent() {
             // For now a simple regex should do.
             source = source.replaceAll(
               `@/registry/${style.name}/`,
-              "@/components/",
+              "@/components/"
             );
             source = source.replaceAll("export default", "export");
 
@@ -165,7 +212,7 @@ export function rehypeComponent() {
                     ],
                   }),
                 ],
-              }),
+              })
             );
           }
         } catch (error) {
@@ -287,7 +334,7 @@ function getNodeAttributeByName(node: UnistNode, name: string) {
   return node.attributes?.find((attribute) => attribute.name === name);
 }
 
-function getComponentSourceFileContent(node: UnistNode) {
+function _getComponentSourceFileContent(node: UnistNode) {
   const src = getNodeAttributeByName(node, "src")?.value as string;
 
   if (!src) {

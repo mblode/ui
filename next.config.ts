@@ -1,12 +1,23 @@
 import { withContentCollections } from "@content-collections/next";
+import type { NextConfig } from "next";
 
-const nextConfig = {
+const nextConfig: NextConfig = {
   output:
     process.env.NODE_ENV === "production" ? ("standalone" as const) : undefined,
   images: {
-    domains: ["localhost", "images.unsplash.com"],
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: "localhost",
+      },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+    ],
   },
   reactStrictMode: true,
+  devIndicators: false,
   experimental: {
     optimizeCss: true,
   },

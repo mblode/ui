@@ -1,16 +1,18 @@
-import { registrySchema } from "shadcn/schema";
-import { z } from "zod";
+import type { registrySchema } from "shadcn/schema";
+import type { z } from "zod";
 
-import { examples } from "@/registry/registry-examples";
-import { lib } from "@/registry/registry-lib";
-import { ui } from "@/registry/registry-ui";
+import { examples } from "@/registry/default/examples/_registry";
+import { hooks } from "@/registry/default/hooks/_registry";
+import { lib } from "@/registry/default/lib/_registry";
+import { ui } from "@/registry/default/ui/_registry";
 
 export const registry = {
   name: "fingertip/ui",
-  homepage: "https://ui.fingertip.com",
+  homepage: "https://ui.blode.co",
   items: [
     ...ui,
     ...lib,
+    ...hooks,
 
     // Internal use only.
     ...examples,

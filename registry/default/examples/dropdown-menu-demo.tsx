@@ -1,20 +1,3 @@
-import {
-  CloudIcon,
-  CreditCard1Icon,
-  GithubIcon,
-  KeyboardIcon,
-  RescueRingIcon,
-  ArrowBoxLeftIcon,
-  Email1Icon,
-  Bubble4Icon,
-  CirclePlusIcon,
-  SettingsGear2Icon,
-  PeopleIcon,
-  PeopleAddIcon,
-  Group1Icon,
-  PlusLargeIcon,
-} from "@fingertip/icons";
-
 import { Button } from "@/registry/default/ui/button";
 import {
   DropdownMenu,
@@ -35,85 +18,54 @@ export default function DropdownMenuDemo() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="secondary">Open</Button>
+        <Button variant="outline">Open</Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56">
+      <DropdownMenuContent align="start" className="w-56">
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
-        <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem>
-            <PeopleIcon />
-            <span>Profile</span>
+            Profile
             <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <CreditCard1Icon />
-            <span>Billing</span>
+            Billing
             <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <SettingsGear2Icon />
-            <span>Settings</span>
+            Settings
             <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <KeyboardIcon />
-            <span>Keyboard shortcuts</span>
+            Keyboard shortcuts
             <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem>
-            <Group1Icon />
-            <span>Team</span>
-          </DropdownMenuItem>
+          <DropdownMenuItem>Team</DropdownMenuItem>
           <DropdownMenuSub>
-            <DropdownMenuSubTrigger>
-              <PeopleAddIcon />
-              <span>Invite users</span>
-            </DropdownMenuSubTrigger>
+            <DropdownMenuSubTrigger>Invite users</DropdownMenuSubTrigger>
             <DropdownMenuPortal>
               <DropdownMenuSubContent>
-                <DropdownMenuItem>
-                  <Email1Icon />
-                  <span>Email</span>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Bubble4Icon />
-                  <span>Message</span>
-                </DropdownMenuItem>
+                <DropdownMenuItem>Email</DropdownMenuItem>
+                <DropdownMenuItem>Message</DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>
-                  <CirclePlusIcon />
-                  <span>More...</span>
-                </DropdownMenuItem>
+                <DropdownMenuItem>More...</DropdownMenuItem>
               </DropdownMenuSubContent>
             </DropdownMenuPortal>
           </DropdownMenuSub>
           <DropdownMenuItem>
-            <PlusLargeIcon />
-            <span>New Team</span>
+            New Team
             <DropdownMenuShortcut>⌘+T</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          <GithubIcon />
-          <span>GitHub</span>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <RescueRingIcon />
-          <span>Support</span>
-        </DropdownMenuItem>
-        <DropdownMenuItem disabled>
-          <CloudIcon />
-          <span>API</span>
-        </DropdownMenuItem>
+        <DropdownMenuItem>GitHub</DropdownMenuItem>
+        <DropdownMenuItem>Support</DropdownMenuItem>
+        <DropdownMenuItem disabled>API</DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <ArrowBoxLeftIcon />
-          <span>Log out</span>
+          Log out
           <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
         </DropdownMenuItem>
       </DropdownMenuContent>

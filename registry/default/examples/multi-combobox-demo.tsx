@@ -1,23 +1,24 @@
 "use client";
 
-import { UseMultipleSelectionStateChange } from "downshift";
-import React, {
-  ReactNode,
+import type { UseMultipleSelectionStateChange } from "downshift";
+import {
+  type ReactNode,
   useCallback,
   useEffect,
+  useMemo,
   useRef,
   useState,
 } from "react";
-import { useForm, useController } from "react-hook-form";
+import { type Control, useController, useForm } from "react-hook-form";
 
-import { FormControl } from "@/registry/default/ui/form-control";
 import {
   MultiCombobox,
-  MultiComboboxOption,
-  OnMultiChangeParams,
+  type MultiComboboxOption,
+  type MultiComboboxRef,
+  type OnMultiChangeParams,
 } from "@/registry/default/ui/multi-combobox";
 
-const frameworks = [
+const frameworks: MultiComboboxOption[] = [
   {
     id: "next.js",
     label: "Next.js",
@@ -52,32 +53,26 @@ const frameworks = [
   },
 ];
 
-interface MultiComboboxFieldProps {
-  name: string;
-  label?: ReactNode;
-  caption?: ReactNode;
-  control: any;
-  ariaLabel?: string;
-  className?: string;
-  placeholder?: string;
-  options: MultiComboboxOption[];
-  isLoading?: boolean;
-  values?: MultiComboboxOption[] | undefined;
-  onChange?: OnMultiChangeParams;
-  onInputChange?: (value: string) => void;
-  clearable?: boolean;
-  searchable?: boolean;
-  disabled?: boolean;
-  error?: boolean;
-  positive?: boolean;
-  startOpen?: boolean;
-  autoFocus?: boolean;
-  maxDropdownHeight?: number;
-  labelClassName?: string;
-  create?: boolean;
+interface MultiComboboxFormValues {
+  frameworks: string[];
 }
 
-const MultiComboboxField = ({
+interface MultiComboboxFieldProps {
+  caption?: ReactNode;
+  control: Control<MultiComboboxFormValues>;
+  create?: boolean;
+  disabled?: boolean;
+  label?: ReactNode;
+  name: "frameworks";
+  onChange?: OnMultiChangeParams;
+  onInputChange?: (value: string) => void;
+  options: MultiComboboxOption[];
+  placeholder?: string;
+  startOpen?: boolean;
+  values?: MultiComboboxOption[] | undefined;
+}
+
+function MultiComboboxField({
   name,
   label,
   caption,
@@ -86,101 +81,93 @@ const MultiComboboxField = ({
   onInputChange,
   onChange,
   ...props
-}: MultiComboboxFieldProps) => {
+}: MultiComboboxFieldProps) {
   const [items, setItems] = useState<MultiComboboxOption[]>(options);
-  const { field, fieldState } = useController({ name, control });
-  const hasError = fieldState.error;
-  const multiComboboxRef = useRef<{ clearInput: () => void }>(null);
+  const { field, fieldState } = useController({
+    control,
+    name,
+  });
+  const multiComboboxRef = useRef<MultiComboboxRef>(null);
 
   const handleInputChange = useCallback(
     (value: string) => {
-      const lowerCasedInputValue = (value || "").toLowerCase();
+      const lowerCasedInputValue = value.toLowerCase();
       setItems(
-        (options || []).filter(
+        options.filter(
           (option) =>
             !value ||
-            (option.label || "").toLowerCase().includes(lowerCasedInputValue),
-        ),
+            (option.label || "").toLowerCase().includes(lowerCasedInputValue)
+        )
       );
 
-      if (onInputChange) {
-        onInputChange(value);
-      }
+      onInputChange?.(value);
     },
-    [options, onInputChange],
+    [options, onInputChange]
   );
 
   const handleChange = useCallback(
     (changes: UseMultipleSelectionStateChange<MultiComboboxOption>) => {
       field.onBlur();
       field.onChange(
-        changes?.selectedItems
-          ? changes.selectedItems.map((item) => item.id)
-          : null,
+        (changes.selectedItems ?? [])
+          .map((item) => item.id)
+          .filter((item): item is string => typeof item === "string")
       );
       onChange?.(changes);
-      multiComboboxRef?.current?.clearInput();
+      multiComboboxRef.current?.clearInput();
     },
-    [field, onChange],
+    [field, onChange]
   );
 
   useEffect(() => {
     setItems(options);
   }, [options]);
 
-  const getSelectValues = useCallback(
-    (
-      fieldValue: any,
-      options: MultiComboboxOption[],
-    ): MultiComboboxOption[] | undefined => {
-      if (!fieldValue) return undefined;
+  const values = useMemo(() => {
+    const fieldValues = field.value ?? [];
 
-      // Convert to array if not already
-      const valueArray = Array.isArray(fieldValue) ? fieldValue : [fieldValue];
-      if (valueArray.length === 0) return undefined;
+    if (!Array.isArray(fieldValues) || fieldValues.length === 0) {
+      return undefined;
+    }
 
-      return valueArray.map((value) => {
-        // Check if the value exists in options
-        const existingOption = options.find(
-          (option) => option && option.id === value,
-        );
-        if (existingOption) {
-          return existingOption;
-        }
-        // If not found in options, create a new option
-        return {
-          id: value,
-          label: String(value),
-        };
-      });
-    },
-    [],
-  );
+    return fieldValues.map((value) => {
+      const existingOption = options.find((option) => option.id === value);
 
-  const values = getSelectValues(field.value, options);
+      if (existingOption) {
+        return existingOption;
+      }
+
+      return {
+        id: value,
+        label: String(value),
+      };
+    });
+  }, [field.value, options]);
 
   return (
-    <FormControl
-      label={label}
-      caption={caption}
-      error={hasError ? fieldState.error?.message : null}
-      name={name}
-    >
+    <div className="space-y-2">
+      {label ? <p className="font-medium text-sm">{label}</p> : null}
       <MultiCombobox
         ref={multiComboboxRef}
         {...props}
         id={name}
+        onChange={handleChange}
+        onInputChange={handleInputChange}
         options={items}
         values={values}
-        onInputChange={(value) => handleInputChange(value)}
-        onChange={handleChange}
       />
-    </FormControl>
+      {caption ? (
+        <p className="text-muted-foreground text-sm">{caption}</p>
+      ) : null}
+      {fieldState.error?.message ? (
+        <p className="text-destructive text-sm">{fieldState.error.message}</p>
+      ) : null}
+    </div>
   );
-};
+}
 
 export default function MultiComboboxDemo() {
-  const { control } = useForm({
+  const { control } = useForm<MultiComboboxFormValues>({
     defaultValues: {
       frameworks: [],
     },
@@ -189,16 +176,16 @@ export default function MultiComboboxDemo() {
   return (
     <div className="flex flex-col gap-4">
       <MultiComboboxField
-        name="frameworks"
-        label="Select Frameworks"
         caption="Choose one or more frameworks"
-        options={frameworks}
         control={control}
+        label="Select Frameworks"
+        name="frameworks"
+        options={frameworks}
         placeholder="Select frameworks..."
       />
 
-      <div className="text-sm text-muted-foreground">
-        Multi-select combobox with form integration using react-hook-form
+      <div className="text-muted-foreground text-sm">
+        Multi-select combobox with form integration using react-hook-form.
       </div>
     </div>
   );

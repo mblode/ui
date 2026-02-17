@@ -1,61 +1,57 @@
 ---
 title: Multi Combobox
-date: 2025-05-07
 description: A combobox component that allows selecting multiple options from a list.
-author: fingertip
-published: true
+component: true
 ---
 
 <ComponentPreview name="multi-combobox-demo" />
 
 ## Installation
 
-<Tabs defaultValue="cli">
-  <TabsList>
-    <TabsTrigger value="cli">CLI</TabsTrigger>
-    <TabsTrigger value="manual">Manual</TabsTrigger>
-  </TabsList>
-  <TabsContent value="cli">
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add "https://ui.fingertip.com/r/styles/default/lti-combobox"
+npx shadcn@latest add "https://ui.blode.co/r/styles/default/multi-combobox"
 ```
 
-  </TabsContent>
-  <TabsContent value="manual">
-    <Steps>
-      <Step>Copy and paste the following code into your project.</Step>
-      <ComponentSource name="multi-combobox" />
-      <Step>Update the import paths to match your project setup.</Step>
-    </Steps>
-  </TabsContent>
-</Tabs>
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="multi-combobox" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
 
 ## Usage
-
-The Multi Combobox component combines a popover, command menu, and badge system to create a component that allows users to select multiple options from a searchable dropdown list.
 
 ```tsx
 import { MultiCombobox } from "@/components/ui/multi-combobox";
 ```
 
 ```tsx
-// Example usage
 const frameworks = [
-  { value: "react", label: "React" },
-  { value: "vue", label: "Vue" },
-  { value: "angular", label: "Angular" },
-  // ...more options
+  { id: "react", label: "React" },
+  { id: "vue", label: "Vue" },
+  { id: "angular", label: "Angular" },
 ];
 
-const [selectedValues, setSelectedValues] = React.useState<string[]>([]);
-
-<MultiCombobox
-  placeholder="Select frameworks..."
-  options={frameworks}
-  selectedValues={selectedValues}
-  onValueChange={(values) => setSelectedValues(values)}
-/>;
+<MultiCombobox options={frameworks} placeholder="Select frameworks..." />;
 ```
 
 ## Features
@@ -64,16 +60,19 @@ const [selectedValues, setSelectedValues] = React.useState<string[]>([]);
 - Select multiple items from a dropdown
 - Display selected items as removable badges
 - Fully keyboard accessible
-- Customizable styling
+- Optional item creation mode
 
 ## Props
 
-| Prop                | Type                                 | Default             | Description                                  |
-| ------------------- | ------------------------------------ | ------------------- | -------------------------------------------- |
-| `className`         | `string`                             | `-`                 | The class name to apply to the component.    |
-| `placeholder`       | `string`                             | `Select options...` | Placeholder text for the combobox button.    |
-| `options`           | `{ value: string; label: string }[]` | `-`                 | Array of options to display in the dropdown. |
-| `selectedValues`    | `string[]`                           | `[]`                | Array of selected option values.             |
-| `onValueChange`     | `(values: string[]) => void`         | `-`                 | Callback when selection changes.             |
-| `disabled`          | `boolean`                            | `false`             | Whether the combobox is disabled.            |
-| `searchPlaceholder` | `string`                             | `Search...`         | Placeholder text for the search input.       |
+| Prop                | Type                                              | Default               | Description                                           |
+| ------------------- | ------------------------------------------------- | --------------------- | ----------------------------------------------------- |
+| `options`           | `MultiComboboxOption[]`                           | `-`                   | Array of options to display in the dropdown.          |
+| `values`            | `MultiComboboxOption[]`                           | `[]`                  | Currently selected options.                           |
+| `onChange`          | `(changes: UseMultipleSelectionStateChange) => void` | `-`                | Callback fired when selected items change.            |
+| `onInputChange`     | `(value: string) => void`                         | `-`                   | Callback fired when the input value changes.          |
+| `startOpen`         | `boolean`                                         | `false`               | Whether the dropdown starts in the open state.        |
+| `create`            | `boolean`                                         | `false`               | Allows creating new options from typed input.         |
+| `placeholder`       | `string`                                          | `Filter`              | Placeholder text for the combobox input.              |
+| `inputClassName`    | `string`                                          | `-`                   | Additional class names for the root input container.  |
+| `disabled`          | `boolean`                                         | `false`               | Whether the component is disabled.                    |
+| `maxDropdownHeight` | `number`                                          | `250`                 | Maximum dropdown height in pixels before scrolling.   |

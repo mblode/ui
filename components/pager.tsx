@@ -1,11 +1,10 @@
-import { NavItem, NavItemWithChildren } from "@/types";
-import { ChevronLeftIcon, ChevronRightIcon } from "@fingertip/icons";
-import { Doc } from "content-collections";
+import { ChevronLeftIcon, ChevronRightIcon } from "blode-icons-react";
+import type { Doc } from "content-collections";
 import Link from "next/link";
-
-import { buttonVariants } from "@/registry/default/ui/button";
 import { docsConfig } from "@/config/docs";
 import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/registry/default/ui/button";
+import type { NavItem, NavItemWithChildren } from "@/types";
 
 interface DocsPagerProps {
   doc: Doc;
@@ -22,30 +21,30 @@ export function DocPager({ doc }: DocsPagerProps) {
     <div className="flex flex-row items-center justify-between gap-4">
       {pager?.prev?.href && (
         <Link
-          href={pager.prev.href}
           className={cn(buttonVariants({ variant: "ghost" }), "min-w-0")}
+          href={pager.prev.href}
           title={pager.prev.title}
         >
           <ChevronLeftIcon
-            className="mr-2 size-4 shrink-0"
             aria-hidden="true"
+            className="mr-2 size-4 shrink-0"
           />
           <span className="truncate">{pager.prev.title}</span>
         </Link>
       )}
       {pager?.next?.href && (
         <Link
-          href={pager.next.href}
           className={cn(
             buttonVariants({ variant: "ghost" }),
-            "ml-auto min-w-0 text-right",
+            "ml-auto min-w-0 text-right"
           )}
+          href={pager.next.href}
           title={pager.next.title}
         >
           <span className="truncate">{pager.next.title}</span>
           <ChevronRightIcon
-            className="ml-2 size-4 shrink-0"
             aria-hidden="true"
+            className="ml-2 size-4 shrink-0"
           />
         </Link>
       )}
@@ -56,7 +55,7 @@ export function DocPager({ doc }: DocsPagerProps) {
 export function getPagerForDoc(doc: Doc) {
   const flattenedLinks = [null, ...flatten(docsConfig.sidebarNav), null];
   const activeIndex = flattenedLinks.findIndex(
-    (link) => doc.slug === link?.href,
+    (link) => doc.slug === link?.href
   );
   const prev = activeIndex !== 0 ? flattenedLinks[activeIndex - 1] : null;
   const next =

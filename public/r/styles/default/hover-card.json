@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.blode.co/schema/registry-item.json",
+  "name": "hover-card",
+  "author": "fingertip (https://ui.blode.co)",
+  "dependencies": ["@base-ui/react"],
+  "files": [
+    {
+      "path": "ui/hover-card.tsx",
+      "content": "\"use client\";\n\nimport { PreviewCard as HoverCardPrimitive } from \"@base-ui/react/preview-card\";\nimport * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction HoverCard({\n  ...props\n}: React.ComponentProps<typeof HoverCardPrimitive.Root>) {\n  return <HoverCardPrimitive.Root data-slot=\"hover-card\" {...props} />;\n}\n\nfunction HoverCardTrigger({\n  asChild = false,\n  children,\n  ...props\n}: React.ComponentProps<typeof HoverCardPrimitive.Trigger> & {\n  asChild?: boolean;\n}) {\n  const render =\n    asChild && React.isValidElement(children)\n      ? (children as React.ReactElement)\n      : undefined;\n\n  return (\n    <HoverCardPrimitive.Trigger\n      data-slot=\"hover-card-trigger\"\n      render={render}\n      {...props}\n    >\n      {asChild ? null : children}\n    </HoverCardPrimitive.Trigger>\n  );\n}\n\nfunction HoverCardContent({\n  asChild = false,\n  children,\n  className,\n  align = \"center\",\n  alignOffset = 0,\n  side = \"bottom\",\n  sideOffset = 4,\n  ...props\n}: React.ComponentProps<typeof HoverCardPrimitive.Popup> &\n  Pick<\n    React.ComponentProps<typeof HoverCardPrimitive.Positioner>,\n    \"align\" | \"alignOffset\" | \"side\" | \"sideOffset\"\n  > & {\n    asChild?: boolean;\n  }) {\n  const render =\n    asChild && React.isValidElement(children)\n      ? (children as React.ReactElement)\n      : undefined;\n\n  return (\n    <HoverCardPrimitive.Portal data-slot=\"hover-card-portal\">\n      <HoverCardPrimitive.Positioner\n        align={align}\n        alignOffset={alignOffset}\n        className=\"isolate z-50\"\n        side={side}\n        sideOffset={sideOffset}\n      >\n        <HoverCardPrimitive.Popup\n          className={cn(\n            \"data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 w-64 origin-(--transform-origin) rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-hidden data-closed:animate-out data-open:animate-in\",\n            className\n          )}\n          data-slot=\"hover-card-content\"\n          render={render}\n          {...props}\n        >\n          {asChild ? null : children}\n        </HoverCardPrimitive.Popup>\n      </HoverCardPrimitive.Positioner>\n    </HoverCardPrimitive.Portal>\n  );\n}\n\nexport { HoverCard, HoverCardTrigger, HoverCardContent };\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:ui"
+}

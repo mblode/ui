@@ -1,3 +1,6 @@
+import { ChevronDownIcon, SlashIcon } from "blode-icons-react";
+import Link from "next/link";
+
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -12,21 +15,24 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/registry/default/ui/dropdown-menu";
-import { ChevronDownIcon } from "@fingertip/icons";
 
 export default function BreadcrumbWithDropdown() {
   return (
     <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          <BreadcrumbLink asChild>
+            <Link href="/">Home</Link>
+          </BreadcrumbLink>
         </BreadcrumbItem>
-        <BreadcrumbSeparator>/</BreadcrumbSeparator>
+        <BreadcrumbSeparator>
+          <SlashIcon />
+        </BreadcrumbSeparator>
         <BreadcrumbItem>
           <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center gap-1">
+            <DropdownMenuTrigger className="flex items-center gap-1 [&_svg:not([class*='size-'])]:size-3.5 [&_svg]:pointer-events-none [&_svg]:shrink-0">
               Components
-              <ChevronDownIcon className="h-4 w-4" />
+              <ChevronDownIcon />
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start">
               <DropdownMenuItem>Documentation</DropdownMenuItem>
@@ -35,7 +41,9 @@ export default function BreadcrumbWithDropdown() {
             </DropdownMenuContent>
           </DropdownMenu>
         </BreadcrumbItem>
-        <BreadcrumbSeparator>/</BreadcrumbSeparator>
+        <BreadcrumbSeparator>
+          <SlashIcon />
+        </BreadcrumbSeparator>
         <BreadcrumbItem>
           <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
         </BreadcrumbItem>

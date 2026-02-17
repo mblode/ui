@@ -1,23 +1,28 @@
+import { ChevronRightIcon } from "blode-icons-react";
 import { allDocs } from "content-collections";
 import { compareDesc } from "date-fns";
-import { ChevronRightIcon } from "@fingertip/icons";
 import Link from "next/link";
 
 import TechStack from "@/components/tech-stack";
-import { buttonVariants } from "@/registry/default/ui/button";
-import { Separator } from "@/registry/default/ui/separator";
 import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/registry/default/ui/button";
 
-export default async function Hero() {
-  const post = allDocs
+export default function Hero() {
+  const _post = allDocs
     .filter(
       (post) =>
-        post.date && post.date <= new Date().toISOString() && post.published,
+        post.date && post.date <= new Date().toISOString() && post.published
     )
     .sort((a, b) => {
-      if (!a.date && !b.date) return 0; // Both dates are undefined, keep original order
-      if (!a.date) return 1; // Move a to the end if date is undefined
-      if (!b.date) return -1; // Move b to the end if date is undefined
+      if (!(a.date || b.date)) {
+        return 0; // Both dates are undefined, keep original order
+      }
+      if (!a.date) {
+        return 1; // Move a to the end if date is undefined
+      }
+      if (!b.date) {
+        return -1; // Move b to the end if date is undefined
+      }
       return compareDesc(new Date(a.date), new Date(b.date)); // Both dates are defined, proceed with comparison
     })[0];
 
@@ -31,29 +36,29 @@ export default async function Hero() {
                 <h1
                   className={cn(
                     "text-black dark:text-white",
-                    "relative mx-0 max-w-[43.5rem]  pt-5  md:mx-auto md:px-4 md:py-2",
+                    "relative mx-0 max-w-[43.5rem] pt-5 md:mx-auto md:px-4 md:py-2",
                     "text-balance text-left font-semibold tracking-tighter md:text-center",
-                    "text-5xl sm:text-7xl md:text-7xl lg:text-7xl",
+                    "text-5xl sm:text-7xl md:text-7xl lg:text-7xl"
                   )}
                 >
-                  Fingertip.com UI library
+                  Blode UI library
                 </h1>
               </div>
 
               <div className="mx-0 flex w-full max-w-full flex-col gap-4 py-1 sm:max-w-lg sm:flex-row md:mx-auto">
                 <div className="flex w-full flex-col gap-2 sm:flex-row sm:gap-4">
                   <Link
-                    href="/components"
                     className={cn(
                       buttonVariants({
                         variant: "default",
                         size: "lg",
                       }),
-                      "w-full gap-2",
+                      "w-full gap-2"
                     )}
+                    href="/components"
                   >
                     Browse components
-                    <ChevronRightIcon className="ml-1  size-4 shrink-0 transition-all duration-300 ease-out group-hover:translate-x-1" />
+                    <ChevronRightIcon className="ml-1 size-4 shrink-0 transition-all duration-300 ease-out group-hover:translate-x-1" />
                   </Link>
                 </div>
               </div>

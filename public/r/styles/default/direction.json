@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.blode.co/schema/registry-item.json",
+  "name": "direction",
+  "author": "fingertip (https://ui.blode.co)",
+  "files": [
+    {
+      "path": "ui/direction.tsx",
+      "content": "\"use client\";\n\nimport {\n  DirectionProvider as BaseDirectionProvider,\n  useDirection,\n} from \"@base-ui/react/direction-provider\";\nimport type * as React from \"react\";\n\nfunction DirectionProvider({\n  dir,\n  direction,\n  children,\n  ...props\n}: React.ComponentProps<typeof BaseDirectionProvider> & {\n  dir?: React.ComponentProps<typeof BaseDirectionProvider>[\"direction\"];\n  direction?: React.ComponentProps<typeof BaseDirectionProvider>[\"direction\"];\n}) {\n  return (\n    <BaseDirectionProvider direction={direction ?? dir} {...props}>\n      {children}\n    </BaseDirectionProvider>\n  );\n}\n\nexport { DirectionProvider, useDirection };\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:ui"
+}

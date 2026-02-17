@@ -1,12 +1,8 @@
 {
-  "$schema": "https://ui.fingertip.com/schema/registry-item.json",
+  "$schema": "https://ui.blode.co/schema/registry-item.json",
   "name": "render-prompt",
-  "author": "fingertip (https://ui.fingertip.com)",
-  "registryDependencies": [
-    "prompt",
-    "input",
-    "label"
-  ],
+  "author": "fingertip (https://ui.blode.co)",
+  "registryDependencies": ["prompt", "input", "label"],
   "files": [
     {
       "path": "ui/render-prompt.tsx",

@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+"use client";
+
+import { useState } from "react";
+
 import { CurrencyInput } from "@/registry/default/ui/currency-input";
 import { Label } from "@/registry/default/ui/label";
 
@@ -14,43 +17,43 @@ export default function CurrencyInputDemo() {
       <div className="flex flex-col space-y-2">
         <Label htmlFor="amount">Amount</Label>
         <CurrencyInput
-          id="amount"
-          name="amount"
-          placeholder="Enter an amount"
-          prefix="$"
-          groupSeparator=","
           decimalSeparator="."
           decimalsLimit={2}
-          value={value}
+          groupSeparator=","
+          id="amount"
+          name="amount"
           onValueChange={handleValueChange}
+          placeholder="Enter an amount"
+          prefix="$"
+          value={value}
         />
       </div>
       <div className="flex flex-col space-y-2">
         <Label htmlFor="customized">Customized</Label>
         <CurrencyInput
+          decimalSeparator=","
+          decimalsLimit={2}
+          groupSeparator="."
           id="customized"
           name="customized"
           placeholder="Enter an amount (€)"
           prefix="€"
           suffix=" EUR"
-          groupSeparator="."
-          decimalSeparator=","
-          decimalsLimit={2}
         />
       </div>
       <div className="flex flex-col space-y-2">
         <Label htmlFor="clearable">Clearable</Label>
         <CurrencyInput
-          id="clearable"
-          name="clearable"
-          placeholder="Enter an amount"
-          prefix="$"
-          groupSeparator=","
+          clearable
           decimalSeparator="."
           decimalsLimit={2}
           defaultValue="100.00"
-          clearable
-          onClear={() => console.log("Value cleared")}
+          groupSeparator=","
+          id="clearable"
+          name="clearable"
+          onClear={() => setValue(undefined)}
+          placeholder="Enter an amount"
+          prefix="$"
         />
       </div>
     </div>

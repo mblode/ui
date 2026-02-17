@@ -5,9 +5,9 @@ import {
 } from "@/registry/default/ui/alert";
 
 interface CalloutProps {
+  children?: React.ReactNode;
   icon?: string;
   title?: string;
-  children?: React.ReactNode;
 }
 
 export function Callout({ title, children, icon, ...props }: CalloutProps) {

@@ -1,11 +1,11 @@
 {
-  "name": "fingertip-com/ui",
-  "homepage": "https://ui.fingertip.com",
+  "name": "mblode/blode-ui",
+  "homepage": "https://ui.blode.co",
   "items": [
     {
       "name": "index",
       "type": "registry:style",
-      "dependencies": ["class-variance-authority", "@fingertip/icons"],
+      "dependencies": ["class-variance-authority", "blode-icons-react"],
       "registryDependencies": ["utils"],
       "files": [],
       "cssVars": {}
@@ -13,7 +13,7 @@
     {
       "name": "accordion",
       "type": "registry:ui",
-      "dependencies": ["@radix-ui/react-accordion"],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/ui/accordion.tsx",
@@ -64,7 +64,7 @@
     {
       "name": "avatar",
       "type": "registry:ui",
-      "dependencies": ["@radix-ui/react-avatar"],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/ui/avatar.tsx",
@@ -75,7 +75,7 @@
     {
       "name": "badge",
       "type": "registry:ui",
-      "dependencies": ["@radix-ui/react-slot"],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/ui/badge.tsx",
@@ -86,7 +86,7 @@
     {
       "name": "button",
       "type": "registry:ui",
-      "dependencies": ["@radix-ui/react-slot"],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/ui/button.tsx",
@@ -107,7 +107,7 @@
     {
       "name": "collapsible",
       "type": "registry:ui",
-      "dependencies": ["@radix-ui/react-collapsible"],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/ui/collapsible.tsx",
@@ -130,7 +130,7 @@
     {
       "name": "dialog",
       "type": "registry:ui",
-      "dependencies": ["@radix-ui/react-dialog"],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/ui/dialog.tsx",
@@ -141,7 +141,7 @@
     {
       "name": "dropdown-menu",
       "type": "registry:ui",
-      "dependencies": ["@radix-ui/react-dropdown-menu"],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/ui/dropdown-menu.tsx",
@@ -162,7 +162,7 @@
     {
       "name": "label",
       "type": "registry:ui",
-      "dependencies": ["@radix-ui/react-label"],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/ui/label.tsx",
@@ -173,7 +173,7 @@
     {
       "name": "popover",
       "type": "registry:ui",
-      "dependencies": ["@radix-ui/react-popover"],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/ui/popover.tsx",
@@ -184,7 +184,7 @@
     {
       "name": "scroll-area",
       "type": "registry:ui",
-      "dependencies": ["@radix-ui/react-scroll-area"],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/ui/scroll-area.tsx",
@@ -195,7 +195,7 @@
     {
       "name": "select",
       "type": "registry:ui",
-      "dependencies": ["@radix-ui/react-select"],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/ui/select.tsx",
@@ -206,7 +206,7 @@
     {
       "name": "separator",
       "type": "registry:ui",
-      "dependencies": ["@radix-ui/react-separator"],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/ui/separator.tsx",
@@ -217,7 +217,7 @@
     {
       "name": "sheet",
       "type": "registry:ui",
-      "dependencies": ["@radix-ui/react-dialog"],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/ui/sheet.tsx",
@@ -249,7 +249,7 @@
     {
       "name": "switch",
       "type": "registry:ui",
-      "dependencies": ["@radix-ui/react-switch"],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/ui/switch.tsx",
@@ -270,7 +270,7 @@
     {
       "name": "tabs",
       "type": "registry:ui",
-      "dependencies": ["@radix-ui/react-tabs"],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/ui/tabs.tsx",
@@ -281,7 +281,7 @@
     {
       "name": "tooltip",
       "type": "registry:ui",
-      "dependencies": ["@radix-ui/react-tooltip"],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/ui/tooltip.tsx",
@@ -1488,61 +1488,6 @@
       "files": [
         {
           "path": "examples/textarea-with-text.tsx",
-          "type": "registry:example"
-        }
-      ]
-    },
-    {
-      "name": "toast-demo",
-      "type": "registry:example",
-      "registryDependencies": ["toast"],
-      "files": [
-        {
-          "path": "examples/toast-demo.tsx",
-          "type": "registry:example"
-        }
-      ]
-    },
-    {
-      "name": "toast-destructive",
-      "type": "registry:example",
-      "registryDependencies": ["toast"],
-      "files": [
-        {
-          "path": "examples/toast-destructive.tsx",
-          "type": "registry:example"
-        }
-      ]
-    },
-    {
-      "name": "toast-simple",
-      "type": "registry:example",
-      "registryDependencies": ["toast"],
-      "files": [
-        {
-          "path": "examples/toast-simple.tsx",
-          "type": "registry:example"
-        }
-      ]
-    },
-    {
-      "name": "toast-with-action",
-      "type": "registry:example",
-      "registryDependencies": ["toast"],
-      "files": [
-        {
-          "path": "examples/toast-with-action.tsx",
-          "type": "registry:example"
-        }
-      ]
-    },
-    {
-      "name": "toast-with-title",
-      "type": "registry:example",
-      "registryDependencies": ["toast"],
-      "files": [
-        {
-          "path": "examples/toast-with-title.tsx",
           "type": "registry:example"
         }
       ]

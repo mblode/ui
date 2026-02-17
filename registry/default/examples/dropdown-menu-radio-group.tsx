@@ -1,6 +1,6 @@
 "use client";
 
-import * as React from "react";
+import { useState } from "react";
 
 import { Button } from "@/registry/default/ui/button";
 import {
@@ -14,17 +14,17 @@ import {
 } from "@/registry/default/ui/dropdown-menu";
 
 export default function DropdownMenuRadioGroupDemo() {
-  const [position, setPosition] = React.useState("bottom");
+  const [position, setPosition] = useState("bottom");
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="secondary">Open</Button>
+        <Button variant="outline">Open</Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
         <DropdownMenuLabel>Panel Position</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
+        <DropdownMenuRadioGroup onValueChange={setPosition} value={position}>
           <DropdownMenuRadioItem value="top">Top</DropdownMenuRadioItem>
           <DropdownMenuRadioItem value="bottom">Bottom</DropdownMenuRadioItem>
           <DropdownMenuRadioItem value="right">Right</DropdownMenuRadioItem>

@@ -1,0 +1,789 @@
+{
+  "accordion.tsx": {
+    "imports": ["@base-ui/react/accordion"],
+    "exports": [
+      "Accordion",
+      "AccordionContent",
+      "AccordionItem",
+      "AccordionTrigger"
+    ],
+    "alias_members": {
+      "AccordionPrimitive": ["Header", "Item", "Panel", "Root", "Trigger"]
+    }
+  },
+  "alert-dialog.tsx": {
+    "imports": ["@base-ui/react/alert-dialog"],
+    "exports": [
+      "AlertDialog",
+      "AlertDialogAction",
+      "AlertDialogCancel",
+      "AlertDialogContent",
+      "AlertDialogDescription",
+      "AlertDialogFooter",
+      "AlertDialogHeader",
+      "AlertDialogMedia",
+      "AlertDialogOverlay",
+      "AlertDialogPortal",
+      "AlertDialogTitle",
+      "AlertDialogTrigger"
+    ],
+    "alias_members": {
+      "AlertDialogPrimitive": [
+        "Backdrop",
+        "Close",
+        "Description",
+        "Popup",
+        "Portal",
+        "Root",
+        "Title",
+        "Trigger"
+      ]
+    }
+  },
+  "alert.tsx": {
+    "imports": [],
+    "exports": ["Alert", "AlertAction", "AlertDescription", "AlertTitle"],
+    "alias_members": {}
+  },
+  "aspect-ratio.tsx": {
+    "imports": [],
+    "exports": ["AspectRatio"],
+    "alias_members": {}
+  },
+  "avatar.tsx": {
+    "imports": ["@base-ui/react/avatar"],
+    "exports": [
+      "Avatar",
+      "AvatarBadge",
+      "AvatarFallback",
+      "AvatarGroup",
+      "AvatarGroupCount",
+      "AvatarImage"
+    ],
+    "alias_members": {
+      "AvatarPrimitive": ["Fallback", "Image", "Root"]
+    }
+  },
+  "badge.tsx": {
+    "imports": ["@base-ui/react/merge-props", "@base-ui/react/use-render"],
+    "exports": ["Badge", "badgeVariants"],
+    "alias_members": {
+      "mergeProps": [],
+      "useRender": ["ComponentProps"]
+    }
+  },
+  "breadcrumb.tsx": {
+    "imports": ["@base-ui/react/merge-props", "@base-ui/react/use-render"],
+    "exports": [
+      "Breadcrumb",
+      "BreadcrumbEllipsis",
+      "BreadcrumbItem",
+      "BreadcrumbLink",
+      "BreadcrumbList",
+      "BreadcrumbPage",
+      "BreadcrumbSeparator"
+    ],
+    "alias_members": {
+      "mergeProps": [],
+      "useRender": ["ComponentProps"]
+    }
+  },
+  "button-group.tsx": {
+    "imports": ["@base-ui/react/merge-props", "@base-ui/react/use-render"],
+    "exports": [
+      "ButtonGroup",
+      "ButtonGroupSeparator",
+      "ButtonGroupText",
+      "buttonGroupVariants"
+    ],
+    "alias_members": {
+      "mergeProps": [],
+      "useRender": ["ComponentProps"]
+    }
+  },
+  "button.tsx": {
+    "imports": ["@base-ui/react/button"],
+    "exports": ["Button", "buttonVariants"],
+    "alias_members": {
+      "ButtonPrimitive": ["Props"]
+    }
+  },
+  "calendar.tsx": {
+    "imports": [],
+    "exports": ["Calendar", "CalendarDayButton"],
+    "alias_members": {}
+  },
+  "card.tsx": {
+    "imports": [],
+    "exports": [
+      "Card",
+      "CardAction",
+      "CardContent",
+      "CardDescription",
+      "CardFooter",
+      "CardHeader",
+      "CardTitle"
+    ],
+    "alias_members": {}
+  },
+  "carousel.tsx": {
+    "imports": [],
+    "exports": [
+      "Carousel",
+      "CarouselContent",
+      "CarouselItem",
+      "CarouselNext",
+      "CarouselPrevious",
+      "type CarouselApi",
+      "useCarousel"
+    ],
+    "alias_members": {}
+  },
+  "chart.tsx": {
+    "imports": [],
+    "exports": [
+      "ChartConfig",
+      "ChartContainer",
+      "ChartLegend",
+      "ChartLegendContent",
+      "ChartStyle",
+      "ChartTooltip",
+      "ChartTooltipContent"
+    ],
+    "alias_members": {}
+  },
+  "checkbox.tsx": {
+    "imports": ["@base-ui/react/checkbox"],
+    "exports": ["Checkbox"],
+    "alias_members": {
+      "CheckboxPrimitive": ["Indicator", "Root"]
+    }
+  },
+  "collapsible.tsx": {
+    "imports": ["@base-ui/react/collapsible"],
+    "exports": ["Collapsible", "CollapsibleContent", "CollapsibleTrigger"],
+    "alias_members": {
+      "CollapsiblePrimitive": ["Panel", "Root", "Trigger"]
+    }
+  },
+  "combobox.tsx": {
+    "imports": ["@base-ui/react"],
+    "exports": [
+      "Combobox",
+      "ComboboxChip",
+      "ComboboxChips",
+      "ComboboxChipsInput",
+      "ComboboxCollection",
+      "ComboboxContent",
+      "ComboboxEmpty",
+      "ComboboxGroup",
+      "ComboboxInput",
+      "ComboboxItem",
+      "ComboboxLabel",
+      "ComboboxList",
+      "ComboboxSeparator",
+      "ComboboxTrigger",
+      "ComboboxValue",
+      "useComboboxAnchor"
+    ],
+    "alias_members": {
+      "ComboboxPrimitive": [
+        "Chip",
+        "ChipRemove",
+        "Chips",
+        "Clear",
+        "Collection",
+        "Empty",
+        "Group",
+        "GroupLabel",
+        "Input",
+        "Item",
+        "ItemIndicator",
+        "List",
+        "Popup",
+        "Portal",
+        "Positioner",
+        "Root",
+        "Separator",
+        "Trigger",
+        "Value"
+      ]
+    }
+  },
+  "command.tsx": {
+    "imports": [],
+    "exports": [
+      "Command",
+      "CommandDialog",
+      "CommandEmpty",
+      "CommandGroup",
+      "CommandInput",
+      "CommandItem",
+      "CommandList",
+      "CommandSeparator",
+      "CommandShortcut"
+    ],
+    "alias_members": {}
+  },
+  "context-menu.tsx": {
+    "imports": ["@base-ui/react/context-menu"],
+    "exports": [
+      "ContextMenu",
+      "ContextMenuCheckboxItem",
+      "ContextMenuContent",
+      "ContextMenuGroup",
+      "ContextMenuItem",
+      "ContextMenuLabel",
+      "ContextMenuPortal",
+      "ContextMenuRadioGroup",
+      "ContextMenuRadioItem",
+      "ContextMenuSeparator",
+      "ContextMenuShortcut",
+      "ContextMenuSub",
+      "ContextMenuSubContent",
+      "ContextMenuSubTrigger",
+      "ContextMenuTrigger"
+    ],
+    "alias_members": {
+      "ContextMenuPrimitive": [
+        "CheckboxItem",
+        "CheckboxItemIndicator",
+        "Group",
+        "GroupLabel",
+        "Item",
+        "Popup",
+        "Portal",
+        "Positioner",
+        "RadioGroup",
+        "RadioItem",
+        "RadioItemIndicator",
+        "Root",
+        "Separator",
+        "SubmenuRoot",
+        "SubmenuTrigger",
+        "Trigger"
+      ]
+    }
+  },
+  "dialog.tsx": {
+    "imports": ["@base-ui/react/dialog"],
+    "exports": [
+      "Dialog",
+      "DialogClose",
+      "DialogContent",
+      "DialogDescription",
+      "DialogFooter",
+      "DialogHeader",
+      "DialogOverlay",
+      "DialogPortal",
+      "DialogTitle",
+      "DialogTrigger"
+    ],
+    "alias_members": {
+      "DialogPrimitive": [
+        "Backdrop",
+        "Close",
+        "Description",
+        "Popup",
+        "Portal",
+        "Root",
+        "Title",
+        "Trigger"
+      ]
+    }
+  },
+  "direction.tsx": {
+    "imports": [],
+    "exports": ["DirectionProvider", "useDirection"],
+    "alias_members": {}
+  },
+  "drawer.tsx": {
+    "imports": [],
+    "exports": [
+      "Drawer",
+      "DrawerClose",
+      "DrawerContent",
+      "DrawerDescription",
+      "DrawerFooter",
+      "DrawerHeader",
+      "DrawerOverlay",
+      "DrawerPortal",
+      "DrawerTitle",
+      "DrawerTrigger"
+    ],
+    "alias_members": {}
+  },
+  "dropdown-menu.tsx": {
+    "imports": ["@base-ui/react/menu"],
+    "exports": [
+      "DropdownMenu",
+      "DropdownMenuCheckboxItem",
+      "DropdownMenuContent",
+      "DropdownMenuGroup",
+      "DropdownMenuItem",
+      "DropdownMenuLabel",
+      "DropdownMenuPortal",
+      "DropdownMenuRadioGroup",
+      "DropdownMenuRadioItem",
+      "DropdownMenuSeparator",
+      "DropdownMenuShortcut",
+      "DropdownMenuSub",
+      "DropdownMenuSubContent",
+      "DropdownMenuSubTrigger",
+      "DropdownMenuTrigger"
+    ],
+    "alias_members": {
+      "MenuPrimitive": [
+        "CheckboxItem",
+        "CheckboxItemIndicator",
+        "Group",
+        "GroupLabel",
+        "Item",
+        "Popup",
+        "Portal",
+        "Positioner",
+        "RadioGroup",
+        "RadioItem",
+        "RadioItemIndicator",
+        "Root",
+        "Separator",
+        "SubmenuRoot",
+        "SubmenuTrigger",
+        "Trigger"
+      ]
+    }
+  },
+  "empty.tsx": {
+    "imports": [],
+    "exports": [
+      "Empty",
+      "EmptyContent",
+      "EmptyDescription",
+      "EmptyHeader",
+      "EmptyMedia",
+      "EmptyTitle"
+    ],
+    "alias_members": {}
+  },
+  "field.tsx": {
+    "imports": [],
+    "exports": [
+      "Field",
+      "FieldContent",
+      "FieldDescription",
+      "FieldError",
+      "FieldGroup",
+      "FieldLabel",
+      "FieldLegend",
+      "FieldSeparator",
+      "FieldSet",
+      "FieldTitle"
+    ],
+    "alias_members": {}
+  },
+  "hover-card.tsx": {
+    "imports": ["@base-ui/react/preview-card"],
+    "exports": ["HoverCard", "HoverCardContent", "HoverCardTrigger"],
+    "alias_members": {
+      "PreviewCardPrimitive": [
+        "Popup",
+        "Portal",
+        "Positioner",
+        "Root",
+        "Trigger"
+      ]
+    }
+  },
+  "input-group.tsx": {
+    "imports": [],
+    "exports": [
+      "InputGroup",
+      "InputGroupAddon",
+      "InputGroupButton",
+      "InputGroupInput",
+      "InputGroupText",
+      "InputGroupTextarea"
+    ],
+    "alias_members": {}
+  },
+  "input-otp.tsx": {
+    "imports": [],
+    "exports": [
+      "InputOTP",
+      "InputOTPGroup",
+      "InputOTPSeparator",
+      "InputOTPSlot"
+    ],
+    "alias_members": {}
+  },
+  "input.tsx": {
+    "imports": ["@base-ui/react/input"],
+    "exports": ["Input"],
+    "alias_members": {
+      "InputPrimitive": []
+    }
+  },
+  "item.tsx": {
+    "imports": ["@base-ui/react/merge-props", "@base-ui/react/use-render"],
+    "exports": [
+      "Item",
+      "ItemActions",
+      "ItemContent",
+      "ItemDescription",
+      "ItemFooter",
+      "ItemGroup",
+      "ItemHeader",
+      "ItemMedia",
+      "ItemSeparator",
+      "ItemTitle"
+    ],
+    "alias_members": {
+      "mergeProps": [],
+      "useRender": ["ComponentProps"]
+    }
+  },
+  "kbd.tsx": {
+    "imports": [],
+    "exports": ["Kbd", "KbdGroup"],
+    "alias_members": {}
+  },
+  "label.tsx": {
+    "imports": [],
+    "exports": ["Label"],
+    "alias_members": {}
+  },
+  "menubar.tsx": {
+    "imports": ["@base-ui/react/menu", "@base-ui/react/menubar"],
+    "exports": [
+      "Menubar",
+      "MenubarCheckboxItem",
+      "MenubarContent",
+      "MenubarGroup",
+      "MenubarItem",
+      "MenubarLabel",
+      "MenubarMenu",
+      "MenubarPortal",
+      "MenubarRadioGroup",
+      "MenubarRadioItem",
+      "MenubarSeparator",
+      "MenubarShortcut",
+      "MenubarSub",
+      "MenubarSubContent",
+      "MenubarSubTrigger",
+      "MenubarTrigger"
+    ],
+    "alias_members": {
+      "MenuPrimitive": [
+        "CheckboxItem",
+        "CheckboxItemIndicator",
+        "RadioItem",
+        "RadioItemIndicator"
+      ],
+      "MenubarPrimitive": ["Props"]
+    }
+  },
+  "native-select.tsx": {
+    "imports": [],
+    "exports": ["NativeSelect", "NativeSelectOptGroup", "NativeSelectOption"],
+    "alias_members": {}
+  },
+  "navigation-menu.tsx": {
+    "imports": ["@base-ui/react/navigation-menu"],
+    "exports": [
+      "NavigationMenu",
+      "NavigationMenuContent",
+      "NavigationMenuIndicator",
+      "NavigationMenuItem",
+      "NavigationMenuLink",
+      "NavigationMenuList",
+      "NavigationMenuPositioner",
+      "NavigationMenuTrigger",
+      "navigationMenuTriggerStyle"
+    ],
+    "alias_members": {
+      "NavigationMenuPrimitive": [
+        "Content",
+        "Icon",
+        "Item",
+        "Link",
+        "List",
+        "Popup",
+        "Portal",
+        "Positioner",
+        "Root",
+        "Trigger",
+        "Viewport"
+      ]
+    }
+  },
+  "pagination.tsx": {
+    "imports": [],
+    "exports": [
+      "Pagination",
+      "PaginationContent",
+      "PaginationEllipsis",
+      "PaginationItem",
+      "PaginationLink",
+      "PaginationNext",
+      "PaginationPrevious"
+    ],
+    "alias_members": {}
+  },
+  "popover.tsx": {
+    "imports": ["@base-ui/react/popover"],
+    "exports": [
+      "Popover",
+      "PopoverContent",
+      "PopoverDescription",
+      "PopoverHeader",
+      "PopoverTitle",
+      "PopoverTrigger"
+    ],
+    "alias_members": {
+      "PopoverPrimitive": [
+        "Description",
+        "Popup",
+        "Portal",
+        "Positioner",
+        "Root",
+        "Title",
+        "Trigger"
+      ]
+    }
+  },
+  "progress.tsx": {
+    "imports": ["@base-ui/react/progress"],
+    "exports": [
+      "Progress",
+      "ProgressIndicator",
+      "ProgressLabel",
+      "ProgressTrack",
+      "ProgressValue"
+    ],
+    "alias_members": {
+      "ProgressPrimitive": ["Indicator", "Label", "Root", "Track", "Value"]
+    }
+  },
+  "radio-group.tsx": {
+    "imports": ["@base-ui/react/radio", "@base-ui/react/radio-group"],
+    "exports": ["RadioGroup", "RadioGroupItem"],
+    "alias_members": {
+      "RadioPrimitive": ["Indicator", "Root"],
+      "RadioGroupPrimitive": ["Props"]
+    }
+  },
+  "resizable.tsx": {
+    "imports": [],
+    "exports": ["ResizableHandle", "ResizablePanel", "ResizablePanelGroup"],
+    "alias_members": {}
+  },
+  "scroll-area.tsx": {
+    "imports": ["@base-ui/react/scroll-area"],
+    "exports": ["ScrollArea", "ScrollBar"],
+    "alias_members": {
+      "ScrollAreaPrimitive": [
+        "Corner",
+        "Root",
+        "Scrollbar",
+        "Thumb",
+        "Viewport"
+      ]
+    }
+  },
+  "select.tsx": {
+    "imports": ["@base-ui/react/select"],
+    "exports": [
+      "Select",
+      "SelectContent",
+      "SelectGroup",
+      "SelectItem",
+      "SelectLabel",
+      "SelectScrollDownButton",
+      "SelectScrollUpButton",
+      "SelectSeparator",
+      "SelectTrigger",
+      "SelectValue"
+    ],
+    "alias_members": {
+      "SelectPrimitive": [
+        "Group",
+        "GroupLabel",
+        "Icon",
+        "Item",
+        "ItemIndicator",
+        "ItemText",
+        "List",
+        "Popup",
+        "Portal",
+        "Positioner",
+        "Root",
+        "ScrollDownArrow",
+        "ScrollUpArrow",
+        "Separator",
+        "Trigger",
+        "Value"
+      ]
+    }
+  },
+  "separator.tsx": {
+    "imports": ["@base-ui/react/separator"],
+    "exports": ["Separator"],
+    "alias_members": {
+      "SeparatorPrimitive": ["Props"]
+    }
+  },
+  "sheet.tsx": {
+    "imports": ["@base-ui/react/dialog"],
+    "exports": [
+      "Sheet",
+      "SheetClose",
+      "SheetContent",
+      "SheetDescription",
+      "SheetFooter",
+      "SheetHeader",
+      "SheetTitle",
+      "SheetTrigger"
+    ],
+    "alias_members": {
+      "SheetPrimitive": [
+        "Backdrop",
+        "Close",
+        "Description",
+        "Popup",
+        "Portal",
+        "Root",
+        "Title",
+        "Trigger"
+      ]
+    }
+  },
+  "sidebar.tsx": {
+    "imports": ["@base-ui/react/merge-props", "@base-ui/react/use-render"],
+    "exports": [
+      "Sidebar",
+      "SidebarContent",
+      "SidebarFooter",
+      "SidebarGroup",
+      "SidebarGroupAction",
+      "SidebarGroupContent",
+      "SidebarGroupLabel",
+      "SidebarHeader",
+      "SidebarInput",
+      "SidebarInset",
+      "SidebarMenu",
+      "SidebarMenuAction",
+      "SidebarMenuBadge",
+      "SidebarMenuButton",
+      "SidebarMenuItem",
+      "SidebarMenuSkeleton",
+      "SidebarMenuSub",
+      "SidebarMenuSubButton",
+      "SidebarMenuSubItem",
+      "SidebarProvider",
+      "SidebarRail",
+      "SidebarSeparator",
+      "SidebarTrigger",
+      "useSidebar"
+    ],
+    "alias_members": {
+      "mergeProps": [],
+      "useRender": ["ComponentProps"]
+    }
+  },
+  "skeleton.tsx": {
+    "imports": [],
+    "exports": ["Skeleton"],
+    "alias_members": {}
+  },
+  "slider.tsx": {
+    "imports": ["@base-ui/react/slider"],
+    "exports": ["Slider"],
+    "alias_members": {
+      "SliderPrimitive": ["Control", "Indicator", "Root", "Thumb", "Track"]
+    }
+  },
+  "sonner.tsx": {
+    "imports": [],
+    "exports": ["Toaster"],
+    "alias_members": {}
+  },
+  "spinner.tsx": {
+    "imports": [],
+    "exports": ["Spinner"],
+    "alias_members": {}
+  },
+  "switch.tsx": {
+    "imports": ["@base-ui/react/switch"],
+    "exports": ["Switch"],
+    "alias_members": {
+      "SwitchPrimitive": ["Root", "Thumb"]
+    }
+  },
+  "table.tsx": {
+    "imports": [],
+    "exports": [
+      "Table",
+      "TableBody",
+      "TableCaption",
+      "TableCell",
+      "TableFooter",
+      "TableHead",
+      "TableHeader",
+      "TableRow"
+    ],
+    "alias_members": {}
+  },
+  "tabs.tsx": {
+    "imports": ["@base-ui/react/tabs"],
+    "exports": [
+      "Tabs",
+      "TabsContent",
+      "TabsList",
+      "TabsTrigger",
+      "tabsListVariants"
+    ],
+    "alias_members": {
+      "TabsPrimitive": ["List", "Panel", "Root", "Tab"]
+    }
+  },
+  "textarea.tsx": {
+    "imports": [],
+    "exports": ["Textarea"],
+    "alias_members": {}
+  },
+  "toggle-group.tsx": {
+    "imports": ["@base-ui/react/toggle", "@base-ui/react/toggle-group"],
+    "exports": ["ToggleGroup", "ToggleGroupItem"],
+    "alias_members": {
+      "TogglePrimitive": ["Props"],
+      "ToggleGroupPrimitive": ["Props"]
+    }
+  },
+  "toggle.tsx": {
+    "imports": ["@base-ui/react/toggle"],
+    "exports": ["Toggle", "toggleVariants"],
+    "alias_members": {
+      "TogglePrimitive": ["Props"]
+    }
+  },
+  "tooltip.tsx": {
+    "imports": ["@base-ui/react/tooltip"],
+    "exports": [
+      "Tooltip",
+      "TooltipContent",
+      "TooltipProvider",
+      "TooltipTrigger"
+    ],
+    "alias_members": {
+      "TooltipPrimitive": [
+        "Arrow",
+        "Popup",
+        "Portal",
+        "Positioner",
+        "Provider",
+        "Root",
+        "Trigger"
+      ]
+    }
+  }
+}

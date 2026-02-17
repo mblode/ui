@@ -1,7 +1,7 @@
 {
-  "$schema": "https://ui.fingertip.com/schema/registry-item.json",
+  "$schema": "https://ui.blode.co/schema/registry-item.json",
   "name": "stat",
-  "author": "fingertip (https://ui.fingertip.com)",
+  "author": "fingertip (https://ui.blode.co)",
   "files": [
     {
       "path": "ui/stat.tsx",

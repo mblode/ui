@@ -1,7 +1,7 @@
 "use client";
 
-import * as React from "react";
-import { ChevronGrabberVerticalIcon } from "@fingertip/icons";
+import { ChevronsUpDown } from "blode-icons-react";
+import { useState } from "react";
 
 import { Button } from "@/registry/default/ui/button";
 import {
@@ -11,33 +11,33 @@ import {
 } from "@/registry/default/ui/collapsible";
 
 export default function CollapsibleDemo() {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <Collapsible
-      open={isOpen}
+      className="flex w-[350px] flex-col gap-2"
       onOpenChange={setIsOpen}
-      className="w-[350px] space-y-2"
+      open={isOpen}
     >
-      <div className="flex items-center justify-between space-x-4 px-4">
-        <h4 className="text-sm font-semibold">
+      <div className="flex items-center justify-between gap-4 px-4">
+        <h4 className="font-semibold text-sm">
           @peduarte starred 3 repositories
         </h4>
         <CollapsibleTrigger asChild>
-          <Button variant="ghost" size="sm" className="w-9 p-0">
-            <ChevronGrabberVerticalIcon className="h-4 w-4" />
+          <Button className="size-8" size="icon" variant="ghost">
+            <ChevronsUpDown />
             <span className="sr-only">Toggle</span>
           </Button>
         </CollapsibleTrigger>
       </div>
-      <div className="rounded-md border px-4 py-3 font-mono text-sm">
-        @radix-ui/primitives
+      <div className="rounded-md border px-4 py-2 font-mono text-sm">
+        @base-ui/react
       </div>
-      <CollapsibleContent className="space-y-2">
-        <div className="rounded-md border px-4 py-3 font-mono text-sm">
-          @radix-ui/colors
+      <CollapsibleContent className="flex flex-col gap-2">
+        <div className="rounded-md border px-4 py-2 font-mono text-sm">
+          @base-ui/react
         </div>
-        <div className="rounded-md border px-4 py-3 font-mono text-sm">
+        <div className="rounded-md border px-4 py-2 font-mono text-sm">
           @stitches/react
         </div>
       </CollapsibleContent>

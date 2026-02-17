@@ -1,14 +1,12 @@
 {
-  "$schema": "https://ui.fingertip.com/schema/registry-item.json",
+  "$schema": "https://ui.blode.co/schema/registry-item.json",
   "name": "aspect-ratio",
-  "author": "fingertip (https://ui.fingertip.com)",
-  "dependencies": [
-    "@radix-ui/react-aspect-ratio"
-  ],
+  "author": "fingertip (https://ui.blode.co)",
+  "dependencies": ["@base-ui/react"],
   "files": [
     {
       "path": "ui/aspect-ratio.tsx",
-      "content": "import * as AspectRatioPrimitive from \"@radix-ui/react-aspect-ratio\";\n\nconst AspectRatio = AspectRatioPrimitive.Root;\n\nexport { AspectRatio };\n",
+      "content": "\"use client\";\n\nimport type * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction AspectRatio({\n  ratio,\n  className,\n  style,\n  ...props\n}: React.ComponentProps<\"div\"> & { ratio: number }) {\n  return (\n    <div\n      className={cn(\"relative aspect-(--ratio)\", className)}\n      data-slot=\"aspect-ratio\"\n      style={\n        {\n          \"--ratio\": ratio,\n          ...style,\n        } as React.CSSProperties\n      }\n      {...props}\n    />\n  );\n}\n\nexport { AspectRatio };\n",
       "type": "registry:ui",
       "target": ""
     }

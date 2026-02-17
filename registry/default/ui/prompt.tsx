@@ -1,69 +1,90 @@
 "use client";
 
-import * as Primitives from "@radix-ui/react-alert-dialog";
-import * as React from "react";
+import { AlertDialog as AlertDialogPrimitive } from "@base-ui/react/alert-dialog";
+import {
+  type ComponentPropsWithoutRef,
+  type ElementRef,
+  forwardRef,
+  type HTMLAttributes,
+  isValidElement,
+} from "react";
 
 import { cn } from "@/lib/utils";
-
-import { Button } from "./button";
-import { Heading } from "./heading";
+import { Button } from "@/registry/default/ui/button";
 
 /**
- * This component is based on the [Radix UI Alert Dialog](https://www.radix-ui.com/primitives/docs/components/alert-dialog) primitives.
+ * This component is based on the [Base UI Alert Dialog](https://base-ui.com/react/components/alert-dialog) primitives.
  */
-const Root = Primitives.AlertDialog;
-Root.displayName = "Prompt";
+const Root = AlertDialogPrimitive.Root;
 
-const Trigger = Primitives.Trigger;
+const Trigger = ({
+  asChild,
+  children,
+  ...props
+}: AlertDialogPrimitive.Trigger.Props & {
+  asChild?: boolean;
+}) => {
+  if (asChild && isValidElement(children)) {
+    return <AlertDialogPrimitive.Trigger render={children} {...props} />;
+  }
+
+  return (
+    <AlertDialogPrimitive.Trigger {...props}>
+      {children}
+    </AlertDialogPrimitive.Trigger>
+  );
+};
 Trigger.displayName = "Prompt.Trigger";
 
-const Portal = ({ ...props }: Primitives.AlertDialogPortalProps) => {
-  return <Primitives.AlertDialogPortal {...props} />;
+const Portal = ({ ...props }: AlertDialogPrimitive.Portal.Props) => {
+  return <AlertDialogPrimitive.Portal {...props} />;
 };
 Portal.displayName = "Prompt.Portal";
 
-const Overlay = React.forwardRef<
-  React.ElementRef<typeof Primitives.Overlay>,
-  React.ComponentPropsWithoutRef<typeof Primitives.Overlay>
+const Overlay = forwardRef<
+  ElementRef<typeof AlertDialogPrimitive.Backdrop>,
+  ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Backdrop>
 >(({ className, ...props }, ref) => {
   return (
-    <Primitives.Overlay
-      ref={ref}
+    <AlertDialogPrimitive.Backdrop
       className={cn(
-        "fixed inset-0 z-110 bg-overlay backdrop-blur-[10px] data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
-        className,
+        "data-closed:fade-out-0 data-open:fade-in-0 fixed inset-0 z-110 bg-black/50 backdrop-blur-[10px] data-closed:animate-out data-open:animate-in",
+        className
       )}
+      ref={ref}
       {...props}
     />
   );
 });
 Overlay.displayName = "Prompt.Overlay";
 
-const Title = React.forwardRef<
-  React.ElementRef<typeof Primitives.Title>,
-  Omit<React.ComponentPropsWithoutRef<typeof Primitives.Title>, "asChild">
->(({ className, children, ...props }, ref) => {
+const Title = forwardRef<
+  ElementRef<typeof AlertDialogPrimitive.Title>,
+  ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Title>
+>(({ className, ...props }, ref) => {
   return (
-    <Primitives.Title ref={ref} className={cn(className)} {...props} asChild>
-      <Heading level="h4">{children}</Heading>
-    </Primitives.Title>
+    <AlertDialogPrimitive.Title
+      className={cn("font-semibold text-lg", className)}
+      ref={ref}
+      {...props}
+    />
   );
 });
 Title.displayName = "Prompt.Title";
 
-const Content = React.forwardRef<
-  React.ElementRef<typeof Primitives.Content>,
-  React.ComponentPropsWithoutRef<typeof Primitives.Content>
+const Content = forwardRef<
+  ElementRef<typeof AlertDialogPrimitive.Popup>,
+  ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Popup>
 >(({ className, ...props }, ref) => {
   return (
     <Portal>
       <Overlay />
-      <Primitives.Content
-        ref={ref}
+      <AlertDialogPrimitive.Popup
         className={cn(
-          "fixed left-[50%] top-[50%] z-110 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-4 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 rounded-2xl md:w-full",
-          className,
+          "data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 fixed top-[50%] left-[50%] z-110 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 rounded-2xl border bg-background p-4 shadow-lg duration-200 data-closed:animate-out data-open:animate-in md:w-full",
+          className
         )}
+        ref={ref}
         {...props}
       />
     </Portal>
@@ -71,50 +92,54 @@ const Content = React.forwardRef<
 });
 Content.displayName = "Prompt.Content";
 
-const Description = React.forwardRef<
-  React.ElementRef<typeof Primitives.Description>,
-  React.ComponentPropsWithoutRef<typeof Primitives.Description>
+const Description = forwardRef<
+  ElementRef<typeof AlertDialogPrimitive.Description>,
+  ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Description>
 >(({ className, ...props }, ref) => {
   return (
-    <Primitives.Description ref={ref} className={cn(className)} {...props} />
+    <AlertDialogPrimitive.Description
+      className={cn(className)}
+      ref={ref}
+      {...props}
+    />
   );
 });
 Description.displayName = "Prompt.Description";
 
-const Action = React.forwardRef<
-  React.ElementRef<typeof Primitives.Action>,
-  Omit<React.ComponentPropsWithoutRef<typeof Primitives.Action>, "asChild">
->(({ className, children, type, ...props }, ref) => {
+const Action = forwardRef<
+  ElementRef<typeof AlertDialogPrimitive.Close>,
+  Omit<ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Close>, "render">
+>(({ className, children, ...props }, ref) => {
   return (
-    <Primitives.Action
-      ref={ref}
+    <AlertDialogPrimitive.Close
       className={cn("w-full", className)}
+      ref={ref}
+      render={
+        <Button className="w-full" variant="destructive">
+          {children}
+        </Button>
+      }
       {...props}
-      asChild
-    >
-      <Button type={type} variant="destructive" className="w-full">
-        {children}
-      </Button>
-    </Primitives.Action>
+    />
   );
 });
 Action.displayName = "Prompt.Action";
 
-const Cancel = React.forwardRef<
-  React.ElementRef<typeof Primitives.Cancel>,
-  Omit<React.ComponentPropsWithoutRef<typeof Primitives.Cancel>, "asChild">
+const Cancel = forwardRef<
+  ElementRef<typeof AlertDialogPrimitive.Close>,
+  Omit<ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Close>, "render">
 >(({ className, children, ...props }, ref) => {
   return (
-    <Primitives.Cancel
-      ref={ref}
+    <AlertDialogPrimitive.Close
       className={cn("w-full", className)}
+      ref={ref}
+      render={
+        <Button className="w-full" variant="secondary">
+          {children}
+        </Button>
+      }
       {...props}
-      asChild
-    >
-      <Button variant="secondary" className="w-full">
-        {children}
-      </Button>
-    </Primitives.Cancel>
+    />
   );
 });
 Cancel.displayName = "Prompt.Cancel";
@@ -122,10 +147,7 @@ Cancel.displayName = "Prompt.Cancel";
 /**
  * This component is based on the `div` element and supports all of its props
  */
-const Header = ({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => {
+const Header = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => {
   return (
     <div
       className={cn("flex flex-col space-y-2 text-center", className)}
@@ -138,13 +160,10 @@ Header.displayName = "Prompt.Header";
 /**
  * This component is based on the `div` element and supports all of its props
  */
-const Footer = ({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => {
+const Footer = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => {
   return (
     <div
-      className={cn("flex flex-row gap-2 mt-4 justify-between", className)}
+      className={cn("mt-4 flex flex-row justify-between gap-2", className)}
       {...props}
     />
   );

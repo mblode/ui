@@ -1,5 +1,3 @@
-import * as React from "react";
-
 import { Button } from "@/registry/default/ui/button";
 import {
   Card,
@@ -28,15 +26,15 @@ export default function CardWithForm() {
       </CardHeader>
       <CardContent>
         <form>
-          <div className="grid w-full items-center gap-4">
-            <div className="flex flex-col space-y-1.5">
+          <div className="grid w-full items-center gap-6">
+            <div className="flex flex-col gap-3">
               <Label htmlFor="name">Name</Label>
               <Input id="name" placeholder="Name of your project" />
             </div>
-            <div className="flex flex-col space-y-1.5">
+            <div className="flex flex-col gap-3">
               <Label htmlFor="framework">Framework</Label>
               <Select>
-                <SelectTrigger id="framework">
+                <SelectTrigger className="w-full" id="framework">
                   <SelectValue placeholder="Select" />
                 </SelectTrigger>
                 <SelectContent position="popper">
@@ -51,7 +49,7 @@ export default function CardWithForm() {
         </form>
       </CardContent>
       <CardFooter className="flex justify-between">
-        <Button variant="secondary">Cancel</Button>
+        <Button variant="outline">Cancel</Button>
         <Button>Deploy</Button>
       </CardFooter>
     </Card>

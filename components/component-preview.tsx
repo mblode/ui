@@ -1,32 +1,26 @@
 "use client";
 
-import * as React from "react";
 import Image from "next/image";
+import React from "react";
 import { Index } from "@/__registry__";
-
-import { cn } from "@/lib/utils";
 import { useConfig } from "@/hooks/use-config";
-import { CopyButton } from "@/components/copy-button";
-
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/registry/default/ui/tabs";
-import { styles } from "@/registry/registry-styles";
+import { cn } from "@/lib/utils";
+import { Button } from "@/registry/default/ui/button";
 import { Spinner } from "@/registry/default/ui/spinner";
-import { OpenInV0Button } from "./open-in-v0-button";
+import { styles } from "@/registry/registry-styles";
 
 interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
-  name: string;
-  extractClassname?: boolean;
-  extractedClassNames?: string;
   align?: "center" | "start" | "end";
+  chromeLessOnMobile?: boolean;
   description?: string;
   hideCode?: boolean;
+  name: string;
+  previewClassName?: string;
   type?: "block" | "component" | "example";
-  preview?: boolean;
+}
+
+interface RegistryComponentEntry {
+  component?: React.ComponentType;
 }
 
 export function ComponentPreview({
@@ -34,15 +28,15 @@ export function ComponentPreview({
   type,
   children,
   className,
-  extractClassname,
-  extractedClassNames,
   align = "center",
   description,
   hideCode = false,
-  preview,
+  previewClassName,
+  chromeLessOnMobile = false,
   ...props
 }: ComponentPreviewProps) {
   const [config, setConfig] = useConfig();
+  const [isMobileCodeVisible, setIsMobileCodeVisible] = React.useState(false);
 
   // Fallback to "default" if the configured style doesn't exist
   const styleExists = Index[config.style] !== undefined;
@@ -61,13 +55,15 @@ export function ComponentPreview({
   const Code = Codes[index];
 
   const Preview = React.useMemo(() => {
-    const styleRegistry = Index[effectiveStyle];
+    const styleRegistry = Index[effectiveStyle] as
+      | Record<string, RegistryComponentEntry>
+      | undefined;
 
     if (!styleRegistry) {
       return (
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground text-sm">
           Style{" "}
-          <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm">
+          <code className="relative rounded-md bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm">
             {effectiveStyle}
           </code>{" "}
           not found in registry.
@@ -79,9 +75,9 @@ export function ComponentPreview({
 
     if (!Component) {
       return (
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground text-sm">
           Component{" "}
-          <code className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm">
+          <code className="relative rounded-md bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm">
             {name}
           </code>{" "}
           not found in registry.
@@ -92,43 +88,28 @@ export function ComponentPreview({
     return <Component />;
   }, [name, effectiveStyle]);
 
-  const codeString = React.useMemo(() => {
-    if (
-      typeof (Code as any)?.props["data-rehype-pretty-code-fragment"] !==
-      "undefined"
-    ) {
-      const [Button] = React.Children.toArray(
-        (Code as any).props.children,
-      ) as React.ReactElement[];
-      return (
-        (Button as any)?.props?.value ||
-        (Button as any)?.props?.__rawString__ ||
-        null
-      );
-    }
-  }, [Code]);
-
   if (type === "block") {
     return (
-      <div className="relative aspect-[4/2.5] w-full overflow-hidden rounded-md border">
+      <div className="relative mt-6 aspect-[4/2.5] w-full overflow-hidden rounded-xl border md:-mx-1">
         <Image
-          src={`/r/styles/${effectiveStyle}/${name}-light.png`}
           alt={name}
-          width={1440}
+          className="absolute top-0 left-0 z-20 w-[970px] max-w-none bg-background sm:w-[1280px] md:hidden dark:hidden md:dark:hidden"
           height={900}
-          className="absolute left-0 top-0 z-20 w-[970px] max-w-none bg-background dark:hidden sm:w-[1280px] md:hidden md:dark:hidden"
+          src={`/r/styles/${effectiveStyle}/${name}-light.png`}
+          width={1440}
         />
         <Image
-          src={`/r/styles/${effectiveStyle}/${name}-dark.png`}
           alt={name}
-          width={1440}
+          className="absolute top-0 left-0 z-20 hidden w-[970px] max-w-none bg-background sm:w-[1280px] md:hidden dark:block md:dark:hidden"
           height={900}
-          className="absolute left-0 top-0 z-20 hidden w-[970px] max-w-none bg-background dark:block sm:w-[1280px] md:hidden md:dark:hidden"
+          src={`/r/styles/${effectiveStyle}/${name}-dark.png`}
+          width={1440}
         />
         <div className="absolute inset-0 hidden w-[1600px] bg-background md:block">
           <iframe
-            src={`/view/styles/${effectiveStyle}/${name}`}
             className="size-full"
+            src={`/view/styles/${effectiveStyle}/${name}`}
+            title={`${name} preview`}
           />
         </div>
       </div>
@@ -137,63 +118,72 @@ export function ComponentPreview({
 
   return (
     <div
-      className={cn("group relative my-4 flex flex-col space-y-2", className)}
+      className={cn(
+        "group relative mt-4 mb-12 flex flex-col overflow-hidden rounded-xl border",
+        className
+      )}
+      data-slot="component-preview"
       {...props}
     >
-      <Tabs defaultValue="preview" className="relative mr-auto w-full">
-        <div className="flex items-center justify-between pb-3">
-          {!hideCode && (
-            <TabsList>
-              <TabsTrigger value="preview">Preview</TabsTrigger>
-              <TabsTrigger value="code">Code</TabsTrigger>
-            </TabsList>
+      <div data-slot="preview" dir="ltr">
+        <div
+          className={cn(
+            // biome-ignore lint/nursery/useSortedClasses: keep class order identical to shadcn-ui v4
+            "preview relative flex h-72 w-full justify-center p-10 data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start data-[chromeless=true]:h-auto data-[chromeless=true]:p-0",
+            previewClassName
+          )}
+          data-align={align}
+          data-chromeless={chromeLessOnMobile}
+        >
+          <React.Suspense
+            fallback={
+              <div className="flex w-full items-center justify-center gap-2 text-muted-foreground text-sm">
+                <Spinner size={16} />
+                Loading...
+              </div>
+            }
+          >
+            {Preview}
+          </React.Suspense>
+        </div>
+      </div>
+      {!hideCode && (
+        <div
+          className="[&_[data-rehype-pretty-code-figure]]:!m-0 relative overflow-hidden data-[mobile-code-visible=true]:**:data-[slot=copy-button]:flex **:data-[slot=copy-button]:right-4 **:data-[slot=copy-button]:hidden [&_[data-rehype-pretty-code-figure]]:rounded-t-none [&_[data-rehype-pretty-code-figure]]:border-t [&_pre]:max-h-72"
+          data-mobile-code-visible={isMobileCodeVisible}
+          data-slot="code"
+        >
+          {isMobileCodeVisible ? (
+            Code
+          ) : (
+            <div className="relative">
+              <div className="[&_[data-rehype-pretty-code-figure]]:!m-0 [&_[data-rehype-pretty-code-figure]]:rounded-t-none [&_[data-rehype-pretty-code-figure]]:border-t [&_pre]:max-h-20 [&_pre]:overflow-hidden">
+                {Code}
+              </div>
+              <div className="absolute inset-0 flex items-center justify-center pb-4">
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background:
+                      "linear-gradient(to top, var(--color-code), color-mix(in oklab, var(--color-code) 60%, transparent), transparent)",
+                  }}
+                />
+                <Button
+                  className="relative z-10 rounded-lg bg-background text-foreground shadow-none hover:bg-muted dark:bg-background dark:text-foreground dark:hover:bg-muted"
+                  onClick={() => {
+                    setIsMobileCodeVisible(true);
+                  }}
+                  size="sm"
+                  type="button"
+                  variant="outline"
+                >
+                  View Code
+                </Button>
+              </div>
+            </div>
           )}
         </div>
-        <TabsContent value="preview" className="relative rounded-md border">
-          <div className="flex items-center justify-between p-4">
-            <div className="flex items-center gap-2">
-              <CopyButton
-                value={codeString}
-                variant="muted"
-                className="h-7 w-7 text-foreground opacity-100 hover:bg-muted hover:text-foreground [&_svg]:h-3.5 [&_svg]:w-3.5"
-              />
-            </div>
-
-            <OpenInV0Button
-              url={`https://ui.fingertip.com/r/styles/default/${name.replace("-demo", "")}.json`}
-            />
-          </div>
-
-          <div
-            className={cn(
-              "preview flex min-h-[350px] w-full justify-center p-10",
-              {
-                "items-center": align === "center",
-                "items-start": align === "start",
-                "items-end": align === "end",
-              },
-            )}
-          >
-            <React.Suspense
-              fallback={
-                <div className="flex w-full items-center justify-center text-sm text-muted-foreground gap-2">
-                  <Spinner size={16} />
-                  Loading...
-                </div>
-              }
-            >
-              {Preview}
-            </React.Suspense>
-          </div>
-        </TabsContent>
-        <TabsContent value="code">
-          <div className="flex flex-col space-y-4">
-            <div className="w-full rounded-md [&_pre]:my-0 [&_pre]:max-h-[350px] [&_pre]:overflow-auto">
-              {Code}
-            </div>
-          </div>
-        </TabsContent>
-      </Tabs>
+      )}
     </div>
   );
 }

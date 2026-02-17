@@ -2,20 +2,11 @@
   "name": "default",
   "type": "registry:style",
   "dependencies": [
-    "tailwindcss-animate",
+    "tw-animate-css",
     "class-variance-authority",
-    "@fingertip/icons"
+    "blode-icons-react"
   ],
-  "registryDependencies": [
-    "utils"
-  ],
-  "tailwind": {
-    "config": {
-      "plugins": [
-        "require(\"tailwindcss-animate\")"
-      ]
-    }
-  },
+  "registryDependencies": ["utils"],
   "cssVars": {},
   "files": []
 }

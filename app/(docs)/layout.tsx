@@ -9,10 +9,13 @@ export default async function MarketingLayout({
   children,
 }: MarketingLayoutProps) {
   return (
-    <>
+    <div
+      className="relative z-10 flex min-h-svh flex-col bg-background"
+      data-slot="layout"
+    >
       <SiteHeader />
-      <main className="flex-1">{children}</main>
+      <main className="flex flex-1 flex-col">{children}</main>
       <SiteFooter />
-    </>
+    </div>
   );
 }

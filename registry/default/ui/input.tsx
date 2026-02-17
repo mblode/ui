@@ -1,17 +1,19 @@
 "use client";
-import { CircleXFilledIcon } from "@fingertip/icons";
+
+import { CircleXFilledIcon } from "blode-icons-react";
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
-export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  hasError?: boolean;
+export interface InputProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
   clearable?: boolean;
-  onClear?: () => void;
   clearClassName?: string;
+  hasError?: boolean;
   leftAddon?: React.ReactNode | null;
-  rightAddon?: React.ReactNode | null;
   leftControl?: React.ReactNode | null;
+  onClear?: () => void;
+  rightAddon?: React.ReactNode | null;
   rightControl?: React.ReactNode | null;
 }
 
@@ -29,7 +31,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       rightControl,
       ...props
     },
-    ref,
+    ref
   ) => {
     return (
       <label
@@ -42,7 +44,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         )}
 
         {leftControl && (
-          <div className="absolute left-0 top-0 flex h-full flex-row place-items-center items-center justify-center">
+          <div className="absolute top-0 left-0 flex h-full flex-row place-items-center items-center justify-center">
             {leftControl}
           </div>
         )}
@@ -50,29 +52,30 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         <div className="w-full">
           <input
             className={cn(
-              "input flex h-[52px] w-full rounded-2xl border border-input transition-colors shadow-input hover:border-input-hover bg-card px-4 py-[14px] font-sans font-normal text-base leading-snug text-foreground placeholder:text-placeholder-foreground focus:outline-hidden focus:border-ring focus:ring-2 focus:ring-ring/15 focus:ring-offset-1 focus:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50",
+              "input flex h-[52px] w-full rounded-2xl border border-input bg-card px-4 py-[14px] font-normal font-sans text-base text-foreground leading-snug shadow-input transition-colors placeholder:text-placeholder-foreground hover:border-input-hover focus:border-ring focus:outline-hidden focus:ring-2 focus:ring-ring/15 focus:ring-offset-1 focus:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50",
               {
                 "border-destructive-foreground": hasError,
                 "pr-9": clearable && !!props.value,
+                "pr-12": clearable && !!props.value && rightControl,
                 "hover:border-input! focus:border-input!": props.readOnly,
               },
-              className,
+              className
             )}
             ref={ref}
             {...props}
           />
 
           {clearable && !!props.value && (
-            <div className="absolute right-0 top-0 flex flex-row gap-1 pr-3">
+            <div className="absolute top-0 right-0 flex flex-row gap-1 pr-3">
               <button
-                tabIndex={-1}
-                className={cn(
-                  "flex h-[52px] items-center cursor-pointer justify-center p-0! text-muted-foreground",
-                  clearClassName,
-                )}
-                type="button"
-                onClick={() => onClear?.()}
                 aria-label="clear input"
+                className={cn(
+                  "flex h-[52px] cursor-pointer items-center justify-center p-0! text-muted-foreground",
+                  clearClassName
+                )}
+                onClick={() => onClear?.()}
+                tabIndex={-1}
+                type="button"
               >
                 <CircleXFilledIcon className="size-5 text-muted-foreground/50" />
               </button>
@@ -81,7 +84,14 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         </div>
 
         {rightControl && (
-          <div className="absolute right-0 top-0 flex h-full flex-row place-items-center items-center justify-center">
+          <div
+            className={cn(
+              "absolute top-0 right-0 flex h-full flex-row place-items-center items-center justify-center",
+              {
+                "right-9": clearable && !!props.value,
+              }
+            )}
+          >
             {rightControl}
           </div>
         )}
@@ -91,7 +101,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         )}
       </label>
     );
-  },
+  }
 );
 Input.displayName = "Input";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import * as React from "react";
+import { useState } from "react";
 
 import {
   InputOTP,
@@ -9,14 +9,14 @@ import {
 } from "@/registry/default/ui/input-otp";
 
 export default function InputOTPControlled() {
-  const [value, setValue] = React.useState("");
+  const [value, setValue] = useState("");
 
   return (
     <div className="space-y-2">
       <InputOTP
         maxLength={6}
-        value={value}
         onChange={(value) => setValue(value)}
+        value={value}
       >
         <InputOTPGroup>
           <InputOTPSlot index={0} />

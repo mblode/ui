@@ -24,27 +24,28 @@ export default function SheetSide() {
       {SHEET_SIDES.map((side) => (
         <Sheet key={side}>
           <SheetTrigger asChild>
-            <Button variant="secondary">{side}</Button>
+            <Button variant="outline">{side}</Button>
           </SheetTrigger>
           <SheetContent side={side}>
             <SheetHeader>
               <SheetTitle>Edit profile</SheetTitle>
               <SheetDescription>
-                Make changes to your profile here. Click save when you're done.
+                Make changes to your profile here. Click save when you&apos;re
+                done.
               </SheetDescription>
             </SheetHeader>
             <div className="grid gap-4 py-4">
-              <div className="w-full items-center gap-4">
-                <Label htmlFor="name" className="text-right">
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label className="text-right" htmlFor="name">
                   Name
                 </Label>
-                <Input id="name" value="Pedro Duarte" className="col-span-3" />
+                <Input className="col-span-3" id="name" value="Pedro Duarte" />
               </div>
-              <div className="w-full items-center gap-4">
-                <Label htmlFor="username" className="text-right">
+              <div className="grid grid-cols-4 items-center gap-4">
+                <Label className="text-right" htmlFor="username">
                   Username
                 </Label>
-                <Input id="username" value="@peduarte" className="col-span-3" />
+                <Input className="col-span-3" id="username" value="@peduarte" />
               </div>
             </div>
             <SheetFooter>

@@ -1,52 +1,46 @@
+import { LogoStandaloneIcon } from "blode-icons-react";
 import Link from "next/link";
-
 import { CommandMenu } from "@/components/command-menu";
-
+import { GitHubLink } from "@/components/github-link";
 import { MainNav } from "@/components/main-nav";
 import { MobileNav } from "@/components/mobile-nav";
-import { ModeToggle } from "@/components/mode-toggle";
-import { buttonVariants } from "@/registry/default/ui/button";
+import { ModeSwitcher } from "@/components/mode-switcher";
 import { siteConfig } from "@/config/site";
-import { cn } from "@/lib/utils";
-import { GithubIcon } from "@fingertip/icons";
+import { Button } from "@/registry/default/ui/button";
+import { Separator } from "@/registry/default/ui/separator";
 
-export async function SiteHeader() {
+export function SiteHeader() {
   return (
-    <header
-      className={cn(
-        "supports-backdrop-blur:bg-background/90 sticky top-0 z-40 w-full border-b border-border bg-background/40 backdrop-blur-lg",
-      )}
-    >
-      <div className="container flex h-16 items-center">
-        <MainNav />
-        <MobileNav />
-        <div className="flex flex-1 items-center justify-between gap-2 md:justify-end">
-          <div className="w-full flex-1 md:w-auto md:flex-none">
-            <CommandMenu />
-          </div>
-          <nav className="flex items-center gap-1">
-            <Link
-              href={siteConfig.links.github}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <div
-                className={cn(
-                  buttonVariants({
-                    variant: "ghost",
-                  }),
-                  "w-9 px-0",
-                )}
-              >
-                <GithubIcon className="size-4" />
-                <span className="sr-only">GitHub</span>
-              </div>
+    <header className="sticky top-0 z-50 w-full bg-background">
+      <div className="container-wrapper px-6">
+        <div className="**:data-[slot=separator]:!h-4 flex h-(--header-height) items-center">
+          <MobileNav className="flex lg:hidden" items={siteConfig.navItems} />
+          <Button
+            asChild
+            className="hidden size-8 lg:flex"
+            size="icon"
+            variant="ghost"
+          >
+            <Link href="/">
+              <LogoStandaloneIcon className="size-5" />
+              <span className="sr-only">{siteConfig.name}</span>
             </Link>
-            <ModeToggle />
-          </nav>
+          </Button>
+          <MainNav className="hidden lg:flex" items={siteConfig.navItems} />
+          <div className="ml-auto flex items-center gap-2 md:flex-1 md:justify-end">
+            <div className="hidden w-full flex-1 md:flex md:w-auto md:flex-none">
+              <CommandMenu />
+            </div>
+            <Separator
+              className="ml-2 hidden lg:block"
+              orientation="vertical"
+            />
+            <GitHubLink />
+            <Separator orientation="vertical" />
+            <ModeSwitcher />
+          </div>
         </div>
       </div>
-      {/* <hr className="m-0 h-px w-full border-none bg-gradient-to-r from-neutral-200/0 via-neutral-200/30 to-neutral-200/0" /> */}
     </header>
   );
 }

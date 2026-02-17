@@ -1,76 +1,61 @@
-import { Bell2Icon, CheckIcon } from "@fingertip/icons";
-
-import { cn } from "@/lib/utils";
 import { Button } from "@/registry/default/ui/button";
 import {
   Card,
+  CardAction,
   CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/registry/default/ui/card";
-import { Switch } from "@/registry/default/ui/switch";
+import { Input } from "@/registry/default/ui/input";
+import { Label } from "@/registry/default/ui/label";
 
-const notifications = [
-  {
-    title: "Your call has been confirmed.",
-    description: "1 hour ago",
-  },
-  {
-    title: "You have a new message!",
-    description: "1 hour ago",
-  },
-  {
-    title: "Your subscription is expiring soon!",
-    description: "2 hours ago",
-  },
-];
-
-type CardProps = React.ComponentProps<typeof Card>;
-
-export default function CardDemo({ className, ...props }: CardProps) {
+export default function CardDemo() {
   return (
-    <Card className={cn("w-[380px]", className)} {...props}>
+    <Card className="w-full max-w-sm">
       <CardHeader>
-        <CardTitle>Notifications</CardTitle>
-        <CardDescription>You have 3 unread messages.</CardDescription>
+        <CardTitle>Login to your account</CardTitle>
+        <CardDescription>
+          Enter your email below to login to your account
+        </CardDescription>
+        <CardAction>
+          <Button variant="link">Sign Up</Button>
+        </CardAction>
       </CardHeader>
-      <CardContent className="grid gap-4">
-        <div className=" flex items-center space-x-4 rounded-md border p-4">
-          <Bell2Icon />
-          <div className="flex-1 space-y-1">
-            <p className="text-sm font-medium leading-none">
-              Push Notifications
-            </p>
-            <p className="text-sm text-muted-foreground">
-              Send notifications to device.
-            </p>
-          </div>
-          <Switch />
-        </div>
-        <div>
-          {notifications.map((notification, index) => (
-            <div
-              key={index}
-              className="mb-4 grid grid-cols-[25px_1fr] items-start pb-4 last:mb-0 last:pb-0"
-            >
-              <span className="flex h-2 w-2 translate-y-1 rounded-full bg-sky-500" />
-              <div className="space-y-1">
-                <p className="text-sm font-medium leading-none">
-                  {notification.title}
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  {notification.description}
-                </p>
-              </div>
+      <CardContent>
+        <form>
+          <div className="flex flex-col gap-6">
+            <div className="grid gap-2">
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                placeholder="m@example.com"
+                required
+                type="email"
+              />
             </div>
-          ))}
-        </div>
+            <div className="grid gap-2">
+              <div className="flex items-center">
+                <Label htmlFor="password">Password</Label>
+                <a
+                  className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
+                  href="#"
+                >
+                  Forgot your password?
+                </a>
+              </div>
+              <Input id="password" required type="password" />
+            </div>
+          </div>
+        </form>
       </CardContent>
-      <CardFooter>
-        <Button className="w-full">
-          <CheckIcon /> Mark all as read
+      <CardFooter className="flex-col gap-2">
+        <Button className="w-full" type="submit">
+          Login
+        </Button>
+        <Button className="w-full" variant="outline">
+          Login with Google
         </Button>
       </CardFooter>
     </Card>

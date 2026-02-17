@@ -1,38 +1,21 @@
 "use client";
 
-import * as LabelPrimitive from "@radix-ui/react-label";
-import { cva, type VariantProps } from "class-variance-authority";
-import * as React from "react";
+import type * as React from "react";
 
 import { cn } from "@/lib/utils";
 
-export const labelVariants = cva(
-  "font-sans text-sm font-medium leading-none text-foreground peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
-  {
-    variants: {
-      variant: {
-        default: "",
-        glass:
-          "backdrop-blur-sm bg-background/60 border border-border/50 px-2.5 py-1 rounded-md shadow-sm",
-      },
-    },
-    defaultVariants: {
-      variant: "default",
-    },
-  },
-);
-
-const Label = React.forwardRef<
-  React.ElementRef<typeof LabelPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> &
-    VariantProps<typeof labelVariants>
->(({ className, variant, ...props }, ref) => (
-  <LabelPrimitive.Root
-    ref={ref}
-    className={cn(labelVariants({ variant }), className)}
-    {...props}
-  />
-));
-Label.displayName = LabelPrimitive.Root.displayName;
+function Label({ className, ...props }: React.ComponentProps<"label">) {
+  return (
+    // biome-ignore lint/a11y/noLabelWithoutControl: reusable component, consumer provides htmlFor
+    <label
+      className={cn(
+        "flex select-none items-center gap-2 font-medium text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-50 group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50",
+        className
+      )}
+      data-slot="label"
+      {...props}
+    />
+  );
+}
 
 export { Label };

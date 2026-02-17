@@ -17,7 +17,7 @@ export const breakpoints = {
 
 export function useBreakpoint() {
   const bp = Object.entries(breakpoints).sort(
-    ([, width1], [, width2]) => width1 - width2,
+    ([, width1], [, width2]) => width1 - width2
   );
   const size = useWindowSize();
 
@@ -29,7 +29,6 @@ export function useBreakpoint() {
     if (size?.width < breakpoint[1]) {
       return breakpoint[0] as keyof typeof breakpoints;
     }
-    continue;
   }
 
   return "sm";

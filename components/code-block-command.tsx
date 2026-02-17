@@ -1,18 +1,17 @@
 "use client";
 
+import { CheckIcon, ClipboardIcon } from "blode-icons-react";
+import React from "react";
 import { copyToClipboardWithMeta } from "@/components/copy-button";
-import { Button } from "@/registry/default/ui//button";
+import { useConfig } from "@/hooks/use-config";
+import { Button } from "@/registry/default/ui/button";
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/registry/default/ui//tabs";
-import { useConfig } from "@/hooks/use-config";
-import { useMounted } from "@/hooks/use-mounted";
-import { NpmCommands } from "@/types/unist";
-import { CheckIcon, ClipboardIcon } from "@fingertip/icons";
-import * as React from "react";
+} from "@/registry/default/ui/tabs";
+import type { NpmCommands } from "@/types/unist";
 
 export function CodeBlockCommand({
   __npmCommand__,
@@ -22,7 +21,6 @@ export function CodeBlockCommand({
 }: React.ComponentProps<"pre"> & NpmCommands) {
   const [config, setConfig] = useConfig();
   const [hasCopied, setHasCopied] = React.useState(false);
-  const mounted = useMounted();
 
   React.useEffect(() => {
     if (hasCopied) {
@@ -52,54 +50,56 @@ export function CodeBlockCommand({
     setHasCopied(true);
   }, [packageManager, tabs]);
 
-  if (!mounted) {
-    return null;
-  }
-
   return (
-    <div className="relative w-full mt-6 max-h-[650px] overflow-hidden rounded-xl border border-gray-800 bg-gray-950 dark:bg-gray-900">
+    <div className="overflow-x-auto">
       <Tabs
-        className="w-full"
-        defaultValue={packageManager}
+        className="gap-0"
         onValueChange={(value) => {
-          console.log("value", value, packageManager);
           setConfig({
             ...config,
             packageManager: value as "pnpm" | "npm" | "yarn" | "bun",
           });
         }}
+        value={packageManager}
       >
-        <div className="flex items-start justify-between border-b border-gray-800 bg-gray-900 px-3 pt-2.5 w-full">
-          <TabsList>
+        <div className="flex items-center gap-2 border-border/50 border-b px-3 py-1">
+          <TabsList className="rounded-none bg-transparent p-0">
             {Object.entries(tabs).map(([key]) => {
               return (
-                <TabsTrigger key={key} value={key}>
+                <TabsTrigger
+                  className="h-7 border border-transparent pt-0.5 shadow-none! data-[state=active]:border-input data-[state=active]:bg-background!"
+                  key={key}
+                  value={key}
+                >
                   {key}
                 </TabsTrigger>
               );
             })}
           </TabsList>
         </div>
-        {Object.entries(tabs).map(([key, value]) => {
-          return (
-            <TabsContent key={key} value={key} className="mt-0">
-              <pre className="px-4 py-5 overflow-x-auto">
-                <code
-                  className="relative font-mono text-sm leading-none"
-                  data-language="bash"
-                >
-                  {value}
-                </code>
-              </pre>
-            </TabsContent>
-          );
-        })}
+        <div className="no-scrollbar overflow-x-auto">
+          {Object.entries(tabs).map(([key, value]) => {
+            return (
+              <TabsContent className="mt-0 px-4 py-3.5" key={key} value={key}>
+                <pre>
+                  <code
+                    className="relative font-mono text-sm leading-none"
+                    data-language="bash"
+                  >
+                    {value}
+                  </code>
+                </pre>
+              </TabsContent>
+            );
+          })}
+        </div>
       </Tabs>
       <Button
+        className="absolute top-2 right-2 z-10 size-7 opacity-70 hover:opacity-100 focus-visible:opacity-100"
+        data-slot="copy-button"
+        onClick={copyCommand}
         size="icon"
         variant="ghost"
-        className="absolute right-2.5 top-2 z-10 h-6 w-6 text-gray-50 hover:bg-gray-700 hover:text-gray-50 [&_svg]:h-3 [&_svg]:w-3"
-        onClick={copyCommand}
       >
         <span className="sr-only">Copy</span>
         {hasCopied ? <CheckIcon /> : <ClipboardIcon />}

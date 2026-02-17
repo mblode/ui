@@ -1,11 +1,11 @@
+import { GoogleTagManager } from "@next/third-parties/google";
+import { Provider as JotaiProvider } from "jotai";
+import localFont from "next/font/local";
 import { Analytics } from "@/components/analytics";
 import { ThemeProvider } from "@/components/theme-provider";
+import { absoluteUrl, cn, constructMetadata } from "@/lib/utils";
 import { Toaster } from "@/registry/default/ui/sonner";
 import { TooltipProvider } from "@/registry/default/ui/tooltip";
-import localFont from "next/font/local";
-import { absoluteUrl, cn, constructMetadata } from "@/lib/utils";
-import { Provider as JotaiProvider } from "jotai";
-import { GoogleTagManager } from "@next/third-parties/google";
 
 import "@/styles/globals.css";
 
@@ -20,12 +20,11 @@ const glide = localFont({
   display: "swap",
 });
 
-import type { Viewport } from "next";
-import { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 
 export const metadata: Metadata = constructMetadata({
-  title: "Fingertip UI",
-  description: "Fingertip.com's UI components.",
+  title: "Blode UI",
+  description: "blode.co's UI components.",
   image: absoluteUrl("/og"),
 });
 
@@ -48,8 +47,8 @@ export default function RootLayout({
       <GoogleTagManager gtmId="GTM-PWKVQTZ6" />
       <body
         className={cn(
-          "relative flex w-full flex-col justify-center overflow-x-hidden scroll-smooth bg-background font-sans antialiased",
-          glide.variable,
+          "relative flex w-full flex-col justify-center overflow-x-hidden scroll-smooth bg-background font-sans antialiased [--header-height:calc(var(--spacing)*14)]",
+          glide.variable
         )}
       >
         <JotaiProvider>

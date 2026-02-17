@@ -1,9 +1,10 @@
 "use client";
 
-import * as React from "react";
+import { CalendarIcon } from "blode-icons-react";
 import { addDays, format } from "date-fns";
-import { Calendar1Icon } from "@fingertip/icons";
-import { DateRange } from "react-day-picker";
+import type * as React from "react";
+import { useState } from "react";
+import type { DateRange } from "react-day-picker";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/default/ui/button";
@@ -17,7 +18,7 @@ import {
 export default function DatePickerWithRange({
   className,
 }: React.HTMLAttributes<HTMLDivElement>) {
-  const [date, setDate] = React.useState<DateRange | undefined>({
+  const [date, setDate] = useState<DateRange | undefined>({
     from: new Date(2022, 0, 20),
     to: addDays(new Date(2022, 0, 20), 20),
   });
@@ -27,14 +28,14 @@ export default function DatePickerWithRange({
       <Popover>
         <PopoverTrigger asChild>
           <Button
-            id="date"
-            variant={"secondary"}
             className={cn(
               "w-[300px] justify-start text-left font-normal",
-              !date && "text-muted-foreground",
+              !date && "text-muted-foreground"
             )}
+            id="date"
+            variant={"outline"}
           >
-            <Calendar1Icon />
+            <CalendarIcon />
             {date?.from ? (
               date.to ? (
                 <>
@@ -49,14 +50,14 @@ export default function DatePickerWithRange({
             )}
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-auto p-0" align="start">
+        <PopoverContent align="start" className="w-auto p-0">
           <Calendar
+            defaultMonth={date?.from}
             initialFocus
             mode="range"
-            defaultMonth={date?.from}
-            selected={date}
-            onSelect={setDate}
             numberOfMonths={2}
+            onSelect={setDate}
+            selected={date}
           />
         </PopoverContent>
       </Popover>

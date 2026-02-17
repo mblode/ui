@@ -1,14 +1,14 @@
 "use client";
 
-import * as React from "react";
 import {
   CalculatorIcon,
-  Calendar1Icon,
-  CreditCard1Icon,
-  SettingsGear2Icon,
+  Calendar,
+  CreditCard,
   EmojiSmileIcon,
-  PeopleIcon,
-} from "@fingertip/icons";
+  Settings,
+  User,
+} from "blode-icons-react";
+import { useEffect, useState } from "react";
 
 import {
   CommandDialog,
@@ -22,9 +22,9 @@ import {
 } from "@/registry/default/ui/command";
 
 export default function CommandDialogDemo() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if (e.key === "j" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
@@ -38,19 +38,19 @@ export default function CommandDialogDemo() {
 
   return (
     <>
-      <p className="text-sm text-muted-foreground">
+      <p className="text-muted-foreground text-sm">
         Press{" "}
-        <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100">
+        <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-medium font-mono text-[10px] text-muted-foreground opacity-100">
           <span className="text-xs">⌘</span>J
         </kbd>
       </p>
-      <CommandDialog open={open} onOpenChange={setOpen}>
+      <CommandDialog onOpenChange={setOpen} open={open}>
         <CommandInput placeholder="Type a command or search..." />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Suggestions">
             <CommandItem>
-              <Calendar1Icon />
+              <Calendar />
               <span>Calendar</span>
             </CommandItem>
             <CommandItem>
@@ -59,23 +59,23 @@ export default function CommandDialogDemo() {
             </CommandItem>
             <CommandItem>
               <CalculatorIcon />
-              <span>Calculator</span>
+              <span>CalculatorIcon</span>
             </CommandItem>
           </CommandGroup>
           <CommandSeparator />
           <CommandGroup heading="Settings">
             <CommandItem>
-              <PeopleIcon />
+              <User />
               <span>Profile</span>
               <CommandShortcut>⌘P</CommandShortcut>
             </CommandItem>
             <CommandItem>
-              <CreditCard1Icon />
+              <CreditCard />
               <span>Billing</span>
               <CommandShortcut>⌘B</CommandShortcut>
             </CommandItem>
             <CommandItem>
-              <SettingsGear2Icon />
+              <Settings />
               <span>Settings</span>
               <CommandShortcut>⌘S</CommandShortcut>
             </CommandItem>

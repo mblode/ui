@@ -1,6 +1,5 @@
 "use client";
 
-import { FileDownloadIcon, LoaderIcon } from "@fingertip/icons";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -13,7 +12,7 @@ interface RepoDownloadProps {
 export default function RepoDownload({ url }: RepoDownloadProps) {
   const [loading, setLoading] = useState(false);
 
-  const handleDownload = async () => {
+  const handleDownload = () => {
     setLoading(true);
 
     try {
@@ -28,10 +27,9 @@ export default function RepoDownload({ url }: RepoDownloadProps) {
 
   return (
     <Button
-      onClick={handleDownload}
-      disabled={loading}
       className="not-prose group relative w-full gap-2"
-      loading
+      disabled={loading}
+      onClick={handleDownload}
     >
       Free download
     </Button>

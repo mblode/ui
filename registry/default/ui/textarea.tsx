@@ -1,24 +1,20 @@
 "use client";
 
-import { CircleXFilledIcon } from "@fingertip/icons";
+import { CircleXFilledIcon } from "blode-icons-react";
 import * as React from "react";
-import TextareaAutosize from "react-textarea-autosize";
 
 import { cn } from "@/lib/utils";
 
-export interface TextareaProps extends Omit<
-  React.TextareaHTMLAttributes<HTMLTextAreaElement>,
-  "style"
-> {
-  hasError?: boolean;
+export interface TextareaProps
+  extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, "style"> {
   clearable?: boolean;
-  onClear?: () => void;
   clearClassName?: string;
+  hasError?: boolean;
   leftAddon?: React.ReactNode | null;
-  rightAddon?: React.ReactNode | null;
   leftControl?: React.ReactNode | null;
+  onClear?: () => void;
+  rightAddon?: React.ReactNode | null;
   rightControl?: React.ReactNode | null;
-  minRows?: number;
 }
 
 const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
@@ -33,10 +29,9 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
       clearClassName,
       leftControl,
       rightControl,
-      minRows,
       ...props
     },
-    ref,
+    ref
   ) => {
     return (
       <label
@@ -49,37 +44,37 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
         )}
 
         {leftControl && (
-          <div className="absolute left-0 top-0 flex h-full flex-row place-items-center items-center justify-center">
+          <div className="absolute top-0 left-0 flex h-full flex-row place-items-center items-center justify-center">
             {leftControl}
           </div>
         )}
 
-        <TextareaAutosize
+        <textarea
           className={cn(
-            "flex h-[52px] w-full rounded-2xl border border-input transition-colors shadow-input hover:border-input-hover bg-card px-4 py-[14px] font-sans font-normal text-base leading-snug text-foreground placeholder:text-placeholder-foreground focus:outline-hidden focus:border-ring focus:ring-2 focus:ring-ring/15 focus:ring-offset-1 focus:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50",
+            "field-sizing-content flex min-h-[52px] w-full rounded-2xl border border-input bg-card px-4 py-[14px] font-normal font-sans text-base text-foreground leading-snug shadow-input transition-colors placeholder:text-placeholder-foreground hover:border-input-hover focus:border-ring focus:outline-hidden focus:ring-2 focus:ring-ring/15 focus:ring-offset-1 focus:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50",
             {
               "border-destructive-foreground": hasError,
               "pr-9": clearable && !!props.value,
               "pr-12": clearable && !!props.value && rightControl,
+              "hover:border-input! focus:border-input!": props.readOnly,
             },
-            className,
+            className
           )}
           ref={ref}
-          minRows={minRows}
           {...props}
         />
 
         {clearable && !!props.value && (
-          <div className="absolute right-0 top-0">
+          <div className="absolute top-0 right-0">
             <button
-              tabIndex={-1}
-              className={cn(
-                "flex h-[52px] w-10 items-center cursor-pointer justify-center p-0! text-muted-foreground",
-                clearClassName,
-              )}
-              type="button"
-              onClick={() => onClear?.()}
               aria-label="clear input"
+              className={cn(
+                "flex h-[52px] w-10 cursor-pointer items-center justify-center p-0! text-muted-foreground",
+                clearClassName
+              )}
+              onClick={() => onClear?.()}
+              tabIndex={-1}
+              type="button"
             >
               <CircleXFilledIcon className="size-4 text-muted-foreground/50" />
             </button>
@@ -89,10 +84,10 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
         {rightControl && (
           <div
             className={cn(
-              "absolute right-0 top-0 flex h-full flex-row place-items-center items-center justify-center",
+              "absolute top-0 right-0 flex h-full flex-row place-items-center items-center justify-center",
               {
                 "right-9": clearable && !!props.value,
-              },
+              }
             )}
           >
             {rightControl}
@@ -104,7 +99,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
         )}
       </label>
     );
-  },
+  }
 );
 Textarea.displayName = "Textarea";
 

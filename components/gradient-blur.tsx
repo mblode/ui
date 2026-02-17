@@ -1,10 +1,10 @@
-import React from "react";
+import type React from "react";
 
 import { cn } from "@/lib/utils";
 
 interface GradientBlurProps {
-  numberOfLayers?: number;
   className?: string;
+  numberOfLayers?: number;
 }
 
 const GradientBlur: React.FC<GradientBlurProps> = ({
@@ -12,16 +12,16 @@ const GradientBlur: React.FC<GradientBlurProps> = ({
   className = "",
 }) => {
   const generateLayers = () => {
-    const layers = [];
+    const layers: React.ReactElement[] = [];
     for (let i = 0; i < numberOfLayers; i++) {
-      const blurAmount = Math.pow(2, i);
+      const blurAmount = 2 ** i;
       const startPercent = (i * 100) / numberOfLayers;
       const midPercent = ((i + 1) * 100) / numberOfLayers;
       const endPercent = ((i + 2) * 100) / numberOfLayers;
       layers.push(
         <div
-          key={i}
           className="absolute inset-0"
+          key={i}
           style={{
             zIndex: i + 2,
             backdropFilter: `blur(${blurAmount}px)`,
@@ -33,14 +33,14 @@ const GradientBlur: React.FC<GradientBlurProps> = ({
               rgba(0, 0, 0, 0) ${endPercent + (endPercent - midPercent)}%
             )`,
           }}
-        />,
+        />
       );
     }
     return layers;
   };
 
   return (
-    <div className={cn(`z-5 pointer-events-none inset-x-0 h-full`, className)}>
+    <div className={cn("pointer-events-none inset-x-0 z-5 h-full", className)}>
       <div
         className="absolute inset-0"
         style={{
@@ -60,7 +60,7 @@ const GradientBlur: React.FC<GradientBlurProps> = ({
         className="absolute inset-0"
         style={{
           zIndex: numberOfLayers + 2,
-          backdropFilter: `blur(${Math.pow(2, numberOfLayers)}px)`,
+          backdropFilter: `blur(${2 ** numberOfLayers}px)`,
           mask: `linear-gradient(
             to bottom,
             rgba(0, 0, 0, 0) ${100 - 100 / (numberOfLayers * 2)}%,

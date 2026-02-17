@@ -1,8 +1,8 @@
-import { Doc } from "content-collections";
-import { BugIcon, LightBulbIcon, PencilIcon } from "@fingertip/icons";
+import { BugIcon, LightBulbIcon, PencilIcon } from "blode-icons-react";
+import type { Doc } from "content-collections";
 import Link from "next/link";
 
-import { getGithubFileUrl, getGitHubIssueUrl } from "@/lib/github";
+import { getGitHubIssueUrl, getGithubFileUrl } from "@/lib/github";
 
 export function Contribute({ doc }: { doc: Doc }) {
   const contributeLinks = [
@@ -10,8 +10,8 @@ export function Contribute({ doc }: { doc: Doc }) {
       text: "Report an issue",
       icon: BugIcon,
       href: getGitHubIssueUrl({
-        owner: "fingertip-com",
-        repo: "ui",
+        owner: "mblode",
+        repo: "blode-ui",
         title: `[bug]: ${doc.slug}`,
         labels: ["bug", "documentation"],
         template: "bug_report.md",
@@ -21,8 +21,8 @@ export function Contribute({ doc }: { doc: Doc }) {
       text: "Request a feature",
       icon: LightBulbIcon,
       href: getGitHubIssueUrl({
-        owner: "fingertip-com",
-        repo: "ui",
+        owner: "mblode",
+        repo: "blode-ui",
         title: `[feat]: ${doc.slug}`,
         labels: ["enhancement"],
         template: "feature_request.md",
@@ -39,13 +39,13 @@ export function Contribute({ doc }: { doc: Doc }) {
     <div className="space-y-2">
       <p className="font-medium">Contribute</p>
       <ul className="m-0 list-none">
-        {contributeLinks.map((link, index) => (
-          <li key={index} className="mt-0 pt-2">
+        {contributeLinks.map((link) => (
+          <li className="mt-0 pt-2" key={link.href}>
             <Link
+              className="inline-flex items-center text-muted-foreground text-sm transition-colors hover:text-foreground"
               href={link.href}
-              target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center text-sm text-muted-foreground transition-colors hover:text-foreground"
+              target="_blank"
             >
               <link.icon className="mr-2 size-4" />
               {link.text}

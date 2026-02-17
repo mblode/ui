@@ -1,6 +1,6 @@
-import { ReactNode } from "react";
+import { SquareArrowTopRightIcon } from "blode-icons-react";
 import Link from "next/link";
-import { SquareArrowTopRightIcon } from "@fingertip/icons";
+import type { ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/registry/default/ui/button";
@@ -18,7 +18,7 @@ export default function TemplatePreview({
         buttonVariants({
           variant: "secondary",
         }),
-        "not-prose group relative w-full gap-2",
+        "not-prose group relative w-full gap-2"
       )}
       href={href}
       target="_blank"

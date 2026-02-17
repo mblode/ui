@@ -1,11 +1,8 @@
 {
-  "$schema": "https://ui.fingertip.com/schema/registry-item.json",
+  "$schema": "https://ui.blode.co/schema/registry-item.json",
   "name": "responsive-sheet",
-  "author": "fingertip (https://ui.fingertip.com)",
-  "registryDependencies": [
-    "dialog",
-    "sheet"
-  ],
+  "author": "fingertip (https://ui.blode.co)",
+  "registryDependencies": ["dialog", "sheet"],
   "files": [
     {
       "path": "ui/responsive-sheet.tsx",

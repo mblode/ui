@@ -16,32 +16,29 @@ export default function SheetDemo() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button variant="secondary">Open</Button>
+        <Button variant="outline">Open</Button>
       </SheetTrigger>
       <SheetContent>
         <SheetHeader>
           <SheetTitle>Edit profile</SheetTitle>
           <SheetDescription>
-            Make changes to your profile here. Click save when you're done.
+            Make changes to your profile here. Click save when you&apos;re done.
           </SheetDescription>
         </SheetHeader>
-        <div className="grid gap-4 py-4">
-          <div className="w-full items-center gap-4">
-            <Label htmlFor="name" className="text-right">
-              Name
-            </Label>
-            <Input id="name" value="Pedro Duarte" className="col-span-3" />
+        <div className="grid flex-1 auto-rows-min gap-6 px-4">
+          <div className="grid gap-3">
+            <Label htmlFor="sheet-demo-name">Name</Label>
+            <Input defaultValue="Pedro Duarte" id="sheet-demo-name" />
           </div>
-          <div className="w-full items-center gap-4">
-            <Label htmlFor="username" className="text-right">
-              Username
-            </Label>
-            <Input id="username" value="@peduarte" className="col-span-3" />
+          <div className="grid gap-3">
+            <Label htmlFor="sheet-demo-username">Username</Label>
+            <Input defaultValue="@peduarte" id="sheet-demo-username" />
           </div>
         </div>
         <SheetFooter>
+          <Button type="submit">Save changes</Button>
           <SheetClose asChild>
-            <Button type="submit">Save changes</Button>
+            <Button variant="outline">Close</Button>
           </SheetClose>
         </SheetFooter>
       </SheetContent>

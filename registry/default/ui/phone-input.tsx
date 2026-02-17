@@ -4,15 +4,12 @@ import {
   CheckIcon,
   ChevronGrabberVerticalIcon,
   CircleXFilledIcon,
-} from "@fingertip/icons";
-import {
-  ComponentRef,
-  forwardRef,
-  ForwardRefExoticComponent,
-  useCallback,
-} from "react";
+} from "blode-icons-react";
+import * as React from "react";
 import * as RPNInput from "react-phone-number-input";
 import flags from "react-phone-number-input/flags";
+
+import { cn } from "@/lib/utils";
 
 import { Button } from "./button";
 import {
@@ -23,137 +20,144 @@ import {
   CommandItem,
   CommandList,
 } from "./command";
-import { Input, InputProps } from "./input";
+import { Input, type InputProps } from "./input";
 import { Popover, PopoverContent, PopoverTrigger } from "./popover";
-import { cn } from "@/lib/utils";
-
 import { ScrollArea } from "./scroll-area";
+
+interface CountrySelectOption {
+  label: string;
+  value?: RPNInput.Country;
+}
+
+interface CountrySelectProps {
+  disabled?: boolean;
+  onChange: (value?: RPNInput.Country) => void;
+  options: CountrySelectOption[];
+  value?: RPNInput.Country;
+}
 
 export type PhoneInputProps = Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
   "onChange" | "value"
 > &
   Omit<RPNInput.Props<typeof RPNInput.default>, "onChange"> & {
-    onChange?: (value: RPNInput.Value) => void;
     clearable?: boolean;
-    onClear?: () => void;
     clearClassName?: string;
-    defaultCountry?: RPNInput.Country;
     fallbackCountry?: RPNInput.Country;
+    onChange?: (value: RPNInput.Value | "") => void;
+    onClear?: () => void;
   };
 
-const PhoneInput: ForwardRefExoticComponent<PhoneInputProps> = forwardRef<
-  ComponentRef<typeof RPNInput.default>,
+const PhoneInput = React.forwardRef<
+  React.ComponentRef<typeof RPNInput.default>,
   PhoneInputProps
 >(
   (
     {
       className,
-      placeholder = "Enter phone number",
-      onChange,
-      clearable,
-      onClear,
       clearClassName,
+      clearable,
       defaultCountry,
-      fallbackCountry = "AU",
+      fallbackCountry = "US",
+      onChange,
+      onClear,
+      placeholder = "Enter phone number",
       ...props
     },
-    ref,
+    ref
   ) => {
+    const hasValue = Boolean(props.value);
+
+    const handleChange = React.useCallback(
+      (value?: RPNInput.Value) => {
+        onChange?.(value ?? "");
+      },
+      [onChange]
+    );
+
+    const handleClear = React.useCallback(() => {
+      onClear?.();
+
+      if (!onClear) {
+        onChange?.("");
+      }
+    }, [onClear, onChange]);
+
     return (
       <div className="relative">
         <RPNInput.default
-          ref={ref}
-          className={cn("flex")}
-          flagComponent={FlagComponent}
+          className="flex"
           countrySelectComponent={CountrySelect}
-          placeholder={placeholder}
-          inputComponent={InputComponent}
+          defaultCountry={defaultCountry ?? fallbackCountry}
+          flagComponent={FlagComponent}
           inputClassName={className}
-          /**
-           * Handles the onChange event.
-           *
-           * react-phone-number-input might trigger the onChange event as undefined
-           * when a valid phone number is not entered. To prevent this,
-           * the value is coerced to an empty string.
-           *
-           * @param {E164Number | undefined} value - The entered value
-           */
-          onChange={(value) => onChange?.((value as any) || "")}
+          inputComponent={InputComponent}
+          onChange={handleChange}
+          placeholder={placeholder}
+          ref={ref}
           {...props}
-          defaultCountry={defaultCountry || fallbackCountry}
         />
 
-        {clearable && !!props.value && (
-          <div className="absolute right-0 top-0 flex flex-row gap-1 pr-3">
+        {clearable && hasValue ? (
+          <div className="absolute top-0 right-0 flex flex-row gap-1 pr-3">
             <button
-              tabIndex={-1}
-              className={cn(
-                "flex h-fluid-12! items-center cursor-pointer justify-center p-0! text-muted-foreground",
-                clearClassName,
-              )}
-              type="button"
-              onClick={() => onClear?.()}
               aria-label="clear input"
+              className={cn(
+                "flex h-[52px] cursor-pointer items-center justify-center p-0! text-muted-foreground",
+                clearClassName
+              )}
+              onClick={handleClear}
+              tabIndex={-1}
+              type="button"
             >
               <CircleXFilledIcon className="size-5 text-muted-foreground/50" />
             </button>
           </div>
-        )}
+        ) : null}
       </div>
     );
-  },
+  }
 );
 PhoneInput.displayName = "PhoneInput";
 
-const InputComponent = forwardRef<
+const InputComponent = React.forwardRef<
   HTMLInputElement,
   InputProps & { inputClassName?: string }
->(({ className, inputClassName, ...props }, ref) => (
-  <Input
-    className={cn("rounded-s-none!", className, inputClassName)}
-    {...props}
-    ref={ref}
-  />
-));
+>(({ className, inputClassName, ...props }, ref) => {
+  return (
+    <Input
+      className={cn("rounded-s-none!", className, inputClassName)}
+      ref={ref}
+      {...props}
+    />
+  );
+});
 InputComponent.displayName = "InputComponent";
 
-type CountrySelectOption = { label: string; value: RPNInput.Country };
-
-type CountrySelectProps = {
-  disabled?: boolean;
-  value: RPNInput.Country;
-  onChange: (value: RPNInput.Country) => void;
-  options: CountrySelectOption[];
-};
-
-const CountrySelect = ({
+function CountrySelect({
   disabled,
-  value,
   onChange,
   options,
-}: CountrySelectProps) => {
-  const handleSelect = useCallback(
-    (country: RPNInput.Country) => {
-      onChange(country);
-    },
-    [onChange],
-  );
+  value,
+}: CountrySelectProps) {
+  const selectedCountryLabel =
+    options.find((option) => option.value === value)?.label ?? "Select country";
 
   return (
     <Popover>
       <PopoverTrigger asChild>
         <Button
+          aria-label={selectedCountryLabel}
+          className="phone-input-country-select-button flex gap-1 rounded-s-2xl rounded-e-none! border-r-0 px-3"
+          disabled={disabled}
           type="button"
           variant="secondary"
-          className="phone-input-country-select-button flex gap-1 rounded-e-none! rounded-s-2xl border-r-0 px-3"
-          disabled={disabled}
         >
-          <FlagComponent country={value} countryName={value} />
+          <FlagComponent country={value} countryName={selectedCountryLabel} />
           <ChevronGrabberVerticalIcon
             className={cn(
               "-mr-2 h-4 w-4 opacity-50",
-              disabled ? "hidden" : "opacity-100",
+              disabled ? "hidden" : "opacity-100"
             )}
           />
         </Button>
@@ -161,36 +165,41 @@ const CountrySelect = ({
       <PopoverContent className="w-[300px] p-0">
         <Command>
           <CommandList>
-            <ScrollArea className="h-72" onWheel={(e) => e.stopPropagation()}>
+            <ScrollArea
+              className="h-72"
+              onWheel={(event) => event.stopPropagation()}
+            >
               <CommandInput placeholder="Search country..." />
-              <CommandEmpty>No country found</CommandEmpty>
+              <CommandEmpty>No country found.</CommandEmpty>
               <CommandGroup>
-                {options
-                  .filter((x) => x.value)
-                  .map((option) => (
+                {options.map((option) => {
+                  if (!option.value) {
+                    return null;
+                  }
+
+                  return (
                     <CommandItem
                       className="gap-2"
                       key={option.value}
-                      onSelect={() => handleSelect(option.value)}
+                      onSelect={() => onChange(option.value)}
                     >
                       <FlagComponent
                         country={option.value}
                         countryName={option.label}
                       />
                       <span className="flex-1 text-sm">{option.label}</span>
-                      {option.value && (
-                        <span className="text-sm text-foreground/50">
-                          {`+${RPNInput.getCountryCallingCode(option.value)}`}
-                        </span>
-                      )}
+                      <span className="text-foreground/50 text-sm">
+                        +{RPNInput.getCountryCallingCode(option.value)}
+                      </span>
                       <CheckIcon
                         className={cn(
                           "ml-auto h-4 w-4",
-                          option.value === value ? "opacity-100" : "opacity-0",
+                          option.value === value ? "opacity-100" : "opacity-0"
                         )}
                       />
                     </CommandItem>
-                  ))}
+                  );
+                })}
               </CommandGroup>
             </ScrollArea>
           </CommandList>
@@ -198,17 +207,22 @@ const CountrySelect = ({
       </PopoverContent>
     </Popover>
   );
-};
+}
 
-const FlagComponent = ({ country, countryName }: RPNInput.FlagProps) => {
-  const Flag = flags[country];
+function FlagComponent({
+  country,
+  countryName,
+}: {
+  country?: RPNInput.Country;
+  countryName: string;
+}) {
+  const Flag = country ? flags[country] : undefined;
 
   return (
     <span className="flex h-4 w-6 overflow-hidden rounded-xs bg-foreground/20">
-      {Flag && <Flag title={countryName} />}
+      {Flag ? <Flag title={countryName} /> : null}
     </span>
   );
-};
-FlagComponent.displayName = "FlagComponent";
+}
 
 export { PhoneInput };

@@ -1,4 +1,4 @@
-import { MainNavItem, SidebarNavItem } from "@/types";
+import type { MainNavItem, SidebarNavItem } from "@/types";
 
 interface DocsConfig {
   mainNav: MainNavItem[];
@@ -17,7 +17,7 @@ export const docsConfig: DocsConfig = {
     },
     {
       title: "Icons",
-      href: "https://icons.fingertip.com",
+      href: "https://icons.blode.co",
     },
   ],
   sidebarNav: [
@@ -35,37 +35,37 @@ export const docsConfig: DocsConfig = {
           items: [
             {
               title: "Next.js",
-              href: `/docs/installation/next`,
+              href: "/docs/installation/next",
               items: [],
             },
             {
               title: "Vite",
-              href: `/docs/installation/vite`,
+              href: "/docs/installation/vite",
               items: [],
             },
             {
               title: "Remix",
-              href: `/docs/installation/remix`,
+              href: "/docs/installation/remix",
               items: [],
             },
             {
               title: "Astro",
-              href: `/docs/installation/astro`,
+              href: "/docs/installation/astro",
               items: [],
             },
             {
               title: "Laravel",
-              href: `/docs/installation/laravel`,
+              href: "/docs/installation/laravel",
               items: [],
             },
             {
               title: "Gatsby",
-              href: `/docs/installation/gatsby`,
+              href: "/docs/installation/gatsby",
               items: [],
             },
             {
               title: "Manual",
-              href: `/docs/installation/manual`,
+              href: "/docs/installation/manual",
               items: [],
             },
           ],
@@ -82,7 +82,7 @@ export const docsConfig: DocsConfig = {
         },
         {
           title: "Icons",
-          href: "https://icons.fingertip.com",
+          href: "https://icons.blode.co",
           items: [],
         },
       ],
@@ -96,13 +96,13 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "Alert Dialog",
-          href: "/docs/components/alert-dialog",
+          title: "Alert",
+          href: "/docs/components/alert",
           items: [],
         },
         {
-          title: "Alert",
-          href: "/docs/components/alert",
+          title: "Alert Dialog",
+          href: "/docs/components/alert-dialog",
           items: [],
         },
         {
@@ -118,16 +118,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "Badge",
           href: "/docs/components/badge",
-          items: [],
-        },
-        {
-          title: "Bar List",
-          href: "/docs/components/bar-list",
-          items: [],
-        },
-        {
-          title: "Bottom Sheet",
-          href: "/docs/components/bottom-sheet",
           items: [],
         },
         {
@@ -156,13 +146,13 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "Checkbox",
-          href: "/docs/components/checkbox",
+          title: "Circular Progress",
+          href: "/docs/components/circular-progress",
           items: [],
         },
         {
-          title: "Circular Progress",
-          href: "/docs/components/circular-progress",
+          title: "Checkbox",
+          href: "/docs/components/checkbox",
           items: [],
         },
         {
@@ -171,23 +161,18 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "Color Picker",
-          href: "/docs/components/color-picker",
-          items: [],
-        },
-        {
           title: "Combobox",
           href: "/docs/components/combobox",
           items: [],
         },
         {
-          title: "Command",
-          href: "/docs/components/command",
+          title: "Multi Combobox",
+          href: "/docs/components/multi-combobox",
           items: [],
         },
         {
-          title: "Copy",
-          href: "/docs/components/copy",
+          title: "Command",
+          href: "/docs/components/command",
           items: [],
         },
         {
@@ -206,16 +191,6 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "Date Range Dropdown",
-          href: "/docs/components/date-range-dropdown",
-          items: [],
-        },
-        {
-          title: "Date Range Picker",
-          href: "/docs/components/date-range-picker",
-          items: [],
-        },
-        {
           title: "Dialog",
           href: "/docs/components/dialog",
           items: [],
@@ -226,13 +201,8 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "Form Control",
-          href: "/docs/components/form-control",
-          items: [],
-        },
-        {
-          title: "Glass Label",
-          href: "/docs/components/glass-label",
+          title: "Input",
+          href: "/docs/components/input",
           items: [],
         },
         {
@@ -241,8 +211,8 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "Input",
-          href: "/docs/components/input",
+          title: "Phone Input",
+          href: "/docs/components/phone-input",
           items: [],
         },
         {
@@ -256,43 +226,13 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "List",
-          href: "/docs/components/list",
-          items: [],
-        },
-        {
           title: "Menubar",
           href: "/docs/components/menubar",
           items: [],
         },
         {
-          title: "Modal",
-          href: "/docs/components/modal",
-          items: [],
-        },
-        {
-          title: "Multi Combobox",
-          href: "/docs/components/multi-combobox",
-          items: [],
-        },
-        {
-          title: "Multi Select",
-          href: "/docs/components/multi-select",
-          items: [],
-        },
-        {
-          title: "Phone Input",
-          href: "/docs/components/phone-input",
-          items: [],
-        },
-        {
           title: "Popover",
           href: "/docs/components/popover",
-          items: [],
-        },
-        {
-          title: "Progress List",
-          href: "/docs/components/progress-list",
           items: [],
         },
         {
@@ -311,28 +251,8 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "Render Prompt",
-          href: "/docs/components/render-prompt",
-          items: [],
-        },
-        {
-          title: "Responsive Sheet",
-          href: "/docs/components/responsive-sheet",
-          items: [],
-        },
-        {
           title: "Scroll Area",
           href: "/docs/components/scroll-area",
-          items: [],
-        },
-        {
-          title: "Scroll Menu",
-          href: "/docs/components/scroll-menu",
-          items: [],
-        },
-        {
-          title: "Search",
-          href: "/docs/components/search",
           items: [],
         },
         {
@@ -343,11 +263,6 @@ export const docsConfig: DocsConfig = {
         {
           title: "Separator",
           href: "/docs/components/separator",
-          items: [],
-        },
-        {
-          title: "Share",
-          href: "/docs/components/share",
           items: [],
         },
         {
@@ -376,21 +291,6 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "Stat",
-          href: "/docs/components/stat",
-          items: [],
-        },
-        {
-          title: "Stepper",
-          href: "/docs/components/stepper",
-          items: [],
-        },
-        {
-          title: "Sticker",
-          href: "/docs/components/sticker",
-          items: [],
-        },
-        {
           title: "Switch",
           href: "/docs/components/switch",
           items: [],
@@ -411,28 +311,18 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
-          title: "Toggle Group",
-          href: "/docs/components/toggle-group",
-          items: [],
-        },
-        {
           title: "Toggle",
           href: "/docs/components/toggle",
           items: [],
         },
         {
-          title: "Toolbar",
-          href: "/docs/components/toolbar",
+          title: "Toggle Group",
+          href: "/docs/components/toggle-group",
           items: [],
         },
         {
           title: "Tooltip",
           href: "/docs/components/tooltip",
-          items: [],
-        },
-        {
-          title: "Validation",
-          href: "/docs/components/validation",
           items: [],
         },
       ],

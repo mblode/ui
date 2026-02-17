@@ -1,11 +1,11 @@
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Fingertip.com UI",
+    name: "blode.co UI",
     short_name: "Fingertip",
     description:
-      "Fingertip.com lets you create a website, automate invoices, manage appointments, and set up link-in bio effortlessly — your all-in-one platform to build, run, and grow your business.",
+      "blode.co lets you create a website, automate invoices, manage appointments, and set up link-in bio effortlessly — your all-in-one platform to build, run, and grow your business.",
     start_url: "/",
     icons: [
       {

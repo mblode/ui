@@ -1,14 +1,12 @@
 {
-  "$schema": "https://ui.fingertip.com/schema/registry-item.json",
+  "$schema": "https://ui.blode.co/schema/registry-item.json",
   "name": "separator",
-  "author": "fingertip (https://ui.fingertip.com)",
-  "dependencies": [
-    "@radix-ui/react-separator"
-  ],
+  "author": "fingertip (https://ui.blode.co)",
+  "dependencies": ["@base-ui/react"],
   "files": [
     {
       "path": "ui/separator.tsx",
-      "content": "\"use client\";\n\nimport * as SeparatorPrimitive from \"@radix-ui/react-separator\";\nimport * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nconst Separator = React.forwardRef<\n  React.ElementRef<typeof SeparatorPrimitive.Root>,\n  React.ComponentPropsWithoutRef<typeof SeparatorPrimitive.Root>\n>(\n  (\n    { className, orientation = \"horizontal\", decorative = true, ...props },\n    ref,\n  ) => (\n    <SeparatorPrimitive.Root\n      ref={ref}\n      decorative={decorative}\n      orientation={orientation}\n      className={cn(\n        \"shrink-0 bg-border\",\n        orientation === \"horizontal\" ? \"h-[1px] w-full\" : \"h-full w-[1px]\",\n        className,\n      )}\n      {...props}\n    />\n  ),\n);\nSeparator.displayName = SeparatorPrimitive.Root.displayName;\n\nexport { Separator };\n",
+      "content": "\"use client\";\n\nimport { Separator as SeparatorPrimitive } from \"@base-ui/react/separator\";\nimport type * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction Separator({\n  className,\n  orientation = \"horizontal\",\n  decorative = true,\n  ...props\n}: React.ComponentProps<typeof SeparatorPrimitive> & {\n  decorative?: boolean;\n}) {\n  return (\n    <SeparatorPrimitive\n      aria-hidden={decorative || undefined}\n      className={cn(\n        \"shrink-0 bg-border data-[orientation=horizontal]:h-px data-[orientation=vertical]:h-full data-[orientation=horizontal]:w-full data-[orientation=vertical]:w-px\",\n        className\n      )}\n      data-slot=\"separator\"\n      orientation={orientation}\n      {...props}\n    />\n  );\n}\n\nexport { Separator };\n",
       "type": "registry:ui",
       "target": ""
     }

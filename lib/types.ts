@@ -1,22 +1,22 @@
-export type SiteConfig = {
+export interface SiteConfig {
   avatar?: string;
-  siteUrl: string;
-  siteName: string;
-  siteDescription: string;
-  siteThumbnail: string;
   nav: Array<{ label: string; href: string }>;
+  siteDescription: string;
+  siteName: string;
+  siteThumbnail: string;
+  siteUrl: string;
   social?: {
     github?: string;
     twitter?: string;
     linkedin?: string;
     instagram?: string;
   };
-};
+}
 
-export type MDXFrontMatter = {
-  slug: string;
-  title: string;
-  description?: string;
+export interface MDXFrontMatter {
   date: string;
-  tags?: Array<string>;
-};
+  description?: string;
+  slug: string;
+  tags?: string[];
+  title: string;
+}

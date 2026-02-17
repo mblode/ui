@@ -1,11 +1,11 @@
 {
-  "$schema": "https://ui.fingertip.com/schema/registry-item.json",
+  "$schema": "https://ui.blode.co/schema/registry-item.json",
   "name": "skeleton",
-  "author": "fingertip (https://ui.fingertip.com)",
+  "author": "fingertip (https://ui.blode.co)",
   "files": [
     {
       "path": "ui/skeleton.tsx",
-      "content": "\"use client\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction Skeleton({\n  className,\n  ...props\n}: React.HTMLAttributes<HTMLDivElement>) {\n  return (\n    <div\n      className={cn(\"animate-pulse rounded-md bg-muted\", className)}\n      {...props}\n    />\n  );\n}\n\nexport { Skeleton };\n",
+      "content": "import { cn } from \"@/lib/utils\";\n\nfunction Skeleton({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      className={cn(\"animate-pulse rounded-md bg-accent\", className)}\n      data-slot=\"skeleton\"\n      {...props}\n    />\n  );\n}\n\nexport { Skeleton };\n",
       "type": "registry:ui",
       "target": ""
     }

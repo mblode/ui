@@ -1,7 +1,11 @@
-import { LoaderIcon } from "@fingertip/icons";
-
 import { Button } from "@/registry/default/ui/button";
+import { Spinner } from "@/registry/default/ui/spinner";
 
 export default function ButtonLoading() {
-  return <Button loading>Button</Button>;
+  return (
+    <Button disabled size="sm" variant="outline">
+      <Spinner size={16} />
+      Submit
+    </Button>
+  );
 }

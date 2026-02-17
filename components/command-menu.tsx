@@ -1,16 +1,15 @@
 "use client";
 
-import * as React from "react";
-import { useRouter } from "next/navigation";
-import { type DialogProps } from "@radix-ui/react-dialog";
 import {
   CirclePlaceholderOnIcon,
   FilesIcon,
   MacbookAirIcon,
   MoonIcon,
   SunIcon,
-} from "@fingertip/icons";
+} from "blode-icons-react";
+import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
+import React from "react";
 
 import { docsConfig } from "@/config/docs";
 import { cn } from "@/lib/utils";
@@ -25,7 +24,9 @@ import {
   CommandSeparator,
 } from "@/registry/default/ui/command";
 
-export function CommandMenu({ ...props }: DialogProps) {
+type CommandMenuProps = React.ComponentProps<typeof CommandDialog>;
+
+export function CommandMenu({ ...props }: CommandMenuProps) {
   const router = useRouter();
   const [open, setOpen] = React.useState(false);
   const { setTheme } = useTheme();
@@ -59,20 +60,17 @@ export function CommandMenu({ ...props }: DialogProps) {
   return (
     <>
       <Button
-        variant="muted"
         className={cn(
-          "relative h-8 w-full justify-start rounded-[0.5rem] bg-muted/50 text-sm font-normal text-muted-foreground shadow-none sm:pr-12 md:w-40 lg:w-64",
+          "relative h-8 w-full justify-start rounded-lg pl-3 font-normal text-foreground shadow-none hover:bg-muted/50 sm:pr-12 md:w-48 lg:w-56 xl:w-64 dark:bg-card"
         )}
         onClick={() => setOpen(true)}
+        variant="outline"
         {...props}
       >
         <span className="hidden lg:inline-flex">Search documentation...</span>
         <span className="inline-flex lg:hidden">Search...</span>
-        <kbd className="pointer-events-none absolute right-[0.3rem] top-[0.3rem] hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
-          <span className="text-xs">⌘</span>K
-        </kbd>
       </Button>
-      <CommandDialog open={open} onOpenChange={setOpen}>
+      <CommandDialog onOpenChange={setOpen} open={open}>
         <CommandInput placeholder="Type a command or search..." />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
@@ -82,10 +80,10 @@ export function CommandMenu({ ...props }: DialogProps) {
               .map((navItem) => (
                 <CommandItem
                   key={navItem.href}
-                  value={navItem.title}
                   onSelect={() => {
                     runCommand(() => router.push(navItem.href as string));
                   }}
+                  value={navItem.title}
                 >
                   <FilesIcon className="mr-2 size-4" />
                   {navItem.title}
@@ -93,14 +91,14 @@ export function CommandMenu({ ...props }: DialogProps) {
               ))}
           </CommandGroup>
           {docsConfig.sidebarNav.map((group) => (
-            <CommandGroup key={group.title} heading={group.title}>
+            <CommandGroup heading={group.title} key={group.title}>
               {group.items?.map((navItem) => (
                 <CommandItem
                   key={navItem.href}
-                  value={navItem.title}
                   onSelect={() => {
                     runCommand(() => router.push(navItem.href as string));
                   }}
+                  value={navItem.title}
                 >
                   <div className="mr-2 flex size-4 items-center justify-center">
                     <CirclePlaceholderOnIcon className="size-3" />

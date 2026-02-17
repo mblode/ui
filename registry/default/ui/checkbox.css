@@ -1,9 +1,9 @@
-.ft-checkbox[data-state='checked'] .ft-checkbox-polyline {
+.ft-checkbox[data-state="checked"] .ft-checkbox-polyline {
   stroke-dashoffset: 44;
   transition: stroke-dashoffset 250ms linear 0.2s;
 }
 
-.ft-checkbox:not([data-state='checked']) .ft-checkbox-polyline {
+.ft-checkbox:not([data-state="checked"]) .ft-checkbox-polyline {
   stroke-dashoffset: 66;
 }
 
@@ -16,7 +16,7 @@
     transform 250ms ease;
 }
 
-.ft-checkbox[data-state='indeterminate'] .ft-checkbox-line {
+.ft-checkbox[data-state="indeterminate"] .ft-checkbox-line {
   opacity: 1;
   transform: scaleX(1);
   transition:
@@ -24,37 +24,43 @@
     transform 250ms ease 0.1s;
 }
 
-.ft-checkbox[data-state='indeterminate'] .ft-checkbox-polyline {
+.ft-checkbox[data-state="indeterminate"] .ft-checkbox-polyline {
   opacity: 0;
 }
 
 .ft-checkbox::after {
-  content: '';
-  border-radius: 6px;
-  opacity: 0;
-  scale: 0.5;
-  transition: all 200ms linear;
-  transform-origin: center;
   position: absolute;
   inset: 0;
+  content: "";
+  background-color: var(--primary);
+  border-radius: 6px;
+  opacity: 0;
+  transform-origin: center;
+  scale: 0.5;
+  transition: all 200ms linear;
 }
 
-.ft-checkbox[data-state='checked']::after,
-.ft-checkbox[data-state='indeterminate']::after {
+.ft-checkbox[data-state="checked"]::after,
+.ft-checkbox[data-state="indeterminate"]::after {
   opacity: 1;
   scale: 1;
 }
 
+.ft-checkbox[data-state="checked"]::before,
+.ft-checkbox[data-state="indeterminate"]::before {
+  border-color: var(--primary);
+}
+
 .ft-checkbox::before {
-  content: '';
-  border: 1px solid var(--input);
-  border-radius: 6px;
-  transition: all;
-  transform-origin: center;
   position: absolute;
   inset: 0;
+  content: "";
+  border: 1px solid var(--input);
+  border-radius: 6px;
+  transform-origin: center;
+  transition: all;
 }
 
 .ft-checkbox:hover::before {
-  border-color: var(--input-hover);
+  border-color: var(--input-hover, var(--input));
 }

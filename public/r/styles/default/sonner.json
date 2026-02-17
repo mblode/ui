@@ -1,15 +1,12 @@
 {
-  "$schema": "https://ui.fingertip.com/schema/registry-item.json",
+  "$schema": "https://ui.blode.co/schema/registry-item.json",
   "name": "sonner",
-  "author": "fingertip (https://ui.fingertip.com)",
-  "dependencies": [
-    "sonner",
-    "next-themes"
-  ],
+  "author": "fingertip (https://ui.blode.co)",
+  "dependencies": ["sonner", "next-themes"],
   "files": [
     {
       "path": "ui/sonner.tsx",
-      "content": "\"use client\";\n\nimport { Toaster as Sonner } from \"sonner\";\n\ntype ToasterProps = React.ComponentProps<typeof Sonner>;\n\nconst Toaster = ({ ...props }: ToasterProps) => {\n  return (\n    <Sonner\n      theme=\"system\"\n      className=\"toaster group\"\n      toastOptions={{\n        classNames: {\n          toast:\n            \"group toast group-[.toaster]:bg-popover group-[.toaster]:text-foreground group-[.toaster]:border-border group-[.toaster]:shadow-lg\",\n          description: \"group-[.toast]:text-muted-foreground\",\n          actionButton:\n            \"group-[.toast]:bg-muted group-[.toast]:text-primary-foreground\",\n          cancelButton:\n            \"group-[.toast]:bg-muted group-[.toast]:text-muted-foreground\",\n        },\n      }}\n      {...props}\n    />\n  );\n};\n\nexport { Toaster };\n",
+      "content": "\"use client\";\n\nimport {\n  CircleCheckIcon,\n  InfoIcon,\n  Loader2Icon,\n  OctagonXIcon,\n  TriangleAlertIcon,\n} from \"blode-icons-react\";\nimport { useTheme } from \"next-themes\";\nimport { Toaster as Sonner, type ToasterProps } from \"sonner\";\n\nconst Toaster = ({ ...props }: ToasterProps) => {\n  const { theme = \"system\" } = useTheme();\n\n  return (\n    <Sonner\n      className=\"toaster group\"\n      icons={{\n        success: <CircleCheckIcon className=\"size-4\" />,\n        info: <InfoIcon className=\"size-4\" />,\n        warning: <TriangleAlertIcon className=\"size-4\" />,\n        error: <OctagonXIcon className=\"size-4\" />,\n        loading: <Loader2Icon className=\"size-4 animate-spin\" />,\n      }}\n      style={\n        {\n          \"--normal-bg\": \"var(--popover)\",\n          \"--normal-text\": \"var(--popover-foreground)\",\n          \"--normal-border\": \"var(--border)\",\n          \"--border-radius\": \"var(--radius)\",\n        } as React.CSSProperties\n      }\n      theme={theme as ToasterProps[\"theme\"]}\n      {...props}\n    />\n  );\n};\n\nexport { Toaster };\n",
       "type": "registry:ui",
       "target": ""
     }

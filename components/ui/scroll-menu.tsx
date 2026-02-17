@@ -1,8 +1,8 @@
 "use client";
 
-import * as React from "react";
+import { ChevronLeftIcon, ChevronRightIcon } from "blode-icons-react";
+import React from "react";
 import { cn } from "@/lib/utils";
-import { ChevronLeftIcon, ChevronRightIcon } from "@fingertip/icons";
 
 const Button = React.forwardRef<
   HTMLButtonElement,
@@ -22,11 +22,11 @@ const Button = React.forwardRef<
       className={cn(
         "inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
         {
-          "bg-background text-foreground shadow-sm border border-input hover:bg-accent hover:text-accent-foreground":
+          "border border-input bg-background text-foreground shadow-sm hover:bg-accent hover:text-accent-foreground":
             variant === "outline",
           "h-8 w-8 p-0": size === "icon",
         },
-        className,
+        className
       )}
       ref={ref}
       {...props}
@@ -53,26 +53,29 @@ export const ScrollMenu = React.forwardRef<HTMLDivElement, ScrollMenuProps>(
       showScrollButtons = true,
       ...props
     },
-    ref,
+    ref
   ) => {
     const scrollContainerRef = React.useRef<HTMLDivElement>(null);
     const [showLeftScroll, setShowLeftScroll] = React.useState(false);
     const [showRightScroll, setShowRightScroll] = React.useState(false);
 
-    const handleScroll = () => {
-      if (!scrollContainerRef.current) return;
+    const handleScroll = React.useCallback(() => {
+      if (!scrollContainerRef.current) {
+        return;
+      }
 
       const container = scrollContainerRef.current;
       setShowLeftScroll(container.scrollLeft > 0);
       setShowRightScroll(
-        container.scrollLeft <
-          container.scrollWidth - container.clientWidth - 5,
+        container.scrollLeft < container.scrollWidth - container.clientWidth - 5
       );
-    };
+    }, []);
 
     React.useEffect(() => {
       const container = scrollContainerRef.current;
-      if (!container) return;
+      if (!container) {
+        return;
+      }
 
       handleScroll();
       const observer = new ResizeObserver(() => {
@@ -84,10 +87,12 @@ export const ScrollMenu = React.forwardRef<HTMLDivElement, ScrollMenuProps>(
       return () => {
         observer.disconnect();
       };
-    }, []);
+    }, [handleScroll]);
 
     const scrollLeft = () => {
-      if (!scrollContainerRef.current) return;
+      if (!scrollContainerRef.current) {
+        return;
+      }
       scrollContainerRef.current.scrollBy({
         left: -scrollAmount,
         behavior: "smooth",
@@ -95,7 +100,9 @@ export const ScrollMenu = React.forwardRef<HTMLDivElement, ScrollMenuProps>(
     };
 
     const scrollRight = () => {
-      if (!scrollContainerRef.current) return;
+      if (!scrollContainerRef.current) {
+        return;
+      }
       scrollContainerRef.current.scrollBy({
         left: scrollAmount,
         behavior: "smooth",
@@ -106,36 +113,36 @@ export const ScrollMenu = React.forwardRef<HTMLDivElement, ScrollMenuProps>(
       <div className={cn("relative", className)} ref={ref} {...props}>
         {showScrollButtons && showLeftScroll && (
           <Button
-            variant="secondary"
-            size="icon"
-            className="absolute left-0 top-1/2 z-10 h-8 w-8 -translate-y-1/2 rounded-full bg-background shadow-sm"
-            onClick={scrollLeft}
             aria-label={leftButtonLabel}
+            className="absolute top-1/2 left-0 z-10 h-8 w-8 -translate-y-1/2 rounded-full bg-background shadow-sm"
+            onClick={scrollLeft}
+            size="icon"
+            variant="secondary"
           >
             <ChevronLeftIcon className="h-4 w-4" />
           </Button>
         )}
         <div
-          ref={scrollContainerRef}
-          className="flex w-full overflow-x-auto scrollbar-hide"
+          className="scrollbar-hide flex w-full overflow-x-auto"
           onScroll={handleScroll}
+          ref={scrollContainerRef}
         >
           {children}
         </div>
         {showScrollButtons && showRightScroll && (
           <Button
-            variant="secondary"
-            size="icon"
-            className="absolute right-0 top-1/2 z-10 h-8 w-8 -translate-y-1/2 rounded-full bg-background shadow-sm"
-            onClick={scrollRight}
             aria-label={rightButtonLabel}
+            className="absolute top-1/2 right-0 z-10 h-8 w-8 -translate-y-1/2 rounded-full bg-background shadow-sm"
+            onClick={scrollRight}
+            size="icon"
+            variant="secondary"
           >
             <ChevronRightIcon className="h-4 w-4" />
           </Button>
         )}
       </div>
     );
-  },
+  }
 );
 
 ScrollMenu.displayName = "ScrollMenu";

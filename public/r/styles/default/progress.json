@@ -1,14 +1,12 @@
 {
-  "$schema": "https://ui.fingertip.com/schema/registry-item.json",
+  "$schema": "https://ui.blode.co/schema/registry-item.json",
   "name": "progress",
-  "author": "fingertip (https://ui.fingertip.com)",
-  "dependencies": [
-    "@radix-ui/react-progress"
-  ],
+  "author": "fingertip (https://ui.blode.co)",
+  "dependencies": ["@base-ui/react"],
   "files": [
     {
       "path": "ui/progress.tsx",
-      "content": "\"use client\";\n\nimport * as ProgressPrimitive from \"@radix-ui/react-progress\";\nimport * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nconst Progress = React.forwardRef<\n  React.ElementRef<typeof ProgressPrimitive.Root>,\n  React.ComponentPropsWithoutRef<typeof ProgressPrimitive.Root> & {\n    showLabel?: boolean;\n  }\n>(({ className, value, showLabel, ...props }, ref) => (\n  <ProgressPrimitive.Root\n    ref={ref}\n    className={cn(\n      \"relative h-4 w-full overflow-hidden rounded-full bg-muted\",\n      className,\n    )}\n    {...props}\n  >\n    <ProgressPrimitive.Indicator\n      className=\"size-full flex-1 bg-primary transition-all\"\n      style={{ transform: `translateX(-${100 - (value || 0)}%)` }}\n    />\n\n    {showLabel && (\n      <>\n        <span className=\"absolute left-1/2 top-1/2 w-full -translate-x-1/2 -translate-y-1/2 text-center text-[10px] font-bold text-white\">\n          {value}%\n        </span>\n\n        <span\n          className=\"absolute left-1/2 top-1/2 w-full -translate-x-1/2 -translate-y-1/2 text-center text-[10px] font-bold text-primary\"\n          style={{\n            clipPath: `polygon(${value}% 0, 100% 0, 100% 100%, ${value}% 100%)`,\n          }}\n        >\n          {value}%\n        </span>\n      </>\n    )}\n  </ProgressPrimitive.Root>\n));\nProgress.displayName = ProgressPrimitive.Root.displayName;\n\nexport { Progress };\n",
+      "content": "\"use client\";\n\nimport { Progress as ProgressPrimitive } from \"@base-ui/react/progress\";\nimport type * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction Progress({\n  className,\n  value,\n  ...props\n}: React.ComponentProps<typeof ProgressPrimitive.Root>) {\n  return (\n    <ProgressPrimitive.Root\n      className={cn(\n        \"relative h-2 w-full overflow-hidden rounded-full bg-primary/20\",\n        className\n      )}\n      data-slot=\"progress\"\n      value={value}\n      {...props}\n    >\n      <ProgressPrimitive.Track className=\"h-full w-full\">\n        <ProgressPrimitive.Indicator\n          className=\"h-full w-full flex-1 bg-primary transition-all\"\n          data-slot=\"progress-indicator\"\n        />\n      </ProgressPrimitive.Track>\n    </ProgressPrimitive.Root>\n  );\n}\n\nexport { Progress };\n",
       "type": "registry:ui",
       "target": ""
     }

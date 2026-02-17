@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { CircularProgress } from "@/registry/default/ui/circular-progress";
+import { useEffect, useState } from "react";
+
 import { Button } from "@/registry/default/ui/button";
+import { CircularProgress } from "@/registry/default/ui/circular-progress";
 import { Slider } from "@/registry/default/ui/slider";
 
 export default function CircularProgressDemo() {
@@ -10,15 +11,18 @@ export default function CircularProgressDemo() {
   const [autoProgress, setAutoProgress] = useState(false);
 
   useEffect(() => {
-    if (!autoProgress) return;
+    if (!autoProgress) {
+      return;
+    }
 
     const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
+      setProgress((previous) => {
+        if (previous >= 100) {
           setAutoProgress(false);
           return 0;
         }
-        return prev + 5;
+
+        return previous + 5;
       });
     }, 500);
 
@@ -27,36 +31,38 @@ export default function CircularProgressDemo() {
 
   return (
     <div className="flex flex-col items-center space-y-8">
-      <div className="flex gap-8 items-center justify-center">
+      <div className="flex items-center justify-center gap-8">
         <div className="flex flex-col items-center">
-          <div className="w-24 h-24">
+          <div className="h-24 w-24">
             <CircularProgress value={progress} />
           </div>
-          <span className="text-sm text-muted-foreground mt-2">With Text</span>
+          <span className="mt-2 text-muted-foreground text-sm">With Text</span>
         </div>
 
         <div className="flex flex-col items-center">
-          <div className="w-24 h-24">
-            <CircularProgress value={progress} hideText />
+          <div className="h-24 w-24">
+            <CircularProgress hideText value={progress} />
           </div>
-          <span className="text-sm text-muted-foreground mt-2">
+          <span className="mt-2 text-muted-foreground text-sm">
             Without Text
           </span>
         </div>
       </div>
 
-      <div className="w-full max-w-md flex flex-col gap-4">
+      <div className="flex w-full max-w-md flex-col gap-4">
         <Slider
-          value={[progress]}
-          min={0}
           max={100}
+          min={0}
+          onValueChange={(value) => {
+            setProgress(value[0] ?? 0);
+          }}
           step={1}
-          onValueChange={(value) => setProgress(value[0])}
+          value={[progress]}
         />
 
-        <div className="flex gap-4 justify-center">
+        <div className="flex justify-center gap-4">
           <Button
-            onClick={() => setAutoProgress(!autoProgress)}
+            onClick={() => setAutoProgress((previous) => !previous)}
             variant="secondary"
           >
             {autoProgress ? "Stop Animation" : "Animate Progress"}

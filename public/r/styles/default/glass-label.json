@@ -1,10 +1,8 @@
 {
-  "$schema": "https://ui.fingertip.com/schema/registry-item.json",
+  "$schema": "https://ui.blode.co/schema/registry-item.json",
   "name": "glass-label",
-  "author": "fingertip (https://ui.fingertip.com)",
-  "dependencies": [
-    "class-variance-authority"
-  ],
+  "author": "fingertip (https://ui.blode.co)",
+  "dependencies": ["class-variance-authority"],
   "files": [
     {
       "path": "ui/glass-label.tsx",

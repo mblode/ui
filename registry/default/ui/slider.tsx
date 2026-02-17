@@ -1,40 +1,85 @@
 "use client";
 
-import * as SliderPrimitive from "@radix-ui/react-slider";
-import * as React from "react";
+import { Slider as SliderPrimitive } from "@base-ui/react/slider";
+import type * as React from "react";
+import { useMemo } from "react";
 
 import { cn } from "@/lib/utils";
 
-const Slider = React.forwardRef<
-  React.ElementRef<typeof SliderPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root> & {
-    showValue?: boolean;
-    showOrigin?: boolean;
-  }
->(({ className, showOrigin, showValue, ...props }, ref) => (
-  <SliderPrimitive.Root
-    ref={ref}
-    className={cn(
-      "relative flex w-full h-[52px] touch-none select-none items-center cursor-grab",
-      className,
-    )}
-    {...props}
-  >
-    <SliderPrimitive.Track className="relative h-[12px] w-full grow overflow-hidden rounded-full bg-muted">
-      <SliderPrimitive.Range className="absolute h-full bg-primary" />
-      {showOrigin && (
-        <div className="pointer-events-none absolute left-1/2 top-1/2 h-[12px] w-[2px] -translate-x-1/2 -translate-y-1/2 bg-foreground/30" />
+type SliderProps = Omit<
+  React.ComponentProps<typeof SliderPrimitive.Root>,
+  "defaultValue" | "onValueChange" | "value"
+> & {
+  value?: number[];
+  defaultValue?: number[];
+  onValueChange?: (value: number[]) => void;
+  showValue?: boolean;
+  showOrigin?: boolean;
+};
+
+function Slider({
+  className,
+  defaultValue,
+  onValueChange,
+  value,
+  min = 0,
+  max = 100,
+  showOrigin,
+  showValue,
+  ...props
+}: SliderProps) {
+  const values = useMemo(
+    () =>
+      Array.isArray(value)
+        ? value
+        : Array.isArray(defaultValue)
+          ? defaultValue
+          : [min, max],
+    [value, defaultValue, min, max]
+  );
+
+  return (
+    <SliderPrimitive.Root
+      className={cn(
+        "data-[orientation=vertical]:h-full data-[orientation=horizontal]:w-full",
+        className
       )}
-    </SliderPrimitive.Track>
-    <SliderPrimitive.Thumb className="block size-[28px] rounded-full border-[0.5px] border-border hover:border-input-hover focus:border-ring bg-white shadow-lg ring-offset-background transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50">
-      {showValue && (
-        <div className="absolute left-1/2 top-[36px] h-[32px] w-fit -translate-x-1/2 text-center text-xs text-foreground">
-          {props.value}
-        </div>
-      )}
-    </SliderPrimitive.Thumb>
-  </SliderPrimitive.Root>
-));
-Slider.displayName = SliderPrimitive.Root.displayName;
+      data-slot="slider"
+      defaultValue={defaultValue}
+      max={max}
+      min={min}
+      onValueChange={(nextValue) =>
+        onValueChange?.(Array.isArray(nextValue) ? [...nextValue] : [nextValue])
+      }
+      value={value}
+      {...props}
+    >
+      <SliderPrimitive.Control className="relative flex h-[52px] w-full cursor-grab touch-none select-none items-center data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col data-[disabled]:opacity-50">
+        <SliderPrimitive.Track className="relative h-[12px] w-full grow overflow-hidden rounded-full bg-muted">
+          <SliderPrimitive.Indicator
+            className="absolute h-full bg-primary"
+            data-slot="slider-range"
+          />
+          {showOrigin && (
+            <div className="pointer-events-none absolute top-1/2 left-1/2 h-[12px] w-[2px] -translate-x-1/2 -translate-y-1/2 bg-foreground/30" />
+          )}
+        </SliderPrimitive.Track>
+        {Array.from({ length: values.length }, (_, index) => (
+          <SliderPrimitive.Thumb
+            className="block size-[28px] rounded-full border-[0.5px] border-border bg-white shadow-lg ring-offset-background transition-colors hover:border-input-hover focus:border-ring focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+            data-slot="slider-thumb"
+            key={index}
+          >
+            {showValue && (
+              <div className="absolute top-[36px] left-1/2 h-[32px] w-fit -translate-x-1/2 text-center text-foreground text-xs">
+                {values[index]}
+              </div>
+            )}
+          </SliderPrimitive.Thumb>
+        ))}
+      </SliderPrimitive.Control>
+    </SliderPrimitive.Root>
+  );
+}
 
 export { Slider };

@@ -1,22 +1,21 @@
-import { env } from "@/env.mjs";
-
+import { allPages } from "content-collections";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { Mdx } from "@/components/mdx-components";
 import { siteConfig } from "@/config/site";
+import { env } from "@/env.mjs";
 import { absoluteUrl } from "@/lib/utils";
 
-import { allPages } from "content-collections";
-import { Metadata } from "next";
-import { notFound } from "next/navigation";
-
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string[];
-  };
+  }>;
 }
 
 async function getPageFromParams(params: PageProps["params"]) {
-  const slug = params?.slug?.join("/");
-  const page = allPages.find((page) => page.slugAsParams === slug);
+  const { slug } = await params;
+  const slugStr = slug?.join("/");
+  const page = allPages.find((page) => page.slugAsParams === slugStr);
 
   if (!page) {
     return null;
@@ -66,7 +65,9 @@ export async function generateMetadata({
   };
 }
 
-export async function generateStaticParams(): Promise<PageProps["params"][]> {
+export async function generateStaticParams(): Promise<
+  Awaited<PageProps["params"]>[]
+> {
   return allPages.map((page) => ({
     slug: page.slugAsParams.split("/"),
   }));
@@ -82,11 +83,11 @@ export default async function PagePage({ params }: PageProps) {
   return (
     <article className="container max-w-3xl py-6 lg:py-12">
       <div className="space-y-4">
-        <h1 className="font-heading inline-block text-4xl lg:text-5xl">
+        <h1 className="inline-block font-heading text-4xl lg:text-5xl">
           {page.title}
         </h1>
         {page.description && (
-          <p className="text-xl text-muted-foreground">{page.description}</p>
+          <p className="text-muted-foreground text-xl">{page.description}</p>
         )}
       </div>
       <hr className="my-4" />

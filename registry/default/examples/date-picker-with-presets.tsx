@@ -1,8 +1,8 @@
 "use client";
 
-import * as React from "react";
+import { CalendarIcon } from "blode-icons-react";
 import { addDays, format } from "date-fns";
-import { Calendar1Icon } from "@fingertip/icons";
+import { useState } from "react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/default/ui/button";
@@ -21,26 +21,29 @@ import {
 } from "@/registry/default/ui/select";
 
 export default function DatePickerWithPresets() {
-  const [date, setDate] = React.useState<Date>();
+  const [date, setDate] = useState<Date>();
 
   return (
     <Popover>
       <PopoverTrigger asChild>
         <Button
-          variant={"secondary"}
           className={cn(
-            "w-[280px] justify-start text-left font-normal",
-            !date && "text-muted-foreground",
+            "w-[240px] justify-start text-left font-normal",
+            !date && "text-muted-foreground"
           )}
+          variant={"outline"}
         >
-          <Calendar1Icon />
+          <CalendarIcon />
           {date ? format(date, "PPP") : <span>Pick a date</span>}
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="flex w-auto flex-col space-y-2 p-2">
+      <PopoverContent
+        align="start"
+        className="flex w-auto flex-col space-y-2 p-2"
+      >
         <Select
           onValueChange={(value) =>
-            setDate(addDays(new Date(), parseInt(value)))
+            setDate(addDays(new Date(), Number.parseInt(value, 10)))
           }
         >
           <SelectTrigger>
@@ -54,7 +57,7 @@ export default function DatePickerWithPresets() {
           </SelectContent>
         </Select>
         <div className="rounded-md border">
-          <Calendar mode="single" selected={date} onSelect={setDate} />
+          <Calendar mode="single" onSelect={setDate} selected={date} />
         </div>
       </PopoverContent>
     </Popover>

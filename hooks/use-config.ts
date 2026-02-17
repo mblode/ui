@@ -1,12 +1,12 @@
-import { Style } from "@/registry/registry-styles";
 import { useAtom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
+import type { Style } from "@/registry/registry-styles";
 
-type Config = {
-  style: Style["name"];
-  packageManager: "npm" | "yarn" | "pnpm" | "bun";
+interface Config {
   installationType: "cli" | "manual";
-};
+  packageManager: "npm" | "yarn" | "pnpm" | "bun";
+  style: Style["name"];
+}
 
 const configAtom = atomWithStorage<Config>("config", {
   style: "default",

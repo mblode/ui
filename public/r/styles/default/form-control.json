@@ -1,11 +1,8 @@
 {
-  "$schema": "https://ui.fingertip.com/schema/registry-item.json",
+  "$schema": "https://ui.blode.co/schema/registry-item.json",
   "name": "form-control",
-  "author": "fingertip (https://ui.fingertip.com)",
-  "dependencies": [
-    "label",
-    "validation"
-  ],
+  "author": "fingertip (https://ui.blode.co)",
+  "dependencies": ["label", "validation"],
   "files": [
     {
       "path": "ui/form-control.tsx",

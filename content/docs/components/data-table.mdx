@@ -42,7 +42,7 @@ This guide will show you how to use [TanStack Table](https://tanstack.com/table)
 1. Add the `<Table />` component to your project:
 
 ```bash
-npx shadcn@latest add "https://ui.fingertip.com/r/styles/default/table"
+npx shadcn@latest add "https://ui.blode.co/r/styles/default/table"
 ```
 
 2. Add `tanstack/react-table` dependency:
@@ -321,7 +321,7 @@ Update our columns definition to add a new `actions` column. The `actions` cell 
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { MoreHorizontalIcon } from "@fingertip/icons";
+import { MoreHorizontalIcon } from "blode-icons-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -468,7 +468,7 @@ Let's make the email column sortable.
 ```tsx showLineNumbers title="app/payments/data-table.tsx" showLineNumbers {3,6,10,18,25-28}
 "use client"
 
-import * as React from "react"
+import React from "react";
 import {
   ColumnDef,
   SortingState,
@@ -515,7 +515,7 @@ We can now update the `email` header cell to add sorting controls.
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { ArrowUpDownIcon } from "@fingertip/icons";
+import { ArrowUpDownIcon } from "blode-icons-react";
 
 export const columns: ColumnDef<Payment>[] = [
   {
@@ -550,7 +550,7 @@ Let's add a search input to filter emails in our table.
 ```tsx showLineNumbers title="app/payments/data-table.tsx" {6,10,17,24-26,35-36,39,45-54}
 "use client"
 
-import * as React from "react"
+import React from "react";
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -625,7 +625,7 @@ Adding column visibility is fairly simple using `@tanstack/react-table` visibili
 ```tsx showLineNumbers title="app/payments/data-table.tsx" {8,18-23,33-34,45,49,64-91}
 "use client"
 
-import * as React from "react"
+import React from "react";
 import {
   ColumnDef,
   ColumnFiltersState,

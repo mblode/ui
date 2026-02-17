@@ -1,11 +1,11 @@
 {
-  "$schema": "https://ui.fingertip.com/schema/registry-item.json",
+  "$schema": "https://ui.blode.co/schema/registry-item.json",
   "name": "spinner",
-  "author": "fingertip (https://ui.fingertip.com)",
+  "author": "fingertip (https://ui.blode.co)",
   "files": [
     {
       "path": "ui/spinner.tsx",
-      "content": "\"use client\";\n\ntype Props = {\n  size?: number;\n  strokeWidth?: number;\n};\n\nexport const Spinner = ({ size = 48, strokeWidth = 2 }: Props) => {\n  return (\n    <div className=\"flex items-center justify-center\">\n      <svg\n        xmlns=\"http://www.w3.org/2000/svg\"\n        width={size}\n        height={size}\n        stroke=\"currentColor\"\n        viewBox=\"0 0 40 40\"\n      >\n        <g\n          fill=\"none\"\n          fillRule=\"evenodd\"\n          strokeWidth={strokeWidth}\n          transform=\"translate(2 2)\"\n        >\n          <circle cx={18} cy={18} r={18} strokeOpacity={0.3} />\n          <path d=\"M36 18c0-9.94-8.06-18-18-18\">\n            <animateTransform\n              attributeName=\"transform\"\n              dur=\"1s\"\n              from=\"0 18 18\"\n              repeatCount=\"indefinite\"\n              to=\"360 18 18\"\n              type=\"rotate\"\n            />\n          </path>\n        </g>\n      </svg>\n    </div>\n  );\n};\n",
+      "content": "interface Props {\n  size?: number;\n  strokeWidth?: number;\n}\n\nexport const Spinner = ({ size = 16, strokeWidth = 2 }: Props) => {\n  return (\n    <div className=\"flex items-center justify-center\">\n      <svg\n        height={size}\n        stroke=\"currentColor\"\n        viewBox=\"0 0 40 40\"\n        width={size}\n        xmlns=\"http://www.w3.org/2000/svg\"\n      >\n        <title>Loading</title>\n        <g\n          fill=\"none\"\n          fillRule=\"evenodd\"\n          strokeWidth={strokeWidth}\n          transform=\"translate(2 2)\"\n        >\n          <circle cx={18} cy={18} r={18} strokeOpacity={0.3} />\n          <path d=\"M36 18c0-9.94-8.06-18-18-18\">\n            <animateTransform\n              attributeName=\"transform\"\n              dur=\"1s\"\n              from=\"0 18 18\"\n              repeatCount=\"indefinite\"\n              to=\"360 18 18\"\n              type=\"rotate\"\n            />\n          </path>\n        </g>\n      </svg>\n    </div>\n  );\n};\n",
       "type": "registry:ui",
       "target": ""
     }

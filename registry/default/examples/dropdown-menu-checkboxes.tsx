@@ -1,7 +1,7 @@
 "use client";
 
-import * as React from "react";
-import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu";
+import type * as React from "react";
+import { useState } from "react";
 
 import { Button } from "@/registry/default/ui/button";
 import {
@@ -13,17 +13,17 @@ import {
   DropdownMenuTrigger,
 } from "@/registry/default/ui/dropdown-menu";
 
-type Checked = DropdownMenuCheckboxItemProps["checked"];
+type Checked = React.ComponentProps<typeof DropdownMenuCheckboxItem>["checked"];
 
 export default function DropdownMenuCheckboxes() {
-  const [showStatusBar, setShowStatusBar] = React.useState<Checked>(true);
-  const [showActivityBar, setShowActivityBar] = React.useState<Checked>(false);
-  const [showPanel, setShowPanel] = React.useState<Checked>(false);
+  const [showStatusBar, setShowStatusBar] = useState<Checked>(true);
+  const [showActivityBar, setShowActivityBar] = useState<Checked>(false);
+  const [showPanel, setShowPanel] = useState<Checked>(false);
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="secondary">Open</Button>
+        <Button variant="outline">Open</Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
         <DropdownMenuLabel>Appearance</DropdownMenuLabel>
@@ -36,8 +36,8 @@ export default function DropdownMenuCheckboxes() {
         </DropdownMenuCheckboxItem>
         <DropdownMenuCheckboxItem
           checked={showActivityBar}
-          onCheckedChange={setShowActivityBar}
           disabled
+          onCheckedChange={setShowActivityBar}
         >
           Activity Bar
         </DropdownMenuCheckboxItem>

@@ -1,4 +1,4 @@
-import { LogoStandaloneIcon } from "@fingertip/icons";
+import { LogoStandaloneIcon } from "blode-icons-react";
 import { ImageResponse } from "next/og";
 
 async function loadAssets(): Promise<
@@ -44,59 +44,57 @@ export async function GET(request: Request) {
   const [fonts] = await Promise.all([loadAssets()]);
 
   return new ImageResponse(
-    (
-      <div
-        tw="flex h-full w-full bg-white text-black"
-        style={{ fontFamily: "Geist Sans" }}
-      >
-        <div tw="flex border absolute border-neutral-200 border-dashed inset-y-0 left-16 w-[1px]" />
-        <div tw="flex border absolute border-neutral-200 border-dashed inset-y-0 right-16 w-[1px]" />
-        <div tw="flex border absolute border-neutral-200 inset-x-0 h-[1px] top-16" />
-        <div tw="flex border absolute border-neutral-200 inset-x-0 h-[1px] bottom-16" />
-        {(title || description) && (
-          <div tw="flex absolute flex-row items-center justify-center bottom-24 right-24 text-white">
-            <LogoStandaloneIcon width={48} height={48} />
-            <div tw="text-black flex text-[32px] font-semibold tracking-tight ml-2">
-              Fingertip UI
+    <div
+      style={{ fontFamily: "Geist Sans" }}
+      tw="flex h-full w-full bg-white text-black"
+    >
+      <div tw="flex border absolute border-neutral-200 border-dashed inset-y-0 left-16 w-[1px]" />
+      <div tw="flex border absolute border-neutral-200 border-dashed inset-y-0 right-16 w-[1px]" />
+      <div tw="flex border absolute border-neutral-200 inset-x-0 h-[1px] top-16" />
+      <div tw="flex border absolute border-neutral-200 inset-x-0 h-[1px] bottom-16" />
+      {(title || description) && (
+        <div tw="flex absolute flex-row items-center justify-center bottom-24 right-24 text-white">
+          <LogoStandaloneIcon height={48} width={48} />
+          <div tw="text-black flex text-[32px] font-semibold tracking-tight ml-2">
+            Blode UI
+          </div>
+        </div>
+      )}
+      <div tw="flex flex-col absolute justify-center items-center inset-0 p-24 w-full h-full">
+        {title || description ? (
+          <div tw="flex flex-col items-center justify-center text-center w-full h-full">
+            <div tw="tracking-tight flex flex-col justify-center text-black text-balance font-semibold text-[80px]">
+              {title}
+            </div>
+            <div tw="text-[40px] text-gray-600 mt-6 text-balance font-normal">
+              {description}
+            </div>
+          </div>
+        ) : (
+          <div tw="flex flex-col items-center justify-center text-center w-full h-full">
+            <div tw="flex flex-row items-center justify-center space-x-4">
+              <LogoStandaloneIcon height={48} width={48} />
+              <div tw="text-black flex text-[32px] font-semibold tracking-tight ml-2">
+                Blode UI
+              </div>
+            </div>
+            <div tw="text-black flex text-[80px] font-semibold tracking-tight">
+              Blode UI
+            </div>
+            <div tw="text-gray-600 text-2xl flex">
+              <p>
+                Built with React, Typescript, shadcn/ui, Tailwind CSS, and
+                Motion.
+              </p>
             </div>
           </div>
         )}
-        <div tw="flex flex-col absolute justify-center items-center inset-0 p-24 w-full h-full">
-          {title || description ? (
-            <div tw="flex flex-col items-center justify-center text-center w-full h-full">
-              <div tw="tracking-tight flex flex-col justify-center text-black text-balance font-semibold text-[80px]">
-                {title}
-              </div>
-              <div tw="text-[40px] text-gray-600 mt-6 text-balance font-normal">
-                {description}
-              </div>
-            </div>
-          ) : (
-            <div tw="flex flex-col items-center justify-center text-center w-full h-full">
-              <div tw="flex flex-row items-center justify-center space-x-4">
-                <LogoStandaloneIcon width={48} height={48} />
-                <div tw="text-black flex text-[32px] font-semibold tracking-tight ml-2">
-                  Fingertip UI
-                </div>
-              </div>
-              <div tw="text-black flex text-[80px] font-semibold tracking-tight">
-                Fingertip UI
-              </div>
-              <div tw="text-gray-600 text-2xl flex">
-                <p>
-                  Built with React, Typescript, shadcn/ui, Tailwind CSS, and
-                  Motion.
-                </p>
-              </div>
-            </div>
-          )}
-        </div>
       </div>
-    ),
+    </div>,
     {
       width: 1200,
       height: 628,
       fonts,
-    },
+    }
   );
 }

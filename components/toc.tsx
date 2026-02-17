@@ -2,122 +2,102 @@
 
 import { useEffect, useMemo, useState } from "react";
 
-import { useMounted } from "@/hooks/use-mounted";
-import type { TableOfContents } from "@/lib/toc";
+import type { TableOfContents as TocData } from "@/lib/toc";
 import { cn } from "@/lib/utils";
 
-interface TocProps {
-  toc: TableOfContents;
+interface FlatItem {
+  depth: number;
+  title: string;
+  url: string;
 }
 
-export function TableOfContents({ toc }: TocProps) {
-  const refinedToc = useMemo(() => {
-    if (!toc.items || toc.items.length === 0) {
-      return toc;
-    }
+function flattenToc(toc: TocData, depth = 2): FlatItem[] {
+  const result: FlatItem[] = [];
 
-    const [linksInSteps, ...rest] = toc.items;
-
-    if (linksInSteps.items && linksInSteps.items.length > 0) {
-      return {
-        items: [...linksInSteps.items, ...rest],
-      };
-    }
-
-    return toc;
-  }, [toc]);
-
-  const itemIds: string[] = useMemo(
-    () =>
-      refinedToc.items
-        ? refinedToc.items
-            .flatMap((item) => [item.url, item?.items?.map((item) => item.url)])
-            .flat()
-            .filter(Boolean)
-            .map((id) => id?.split("#")[1])
-        : [],
-    [refinedToc],
-  ) as string[];
-
-  const activeHeading = useActiveItem(itemIds);
-  const mounted = useMounted();
-
-  if (!toc?.items || !mounted) {
-    return null;
+  if (!toc.items) {
+    return result;
   }
 
-  return (
-    <div className="space-y-2">
-      <p className="font-medium">On This Page</p>
-      <Tree tree={refinedToc} activeItem={activeHeading} />
-    </div>
-  );
+  for (const item of toc.items) {
+    if (item.title && item.url) {
+      result.push({ title: item.title, url: item.url, depth });
+    }
+    if (item.items) {
+      result.push(...flattenToc(item, depth + 1));
+    }
+  }
+
+  return result;
 }
 
-function useActiveItem(itemIds: string[]): string | null {
+function useActiveItem(itemIds: string[]) {
   const [activeId, setActiveId] = useState<string | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
+        for (const entry of entries) {
           if (entry.isIntersecting) {
             setActiveId(entry.target.id);
           }
-        });
+        }
       },
-      { rootMargin: `0% 0% -80% 0%` },
+      { rootMargin: "0% 0% -80% 0%" }
     );
 
-    itemIds?.forEach((id) => {
+    for (const id of itemIds ?? []) {
       const element = document.getElementById(id);
       if (element) {
         observer.observe(element);
       }
-    });
+    }
 
     return () => {
-      itemIds?.forEach((id) => {
+      for (const id of itemIds ?? []) {
         const element = document.getElementById(id);
         if (element) {
           observer.unobserve(element);
         }
-      });
+      }
     };
   }, [itemIds]);
 
   return activeId;
 }
 
-interface TreeProps {
-  tree: TableOfContents;
-  level?: number;
-  activeItem?: string | null;
+interface TocProps {
+  className?: string;
+  toc: TocData;
 }
 
-function Tree({ tree, level = 1, activeItem }: TreeProps) {
-  return tree?.items?.length && level < 3 ? (
-    <ul className={cn("m-0 list-none", { "pl-4": level !== 1 })}>
-      {tree.items.map((item, index) => {
-        return (
-          <li key={index} className={cn("mt-0 pt-2")}>
-            <a
-              href={item.url}
-              className={cn(
-                "inline-block no-underline transition-colors hover:text-foreground",
-                item.url === `#${activeItem}`
-                  ? "font-medium text-foreground"
-                  : "text-muted-foreground",
-              )}
-            >
-              {item.title}
-            </a>
-            {item.items?.length ? (
-              <Tree tree={item} level={level + 1} activeItem={activeItem} />
-            ) : null}
-          </li>
-        );
-      })}
-    </ul>
-  ) : null;
+export function TableOfContents({ toc, className }: TocProps) {
+  const flatItems = useMemo(() => flattenToc(toc), [toc]);
+  const itemIds = useMemo(
+    () => flatItems.map((item) => item.url.replace("#", "")),
+    [flatItems]
+  );
+  const activeHeading = useActiveItem(itemIds);
+
+  if (!flatItems.length) {
+    return null;
+  }
+
+  return (
+    <div className={cn("flex flex-col gap-2 p-4 pt-0 text-sm", className)}>
+      <p className="sticky top-0 h-6 bg-background font-medium text-muted-foreground text-xs">
+        On This Page
+      </p>
+      {flatItems.map((item) => (
+        <a
+          className="text-[0.8rem] text-muted-foreground no-underline transition-colors hover:text-foreground data-[depth=3]:pl-4 data-[depth=4]:pl-6 data-[active=true]:font-medium data-[active=true]:text-foreground"
+          data-active={item.url === `#${activeHeading}`}
+          data-depth={item.depth}
+          href={item.url}
+          key={item.url}
+        >
+          {item.title}
+        </a>
+      ))}
+    </div>
+  );
 }

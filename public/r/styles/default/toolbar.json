@@ -1,11 +1,8 @@
 {
-  "$schema": "https://ui.fingertip.com/schema/registry-item.json",
+  "$schema": "https://ui.blode.co/schema/registry-item.json",
   "name": "toolbar",
-  "author": "fingertip (https://ui.fingertip.com)",
-  "registryDependencies": [
-    "button",
-    "tooltip"
-  ],
+  "author": "fingertip (https://ui.blode.co)",
+  "registryDependencies": ["button", "tooltip"],
   "files": [
     {
       "path": "ui/toolbar.tsx",

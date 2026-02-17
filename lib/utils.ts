@@ -1,7 +1,9 @@
-import { env } from "@/env.mjs";
-import clsx, { ClassValue } from "clsx";
-import { Metadata } from "next";
+import clsx, { type ClassValue } from "clsx";
+import type { Metadata } from "next";
 import { twMerge } from "tailwind-merge";
+import { env } from "@/env.mjs";
+
+const WHITESPACE_REGEX = /\s+/;
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -12,13 +14,15 @@ export function humanize(name: string): string {
     .replace(/-/g, " ")
     .replace(/([A-Z])/g, " $1")
     .trim()
-    .split(/\s+/)
+    .split(WHITESPACE_REGEX)
     .map((word) => word[0].toUpperCase() + word.substring(1).toLowerCase())
     .join(" ");
 }
 
 export const truncate = (str: string | null, length: number) => {
-  if (!str || str.length <= length) return str;
+  if (!str || str.length <= length) {
+    return str;
+  }
   return `${str.slice(0, length - 3)}...`;
 };
 
@@ -38,7 +42,7 @@ export const fetcher = (...args: Parameters<typeof fetch>) =>
  */
 export const capitalize = (str: string, lower = false) =>
   (lower ? str.toLowerCase() : str).replace(/(?:^|\s|["'([{])+\S/g, (match) =>
-    match.toUpperCase(),
+    match.toUpperCase()
   );
 
 export function formatDate(input: string | number): string {
@@ -55,8 +59,8 @@ export function absoluteUrl(path: string) {
 }
 
 export function constructMetadata({
-  title = "Fingertip UI - Modern React + Tailwind CSS components",
-  description = "Fingertip UI is a curated collection of the best landing page components built using React + Tailwind CSS + Motion",
+  title = "Blode UI - Modern React + Tailwind CSS components",
+  description = "Blode UI is a curated collection of the best landing page components built using React + Tailwind CSS + Motion",
   image = absoluteUrl("/og"),
   ...props
 }: {
@@ -96,7 +100,7 @@ export function constructMetadata({
       creator: "@dillionverma",
     },
     icons: "/favicon.ico",
-    metadataBase: new URL("https://ui.fingertip.com"),
+    metadataBase: new URL("https://ui.blode.co"),
     authors: [
       {
         name: "dillionverma",
@@ -111,7 +115,7 @@ export function constructMetadata({
 export const pluralize = (
   count: number | undefined,
   singular: string,
-  plural?: string,
+  plural?: string
 ) => {
   return count === 1 ? singular : plural || `${singular}s`;
 };

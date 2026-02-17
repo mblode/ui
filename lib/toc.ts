@@ -2,40 +2,62 @@ import { toc } from "mdast-util-toc";
 import { remark } from "remark";
 import { visit } from "unist-util-visit";
 
-const textTypes = ["text", "emphasis", "strong", "inlineCode"];
+const textTypes = new Set(["text", "emphasis", "strong", "inlineCode"]);
 
-function flattenNode(node: any) {
-  const p: any[] = [];
-  visit(node, (node) => {
-    if (!textTypes.includes(node.type)) return;
-    p.push(node.value);
-  });
-  return p.join(``);
+interface MdastLikeNode {
+  children?: MdastLikeNode[];
+  map?: MdastLikeNode;
+  type?: string;
+  url?: string;
+  value?: string;
 }
 
 interface Item {
-  title: string;
-  url: string;
   items?: Item[];
+  title?: string;
+  url?: string;
 }
 
 interface Items {
   items?: Item[];
 }
 
-function getItems(node: any, current: any): Items {
+function toNode(value: unknown): MdastLikeNode | null {
+  if (typeof value !== "object" || value === null) {
+    return null;
+  }
+  return value as MdastLikeNode;
+}
+
+function flattenNode(node: MdastLikeNode) {
+  const parts: string[] = [];
+
+  visit(node as never, (currentNode: MdastLikeNode) => {
+    if (!(currentNode.type && textTypes.has(currentNode.type))) {
+      return;
+    }
+
+    if (typeof currentNode.value === "string") {
+      parts.push(currentNode.value);
+    }
+  });
+
+  return parts.join("");
+}
+
+function getItems(node: MdastLikeNode | null, current: Item): Item {
   if (!node) {
     return {};
   }
 
   if (node.type === "paragraph") {
-    visit(node, (item) => {
-      if (item.type === "link") {
-        current.url = item.url;
+    visit(node as never, (childNode: MdastLikeNode) => {
+      if (childNode.type === "link" && typeof childNode.url === "string") {
+        current.url = childNode.url;
         current.title = flattenNode(node);
       }
 
-      if (item.type === "text") {
+      if (childNode.type === "text") {
         current.title = flattenNode(node);
       }
     });
@@ -44,14 +66,18 @@ function getItems(node: any, current: any): Items {
   }
 
   if (node.type === "list") {
-    current.items = node.children.map((i: any) => getItems(i, {}));
-
+    current.items = (node.children ?? []).map((childNode) =>
+      getItems(childNode, {})
+    );
     return current;
-  } else if (node.type === "listItem") {
-    const heading = getItems(node.children[0], {});
+  }
 
-    if (node.children.length > 1) {
-      getItems(node.children[1], heading);
+  if (node.type === "listItem") {
+    const [firstChild, secondChild] = node.children ?? [];
+    const heading = getItems(firstChild ?? null, {});
+
+    if (secondChild) {
+      getItems(secondChild, heading);
     }
 
     return heading;
@@ -60,15 +86,15 @@ function getItems(node: any, current: any): Items {
   return {};
 }
 
-const getToc = () => (node: any, file: any) => {
-  const table = toc(node);
-  file.data = getItems(table.map, {});
+const getToc = () => (node: unknown, file: { data?: unknown }) => {
+  const table = toc(node as never) as { map?: unknown };
+  file.data = getItems(toNode(table.map), {});
 };
 
 export type TableOfContents = Items;
 
 export async function getTableOfContents(
-  content: string,
+  content: string
 ): Promise<TableOfContents> {
   const result = await remark().use(getToc).process(content);
 

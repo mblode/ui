@@ -1,6 +1,6 @@
 "use client";
 
-import * as React from "react";
+import React from "react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/default/ui/button";
@@ -9,48 +9,43 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/registry/default/ui/collapsible";
-
-interface CodeBlockProps extends React.HTMLAttributes<HTMLDivElement> {
-  expandButtonTitle?: string;
-}
+import { Separator } from "@/registry/default/ui/separator";
 
 export function CodeBlockWrapper({
-  expandButtonTitle = "View Code",
   className,
   children,
   ...props
-}: CodeBlockProps) {
+}: React.ComponentProps<typeof Collapsible>) {
   const [isOpened, setIsOpened] = React.useState(false);
 
   return (
-    <Collapsible open={isOpened} onOpenChange={setIsOpened}>
-      <div className={cn("relative overflow-hidden", className)} {...props}>
-        <CollapsibleContent
-          forceMount
-          className={cn("overflow-hidden", !isOpened && "max-h-72")}
-        >
-          <div
-            className={cn(
-              "[&_pre]:my-0 [&_pre]:max-h-[650px] [&_pre]:pb-[100px]",
-              !isOpened ? "[&_pre]:overflow-hidden" : "[&_pre]:overflow-auto]",
-            )}
+    <Collapsible
+      className={cn("group/collapsible relative md:-mx-1", className)}
+      onOpenChange={setIsOpened}
+      open={isOpened}
+      {...props}
+    >
+      <CollapsibleTrigger asChild>
+        <div className="absolute top-1.5 right-9 z-10 flex items-center">
+          <Button
+            className="h-7 rounded-md px-2 text-muted-foreground"
+            size="sm"
+            variant="ghost"
           >
-            {children}
-          </div>
-        </CollapsibleContent>
-        <div
-          className={cn(
-            "absolute flex items-center justify-center bg-gradient-to-b from-background/10 to-background to-90% p-2",
-            isOpened ? "inset-x-0 bottom-0 h-12 from-gray-900/30" : "inset-0 ",
-          )}
-        >
-          <CollapsibleTrigger asChild>
-            <Button variant="secondary" className="mb-8 h-8 text-xs">
-              {isOpened ? "Collapse" : expandButtonTitle}
-            </Button>
-          </CollapsibleTrigger>
+            {isOpened ? "Collapse" : "Expand"}
+          </Button>
+          <Separator className="!h-4 mx-1.5" orientation="vertical" />
         </div>
-      </div>
+      </CollapsibleTrigger>
+      <CollapsibleContent
+        className="[&>figure]:md:!mx-0 relative mt-6 overflow-hidden data-[state=closed]:max-h-64 data-[state=closed]:[content-visibility:auto] [&>figure]:mt-0"
+        forceMount
+      >
+        {children}
+      </CollapsibleContent>
+      <CollapsibleTrigger className="absolute inset-x-0 -bottom-2 flex h-20 items-center justify-center rounded-b-lg bg-gradient-to-b from-code/70 to-code text-muted-foreground text-sm group-data-[state=open]/collapsible:hidden">
+        {isOpened ? "Collapse" : "Expand"}
+      </CollapsibleTrigger>
     </Collapsible>
   );
 }

@@ -1,13 +1,13 @@
 interface GitHubIssueUrlParams {
-  owner: string;
-  repo: string;
-  title?: string;
+  assignees?: string[];
   body?: string;
   labels?: string[];
-  template?: string;
-  projects?: string[];
-  assignees?: string[];
   milestone?: string;
+  owner: string;
+  projects?: string[];
+  repo: string;
+  template?: string;
+  title?: string;
 }
 
 /**
@@ -31,19 +31,21 @@ export function getGitHubIssueUrl(params: GitHubIssueUrlParams): string {
   const baseUrl = `https://github.com/${owner}/${repo}/issues/new`;
   const urlParams = new URLSearchParams();
 
-  Object.entries(issueParams).forEach(([key, value]) => {
+  for (const [key, value] of Object.entries(issueParams)) {
     if (Array.isArray(value)) {
-      value.forEach((item) => urlParams.append(key, item));
+      for (const item of value) {
+        urlParams.append(key, item);
+      }
     } else if (value !== undefined) {
       urlParams.append(key, value.toString());
     }
-  });
+  }
 
   return `${baseUrl}?${urlParams.toString()}`;
 }
 
 export function getGithubFileUrl(slug: string) {
-  return `https://github.com/fingertip-com/ui/blob/main/content${
+  return `https://github.com/mblode/blode-ui/blob/main/content${
     slug === "/docs" ? "/docs/index" : slug
   }.mdx`;
 }

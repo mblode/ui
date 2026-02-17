@@ -1,21 +1,22 @@
 "use client";
 
-import { CircleXFilledIcon } from "@fingertip/icons";
-import * as React from "react";
+import { CircleXFilledIcon } from "blode-icons-react";
+import type * as React from "react";
 import CurrencyInputField, {
-  CurrencyInputProps,
+  type CurrencyInputProps,
 } from "react-currency-input-field";
 
 import { cn } from "@/lib/utils";
 
-export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  hasError?: boolean;
+export interface InputProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
   clearable?: boolean;
-  onClear?: () => void;
   clearClassName?: string;
+  hasError?: boolean;
   leftAddon?: React.ReactNode | null;
-  rightAddon?: React.ReactNode | null;
   leftControl?: React.ReactNode | null;
+  onClear?: () => void;
+  rightAddon?: React.ReactNode | null;
   rightControl?: React.ReactNode | null;
 }
 
@@ -36,6 +37,7 @@ export const CurrencyInput = ({
       className={cn("relative w-full", {
         "input-group": !!leftAddon || !!rightAddon,
       })}
+      htmlFor={props.id}
     >
       {leftAddon && (
         <span className="shrink-0 cursor-pointer">{leftAddon}</span>
@@ -50,27 +52,27 @@ export const CurrencyInput = ({
       <div className="w-full">
         <CurrencyInputField
           className={cn(
-            "input flex h-[52px] w-full rounded-2xl border border-input shadow-input bg-card px-4 py-[14px] font-sans font-normal text-base leading-snug text-foreground placeholder:text-placeholder-foreground focus:outline-hidden focus:border-ring focus:ring-2 focus:ring-ring/15 focus:ring-offset-1 focus:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50",
+            "input flex h-[52px] w-full rounded-2xl border border-input bg-card px-4 py-[14px] font-normal font-sans text-base text-foreground leading-snug shadow-input placeholder:text-placeholder-foreground focus:border-ring focus:outline-hidden focus:ring-2 focus:ring-ring/15 focus:ring-offset-1 focus:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50",
             {
               "border-destructive-foreground": hasError,
               "pr-9": clearable && !!props.value,
             },
-            className,
+            className
           )}
           {...props}
         />
 
         {clearable && !!props.value && (
-          <div className="absolute right-0 top-0 flex flex-row gap-1 pr-3">
+          <div className="absolute top-0 right-0 flex flex-row gap-1 pr-3">
             <button
-              tabIndex={-1}
-              className={cn(
-                "flex h-[52px] items-center cursor-pointer justify-center p-0! text-muted-foreground",
-                clearClassName,
-              )}
-              type="button"
-              onClick={() => onClear?.()}
               aria-label="clear input"
+              className={cn(
+                "flex h-[52px] cursor-pointer items-center justify-center p-0! text-muted-foreground",
+                clearClassName
+              )}
+              onClick={() => onClear?.()}
+              tabIndex={-1}
+              type="button"
             >
               <CircleXFilledIcon className="size-5 text-muted-foreground/50" />
             </button>
@@ -79,7 +81,7 @@ export const CurrencyInput = ({
       </div>
 
       {rightControl && (
-        <div className="absolute right-3 top-0 flex h-full flex-row place-items-center items-center justify-center">
+        <div className="absolute top-0 right-3 flex h-full flex-row place-items-center items-center justify-center">
           {rightControl}
         </div>
       )}

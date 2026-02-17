@@ -1,11 +1,11 @@
 import {
   CalculatorIcon,
-  Calendar1Icon,
-  CreditCard1Icon,
-  SettingsGear2Icon,
+  Calendar,
+  CreditCard,
   EmojiSmileIcon,
-  PeopleIcon,
-} from "@fingertip/icons";
+  Settings,
+  User,
+} from "blode-icons-react";
 
 import {
   Command,
@@ -26,32 +26,32 @@ export default function CommandDemo() {
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup heading="Suggestions">
           <CommandItem>
-            <Calendar1Icon className="size-4 mr-2" />
+            <Calendar />
             <span>Calendar</span>
           </CommandItem>
           <CommandItem>
-            <EmojiSmileIcon className="size-4 mr-2" />
+            <EmojiSmileIcon />
             <span>Search Emoji</span>
           </CommandItem>
           <CommandItem disabled>
-            <CalculatorIcon className="size-4 mr-2" />
-            <span>Calculator</span>
+            <CalculatorIcon />
+            <span>CalculatorIcon</span>
           </CommandItem>
         </CommandGroup>
         <CommandSeparator />
         <CommandGroup heading="Settings">
           <CommandItem>
-            <PeopleIcon className="size-4 mr-2" />
+            <User />
             <span>Profile</span>
             <CommandShortcut>⌘P</CommandShortcut>
           </CommandItem>
           <CommandItem>
-            <CreditCard1Icon className="size-4 mr-2" />
+            <CreditCard />
             <span>Billing</span>
             <CommandShortcut>⌘B</CommandShortcut>
           </CommandItem>
           <CommandItem>
-            <SettingsGear2Icon className="size-4 mr-2" />
+            <Settings />
             <span>Settings</span>
             <CommandShortcut>⌘S</CommandShortcut>
           </CommandItem>

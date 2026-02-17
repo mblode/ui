@@ -1,5 +1,3 @@
-import { ClipboardIcon } from "@fingertip/icons";
-
 import { Button } from "@/registry/default/ui/button";
 import {
   Dialog,
@@ -18,7 +16,7 @@ export default function DialogCloseButton() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="secondary">Share</Button>
+        <Button variant="outline">Share</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
@@ -27,21 +25,17 @@ export default function DialogCloseButton() {
             Anyone who has this link will be able to view this.
           </DialogDescription>
         </DialogHeader>
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center gap-2">
           <div className="grid flex-1 gap-2">
-            <Label htmlFor="link" className="sr-only">
+            <Label className="sr-only" htmlFor="link">
               Link
             </Label>
             <Input
-              id="link"
               defaultValue="https://ui.shadcn.com/docs/installation"
+              id="link"
               readOnly
             />
           </div>
-          <Button type="submit" size="sm" className="px-3">
-            <span className="sr-only">Copy</span>
-            <ClipboardIcon />
-          </Button>
         </div>
         <DialogFooter className="sm:justify-start">
           <DialogClose asChild>

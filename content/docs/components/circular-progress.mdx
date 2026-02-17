@@ -17,7 +17,7 @@ component: true
 <TabsContent value="cli">
 
 ```bash
-npx shadcn@latest add "https://ui.fingertip.com/r/styles/default/circular-progress"
+npx shadcn@latest add "https://ui.blode.co/r/styles/default/circular-progress"
 ```
 
 </TabsContent>
@@ -59,7 +59,7 @@ import { CircularProgress } from "@/components/ui/circular-progress";
 You can hide the percentage text by using the `hideText` prop:
 
 ```tsx
-<CircularProgress value={75} hideText />
+<CircularProgress hideText value={75} />
 ```
 
 ### Custom Stroke Width
@@ -67,7 +67,7 @@ You can hide the percentage text by using the `hideText` prop:
 You can customize the thickness of the progress ring:
 
 ```tsx
-<CircularProgress value={75} strokeWidth={8} />
+<CircularProgress strokeWidth={8} value={75} />
 ```
 
 ### Dynamic Progress
@@ -79,13 +79,13 @@ const [progress, setProgress] = useState(0);
 
 useEffect(() => {
   const timer = setInterval(() => {
-    setProgress((prevProgress) => {
-      const newProgress = prevProgress + 5;
-      if (newProgress >= 100) {
+    setProgress((previousProgress) => {
+      const nextProgress = previousProgress + 5;
+      if (nextProgress >= 100) {
         clearInterval(timer);
         return 100;
       }
-      return newProgress;
+      return nextProgress;
     });
   }, 500);
 

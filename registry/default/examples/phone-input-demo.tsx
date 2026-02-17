@@ -1,23 +1,26 @@
-import React from "react";
+"use client";
+
+import { useState } from "react";
+
 import { PhoneInput } from "@/registry/default/ui/phone-input";
 
 export default function PhoneInputDemo() {
-  const [value, setValue] = React.useState("");
+  const [value, setValue] = useState("");
 
   return (
     <div className="w-full max-w-sm space-y-4">
       <PhoneInput
-        value={value}
+        className="w-full"
+        defaultCountry="US"
         onChange={setValue}
         placeholder="Enter phone number"
-        defaultCountry="US"
-        className="w-full"
+        value={value}
       />
-      <div className="text-sm text-muted-foreground">
+      <p className="text-muted-foreground text-sm">
         {value
           ? `Phone number: ${value}`
-          : "Enter a phone number to see it here"}
-      </div>
+          : "Enter a phone number to see the E.164 value."}
+      </p>
     </div>
   );
 }

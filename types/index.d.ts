@@ -1,12 +1,12 @@
 export interface NavItem {
-  title: string;
-  href?: string;
   disabled?: boolean;
+  event?: string;
   external?: boolean;
+  href?: string;
   icon?: keyof typeof Icons;
   label?: string;
   paid?: boolean;
-  event?: string;
+  title: string;
 }
 
 export interface NavItemWithChildren extends NavItem {
@@ -17,7 +17,7 @@ export interface MainNavItem extends NavItem {}
 
 export interface SidebarNavItem extends NavItemWithChildren {}
 
-export type DashboardConfig = {
+export interface DashboardConfig {
   mainNav: MainNavItem[];
   sidebarNav: SidebarNavItem[];
-};
+}
