@@ -45,8 +45,8 @@ export default function Hero() {
                 </h1>
               </div>
 
-              <div className="mx-0 flex w-full max-w-full flex-col gap-4 py-1 sm:max-w-lg sm:flex-row md:mx-auto">
-                <div className="flex w-full flex-col gap-2 sm:flex-row sm:gap-4">
+              <div className="mx-0 w-full max-w-full py-1 sm:max-w-lg md:mx-auto">
+                <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-4">
                   <Link
                     className={cn(
                       buttonVariants({
@@ -75,11 +75,7 @@ export default function Hero() {
                   </Link>
                 </div>
               </div>
-              <div className="mx-0 w-full max-w-full sm:max-w-lg md:mx-auto">
-                <p className="rounded-md border border-border/70 bg-muted/20 px-3 py-2 text-left font-mono text-xs text-muted-foreground sm:text-sm">
-                  npx shadcn@latest add @blode/button
-                </p>
-              </div>
+
             </div>
           </div>
 

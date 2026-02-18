@@ -676,7 +676,7 @@ export const ui: Registry["items"] = [
       "sheet",
       "tooltip",
       "input",
-      "use-mobile",
+      "@blode/use-mobile",
       "skeleton",
     ],
     files: [
@@ -792,7 +792,7 @@ export const ui: Registry["items"] = [
     description:
       "A tabbed interface that organises content into switchable panels.",
     dependencies: ["@base-ui/react"],
-    registryDependencies: ["use-tab-observer"],
+    registryDependencies: ["@blode/use-tab-observer"],
     files: [
       {
         path: "ui/tabs.tsx",

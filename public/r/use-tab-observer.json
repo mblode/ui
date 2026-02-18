@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.blode.co/schema/registry-item.json",
+  "name": "use-tab-observer",
+  "title": "Use Tab Observer",
+  "author": "Matthew Blode",
+  "description": "A hook that observes and tracks the active tab indicator position.",
+  "files": [
+    {
+      "path": "hooks/use-tab-observer.ts",
+      "content": "import React from \"react\";\n\ninterface TabObserverOptions {\n  onActiveTabChange?: (index: number, element: HTMLElement) => void;\n}\n\nexport function useTabObserver({ onActiveTabChange }: TabObserverOptions = {}) {\n  const listRef = React.useRef<HTMLDivElement>(null);\n  const onActiveTabChangeRef = React.useRef(onActiveTabChange);\n\n  React.useEffect(() => {\n    onActiveTabChangeRef.current = onActiveTabChange;\n  }, [onActiveTabChange]);\n\n  const handleUpdate = React.useCallback(() => {\n    if (listRef.current) {\n      const tabs = listRef.current.querySelectorAll('[role=\"tab\"]');\n      for (let i = 0; i < tabs.length; i += 1) {\n        const el = tabs[i];\n        if (!(el instanceof HTMLElement)) {\n          continue;\n        }\n        const isActive =\n          el.hasAttribute(\"data-active\") ||\n          el.getAttribute(\"data-state\") === \"active\" ||\n          el.getAttribute(\"aria-selected\") === \"true\";\n\n        if (isActive) {\n          onActiveTabChangeRef.current?.(i, el);\n          break;\n        }\n      }\n    }\n  }, []);\n\n  React.useEffect(() => {\n    const resizeObserver = new ResizeObserver(handleUpdate);\n    const mutationObserver = new MutationObserver(handleUpdate);\n\n    if (listRef.current) {\n      resizeObserver.observe(listRef.current);\n      mutationObserver.observe(listRef.current, {\n        childList: true,\n        subtree: true,\n        attributes: true,\n      });\n    }\n\n    const handleWindowUpdate = () => {\n      handleUpdate();\n    };\n\n    window.addEventListener(\"resize\", handleWindowUpdate);\n    window.addEventListener(\"orientationchange\", handleWindowUpdate);\n    document.fonts?.addEventListener?.(\"loadingdone\", handleWindowUpdate);\n\n    handleUpdate();\n\n    return () => {\n      resizeObserver.disconnect();\n      mutationObserver.disconnect();\n      window.removeEventListener(\"resize\", handleWindowUpdate);\n      window.removeEventListener(\"orientationchange\", handleWindowUpdate);\n      document.fonts?.removeEventListener?.(\"loadingdone\", handleWindowUpdate);\n    };\n  }, [handleUpdate]);\n\n  return { listRef };\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:lib"
+}

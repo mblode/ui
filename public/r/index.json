@@ -656,10 +656,6 @@
       {
         "path": "ui/radio-group.tsx",
         "type": "registry:ui"
-      },
-      {
-        "path": "ui/radio-group.css",
-        "type": "registry:ui"
       }
     ],
     "type": "registry:ui"
@@ -754,7 +750,7 @@
       "sheet",
       "tooltip",
       "input",
-      "use-mobile",
+      "@blode/use-mobile",
       "skeleton"
     ],
     "files": [
@@ -877,7 +873,7 @@
       "@base-ui/react"
     ],
     "registryDependencies": [
-      "use-tab-observer"
+      "@blode/use-tab-observer"
     ],
     "files": [
       {

@@ -13,6 +13,7 @@ import { CodeTabs } from "@/components/code-tabs";
 import { ComponentExample } from "@/components/component-example";
 import { ComponentPreview } from "@/components/component-preview";
 import { ComponentSource } from "@/components/component-source";
+import { ComponentsList } from "@/components/components-list";
 import { CopyButton } from "@/components/copy-button";
 import { FontWeightSlider } from "@/components/font-weight-slider";
 import { useConfig } from "@/hooks/use-config";
@@ -263,6 +264,7 @@ const components = {
   Callout,
   ComponentPreview,
   ComponentExample,
+  ComponentsList,
   ComponentSource,
   AspectRatio,
   CodeBlockWrapper,
@@ -292,34 +294,19 @@ const components = {
     className,
     ...props
   }: React.ComponentProps<typeof TabsList>) => (
-    <TabsList
-      className={cn(
-        className
-      )}
-      {...props}
-    />
+    <TabsList className={cn(className)} {...props} />
   ),
   TabsTrigger: ({
     className,
     ...props
   }: React.ComponentProps<typeof TabsTrigger>) => (
-    <TabsTrigger
-      className={cn(
-        className
-      )}
-      {...props}
-    />
+    <TabsTrigger className={cn(className)} {...props} />
   ),
   TabsContent: ({
     className,
     ...props
   }: React.ComponentProps<typeof TabsContent>) => (
-    <TabsContent
-      className={cn(
-        className
-      )}
-      {...props}
-    />
+    <TabsContent className={cn(className)} {...props} />
   ),
   Link: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
     <Link

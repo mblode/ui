@@ -808,10 +808,6 @@ export const Index: Record<string, unknown> = {
         path: "registry/default/ui/radio-group.tsx",
         type: "registry:ui",
         target: ""
-      },{
-        path: "registry/default/ui/radio-group.css",
-        type: "registry:ui",
-        target: ""
       }],
       categories: undefined,
       component: React.lazy(() =>
@@ -921,7 +917,7 @@ export const Index: Record<string, unknown> = {
       name: "sidebar",
       description: "A collapsible side navigation component with multiple layout variants.",
       type: "registry:ui",
-      registryDependencies: ["button","separator","sheet","tooltip","input","use-mobile","skeleton"],
+      registryDependencies: ["button","separator","sheet","tooltip","input","@blode/use-mobile","skeleton"],
       files: [{
         path: "registry/default/ui/sidebar.tsx",
         type: "registry:ui",
@@ -1054,7 +1050,7 @@ export const Index: Record<string, unknown> = {
       name: "tabs",
       description: "A tabbed interface that organises content into switchable panels.",
       type: "registry:ui",
-      registryDependencies: ["use-tab-observer"],
+      registryDependencies: ["@blode/use-tab-observer"],
       files: [{
         path: "registry/default/ui/tabs.tsx",
         type: "registry:ui",
@@ -1224,11 +1220,11 @@ export const Index: Record<string, unknown> = {
     "use-mobile": {
       name: "use-mobile",
       description: "A hook that detects whether the viewport matches a mobile breakpoint.",
-      type: "registry:hook",
+      type: "registry:lib",
       registryDependencies: undefined,
       files: [{
         path: "registry/default/hooks/use-mobile.ts",
-        type: "registry:hook",
+        type: "registry:lib",
         target: ""
       }],
       categories: undefined,
@@ -1243,11 +1239,11 @@ export const Index: Record<string, unknown> = {
     "use-tab-observer": {
       name: "use-tab-observer",
       description: "A hook that observes and tracks the active tab indicator position.",
-      type: "registry:hook",
+      type: "registry:lib",
       registryDependencies: undefined,
       files: [{
         path: "registry/default/hooks/use-tab-observer.ts",
-        type: "registry:hook",
+        type: "registry:lib",
         target: ""
       }],
       categories: undefined,

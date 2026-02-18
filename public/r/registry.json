@@ -661,10 +661,6 @@
         {
           "path": "registry/default/ui/radio-group.tsx",
           "type": "registry:ui"
-        },
-        {
-          "path": "registry/default/ui/radio-group.css",
-          "type": "registry:ui"
         }
       ]
     },
@@ -759,7 +755,7 @@
         "sheet",
         "tooltip",
         "input",
-        "use-mobile",
+        "@blode/use-mobile",
         "skeleton"
       ],
       "files": [
@@ -860,7 +856,7 @@
         "@base-ui/react"
       ],
       "registryDependencies": [
-        "use-tab-observer"
+        "@blode/use-tab-observer"
       ],
       "files": [
         {
@@ -977,6 +973,30 @@
       "files": [
         {
           "path": "registry/default/lib/utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "use-mobile",
+      "type": "registry:lib",
+      "title": "Use Mobile",
+      "description": "A hook that detects whether the viewport matches a mobile breakpoint.",
+      "files": [
+        {
+          "path": "registry/default/hooks/use-mobile.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "use-tab-observer",
+      "type": "registry:lib",
+      "title": "Use Tab Observer",
+      "description": "A hook that observes and tracks the active tab indicator position.",
+      "files": [
+        {
+          "path": "registry/default/hooks/use-tab-observer.ts",
           "type": "registry:lib"
         }
       ]

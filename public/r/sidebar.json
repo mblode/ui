@@ -15,7 +15,7 @@
     "sheet",
     "tooltip",
     "input",
-    "use-mobile",
+    "@blode/use-mobile",
     "skeleton"
   ],
   "files": [
