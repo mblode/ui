@@ -15,7 +15,7 @@ export default function CarouselDemo() {
           <CarouselItem key={index}>
             <div className="p-1">
               <Card>
-                <CardContent className="flex aspect-square items-center justify-center p-6">
+                <CardContent className="flex aspect-16/9 items-center justify-center p-6">
                   <span className="font-semibold text-4xl">{index + 1}</span>
                 </CardContent>
               </Card>

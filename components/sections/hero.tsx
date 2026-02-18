@@ -41,7 +41,7 @@ export default function Hero() {
                     "text-5xl sm:text-7xl md:text-7xl lg:text-7xl"
                   )}
                 >
-                  Blode UI library
+                  Blode UI
                 </h1>
               </div>
 
