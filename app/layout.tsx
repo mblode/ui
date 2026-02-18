@@ -1,4 +1,4 @@
-import { GoogleTagManager } from "@next/third-parties/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Provider as JotaiProvider } from "jotai";
 import localFont from "next/font/local";
 import { Analytics } from "@/components/analytics";
@@ -47,7 +47,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
-      <GoogleTagManager gtmId="GTM-PWKVQTZ6" />
+      <GoogleAnalytics gaId="G-KJGWXDQSCP" />
       <body
         className={cn(
           "relative flex w-full flex-col justify-center overflow-x-hidden scroll-smooth bg-background font-sans antialiased [--header-height:calc(var(--spacing)*14)]",
