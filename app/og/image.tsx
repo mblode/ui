@@ -1,8 +1,7 @@
 import { ImageResponse } from "next/og";
 
-const DEFAULT_TITLE = "blode/ui";
-const DEFAULT_DESCRIPTION =
-  "Beautifully designed components built with React, Tailwind CSS, and Motion.";
+const DEFAULT_TITLE = "Blode UI";
+const DEFAULT_DESCRIPTION = "An opinionated shadcn/ui registry";
 
 const OG_IMAGE_SIZE = {
   width: 1200,
