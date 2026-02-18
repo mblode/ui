@@ -3,7 +3,6 @@
 
 <p align="center">
   <a href="https://github.com/mblode/blode-ui/blob/main/LICENSE.md"><img alt="License" src="https://img.shields.io/badge/License-MIT-yellow.svg"></a>
-  <a href="https://discord.com/invite/87p2vpsat5"><img alt="Discord" src="https://img.shields.io/discord/1151315619002176"></a>
 </p>
 
 ## Installation
@@ -17,7 +16,7 @@ npx shadcn@latest add @blode/button
 
 ## Documentation
 
-[ui.blode.co](https://ui.blode.co)
+[ui.blode.co/docs](https://ui.blode.co/docs)
 
 ## License
 
