@@ -1,34 +1,25 @@
-# Blode UI
+<h1 align="center">Blode UI</h1>
+<p align="center">Open-source UI library and docs site for design engineers.</p>
 
-Open-source UI library and docs site for design engineers.
-
-[![GitHub stars](https://img.shields.io/github/stars/mblode/blode-ui)](https://github.com/mblode/blode-ui/stargazers)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/mblode/blode-ui/blob/main/LICENSE.md)
-[![Discord](https://img.shields.io/discord/1151315619002176)](https://discord.com/invite/87p2vpsat5)
+<p align="center">
+  <a href="https://github.com/mblode/blode-ui/blob/main/LICENSE.md"><img alt="License" src="https://img.shields.io/badge/License-MIT-yellow.svg"></a>
+  <a href="https://discord.com/invite/87p2vpsat5"><img alt="Discord" src="https://img.shields.io/discord/1151315619002176"></a>
+</p>
 
 Accessible, composable components built with Next.js, React 19, Tailwind CSS v4, and Radix UI. Follows shadcn-style registry patterns with MDX-powered docs.
 
-## Quick Start
+## Installation
+
+Add the Blode registry to your project, then install any component:
 
 ```bash
-npm install
-npm run dev
-```
-
-## Commands
-
-```bash
-npm run dev              # Dev server (Turbopack)
-npm run build            # Full build (docs + registry + Next.js)
-npm run typecheck        # Type check (builds docs first)
-npm run build:registry   # Build registry only
-npm run check            # Lint/format check
-npm run fix              # Lint/format fix
+npx shadcn@latest registry add @blode=https://ui.blode.co/r/{name}.json
+npx shadcn@latest add @blode/button
 ```
 
 ## Documentation
 
-[ui.blode.co/docs](https://ui.blode.co/docs)
+[ui.blode.co](https://ui.blode.co)
 
 ## License
 
