@@ -1,6 +1,11 @@
-import { Button } from "@/registry/default/ui/button"
-import { ButtonGroup } from "@/registry/default/ui/button-group"
-import { Field, FieldDescription, FieldLabel } from "@/registry/default/ui/field"
+import { BotIcon, ChevronDownIcon } from "blode-icons-react";
+import { Button } from "@/registry/default/ui/button";
+import { ButtonGroup } from "@/registry/default/ui/button-group";
+import {
+  Field,
+  FieldDescription,
+  FieldLabel,
+} from "@/registry/default/ui/field";
 import {
   Popover,
   PopoverContent,
@@ -8,9 +13,8 @@ import {
   PopoverHeader,
   PopoverTitle,
   PopoverTrigger,
-} from "@/registry/default/ui/popover"
-import { Textarea } from "@/registry/default/ui/textarea"
-import { BotIcon, ChevronDownIcon } from "blode-icons-react"
+} from "@/registry/default/ui/popover";
+import { Textarea } from "@/registry/default/ui/textarea";
 
 export default function ButtonGroupPopover() {
   return (
@@ -21,7 +25,7 @@ export default function ButtonGroupPopover() {
       <Popover>
         <PopoverTrigger
           render={
-            <Button variant="outline" size="icon" aria-label="Open Popover" />
+            <Button aria-label="Open Popover" size="icon" variant="outline" />
           }
         >
           <ChevronDownIcon />
@@ -34,13 +38,13 @@ export default function ButtonGroupPopover() {
             </PopoverDescription>
           </PopoverHeader>
           <Field>
-            <FieldLabel htmlFor="task" className="sr-only">
+            <FieldLabel className="sr-only" htmlFor="task">
               Task Description
             </FieldLabel>
             <Textarea
+              className="resize-none"
               id="task"
               placeholder="I need to..."
-              className="resize-none"
             />
             <FieldDescription>
               Copilot will open a pull request for review.
@@ -49,5 +53,5 @@ export default function ButtonGroupPopover() {
         </PopoverContent>
       </Popover>
     </ButtonGroup>
-  )
+  );
 }

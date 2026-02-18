@@ -47,7 +47,7 @@ const RadioGroupItem = React.forwardRef<HTMLSpanElement, RadioGroupItemProps>(
     return (
       <RadioPrimitive.Root
         className={cn(
-          "relative inline-flex aspect-square size-5 shrink-0 cursor-pointer items-center justify-center rounded-full border border-input bg-card align-middle text-primary-foreground shadow-input ring-offset-background transition-colors hover:border-input-hover",
+          "relative inline-flex aspect-square size-5 shrink-0 cursor-pointer items-center justify-center rounded-full border border-input bg-card align-middle text-primary-foreground shadow-input ring-offset-background hover:border-input-hover",
           "data-checked:border-primary data-checked:bg-primary",
           "focus:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
           "data-disabled:cursor-not-allowed data-disabled:opacity-50",
@@ -56,7 +56,9 @@ const RadioGroupItem = React.forwardRef<HTMLSpanElement, RadioGroupItemProps>(
         ref={ref}
         {...props}
       >
-        <RadioPrimitive.Indicator className="pointer-events-none flex items-center justify-center text-current">
+        <RadioPrimitive.Indicator
+          className="pointer-events-none flex items-center justify-center text-current"
+        >
           <CirclePlaceholderOnIcon className="size-2.5 fill-current text-primary-foreground" />
         </RadioPrimitive.Indicator>
       </RadioPrimitive.Root>

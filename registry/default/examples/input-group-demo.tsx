@@ -1,9 +1,9 @@
+import { Search } from "blode-icons-react";
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/registry/default/ui/input-group"
-import { Search } from "blode-icons-react"
+} from "@/registry/default/ui/input-group";
 
 export function InputGroupDemo() {
   return (
@@ -14,5 +14,5 @@ export function InputGroupDemo() {
       </InputGroupAddon>
       <InputGroupAddon align="inline-end">12 results</InputGroupAddon>
     </InputGroup>
-  )
+  );
 }

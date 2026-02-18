@@ -3,8 +3,8 @@ import {
   ItemContent,
   ItemMedia,
   ItemTitle,
-} from "@/registry/default/ui/item"
-import { Spinner } from "@/registry/default/ui/spinner"
+} from "@/registry/default/ui/item";
+import { Spinner } from "@/registry/default/ui/spinner";
 
 export function SpinnerDemo() {
   return (
@@ -21,5 +21,5 @@ export function SpinnerDemo() {
         </ItemContent>
       </Item>
     </div>
-  )
+  );
 }

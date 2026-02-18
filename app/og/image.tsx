@@ -113,30 +113,15 @@ export async function createOgImage(options: OgImageOptions = {}) {
       <div tw="flex border absolute border-neutral-300 inset-x-0 h-[1px] top-16" />
       <div tw="flex border absolute border-neutral-300 inset-x-0 h-[1px] bottom-16" />
 
-      <div tw="absolute left-28 top-24 flex items-center">
-        <div tw="flex h-14 w-14 items-center justify-center rounded-2xl bg-black text-[34px] text-white font-semibold">
-          b
-        </div>
-        <div tw="ml-4 text-[38px] tracking-tight font-semibold">blode/ui</div>
-      </div>
-
       <div tw="absolute inset-28 flex flex-col justify-center">
-        <div tw="flex items-center">
-          <div tw="h-2 w-2 rounded-full bg-neutral-500" />
-          <div
-            style={{ fontFamily: "Geist Mono" }}
-            tw="ml-3 text-[24px] text-neutral-600"
-          >
-            component library
-          </div>
-        </div>
 
         <div
           style={{
             fontSize: titleSize,
             letterSpacing: "-0.04em",
+            lineHeight: 1.03,
           }}
-          tw="mt-10 leading-[1.03] font-semibold"
+          tw="mt-10 font-semibold"
         >
           {title}
         </div>
@@ -147,9 +132,6 @@ export async function createOgImage(options: OgImageOptions = {}) {
       </div>
 
       <div tw="absolute bottom-24 right-24 flex items-center">
-        <div tw="flex h-12 w-12 items-center justify-center rounded-xl border border-neutral-300 bg-white text-[30px] text-black font-semibold">
-          /
-        </div>
         <div tw="ml-3 text-[34px] text-neutral-700 tracking-tight">
           blode/ui
         </div>

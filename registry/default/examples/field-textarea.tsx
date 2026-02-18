@@ -4,8 +4,8 @@ import {
   FieldGroup,
   FieldLabel,
   FieldSet,
-} from "@/registry/default/ui/field"
-import { Textarea } from "@/registry/default/ui/textarea"
+} from "@/registry/default/ui/field";
+import { Textarea } from "@/registry/default/ui/textarea";
 
 export default function FieldTextarea() {
   return (
@@ -24,5 +24,5 @@ export default function FieldTextarea() {
         </Field>
       </FieldGroup>
     </FieldSet>
-  )
+  );
 }

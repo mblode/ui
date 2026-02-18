@@ -1,7 +1,10 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Button } from "@/registry/default/ui/button"
+import { Minus, Plus } from "blode-icons-react";
+import type * as React from "react";
+import { useState } from "react";
+import { Bar, BarChart, ResponsiveContainer } from "recharts";
+import { Button } from "@/registry/default/ui/button";
 import {
   Drawer,
   DrawerClose,
@@ -11,9 +14,7 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/registry/default/ui/drawer"
-import { Minus, Plus } from "blode-icons-react"
-import { Bar, BarChart, ResponsiveContainer } from "recharts"
+} from "@/registry/default/ui/drawer";
 
 const data = [
   {
@@ -55,13 +56,13 @@ const data = [
   {
     goal: 349,
   },
-]
+];
 
 export function DrawerDemo() {
-  const [goal, setGoal] = React.useState(350)
+  const [goal, setGoal] = useState(350);
 
   function onClick(adjustment: number) {
-    setGoal(Math.max(200, Math.min(400, goal + adjustment)))
+    setGoal(Math.max(200, Math.min(400, goal + adjustment)));
   }
 
   return (
@@ -78,36 +79,36 @@ export function DrawerDemo() {
           <div className="p-4 pb-0">
             <div className="flex items-center justify-center space-x-2">
               <Button
-                variant="outline"
-                size="icon"
                 className="h-8 w-8 shrink-0 rounded-full"
-                onClick={() => onClick(-10)}
                 disabled={goal <= 200}
+                onClick={() => onClick(-10)}
+                size="icon"
+                variant="outline"
               >
                 <Minus />
                 <span className="sr-only">Decrease</span>
               </Button>
               <div className="flex-1 text-center">
-                <div className="text-7xl font-bold tracking-tighter">
+                <div className="font-bold text-7xl tracking-tighter">
                   {goal}
                 </div>
-                <div className="text-muted-foreground text-[0.70rem] uppercase">
+                <div className="text-[0.70rem] text-muted-foreground uppercase">
                   Calories/day
                 </div>
               </div>
               <Button
-                variant="outline"
-                size="icon"
                 className="h-8 w-8 shrink-0 rounded-full"
-                onClick={() => onClick(10)}
                 disabled={goal >= 400}
+                onClick={() => onClick(10)}
+                size="icon"
+                variant="outline"
               >
                 <Plus />
                 <span className="sr-only">Increase</span>
               </Button>
             </div>
             <div className="mt-3 h-[120px]">
-              <ResponsiveContainer width="100%" height="100%">
+              <ResponsiveContainer height="100%" width="100%">
                 <BarChart data={data}>
                   <Bar
                     dataKey="goal"
@@ -130,5 +131,5 @@ export function DrawerDemo() {
         </div>
       </DrawerContent>
     </Drawer>
-  )
+  );
 }

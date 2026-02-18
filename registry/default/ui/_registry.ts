@@ -47,7 +47,8 @@ export const ui: Registry["items"] = [
     name: "aspect-ratio",
     type: "registry:ui",
     title: "Aspect Ratio",
-    description: "A component that maintains a consistent width-to-height ratio.",
+    description:
+      "A component that maintains a consistent width-to-height ratio.",
     dependencies: ["@base-ui/react"],
     files: [
       {
@@ -60,8 +61,7 @@ export const ui: Registry["items"] = [
     name: "avatar",
     type: "registry:ui",
     title: "Avatar",
-    description:
-      "An image element with a fallback for representing the user.",
+    description: "An image element with a fallback for representing the user.",
     dependencies: ["@base-ui/react"],
     files: [
       {
@@ -102,8 +102,7 @@ export const ui: Registry["items"] = [
     name: "button",
     type: "registry:ui",
     title: "Button",
-    description:
-      "An interactive element that triggers an action when clicked.",
+    description: "An interactive element that triggers an action when clicked.",
     dependencies: ["@base-ui/react"],
     files: [
       {
@@ -144,8 +143,7 @@ export const ui: Registry["items"] = [
     name: "card",
     type: "registry:ui",
     title: "Card",
-    description:
-      "A container for grouping related content and actions.",
+    description: "A container for grouping related content and actions.",
     files: [
       {
         path: "ui/card.tsx",
@@ -157,8 +155,7 @@ export const ui: Registry["items"] = [
     name: "carousel",
     type: "registry:ui",
     title: "Carousel",
-    description:
-      "A slideshow component for cycling through a set of content.",
+    description: "A slideshow component for cycling through a set of content.",
     files: [
       {
         path: "ui/carousel.tsx",
@@ -172,8 +169,7 @@ export const ui: Registry["items"] = [
     name: "circular-progress",
     type: "registry:ui",
     title: "Circular Progress",
-    description:
-      "A circular indicator that shows the progress of a task.",
+    description: "A circular indicator that shows the progress of a task.",
     files: [
       {
         path: "ui/circular-progress.tsx",
@@ -185,8 +181,7 @@ export const ui: Registry["items"] = [
     name: "chart",
     type: "registry:ui",
     title: "Chart",
-    description:
-      "A composable charting component built on top of Recharts.",
+    description: "A composable charting component built on top of Recharts.",
     files: [
       {
         path: "ui/chart.tsx",
@@ -232,8 +227,7 @@ export const ui: Registry["items"] = [
     name: "currency-input",
     type: "registry:ui",
     title: "Currency Input",
-    description:
-      "A formatted input field for entering monetary values.",
+    description: "A formatted input field for entering monetary values.",
     dependencies: ["blode-icons-react", "react-currency-input-field"],
     files: [
       {
@@ -325,8 +319,7 @@ export const ui: Registry["items"] = [
     name: "drawer",
     type: "registry:ui",
     title: "Drawer",
-    description:
-      "A panel that slides in from the edge of the screen.",
+    description: "A panel that slides in from the edge of the screen.",
     dependencies: ["vaul"],
     files: [
       {
@@ -440,8 +433,7 @@ export const ui: Registry["items"] = [
     name: "input-otp",
     type: "registry:ui",
     title: "Input OTP",
-    description:
-      "A one-time password input with individual character fields.",
+    description: "A one-time password input with individual character fields.",
     dependencies: ["input-otp"],
     files: [
       {
@@ -546,8 +538,7 @@ export const ui: Registry["items"] = [
     name: "popover",
     type: "registry:ui",
     title: "Popover",
-    description:
-      "A floating panel that appears next to a trigger element.",
+    description: "A floating panel that appears next to a trigger element.",
     dependencies: ["@base-ui/react"],
     files: [
       {
@@ -617,8 +608,7 @@ export const ui: Registry["items"] = [
     name: "scroll-area",
     type: "registry:ui",
     title: "Scroll Area",
-    description:
-      "A scrollable container with custom styled scrollbars.",
+    description: "A scrollable container with custom styled scrollbars.",
     dependencies: ["@base-ui/react"],
     files: [
       {
@@ -722,8 +712,7 @@ export const ui: Registry["items"] = [
     name: "skeleton",
     type: "registry:ui",
     title: "Skeleton",
-    description:
-      "A placeholder animation that indicates content is loading.",
+    description: "A placeholder animation that indicates content is loading.",
     files: [
       {
         path: "ui/skeleton.tsx",
@@ -749,8 +738,7 @@ export const ui: Registry["items"] = [
     name: "sonner",
     type: "registry:ui",
     title: "Sonner",
-    description:
-      "A toast notification component powered by Sonner.",
+    description: "A toast notification component powered by Sonner.",
     dependencies: ["sonner", "next-themes"],
     files: [
       {
@@ -763,8 +751,7 @@ export const ui: Registry["items"] = [
     name: "spinner",
     type: "registry:ui",
     title: "Spinner",
-    description:
-      "An animated loading indicator for asynchronous operations.",
+    description: "An animated loading indicator for asynchronous operations.",
     files: [
       {
         path: "ui/spinner.tsx",
@@ -776,8 +763,7 @@ export const ui: Registry["items"] = [
     name: "switch",
     type: "registry:ui",
     title: "Switch",
-    description:
-      "A toggle control for switching between on and off states.",
+    description: "A toggle control for switching between on and off states.",
     dependencies: ["@base-ui/react"],
     files: [
       {
@@ -818,8 +804,7 @@ export const ui: Registry["items"] = [
     name: "textarea",
     type: "registry:ui",
     title: "Textarea",
-    description:
-      "A multi-line text input field for longer form content.",
+    description: "A multi-line text input field for longer form content.",
     files: [
       {
         path: "ui/textarea.tsx",
@@ -831,8 +816,7 @@ export const ui: Registry["items"] = [
     name: "toggle",
     type: "registry:ui",
     title: "Toggle",
-    description:
-      "A two-state button that can be toggled on or off.",
+    description: "A two-state button that can be toggled on or off.",
     dependencies: ["@base-ui/react"],
     files: [
       {
@@ -845,8 +829,7 @@ export const ui: Registry["items"] = [
     name: "toggle-group",
     type: "registry:ui",
     title: "Toggle Group",
-    description:
-      "A set of toggle buttons where one or more can be active.",
+    description: "A set of toggle buttons where one or more can be active.",
     dependencies: ["@base-ui/react"],
     registryDependencies: ["toggle"],
     files: [
@@ -903,8 +886,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     name: "native-select",
     type: "registry:ui",
     title: "Native Select",
-    description:
-      "A styled wrapper around the native HTML select element.",
+    description: "A styled wrapper around the native HTML select element.",
     files: [
       {
         path: "ui/native-select.tsx",

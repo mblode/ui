@@ -148,10 +148,10 @@ function CountrySelect({
       <PopoverTrigger asChild>
         <Button
           aria-label={selectedCountryLabel}
-          className="phone-input-country-select-button flex gap-1 rounded-s-2xl rounded-e-none! border-r-0 px-3"
+          className="phone-input-country-select-button flex h-[52px] gap-1 rounded-s-2xl shadow-input! rounded-e-none! border-r-0 px-3"
           disabled={disabled}
           type="button"
-          variant="secondary"
+          variant="outline"
         >
           <FlagComponent country={value} countryName={selectedCountryLabel} />
           <ChevronGrabberVerticalIcon
@@ -219,7 +219,7 @@ function FlagComponent({
   const Flag = country ? flags[country] : undefined;
 
   return (
-    <span className="flex h-4 w-6 overflow-hidden rounded-xs bg-foreground/20">
+    <span className="flex h-4 w-6 overflow-hidden rounded-xs bg-foreground/20 [&_svg]:size-full!">
       {Flag ? <Flag title={countryName} /> : null}
     </span>
   );

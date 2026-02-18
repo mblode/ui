@@ -1,5 +1,5 @@
-import { Button } from "@/registry/default/ui/button"
-import { Spinner } from "@/registry/default/ui/spinner"
+import { Button } from "@/registry/default/ui/button";
+import { Spinner } from "@/registry/default/ui/spinner";
 
 export function SpinnerButton() {
   return (
@@ -8,14 +8,14 @@ export function SpinnerButton() {
         <Spinner data-icon="inline-start" />
         Loading...
       </Button>
-      <Button variant="outline" disabled size="sm">
+      <Button disabled size="sm" variant="outline">
         <Spinner data-icon="inline-start" />
         Please wait
       </Button>
-      <Button variant="secondary" disabled size="sm">
+      <Button disabled size="sm" variant="secondary">
         <Spinner data-icon="inline-start" />
         Processing
       </Button>
     </div>
-  )
+  );
 }

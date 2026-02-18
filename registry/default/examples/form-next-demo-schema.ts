@@ -1,4 +1,4 @@
-import { z } from "zod"
+import { z } from "zod";
 
 export const formSchema = z.object({
   title: z
@@ -9,10 +9,10 @@ export const formSchema = z.object({
     .string()
     .min(20, "Description must be at least 20 characters.")
     .max(100, "Description must be at most 100 characters."),
-})
+});
 
-export type FormState = {
-  values: z.infer<typeof formSchema>
-  errors: null | Partial<Record<keyof z.infer<typeof formSchema>, string[]>>
-  success: boolean
+export interface FormState {
+  errors: null | Partial<Record<keyof z.infer<typeof formSchema>, string[]>>;
+  success: boolean;
+  values: z.infer<typeof formSchema>;
 }

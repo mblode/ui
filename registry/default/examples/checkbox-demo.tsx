@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { Checkbox } from "@/registry/default/ui/checkbox"
+import { Checkbox } from "@/registry/default/ui/checkbox";
 import {
   Field,
   FieldContent,
@@ -8,8 +8,8 @@ import {
   FieldGroup,
   FieldLabel,
   FieldTitle,
-} from "@/registry/default/ui/field"
-import { Label } from "@/registry/default/ui/label"
+} from "@/registry/default/ui/field";
+import { Label } from "@/registry/default/ui/label";
 
 export default function CheckboxDemo() {
   return (
@@ -20,9 +20,9 @@ export default function CheckboxDemo() {
       </Field>
       <Field orientation="horizontal">
         <Checkbox
+          defaultChecked
           id="terms-checkbox-2"
           name="terms-checkbox-2"
-          defaultChecked
         />
         <FieldContent>
           <FieldLabel htmlFor="terms-checkbox-2">
@@ -33,8 +33,8 @@ export default function CheckboxDemo() {
           </FieldDescription>
         </FieldContent>
       </Field>
-      <Field orientation="horizontal" data-disabled>
-        <Checkbox id="toggle-checkbox" name="toggle-checkbox" disabled />
+      <Field data-disabled orientation="horizontal">
+        <Checkbox disabled id="toggle-checkbox" name="toggle-checkbox" />
         <FieldLabel htmlFor="toggle-checkbox">Enable notifications</FieldLabel>
       </Field>
       <FieldLabel>
@@ -49,5 +49,5 @@ export default function CheckboxDemo() {
         </Field>
       </FieldLabel>
     </FieldGroup>
-  )
+  );
 }

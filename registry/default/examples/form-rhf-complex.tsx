@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { Controller, useForm } from "react-hook-form"
-import { toast } from "sonner"
-import * as z from "zod"
+import { zodResolver } from "@hookform/resolvers/zod";
+import type * as React from "react";
+import { Controller, useForm } from "react-hook-form";
+import { toast } from "sonner";
+import { z } from "zod";
 
-import { Button } from "@/registry/default/ui/button"
+import { Button } from "@/registry/default/ui/button";
 import {
   Card,
   CardContent,
@@ -14,8 +14,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/default/ui/card"
-import { Checkbox } from "@/registry/default/ui/checkbox"
+} from "@/registry/default/ui/card";
+import { Checkbox } from "@/registry/default/ui/checkbox";
 import {
   Field,
   FieldContent,
@@ -27,19 +27,16 @@ import {
   FieldSeparator,
   FieldSet,
   FieldTitle,
-} from "@/registry/default/ui/field"
-import {
-  RadioGroup,
-  RadioGroupItem,
-} from "@/registry/default/ui/radio-group"
+} from "@/registry/default/ui/field";
+import { RadioGroup, RadioGroupItem } from "@/registry/default/ui/radio-group";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/default/ui/select"
-import { Switch } from "@/registry/default/ui/switch"
+} from "@/registry/default/ui/select";
+import { Switch } from "@/registry/default/ui/switch";
 
 const addons = [
   {
@@ -57,13 +54,11 @@ const addons = [
     title: "Priority Support",
     description: "24/7 premium customer support",
   },
-] as const
+] as const;
 
 const formSchema = z.object({
   plan: z.enum(["basic", "pro"]),
-  billingPeriod: z
-    .string()
-    .min(1, "Please select a billing period"),
+  billingPeriod: z.string().min(1, "Please select a billing period"),
   addons: z
     .array(z.string())
     .min(1, "Please select at least one add-on")
@@ -75,7 +70,7 @@ const formSchema = z.object({
       }
     ),
   emailNotifications: z.boolean(),
-})
+});
 
 export default function FormRhfComplex() {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -86,12 +81,12 @@ export default function FormRhfComplex() {
       addons: [],
       emailNotifications: false,
     },
-  })
+  });
 
   function onSubmit(data: z.infer<typeof formSchema>) {
     toast("You submitted the following values:", {
       description: (
-        <pre className="bg-code text-code-foreground mt-2 w-[320px] overflow-x-auto rounded-md p-4">
+        <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
           <code>{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
@@ -102,7 +97,7 @@ export default function FormRhfComplex() {
       style: {
         "--border-radius": "calc(var(--radius)  + 4px)",
       } as React.CSSProperties,
-    })
+    });
   }
 
   return (
@@ -117,10 +112,10 @@ export default function FormRhfComplex() {
         <form id="form-rhf-complex" onSubmit={form.handleSubmit(onSubmit)}>
           <FieldGroup>
             <Controller
-              name="plan"
               control={form.control}
+              name="plan"
               render={({ field, fieldState }) => {
-                const isInvalid = fieldState.invalid
+                const isInvalid = fieldState.invalid;
                 return (
                   <FieldSet data-invalid={isInvalid}>
                     <FieldLegend variant="label">Subscription Plan</FieldLegend>
@@ -128,10 +123,10 @@ export default function FormRhfComplex() {
                       Choose your subscription plan.
                     </FieldDescription>
                     <RadioGroup
-                      name={field.name}
-                      value={field.value}
-                      onValueChange={field.onChange}
                       aria-invalid={isInvalid}
+                      name={field.name}
+                      onValueChange={field.onChange}
+                      value={field.value}
                     >
                       <FieldLabel htmlFor="form-rhf-complex-basic">
                         <Field orientation="horizontal">
@@ -142,8 +137,8 @@ export default function FormRhfComplex() {
                             </FieldDescription>
                           </FieldContent>
                           <RadioGroupItem
-                            value="basic"
                             id="form-rhf-complex-basic"
+                            value="basic"
                           />
                         </Field>
                       </FieldLabel>
@@ -156,21 +151,21 @@ export default function FormRhfComplex() {
                             </FieldDescription>
                           </FieldContent>
                           <RadioGroupItem
-                            value="pro"
                             id="form-rhf-complex-pro"
+                            value="pro"
                           />
                         </Field>
                       </FieldLabel>
                     </RadioGroup>
                     {isInvalid && <FieldError errors={[fieldState.error]} />}
                   </FieldSet>
-                )
+                );
               }}
             />
             <FieldSeparator />
             <Controller
-              name="billingPeriod"
               control={form.control}
+              name="billingPeriod"
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
                   <FieldLabel htmlFor="form-rhf-complex-billingPeriod">
@@ -178,12 +173,12 @@ export default function FormRhfComplex() {
                   </FieldLabel>
                   <Select
                     name={field.name}
-                    value={field.value}
                     onValueChange={field.onChange}
+                    value={field.value}
                   >
                     <SelectTrigger
-                      id="form-rhf-complex-billingPeriod"
                       aria-invalid={fieldState.invalid}
+                      id="form-rhf-complex-billingPeriod"
                     >
                       <SelectValue placeholder="Select" />
                     </SelectTrigger>
@@ -203,8 +198,8 @@ export default function FormRhfComplex() {
             />
             <FieldSeparator />
             <Controller
-              name="addons"
               control={form.control}
+              name="addons"
               render={({ field, fieldState }) => (
                 <FieldSet>
                   <FieldLegend>Add-ons</FieldLegend>
@@ -214,23 +209,23 @@ export default function FormRhfComplex() {
                   <FieldGroup data-slot="checkbox-group">
                     {addons.map((addon) => (
                       <Field
+                        data-invalid={fieldState.invalid}
                         key={addon.id}
                         orientation="horizontal"
-                        data-invalid={fieldState.invalid}
                       >
                         <Checkbox
-                          id={`form-rhf-complex-${addon.id}`}
-                          name={field.name}
                           aria-invalid={fieldState.invalid}
                           checked={field.value.includes(addon.id)}
+                          id={`form-rhf-complex-${addon.id}`}
+                          name={field.name}
                           onCheckedChange={(checked) => {
                             const newValue = checked
                               ? [...field.value, addon.id]
                               : field.value.filter(
                                   (value) => value !== addon.id
-                                )
-                            field.onChange(newValue)
-                            field.onBlur()
+                                );
+                            field.onChange(newValue);
+                            field.onBlur();
                           }}
                         />
                         <FieldContent>
@@ -252,12 +247,12 @@ export default function FormRhfComplex() {
             />
             <FieldSeparator />
             <Controller
-              name="emailNotifications"
               control={form.control}
+              name="emailNotifications"
               render={({ field, fieldState }) => (
                 <Field
-                  orientation="horizontal"
                   data-invalid={fieldState.invalid}
+                  orientation="horizontal"
                 >
                   <FieldContent>
                     <FieldLabel htmlFor="form-rhf-complex-emailNotifications">
@@ -268,11 +263,11 @@ export default function FormRhfComplex() {
                     </FieldDescription>
                   </FieldContent>
                   <Switch
+                    aria-invalid={fieldState.invalid}
+                    checked={field.value}
                     id="form-rhf-complex-emailNotifications"
                     name={field.name}
-                    checked={field.value}
                     onCheckedChange={field.onChange}
-                    aria-invalid={fieldState.invalid}
                   />
                   {fieldState.invalid && (
                     <FieldError errors={[fieldState.error]} />
@@ -285,14 +280,14 @@ export default function FormRhfComplex() {
       </CardContent>
       <CardFooter className="border-t">
         <Field>
-          <Button type="submit" form="form-rhf-complex">
+          <Button form="form-rhf-complex" type="submit">
             Save Preferences
           </Button>
-          <Button type="button" variant="outline" onClick={() => form.reset()}>
+          <Button onClick={() => form.reset()} type="button" variant="outline">
             Reset
           </Button>
         </Field>
       </CardFooter>
     </Card>
-  )
+  );
 }

@@ -1,13 +1,13 @@
 /* eslint-disable react/no-children-prop */
-"use client"
+"use client";
 
-import * as React from "react"
-import { useForm } from "@tanstack/react-form"
-import { XIcon } from "blode-icons-react"
-import { toast } from "sonner"
-import { z } from "zod"
+import { useForm } from "@tanstack/react-form";
+import { XIcon } from "blode-icons-react";
+import type * as React from "react";
+import { toast } from "sonner";
+import { z } from "zod";
 
-import { Button } from "@/registry/default/ui/button"
+import { Button } from "@/registry/default/ui/button";
 import {
   Card,
   CardContent,
@@ -15,7 +15,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/default/ui/card"
+} from "@/registry/default/ui/card";
 import {
   Field,
   FieldContent,
@@ -24,13 +24,13 @@ import {
   FieldGroup,
   FieldLegend,
   FieldSet,
-} from "@/registry/default/ui/field"
+} from "@/registry/default/ui/field";
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/registry/default/ui/input-group"
+} from "@/registry/default/ui/input-group";
 
 const formSchema = z.object({
   emails: z
@@ -41,7 +41,7 @@ const formSchema = z.object({
     )
     .min(1, "Add at least one email address.")
     .max(5, "You can add up to 5 email addresses."),
-})
+});
 
 export default function FormTanstackArray() {
   const form = useForm({
@@ -54,7 +54,7 @@ export default function FormTanstackArray() {
     onSubmit: async ({ value }) => {
       toast("You submitted the following values:", {
         description: (
-          <pre className="bg-code text-code-foreground mt-2 w-[320px] overflow-x-auto rounded-md p-4">
+          <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
             <code>{JSON.stringify(value, null, 2)}</code>
           </pre>
         ),
@@ -65,9 +65,9 @@ export default function FormTanstackArray() {
         style: {
           "--border-radius": "calc(var(--radius)  + 4px)",
         } as React.CSSProperties,
-      })
+      });
     },
-  })
+  });
 
   return (
     <Card className="w-full sm:max-w-md">
@@ -79,14 +79,14 @@ export default function FormTanstackArray() {
         <form
           id="form-tanstack-array"
           onSubmit={(e) => {
-            e.preventDefault()
-            form.handleSubmit()
+            e.preventDefault();
+            form.handleSubmit();
           }}
         >
-          <form.Field name="emails" mode="array">
+          <form.Field mode="array" name="emails">
             {(field) => {
               const isInvalid =
-                field.state.meta.isTouched && !field.state.meta.isValid
+                field.state.meta.isTouched && !field.state.meta.isValid;
               return (
                 <FieldSet className="gap-4">
                   <FieldLegend variant="label">Email Addresses</FieldLegend>
@@ -96,40 +96,38 @@ export default function FormTanstackArray() {
                   <FieldGroup className="gap-4">
                     {field.state.value.map((_, index) => (
                       <form.Field
-                        key={index}
-                        name={`emails[${index}].address`}
                         children={(subField) => {
                           const isSubFieldInvalid =
                             subField.state.meta.isTouched &&
-                            !subField.state.meta.isValid
+                            !subField.state.meta.isValid;
                           return (
                             <Field
-                              orientation="horizontal"
                               data-invalid={isSubFieldInvalid}
+                              orientation="horizontal"
                             >
                               <FieldContent>
                                 <InputGroup>
                                   <InputGroupInput
+                                    aria-invalid={isSubFieldInvalid}
+                                    autoComplete="email"
                                     id={`form-tanstack-array-email-${index}`}
                                     name={subField.name}
-                                    value={subField.state.value}
                                     onBlur={subField.handleBlur}
                                     onChange={(e) =>
                                       subField.handleChange(e.target.value)
                                     }
-                                    aria-invalid={isSubFieldInvalid}
                                     placeholder="name@example.com"
                                     type="email"
-                                    autoComplete="email"
+                                    value={subField.state.value}
                                   />
                                   {field.state.value.length > 1 && (
                                     <InputGroupAddon align="inline-end">
                                       <InputGroupButton
+                                        aria-label={`Remove email ${index + 1}`}
+                                        onClick={() => field.removeValue(index)}
+                                        size="icon-xs"
                                         type="button"
                                         variant="ghost"
-                                        size="icon-xs"
-                                        onClick={() => field.removeValue(index)}
-                                        aria-label={`Remove email ${index + 1}`}
                                       >
                                         <XIcon />
                                       </InputGroupButton>
@@ -143,37 +141,39 @@ export default function FormTanstackArray() {
                                 )}
                               </FieldContent>
                             </Field>
-                          )
+                          );
                         }}
+                        key={index}
+                        name={`emails[${index}].address`}
                       />
                     ))}
                     <Button
+                      disabled={field.state.value.length >= 5}
+                      onClick={() => field.pushValue({ address: "" })}
+                      size="sm"
                       type="button"
                       variant="outline"
-                      size="sm"
-                      onClick={() => field.pushValue({ address: "" })}
-                      disabled={field.state.value.length >= 5}
                     >
                       Add Email Address
                     </Button>
                   </FieldGroup>
                   {isInvalid && <FieldError errors={field.state.meta.errors} />}
                 </FieldSet>
-              )
+              );
             }}
           </form.Field>
         </form>
       </CardContent>
       <CardFooter className="border-t">
         <Field orientation="horizontal">
-          <Button type="button" variant="outline" onClick={() => form.reset()}>
+          <Button onClick={() => form.reset()} type="button" variant="outline">
             Reset
           </Button>
-          <Button type="submit" form="form-tanstack-array">
+          <Button form="form-tanstack-array" type="submit">
             Save
           </Button>
         </Field>
       </CardFooter>
     </Card>
-  )
+  );
 }

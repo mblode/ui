@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { MoreHorizontalIcon } from "blode-icons-react"
+import { MoreHorizontalIcon } from "blode-icons-react";
+import { useState } from "react";
 
-import { Button } from "@/registry/default/ui/button"
+import { Button } from "@/registry/default/ui/button";
 import {
   Dialog,
   DialogClose,
@@ -12,7 +12,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@/registry/default/ui/dialog"
+} from "@/registry/default/ui/dialog";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -20,25 +20,25 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuTrigger,
-} from "@/registry/default/ui/dropdown-menu"
-import { Field, FieldGroup, FieldLabel } from "@/registry/default/ui/field"
-import { Input } from "@/registry/default/ui/input"
-import { Label } from "@/registry/default/ui/label"
-import { Textarea } from "@/registry/default/ui/textarea"
+} from "@/registry/default/ui/dropdown-menu";
+import { Field, FieldGroup, FieldLabel } from "@/registry/default/ui/field";
+import { Input } from "@/registry/default/ui/input";
+import { Label } from "@/registry/default/ui/label";
+import { Textarea } from "@/registry/default/ui/textarea";
 
 export default function DropdownMenuDialog() {
-  const [showNewDialog, setShowNewDialog] = useState(false)
-  const [showShareDialog, setShowShareDialog] = useState(false)
+  const [showNewDialog, setShowNewDialog] = useState(false);
+  const [showShareDialog, setShowShareDialog] = useState(false);
 
   return (
     <>
       <DropdownMenu modal={false}>
         <DropdownMenuTrigger asChild>
-          <Button variant="outline" aria-label="Open menu" size="icon-sm">
+          <Button aria-label="Open menu" size="icon-sm" variant="outline">
             <MoreHorizontalIcon />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-40" align="end">
+        <DropdownMenuContent align="end" className="w-40">
           <DropdownMenuLabel>File Actions</DropdownMenuLabel>
           <DropdownMenuGroup>
             <DropdownMenuItem onSelect={() => setShowNewDialog(true)}>
@@ -51,7 +51,7 @@ export default function DropdownMenuDialog() {
           </DropdownMenuGroup>
         </DropdownMenuContent>
       </DropdownMenu>
-      <Dialog open={showNewDialog} onOpenChange={setShowNewDialog}>
+      <Dialog onOpenChange={setShowNewDialog} open={showNewDialog}>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
             <DialogTitle>Create New File</DialogTitle>
@@ -74,7 +74,7 @@ export default function DropdownMenuDialog() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
-      <Dialog open={showShareDialog} onOpenChange={setShowShareDialog}>
+      <Dialog onOpenChange={setShowShareDialog} open={showShareDialog}>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
             <DialogTitle>Share File</DialogTitle>
@@ -86,11 +86,11 @@ export default function DropdownMenuDialog() {
             <Field>
               <Label htmlFor="email">Email Address</Label>
               <Input
+                autoComplete="off"
                 id="email"
                 name="email"
-                type="email"
                 placeholder="shadcn@vercel.com"
-                autoComplete="off"
+                type="email"
               />
             </Field>
             <Field>
@@ -111,5 +111,5 @@ export default function DropdownMenuDialog() {
         </DialogContent>
       </Dialog>
     </>
-  )
+  );
 }

@@ -1,4 +1,5 @@
-import { Button } from "@/registry/default/ui/button"
+import { CloudIcon } from "blode-icons-react";
+import { Button } from "@/registry/default/ui/button";
 import {
   Empty,
   EmptyContent,
@@ -6,8 +7,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/registry/default/ui/empty"
-import { CloudIcon } from "blode-icons-react"
+} from "@/registry/default/ui/empty";
 
 export default function EmptyOutline() {
   return (
@@ -22,10 +22,10 @@ export default function EmptyOutline() {
         </EmptyDescription>
       </EmptyHeader>
       <EmptyContent>
-        <Button variant="outline" size="sm">
+        <Button size="sm" variant="outline">
           Upload Files
         </Button>
       </EmptyContent>
     </Empty>
-  )
+  );
 }

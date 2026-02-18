@@ -1,11 +1,11 @@
-import { Button } from "@/registry/default/ui/button"
-import { ButtonGroup } from "@/registry/default/ui/button-group"
-import { Kbd, KbdGroup } from "@/registry/default/ui/kbd"
+import { Button } from "@/registry/default/ui/button";
+import { ButtonGroup } from "@/registry/default/ui/button-group";
+import { Kbd, KbdGroup } from "@/registry/default/ui/kbd";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/registry/default/ui/tooltip"
+} from "@/registry/default/ui/tooltip";
 
 export default function KbdTooltip() {
   return (
@@ -37,5 +37,5 @@ export default function KbdTooltip() {
         </Tooltip>
       </ButtonGroup>
     </div>
-  )
+  );
 }

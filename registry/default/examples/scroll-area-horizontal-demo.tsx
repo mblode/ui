@@ -1,10 +1,9 @@
-import * as React from "react"
-import Image from "next/image"
-import { ScrollArea, ScrollBar } from "@/registry/default/ui/scroll-area"
+import Image from "next/image";
+import { ScrollArea, ScrollBar } from "@/registry/default/ui/scroll-area";
 
 export interface Artwork {
-  artist: string
-  art: string
+  art: string;
+  artist: string;
 }
 
 export const works: Artwork[] = [
@@ -20,26 +19,26 @@ export const works: Artwork[] = [
     artist: "Vladimir Malyavko",
     art: "https://images.unsplash.com/photo-1494337480532-3725c85fd2ab?auto=format&fit=crop&w=300&q=80",
   },
-]
+];
 
 export function ScrollAreaHorizontalDemo() {
   return (
-    <ScrollArea className="w-96 rounded-md border whitespace-nowrap">
+    <ScrollArea className="w-96 whitespace-nowrap rounded-md border">
       <div className="flex w-max space-x-4 p-4">
         {works.map((artwork) => (
-          <figure key={artwork.artist} className="shrink-0">
+          <figure className="shrink-0" key={artwork.artist}>
             <div className="overflow-hidden rounded-md">
               <Image
-                src={artwork.art}
                 alt={`Photo by ${artwork.artist}`}
                 className="aspect-[3/4] h-fit w-fit object-cover"
-                width={300}
                 height={400}
+                src={artwork.art}
+                width={300}
               />
             </div>
-            <figcaption className="text-muted-foreground pt-2 text-xs">
+            <figcaption className="pt-2 text-muted-foreground text-xs">
               Photo by{" "}
-              <span className="text-foreground font-semibold">
+              <span className="font-semibold text-foreground">
                 {artwork.artist}
               </span>
             </figcaption>
@@ -48,5 +47,5 @@ export function ScrollAreaHorizontalDemo() {
       </div>
       <ScrollBar orientation="horizontal" />
     </ScrollArea>
-  )
+  );
 }

@@ -1,17 +1,17 @@
+import { SearchIcon } from "blode-icons-react";
 import {
   Empty,
   EmptyContent,
   EmptyDescription,
   EmptyHeader,
   EmptyTitle,
-} from "@/registry/default/ui/empty"
+} from "@/registry/default/ui/empty";
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/registry/default/ui/input-group"
-import { Kbd } from "@/registry/default/ui/kbd"
-import { SearchIcon } from "blode-icons-react"
+} from "@/registry/default/ui/input-group";
+import { Kbd } from "@/registry/default/ui/kbd";
 
 export default function EmptyInputGroup() {
   return (
@@ -38,5 +38,5 @@ export default function EmptyInputGroup() {
         </EmptyDescription>
       </EmptyContent>
     </Empty>
-  )
+  );
 }

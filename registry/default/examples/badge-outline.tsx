@@ -1,4 +1,4 @@
-import { Badge } from "@/registry/default/ui/badge"
+import { Badge } from "@/registry/default/ui/badge";
 
 export function BadgeVariants() {
   return (
@@ -9,5 +9,5 @@ export function BadgeVariants() {
       <Badge variant="outline">Outline</Badge>
       <Badge variant="ghost">Ghost</Badge>
     </div>
-  )
+  );
 }

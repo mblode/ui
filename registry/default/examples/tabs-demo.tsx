@@ -4,17 +4,17 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/registry/default/ui/card"
+} from "@/registry/default/ui/card";
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/registry/default/ui/tabs"
+} from "@/registry/default/ui/tabs";
 
 export function TabsDemo() {
   return (
-    <Tabs defaultValue="overview" className="w-[400px]">
+    <Tabs className="w-[400px]" defaultValue="overview">
       <TabsList>
         <TabsTrigger value="overview">Overview</TabsTrigger>
         <TabsTrigger value="analytics">Analytics</TabsTrigger>
@@ -78,5 +78,5 @@ export function TabsDemo() {
         </Card>
       </TabsContent>
     </Tabs>
-  )
+  );
 }

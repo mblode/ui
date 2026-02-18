@@ -1,9 +1,13 @@
-import { Alert, AlertDescription, AlertTitle } from "@/registry/default/ui/alert"
-import { AlertCircleIcon } from "blode-icons-react"
+import { AlertCircleIcon } from "blode-icons-react";
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/registry/default/ui/alert";
 
 export default function AlertDestructive() {
   return (
-    <Alert variant="destructive" className="max-w-md">
+    <Alert className="max-w-md" variant="destructive">
       <AlertCircleIcon />
       <AlertTitle>Payment failed</AlertTitle>
       <AlertDescription>
@@ -11,5 +15,5 @@ export default function AlertDestructive() {
         and try again.
       </AlertDescription>
     </Alert>
-  )
+  );
 }

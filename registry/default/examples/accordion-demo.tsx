@@ -3,11 +3,11 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/registry/default/ui/accordion"
+} from "@/registry/default/ui/accordion";
 
 export default function AccordionDemo() {
   return (
-    <Accordion defaultValue={["shipping"]} className="max-w-lg">
+    <Accordion className="w-full max-w-lg" defaultValue={["shipping"]}>
       <AccordionItem value="shipping">
         <AccordionTrigger>What are your shipping options?</AccordionTrigger>
         <AccordionContent>
@@ -30,5 +30,5 @@ export default function AccordionDemo() {
         </AccordionContent>
       </AccordionItem>
     </Accordion>
-  )
+  );
 }

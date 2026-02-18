@@ -1,11 +1,11 @@
+import { InboxIcon } from "blode-icons-react";
 import {
   Item,
   ItemContent,
   ItemDescription,
   ItemMedia,
   ItemTitle,
-} from "@/registry/default/ui/item"
-import { InboxIcon } from "blode-icons-react"
+} from "@/registry/default/ui/item";
 
 export function ItemVariant() {
   return (
@@ -44,5 +44,5 @@ export function ItemVariant() {
         </ItemContent>
       </Item>
     </div>
-  )
+  );
 }

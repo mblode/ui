@@ -1,5 +1,9 @@
-import { Alert, AlertDescription, AlertTitle } from "@/registry/default/ui/alert"
-import { CheckCircle2Icon, InfoIcon } from "blode-icons-react"
+import { CheckCircle2Icon, CircleInfoIcon } from "blode-icons-react";
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/registry/default/ui/alert";
 
 export default function AlertDemo() {
   return (
@@ -13,7 +17,7 @@ export default function AlertDemo() {
         </AlertDescription>
       </Alert>
       <Alert>
-        <InfoIcon />
+        <CircleInfoIcon />
         <AlertTitle>New feature available</AlertTitle>
         <AlertDescription>
           We&apos;ve added dark mode support. You can enable it in your account
@@ -21,5 +25,5 @@ export default function AlertDemo() {
         </AlertDescription>
       </Alert>
     </div>
-  )
+  );
 }

@@ -1,4 +1,4 @@
-import { Button } from "@/registry/default/ui/button"
+import { Button } from "@/registry/default/ui/button";
 import {
   Dialog,
   DialogClose,
@@ -8,10 +8,10 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/registry/default/ui/dialog"
-import { Field, FieldGroup } from "@/registry/default/ui/field"
-import { Input } from "@/registry/default/ui/input"
-import { Label } from "@/registry/default/ui/label"
+} from "@/registry/default/ui/dialog";
+import { Field, FieldGroup } from "@/registry/default/ui/field";
+import { Input } from "@/registry/default/ui/input";
+import { Label } from "@/registry/default/ui/label";
 
 export function DialogDemo() {
   return (
@@ -31,11 +31,11 @@ export function DialogDemo() {
           <FieldGroup>
             <Field>
               <Label htmlFor="name-1">Name</Label>
-              <Input id="name-1" name="name" defaultValue="Pedro Duarte" />
+              <Input defaultValue="Pedro Duarte" id="name-1" name="name" />
             </Field>
             <Field>
               <Label htmlFor="username-1">Username</Label>
-              <Input id="username-1" name="username" defaultValue="@peduarte" />
+              <Input defaultValue="@peduarte" id="username-1" name="username" />
             </Field>
           </FieldGroup>
           <DialogFooter>
@@ -47,5 +47,5 @@ export function DialogDemo() {
         </DialogContent>
       </form>
     </Dialog>
-  )
+  );
 }

@@ -112,35 +112,35 @@ export const Combobox = forwardRef<ComboboxRef, ComboboxProps>(
     return (
       <Popover defaultOpen={startOpen} open={isOpen}>
         <PopoverAnchor asChild>
-          <div className="relative w-full">
-            <Input
-              className={cn({
-                "pl-10": !!leftIcon,
-              })}
-              clearable={clearable}
-              onClear={() => {
-                selectItem({});
-                onClear?.();
-              }}
-              ref={comboboxRef}
-              {...getInputProps({}, { suppressRefError: true })}
-              {...inputProps}
-            />
-
-            <div className="absolute top-4.5 right-3">
-              {((clearable && inputValue.length === 0) || !clearable) && (
-                <ChevronDownIcon className="size-4 opacity-50" />
-              )}
-            </div>
-
-            <div className="absolute top-4 left-3">{leftIcon}</div>
-          </div>
+          <Input
+            className={cn({
+              "pl-10": !!leftIcon,
+            })}
+            clearable={clearable}
+            leftControl={
+              <div className="absolute top-4 left-3">{leftIcon}</div>
+            }
+            onClear={() => {
+              selectItem({});
+              onClear?.();
+            }}
+            ref={comboboxRef}
+            rightControl={
+              <div className="absolute top-4.5 right-3">
+                {((clearable && inputValue.length === 0) || !clearable) && (
+                  <ChevronDownIcon className="size-4 opacity-50" />
+                )}
+              </div>
+            }
+            {...getInputProps({}, { suppressRefError: true })}
+            {...inputProps}
+          />
         </PopoverAnchor>
 
         <PopoverContent
           align="start"
           asChild
-          className="popover-content fade-in-80 relative z-110 max-h-[250px] w-auto min-w-32 translate-y-1 animate-in overflow-hidden rounded-xl border border-border bg-popover p-0 text-popover-foreground shadow-soft"
+          className="popover-content fade-in-80 relative z-110 max-h-[250px] w-(--anchor-width) max-w-(--available-width) translate-y-1 animate-in overflow-hidden rounded-xl border border-border bg-popover p-0 text-popover-foreground shadow-soft"
           onInteractOutside={(event) => {
             const target = event.target as Element | null;
             const isCombobox = target === comboboxRef.current;
@@ -171,11 +171,18 @@ export const Combobox = forwardRef<ComboboxRef, ComboboxProps>(
 
               return (
                 <div
-                  className={cn("cursor-pointer rounded-lg px-4 py-2", {
-                    "bg-accent text-accent-foreground":
-                      highlightedIndex === index,
-                  })}
+                  className={cn(
+                    "cursor-pointer touch-manipulation rounded-lg px-4 py-2",
+                    {
+                      "bg-accent text-accent-foreground":
+                        highlightedIndex === index,
+                    }
+                  )}
                   key={`${item.id}${index}`}
+                  style={{
+                    WebkitTapHighlightColor: "transparent",
+                    WebkitTouchCallout: "none",
+                  }}
                   {...getItemProps({
                     item,
                     index,

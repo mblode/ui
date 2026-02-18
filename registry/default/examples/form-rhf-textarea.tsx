@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { Controller, useForm } from "react-hook-form"
-import { toast } from "sonner"
-import * as z from "zod"
+import { zodResolver } from "@hookform/resolvers/zod";
+import type * as React from "react";
+import { Controller, useForm } from "react-hook-form";
+import { toast } from "sonner";
+import { z } from "zod";
 
-import { Button } from "@/registry/default/ui/button"
+import { Button } from "@/registry/default/ui/button";
 import {
   Card,
   CardContent,
@@ -14,22 +14,22 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/default/ui/card"
+} from "@/registry/default/ui/card";
 import {
   Field,
   FieldDescription,
   FieldError,
   FieldGroup,
   FieldLabel,
-} from "@/registry/default/ui/field"
-import { Textarea } from "@/registry/default/ui/textarea"
+} from "@/registry/default/ui/field";
+import { Textarea } from "@/registry/default/ui/textarea";
 
 const formSchema = z.object({
   about: z
     .string()
     .min(10, "Please provide at least 10 characters.")
     .max(200, "Please keep it under 200 characters."),
-})
+});
 
 export default function FormRhfTextarea() {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -37,12 +37,12 @@ export default function FormRhfTextarea() {
     defaultValues: {
       about: "",
     },
-  })
+  });
 
   function onSubmit(data: z.infer<typeof formSchema>) {
     toast("You submitted the following values:", {
       description: (
-        <pre className="bg-code text-code-foreground mt-2 w-[320px] overflow-x-auto rounded-md p-4">
+        <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
           <code>{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
@@ -53,7 +53,7 @@ export default function FormRhfTextarea() {
       style: {
         "--border-radius": "calc(var(--radius)  + 4px)",
       } as React.CSSProperties,
-    })
+    });
   }
 
   return (
@@ -68,8 +68,8 @@ export default function FormRhfTextarea() {
         <form id="form-rhf-textarea" onSubmit={form.handleSubmit(onSubmit)}>
           <FieldGroup>
             <Controller
-              name="about"
               control={form.control}
+              name="about"
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
                   <FieldLabel htmlFor="form-rhf-textarea-about">
@@ -77,10 +77,10 @@ export default function FormRhfTextarea() {
                   </FieldLabel>
                   <Textarea
                     {...field}
-                    id="form-rhf-textarea-about"
                     aria-invalid={fieldState.invalid}
-                    placeholder="I'm a software engineer..."
                     className="min-h-[120px]"
+                    id="form-rhf-textarea-about"
+                    placeholder="I'm a software engineer..."
                   />
                   <FieldDescription>
                     Tell us more about yourself. This will be used to help us
@@ -97,14 +97,14 @@ export default function FormRhfTextarea() {
       </CardContent>
       <CardFooter>
         <Field orientation="horizontal">
-          <Button type="button" variant="outline" onClick={() => form.reset()}>
+          <Button onClick={() => form.reset()} type="button" variant="outline">
             Reset
           </Button>
-          <Button type="submit" form="form-rhf-textarea">
+          <Button form="form-rhf-textarea" type="submit">
             Save
           </Button>
         </Field>
       </CardFooter>
     </Card>
-  )
+  );
 }

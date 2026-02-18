@@ -8,7 +8,7 @@
 @theme inline {
   --breakpoint-3xl: 1600px;
   --breakpoint-4xl: 2000px;
-  --font-sans: var(--font-sans);
+  --font-sans: var(--font-glide);
   --font-mono: var(--font-mono);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -91,6 +91,7 @@
   --color-code-number: var(--code-number);
   --color-selection: var(--selection);
   --color-selection-foreground: var(--selection-foreground);
+  --color-overlay: var(--overlay);
 }
 
 :root {
@@ -136,6 +137,7 @@
   --code-number: oklch(0.56 0 0);
   --selection: oklch(0.145 0 0);
   --selection-foreground: oklch(1 0 0);
+  --overlay: rgba(193, 201, 210, 0.7);
 }
 
 .dark {
@@ -179,6 +181,7 @@
   --code-number: oklch(0.72 0 0);
   --selection: oklch(0.922 0 0);
   --selection-foreground: oklch(0.205 0 0);
+  --overlay: rgba(43, 53, 68, 0.7);
 }
 
 @layer base {

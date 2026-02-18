@@ -1,20 +1,20 @@
-import { Checkbox } from "@/registry/default/ui/checkbox"
+import { Checkbox } from "@/registry/default/ui/checkbox";
 import {
   Field,
   FieldContent,
   FieldDescription,
   FieldGroup,
   FieldLabel,
-} from "@/registry/default/ui/field"
+} from "@/registry/default/ui/field";
 
 export function CheckboxDescription() {
   return (
     <FieldGroup className="mx-auto w-72">
       <Field orientation="horizontal">
         <Checkbox
+          defaultChecked
           id="terms-checkbox-desc"
           name="terms-checkbox-desc"
-          defaultChecked
         />
         <FieldContent>
           <FieldLabel htmlFor="terms-checkbox-desc">
@@ -26,5 +26,5 @@ export function CheckboxDescription() {
         </FieldContent>
       </Field>
     </FieldGroup>
-  )
+  );
 }

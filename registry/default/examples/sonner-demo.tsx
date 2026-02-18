@@ -1,12 +1,11 @@
-"use client"
+"use client";
 
-import { Button } from "@/registry/default/ui/button"
-import { toast } from "sonner"
+import { toast } from "sonner";
+import { Button } from "@/registry/default/ui/button";
 
 export function SonnerDemo() {
   return (
     <Button
-      variant="outline"
       onClick={() =>
         toast("Event has been created", {
           description: "Sunday, December 03, 2023 at 9:00 AM",
@@ -16,8 +15,9 @@ export function SonnerDemo() {
           },
         })
       }
+      variant="outline"
     >
       Show Toast
     </Button>
-  )
+  );
 }

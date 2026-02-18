@@ -111,10 +111,7 @@ function FormControl({
 }: React.HTMLAttributes<HTMLElement>) {
   const { error, formItemId, formDescriptionId, formMessageId } =
     useFormField();
-
-  if (!isValidElement(children)) {
-    return null;
-  }
+  const hasValidChild = isValidElement(children);
 
   const rendered = useRender({
     defaultTagName: "div",
@@ -128,11 +125,15 @@ function FormControl({
       },
       props as React.ComponentProps<"div">
     ),
-    render: children as React.ReactElement,
+    render: (hasValidChild ? children : <div />) as React.ReactElement,
     state: {
       slot: "form-control",
     },
   });
+
+  if (!hasValidChild) {
+    return null;
+  }
 
   return rendered;
 }

@@ -1,5 +1,5 @@
-import { Button } from "@/registry/default/ui/button"
-import { GitBranchesIcon, GitForkIcon } from "blode-icons-react"
+import { GitBranchesIcon, GitForkIcon } from "blode-icons-react";
+import { Button } from "@/registry/default/ui/button";
 
 export default function ButtonWithIcon() {
   return (
@@ -12,5 +12,5 @@ export default function ButtonWithIcon() {
         <GitForkIcon data-icon="inline-end" />
       </Button>
     </div>
-  )
+  );
 }

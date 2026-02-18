@@ -1,13 +1,11 @@
-import { Button } from "@/registry/default/ui/button"
-import { Field, FieldGroup, FieldLabel } from "@/registry/default/ui/field"
-import { Input } from "@/registry/default/ui/input"
+import { CopyIcon, TrashIcon } from "blode-icons-react";
+import { Field, FieldGroup, FieldLabel } from "@/registry/default/ui/field";
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/registry/default/ui/input-group"
-import { CopyIcon, TrashIcon } from "blode-icons-react"
+} from "@/registry/default/ui/input-group";
 
 export function InputGroupWithButtons() {
   return (
@@ -49,12 +47,12 @@ export function InputGroupWithButtons() {
         <InputGroup>
           <InputGroupInput id="input-button-18" />
           <InputGroupAddon align="inline-end">
-            <InputGroupButton variant="secondary" size="icon-xs">
+            <InputGroupButton size="icon-xs" variant="secondary">
               <TrashIcon />
             </InputGroupButton>
           </InputGroupAddon>
         </InputGroup>
       </Field>
     </FieldGroup>
-  )
+  );
 }

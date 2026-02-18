@@ -1,11 +1,11 @@
 /* eslint-disable react/no-children-prop */
-"use client"
+"use client";
 
-import { useForm } from "@tanstack/react-form"
-import { toast } from "sonner"
-import * as z from "zod"
+import { useForm } from "@tanstack/react-form";
+import { toast } from "sonner";
+import { z } from "zod";
 
-import { Button } from "@/registry/default/ui/button"
+import { Button } from "@/registry/default/ui/button";
 import {
   Card,
   CardContent,
@@ -13,15 +13,15 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/default/ui/card"
+} from "@/registry/default/ui/card";
 import {
   Field,
   FieldDescription,
   FieldError,
   FieldGroup,
   FieldLabel,
-} from "@/registry/default/ui/field"
-import { Input } from "@/registry/default/ui/input"
+} from "@/registry/default/ui/field";
+import { Input } from "@/registry/default/ui/input";
 
 const formSchema = z.object({
   username: z
@@ -32,7 +32,7 @@ const formSchema = z.object({
       /^[a-zA-Z0-9_]+$/,
       "Username can only contain letters, numbers, and underscores."
     ),
-})
+});
 
 export default function FormTanstackInput() {
   const form = useForm({
@@ -45,7 +45,7 @@ export default function FormTanstackInput() {
     onSubmit: async ({ value }) => {
       toast("You submitted the following values:", {
         description: (
-          <pre className="bg-code text-code-foreground mt-2 w-[320px] overflow-x-auto rounded-md p-4">
+          <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
             <code>{JSON.stringify(value, null, 2)}</code>
           </pre>
         ),
@@ -56,9 +56,9 @@ export default function FormTanstackInput() {
         style: {
           "--border-radius": "calc(var(--radius)  + 4px)",
         } as React.CSSProperties,
-      })
+      });
     },
-  })
+  });
 
   return (
     <Card className="w-full sm:max-w-md">
@@ -72,30 +72,29 @@ export default function FormTanstackInput() {
         <form
           id="form-tanstack-input"
           onSubmit={(e) => {
-            e.preventDefault()
-            form.handleSubmit()
+            e.preventDefault();
+            form.handleSubmit();
           }}
         >
           <FieldGroup>
             <form.Field
-              name="username"
               children={(field) => {
                 const isInvalid =
-                  field.state.meta.isTouched && !field.state.meta.isValid
+                  field.state.meta.isTouched && !field.state.meta.isValid;
                 return (
                   <Field data-invalid={isInvalid}>
                     <FieldLabel htmlFor="form-tanstack-input-username">
                       Username
                     </FieldLabel>
                     <Input
+                      aria-invalid={isInvalid}
+                      autoComplete="username"
                       id="form-tanstack-input-username"
                       name={field.name}
-                      value={field.state.value}
                       onBlur={field.handleBlur}
                       onChange={(e) => field.handleChange(e.target.value)}
-                      aria-invalid={isInvalid}
                       placeholder="shadcn"
-                      autoComplete="username"
+                      value={field.state.value}
                     />
                     <FieldDescription>
                       This is your public display name. Must be between 3 and 10
@@ -106,22 +105,23 @@ export default function FormTanstackInput() {
                       <FieldError errors={field.state.meta.errors} />
                     )}
                   </Field>
-                )
+                );
               }}
+              name="username"
             />
           </FieldGroup>
         </form>
       </CardContent>
       <CardFooter>
         <Field orientation="horizontal">
-          <Button type="button" variant="outline" onClick={() => form.reset()}>
+          <Button onClick={() => form.reset()} type="button" variant="outline">
             Reset
           </Button>
-          <Button type="submit" form="form-tanstack-input">
+          <Button form="form-tanstack-input" type="submit">
             Save
           </Button>
         </Field>
       </CardFooter>
     </Card>
-  )
+  );
 }

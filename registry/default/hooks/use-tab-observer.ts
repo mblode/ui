@@ -5,7 +5,6 @@ interface TabObserverOptions {
 }
 
 export function useTabObserver({ onActiveTabChange }: TabObserverOptions = {}) {
-  const [mounted, setMounted] = React.useState(false);
   const listRef = React.useRef<HTMLDivElement>(null);
   const onActiveTabChangeRef = React.useRef(onActiveTabChange);
 
@@ -18,13 +17,16 @@ export function useTabObserver({ onActiveTabChange }: TabObserverOptions = {}) {
       const tabs = listRef.current.querySelectorAll('[role="tab"]');
       for (let i = 0; i < tabs.length; i += 1) {
         const el = tabs[i];
+        if (!(el instanceof HTMLElement)) {
+          continue;
+        }
         const isActive =
           el.hasAttribute("data-active") ||
           el.getAttribute("data-state") === "active" ||
           el.getAttribute("aria-selected") === "true";
 
         if (isActive) {
-          onActiveTabChangeRef.current?.(i, el as HTMLElement);
+          onActiveTabChangeRef.current?.(i, el);
           break;
         }
       }
@@ -32,8 +34,6 @@ export function useTabObserver({ onActiveTabChange }: TabObserverOptions = {}) {
   }, []);
 
   React.useEffect(() => {
-    setMounted(true);
-
     const resizeObserver = new ResizeObserver(handleUpdate);
     const mutationObserver = new MutationObserver(handleUpdate);
 
@@ -46,13 +46,24 @@ export function useTabObserver({ onActiveTabChange }: TabObserverOptions = {}) {
       });
     }
 
+    const handleWindowUpdate = () => {
+      handleUpdate();
+    };
+
+    window.addEventListener("resize", handleWindowUpdate);
+    window.addEventListener("orientationchange", handleWindowUpdate);
+    document.fonts?.addEventListener?.("loadingdone", handleWindowUpdate);
+
     handleUpdate();
 
     return () => {
       resizeObserver.disconnect();
       mutationObserver.disconnect();
+      window.removeEventListener("resize", handleWindowUpdate);
+      window.removeEventListener("orientationchange", handleWindowUpdate);
+      document.fonts?.removeEventListener?.("loadingdone", handleWindowUpdate);
     };
   }, [handleUpdate]);
 
-  return { mounted, listRef };
+  return { listRef };
 }

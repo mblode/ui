@@ -7,8 +7,8 @@ import {
   FieldLegend,
   FieldSet,
   FieldTitle,
-} from "@/registry/default/ui/field"
-import { RadioGroup, RadioGroupItem } from "@/registry/default/ui/radio-group"
+} from "@/registry/default/ui/field";
+import { RadioGroup, RadioGroupItem } from "@/registry/default/ui/radio-group";
 
 export default function FieldChoiceCard() {
   return (
@@ -27,7 +27,7 @@ export default function FieldChoiceCard() {
                   Run GPU workloads on a K8s cluster.
                 </FieldDescription>
               </FieldContent>
-              <RadioGroupItem value="kubernetes" id="kubernetes-r2h" />
+              <RadioGroupItem id="kubernetes-r2h" value="kubernetes" />
             </Field>
           </FieldLabel>
           <FieldLabel htmlFor="vm-z4k">
@@ -38,11 +38,11 @@ export default function FieldChoiceCard() {
                   Access a cluster to run GPU workloads.
                 </FieldDescription>
               </FieldContent>
-              <RadioGroupItem value="vm" id="vm-z4k" />
+              <RadioGroupItem id="vm-z4k" value="vm" />
             </Field>
           </FieldLabel>
         </RadioGroup>
       </FieldSet>
     </FieldGroup>
-  )
+  );
 }

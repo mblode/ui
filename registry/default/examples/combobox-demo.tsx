@@ -1,94 +1,82 @@
 "use client";
 
-import { Check, ChevronsUpDown } from "blode-icons-react";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
-import { cn } from "@/lib/utils";
-import { Button } from "@/registry/default/ui/button";
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from "@/registry/default/ui/command";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/registry/default/ui/popover";
+import { Combobox, type ComboboxOption } from "@/registry/default/ui/combobox";
 
-const frameworks = [
+const frameworks: ComboboxOption[] = [
   {
-    value: "next.js",
+    id: "next.js",
     label: "Next.js",
+    description: "React framework for full-stack web apps.",
   },
   {
-    value: "sveltekit",
+    id: "sveltekit",
     label: "SvelteKit",
+    description: "Svelte's app framework for routing and SSR.",
   },
   {
-    value: "nuxt.js",
+    id: "nuxt.js",
     label: "Nuxt.js",
+    description: "The Vue framework for universal applications.",
   },
   {
-    value: "remix",
+    id: "remix",
     label: "Remix",
+    description: "React framework focused on web platform primitives.",
   },
   {
-    value: "astro",
+    id: "astro",
     label: "Astro",
+    description: "Content-focused framework with island architecture.",
   },
 ];
 
 export default function ComboboxDemo() {
-  const [open, setOpen] = useState(false);
-  const [value, setValue] = useState("");
+  const [search, setSearch] = useState("");
+  const [selectedFramework, setSelectedFramework] = useState("");
+
+  const options = useMemo(() => {
+    const query = search.trim().toLowerCase();
+
+    if (!query) {
+      return frameworks;
+    }
+
+    return frameworks.filter((framework) =>
+      (framework.label || "").toLowerCase().includes(query)
+    );
+  }, [search]);
 
   return (
-    <Popover onOpenChange={setOpen} open={open}>
-      <PopoverTrigger asChild>
-        <Button
-          aria-expanded={open}
-          className="w-[200px] justify-between"
-          role="combobox"
-          variant="outline"
-        >
-          {value
-            ? frameworks.find((framework) => framework.value === value)?.label
-            : "Select framework..."}
-          <ChevronsUpDown className="opacity-50" />
-        </Button>
-      </PopoverTrigger>
-      <PopoverContent className="w-[200px] p-0">
-        <Command>
-          <CommandInput className="h-9" placeholder="Search framework..." />
-          <CommandList>
-            <CommandEmpty>No framework found.</CommandEmpty>
-            <CommandGroup>
-              {frameworks.map((framework) => (
-                <CommandItem
-                  key={framework.value}
-                  onSelect={(currentValue) => {
-                    setValue(currentValue === value ? "" : currentValue);
-                    setOpen(false);
-                  }}
-                  value={framework.value}
-                >
-                  {framework.label}
-                  <Check
-                    className={cn(
-                      "ml-auto",
-                      value === framework.value ? "opacity-100" : "opacity-0"
-                    )}
-                  />
-                </CommandItem>
-              ))}
-            </CommandGroup>
-          </CommandList>
-        </Command>
-      </PopoverContent>
-    </Popover>
+    <div className="w-[320px]">
+      <Combobox
+        aria-label="Framework"
+        clearable
+        noResults={
+          <div className="cursor-not-allowed px-4 py-3 text-center">
+            <div className="text-muted-foreground">No framework found.</div>
+          </div>
+        }
+        onChange={({ selectedItem }) => {
+          setSelectedFramework(selectedItem?.label ?? "");
+        }}
+        onClear={() => {
+          setSelectedFramework("");
+          setSearch("");
+        }}
+        onInputChange={({ inputValue }) => {
+          setSearch(inputValue ?? "");
+        }}
+        options={options}
+        placeholder="Search framework..."
+      />
+
+      <p className="mt-2 text-muted-foreground text-sm">
+        {selectedFramework
+          ? `Selected: ${selectedFramework}`
+          : "Select a framework from the list."}
+      </p>
+    </div>
   );
 }

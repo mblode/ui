@@ -1,4 +1,4 @@
-import { Spinner } from "@/registry/default/ui/spinner"
+import { Spinner } from "@/registry/default/ui/spinner";
 
 export function SpinnerSize() {
   return (
@@ -8,5 +8,5 @@ export function SpinnerSize() {
       <Spinner size={24} />
       <Spinner size={32} />
     </div>
-  )
+  );
 }

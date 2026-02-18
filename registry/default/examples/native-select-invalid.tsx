@@ -1,7 +1,7 @@
 import {
   NativeSelect,
   NativeSelectOption,
-} from "@/registry/default/ui/native-select"
+} from "@/registry/default/ui/native-select";
 
 export function NativeSelectInvalid() {
   return (
@@ -11,5 +11,5 @@ export function NativeSelectInvalid() {
       <NativeSelectOption value="banana">Banana</NativeSelectOption>
       <NativeSelectOption value="blueberry">Blueberry</NativeSelectOption>
     </NativeSelect>
-  )
+  );
 }

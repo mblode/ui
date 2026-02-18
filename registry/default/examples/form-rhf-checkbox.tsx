@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { Controller, useForm } from "react-hook-form"
-import { toast } from "sonner"
-import * as z from "zod"
+import { zodResolver } from "@hookform/resolvers/zod";
+import type * as React from "react";
+import { Controller, useForm } from "react-hook-form";
+import { toast } from "sonner";
+import { z } from "zod";
 
-import { Button } from "@/registry/default/ui/button"
+import { Button } from "@/registry/default/ui/button";
 import {
   Card,
   CardContent,
@@ -14,8 +14,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/default/ui/card"
-import { Checkbox } from "@/registry/default/ui/checkbox"
+} from "@/registry/default/ui/card";
+import { Checkbox } from "@/registry/default/ui/checkbox";
 import {
   Field,
   FieldDescription,
@@ -25,7 +25,7 @@ import {
   FieldLegend,
   FieldSeparator,
   FieldSet,
-} from "@/registry/default/ui/field"
+} from "@/registry/default/ui/field";
 
 const tasks = [
   {
@@ -36,7 +36,7 @@ const tasks = [
     id: "email",
     label: "Email notifications",
   },
-] as const
+] as const;
 
 const formSchema = z.object({
   responses: z.boolean(),
@@ -49,7 +49,7 @@ const formSchema = z.object({
         message: "Invalid notification type selected.",
       }
     ),
-})
+});
 
 export default function FormRhfCheckbox() {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -58,12 +58,12 @@ export default function FormRhfCheckbox() {
       responses: true,
       tasks: [],
     },
-  })
+  });
 
   function onSubmit(data: z.infer<typeof formSchema>) {
     toast("You submitted the following values:", {
       description: (
-        <pre className="bg-code text-code-foreground mt-2 w-[320px] overflow-x-auto rounded-md p-4">
+        <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
           <code>{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
@@ -74,7 +74,7 @@ export default function FormRhfCheckbox() {
       style: {
         "--border-radius": "calc(var(--radius)  + 4px)",
       } as React.CSSProperties,
-    })
+    });
   }
 
   return (
@@ -87,8 +87,8 @@ export default function FormRhfCheckbox() {
         <form id="form-rhf-checkbox" onSubmit={form.handleSubmit(onSubmit)}>
           <FieldGroup>
             <Controller
-              name="responses"
               control={form.control}
+              name="responses"
               render={({ field, fieldState }) => (
                 <div>
                   <FieldSet data-invalid={fieldState.invalid}>
@@ -100,15 +100,15 @@ export default function FormRhfCheckbox() {
                     <FieldGroup data-slot="checkbox-group">
                       <Field orientation="horizontal">
                         <Checkbox
+                          checked={field.value}
+                          disabled
                           id="form-rhf-checkbox-responses"
                           name={field.name}
-                          checked={field.value}
                           onCheckedChange={field.onChange}
-                          disabled
                         />
                         <FieldLabel
-                          htmlFor="form-rhf-checkbox-responses"
                           className="font-normal"
+                          htmlFor="form-rhf-checkbox-responses"
                         >
                           Push notifications
                         </FieldLabel>
@@ -123,8 +123,8 @@ export default function FormRhfCheckbox() {
             />
             <FieldSeparator />
             <Controller
-              name="tasks"
               control={form.control}
+              name="tasks"
               render={({ field, fieldState }) => (
                 <FieldGroup>
                   <FieldSet data-invalid={fieldState.invalid}>
@@ -135,27 +135,27 @@ export default function FormRhfCheckbox() {
                     <FieldGroup data-slot="checkbox-group">
                       {tasks.map((task) => (
                         <Field
+                          data-invalid={fieldState.invalid}
                           key={task.id}
                           orientation="horizontal"
-                          data-invalid={fieldState.invalid}
                         >
                           <Checkbox
-                            id={`form-rhf-checkbox-${task.id}`}
-                            name={field.name}
                             aria-invalid={fieldState.invalid}
                             checked={field.value.includes(task.id)}
+                            id={`form-rhf-checkbox-${task.id}`}
+                            name={field.name}
                             onCheckedChange={(checked) => {
                               const newValue = checked
                                 ? [...field.value, task.id]
                                 : field.value.filter(
                                     (value) => value !== task.id
-                                  )
-                              field.onChange(newValue)
+                                  );
+                              field.onChange(newValue);
                             }}
                           />
                           <FieldLabel
-                            htmlFor={`form-rhf-checkbox-${task.id}`}
                             className="font-normal"
+                            htmlFor={`form-rhf-checkbox-${task.id}`}
                           >
                             {task.label}
                           </FieldLabel>
@@ -174,14 +174,14 @@ export default function FormRhfCheckbox() {
       </CardContent>
       <CardFooter>
         <Field orientation="horizontal">
-          <Button type="button" variant="outline" onClick={() => form.reset()}>
+          <Button onClick={() => form.reset()} type="button" variant="outline">
             Reset
           </Button>
-          <Button type="submit" form="form-rhf-checkbox">
+          <Button form="form-rhf-checkbox" type="submit">
             Save
           </Button>
         </Field>
       </CardFooter>
     </Card>
-  )
+  );
 }

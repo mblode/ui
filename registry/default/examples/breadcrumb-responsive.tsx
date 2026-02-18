@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import Link from "next/link"
+import Link from "next/link";
+import { useState } from "react";
 
-import { useMediaQuery } from "@/hooks/use-media-query"
+import { useMediaQuery } from "@/hooks/use-media-query";
 import {
   Breadcrumb,
   BreadcrumbEllipsis,
@@ -12,8 +12,8 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/registry/default/ui/breadcrumb"
-import { Button } from "@/registry/default/ui/button"
+} from "@/registry/default/ui/breadcrumb";
+import { Button } from "@/registry/default/ui/button";
 import {
   Drawer,
   DrawerClose,
@@ -23,13 +23,13 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/registry/default/ui/drawer"
+} from "@/registry/default/ui/drawer";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/registry/default/ui/dropdown-menu"
+} from "@/registry/default/ui/dropdown-menu";
 
 const items = [
   { href: "#", label: "Home" },
@@ -37,13 +37,13 @@ const items = [
   { href: "#", label: "Build Your Application" },
   { href: "#", label: "Data Fetching" },
   { label: "Caching and Revalidating" },
-]
+];
 
-const ITEMS_TO_DISPLAY = 3
+const ITEMS_TO_DISPLAY = 3;
 
 export default function BreadcrumbResponsive() {
-  const [open, setOpen] = React.useState(false)
-  const isDesktop = useMediaQuery("(min-width: 768px)")
+  const [open, setOpen] = useState(false);
+  const isDesktop = useMediaQuery("(min-width: 768px)");
 
   return (
     <Breadcrumb>
@@ -58,10 +58,10 @@ export default function BreadcrumbResponsive() {
           <>
             <BreadcrumbItem>
               {isDesktop ? (
-                <DropdownMenu open={open} onOpenChange={setOpen}>
+                <DropdownMenu onOpenChange={setOpen} open={open}>
                   <DropdownMenuTrigger
-                    className="flex items-center gap-1"
                     aria-label="Toggle menu"
+                    className="flex items-center gap-1"
                   >
                     <BreadcrumbEllipsis className="size-4" />
                   </DropdownMenuTrigger>
@@ -76,7 +76,7 @@ export default function BreadcrumbResponsive() {
                   </DropdownMenuContent>
                 </DropdownMenu>
               ) : (
-                <Drawer open={open} onOpenChange={setOpen}>
+                <Drawer onOpenChange={setOpen} open={open}>
                   <DrawerTrigger aria-label="Toggle Menu">
                     <BreadcrumbEllipsis className="h-4 w-4" />
                   </DrawerTrigger>
@@ -90,9 +90,9 @@ export default function BreadcrumbResponsive() {
                     <div className="grid gap-1 px-4">
                       {items.slice(1, -2).map((item, index) => (
                         <Link
-                          key={index}
-                          href={item.href ? item.href : "#"}
                           className="py-1 text-sm"
+                          href={item.href ? item.href : "#"}
+                          key={index}
                         >
                           {item.label}
                         </Link>
@@ -131,5 +131,5 @@ export default function BreadcrumbResponsive() {
         ))}
       </BreadcrumbList>
     </Breadcrumb>
-  )
+  );
 }

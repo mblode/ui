@@ -1,10 +1,8 @@
-import { z } from "zod"
+import { z } from "zod";
 
 export const formSchema = z.object({
   plan: z.enum(["basic", "pro"]),
-  billingPeriod: z
-    .string()
-    .min(1, "Please select a billing period"),
+  billingPeriod: z.string().min(1, "Please select a billing period"),
   addons: z
     .array(z.string())
     .min(1, "Please select at least one add-on")
@@ -16,12 +14,12 @@ export const formSchema = z.object({
       }
     ),
   emailNotifications: z.boolean(),
-})
+});
 
-export type FormState = {
-  values: z.infer<typeof formSchema>
-  errors: null | Partial<Record<keyof z.infer<typeof formSchema>, string[]>>
-  success: boolean
+export interface FormState {
+  errors: null | Partial<Record<keyof z.infer<typeof formSchema>, string[]>>;
+  success: boolean;
+  values: z.infer<typeof formSchema>;
 }
 
 export const addons = [
@@ -40,4 +38,4 @@ export const addons = [
     title: "Priority Support",
     description: "24/7 premium customer support",
   },
-] as const
+] as const;

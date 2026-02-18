@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { MoreHorizontal } from "blode-icons-react"
+import { MoreHorizontal } from "blode-icons-react";
+import { useState } from "react";
 
-import { Button } from "@/registry/default/ui/button"
+import { Button } from "@/registry/default/ui/button";
 import {
   Command,
   CommandEmpty,
@@ -11,7 +11,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/registry/default/ui/command"
+} from "@/registry/default/ui/command";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -24,7 +24,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/registry/default/ui/dropdown-menu"
+} from "@/registry/default/ui/dropdown-menu";
 
 const labels = [
   "feature",
@@ -34,23 +34,23 @@ const labels = [
   "design",
   "question",
   "maintenance",
-]
+];
 
 export default function ComboboxDropdownMenu() {
-  const [label, setLabel] = React.useState("feature")
-  const [open, setOpen] = React.useState(false)
+  const [label, setLabel] = useState("feature");
+  const [open, setOpen] = useState(false);
 
   return (
     <div className="flex w-full flex-col items-start justify-between rounded-md border px-4 py-3 sm:flex-row sm:items-center">
-      <p className="text-sm leading-none font-medium">
-        <span className="bg-primary text-primary-foreground mr-2 rounded-lg px-2 py-1 text-xs">
+      <p className="font-medium text-sm leading-none">
+        <span className="mr-2 rounded-lg bg-primary px-2 py-1 text-primary-foreground text-xs">
           {label}
         </span>
         <span className="text-muted-foreground">Create a new project</span>
       </p>
-      <DropdownMenu open={open} onOpenChange={setOpen}>
+      <DropdownMenu onOpenChange={setOpen} open={open}>
         <DropdownMenuTrigger asChild>
-          <Button variant="ghost" size="sm">
+          <Button size="sm" variant="ghost">
             <MoreHorizontal />
           </Button>
         </DropdownMenuTrigger>
@@ -65,9 +65,9 @@ export default function ComboboxDropdownMenu() {
               <DropdownMenuSubContent className="p-0">
                 <Command>
                   <CommandInput
-                    placeholder="Filter label..."
                     autoFocus={true}
                     className="h-9"
+                    placeholder="Filter label..."
                   />
                   <CommandList>
                     <CommandEmpty>No label found.</CommandEmpty>
@@ -75,11 +75,11 @@ export default function ComboboxDropdownMenu() {
                       {labels.map((label) => (
                         <CommandItem
                           key={label}
-                          value={label}
                           onSelect={(value) => {
-                            setLabel(value)
-                            setOpen(false)
+                            setLabel(value);
+                            setOpen(false);
                           }}
+                          value={label}
                         >
                           {label}
                         </CommandItem>
@@ -98,5 +98,5 @@ export default function ComboboxDropdownMenu() {
         </DropdownMenuContent>
       </DropdownMenu>
     </div>
-  )
+  );
 }

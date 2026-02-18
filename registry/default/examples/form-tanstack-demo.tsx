@@ -1,12 +1,12 @@
 /* eslint-disable react/no-children-prop */
-"use client"
+"use client";
 
-import * as React from "react"
-import { useForm } from "@tanstack/react-form"
-import { toast } from "sonner"
-import * as z from "zod"
+import { useForm } from "@tanstack/react-form";
+import type * as React from "react";
+import { toast } from "sonner";
+import { z } from "zod";
 
-import { Button } from "@/registry/default/ui/button"
+import { Button } from "@/registry/default/ui/button";
 import {
   Card,
   CardContent,
@@ -14,21 +14,21 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/default/ui/card"
+} from "@/registry/default/ui/card";
 import {
   Field,
   FieldDescription,
   FieldError,
   FieldGroup,
   FieldLabel,
-} from "@/registry/default/ui/field"
-import { Input } from "@/registry/default/ui/input"
+} from "@/registry/default/ui/field";
+import { Input } from "@/registry/default/ui/input";
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupText,
   InputGroupTextarea,
-} from "@/registry/default/ui/input-group"
+} from "@/registry/default/ui/input-group";
 
 const formSchema = z.object({
   title: z
@@ -39,7 +39,7 @@ const formSchema = z.object({
     .string()
     .min(20, "Description must be at least 20 characters.")
     .max(100, "Description must be at most 100 characters."),
-})
+});
 
 export default function BugReportForm() {
   const form = useForm({
@@ -53,7 +53,7 @@ export default function BugReportForm() {
     onSubmit: async ({ value }) => {
       toast("You submitted the following values:", {
         description: (
-          <pre className="bg-code text-code-foreground mt-2 w-[320px] overflow-x-auto rounded-md p-4">
+          <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
             <code>{JSON.stringify(value, null, 2)}</code>
           </pre>
         ),
@@ -64,9 +64,9 @@ export default function BugReportForm() {
         style: {
           "--border-radius": "calc(var(--radius)  + 4px)",
         } as React.CSSProperties,
-      })
+      });
     },
-  })
+  });
 
   return (
     <Card className="w-full sm:max-w-md">
@@ -80,55 +80,54 @@ export default function BugReportForm() {
         <form
           id="bug-report-form"
           onSubmit={(e) => {
-            e.preventDefault()
-            form.handleSubmit()
+            e.preventDefault();
+            form.handleSubmit();
           }}
         >
           <FieldGroup>
             <form.Field
-              name="title"
               children={(field) => {
                 const isInvalid =
-                  field.state.meta.isTouched && !field.state.meta.isValid
+                  field.state.meta.isTouched && !field.state.meta.isValid;
                 return (
                   <Field data-invalid={isInvalid}>
                     <FieldLabel htmlFor={field.name}>Bug Title</FieldLabel>
                     <Input
+                      aria-invalid={isInvalid}
+                      autoComplete="off"
                       id={field.name}
                       name={field.name}
-                      value={field.state.value}
                       onBlur={field.handleBlur}
                       onChange={(e) => field.handleChange(e.target.value)}
-                      aria-invalid={isInvalid}
                       placeholder="Login button not working on mobile"
-                      autoComplete="off"
+                      value={field.state.value}
                     />
                     {isInvalid && (
                       <FieldError errors={field.state.meta.errors} />
                     )}
                   </Field>
-                )
+                );
               }}
+              name="title"
             />
             <form.Field
-              name="description"
               children={(field) => {
                 const isInvalid =
-                  field.state.meta.isTouched && !field.state.meta.isValid
+                  field.state.meta.isTouched && !field.state.meta.isValid;
                 return (
                   <Field data-invalid={isInvalid}>
                     <FieldLabel htmlFor={field.name}>Description</FieldLabel>
                     <InputGroup>
                       <InputGroupTextarea
+                        aria-invalid={isInvalid}
+                        className="min-h-24 resize-none"
                         id={field.name}
                         name={field.name}
-                        value={field.state.value}
                         onBlur={field.handleBlur}
                         onChange={(e) => field.handleChange(e.target.value)}
                         placeholder="I'm having an issue with the login button on mobile."
                         rows={6}
-                        className="min-h-24 resize-none"
-                        aria-invalid={isInvalid}
+                        value={field.state.value}
                       />
                       <InputGroupAddon align="block-end">
                         <InputGroupText className="tabular-nums">
@@ -144,22 +143,23 @@ export default function BugReportForm() {
                       <FieldError errors={field.state.meta.errors} />
                     )}
                   </Field>
-                )
+                );
               }}
+              name="description"
             />
           </FieldGroup>
         </form>
       </CardContent>
       <CardFooter>
         <Field orientation="horizontal">
-          <Button type="button" variant="outline" onClick={() => form.reset()}>
+          <Button onClick={() => form.reset()} type="button" variant="outline">
             Reset
           </Button>
-          <Button type="submit" form="bug-report-form">
+          <Button form="bug-report-form" type="submit">
             Submit
           </Button>
         </Field>
       </CardFooter>
     </Card>
-  )
+  );
 }

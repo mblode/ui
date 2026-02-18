@@ -1,4 +1,5 @@
-import { Button } from "@/registry/default/ui/button"
+import { ArrowUpRightIcon, FolderIcon } from "blode-icons-react";
+import { Button } from "@/registry/default/ui/button";
 import {
   Empty,
   EmptyContent,
@@ -6,8 +7,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/registry/default/ui/empty"
-import { ArrowUpRightIcon, FolderIcon } from "blode-icons-react"
+} from "@/registry/default/ui/empty";
 
 export default function EmptyDemo() {
   return (
@@ -27,15 +27,15 @@ export default function EmptyDemo() {
         <Button variant="outline">Import Project</Button>
       </EmptyContent>
       <Button
-        variant="link"
         asChild
         className="text-muted-foreground"
         size="sm"
+        variant="link"
       >
         <a href="#">
           Learn More <ArrowUpRightIcon />
         </a>
       </Button>
     </Empty>
-  )
+  );
 }

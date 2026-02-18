@@ -656,6 +656,10 @@
       {
         "path": "ui/radio-group.tsx",
         "type": "registry:ui"
+      },
+      {
+        "path": "ui/radio-group.css",
+        "type": "registry:ui"
       }
     ],
     "type": "registry:ui"

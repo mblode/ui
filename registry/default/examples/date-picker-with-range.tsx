@@ -1,23 +1,23 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Button } from "@/registry/default/ui/button"
-import { Calendar } from "@/registry/default/ui/calendar"
-import { Field, FieldLabel } from "@/registry/default/ui/field"
+import { CalendarIcon } from "blode-icons-react";
+import { addDays, format } from "date-fns";
+import { useState } from "react";
+import type { DateRange } from "react-day-picker";
+import { Button } from "@/registry/default/ui/button";
+import { Calendar } from "@/registry/default/ui/calendar";
+import { Field, FieldLabel } from "@/registry/default/ui/field";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/registry/default/ui/popover"
-import { addDays, format } from "date-fns"
-import { CalendarIcon } from "blode-icons-react"
-import { type DateRange } from "react-day-picker"
+} from "@/registry/default/ui/popover";
 
 export function DatePickerWithRange() {
-  const [date, setDate] = React.useState<DateRange | undefined>({
+  const [date, setDate] = useState<DateRange | undefined>({
     from: new Date(new Date().getFullYear(), 0, 20),
     to: addDays(new Date(new Date().getFullYear(), 0, 20), 20),
-  })
+  });
 
   return (
     <Field className="mx-auto w-60">
@@ -26,9 +26,9 @@ export function DatePickerWithRange() {
         <PopoverTrigger
           render={
             <Button
-              variant="outline"
-              id="date-picker-range"
               className="justify-start px-2.5 font-normal"
+              id="date-picker-range"
+              variant="outline"
             />
           }
         >
@@ -46,16 +46,16 @@ export function DatePickerWithRange() {
             <span>Pick a date</span>
           )}
         </PopoverTrigger>
-        <PopoverContent className="w-auto p-0" align="start">
+        <PopoverContent align="start" className="w-auto p-0">
           <Calendar
-            mode="range"
             defaultMonth={date?.from}
-            selected={date}
-            onSelect={setDate}
+            mode="range"
             numberOfMonths={2}
+            onSelect={setDate}
+            selected={date}
           />
         </PopoverContent>
       </Popover>
     </Field>
-  )
+  );
 }

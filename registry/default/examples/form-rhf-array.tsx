@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { XIcon } from "blode-icons-react"
-import { Controller, useFieldArray, useForm } from "react-hook-form"
-import { toast } from "sonner"
-import * as z from "zod"
+import { zodResolver } from "@hookform/resolvers/zod";
+import { XIcon } from "blode-icons-react";
+import type * as React from "react";
+import { Controller, useFieldArray, useForm } from "react-hook-form";
+import { toast } from "sonner";
+import { z } from "zod";
 
-import { Button } from "@/registry/default/ui/button"
+import { Button } from "@/registry/default/ui/button";
 import {
   Card,
   CardContent,
@@ -15,7 +15,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/default/ui/card"
+} from "@/registry/default/ui/card";
 import {
   Field,
   FieldContent,
@@ -24,13 +24,13 @@ import {
   FieldGroup,
   FieldLegend,
   FieldSet,
-} from "@/registry/default/ui/field"
+} from "@/registry/default/ui/field";
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/registry/default/ui/input-group"
+} from "@/registry/default/ui/input-group";
 
 const formSchema = z.object({
   emails: z
@@ -41,7 +41,7 @@ const formSchema = z.object({
     )
     .min(1, "Add at least one email address.")
     .max(5, "You can add up to 5 email addresses."),
-})
+});
 
 export default function FormRhfArray() {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -49,17 +49,17 @@ export default function FormRhfArray() {
     defaultValues: {
       emails: [{ address: "" }, { address: "" }],
     },
-  })
+  });
 
   const { fields, append, remove } = useFieldArray({
     control: form.control,
     name: "emails",
-  })
+  });
 
   function onSubmit(data: z.infer<typeof formSchema>) {
     toast("You submitted the following values:", {
       description: (
-        <pre className="bg-code text-code-foreground mt-2 w-[320px] overflow-x-auto rounded-md p-4">
+        <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
           <code>{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
@@ -70,7 +70,7 @@ export default function FormRhfArray() {
       style: {
         "--border-radius": "calc(var(--radius)  + 4px)",
       } as React.CSSProperties,
-    })
+    });
   }
 
   return (
@@ -89,32 +89,32 @@ export default function FormRhfArray() {
             <FieldGroup className="gap-4">
               {fields.map((field, index) => (
                 <Controller
+                  control={form.control}
                   key={field.id}
                   name={`emails.${index}.address`}
-                  control={form.control}
                   render={({ field: controllerField, fieldState }) => (
                     <Field
-                      orientation="horizontal"
                       data-invalid={fieldState.invalid}
+                      orientation="horizontal"
                     >
                       <FieldContent>
                         <InputGroup>
                           <InputGroupInput
                             {...controllerField}
-                            id={`form-rhf-array-email-${index}`}
                             aria-invalid={fieldState.invalid}
+                            autoComplete="email"
+                            id={`form-rhf-array-email-${index}`}
                             placeholder="name@example.com"
                             type="email"
-                            autoComplete="email"
                           />
                           {fields.length > 1 && (
                             <InputGroupAddon align="inline-end">
                               <InputGroupButton
+                                aria-label={`Remove email ${index + 1}`}
+                                onClick={() => remove(index)}
+                                size="icon-xs"
                                 type="button"
                                 variant="ghost"
-                                size="icon-xs"
-                                onClick={() => remove(index)}
-                                aria-label={`Remove email ${index + 1}`}
                               >
                                 <XIcon />
                               </InputGroupButton>
@@ -130,11 +130,11 @@ export default function FormRhfArray() {
                 />
               ))}
               <Button
+                disabled={fields.length >= 5}
+                onClick={() => append({ address: "" })}
+                size="sm"
                 type="button"
                 variant="outline"
-                size="sm"
-                onClick={() => append({ address: "" })}
-                disabled={fields.length >= 5}
               >
                 Add Email Address
               </Button>
@@ -147,14 +147,14 @@ export default function FormRhfArray() {
       </CardContent>
       <CardFooter className="border-t">
         <Field orientation="horizontal">
-          <Button type="button" variant="outline" onClick={() => form.reset()}>
+          <Button onClick={() => form.reset()} type="button" variant="outline">
             Reset
           </Button>
-          <Button type="submit" form="form-rhf-array">
+          <Button form="form-rhf-array" type="submit">
             Save
           </Button>
         </Field>
       </CardFooter>
     </Card>
-  )
+  );
 }

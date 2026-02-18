@@ -1,7 +1,12 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import Link from "next/link"
+import {
+  CircleAlertIcon,
+  CircleCheckIcon,
+  CircleDashedIcon,
+} from "blode-icons-react";
+import Link from "next/link";
+import type * as React from "react";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -10,12 +15,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/registry/default/ui/navigation-menu"
-import {
-  CircleAlertIcon,
-  CircleCheckIcon,
-  CircleDashedIcon,
-} from "blode-icons-react"
+} from "@/registry/default/ui/navigation-menu";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -53,7 +53,7 @@ const components: { title: string; href: string; description: string }[] = [
     description:
       "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
   },
-]
+];
 
 export default function NavigationMenuDemo() {
   return (
@@ -81,9 +81,9 @@ export default function NavigationMenuDemo() {
             <ul className="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
               {components.map((component) => (
                 <ListItem
+                  href={component.href}
                   key={component.title}
                   title={component.title}
-                  href={component.href}
                 >
                   {component.description}
                 </ListItem>
@@ -98,7 +98,7 @@ export default function NavigationMenuDemo() {
               <li>
                 <NavigationMenuLink
                   render={
-                    <Link href="#" className="flex-row items-center gap-2" />
+                    <Link className="flex-row items-center gap-2" href="#" />
                   }
                 >
                   <CircleAlertIcon />
@@ -106,7 +106,7 @@ export default function NavigationMenuDemo() {
                 </NavigationMenuLink>
                 <NavigationMenuLink
                   render={
-                    <Link href="#" className="flex-row items-center gap-2" />
+                    <Link className="flex-row items-center gap-2" href="#" />
                   }
                 >
                   <CircleDashedIcon />
@@ -114,7 +114,7 @@ export default function NavigationMenuDemo() {
                 </NavigationMenuLink>
                 <NavigationMenuLink
                   render={
-                    <Link href="#" className="flex-row items-center gap-2" />
+                    <Link className="flex-row items-center gap-2" href="#" />
                   }
                 >
                   <CircleCheckIcon />
@@ -126,15 +126,15 @@ export default function NavigationMenuDemo() {
         </NavigationMenuItem>
         <NavigationMenuItem>
           <NavigationMenuLink
-            render={<Link href="/docs" />}
             className={navigationMenuTriggerStyle()}
+            render={<Link href="/docs" />}
           >
             Docs
           </NavigationMenuLink>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
-  )
+  );
 }
 
 function ListItem({
@@ -147,10 +147,10 @@ function ListItem({
     <li {...props}>
       <NavigationMenuLink render={<Link href={href} />}>
         <div className="flex flex-col gap-1 text-sm">
-          <div className="leading-none font-medium">{title}</div>
-          <div className="text-muted-foreground line-clamp-2">{children}</div>
+          <div className="font-medium leading-none">{title}</div>
+          <div className="line-clamp-2 text-muted-foreground">{children}</div>
         </div>
       </NavigationMenuLink>
     </li>
-  )
+  );
 }

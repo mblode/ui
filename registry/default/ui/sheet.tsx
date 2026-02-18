@@ -66,7 +66,7 @@ function SheetOverlay({ className, ...props }: SheetPrimitive.Backdrop.Props) {
   return (
     <SheetPrimitive.Backdrop
       className={cn(
-        "fixed inset-0 z-50 bg-black/50 data-closed:opacity-0 data-open:opacity-100 motion-safe:transition-opacity motion-safe:duration-200 motion-safe:ease-out motion-reduce:transition-none",
+        "fixed inset-0 z-50 bg-overlay backdrop-blur-[10px] data-closed:opacity-0 data-open:opacity-100 motion-safe:transition-opacity motion-safe:ease-in-out motion-safe:data-closed:duration-300 motion-safe:data-open:duration-500 motion-reduce:transition-none",
         className
       )}
       data-slot="sheet-overlay"
@@ -90,15 +90,15 @@ function SheetContent({
       <SheetOverlay />
       <SheetPrimitive.Popup
         className={cn(
-          "fixed z-50 flex flex-col gap-4 bg-background shadow-lg data-closed:opacity-0 data-open:opacity-100 motion-safe:transition-[opacity,translate] motion-safe:duration-300 motion-safe:ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none",
+          "fixed z-50 flex flex-col gap-4 bg-background shadow-lg transition ease-in-out data-closed:animate-out data-open:animate-in data-closed:duration-300 data-open:duration-500",
           side === "right" &&
-            "inset-y-0 right-0 h-full w-3/4 border-l data-closed:translate-x-full data-open:translate-x-0 motion-reduce:data-closed:translate-x-0 motion-reduce:data-open:translate-x-0 sm:max-w-sm",
+            "data-[side=right]:data-closed:slide-out-to-right data-[side=right]:data-open:slide-in-from-right inset-y-0 right-0 h-full w-3/4 border-l sm:max-w-sm",
           side === "left" &&
-            "inset-y-0 left-0 h-full w-3/4 border-r data-closed:-translate-x-full data-open:translate-x-0 motion-reduce:data-closed:translate-x-0 motion-reduce:data-open:translate-x-0 sm:max-w-sm",
+            "data-[side=left]:data-closed:slide-out-to-left data-[side=left]:data-open:slide-in-from-left inset-y-0 left-0 h-full w-3/4 border-r sm:max-w-sm",
           side === "top" &&
-            "inset-x-0 top-0 h-auto border-b data-closed:-translate-y-full data-open:translate-y-0 motion-reduce:data-closed:translate-y-0 motion-reduce:data-open:translate-y-0",
+            "data-[side=top]:data-closed:slide-out-to-top data-[side=top]:data-open:slide-in-from-top inset-x-0 top-0 h-auto border-b",
           side === "bottom" &&
-            "inset-x-0 bottom-0 h-auto border-t data-closed:translate-y-full data-open:translate-y-0 motion-reduce:data-closed:translate-y-0 motion-reduce:data-open:translate-y-0",
+            "data-[side=bottom]:data-closed:slide-out-to-bottom data-[side=bottom]:data-open:slide-in-from-bottom inset-x-0 bottom-0 h-auto border-t",
           className
         )}
         data-side={side}

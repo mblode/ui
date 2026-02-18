@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import Form from "next/form"
-import { toast } from "sonner"
+import Form from "next/form";
+import { useActionState, useEffect, useState } from "react";
+import { toast } from "sonner";
 
-import { Button } from "@/registry/default/ui/button"
+import { Button } from "@/registry/default/ui/button";
 import {
   Card,
   CardContent,
@@ -12,51 +12,51 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/default/ui/card"
+} from "@/registry/default/ui/card";
 import {
   Field,
   FieldDescription,
   FieldError,
   FieldGroup,
   FieldLabel,
-} from "@/registry/default/ui/field"
-import { Input } from "@/registry/default/ui/input"
+} from "@/registry/default/ui/field";
+import { Input } from "@/registry/default/ui/input";
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupText,
   InputGroupTextarea,
-} from "@/registry/default/ui/input-group"
-import { Spinner } from "@/registry/default/ui/spinner"
+} from "@/registry/default/ui/input-group";
+import { Spinner } from "@/registry/default/ui/spinner";
 
-import { demoFormAction } from "./form-next-demo-action"
-import { type FormState } from "./form-next-demo-schema"
+import { demoFormAction } from "./form-next-demo-action";
+import type { FormState } from "./form-next-demo-schema";
 
 export default function FormNextDemo() {
-  const [formState, formAction, pending] = React.useActionState<
-    FormState,
-    FormData
-  >(demoFormAction, {
-    values: {
-      title: "",
-      description: "",
-    },
-    errors: null,
-    success: false,
-  })
-  const [descriptionLength, setDescriptionLength] = React.useState(0)
+  const [formState, formAction, pending] = useActionState<FormState, FormData>(
+    demoFormAction,
+    {
+      values: {
+        title: "",
+        description: "",
+      },
+      errors: null,
+      success: false,
+    }
+  );
+  const [descriptionLength, setDescriptionLength] = useState(0);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (formState.success) {
       toast("Thank you for your feedback", {
         description: "We'll review your report and get back to you soon.",
-      })
+      });
     }
-  }, [formState.success])
+  }, [formState.success]);
 
-  React.useEffect(() => {
-    setDescriptionLength(formState.values.description.length)
-  }, [formState.values.description])
+  useEffect(() => {
+    setDescriptionLength(formState.values.description.length);
+  }, [formState.values.description]);
 
   return (
     <Card className="w-full max-w-md">
@@ -72,13 +72,13 @@ export default function FormNextDemo() {
             <Field data-invalid={!!formState.errors?.title?.length}>
               <FieldLabel htmlFor="title">Bug Title</FieldLabel>
               <Input
-                id="title"
-                name="title"
+                aria-invalid={!!formState.errors?.title?.length}
+                autoComplete="off"
                 defaultValue={formState.values.title}
                 disabled={pending}
-                aria-invalid={!!formState.errors?.title?.length}
+                id="title"
+                name="title"
                 placeholder="Login button not working on mobile"
-                autoComplete="off"
               />
               {formState.errors?.title && (
                 <FieldError>{formState.errors.title[0]}</FieldError>
@@ -88,15 +88,15 @@ export default function FormNextDemo() {
               <FieldLabel htmlFor="description">Description</FieldLabel>
               <InputGroup>
                 <InputGroupTextarea
+                  aria-invalid={!!formState.errors?.description?.length}
+                  className="min-h-24 resize-none"
+                  defaultValue={formState.values.description}
+                  disabled={pending}
                   id="description"
                   name="description"
-                  defaultValue={formState.values.description}
+                  onChange={(e) => setDescriptionLength(e.target.value.length)}
                   placeholder="I'm having an issue with the login button on mobile."
                   rows={6}
-                  className="min-h-24 resize-none"
-                  disabled={pending}
-                  aria-invalid={!!formState.errors?.description?.length}
-                  onChange={(e) => setDescriptionLength(e.target.value.length)}
                 />
                 <InputGroupAddon align="block-end">
                   <InputGroupText className="tabular-nums">
@@ -117,12 +117,12 @@ export default function FormNextDemo() {
       </CardContent>
       <CardFooter>
         <Field orientation="horizontal">
-          <Button type="submit" disabled={pending} form="bug-report-form">
+          <Button disabled={pending} form="bug-report-form" type="submit">
             {pending && <Spinner />}
             Submit
           </Button>
         </Field>
       </CardFooter>
     </Card>
-  )
+  );
 }

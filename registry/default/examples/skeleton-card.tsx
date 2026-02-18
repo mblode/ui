@@ -1,5 +1,5 @@
-import { Card, CardContent, CardHeader } from "@/registry/default/ui/card"
-import { Skeleton } from "@/registry/default/ui/skeleton"
+import { Card, CardContent, CardHeader } from "@/registry/default/ui/card";
+import { Skeleton } from "@/registry/default/ui/skeleton";
 
 export function SkeletonCard() {
   return (
@@ -12,5 +12,5 @@ export function SkeletonCard() {
         <Skeleton className="aspect-video w-full" />
       </CardContent>
     </Card>
-  )
+  );
 }

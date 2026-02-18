@@ -1,5 +1,5 @@
-import { Toggle } from "@/registry/default/ui/toggle"
-import { BookmarkIcon } from "blode-icons-react"
+import { BookmarkIcon } from "blode-icons-react";
+import { Toggle } from "@/registry/default/ui/toggle";
 
 export function ToggleDemo() {
   return (
@@ -7,5 +7,5 @@ export function ToggleDemo() {
       <BookmarkIcon className="group-aria-pressed/toggle:fill-foreground" />
       Bookmark
     </Toggle>
-  )
+  );
 }

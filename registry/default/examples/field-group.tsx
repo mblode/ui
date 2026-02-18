@@ -1,4 +1,4 @@
-import { Checkbox } from "@/registry/default/ui/checkbox"
+import { Checkbox } from "@/registry/default/ui/checkbox";
 import {
   Field,
   FieldDescription,
@@ -6,7 +6,7 @@ import {
   FieldLabel,
   FieldSeparator,
   FieldSet,
-} from "@/registry/default/ui/field"
+} from "@/registry/default/ui/field";
 
 export default function FieldGroupExample() {
   return (
@@ -19,8 +19,8 @@ export default function FieldGroupExample() {
         </FieldDescription>
         <FieldGroup data-slot="checkbox-group">
           <Field orientation="horizontal">
-            <Checkbox id="push" defaultChecked disabled />
-            <FieldLabel htmlFor="push" className="font-normal">
+            <Checkbox defaultChecked disabled id="push" />
+            <FieldLabel className="font-normal" htmlFor="push">
               Push notifications
             </FieldLabel>
           </Field>
@@ -36,18 +36,18 @@ export default function FieldGroupExample() {
         <FieldGroup data-slot="checkbox-group">
           <Field orientation="horizontal">
             <Checkbox id="push-tasks" />
-            <FieldLabel htmlFor="push-tasks" className="font-normal">
+            <FieldLabel className="font-normal" htmlFor="push-tasks">
               Push notifications
             </FieldLabel>
           </Field>
           <Field orientation="horizontal">
             <Checkbox id="email-tasks" />
-            <FieldLabel htmlFor="email-tasks" className="font-normal">
+            <FieldLabel className="font-normal" htmlFor="email-tasks">
               Email notifications
             </FieldLabel>
           </Field>
         </FieldGroup>
       </FieldSet>
     </FieldGroup>
-  )
+  );
 }

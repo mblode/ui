@@ -1,5 +1,9 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/registry/default/ui/avatar"
-import { Button } from "@/registry/default/ui/button"
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/registry/default/ui/avatar";
+import { Button } from "@/registry/default/ui/button";
 import {
   Empty,
   EmptyContent,
@@ -7,7 +11,7 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/registry/default/ui/empty"
+} from "@/registry/default/ui/empty";
 
 export default function EmptyAvatar() {
   return (
@@ -16,8 +20,8 @@ export default function EmptyAvatar() {
         <EmptyMedia variant="default">
           <Avatar className="size-12">
             <AvatarImage
-              src="https://github.com/shadcn.png"
               className="grayscale"
+              src="https://github.com/shadcn.png"
             />
             <AvatarFallback>LR</AvatarFallback>
           </Avatar>
@@ -32,5 +36,5 @@ export default function EmptyAvatar() {
         <Button size="sm">Leave Message</Button>
       </EmptyContent>
     </Empty>
-  )
+  );
 }

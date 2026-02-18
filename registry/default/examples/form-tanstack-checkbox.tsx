@@ -1,11 +1,11 @@
 /* eslint-disable react/no-children-prop */
-"use client"
+"use client";
 
-import { useForm } from "@tanstack/react-form"
-import { toast } from "sonner"
-import * as z from "zod"
+import { useForm } from "@tanstack/react-form";
+import { toast } from "sonner";
+import { z } from "zod";
 
-import { Button } from "@/registry/default/ui/button"
+import { Button } from "@/registry/default/ui/button";
 import {
   Card,
   CardContent,
@@ -13,8 +13,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/default/ui/card"
-import { Checkbox } from "@/registry/default/ui/checkbox"
+} from "@/registry/default/ui/card";
+import { Checkbox } from "@/registry/default/ui/checkbox";
 import {
   Field,
   FieldDescription,
@@ -24,7 +24,7 @@ import {
   FieldLegend,
   FieldSeparator,
   FieldSet,
-} from "@/registry/default/ui/field"
+} from "@/registry/default/ui/field";
 
 const tasks = [
   {
@@ -35,7 +35,7 @@ const tasks = [
     id: "email",
     label: "Email notifications",
   },
-] as const
+] as const;
 
 const formSchema = z.object({
   responses: z.boolean(),
@@ -48,7 +48,7 @@ const formSchema = z.object({
         message: "Invalid notification type selected.",
       }
     ),
-})
+});
 
 export default function FormTanstackCheckbox() {
   const form = useForm({
@@ -62,7 +62,7 @@ export default function FormTanstackCheckbox() {
     onSubmit: async ({ value }) => {
       toast("You submitted the following values:", {
         description: (
-          <pre className="bg-code text-code-foreground mt-2 w-[320px] overflow-x-auto rounded-md p-4">
+          <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
             <code>{JSON.stringify(value, null, 2)}</code>
           </pre>
         ),
@@ -73,9 +73,9 @@ export default function FormTanstackCheckbox() {
         style: {
           "--border-radius": "calc(var(--radius)  + 4px)",
         } as React.CSSProperties,
-      })
+      });
     },
-  })
+  });
 
   return (
     <Card className="w-full sm:max-w-md">
@@ -87,16 +87,15 @@ export default function FormTanstackCheckbox() {
         <form
           id="form-tanstack-checkbox"
           onSubmit={(e) => {
-            e.preventDefault()
-            form.handleSubmit()
+            e.preventDefault();
+            form.handleSubmit();
           }}
         >
           <FieldGroup>
             <form.Field
-              name="responses"
               children={(field) => {
                 const isInvalid =
-                  field.state.meta.isTouched && !field.state.meta.isValid
+                  field.state.meta.isTouched && !field.state.meta.isValid;
                 return (
                   <div>
                     <FieldSet>
@@ -107,21 +106,21 @@ export default function FormTanstackCheckbox() {
                       </FieldDescription>
                       <FieldGroup data-slot="checkbox-group">
                         <Field
-                          orientation="horizontal"
                           data-invalid={isInvalid}
+                          orientation="horizontal"
                         >
                           <Checkbox
+                            checked={field.state.value}
+                            disabled
                             id="form-tanstack-checkbox-responses"
                             name={field.name}
-                            checked={field.state.value}
                             onCheckedChange={(checked) =>
                               field.handleChange(checked === true)
                             }
-                            disabled
                           />
                           <FieldLabel
-                            htmlFor="form-tanstack-checkbox-responses"
                             className="font-normal"
+                            htmlFor="form-tanstack-checkbox-responses"
                           >
                             Push notifications
                           </FieldLabel>
@@ -132,16 +131,15 @@ export default function FormTanstackCheckbox() {
                       <FieldError errors={field.state.meta.errors} />
                     )}
                   </div>
-                )
+                );
               }}
+              name="responses"
             />
             <FieldSeparator />
             <form.Field
-              name="tasks"
-              mode="array"
               children={(field) => {
                 const isInvalid =
-                  field.state.meta.isTouched && !field.state.meta.isValid
+                  field.state.meta.isTouched && !field.state.meta.isValid;
                 return (
                   <FieldGroup>
                     <FieldSet data-invalid={isInvalid}>
@@ -153,31 +151,31 @@ export default function FormTanstackCheckbox() {
                       <FieldGroup data-slot="checkbox-group">
                         {tasks.map((task) => (
                           <Field
+                            data-invalid={isInvalid}
                             key={task.id}
                             orientation="horizontal"
-                            data-invalid={isInvalid}
                           >
                             <Checkbox
-                              id={`form-tanstack-checkbox-${task.id}`}
-                              name={field.name}
                               aria-invalid={isInvalid}
                               checked={field.state.value.includes(task.id)}
+                              id={`form-tanstack-checkbox-${task.id}`}
+                              name={field.name}
                               onCheckedChange={(checked) => {
                                 if (checked) {
-                                  field.pushValue(task.id)
+                                  field.pushValue(task.id);
                                 } else {
                                   const index = field.state.value.indexOf(
                                     task.id
-                                  )
+                                  );
                                   if (index > -1) {
-                                    field.removeValue(index)
+                                    field.removeValue(index);
                                   }
                                 }
                               }}
                             />
                             <FieldLabel
-                              htmlFor={`form-tanstack-checkbox-${task.id}`}
                               className="font-normal"
+                              htmlFor={`form-tanstack-checkbox-${task.id}`}
                             >
                               {task.label}
                             </FieldLabel>
@@ -189,22 +187,24 @@ export default function FormTanstackCheckbox() {
                       <FieldError errors={field.state.meta.errors} />
                     )}
                   </FieldGroup>
-                )
+                );
               }}
+              mode="array"
+              name="tasks"
             />
           </FieldGroup>
         </form>
       </CardContent>
       <CardFooter>
         <Field orientation="horizontal">
-          <Button type="button" variant="outline" onClick={() => form.reset()}>
+          <Button onClick={() => form.reset()} type="button" variant="outline">
             Reset
           </Button>
-          <Button type="submit" form="form-tanstack-checkbox">
+          <Button form="form-tanstack-checkbox" type="submit">
             Save
           </Button>
         </Field>
       </CardFooter>
     </Card>
-  )
+  );
 }

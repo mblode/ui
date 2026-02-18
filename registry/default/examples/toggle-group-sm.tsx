@@ -1,36 +1,39 @@
-import { ToggleGroup, ToggleGroupItem } from "@/registry/default/ui/toggle-group"
+import {
+  ToggleGroup,
+  ToggleGroupItem,
+} from "@/registry/default/ui/toggle-group";
 
 export function ToggleGroupSizes() {
   return (
     <div className="flex flex-col gap-4">
-      <ToggleGroup size="sm" defaultValue={["top"]} variant="outline">
-        <ToggleGroupItem value="top" aria-label="Toggle top">
+      <ToggleGroup defaultValue={["top"]} size="sm" variant="outline">
+        <ToggleGroupItem aria-label="Toggle top" value="top">
           Top
         </ToggleGroupItem>
-        <ToggleGroupItem value="bottom" aria-label="Toggle bottom">
+        <ToggleGroupItem aria-label="Toggle bottom" value="bottom">
           Bottom
         </ToggleGroupItem>
-        <ToggleGroupItem value="left" aria-label="Toggle left">
+        <ToggleGroupItem aria-label="Toggle left" value="left">
           Left
         </ToggleGroupItem>
-        <ToggleGroupItem value="right" aria-label="Toggle right">
+        <ToggleGroupItem aria-label="Toggle right" value="right">
           Right
         </ToggleGroupItem>
       </ToggleGroup>
       <ToggleGroup defaultValue={["top"]} variant="outline">
-        <ToggleGroupItem value="top" aria-label="Toggle top">
+        <ToggleGroupItem aria-label="Toggle top" value="top">
           Top
         </ToggleGroupItem>
-        <ToggleGroupItem value="bottom" aria-label="Toggle bottom">
+        <ToggleGroupItem aria-label="Toggle bottom" value="bottom">
           Bottom
         </ToggleGroupItem>
-        <ToggleGroupItem value="left" aria-label="Toggle left">
+        <ToggleGroupItem aria-label="Toggle left" value="left">
           Left
         </ToggleGroupItem>
-        <ToggleGroupItem value="right" aria-label="Toggle right">
+        <ToggleGroupItem aria-label="Toggle right" value="right">
           Right
         </ToggleGroupItem>
       </ToggleGroup>
     </div>
-  )
+  );
 }

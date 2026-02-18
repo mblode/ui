@@ -1,11 +1,11 @@
+import { LoaderIcon } from "blode-icons-react";
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
   InputGroupText,
-} from "@/registry/default/ui/input-group"
-import { Spinner } from "@/registry/default/ui/spinner"
-import { LoaderIcon } from "blode-icons-react"
+} from "@/registry/default/ui/input-group";
+import { Spinner } from "@/registry/default/ui/spinner";
 
 export default function InputGroupSpinner() {
   return (
@@ -41,5 +41,5 @@ export default function InputGroupSpinner() {
         </InputGroupAddon>
       </InputGroup>
     </div>
-  )
+  );
 }

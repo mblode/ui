@@ -1,5 +1,5 @@
-import { Button } from "@/registry/default/ui/button"
-import { Checkbox } from "@/registry/default/ui/checkbox"
+import { Button } from "@/registry/default/ui/button";
+import { Checkbox } from "@/registry/default/ui/checkbox";
 import {
   Field,
   FieldDescription,
@@ -8,8 +8,8 @@ import {
   FieldLegend,
   FieldSeparator,
   FieldSet,
-} from "@/registry/default/ui/field"
-import { Input } from "@/registry/default/ui/input"
+} from "@/registry/default/ui/field";
+import { Input } from "@/registry/default/ui/input";
 import {
   Select,
   SelectContent,
@@ -17,8 +17,8 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/default/ui/select"
-import { Textarea } from "@/registry/default/ui/textarea"
+} from "@/registry/default/ui/select";
+import { Textarea } from "@/registry/default/ui/textarea";
 
 const months = [
   { label: "MM", value: null },
@@ -34,7 +34,7 @@ const months = [
   { label: "10", value: "10" },
   { label: "11", value: "11" },
   { label: "12", value: "12" },
-]
+];
 
 const years = [
   { label: "YYYY", value: null },
@@ -44,7 +44,7 @@ const years = [
   { label: "2027", value: "2027" },
   { label: "2028", value: "2028" },
   { label: "2029", value: "2029" },
-]
+];
 
 export default function FieldDemo() {
   return (
@@ -135,12 +135,12 @@ export default function FieldDemo() {
             <FieldGroup>
               <Field orientation="horizontal">
                 <Checkbox
-                  id="checkout-7j9-same-as-shipping-wgm"
                   defaultChecked
+                  id="checkout-7j9-same-as-shipping-wgm"
                 />
                 <FieldLabel
-                  htmlFor="checkout-7j9-same-as-shipping-wgm"
                   className="font-normal"
+                  htmlFor="checkout-7j9-same-as-shipping-wgm"
                 >
                   Same as shipping address
                 </FieldLabel>
@@ -154,21 +154,21 @@ export default function FieldDemo() {
                   Comments
                 </FieldLabel>
                 <Textarea
+                  className="resize-none"
                   id="checkout-7j9-optional-comments"
                   placeholder="Add any additional comments"
-                  className="resize-none"
                 />
               </Field>
             </FieldGroup>
           </FieldSet>
           <Field orientation="horizontal">
             <Button type="submit">Submit</Button>
-            <Button variant="outline" type="button">
+            <Button type="button" variant="outline">
               Cancel
             </Button>
           </Field>
         </FieldGroup>
       </form>
     </div>
-  )
+  );
 }

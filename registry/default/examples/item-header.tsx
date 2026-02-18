@@ -1,4 +1,4 @@
-import Image from "next/image"
+import Image from "next/image";
 import {
   Item,
   ItemContent,
@@ -6,7 +6,7 @@ import {
   ItemGroup,
   ItemHeader,
   ItemTitle,
-} from "@/registry/default/ui/item"
+} from "@/registry/default/ui/item";
 
 const models = [
   {
@@ -30,7 +30,7 @@ const models = [
       "https://images.unsplash.com/photo-1602146057681-08560aee8cde?q=80&w=640&auto=format&fit=crop",
     credit: "Cherry Laithang on Unsplash",
   },
-]
+];
 
 export function ItemHeaderDemo() {
   return (
@@ -40,11 +40,11 @@ export function ItemHeaderDemo() {
           <Item key={model.name} variant="outline">
             <ItemHeader>
               <Image
-                src={model.image}
                 alt={model.name}
-                width={128}
-                height={128}
                 className="aspect-square w-full rounded-sm object-cover"
+                height={128}
+                src={model.image}
+                width={128}
               />
             </ItemHeader>
             <ItemContent>
@@ -55,5 +55,5 @@ export function ItemHeaderDemo() {
         ))}
       </ItemGroup>
     </div>
-  )
+  );
 }

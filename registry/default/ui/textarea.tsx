@@ -21,6 +21,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
   (
     {
       className,
+      rows = 2,
       onClear,
       clearable,
       hasError,
@@ -51,7 +52,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
 
         <textarea
           className={cn(
-            "field-sizing-content flex min-h-[52px] w-full rounded-2xl border border-input bg-card px-4 py-[14px] font-normal font-sans text-base text-foreground leading-snug shadow-input transition-colors placeholder:text-placeholder-foreground hover:border-input-hover focus:border-ring focus:outline-hidden focus:ring-2 focus:ring-ring/15 focus:ring-offset-1 focus:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50",
+            "field-sizing-content flex min-h-[74px] w-full rounded-2xl border border-input bg-card px-4 py-[14px] font-normal font-sans text-base text-foreground leading-snug shadow-input transition-colors placeholder:text-placeholder-foreground hover:border-input-hover focus:border-ring focus:outline-hidden focus:ring-2 focus:ring-ring/15 focus:ring-offset-1 focus:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50",
             {
               "border-destructive-foreground": hasError,
               "pr-9": clearable && !!props.value,
@@ -61,15 +62,16 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
             className
           )}
           ref={ref}
+          rows={rows}
           {...props}
         />
 
         {clearable && !!props.value && (
-          <div className="absolute top-0 right-0">
+          <div className="absolute top-0 right-0 h-full">
             <button
               aria-label="clear input"
               className={cn(
-                "flex h-[52px] w-10 cursor-pointer items-center justify-center p-0! text-muted-foreground",
+                "flex h-full w-10 cursor-pointer items-center justify-center p-0! text-muted-foreground",
                 clearClassName
               )}
               onClick={() => onClear?.()}

@@ -1,5 +1,5 @@
-import { Button } from "@/registry/default/ui/button"
-import { ArrowUpRightIcon } from "blode-icons-react"
+import { ArrowUpRightIcon } from "blode-icons-react";
+import { Button } from "@/registry/default/ui/button";
 
 export default function ButtonSize() {
   return (
@@ -8,7 +8,7 @@ export default function ButtonSize() {
         <Button size="xs" variant="outline">
           Extra Small
         </Button>
-        <Button size="icon-xs" aria-label="Submit" variant="outline">
+        <Button aria-label="Submit" size="icon-xs" variant="outline">
           <ArrowUpRightIcon />
         </Button>
       </div>
@@ -16,24 +16,24 @@ export default function ButtonSize() {
         <Button size="sm" variant="outline">
           Small
         </Button>
-        <Button size="icon-sm" aria-label="Submit" variant="outline">
+        <Button aria-label="Submit" size="icon-sm" variant="outline">
           <ArrowUpRightIcon />
         </Button>
       </div>
       <div className="flex items-start gap-2">
         <Button variant="outline">Default</Button>
-        <Button size="icon" aria-label="Submit" variant="outline">
+        <Button aria-label="Submit" size="icon" variant="outline">
           <ArrowUpRightIcon />
         </Button>
       </div>
       <div className="flex items-start gap-2">
-        <Button variant="outline" size="lg">
+        <Button size="lg" variant="outline">
           Large
         </Button>
-        <Button size="icon-lg" aria-label="Submit" variant="outline">
+        <Button aria-label="Submit" size="icon-lg" variant="outline">
           <ArrowUpRightIcon />
         </Button>
       </div>
     </div>
-  )
+  );
 }

@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { Controller, useForm } from "react-hook-form"
-import { toast } from "sonner"
-import * as z from "zod"
+import { zodResolver } from "@hookform/resolvers/zod";
+import type * as React from "react";
+import { Controller, useForm } from "react-hook-form";
+import { toast } from "sonner";
+import { z } from "zod";
 
-import { Button } from "@/registry/default/ui/button"
+import { Button } from "@/registry/default/ui/button";
 import {
   Card,
   CardContent,
@@ -14,7 +14,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/default/ui/card"
+} from "@/registry/default/ui/card";
 import {
   Field,
   FieldContent,
@@ -22,14 +22,14 @@ import {
   FieldError,
   FieldGroup,
   FieldLabel,
-} from "@/registry/default/ui/field"
-import { Switch } from "@/registry/default/ui/switch"
+} from "@/registry/default/ui/field";
+import { Switch } from "@/registry/default/ui/switch";
 
 const formSchema = z.object({
   twoFactor: z.boolean().refine((val) => val === true, {
     message: "It is highly recommended to enable two-factor authentication.",
   }),
-})
+});
 
 export default function FormRhfSwitch() {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -37,12 +37,12 @@ export default function FormRhfSwitch() {
     defaultValues: {
       twoFactor: false,
     },
-  })
+  });
 
   function onSubmit(data: z.infer<typeof formSchema>) {
     toast("You submitted the following values:", {
       description: (
-        <pre className="bg-code text-code-foreground mt-2 w-[320px] overflow-x-auto rounded-md p-4">
+        <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
           <code>{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
@@ -53,7 +53,7 @@ export default function FormRhfSwitch() {
       style: {
         "--border-radius": "calc(var(--radius)  + 4px)",
       } as React.CSSProperties,
-    })
+    });
   }
 
   return (
@@ -68,12 +68,12 @@ export default function FormRhfSwitch() {
         <form id="form-rhf-switch" onSubmit={form.handleSubmit(onSubmit)}>
           <FieldGroup>
             <Controller
-              name="twoFactor"
               control={form.control}
+              name="twoFactor"
               render={({ field, fieldState }) => (
                 <Field
-                  orientation="horizontal"
                   data-invalid={fieldState.invalid}
+                  orientation="horizontal"
                 >
                   <FieldContent>
                     <FieldLabel htmlFor="form-rhf-switch-twoFactor">
@@ -87,11 +87,11 @@ export default function FormRhfSwitch() {
                     )}
                   </FieldContent>
                   <Switch
+                    aria-invalid={fieldState.invalid}
+                    checked={field.value}
                     id="form-rhf-switch-twoFactor"
                     name={field.name}
-                    checked={field.value}
                     onCheckedChange={field.onChange}
-                    aria-invalid={fieldState.invalid}
                   />
                 </Field>
               )}
@@ -101,14 +101,14 @@ export default function FormRhfSwitch() {
       </CardContent>
       <CardFooter>
         <Field orientation="horizontal">
-          <Button type="button" variant="outline" onClick={() => form.reset()}>
+          <Button onClick={() => form.reset()} type="button" variant="outline">
             Reset
           </Button>
-          <Button type="submit" form="form-rhf-switch">
+          <Button form="form-rhf-switch" type="submit">
             Save
           </Button>
         </Field>
       </CardFooter>
     </Card>
-  )
+  );
 }

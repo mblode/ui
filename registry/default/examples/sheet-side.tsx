@@ -1,4 +1,4 @@
-import { Button } from "@/registry/default/ui/button"
+import { Button } from "@/registry/default/ui/button";
 import {
   Sheet,
   SheetClose,
@@ -8,9 +8,9 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/registry/default/ui/sheet"
+} from "@/registry/default/ui/sheet";
 
-const SHEET_SIDES = ["top", "right", "bottom", "left"] as const
+const SHEET_SIDES = ["top", "right", "bottom", "left"] as const;
 
 export default function SheetSide() {
   return (
@@ -18,13 +18,13 @@ export default function SheetSide() {
       {SHEET_SIDES.map((side) => (
         <Sheet key={side}>
           <SheetTrigger
-            render={<Button variant="outline" className="capitalize" />}
+            render={<Button className="capitalize" variant="outline" />}
           >
             {side}
           </SheetTrigger>
           <SheetContent
-            side={side}
             className="data-[side=bottom]:max-h-[50vh] data-[side=top]:max-h-[50vh]"
+            side={side}
           >
             <SheetHeader>
               <SheetTitle>Edit profile</SheetTitle>
@@ -35,7 +35,7 @@ export default function SheetSide() {
             </SheetHeader>
             <div className="no-scrollbar overflow-y-auto px-4">
               {Array.from({ length: 10 }).map((_, index) => (
-                <p key={index} className="mb-2 leading-relaxed">
+                <p className="mb-2 leading-relaxed" key={index}>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                   Ut enim ad minim veniam, quis nostrud exercitation ullamco
@@ -57,5 +57,5 @@ export default function SheetSide() {
         </Sheet>
       ))}
     </div>
-  )
+  );
 }

@@ -1,4 +1,5 @@
-import { Button } from "@/registry/default/ui/button"
+import { BadgeCheckIcon, ChevronRightIcon } from "blode-icons-react";
+import { Button } from "@/registry/default/ui/button";
 import {
   Item,
   ItemActions,
@@ -6,8 +7,7 @@ import {
   ItemDescription,
   ItemMedia,
   ItemTitle,
-} from "@/registry/default/ui/item"
-import { BadgeCheckIcon, ChevronRightIcon } from "blode-icons-react"
+} from "@/registry/default/ui/item";
 
 export function ItemDemo() {
   return (
@@ -20,12 +20,12 @@ export function ItemDemo() {
           </ItemDescription>
         </ItemContent>
         <ItemActions>
-          <Button variant="outline" size="sm">
+          <Button size="sm" variant="outline">
             Action
           </Button>
         </ItemActions>
       </Item>
-      <Item asChild variant="outline" size="sm">
+      <Item asChild size="sm" variant="outline">
         <a href="#">
           <ItemMedia>
             <BadgeCheckIcon className="size-5" />
@@ -39,5 +39,5 @@ export function ItemDemo() {
         </a>
       </Item>
     </div>
-  )
+  );
 }

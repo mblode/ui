@@ -1,11 +1,11 @@
+import { InboxIcon } from "blode-icons-react";
 import {
   Item,
   ItemContent,
   ItemDescription,
   ItemMedia,
   ItemTitle,
-} from "@/registry/default/ui/item"
-import { InboxIcon } from "blode-icons-react"
+} from "@/registry/default/ui/item";
 
 export function ItemSizeDemo() {
   return (
@@ -21,7 +21,7 @@ export function ItemSizeDemo() {
           </ItemDescription>
         </ItemContent>
       </Item>
-      <Item variant="outline" size="sm">
+      <Item size="sm" variant="outline">
         <ItemMedia variant="icon">
           <InboxIcon />
         </ItemMedia>
@@ -30,7 +30,7 @@ export function ItemSizeDemo() {
           <ItemDescription>A compact size for dense layouts.</ItemDescription>
         </ItemContent>
       </Item>
-      <Item variant="outline" size="sm">
+      <Item size="sm" variant="outline">
         <ItemMedia variant="icon">
           <InboxIcon />
         </ItemMedia>
@@ -40,5 +40,5 @@ export function ItemSizeDemo() {
         </ItemContent>
       </Item>
     </div>
-  )
+  );
 }

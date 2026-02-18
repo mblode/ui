@@ -29,13 +29,13 @@ export function CodeBlockCommand({
     }
   }, [hasCopied]);
 
-  const packageManager = config.packageManager || "pnpm";
+  const packageManager = config.packageManager || "npm";
   const tabs = React.useMemo(() => {
     return {
-      pnpm: __pnpmCommand__,
       npm: __npmCommand__,
       yarn: __yarnCommand__,
       bun: __bunCommand__,
+      pnpm: __pnpmCommand__,
     };
   }, [__npmCommand__, __pnpmCommand__, __yarnCommand__, __bunCommand__]);
 
@@ -57,7 +57,7 @@ export function CodeBlockCommand({
         onValueChange={(value) => {
           setConfig({
             ...config,
-            packageManager: value as "pnpm" | "npm" | "yarn" | "bun",
+            packageManager: value as "npm" | "yarn" | "bun" | "pnpm",
           });
         }}
         value={packageManager}

@@ -4,8 +4,8 @@ import {
   FieldGroup,
   FieldLabel,
   FieldSet,
-} from "@/registry/default/ui/field"
-import { Input } from "@/registry/default/ui/input"
+} from "@/registry/default/ui/field";
+import { Input } from "@/registry/default/ui/input";
 
 export default function FieldInput() {
   return (
@@ -13,7 +13,7 @@ export default function FieldInput() {
       <FieldGroup>
         <Field>
           <FieldLabel htmlFor="username">Username</FieldLabel>
-          <Input id="username" type="text" placeholder="Max Leiter" />
+          <Input id="username" placeholder="Max Leiter" type="text" />
           <FieldDescription>
             Choose a unique username for your account.
           </FieldDescription>
@@ -23,9 +23,9 @@ export default function FieldInput() {
           <FieldDescription>
             Must be at least 8 characters long.
           </FieldDescription>
-          <Input id="password" type="password" placeholder="••••••••" />
+          <Input id="password" placeholder="••••••••" type="password" />
         </Field>
       </FieldGroup>
     </FieldSet>
-  )
+  );
 }

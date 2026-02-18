@@ -1,11 +1,11 @@
-import { Field, FieldLabel } from "@/registry/default/ui/field"
-import { Switch } from "@/registry/default/ui/switch"
+import { Field, FieldLabel } from "@/registry/default/ui/field";
+import { Switch } from "@/registry/default/ui/switch";
 
 export default function FieldSwitch() {
   return (
-    <Field orientation="horizontal" className="w-fit">
+    <Field className="w-fit" orientation="horizontal">
       <FieldLabel htmlFor="2fa">Multi-factor authentication</FieldLabel>
       <Switch id="2fa" />
     </Field>
-  )
+  );
 }

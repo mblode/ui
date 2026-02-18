@@ -1,17 +1,17 @@
-import { Toggle } from "@/registry/default/ui/toggle"
-import { BoldIcon, ItalicIcon } from "blode-icons-react"
+import { BoldIcon, ItalicIcon } from "blode-icons-react";
+import { Toggle } from "@/registry/default/ui/toggle";
 
 export function ToggleOutline() {
   return (
     <div className="flex flex-wrap items-center gap-2">
-      <Toggle variant="outline" aria-label="Toggle italic">
+      <Toggle aria-label="Toggle italic" variant="outline">
         <ItalicIcon />
         Italic
       </Toggle>
-      <Toggle variant="outline" aria-label="Toggle bold">
+      <Toggle aria-label="Toggle bold" variant="outline">
         <BoldIcon />
         Bold
       </Toggle>
     </div>
-  )
+  );
 }

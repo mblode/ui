@@ -1,4 +1,5 @@
-import Link from "next/link"
+import { ChevronDownIcon, DotIcon } from "blode-icons-react";
+import Link from "next/link";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -6,15 +7,14 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/registry/default/ui/breadcrumb"
+} from "@/registry/default/ui/breadcrumb";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/registry/default/ui/dropdown-menu"
-import { ChevronDownIcon, DotIcon } from "blode-icons-react"
+} from "@/registry/default/ui/dropdown-menu";
 
 export function BreadcrumbDropdown() {
   return (
@@ -31,7 +31,7 @@ export function BreadcrumbDropdown() {
         <BreadcrumbItem>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <button className="flex items-center gap-1">
+              <button className="flex items-center gap-1" type="button">
                 Components
                 <ChevronDownIcon data-icon="inline-end" />
               </button>
@@ -53,5 +53,5 @@ export function BreadcrumbDropdown() {
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
-  )
+  );
 }

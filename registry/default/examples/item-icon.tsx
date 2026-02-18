@@ -1,4 +1,5 @@
-import { Button } from "@/registry/default/ui/button"
+import { ShieldAlertIcon } from "blode-icons-react";
+import { Button } from "@/registry/default/ui/button";
 import {
   Item,
   ItemActions,
@@ -6,8 +7,7 @@ import {
   ItemDescription,
   ItemMedia,
   ItemTitle,
-} from "@/registry/default/ui/item"
-import { ShieldAlertIcon } from "blode-icons-react"
+} from "@/registry/default/ui/item";
 
 export function ItemIcon() {
   return (
@@ -29,5 +29,5 @@ export function ItemIcon() {
         </ItemActions>
       </Item>
     </div>
-  )
+  );
 }

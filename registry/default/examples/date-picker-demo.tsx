@@ -1,41 +1,41 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Button } from "@/registry/default/ui/button"
-import { Calendar } from "@/registry/default/ui/calendar"
+import { ChevronDownIcon } from "blode-icons-react";
+import { format } from "date-fns";
+import { useState } from "react";
+import { Button } from "@/registry/default/ui/button";
+import { Calendar } from "@/registry/default/ui/calendar";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/registry/default/ui/popover"
-import { format } from "date-fns"
-import { ChevronDownIcon } from "blode-icons-react"
+} from "@/registry/default/ui/popover";
 
 export function DatePickerDemo() {
-  const [date, setDate] = React.useState<Date>()
+  const [date, setDate] = useState<Date>();
 
   return (
     <Popover>
       <PopoverTrigger
         render={
           <Button
-            variant={"outline"}
+            className="w-[212px] justify-between text-left font-normal data-[empty=true]:text-muted-foreground"
             data-empty={!date}
-            className="data-[empty=true]:text-muted-foreground w-[212px] justify-between text-left font-normal"
+            variant={"outline"}
           />
         }
       >
         {date ? format(date, "PPP") : <span>Pick a date</span>}
         <ChevronDownIcon data-icon="inline-end" />
       </PopoverTrigger>
-      <PopoverContent className="w-auto p-0" align="start">
+      <PopoverContent align="start" className="w-auto p-0">
         <Calendar
-          mode="single"
-          selected={date}
-          onSelect={setDate}
           defaultMonth={date}
+          mode="single"
+          onSelect={setDate}
+          selected={date}
         />
       </PopoverContent>
     </Popover>
-  )
+  );
 }

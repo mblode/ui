@@ -1,9 +1,9 @@
-import { Button } from "@/registry/default/ui/button"
+import { Button } from "@/registry/default/ui/button";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/registry/default/ui/tooltip"
+} from "@/registry/default/ui/tooltip";
 
 export function TooltipDemo() {
   return (
@@ -15,5 +15,5 @@ export function TooltipDemo() {
         <p>Add to library</p>
       </TooltipContent>
     </Tooltip>
-  )
+  );
 }

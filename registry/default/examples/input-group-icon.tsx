@@ -1,16 +1,16 @@
 import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupInput,
-} from "@/registry/default/ui/input-group"
-import {
   CheckIcon,
   CreditCardIcon,
   InfoIcon,
   MailIcon,
   SearchIcon,
   StarIcon,
-} from "blode-icons-react"
+} from "blode-icons-react";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@/registry/default/ui/input-group";
 
 export default function InputGroupIcon() {
   return (
@@ -22,7 +22,7 @@ export default function InputGroupIcon() {
         </InputGroupAddon>
       </InputGroup>
       <InputGroup>
-        <InputGroupInput type="email" placeholder="Enter your email" />
+        <InputGroupInput placeholder="Enter your email" type="email" />
         <InputGroupAddon>
           <MailIcon />
         </InputGroupAddon>
@@ -44,5 +44,5 @@ export default function InputGroupIcon() {
         </InputGroupAddon>
       </InputGroup>
     </div>
-  )
+  );
 }

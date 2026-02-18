@@ -1,11 +1,14 @@
-import { ButtonGroup, ButtonGroupText } from "@/registry/default/ui/button-group"
+import { Link2Icon } from "blode-icons-react";
+import {
+  ButtonGroup,
+  ButtonGroupText,
+} from "@/registry/default/ui/button-group";
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/registry/default/ui/input-group"
-import { Label } from "@/registry/default/ui/label"
-import { Link2Icon } from "blode-icons-react"
+} from "@/registry/default/ui/input-group";
+import { Label } from "@/registry/default/ui/label";
 
 export default function InputGroupButtonGroup() {
   return (
@@ -23,5 +26,5 @@ export default function InputGroupButtonGroup() {
         <ButtonGroupText>.com</ButtonGroupText>
       </ButtonGroup>
     </div>
-  )
+  );
 }

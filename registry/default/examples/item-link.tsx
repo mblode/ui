@@ -1,11 +1,11 @@
+import { ChevronRightIcon, ExternalLinkIcon } from "blode-icons-react";
 import {
   Item,
   ItemActions,
   ItemContent,
   ItemDescription,
   ItemTitle,
-} from "@/registry/default/ui/item"
-import { ChevronRightIcon, ExternalLinkIcon } from "blode-icons-react"
+} from "@/registry/default/ui/item";
 
 export function ItemLink() {
   return (
@@ -24,7 +24,7 @@ export function ItemLink() {
         </a>
       </Item>
       <Item asChild variant="outline">
-        <a href="#" target="_blank" rel="noopener noreferrer">
+        <a href="#" rel="noopener noreferrer" target="_blank">
           <ItemContent>
             <ItemTitle>External resource</ItemTitle>
             <ItemDescription>
@@ -37,5 +37,5 @@ export function ItemLink() {
         </a>
       </Item>
     </div>
-  )
+  );
 }

@@ -1,5 +1,9 @@
-import { Field, FieldDescription, FieldLabel } from "@/registry/default/ui/field"
-import { Input } from "@/registry/default/ui/input"
+import {
+  Field,
+  FieldDescription,
+  FieldLabel,
+} from "@/registry/default/ui/field";
+import { Input } from "@/registry/default/ui/input";
 
 export function InputFile() {
   return (
@@ -8,5 +12,5 @@ export function InputFile() {
       <Input id="picture" type="file" />
       <FieldDescription>Select a picture to upload.</FieldDescription>
     </Field>
-  )
+  );
 }

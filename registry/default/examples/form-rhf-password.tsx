@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { CheckIcon } from "blode-icons-react"
-import { Controller, useForm, useWatch } from "react-hook-form"
-import { toast } from "sonner"
-import * as z from "zod"
+import { zodResolver } from "@hookform/resolvers/zod";
+import { CheckIcon } from "blode-icons-react";
+import type * as React from "react";
+import { Controller, useForm, useWatch } from "react-hook-form";
+import { toast } from "sonner";
+import { z } from "zod";
 
-import { Button } from "@/registry/default/ui/button"
+import { Button } from "@/registry/default/ui/button";
 import {
   Card,
   CardContent,
@@ -15,19 +15,19 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/default/ui/card"
+} from "@/registry/default/ui/card";
 import {
   Field,
   FieldError,
   FieldGroup,
   FieldLabel,
-} from "@/registry/default/ui/field"
+} from "@/registry/default/ui/field";
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/registry/default/ui/input-group"
-import { Progress } from "@/registry/default/ui/progress"
+} from "@/registry/default/ui/input-group";
+import { Progress } from "@/registry/default/ui/progress";
 
 const passwordRequirements = [
   {
@@ -51,7 +51,7 @@ const passwordRequirements = [
     label: "One special character",
     test: (val: string) => /[!@#$%^&*(),.?":{}|<>]/.test(val),
   },
-]
+];
 
 const formSchema = z.object({
   password: z
@@ -73,7 +73,7 @@ const formSchema = z.object({
       (val) => /[!@#$%^&*(),.?":{}|<>]/.test(val),
       "Password must contain at least one special character"
     ),
-})
+});
 
 export default function FormRhfPassword() {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -81,35 +81,41 @@ export default function FormRhfPassword() {
     defaultValues: {
       password: "",
     },
-  })
+  });
 
   const password = useWatch({
     control: form.control,
     name: "password",
-  })
+  });
 
   // Calculate password strength.
   const metRequirements = passwordRequirements.filter((req) =>
     req.test(password || "")
-  )
+  );
   const strengthPercentage =
-    (metRequirements.length / passwordRequirements.length) * 100
+    (metRequirements.length / passwordRequirements.length) * 100;
 
   // Determine strength level and color.
   const getStrengthColor = () => {
-    if (strengthPercentage === 0) return "bg-neutral-200"
-    if (strengthPercentage <= 40) return "bg-red-500"
-    if (strengthPercentage <= 80) return "bg-yellow-500"
-    return "bg-green-500"
-  }
+    if (strengthPercentage === 0) {
+      return "bg-neutral-200";
+    }
+    if (strengthPercentage <= 40) {
+      return "bg-red-500";
+    }
+    if (strengthPercentage <= 80) {
+      return "bg-yellow-500";
+    }
+    return "bg-green-500";
+  };
 
   const allRequirementsMet =
-    metRequirements.length === passwordRequirements.length
+    metRequirements.length === passwordRequirements.length;
 
   function onSubmit(data: z.infer<typeof formSchema>) {
     toast("You submitted the following values:", {
       description: (
-        <pre className="bg-code text-code-foreground mt-2 w-[320px] overflow-x-auto rounded-md p-4">
+        <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
           <code>{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
@@ -120,7 +126,7 @@ export default function FormRhfPassword() {
       style: {
         "--border-radius": "calc(var(--radius)  + 4px)",
       } as React.CSSProperties,
-    })
+    });
   }
 
   return (
@@ -135,8 +141,8 @@ export default function FormRhfPassword() {
         <form id="form-rhf-password" onSubmit={form.handleSubmit(onSubmit)}>
           <FieldGroup>
             <Controller
-              name="password"
               control={form.control}
+              name="password"
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
                   <FieldLabel htmlFor="form-rhf-password-input">
@@ -145,11 +151,11 @@ export default function FormRhfPassword() {
                   <InputGroup>
                     <InputGroupInput
                       {...field}
-                      id="form-rhf-password-input"
-                      type="password"
-                      placeholder="Enter your password"
                       aria-invalid={fieldState.invalid}
                       autoComplete="new-password"
+                      id="form-rhf-password-input"
+                      placeholder="Enter your password"
+                      type="password"
                     />
                     <InputGroupAddon align="inline-end">
                       <CheckIcon
@@ -165,24 +171,24 @@ export default function FormRhfPassword() {
                   {/* Password strength meter. */}
                   <div className="space-y-2">
                     <Progress
-                      value={strengthPercentage}
                       className={getStrengthColor()}
+                      value={strengthPercentage}
                     />
 
                     {/* Requirements list. */}
                     <div className="space-y-1.5">
                       {passwordRequirements.map((requirement) => {
-                        const isMet = requirement.test(password || "")
+                        const isMet = requirement.test(password || "");
                         return (
                           <div
-                            key={requirement.id}
                             className="flex items-center gap-2 text-sm"
+                            key={requirement.id}
                           >
                             <CheckIcon
                               className={
                                 isMet
                                   ? "size-4 text-green-500"
-                                  : "text-muted-foreground size-4"
+                                  : "size-4 text-muted-foreground"
                               }
                             />
                             <span
@@ -195,7 +201,7 @@ export default function FormRhfPassword() {
                               {requirement.label}
                             </span>
                           </div>
-                        )
+                        );
                       })}
                     </div>
                   </div>
@@ -211,14 +217,14 @@ export default function FormRhfPassword() {
       </CardContent>
       <CardFooter className="border-t">
         <Field>
-          <Button type="submit" form="form-rhf-password">
+          <Button form="form-rhf-password" type="submit">
             Create Password
           </Button>
-          <Button type="button" variant="outline" onClick={() => form.reset()}>
+          <Button onClick={() => form.reset()} type="button" variant="outline">
             Reset
           </Button>
         </Field>
       </CardFooter>
     </Card>
-  )
+  );
 }

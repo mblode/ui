@@ -1,4 +1,4 @@
-import { Toggle } from "@/registry/default/ui/toggle"
+import { Toggle } from "@/registry/default/ui/toggle";
 
 export function ToggleDisabled() {
   return (
@@ -6,9 +6,9 @@ export function ToggleDisabled() {
       <Toggle aria-label="Toggle disabled" disabled>
         Disabled
       </Toggle>
-      <Toggle variant="outline" aria-label="Toggle disabled outline" disabled>
+      <Toggle aria-label="Toggle disabled outline" disabled variant="outline">
         Disabled
       </Toggle>
     </div>
-  )
+  );
 }

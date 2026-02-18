@@ -1,19 +1,19 @@
-"use client"
+"use client";
 
+import { ChevronDownIcon, MoreHorizontal } from "blode-icons-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/registry/default/ui/dropdown-menu"
+} from "@/registry/default/ui/dropdown-menu";
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/registry/default/ui/input-group"
-import { ChevronDownIcon, MoreHorizontal } from "blode-icons-react"
+} from "@/registry/default/ui/input-group";
 
 export function InputGroupDropdown() {
   return (
@@ -25,15 +25,15 @@ export function InputGroupDropdown() {
             <DropdownMenuTrigger
               render={
                 <InputGroupButton
-                  variant="ghost"
                   aria-label="More"
                   size="icon-xs"
+                  variant="ghost"
                 />
               }
             >
               <MoreHorizontal />
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" sideOffset={8} alignOffset={-4}>
+            <DropdownMenuContent align="end" alignOffset={-4} sideOffset={8}>
               <DropdownMenuGroup>
                 <DropdownMenuItem>Settings</DropdownMenuItem>
                 <DropdownMenuItem>Copy path</DropdownMenuItem>
@@ -49,12 +49,12 @@ export function InputGroupDropdown() {
           <DropdownMenu>
             <DropdownMenuTrigger
               render={
-                <InputGroupButton variant="ghost" className="!pr-1.5 text-xs" />
+                <InputGroupButton className="!pr-1.5 text-xs" variant="ghost" />
               }
             >
               Search In... <ChevronDownIcon className="size-3" />
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" sideOffset={8} alignOffset={-4}>
+            <DropdownMenuContent align="end" alignOffset={-4} sideOffset={8}>
               <DropdownMenuGroup>
                 <DropdownMenuItem>Documentation</DropdownMenuItem>
                 <DropdownMenuItem>Blog Posts</DropdownMenuItem>
@@ -65,5 +65,5 @@ export function InputGroupDropdown() {
         </InputGroupAddon>
       </InputGroup>
     </div>
-  )
+  );
 }

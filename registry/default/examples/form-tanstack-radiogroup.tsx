@@ -1,11 +1,11 @@
 /* eslint-disable react/no-children-prop */
-"use client"
+"use client";
 
-import { useForm } from "@tanstack/react-form"
-import { toast } from "sonner"
-import * as z from "zod"
+import { useForm } from "@tanstack/react-form";
+import { toast } from "sonner";
+import { z } from "zod";
 
-import { Button } from "@/registry/default/ui/button"
+import { Button } from "@/registry/default/ui/button";
 import {
   Card,
   CardContent,
@@ -13,7 +13,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/default/ui/card"
+} from "@/registry/default/ui/card";
 import {
   Field,
   FieldContent,
@@ -24,11 +24,8 @@ import {
   FieldLegend,
   FieldSet,
   FieldTitle,
-} from "@/registry/default/ui/field"
-import {
-  RadioGroup,
-  RadioGroupItem,
-} from "@/registry/default/ui/radio-group"
+} from "@/registry/default/ui/field";
+import { RadioGroup, RadioGroupItem } from "@/registry/default/ui/radio-group";
 
 const plans = [
   {
@@ -46,11 +43,11 @@ const plans = [
     title: "Enterprise (Unlimited tokens)",
     description: "For large teams and heavy usage.",
   },
-] as const
+] as const;
 
 const formSchema = z.object({
   plan: z.string().min(1, "You must select a subscription plan to continue."),
-})
+});
 
 export default function FormTanstackRadioGroup() {
   const form = useForm({
@@ -63,7 +60,7 @@ export default function FormTanstackRadioGroup() {
     onSubmit: async ({ value }) => {
       toast("You submitted the following values:", {
         description: (
-          <pre className="bg-code text-code-foreground mt-2 w-[320px] overflow-x-auto rounded-md p-4">
+          <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
             <code>{JSON.stringify(value, null, 2)}</code>
           </pre>
         ),
@@ -74,9 +71,9 @@ export default function FormTanstackRadioGroup() {
         style: {
           "--border-radius": "calc(var(--radius)  + 4px)",
         } as React.CSSProperties,
-      })
+      });
     },
-  })
+  });
 
   return (
     <Card className="w-full sm:max-w-md">
@@ -90,16 +87,15 @@ export default function FormTanstackRadioGroup() {
         <form
           id="form-tanstack-radiogroup"
           onSubmit={(e) => {
-            e.preventDefault()
-            form.handleSubmit()
+            e.preventDefault();
+            form.handleSubmit();
           }}
         >
           <FieldGroup>
             <form.Field
-              name="plan"
               children={(field) => {
                 const isInvalid =
-                  field.state.meta.isTouched && !field.state.meta.isValid
+                  field.state.meta.isTouched && !field.state.meta.isValid;
                 return (
                   <FieldSet>
                     <FieldLegend>Plan</FieldLegend>
@@ -108,17 +104,17 @@ export default function FormTanstackRadioGroup() {
                     </FieldDescription>
                     <RadioGroup
                       name={field.name}
-                      value={field.state.value}
                       onValueChange={field.handleChange}
+                      value={field.state.value}
                     >
                       {plans.map((plan) => (
                         <FieldLabel
-                          key={plan.id}
                           htmlFor={`form-tanstack-radiogroup-${plan.id}`}
+                          key={plan.id}
                         >
                           <Field
-                            orientation="horizontal"
                             data-invalid={isInvalid}
+                            orientation="horizontal"
                           >
                             <FieldContent>
                               <FieldTitle>{plan.title}</FieldTitle>
@@ -127,9 +123,9 @@ export default function FormTanstackRadioGroup() {
                               </FieldDescription>
                             </FieldContent>
                             <RadioGroupItem
-                              value={plan.id}
-                              id={`form-tanstack-radiogroup-${plan.id}`}
                               aria-invalid={isInvalid}
+                              id={`form-tanstack-radiogroup-${plan.id}`}
+                              value={plan.id}
                             />
                           </Field>
                         </FieldLabel>
@@ -139,22 +135,23 @@ export default function FormTanstackRadioGroup() {
                       <FieldError errors={field.state.meta.errors} />
                     )}
                   </FieldSet>
-                )
+                );
               }}
+              name="plan"
             />
           </FieldGroup>
         </form>
       </CardContent>
       <CardFooter>
         <Field orientation="horizontal">
-          <Button type="button" variant="outline" onClick={() => form.reset()}>
+          <Button onClick={() => form.reset()} type="button" variant="outline">
             Reset
           </Button>
-          <Button type="submit" form="form-tanstack-radiogroup">
+          <Button form="form-tanstack-radiogroup" type="submit">
             Save
           </Button>
         </Field>
       </CardFooter>
     </Card>
-  )
+  );
 }

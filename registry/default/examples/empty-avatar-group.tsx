@@ -1,5 +1,10 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/registry/default/ui/avatar"
-import { Button } from "@/registry/default/ui/button"
+import { PlusIcon } from "blode-icons-react";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/registry/default/ui/avatar";
+import { Button } from "@/registry/default/ui/button";
 import {
   Empty,
   EmptyContent,
@@ -7,30 +12,29 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/registry/default/ui/empty"
-import { PlusIcon } from "blode-icons-react"
+} from "@/registry/default/ui/empty";
 
 export default function EmptyAvatarGroup() {
   return (
     <Empty>
       <EmptyHeader>
         <EmptyMedia>
-          <div className="*:data-[slot=avatar]:ring-background flex -space-x-2 *:data-[slot=avatar]:size-12 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:grayscale">
+          <div className="flex -space-x-2 *:data-[slot=avatar]:size-12 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:ring-background *:data-[slot=avatar]:grayscale">
             <Avatar>
-              <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+              <AvatarImage alt="@shadcn" src="https://github.com/shadcn.png" />
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
             <Avatar>
               <AvatarImage
-                src="https://github.com/maxleiter.png"
                 alt="@maxleiter"
+                src="https://github.com/maxleiter.png"
               />
               <AvatarFallback>LR</AvatarFallback>
             </Avatar>
             <Avatar>
               <AvatarImage
-                src="https://github.com/evilrabbit.png"
                 alt="@evilrabbit"
+                src="https://github.com/evilrabbit.png"
               />
               <AvatarFallback>ER</AvatarFallback>
             </Avatar>
@@ -48,5 +52,5 @@ export default function EmptyAvatarGroup() {
         </Button>
       </EmptyContent>
     </Empty>
-  )
+  );
 }

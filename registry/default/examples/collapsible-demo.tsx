@@ -1,27 +1,27 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Button } from "@/registry/default/ui/button"
+import { ChevronsUpDown } from "blode-icons-react";
+import { useState } from "react";
+import { Button } from "@/registry/default/ui/button";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/registry/default/ui/collapsible"
-import { ChevronsUpDown } from "blode-icons-react"
+} from "@/registry/default/ui/collapsible";
 
 export default function CollapsibleDemo() {
-  const [isOpen, setIsOpen] = React.useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <Collapsible
-      open={isOpen}
-      onOpenChange={setIsOpen}
       className="flex w-[350px] flex-col gap-2"
+      onOpenChange={setIsOpen}
+      open={isOpen}
     >
       <div className="flex items-center justify-between gap-4 px-4">
-        <h4 className="text-sm font-semibold">Order #4189</h4>
+        <h4 className="font-semibold text-sm">Order #4189</h4>
         <CollapsibleTrigger
-          render={<Button variant="ghost" size="icon" className="size-8" />}
+          render={<Button className="size-8" size="icon" variant="ghost" />}
         >
           <ChevronsUpDown />
           <span className="sr-only">Toggle details</span>
@@ -42,5 +42,5 @@ export default function CollapsibleDemo() {
         </div>
       </CollapsibleContent>
     </Collapsible>
-  )
+  );
 }

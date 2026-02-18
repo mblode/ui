@@ -48,7 +48,7 @@ const Overlay = forwardRef<
   return (
     <AlertDialogPrimitive.Backdrop
       className={cn(
-        "fixed inset-0 z-110 bg-black/50 backdrop-blur-[10px] data-closed:opacity-0 data-open:opacity-100 motion-safe:transition-opacity motion-safe:duration-200 motion-safe:ease-out motion-reduce:transition-none",
+        "fixed inset-0 z-110 bg-overlay backdrop-blur-[10px] data-closed:opacity-0 data-open:opacity-100 motion-safe:transition-opacity motion-safe:ease-in-out motion-safe:data-closed:duration-300 motion-safe:data-open:duration-500 motion-reduce:transition-none",
         className
       )}
       ref={ref}
@@ -81,7 +81,7 @@ const Content = forwardRef<
       <Overlay />
       <AlertDialogPrimitive.Popup
         className={cn(
-          "fixed top-[50%] left-[50%] z-110 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 rounded-2xl border bg-background p-4 shadow-lg data-closed:scale-95 data-open:scale-100 data-closed:opacity-0 data-open:opacity-100 motion-safe:transition-[opacity,scale] motion-safe:duration-200 motion-safe:ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none motion-reduce:data-closed:scale-100 motion-reduce:data-open:scale-100 md:w-full",
+          "data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 fixed top-[50%] left-[50%] z-110 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 rounded-2xl border bg-background p-4 shadow-lg duration-200 data-closed:animate-out data-open:animate-in md:w-full",
           className
         )}
         ref={ref}

@@ -1,4 +1,5 @@
-import { Button } from "@/registry/default/ui/button"
+import { BellIcon, RefreshCcwIcon } from "blode-icons-react";
+import { Button } from "@/registry/default/ui/button";
 import {
   Empty,
   EmptyContent,
@@ -6,12 +7,11 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/registry/default/ui/empty"
-import { BellIcon, RefreshCcwIcon } from "blode-icons-react"
+} from "@/registry/default/ui/empty";
 
 export function EmptyMuted() {
   return (
-    <Empty className="bg-muted/30 h-full">
+    <Empty className="h-full bg-muted/30">
       <EmptyHeader>
         <EmptyMedia variant="icon">
           <BellIcon />
@@ -28,5 +28,5 @@ export function EmptyMuted() {
         </Button>
       </EmptyContent>
     </Empty>
-  )
+  );
 }

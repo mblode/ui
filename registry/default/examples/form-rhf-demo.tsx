@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { Controller, useForm } from "react-hook-form"
-import { toast } from "sonner"
-import * as z from "zod"
+import { zodResolver } from "@hookform/resolvers/zod";
+import type * as React from "react";
+import { Controller, useForm } from "react-hook-form";
+import { toast } from "sonner";
+import { z } from "zod";
 
-import { Button } from "@/registry/default/ui/button"
+import { Button } from "@/registry/default/ui/button";
 import {
   Card,
   CardContent,
@@ -14,21 +14,21 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/default/ui/card"
+} from "@/registry/default/ui/card";
 import {
   Field,
   FieldDescription,
   FieldError,
   FieldGroup,
   FieldLabel,
-} from "@/registry/default/ui/field"
-import { Input } from "@/registry/default/ui/input"
+} from "@/registry/default/ui/field";
+import { Input } from "@/registry/default/ui/input";
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupText,
   InputGroupTextarea,
-} from "@/registry/default/ui/input-group"
+} from "@/registry/default/ui/input-group";
 
 const formSchema = z.object({
   title: z
@@ -39,7 +39,7 @@ const formSchema = z.object({
     .string()
     .min(20, "Description must be at least 20 characters.")
     .max(100, "Description must be at most 100 characters."),
-})
+});
 
 export default function BugReportForm() {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -48,12 +48,12 @@ export default function BugReportForm() {
       title: "",
       description: "",
     },
-  })
+  });
 
   function onSubmit(data: z.infer<typeof formSchema>) {
     toast("You submitted the following values:", {
       description: (
-        <pre className="bg-code text-code-foreground mt-2 w-[320px] overflow-x-auto rounded-md p-4">
+        <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
           <code>{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
@@ -64,7 +64,7 @@ export default function BugReportForm() {
       style: {
         "--border-radius": "calc(var(--radius)  + 4px)",
       } as React.CSSProperties,
-    })
+    });
   }
 
   return (
@@ -79,8 +79,8 @@ export default function BugReportForm() {
         <form id="form-rhf-demo" onSubmit={form.handleSubmit(onSubmit)}>
           <FieldGroup>
             <Controller
-              name="title"
               control={form.control}
+              name="title"
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
                   <FieldLabel htmlFor="form-rhf-demo-title">
@@ -88,10 +88,10 @@ export default function BugReportForm() {
                   </FieldLabel>
                   <Input
                     {...field}
-                    id="form-rhf-demo-title"
                     aria-invalid={fieldState.invalid}
-                    placeholder="Login button not working on mobile"
                     autoComplete="off"
+                    id="form-rhf-demo-title"
+                    placeholder="Login button not working on mobile"
                   />
                   {fieldState.invalid && (
                     <FieldError errors={[fieldState.error]} />
@@ -100,8 +100,8 @@ export default function BugReportForm() {
               )}
             />
             <Controller
-              name="description"
               control={form.control}
+              name="description"
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
                   <FieldLabel htmlFor="form-rhf-demo-description">
@@ -110,11 +110,11 @@ export default function BugReportForm() {
                   <InputGroup>
                     <InputGroupTextarea
                       {...field}
+                      aria-invalid={fieldState.invalid}
+                      className="min-h-24 resize-none"
                       id="form-rhf-demo-description"
                       placeholder="I'm having an issue with the login button on mobile."
                       rows={6}
-                      className="min-h-24 resize-none"
-                      aria-invalid={fieldState.invalid}
                     />
                     <InputGroupAddon align="block-end">
                       <InputGroupText className="tabular-nums">
@@ -137,14 +137,14 @@ export default function BugReportForm() {
       </CardContent>
       <CardFooter>
         <Field orientation="horizontal">
-          <Button type="button" variant="outline" onClick={() => form.reset()}>
+          <Button onClick={() => form.reset()} type="button" variant="outline">
             Reset
           </Button>
-          <Button type="submit" form="form-rhf-demo">
+          <Button form="form-rhf-demo" type="submit">
             Submit
           </Button>
         </Field>
       </CardFooter>
     </Card>
-  )
+  );
 }

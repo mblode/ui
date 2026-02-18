@@ -1,11 +1,11 @@
 /* eslint-disable react/no-children-prop */
-"use client"
+"use client";
 
-import { useForm } from "@tanstack/react-form"
-import { toast } from "sonner"
-import * as z from "zod"
+import { useForm } from "@tanstack/react-form";
+import { toast } from "sonner";
+import { z } from "zod";
 
-import { Button } from "@/registry/default/ui/button"
+import { Button } from "@/registry/default/ui/button";
 import {
   Card,
   CardContent,
@@ -13,7 +13,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/default/ui/card"
+} from "@/registry/default/ui/card";
 import {
   Field,
   FieldContent,
@@ -21,7 +21,7 @@ import {
   FieldError,
   FieldGroup,
   FieldLabel,
-} from "@/registry/default/ui/field"
+} from "@/registry/default/ui/field";
 import {
   Select,
   SelectContent,
@@ -29,7 +29,7 @@ import {
   SelectSeparator,
   SelectTrigger,
   SelectValue,
-} from "@/registry/default/ui/select"
+} from "@/registry/default/ui/select";
 
 const spokenLanguages = [
   { label: "English", value: "en" },
@@ -39,7 +39,7 @@ const spokenLanguages = [
   { label: "Italian", value: "it" },
   { label: "Chinese", value: "zh" },
   { label: "Japanese", value: "ja" },
-] as const
+] as const;
 
 const formSchema = z.object({
   language: z
@@ -49,7 +49,7 @@ const formSchema = z.object({
       message:
         "Auto-detection is not allowed. Please select a specific language.",
     }),
-})
+});
 
 export default function FormTanstackSelect() {
   const form = useForm({
@@ -62,7 +62,7 @@ export default function FormTanstackSelect() {
     onSubmit: async ({ value }) => {
       toast("You submitted the following values:", {
         description: (
-          <pre className="bg-code text-code-foreground mt-2 w-[320px] overflow-x-auto rounded-md p-4">
+          <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
             <code>{JSON.stringify(value, null, 2)}</code>
           </pre>
         ),
@@ -73,9 +73,9 @@ export default function FormTanstackSelect() {
         style: {
           "--border-radius": "calc(var(--radius)  + 4px)",
         } as React.CSSProperties,
-      })
+      });
     },
-  })
+  });
 
   return (
     <Card className="w-full sm:max-w-lg">
@@ -89,18 +89,17 @@ export default function FormTanstackSelect() {
         <form
           id="form-tanstack-select"
           onSubmit={(e) => {
-            e.preventDefault()
-            form.handleSubmit()
+            e.preventDefault();
+            form.handleSubmit();
           }}
         >
           <FieldGroup>
             <form.Field
-              name="language"
               children={(field) => {
                 const isInvalid =
-                  field.state.meta.isTouched && !field.state.meta.isValid
+                  field.state.meta.isTouched && !field.state.meta.isValid;
                 return (
-                  <Field orientation="responsive" data-invalid={isInvalid}>
+                  <Field data-invalid={isInvalid} orientation="responsive">
                     <FieldContent>
                       <FieldLabel htmlFor="form-tanstack-select-language">
                         Spoken Language
@@ -114,13 +113,13 @@ export default function FormTanstackSelect() {
                     </FieldContent>
                     <Select
                       name={field.name}
-                      value={field.state.value}
                       onValueChange={field.handleChange}
+                      value={field.state.value}
                     >
                       <SelectTrigger
-                        id="form-tanstack-select-language"
                         aria-invalid={isInvalid}
                         className="min-w-[120px]"
+                        id="form-tanstack-select-language"
                       >
                         <SelectValue placeholder="Select" />
                       </SelectTrigger>
@@ -138,22 +137,23 @@ export default function FormTanstackSelect() {
                       </SelectContent>
                     </Select>
                   </Field>
-                )
+                );
               }}
+              name="language"
             />
           </FieldGroup>
         </form>
       </CardContent>
       <CardFooter>
         <Field orientation="horizontal">
-          <Button type="button" variant="outline" onClick={() => form.reset()}>
+          <Button onClick={() => form.reset()} type="button" variant="outline">
             Reset
           </Button>
-          <Button type="submit" form="form-tanstack-select">
+          <Button form="form-tanstack-select" type="submit">
             Save
           </Button>
         </Field>
       </CardFooter>
     </Card>
-  )
+  );
 }

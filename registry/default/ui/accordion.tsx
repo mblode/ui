@@ -23,6 +23,8 @@ import { cn } from "@/lib/utils";
 interface AccordionItemContextType {
   isOpen: boolean;
   setIsOpen: (open: boolean) => void;
+  canAnimate: boolean;
+  setCanAnimate: (canAnimate: boolean) => void;
 }
 
 const AccordionItemContext = createContext<
@@ -120,9 +122,12 @@ function AccordionItem({
   ...props
 }: ComponentProps<typeof AccordionPrimitive.Item>) {
   const [isOpen, setIsOpen] = useState(false);
+  const [canAnimate, setCanAnimate] = useState(false);
 
   return (
-    <AccordionItemContext.Provider value={{ isOpen, setIsOpen }}>
+    <AccordionItemContext.Provider
+      value={{ isOpen, setIsOpen, canAnimate, setCanAnimate }}
+    >
       <AccordionPrimitive.Item
         className={cn("border-b last:border-b-0", className)}
         data-slot="accordion-item"
@@ -138,7 +143,6 @@ type AccordionTriggerProps = ComponentProps<
   typeof AccordionPrimitive.Trigger
 > & {
   chevron?: boolean;
-  transition?: Transition;
 };
 
 function AccordionTrigger({
@@ -146,12 +150,11 @@ function AccordionTrigger({
   className,
   children,
   chevron = true,
-  transition = { type: "spring", stiffness: 150, damping: 22 },
   ...props
 }: AccordionTriggerProps) {
   const triggerRef = useRef<HTMLButtonElement | null>(null);
   useImperativeHandle(ref, () => triggerRef.current as HTMLButtonElement);
-  const { isOpen, setIsOpen } = useAccordionItem();
+  const { isOpen, setIsOpen, canAnimate, setCanAnimate } = useAccordionItem();
 
   useEffect(() => {
     const node = triggerRef.current;
@@ -183,11 +186,15 @@ function AccordionTrigger({
     });
 
     updateState();
+    const animationFrameId = requestAnimationFrame(() => {
+      setCanAnimate(true);
+    });
 
     return () => {
+      cancelAnimationFrame(animationFrameId);
       observer.disconnect();
     };
-  }, [setIsOpen]);
+  }, [setCanAnimate, setIsOpen]);
 
   return (
     <AccordionPrimitive.Header className="flex">
@@ -202,17 +209,25 @@ function AccordionTrigger({
       >
         {children}
         {chevron ? (
-          <div className="relative flex h-4 w-4 shrink-0 items-center justify-center">
+          <div className="relative flex h-[12px] w-[12px] shrink-0 items-center justify-center">
             <motion.div
               animate={{ rotate: isOpen ? 180 : 0 }}
-              className="pointer-events-none absolute h-0.5 w-4 rounded-full bg-foreground"
-              transition={transition}
+              className="absolute top-1/2 left-1/2 h-[1.5px] w-[12px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-foreground"
+              transition={
+                canAnimate
+                  ? { duration: 0.3, ease: [0.645, 0.045, 0.355, 1] }
+                  : { duration: 0 }
+              }
             />
             <motion.div
               animate={{ rotateZ: isOpen ? 80 : 0, scale: isOpen ? 0 : 1 }}
-              className="pointer-events-none absolute h-4 w-0.5 rounded-full bg-foreground"
+              className="absolute top-1/2 left-1/2 h-[12px] w-[1.5px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-foreground"
               style={{ transformOrigin: "center" }}
-              transition={transition}
+              transition={
+                canAnimate
+                  ? { duration: 0.3, ease: [0.645, 0.045, 0.355, 1] }
+                  : { duration: 0 }
+              }
             />
           </div>
         ) : null}
@@ -232,10 +247,10 @@ function AccordionContent({
   transition = { type: "spring", stiffness: 150, damping: 22 },
   ...props
 }: AccordionContentProps) {
-  const { isOpen } = useAccordionItem();
+  const { isOpen, canAnimate } = useAccordionItem();
 
   return (
-    <AccordionPrimitive.Panel keepMounted {...props}>
+    <AccordionPrimitive.Panel keepMounted {...props} hidden={false}>
       <AnimatePresence initial={false}>
         {isOpen ? (
           <motion.div
@@ -243,7 +258,11 @@ function AccordionContent({
             className="overflow-hidden"
             data-slot="accordion-content"
             exit={{ "--mask-stop": "0%", height: 0, opacity: 0 }}
-            initial={{ "--mask-stop": "0%", height: 0, opacity: 0 }}
+            initial={
+              canAnimate
+                ? { "--mask-stop": "0%", height: 0, opacity: 0 }
+                : false
+            }
             key="accordion-content"
             style={{
               WebkitMaskImage:
@@ -251,7 +270,7 @@ function AccordionContent({
               maskImage:
                 "linear-gradient(black var(--mask-stop), transparent var(--mask-stop))",
             }}
-            transition={transition}
+            transition={canAnimate ? transition : { duration: 0 }}
           >
             <div className={cn("pt-0 pb-4 text-sm leading-[1.5]", className)}>
               {children}

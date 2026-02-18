@@ -1,4 +1,4 @@
-import { Button } from "@/registry/default/ui/button"
+import { Button } from "@/registry/default/ui/button";
 import {
   Dialog,
   DialogClose,
@@ -8,9 +8,9 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/registry/default/ui/dialog"
-import { Input } from "@/registry/default/ui/input"
-import { Label } from "@/registry/default/ui/label"
+} from "@/registry/default/ui/dialog";
+import { Input } from "@/registry/default/ui/input";
+import { Label } from "@/registry/default/ui/label";
 
 export function DialogCloseButton() {
   return (
@@ -25,12 +25,12 @@ export function DialogCloseButton() {
         </DialogHeader>
         <div className="flex items-center gap-2">
           <div className="grid flex-1 gap-2">
-            <Label htmlFor="link" className="sr-only">
+            <Label className="sr-only" htmlFor="link">
               Link
             </Label>
             <Input
-              id="link"
               defaultValue="https://ui.shadcn.com/docs/installation"
+              id="link"
               readOnly
             />
           </div>
@@ -40,5 +40,5 @@ export function DialogCloseButton() {
         </DialogFooter>
       </DialogContent>
     </Dialog>
-  )
+  );
 }

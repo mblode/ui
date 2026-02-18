@@ -13,16 +13,16 @@ import {
   ContextMenuSubContent,
   ContextMenuSubTrigger,
   ContextMenuTrigger,
-} from "@/registry/default/ui/context-menu"
+} from "@/registry/default/ui/context-menu";
 
 export function ContextMenuDemo() {
   return (
     <ContextMenu>
       <ContextMenuTrigger className="flex aspect-video w-full max-w-xs items-center justify-center rounded-xl border border-dashed text-sm">
-        <span className="hidden pointer-fine:inline-block">
+        <span className="pointer-fine:inline-block hidden">
           Right click here
         </span>
-        <span className="hidden pointer-coarse:inline-block">
+        <span className="pointer-coarse:inline-block hidden">
           Long press here
         </span>
       </ContextMenuTrigger>
@@ -78,5 +78,5 @@ export function ContextMenuDemo() {
         </ContextMenuGroup>
       </ContextMenuContent>
     </ContextMenu>
-  )
+  );
 }

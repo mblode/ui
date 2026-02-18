@@ -264,7 +264,7 @@ const MultiCombobox = React.forwardRef<MultiComboboxRef, MultiComboboxProps>(
         <PopoverContent
           align="start"
           asChild
-          className="popover-content fade-in-80 relative z-110 w-auto min-w-32 translate-y-1 animate-in overflow-hidden rounded-xl border border-border bg-popover p-0 text-popover-foreground shadow-soft"
+          className="popover-content fade-in-80 relative z-110 w-(--anchor-width) max-w-(--available-width) translate-y-1 animate-in overflow-hidden rounded-xl border border-border bg-popover p-0 text-popover-foreground shadow-soft"
           onOpenAutoFocus={(event) => event.preventDefault()}
           sideOffset={0}
         >

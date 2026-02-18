@@ -1,5 +1,5 @@
-import { Toggle } from "@/registry/default/ui/toggle"
-import { ItalicIcon } from "blode-icons-react"
+import { ItalicIcon } from "blode-icons-react";
+import { Toggle } from "@/registry/default/ui/toggle";
 
 export function ToggleText() {
   return (
@@ -7,5 +7,5 @@ export function ToggleText() {
       <ItalicIcon />
       Italic
     </Toggle>
-  )
+  );
 }

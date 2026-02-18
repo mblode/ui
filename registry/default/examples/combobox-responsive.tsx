@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import { useState } from "react";
 
-import { useMediaQuery } from "@/hooks/use-media-query"
-import { Button } from "@/registry/default/ui/button"
+import { useMediaQuery } from "@/hooks/use-media-query";
+import { Button } from "@/registry/default/ui/button";
 import {
   Command,
   CommandEmpty,
@@ -11,21 +11,21 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/registry/default/ui/command"
+} from "@/registry/default/ui/command";
 import {
   Drawer,
   DrawerContent,
   DrawerTrigger,
-} from "@/registry/default/ui/drawer"
+} from "@/registry/default/ui/drawer";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/registry/default/ui/popover"
+} from "@/registry/default/ui/popover";
 
-type Status = {
-  value: string
-  label: string
+interface Status {
+  label: string;
+  value: string;
 }
 
 const statuses: Status[] = [
@@ -49,35 +49,33 @@ const statuses: Status[] = [
     value: "canceled",
     label: "Canceled",
   },
-]
+];
 
 export default function ComboBoxResponsive() {
-  const [open, setOpen] = React.useState(false)
-  const isDesktop = useMediaQuery("(min-width: 768px)")
-  const [selectedStatus, setSelectedStatus] = React.useState<Status | null>(
-    null
-  )
+  const [open, setOpen] = useState(false);
+  const isDesktop = useMediaQuery("(min-width: 768px)");
+  const [selectedStatus, setSelectedStatus] = useState<Status | null>(null);
 
   if (isDesktop) {
     return (
-      <Popover open={open} onOpenChange={setOpen}>
+      <Popover onOpenChange={setOpen} open={open}>
         <PopoverTrigger asChild>
-          <Button variant="outline" className="w-[150px] justify-start">
-            {selectedStatus ? <>{selectedStatus.label}</> : <>+ Set status</>}
+          <Button className="w-[150px] justify-start" variant="outline">
+            {selectedStatus ? selectedStatus.label : <>+ Set status</>}
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-[200px] p-0" align="start">
+        <PopoverContent align="start" className="w-[200px] p-0">
           <StatusList setOpen={setOpen} setSelectedStatus={setSelectedStatus} />
         </PopoverContent>
       </Popover>
-    )
+    );
   }
 
   return (
-    <Drawer open={open} onOpenChange={setOpen}>
+    <Drawer onOpenChange={setOpen} open={open}>
       <DrawerTrigger asChild>
-        <Button variant="outline" className="w-[150px] justify-start">
-          {selectedStatus ? <>{selectedStatus.label}</> : <>+ Set status</>}
+        <Button className="w-[150px] justify-start" variant="outline">
+          {selectedStatus ? selectedStatus.label : <>+ Set status</>}
         </Button>
       </DrawerTrigger>
       <DrawerContent>
@@ -86,15 +84,15 @@ export default function ComboBoxResponsive() {
         </div>
       </DrawerContent>
     </Drawer>
-  )
+  );
 }
 
 function StatusList({
   setOpen,
   setSelectedStatus,
 }: {
-  setOpen: (open: boolean) => void
-  setSelectedStatus: (status: Status | null) => void
+  setOpen: (open: boolean) => void;
+  setSelectedStatus: (status: Status | null) => void;
 }) {
   return (
     <Command>
@@ -105,13 +103,13 @@ function StatusList({
           {statuses.map((status) => (
             <CommandItem
               key={status.value}
-              value={status.value}
               onSelect={(value) => {
                 setSelectedStatus(
                   statuses.find((priority) => priority.value === value) || null
-                )
-                setOpen(false)
+                );
+                setOpen(false);
               }}
+              value={status.value}
             >
               {status.label}
             </CommandItem>
@@ -119,5 +117,5 @@ function StatusList({
         </CommandGroup>
       </CommandList>
     </Command>
-  )
+  );
 }

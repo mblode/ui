@@ -1,4 +1,8 @@
-import { Field, FieldDescription, FieldLabel } from "@/registry/default/ui/field"
+import {
+  Field,
+  FieldDescription,
+  FieldLabel,
+} from "@/registry/default/ui/field";
 import {
   Select,
   SelectContent,
@@ -6,7 +10,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/default/ui/select"
+} from "@/registry/default/ui/select";
 
 const items = [
   { label: "Choose department", value: null },
@@ -18,7 +22,7 @@ const items = [
   { label: "Human Resources", value: "hr" },
   { label: "Finance", value: "finance" },
   { label: "Operations", value: "operations" },
-]
+];
 
 export default function FieldSelect() {
   return (
@@ -42,5 +46,5 @@ export default function FieldSelect() {
         Select your department or area of work.
       </FieldDescription>
     </Field>
-  )
+  );
 }

@@ -808,6 +808,10 @@ export const Index: Record<string, unknown> = {
         path: "registry/default/ui/radio-group.tsx",
         type: "registry:ui",
         target: ""
+      },{
+        path: "registry/default/ui/radio-group.css",
+        type: "registry:ui",
+        target: ""
       }],
       categories: undefined,
       component: React.lazy(() =>

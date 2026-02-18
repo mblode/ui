@@ -1,22 +1,26 @@
-"use client"
+"use client";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/registry/default/ui/avatar"
-import { Button } from "@/registry/default/ui/button"
+import { ChevronDownIcon } from "blode-icons-react";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/registry/default/ui/avatar";
+import { Button } from "@/registry/default/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/registry/default/ui/dropdown-menu"
+} from "@/registry/default/ui/dropdown-menu";
 import {
   Item,
   ItemContent,
   ItemDescription,
   ItemMedia,
   ItemTitle,
-} from "@/registry/default/ui/item"
-import { ChevronDownIcon } from "blode-icons-react"
+} from "@/registry/default/ui/item";
 
 const people = [
   {
@@ -34,7 +38,7 @@ const people = [
     avatar: "https://github.com/evilrabbit.png",
     email: "evilrabbit@vercel.com",
   },
-]
+];
 
 export function ItemDropdown() {
   return (
@@ -44,14 +48,14 @@ export function ItemDropdown() {
           Select <ChevronDownIcon />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-48" align="end">
+      <DropdownMenuContent align="end" className="w-48">
         <DropdownMenuGroup>
           {people.map((person) => (
             <DropdownMenuItem key={person.username}>
-              <Item size="sm" className="w-full p-2">
+              <Item className="w-full p-2" size="sm">
                 <ItemMedia>
                   <Avatar className="size-[--spacing(6.5)]">
-                    <AvatarImage src={person.avatar} className="grayscale" />
+                    <AvatarImage className="grayscale" src={person.avatar} />
                     <AvatarFallback>{person.username.charAt(0)}</AvatarFallback>
                   </Avatar>
                 </ItemMedia>
@@ -67,5 +71,5 @@ export function ItemDropdown() {
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
-  )
+  );
 }
