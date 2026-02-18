@@ -55,12 +55,30 @@ export default function Hero() {
                       }),
                       "w-full gap-2"
                     )}
+                    href="/docs/installation"
+                  >
+                    Get started
+                    <ChevronRightIcon className="ml-1 size-4 shrink-0 transition-all duration-300 ease-out group-hover:translate-x-1" />
+                  </Link>
+                  <Link
+                    className={cn(
+                      buttonVariants({
+                        variant: "secondary",
+                        size: "lg",
+                      }),
+                      "w-full gap-2"
+                    )}
                     href="/components"
                   >
                     Browse components
                     <ChevronRightIcon className="ml-1 size-4 shrink-0 transition-all duration-300 ease-out group-hover:translate-x-1" />
                   </Link>
                 </div>
+              </div>
+              <div className="mx-0 w-full max-w-full sm:max-w-lg md:mx-auto">
+                <p className="rounded-md border border-border/70 bg-muted/20 px-3 py-2 text-left font-mono text-xs text-muted-foreground sm:text-sm">
+                  npx shadcn@latest add @blode/button
+                </p>
               </div>
             </div>
           </div>

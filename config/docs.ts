@@ -22,7 +22,7 @@ export const docsConfig: DocsConfig = {
   ],
   sidebarNav: [
     {
-      title: "Getting Started",
+      title: "Sections",
       items: [
         {
           title: "Introduction",

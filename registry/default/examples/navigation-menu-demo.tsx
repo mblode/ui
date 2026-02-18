@@ -60,7 +60,7 @@ export default function NavigationMenuDemo() {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
+          <NavigationMenuTrigger>Getting Started</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="w-96">
               <ListItem href="/docs" title="Introduction">
