@@ -5,6 +5,7 @@ import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "blode-icons-react";
 import type * as React from "react";
 
 import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/registry/default/ui/button";
 
 type SelectProps<Value = string> = Omit<
   SelectPrimitive.Root.Props<Value>,
@@ -52,10 +53,13 @@ function SelectTrigger({
   return (
     <SelectPrimitive.Trigger
       className={cn(
-        "flex w-full items-center justify-between gap-2 rounded-2xl border border-input bg-card py-[14px] pr-3 pl-4 font-normal font-sans text-base leading-[22px] shadow-input transition-colors hover:border-input-hover focus:border-ring focus:outline-hidden focus:ring-2 focus:ring-ring/15 focus:ring-offset-1 focus:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive-foreground data-[size=default]:h-[52px] data-[size=sm]:h-10 data-[placeholder]:text-placeholder-foreground [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+        buttonVariants({
+          variant: "input",
+          size: size === "sm" ? "input-sm" : "input",
+        }),
+        "w-full justify-between whitespace-normal pr-3",
         className
       )}
-      data-size={size}
       data-slot="select-trigger"
       {...props}
     >

@@ -1,4 +1,3 @@
-import { ChevronRightIcon } from "blode-icons-react";
 import { allDocs } from "content-collections";
 import { compareDesc } from "date-fns";
 import Link from "next/link";

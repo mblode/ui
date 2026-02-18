@@ -14,6 +14,10 @@ type Registry = z.infer<typeof registrySchema>;
 
 import { registry } from "../registry/index";
 import { styles } from "../registry/registry-styles";
+import {
+  STYLE_BASE_DEPENDENCIES,
+  STYLE_BASE_REGISTRY_DEPENDENCIES,
+} from "../registry/style-base";
 import { fixImport } from "./fix-import.mts";
 
 const REGISTRY_PATH = path.join(process.cwd(), "public/r");
@@ -414,12 +418,8 @@ async function buildStylesIndex() {
     const payload: z.infer<typeof registryItemSchema> = {
       name: style.name,
       type: "registry:style",
-      dependencies: [
-        "tw-animate-css",
-        "class-variance-authority",
-        "blode-icons-react",
-      ],
-      registryDependencies: ["utils"],
+      dependencies: Array.from(STYLE_BASE_DEPENDENCIES),
+      registryDependencies: Array.from(STYLE_BASE_REGISTRY_DEPENDENCIES),
       cssVars: {},
       files: [],
     };

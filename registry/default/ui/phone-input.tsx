@@ -103,7 +103,7 @@ const PhoneInput = React.forwardRef<
             <button
               aria-label="clear input"
               className={cn(
-                "flex h-[52px] cursor-pointer items-center justify-center p-0! text-muted-foreground",
+                "flex h-[var(--field-height)] cursor-pointer items-center justify-center p-0! text-muted-foreground",
                 clearClassName
               )}
               onClick={handleClear}
@@ -148,10 +148,11 @@ function CountrySelect({
       <PopoverTrigger asChild>
         <Button
           aria-label={selectedCountryLabel}
-          className="phone-input-country-select-button flex h-[52px] gap-1 rounded-s-2xl rounded-e-none! border-r-0 px-3 shadow-input!"
+          className="phone-input-country-select-button gap-1 rounded-e-none! border-r-0 px-3"
           disabled={disabled}
+          size="input"
           type="button"
-          variant="outline"
+          variant="input"
         >
           <FlagComponent country={value} countryName={selectedCountryLabel} />
           <ChevronGrabberVerticalIcon

@@ -7,7 +7,7 @@ export const ui: Registry["items"] = [
     title: "Accordion",
     description:
       "A vertically stacked set of interactive headings that reveal or hide associated content.",
-    dependencies: ["@base-ui/react"],
+    dependencies: ["@base-ui/react", "motion"],
     files: [
       {
         path: "ui/accordion.tsx",
@@ -242,7 +242,7 @@ export const ui: Registry["items"] = [
     title: "Combobox",
     description:
       "An autocomplete input that combines a text field with a filterable dropdown list.",
-    dependencies: ["@base-ui/react"],
+    dependencies: ["@base-ui/react", "downshift"],
     registryDependencies: ["button", "input-group", "popover"],
     files: [
       {
@@ -901,6 +901,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     title: "Direction",
     description:
       "A context provider for managing text direction (LTR/RTL) across components.",
+    dependencies: ["@base-ui/react"],
     files: [
       {
         path: "ui/direction.tsx",

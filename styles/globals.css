@@ -97,6 +97,12 @@
 :root {
   --header-height: 4rem;
   --radius: 0.625rem;
+  --field-height: 48px;
+  --field-height-sm: 40px;
+  --field-radius: var(--radius-2xl);
+  --field-padding-x: 1rem;
+  --field-padding-y: 12px;
+  --textarea-min-height: 70px;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);

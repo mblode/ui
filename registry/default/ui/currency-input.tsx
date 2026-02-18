@@ -52,7 +52,7 @@ export const CurrencyInput = ({
       <div className="w-full">
         <CurrencyInputField
           className={cn(
-            "input flex h-[52px] w-full rounded-2xl border border-input bg-card px-4 py-[14px] font-normal font-sans text-base text-foreground leading-snug shadow-input placeholder:text-placeholder-foreground focus:border-ring focus:outline-hidden focus:ring-2 focus:ring-ring/15 focus:ring-offset-1 focus:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50",
+            "input flex h-[var(--field-height)] w-full rounded-[var(--field-radius)] border border-input bg-card px-[var(--field-padding-x)] py-[var(--field-padding-y)] font-normal font-sans text-base text-foreground leading-snug shadow-input placeholder:text-placeholder-foreground focus:border-ring focus:outline-hidden focus:ring-2 focus:ring-ring/15 focus:ring-offset-1 focus:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50",
             {
               "border-destructive-foreground": hasError,
               "pr-9": clearable && !!props.value,
@@ -67,7 +67,7 @@ export const CurrencyInput = ({
             <button
               aria-label="clear input"
               className={cn(
-                "flex h-[52px] cursor-pointer items-center justify-center p-0! text-muted-foreground",
+                "flex h-[var(--field-height)] cursor-pointer items-center justify-center p-0! text-muted-foreground",
                 clearClassName
               )}
               onClick={() => onClear?.()}

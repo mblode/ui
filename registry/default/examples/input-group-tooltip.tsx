@@ -1,4 +1,4 @@
-import { HelpCircle, InfoIcon } from "blode-icons-react";
+import { CircleInfoIcon, HelpCircle } from "blode-icons-react";
 import {
   InputGroup,
   InputGroupAddon,
@@ -27,7 +27,7 @@ export default function InputGroupTooltip() {
                 />
               }
             >
-              <InfoIcon />
+              <CircleInfoIcon />
             </TooltipTrigger>
             <TooltipContent>
               <p>Password must be at least 8 characters</p>

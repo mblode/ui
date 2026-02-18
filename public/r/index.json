@@ -3,7 +3,7 @@
     "name": "accordion",
     "title": "Accordion",
     "description": "A vertically stacked set of interactive headings that reveal or hide associated content.",
-    "dependencies": ["@base-ui/react"],
+    "dependencies": ["@base-ui/react", "motion"],
     "files": [
       {
         "path": "ui/accordion.tsx",
@@ -229,7 +229,7 @@
     "name": "combobox",
     "title": "Combobox",
     "description": "An autocomplete input that combines a text field with a filterable dropdown list.",
-    "dependencies": ["@base-ui/react"],
+    "dependencies": ["@base-ui/react", "downshift"],
     "registryDependencies": ["button", "input-group", "popover"],
     "files": [
       {
@@ -847,6 +847,7 @@
     "name": "direction",
     "title": "Direction",
     "description": "A context provider for managing text direction (LTR/RTL) across components.",
+    "dependencies": ["@base-ui/react"],
     "files": [
       {
         "path": "ui/direction.tsx",

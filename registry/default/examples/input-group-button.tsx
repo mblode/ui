@@ -1,6 +1,11 @@
 "use client";
 
-import { CheckIcon, CopyIcon, InfoIcon, StarIcon } from "blode-icons-react";
+import {
+  CheckIcon,
+  CircleInfoIcon,
+  CopyIcon,
+  StarIcon,
+} from "blode-icons-react";
 import { useState } from "react";
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 import {
@@ -40,7 +45,7 @@ export default function InputGroupButtonExample() {
         <Popover>
           <PopoverTrigger render={<InputGroupAddon />}>
             <InputGroupButton size="icon-xs" variant="secondary">
-              <InfoIcon />
+              <CircleInfoIcon />
             </InputGroupButton>
           </PopoverTrigger>
           <PopoverContent

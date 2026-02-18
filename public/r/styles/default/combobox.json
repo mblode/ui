@@ -4,7 +4,7 @@
   "title": "Combobox",
   "author": "Matthew Blode",
   "description": "An autocomplete input that combines a text field with a filterable dropdown list.",
-  "dependencies": ["@base-ui/react"],
+  "dependencies": ["@base-ui/react", "downshift"],
   "registryDependencies": ["button", "input-group", "popover"],
   "files": [
     {

@@ -54,7 +54,7 @@ function Slider({
       value={value}
       {...props}
     >
-      <SliderPrimitive.Control className="relative flex h-[52px] w-full cursor-grab touch-none select-none items-center data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col data-[disabled]:opacity-50">
+      <SliderPrimitive.Control className="relative flex h-[var(--field-height)] w-full cursor-grab touch-none select-none items-center data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col data-[disabled]:opacity-50">
         <SliderPrimitive.Track className="relative h-[12px] w-full grow overflow-hidden rounded-full bg-muted">
           <SliderPrimitive.Indicator
             className="absolute h-full bg-primary"

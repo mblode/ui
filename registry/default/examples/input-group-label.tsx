@@ -1,4 +1,4 @@
-import { InfoIcon } from "blode-icons-react";
+import { CircleInfoIcon } from "blode-icons-react";
 import {
   InputGroup,
   InputGroupAddon,
@@ -38,7 +38,7 @@ export default function InputGroupLabel() {
                 />
               }
             >
-              <InfoIcon />
+              <CircleInfoIcon />
             </TooltipTrigger>
             <TooltipContent>
               <p>We&apos;ll use this to send you notifications</p>

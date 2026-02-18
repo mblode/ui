@@ -1,7 +1,7 @@
 import {
   CheckIcon,
+  CircleInfoIcon,
   CreditCardIcon,
-  InfoIcon,
   MailIcon,
   SearchIcon,
   StarIcon,
@@ -40,7 +40,7 @@ export default function InputGroupIcon() {
         <InputGroupInput placeholder="Card number" />
         <InputGroupAddon align="inline-end">
           <StarIcon />
-          <InfoIcon />
+          <CircleInfoIcon />
         </InputGroupAddon>
       </InputGroup>
     </div>

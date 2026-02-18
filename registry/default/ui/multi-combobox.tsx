@@ -195,7 +195,7 @@ const MultiCombobox = React.forwardRef<MultiComboboxRef, MultiComboboxProps>(
         <PopoverAnchor asChild>
           <div
             className={cn(
-              "flex min-h-[52px] grow appearance-none rounded-2xl border border-input bg-card bg-clip-border text-base shadow-input focus-within:border-ring focus-within:outline-hidden hover:border-input-hover",
+              "flex min-h-[var(--field-height)] grow appearance-none rounded-[var(--field-radius)] border border-input bg-card bg-clip-border text-base shadow-input focus-within:border-ring focus-within:outline-hidden hover:border-input-hover",
               inputClassName
             )}
           >
@@ -206,7 +206,7 @@ const MultiCombobox = React.forwardRef<MultiComboboxRef, MultiComboboxProps>(
               type="button"
               {...getToggleButtonProps()}
             >
-              <span className="flex min-h-[52px] grow flex-wrap items-center gap-2 bg-transparent py-1">
+              <span className="flex min-h-[var(--field-height)] grow flex-wrap items-center gap-2 bg-transparent py-1">
                 {selectedItems.map((selectedItem, index) => (
                   <Badge
                     key={`${selectedItem.id}-${index}`}

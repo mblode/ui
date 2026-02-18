@@ -1,24 +1,12 @@
-import { Button } from "@/registry/default/ui/button";
-import { Checkbox } from "@/registry/default/ui/checkbox";
 import {
   Field,
   FieldDescription,
   FieldGroup,
   FieldLabel,
   FieldLegend,
-  FieldSeparator,
   FieldSet,
 } from "@/registry/default/ui/field";
 import { Input } from "@/registry/default/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/registry/default/ui/select";
-import { Textarea } from "@/registry/default/ui/textarea";
 
 const months = [
   { label: "MM", value: null },
