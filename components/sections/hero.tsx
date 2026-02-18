@@ -58,12 +58,11 @@ export default function Hero() {
                     href="/docs/installation"
                   >
                     Get started
-                    <ChevronRightIcon className="ml-1 size-4 shrink-0 transition-all duration-300 ease-out group-hover:translate-x-1" />
                   </Link>
                   <Link
                     className={cn(
                       buttonVariants({
-                        variant: "secondary",
+                        variant: "outline",
                         size: "lg",
                       }),
                       "w-full gap-2"
@@ -71,7 +70,6 @@ export default function Hero() {
                     href="/components"
                   >
                     Browse components
-                    <ChevronRightIcon className="ml-1 size-4 shrink-0 transition-all duration-300 ease-out group-hover:translate-x-1" />
                   </Link>
                 </div>
               </div>

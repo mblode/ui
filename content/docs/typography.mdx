@@ -11,6 +11,61 @@ The default font family in Blode UI is "Glide", a variable font that supports we
 <p className="font-sans">This text uses the Glide font</p>
 ```
 
+## Install Glide
+
+<Steps>
+
+### Download the font
+
+Download [glide-variable.woff2](https://ui.blode.co/glide-variable.woff2) and place it in your project's `public/` directory.
+
+### Configure the font in your root layout
+
+In `app/layout.tsx`, import `localFont` and configure the Glide variable font:
+
+```tsx showLineNumbers
+import localFont from "next/font/local";
+
+const glide = localFont({
+  src: [{ path: "../public/glide-variable.woff2" }],
+  variable: "--font-glide",
+  weight: "400 900",
+  display: "swap",
+});
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body className={glide.variable}>{children}</body>
+    </html>
+  );
+}
+```
+
+### Map the CSS variable in Tailwind
+
+In your global CSS file, map `--font-glide` to Tailwind's `--font-sans` so `font-sans` uses Glide:
+
+```css showLineNumbers
+@theme inline {
+  --font-sans: var(--font-glide);
+}
+```
+
+### Use it
+
+Glide is now your default sans-serif font. Use `font-sans` with any weight from 400 to 900:
+
+```tsx
+<p className="font-sans font-medium">Medium text with Glide</p>
+```
+
+</Steps>
+
 ## Variable font
 
 Glide is a variable font, which means it contains all weights in a single file, allowing for precise typography with minimal file size impact. This technology enables smooth transitions between font weights and provides greater design flexibility.

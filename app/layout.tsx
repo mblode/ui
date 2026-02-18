@@ -12,7 +12,7 @@ import "@/styles/globals.css";
 const glide = localFont({
   src: [
     {
-      path: "../public/Glide-Variable.woff2",
+      path: "../public/glide-variable.woff2",
     },
   ],
   variable: "--font-glide",
