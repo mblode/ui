@@ -1,10 +1,6 @@
 <h1 align="center">Blode UI</h1>
 <p align="center">An opinionated shadcn/ui registry</p>
 
-<p align="center">
-  <a href="https://github.com/mblode/blode-ui/blob/main/LICENSE.md"><img alt="License" src="https://img.shields.io/badge/License-MIT-yellow.svg"></a>
-</p>
-
 ## Installation
 
 Add the Blode registry to your project, then install any component:
