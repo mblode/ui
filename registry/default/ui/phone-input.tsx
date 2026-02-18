@@ -148,7 +148,7 @@ function CountrySelect({
       <PopoverTrigger asChild>
         <Button
           aria-label={selectedCountryLabel}
-          className="phone-input-country-select-button flex h-[52px] gap-1 rounded-s-2xl shadow-input! rounded-e-none! border-r-0 px-3"
+          className="phone-input-country-select-button flex h-[52px] gap-1 rounded-s-2xl rounded-e-none! border-r-0 px-3 shadow-input!"
           disabled={disabled}
           type="button"
           variant="outline"

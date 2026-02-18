@@ -56,9 +56,7 @@ const RadioGroupItem = React.forwardRef<HTMLSpanElement, RadioGroupItemProps>(
         ref={ref}
         {...props}
       >
-        <RadioPrimitive.Indicator
-          className="pointer-events-none flex items-center justify-center text-current"
-        >
+        <RadioPrimitive.Indicator className="pointer-events-none flex items-center justify-center text-current">
           <CirclePlaceholderOnIcon className="size-2.5 fill-current text-primary-foreground" />
         </RadioPrimitive.Indicator>
       </RadioPrimitive.Root>

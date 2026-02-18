@@ -4,12 +4,8 @@
   "title": "Tabs",
   "author": "Matthew Blode",
   "description": "A tabbed interface that organises content into switchable panels.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
-  "registryDependencies": [
-    "@blode/use-tab-observer"
-  ],
+  "dependencies": ["@base-ui/react"],
+  "registryDependencies": ["@blode/use-tab-observer"],
   "files": [
     {
       "path": "ui/tabs.tsx",

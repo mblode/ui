@@ -114,7 +114,6 @@ export async function createOgImage(options: OgImageOptions = {}) {
       <div tw="flex border absolute border-neutral-300 inset-x-0 h-[1px] bottom-16" />
 
       <div tw="absolute inset-28 flex flex-col justify-center">
-
         <div
           style={{
             fontSize: titleSize,

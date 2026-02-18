@@ -4,10 +4,7 @@
   "title": "Button Group",
   "author": "Matthew Blode",
   "description": "A container that groups related buttons together with shared styling.",
-  "registryDependencies": [
-    "button",
-    "separator"
-  ],
+  "registryDependencies": ["button", "separator"],
   "files": [
     {
       "path": "ui/button-group.tsx",

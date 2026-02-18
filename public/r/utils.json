@@ -4,10 +4,7 @@
   "title": "Utils",
   "author": "Matthew Blode",
   "description": "Utility functions including cn() for merging Tailwind CSS classes.",
-  "dependencies": [
-    "clsx",
-    "tailwind-merge"
-  ],
+  "dependencies": ["clsx", "tailwind-merge"],
   "files": [
     {
       "path": "lib/utils.ts",

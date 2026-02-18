@@ -4,12 +4,8 @@
   "title": "Command",
   "author": "Matthew Blode",
   "description": "A command palette for fast, keyboard-driven searching and navigation.",
-  "dependencies": [
-    "cmdk"
-  ],
-  "registryDependencies": [
-    "dialog"
-  ],
+  "dependencies": ["cmdk"],
+  "registryDependencies": ["dialog"],
   "files": [
     {
       "path": "ui/command.tsx",

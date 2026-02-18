@@ -30,19 +30,19 @@ export default function CardDemo() {
               <Label htmlFor="email">Email</Label>
               <Input
                 id="email"
-                type="email"
                 placeholder="m@example.com"
                 required
+                type="email"
               />
             </div>
           </div>
         </form>
       </CardContent>
       <CardFooter className="flex-col gap-2">
-        <Button type="submit" className="w-full">
+        <Button className="w-full" type="submit">
           Login
         </Button>
       </CardFooter>
     </Card>
-  )
+  );
 }

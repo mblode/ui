@@ -4,9 +4,7 @@
   "title": "Sheet",
   "author": "Matthew Blode",
   "description": "A panel that slides in from the edge of the viewport with an overlay.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
+  "dependencies": ["@base-ui/react"],
   "files": [
     {
       "path": "ui/sheet.tsx",

@@ -4,9 +4,7 @@
   "title": "Slider",
   "author": "Matthew Blode",
   "description": "A draggable control for selecting a numeric value within a range.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
+  "dependencies": ["@base-ui/react"],
   "files": [
     {
       "path": "ui/slider.tsx",

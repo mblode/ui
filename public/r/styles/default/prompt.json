@@ -4,12 +4,8 @@
   "title": "Prompt",
   "author": "Matthew Blode",
   "description": "A confirmation dialog that asks the user for input before proceeding.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
-  "registryDependencies": [
-    "button"
-  ],
+  "dependencies": ["@base-ui/react"],
+  "registryDependencies": ["button"],
   "files": [
     {
       "path": "ui/prompt.tsx",

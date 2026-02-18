@@ -21,10 +21,10 @@ import {
 import { cn } from "@/lib/utils";
 
 interface AccordionItemContextType {
-  isOpen: boolean;
-  setIsOpen: (open: boolean) => void;
   canAnimate: boolean;
+  isOpen: boolean;
   setCanAnimate: (canAnimate: boolean) => void;
+  setIsOpen: (open: boolean) => void;
 }
 
 const AccordionItemContext = createContext<

@@ -4,13 +4,8 @@
   "title": "Chart",
   "author": "Matthew Blode",
   "description": "A composable charting component built on top of Recharts.",
-  "dependencies": [
-    "recharts@2.15.4",
-    "blode-icons-react"
-  ],
-  "registryDependencies": [
-    "card"
-  ],
+  "dependencies": ["recharts@2.15.4", "blode-icons-react"],
+  "registryDependencies": ["card"],
   "files": [
     {
       "path": "ui/chart.tsx",

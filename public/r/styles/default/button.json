@@ -4,9 +4,7 @@
   "title": "Button",
   "author": "Matthew Blode",
   "description": "An interactive element that triggers an action when clicked.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
+  "dependencies": ["@base-ui/react"],
   "files": [
     {
       "path": "ui/button.tsx",

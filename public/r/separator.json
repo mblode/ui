@@ -4,9 +4,7 @@
   "title": "Separator",
   "author": "Matthew Blode",
   "description": "A visual divider that separates content into distinct sections.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
+  "dependencies": ["@base-ui/react"],
   "files": [
     {
       "path": "ui/separator.tsx",

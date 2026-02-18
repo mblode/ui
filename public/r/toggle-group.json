@@ -4,12 +4,8 @@
   "title": "Toggle Group",
   "author": "Matthew Blode",
   "description": "A set of toggle buttons where one or more can be active.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
-  "registryDependencies": [
-    "toggle"
-  ],
+  "dependencies": ["@base-ui/react"],
+  "registryDependencies": ["toggle"],
   "files": [
     {
       "path": "ui/toggle-group.tsx",

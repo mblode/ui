@@ -4,9 +4,7 @@
   "title": "Hover Card",
   "author": "Matthew Blode",
   "description": "A popup card that appears when hovering over a trigger element.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
+  "dependencies": ["@base-ui/react"],
   "files": [
     {
       "path": "ui/hover-card.tsx",

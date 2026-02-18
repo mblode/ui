@@ -4,9 +4,7 @@
   "title": "Accordion",
   "author": "Matthew Blode",
   "description": "A vertically stacked set of interactive headings that reveal or hide associated content.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
+  "dependencies": ["@base-ui/react"],
   "files": [
     {
       "path": "ui/accordion.tsx",

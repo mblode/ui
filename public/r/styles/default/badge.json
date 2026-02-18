@@ -4,9 +4,7 @@
   "title": "Badge",
   "author": "Matthew Blode",
   "description": "A small status indicator for labelling and categorising items.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
+  "dependencies": ["@base-ui/react"],
   "files": [
     {
       "path": "ui/badge.tsx",
