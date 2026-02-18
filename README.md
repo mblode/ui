@@ -3,7 +3,7 @@
 
 ## Installation
 
-Add the Blode registry to your project, then install any component:
+Add the blode/ui registry to your project, then install any component:
 
 ```bash
 npx shadcn@latest registry add @blode=https://ui.blode.co/r/{name}.json
