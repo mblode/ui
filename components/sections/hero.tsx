@@ -61,7 +61,7 @@ export default function Hero() {
                   <Link
                     className={cn(
                       buttonVariants({
-                        variant: "outline",
+                        variant: "secondary",
                         size: "lg",
                       }),
                       "w-full gap-2"
