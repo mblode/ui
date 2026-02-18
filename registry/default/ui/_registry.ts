@@ -408,6 +408,7 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Input",
     description: "A text input field for capturing user data.",
+    dependencies: ["blode-icons-react"],
     files: [
       {
         path: "ui/input.tsx",
@@ -791,7 +792,7 @@ export const ui: Registry["items"] = [
     title: "Tabs",
     description:
       "A tabbed interface that organises content into switchable panels.",
-    dependencies: ["@base-ui/react"],
+    dependencies: ["@base-ui/react", "class-variance-authority", "merge-refs"],
     registryDependencies: ["@blode/use-tab-observer"],
     files: [
       {

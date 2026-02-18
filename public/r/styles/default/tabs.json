@@ -4,7 +4,7 @@
   "title": "Tabs",
   "author": "Matthew Blode",
   "description": "A tabbed interface that organises content into switchable panels.",
-  "dependencies": ["@base-ui/react"],
+  "dependencies": ["@base-ui/react", "class-variance-authority", "merge-refs"],
   "registryDependencies": ["@blode/use-tab-observer"],
   "files": [
     {
