@@ -1,11 +1,5 @@
-import { Plus } from "blode-icons-react";
-
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/registry/default/ui/avatar";
-import { Button } from "@/registry/default/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/registry/default/ui/avatar"
+import { Button } from "@/registry/default/ui/button"
 import {
   Item,
   ItemActions,
@@ -13,9 +7,10 @@ import {
   ItemDescription,
   ItemMedia,
   ItemTitle,
-} from "@/registry/default/ui/item";
+} from "@/registry/default/ui/item"
+import { Plus } from "blode-icons-react"
 
-export default function ItemAvatar() {
+export function ItemAvatar() {
   return (
     <div className="flex w-full max-w-lg flex-col gap-6">
       <Item variant="outline">
@@ -31,10 +26,10 @@ export default function ItemAvatar() {
         </ItemContent>
         <ItemActions>
           <Button
-            aria-label="Invite"
-            className="rounded-full"
             size="icon-sm"
             variant="outline"
+            className="rounded-full"
+            aria-label="Invite"
           >
             <Plus />
           </Button>
@@ -42,22 +37,22 @@ export default function ItemAvatar() {
       </Item>
       <Item variant="outline">
         <ItemMedia>
-          <div className="flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:ring-background *:data-[slot=avatar]:grayscale">
+          <div className="*:data-[slot=avatar]:ring-background flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:grayscale">
             <Avatar className="hidden sm:flex">
-              <AvatarImage alt="@shadcn" src="https://github.com/shadcn.png" />
+              <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
             <Avatar className="hidden sm:flex">
               <AvatarImage
-                alt="@maxleiter"
                 src="https://github.com/maxleiter.png"
+                alt="@maxleiter"
               />
               <AvatarFallback>LR</AvatarFallback>
             </Avatar>
             <Avatar>
               <AvatarImage
-                alt="@evilrabbit"
                 src="https://github.com/evilrabbit.png"
+                alt="@evilrabbit"
               />
               <AvatarFallback>ER</AvatarFallback>
             </Avatar>
@@ -76,5 +71,5 @@ export default function ItemAvatar() {
         </ItemActions>
       </Item>
     </div>
-  );
+  )
 }

@@ -1,7 +1,11 @@
 [
   {
     "name": "accordion",
-    "dependencies": ["@base-ui/react"],
+    "title": "Accordion",
+    "description": "A vertically stacked set of interactive headings that reveal or hide associated content.",
+    "dependencies": [
+      "@base-ui/react"
+    ],
     "files": [
       {
         "path": "ui/accordion.tsx",
@@ -12,6 +16,8 @@
   },
   {
     "name": "alert",
+    "title": "Alert",
+    "description": "A callout that displays a short, important message to attract attention.",
     "files": [
       {
         "path": "ui/alert.tsx",
@@ -22,8 +28,14 @@
   },
   {
     "name": "alert-dialog",
-    "dependencies": ["@base-ui/react"],
-    "registryDependencies": ["button"],
+    "title": "Alert Dialog",
+    "description": "A modal dialog that interrupts the user with important content and expects a response.",
+    "dependencies": [
+      "@base-ui/react"
+    ],
+    "registryDependencies": [
+      "button"
+    ],
     "files": [
       {
         "path": "ui/alert-dialog.tsx",
@@ -34,7 +46,11 @@
   },
   {
     "name": "aspect-ratio",
-    "dependencies": ["@base-ui/react"],
+    "title": "Aspect Ratio",
+    "description": "A component that maintains a consistent width-to-height ratio.",
+    "dependencies": [
+      "@base-ui/react"
+    ],
     "files": [
       {
         "path": "ui/aspect-ratio.tsx",
@@ -45,7 +61,11 @@
   },
   {
     "name": "avatar",
-    "dependencies": ["@base-ui/react"],
+    "title": "Avatar",
+    "description": "An image element with a fallback for representing the user.",
+    "dependencies": [
+      "@base-ui/react"
+    ],
     "files": [
       {
         "path": "ui/avatar.tsx",
@@ -56,7 +76,11 @@
   },
   {
     "name": "badge",
-    "dependencies": ["@base-ui/react"],
+    "title": "Badge",
+    "description": "A small status indicator for labelling and categorising items.",
+    "dependencies": [
+      "@base-ui/react"
+    ],
     "files": [
       {
         "path": "ui/badge.tsx",
@@ -67,7 +91,11 @@
   },
   {
     "name": "breadcrumb",
-    "dependencies": ["@base-ui/react"],
+    "title": "Breadcrumb",
+    "description": "A navigation aid that shows the current page location within a hierarchy.",
+    "dependencies": [
+      "@base-ui/react"
+    ],
     "files": [
       {
         "path": "ui/breadcrumb.tsx",
@@ -78,7 +106,11 @@
   },
   {
     "name": "button",
-    "dependencies": ["@base-ui/react"],
+    "title": "Button",
+    "description": "An interactive element that triggers an action when clicked.",
+    "dependencies": [
+      "@base-ui/react"
+    ],
     "files": [
       {
         "path": "ui/button.tsx",
@@ -89,7 +121,12 @@
   },
   {
     "name": "button-group",
-    "registryDependencies": ["button", "separator"],
+    "title": "Button Group",
+    "description": "A container that groups related buttons together with shared styling.",
+    "registryDependencies": [
+      "button",
+      "separator"
+    ],
     "files": [
       {
         "path": "ui/button-group.tsx",
@@ -100,8 +137,15 @@
   },
   {
     "name": "calendar",
-    "dependencies": ["react-day-picker@latest", "date-fns"],
-    "registryDependencies": ["button"],
+    "title": "Calendar",
+    "description": "A date field component that allows users to pick dates.",
+    "dependencies": [
+      "react-day-picker@latest",
+      "date-fns"
+    ],
+    "registryDependencies": [
+      "button"
+    ],
     "files": [
       {
         "path": "ui/calendar.tsx",
@@ -112,6 +156,8 @@
   },
   {
     "name": "card",
+    "title": "Card",
+    "description": "A container for grouping related content and actions.",
     "files": [
       {
         "path": "ui/card.tsx",
@@ -122,8 +168,14 @@
   },
   {
     "name": "carousel",
-    "dependencies": ["embla-carousel-react"],
-    "registryDependencies": ["button"],
+    "title": "Carousel",
+    "description": "A slideshow component for cycling through a set of content.",
+    "dependencies": [
+      "embla-carousel-react"
+    ],
+    "registryDependencies": [
+      "button"
+    ],
     "files": [
       {
         "path": "ui/carousel.tsx",
@@ -134,6 +186,8 @@
   },
   {
     "name": "circular-progress",
+    "title": "Circular Progress",
+    "description": "A circular indicator that shows the progress of a task.",
     "files": [
       {
         "path": "ui/circular-progress.tsx",
@@ -144,8 +198,15 @@
   },
   {
     "name": "chart",
-    "dependencies": ["recharts@2.15.4", "blode-icons-react"],
-    "registryDependencies": ["card"],
+    "title": "Chart",
+    "description": "A composable charting component built on top of Recharts.",
+    "dependencies": [
+      "recharts@2.15.4",
+      "blode-icons-react"
+    ],
+    "registryDependencies": [
+      "card"
+    ],
     "files": [
       {
         "path": "ui/chart.tsx",
@@ -156,7 +217,11 @@
   },
   {
     "name": "checkbox",
-    "dependencies": ["@base-ui/react"],
+    "title": "Checkbox",
+    "description": "A control that allows the user to toggle between checked and unchecked states.",
+    "dependencies": [
+      "@base-ui/react"
+    ],
     "files": [
       {
         "path": "ui/checkbox.tsx",
@@ -171,7 +236,11 @@
   },
   {
     "name": "collapsible",
-    "dependencies": ["@base-ui/react"],
+    "title": "Collapsible",
+    "description": "An interactive component that expands and collapses a panel of content.",
+    "dependencies": [
+      "@base-ui/react"
+    ],
     "files": [
       {
         "path": "ui/collapsible.tsx",
@@ -182,7 +251,12 @@
   },
   {
     "name": "currency-input",
-    "dependencies": ["blode-icons-react", "react-currency-input-field"],
+    "title": "Currency Input",
+    "description": "A formatted input field for entering monetary values.",
+    "dependencies": [
+      "blode-icons-react",
+      "react-currency-input-field"
+    ],
     "files": [
       {
         "path": "ui/currency-input.tsx",
@@ -193,8 +267,16 @@
   },
   {
     "name": "combobox",
-    "dependencies": ["@base-ui/react"],
-    "registryDependencies": ["button", "input-group"],
+    "title": "Combobox",
+    "description": "An autocomplete input that combines a text field with a filterable dropdown list.",
+    "dependencies": [
+      "@base-ui/react"
+    ],
+    "registryDependencies": [
+      "button",
+      "input-group",
+      "popover"
+    ],
     "files": [
       {
         "path": "ui/combobox.tsx",
@@ -205,13 +287,17 @@
   },
   {
     "name": "multi-combobox",
+    "title": "Multi Combobox",
+    "description": "A combobox that allows selecting multiple items with tag-style badges.",
     "dependencies": [
       "@base-ui/react",
       "downshift",
       "lodash",
       "blode-icons-react"
     ],
-    "registryDependencies": ["badge"],
+    "registryDependencies": [
+      "badge"
+    ],
     "files": [
       {
         "path": "ui/multi-combobox.tsx",
@@ -222,8 +308,14 @@
   },
   {
     "name": "command",
-    "dependencies": ["cmdk"],
-    "registryDependencies": ["dialog"],
+    "title": "Command",
+    "description": "A command palette for fast, keyboard-driven searching and navigation.",
+    "dependencies": [
+      "cmdk"
+    ],
+    "registryDependencies": [
+      "dialog"
+    ],
     "files": [
       {
         "path": "ui/command.tsx",
@@ -234,7 +326,11 @@
   },
   {
     "name": "context-menu",
-    "dependencies": ["@base-ui/react"],
+    "title": "Context Menu",
+    "description": "A menu that appears on right-click, providing contextual actions.",
+    "dependencies": [
+      "@base-ui/react"
+    ],
     "files": [
       {
         "path": "ui/context-menu.tsx",
@@ -245,7 +341,14 @@
   },
   {
     "name": "dialog",
-    "dependencies": ["@base-ui/react"],
+    "title": "Dialog",
+    "description": "A modal window that overlays the main content and requires user interaction.",
+    "dependencies": [
+      "@base-ui/react"
+    ],
+    "registryDependencies": [
+      "button"
+    ],
     "files": [
       {
         "path": "ui/dialog.tsx",
@@ -256,7 +359,11 @@
   },
   {
     "name": "drawer",
-    "dependencies": ["vaul"],
+    "title": "Drawer",
+    "description": "A panel that slides in from the edge of the screen.",
+    "dependencies": [
+      "vaul"
+    ],
     "files": [
       {
         "path": "ui/drawer.tsx",
@@ -267,7 +374,11 @@
   },
   {
     "name": "dropdown-menu",
-    "dependencies": ["@base-ui/react"],
+    "title": "Dropdown Menu",
+    "description": "A menu that opens from a trigger button, displaying a list of actions.",
+    "dependencies": [
+      "@base-ui/react"
+    ],
     "files": [
       {
         "path": "ui/dropdown-menu.tsx",
@@ -278,6 +389,8 @@
   },
   {
     "name": "empty",
+    "title": "Empty",
+    "description": "A placeholder displayed when there is no content or data to show.",
     "files": [
       {
         "path": "ui/empty.tsx",
@@ -288,7 +401,12 @@
   },
   {
     "name": "field",
-    "registryDependencies": ["label", "separator"],
+    "title": "Field",
+    "description": "A form field wrapper that pairs a label, input, and helper text.",
+    "registryDependencies": [
+      "label",
+      "separator"
+    ],
     "files": [
       {
         "path": "ui/field.tsx",
@@ -299,13 +417,18 @@
   },
   {
     "name": "form",
+    "title": "Form",
+    "description": "A form component with validation powered by React Hook Form and Zod.",
     "dependencies": [
       "@base-ui/react",
       "@hookform/resolvers",
       "zod",
       "react-hook-form"
     ],
-    "registryDependencies": ["button", "label"],
+    "registryDependencies": [
+      "button",
+      "label"
+    ],
     "files": [
       {
         "path": "ui/form.tsx",
@@ -316,7 +439,11 @@
   },
   {
     "name": "hover-card",
-    "dependencies": ["@base-ui/react"],
+    "title": "Hover Card",
+    "description": "A popup card that appears when hovering over a trigger element.",
+    "dependencies": [
+      "@base-ui/react"
+    ],
     "files": [
       {
         "path": "ui/hover-card.tsx",
@@ -327,6 +454,8 @@
   },
   {
     "name": "input",
+    "title": "Input",
+    "description": "A text input field for capturing user data.",
     "files": [
       {
         "path": "ui/input.tsx",
@@ -337,7 +466,13 @@
   },
   {
     "name": "input-group",
-    "registryDependencies": ["button", "input", "textarea"],
+    "title": "Input Group",
+    "description": "A wrapper that combines an input with addons like icons or buttons.",
+    "registryDependencies": [
+      "button",
+      "input",
+      "textarea"
+    ],
     "files": [
       {
         "path": "ui/input-group.tsx",
@@ -348,7 +483,11 @@
   },
   {
     "name": "input-otp",
-    "dependencies": ["input-otp"],
+    "title": "Input OTP",
+    "description": "A one-time password input with individual character fields.",
+    "dependencies": [
+      "input-otp"
+    ],
     "files": [
       {
         "path": "ui/input-otp.tsx",
@@ -359,8 +498,14 @@
   },
   {
     "name": "item",
-    "dependencies": ["@base-ui/react"],
-    "registryDependencies": ["separator"],
+    "title": "Item",
+    "description": "A flexible list item component for menus, settings, and data rows.",
+    "dependencies": [
+      "@base-ui/react"
+    ],
+    "registryDependencies": [
+      "separator"
+    ],
     "files": [
       {
         "path": "ui/item.tsx",
@@ -371,7 +516,11 @@
   },
   {
     "name": "label",
-    "dependencies": ["@base-ui/react"],
+    "title": "Label",
+    "description": "An accessible label that associates text with a form control.",
+    "dependencies": [
+      "@base-ui/react"
+    ],
     "files": [
       {
         "path": "ui/label.tsx",
@@ -382,7 +531,11 @@
   },
   {
     "name": "menubar",
-    "dependencies": ["@base-ui/react"],
+    "title": "Menubar",
+    "description": "A horizontal menu bar with dropdown menus, commonly used for application navigation.",
+    "dependencies": [
+      "@base-ui/react"
+    ],
     "files": [
       {
         "path": "ui/menubar.tsx",
@@ -393,7 +546,11 @@
   },
   {
     "name": "navigation-menu",
-    "dependencies": ["@base-ui/react"],
+    "title": "Navigation Menu",
+    "description": "A responsive navigation component with support for dropdown panels.",
+    "dependencies": [
+      "@base-ui/react"
+    ],
     "files": [
       {
         "path": "ui/navigation-menu.tsx",
@@ -404,7 +561,11 @@
   },
   {
     "name": "pagination",
-    "registryDependencies": ["button"],
+    "title": "Pagination",
+    "description": "A navigation component for paging through content across multiple pages.",
+    "registryDependencies": [
+      "button"
+    ],
     "files": [
       {
         "path": "ui/pagination.tsx",
@@ -415,7 +576,12 @@
   },
   {
     "name": "phone-input",
-    "dependencies": ["blode-icons-react", "react-phone-number-input"],
+    "title": "Phone Input",
+    "description": "An international phone number input with country code selector.",
+    "dependencies": [
+      "blode-icons-react",
+      "react-phone-number-input"
+    ],
     "registryDependencies": [
       "button",
       "command",
@@ -433,7 +599,11 @@
   },
   {
     "name": "popover",
-    "dependencies": ["@base-ui/react"],
+    "title": "Popover",
+    "description": "A floating panel that appears next to a trigger element.",
+    "dependencies": [
+      "@base-ui/react"
+    ],
     "files": [
       {
         "path": "ui/popover.tsx",
@@ -444,7 +614,11 @@
   },
   {
     "name": "progress",
-    "dependencies": ["@base-ui/react"],
+    "title": "Progress",
+    "description": "A horizontal bar that indicates the completion progress of a task.",
+    "dependencies": [
+      "@base-ui/react"
+    ],
     "files": [
       {
         "path": "ui/progress.tsx",
@@ -455,8 +629,14 @@
   },
   {
     "name": "prompt",
-    "dependencies": ["@base-ui/react"],
-    "registryDependencies": ["button"],
+    "title": "Prompt",
+    "description": "A confirmation dialog that asks the user for input before proceeding.",
+    "dependencies": [
+      "@base-ui/react"
+    ],
+    "registryDependencies": [
+      "button"
+    ],
     "files": [
       {
         "path": "ui/prompt.tsx",
@@ -467,7 +647,11 @@
   },
   {
     "name": "radio-group",
-    "dependencies": ["@base-ui/react"],
+    "title": "Radio Group",
+    "description": "A set of mutually exclusive options where only one can be selected.",
+    "dependencies": [
+      "@base-ui/react"
+    ],
     "files": [
       {
         "path": "ui/radio-group.tsx",
@@ -478,7 +662,11 @@
   },
   {
     "name": "resizable",
-    "dependencies": ["react-resizable-panels@^4"],
+    "title": "Resizable",
+    "description": "A layout component with draggable handles for resizing panels.",
+    "dependencies": [
+      "react-resizable-panels@^4"
+    ],
     "files": [
       {
         "path": "ui/resizable.tsx",
@@ -489,7 +677,11 @@
   },
   {
     "name": "scroll-area",
-    "dependencies": ["@base-ui/react"],
+    "title": "Scroll Area",
+    "description": "A scrollable container with custom styled scrollbars.",
+    "dependencies": [
+      "@base-ui/react"
+    ],
     "files": [
       {
         "path": "ui/scroll-area.tsx",
@@ -500,7 +692,11 @@
   },
   {
     "name": "select",
-    "dependencies": ["@base-ui/react"],
+    "title": "Select",
+    "description": "A dropdown control for choosing a single value from a list of options.",
+    "dependencies": [
+      "@base-ui/react"
+    ],
     "files": [
       {
         "path": "ui/select.tsx",
@@ -511,7 +707,11 @@
   },
   {
     "name": "separator",
-    "dependencies": ["@base-ui/react"],
+    "title": "Separator",
+    "description": "A visual divider that separates content into distinct sections.",
+    "dependencies": [
+      "@base-ui/react"
+    ],
     "files": [
       {
         "path": "ui/separator.tsx",
@@ -522,7 +722,11 @@
   },
   {
     "name": "sheet",
-    "dependencies": ["@base-ui/react"],
+    "title": "Sheet",
+    "description": "A panel that slides in from the edge of the viewport with an overlay.",
+    "dependencies": [
+      "@base-ui/react"
+    ],
     "files": [
       {
         "path": "ui/sheet.tsx",
@@ -533,6 +737,8 @@
   },
   {
     "name": "sidebar",
+    "title": "Sidebar",
+    "description": "A collapsible side navigation component with multiple layout variants.",
     "dependencies": [
       "@base-ui/react",
       "class-variance-authority",
@@ -553,26 +759,6 @@
         "type": "registry:ui"
       }
     ],
-    "tailwind": {
-      "config": {
-        "theme": {
-          "extend": {
-            "colors": {
-              "sidebar": {
-                "DEFAULT": "hsl(var(--sidebar-background))",
-                "foreground": "hsl(var(--sidebar-foreground))",
-                "primary": "hsl(var(--sidebar-primary))",
-                "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-                "accent": "hsl(var(--sidebar-accent))",
-                "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-                "border": "hsl(var(--sidebar-border))",
-                "ring": "hsl(var(--sidebar-ring))"
-              }
-            }
-          }
-        }
-      }
-    },
     "cssVars": {
       "light": {
         "sidebar-background": "0 0% 98%",
@@ -599,6 +785,8 @@
   },
   {
     "name": "skeleton",
+    "title": "Skeleton",
+    "description": "A placeholder animation that indicates content is loading.",
     "files": [
       {
         "path": "ui/skeleton.tsx",
@@ -609,7 +797,11 @@
   },
   {
     "name": "slider",
-    "dependencies": ["@base-ui/react"],
+    "title": "Slider",
+    "description": "A draggable control for selecting a numeric value within a range.",
+    "dependencies": [
+      "@base-ui/react"
+    ],
     "files": [
       {
         "path": "ui/slider.tsx",
@@ -620,7 +812,12 @@
   },
   {
     "name": "sonner",
-    "dependencies": ["sonner", "next-themes"],
+    "title": "Sonner",
+    "description": "A toast notification component powered by Sonner.",
+    "dependencies": [
+      "sonner",
+      "next-themes"
+    ],
     "files": [
       {
         "path": "ui/sonner.tsx",
@@ -631,6 +828,8 @@
   },
   {
     "name": "spinner",
+    "title": "Spinner",
+    "description": "An animated loading indicator for asynchronous operations.",
     "files": [
       {
         "path": "ui/spinner.tsx",
@@ -641,7 +840,11 @@
   },
   {
     "name": "switch",
-    "dependencies": ["@base-ui/react"],
+    "title": "Switch",
+    "description": "A toggle control for switching between on and off states.",
+    "dependencies": [
+      "@base-ui/react"
+    ],
     "files": [
       {
         "path": "ui/switch.tsx",
@@ -652,6 +855,8 @@
   },
   {
     "name": "table",
+    "title": "Table",
+    "description": "A responsive table for displaying structured data in rows and columns.",
     "files": [
       {
         "path": "ui/table.tsx",
@@ -662,8 +867,14 @@
   },
   {
     "name": "tabs",
-    "dependencies": ["@base-ui/react"],
-    "registryDependencies": ["use-tab-observer"],
+    "title": "Tabs",
+    "description": "A tabbed interface that organises content into switchable panels.",
+    "dependencies": [
+      "@base-ui/react"
+    ],
+    "registryDependencies": [
+      "use-tab-observer"
+    ],
     "files": [
       {
         "path": "ui/tabs.tsx",
@@ -674,6 +885,8 @@
   },
   {
     "name": "textarea",
+    "title": "Textarea",
+    "description": "A multi-line text input field for longer form content.",
     "files": [
       {
         "path": "ui/textarea.tsx",
@@ -684,7 +897,11 @@
   },
   {
     "name": "toggle",
-    "dependencies": ["@base-ui/react"],
+    "title": "Toggle",
+    "description": "A two-state button that can be toggled on or off.",
+    "dependencies": [
+      "@base-ui/react"
+    ],
     "files": [
       {
         "path": "ui/toggle.tsx",
@@ -695,8 +912,14 @@
   },
   {
     "name": "toggle-group",
-    "dependencies": ["@base-ui/react"],
-    "registryDependencies": ["toggle"],
+    "title": "Toggle Group",
+    "description": "A set of toggle buttons where one or more can be active.",
+    "dependencies": [
+      "@base-ui/react"
+    ],
+    "registryDependencies": [
+      "toggle"
+    ],
     "files": [
       {
         "path": "ui/toggle-group.tsx",
@@ -707,7 +930,11 @@
   },
   {
     "name": "tooltip",
-    "dependencies": ["@base-ui/react"],
+    "title": "Tooltip",
+    "description": "A popup that displays helpful information when hovering or focusing an element.",
+    "dependencies": [
+      "@base-ui/react"
+    ],
     "files": [
       {
         "path": "ui/tooltip.tsx",
@@ -719,6 +946,8 @@
   },
   {
     "name": "kbd",
+    "title": "Kbd",
+    "description": "A styled keyboard key indicator for displaying shortcuts and key combinations.",
     "files": [
       {
         "path": "ui/kbd.tsx",
@@ -729,6 +958,8 @@
   },
   {
     "name": "native-select",
+    "title": "Native Select",
+    "description": "A styled wrapper around the native HTML select element.",
     "files": [
       {
         "path": "ui/native-select.tsx",
@@ -739,6 +970,8 @@
   },
   {
     "name": "direction",
+    "title": "Direction",
+    "description": "A context provider for managing text direction (LTR/RTL) across components.",
     "files": [
       {
         "path": "ui/direction.tsx",

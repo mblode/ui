@@ -1,12 +1,12 @@
-"use client";
+"use client"
 
-import Form from "next/form";
-import { useActionState, useEffect } from "react";
-import { toast } from "sonner";
+import * as React from "react"
+import Form from "next/form"
+import { toast } from "sonner"
 
-import { Button } from "@/registry/default/ui/button";
-import { Card, CardContent, CardFooter } from "@/registry/default/ui/card";
-import { Checkbox } from "@/registry/default/ui/checkbox";
+import { Button } from "@/registry/default/ui/button"
+import { Card, CardContent, CardFooter } from "@/registry/default/ui/card"
+import { Checkbox } from "@/registry/default/ui/checkbox"
 import {
   Field,
   FieldContent,
@@ -18,43 +18,46 @@ import {
   FieldSeparator,
   FieldSet,
   FieldTitle,
-} from "@/registry/default/ui/field";
-import { RadioGroup, RadioGroupItem } from "@/registry/default/ui/radio-group";
+} from "@/registry/default/ui/field"
+import {
+  RadioGroup,
+  RadioGroupItem,
+} from "@/registry/default/ui/radio-group"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/default/ui/select";
-import { Spinner } from "@/registry/default/ui/spinner";
-import { Switch } from "@/registry/default/ui/switch";
+} from "@/registry/default/ui/select"
+import { Spinner } from "@/registry/default/ui/spinner"
+import { Switch } from "@/registry/default/ui/switch"
 
-import { complexFormAction } from "./form-next-complex-action";
-import { addons, type FormState } from "./form-next-complex-schema";
+import { complexFormAction } from "./form-next-complex-action"
+import { addons, type FormState } from "./form-next-complex-schema"
 
 export default function FormNextComplex() {
-  const [formState, formAction, pending] = useActionState<FormState, FormData>(
-    complexFormAction,
-    {
-      values: {
-        plan: "basic",
-        billingPeriod: "monthly",
-        addons: [],
-        emailNotifications: false,
-      },
-      errors: null,
-      success: false,
-    }
-  );
+  const [formState, formAction, pending] = React.useActionState<
+    FormState,
+    FormData
+  >(complexFormAction, {
+    values: {
+      plan: "basic",
+      billingPeriod: "monthly",
+      addons: [],
+      emailNotifications: false,
+    },
+    errors: null,
+    success: false,
+  })
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (formState.success) {
       toast.success("Preferences saved", {
         description: "Your subscription plan has been updated.",
-      });
+      })
     }
-  }, [formState.success]);
+  }, [formState.success])
 
   return (
     <Card className="w-full max-w-sm">
@@ -67,10 +70,10 @@ export default function FormNextComplex() {
                 Choose your subscription plan.
               </FieldDescription>
               <RadioGroup
-                aria-invalid={!!formState.errors?.plan?.length}
+                name="plan"
                 defaultValue={formState.values.plan}
                 disabled={pending}
-                name="plan"
+                aria-invalid={!!formState.errors?.plan?.length}
               >
                 <FieldLabel htmlFor="basic">
                   <Field orientation="horizontal">
@@ -80,7 +83,7 @@ export default function FormNextComplex() {
                         For individuals and small teams
                       </FieldDescription>
                     </FieldContent>
-                    <RadioGroupItem id="basic" value="basic" />
+                    <RadioGroupItem value="basic" id="basic" />
                   </Field>
                 </FieldLabel>
                 <FieldLabel htmlFor="pro">
@@ -91,7 +94,7 @@ export default function FormNextComplex() {
                         For businesses with higher demands
                       </FieldDescription>
                     </FieldContent>
-                    <RadioGroupItem id="pro" value="pro" />
+                    <RadioGroupItem value="pro" id="pro" />
                   </Field>
                 </FieldLabel>
               </RadioGroup>
@@ -103,10 +106,10 @@ export default function FormNextComplex() {
             <Field data-invalid={!!formState.errors?.billingPeriod?.length}>
               <FieldLabel htmlFor="billingPeriod">Billing Period</FieldLabel>
               <Select
-                aria-invalid={!!formState.errors?.billingPeriod?.length}
+                name="billingPeriod"
                 defaultValue={formState.values.billingPeriod}
                 disabled={pending}
-                name="billingPeriod"
+                aria-invalid={!!formState.errors?.billingPeriod?.length}
               >
                 <SelectTrigger id="billingPeriod">
                   <SelectValue placeholder="Select" />
@@ -132,19 +135,19 @@ export default function FormNextComplex() {
               <FieldGroup data-slot="checkbox-group">
                 {addons.map((addon) => (
                   <Field
-                    data-invalid={!!formState.errors?.addons?.length}
                     key={addon.id}
                     orientation="horizontal"
+                    data-invalid={!!formState.errors?.addons?.length}
                   >
                     <Checkbox
-                      aria-invalid={!!formState.errors?.addons?.length}
+                      id={addon.id}
+                      name="addons"
+                      value={addon.id}
                       defaultChecked={formState.values.addons.includes(
                         addon.id
                       )}
                       disabled={pending}
-                      id={addon.id}
-                      name="addons"
-                      value={addon.id}
+                      aria-invalid={!!formState.errors?.addons?.length}
                     />
                     <FieldContent>
                       <FieldLabel htmlFor={addon.id}>{addon.title}</FieldLabel>
@@ -168,24 +171,24 @@ export default function FormNextComplex() {
                 </FieldDescription>
               </FieldContent>
               <Switch
-                aria-invalid={!!formState.errors?.emailNotifications?.length}
-                defaultChecked={formState.values.emailNotifications}
-                disabled={pending}
                 id="emailNotifications"
                 name="emailNotifications"
+                defaultChecked={formState.values.emailNotifications}
+                disabled={pending}
+                aria-invalid={!!formState.errors?.emailNotifications?.length}
               />
             </Field>
           </FieldGroup>
         </Form>
       </CardContent>
       <CardFooter>
-        <Field className="justify-end" orientation="horizontal">
-          <Button disabled={pending} form="subscription-form" type="submit">
-            {pending && <Spinner size={16} />}
+        <Field orientation="horizontal" className="justify-end">
+          <Button type="submit" disabled={pending} form="subscription-form">
+            {pending && <Spinner />}
             Save Preferences
           </Button>
         </Field>
       </CardFooter>
     </Card>
-  );
+  )
 }

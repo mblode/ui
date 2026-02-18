@@ -16,11 +16,18 @@ export function useTabObserver({ onActiveTabChange }: TabObserverOptions = {}) {
   const handleUpdate = React.useCallback(() => {
     if (listRef.current) {
       const tabs = listRef.current.querySelectorAll('[role="tab"]');
-      tabs.forEach((el, i) => {
-        if (el.getAttribute("data-state") === "active") {
+      for (let i = 0; i < tabs.length; i += 1) {
+        const el = tabs[i];
+        const isActive =
+          el.hasAttribute("data-active") ||
+          el.getAttribute("data-state") === "active" ||
+          el.getAttribute("aria-selected") === "true";
+
+        if (isActive) {
           onActiveTabChangeRef.current?.(i, el as HTMLElement);
+          break;
         }
-      });
+      }
     }
   }, []);
 

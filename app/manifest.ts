@@ -2,10 +2,10 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "blode.co UI",
-    short_name: "Fingertip",
+    name: "Blode UI",
+    short_name: "Blode UI",
     description:
-      "blode.co lets you create a website, automate invoices, manage appointments, and set up link-in bio effortlessly — your all-in-one platform to build, run, and grow your business.",
+      "A set of beautifully designed components that you can customize, extend, and build on. Start here then make it your own.",
     start_url: "/",
     icons: [
       {

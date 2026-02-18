@@ -1,12 +1,46 @@
-import { Input } from "@/registry/default/ui/input";
-import { Label } from "@/registry/default/ui/label";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+  InputGroupText,
+  InputGroupTextarea,
+} from "@/registry/default/ui/input-group"
 
-export default function InputWithText() {
+export default function InputGroupTextExample() {
   return (
-    <div className="grid w-full max-w-sm items-center gap-3">
-      <Label htmlFor="email-2">Email</Label>
-      <Input id="email-2" placeholder="Email" type="email" />
-      <p className="text-muted-foreground text-sm">Enter your email address.</p>
+    <div className="grid w-full max-w-sm gap-6">
+      <InputGroup>
+        <InputGroupAddon>
+          <InputGroupText>$</InputGroupText>
+        </InputGroupAddon>
+        <InputGroupInput placeholder="0.00" />
+        <InputGroupAddon align="inline-end">
+          <InputGroupText>USD</InputGroupText>
+        </InputGroupAddon>
+      </InputGroup>
+      <InputGroup>
+        <InputGroupAddon>
+          <InputGroupText>https://</InputGroupText>
+        </InputGroupAddon>
+        <InputGroupInput placeholder="example.com" className="!pl-0.5" />
+        <InputGroupAddon align="inline-end">
+          <InputGroupText>.com</InputGroupText>
+        </InputGroupAddon>
+      </InputGroup>
+      <InputGroup>
+        <InputGroupInput placeholder="Enter your username" />
+        <InputGroupAddon align="inline-end">
+          <InputGroupText>@company.com</InputGroupText>
+        </InputGroupAddon>
+      </InputGroup>
+      <InputGroup>
+        <InputGroupTextarea placeholder="Enter your message" />
+        <InputGroupAddon align="block-end">
+          <InputGroupText className="text-muted-foreground text-xs">
+            120 characters left
+          </InputGroupText>
+        </InputGroupAddon>
+      </InputGroup>
     </div>
-  );
+  )
 }

@@ -1,12 +1,12 @@
-"use client";
+"use client"
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import type * as React from "react";
-import { Controller, useForm } from "react-hook-form";
-import { toast } from "sonner";
-import { z } from "zod";
+import * as React from "react"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { Controller, useForm } from "react-hook-form"
+import { toast } from "sonner"
+import * as z from "zod"
 
-import { Button } from "@/registry/default/ui/button";
+import { Button } from "@/registry/default/ui/button"
 import {
   Card,
   CardContent,
@@ -14,7 +14,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/default/ui/card";
+} from "@/registry/default/ui/card"
 import {
   Field,
   FieldContent,
@@ -22,7 +22,7 @@ import {
   FieldError,
   FieldGroup,
   FieldLabel,
-} from "@/registry/default/ui/field";
+} from "@/registry/default/ui/field"
 import {
   Select,
   SelectContent,
@@ -30,7 +30,7 @@ import {
   SelectSeparator,
   SelectTrigger,
   SelectValue,
-} from "@/registry/default/ui/select";
+} from "@/registry/default/ui/select"
 
 const spokenLanguages = [
   { label: "English", value: "en" },
@@ -40,7 +40,7 @@ const spokenLanguages = [
   { label: "Italian", value: "it" },
   { label: "Chinese", value: "zh" },
   { label: "Japanese", value: "ja" },
-] as const;
+] as const
 
 const formSchema = z.object({
   language: z
@@ -50,7 +50,7 @@ const formSchema = z.object({
       message:
         "Auto-detection is not allowed. Please select a specific language.",
     }),
-});
+})
 
 export default function FormRhfSelect() {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -58,12 +58,12 @@ export default function FormRhfSelect() {
     defaultValues: {
       language: "",
     },
-  });
+  })
 
   function onSubmit(data: z.infer<typeof formSchema>) {
     toast("You submitted the following values:", {
       description: (
-        <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
+        <pre className="bg-code text-code-foreground mt-2 w-[320px] overflow-x-auto rounded-md p-4">
           <code>{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
@@ -74,7 +74,7 @@ export default function FormRhfSelect() {
       style: {
         "--border-radius": "calc(var(--radius)  + 4px)",
       } as React.CSSProperties,
-    });
+    })
   }
 
   return (
@@ -89,12 +89,12 @@ export default function FormRhfSelect() {
         <form id="form-rhf-select" onSubmit={form.handleSubmit(onSubmit)}>
           <FieldGroup>
             <Controller
-              control={form.control}
               name="language"
+              control={form.control}
               render={({ field, fieldState }) => (
                 <Field
-                  data-invalid={fieldState.invalid}
                   orientation="responsive"
+                  data-invalid={fieldState.invalid}
                 >
                   <FieldContent>
                     <FieldLabel htmlFor="form-rhf-select-language">
@@ -109,13 +109,13 @@ export default function FormRhfSelect() {
                   </FieldContent>
                   <Select
                     name={field.name}
-                    onValueChange={field.onChange}
                     value={field.value}
+                    onValueChange={field.onChange}
                   >
                     <SelectTrigger
+                      id="form-rhf-select-language"
                       aria-invalid={fieldState.invalid}
                       className="min-w-[120px]"
-                      id="form-rhf-select-language"
                     >
                       <SelectValue placeholder="Select" />
                     </SelectTrigger>
@@ -137,14 +137,14 @@ export default function FormRhfSelect() {
       </CardContent>
       <CardFooter>
         <Field orientation="horizontal">
-          <Button onClick={() => form.reset()} type="button" variant="outline">
+          <Button type="button" variant="outline" onClick={() => form.reset()}>
             Reset
           </Button>
-          <Button form="form-rhf-select" type="submit">
+          <Button type="submit" form="form-rhf-select">
             Save
           </Button>
         </Field>
       </CardFooter>
     </Card>
-  );
+  )
 }

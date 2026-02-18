@@ -1,37 +1,37 @@
-"use client";
+"use client"
 
-import { CalendarIcon } from "blode-icons-react";
-import { addDays, format } from "date-fns";
-import { useState } from "react";
+import * as React from "react"
+import { addDays, format } from "date-fns"
+import { CalendarIcon } from "blode-icons-react"
 
-import { cn } from "@/lib/utils";
-import { Button } from "@/registry/default/ui/button";
-import { Calendar } from "@/registry/default/ui/calendar";
+import { cn } from "@/lib/utils"
+import { Button } from "@/registry/default/ui/button"
+import { Calendar } from "@/registry/default/ui/calendar"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/registry/default/ui/popover";
+} from "@/registry/default/ui/popover"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/default/ui/select";
+} from "@/registry/default/ui/select"
 
 export default function DatePickerWithPresets() {
-  const [date, setDate] = useState<Date>();
+  const [date, setDate] = React.useState<Date>()
 
   return (
     <Popover>
       <PopoverTrigger asChild>
         <Button
+          variant={"outline"}
           className={cn(
             "w-[240px] justify-start text-left font-normal",
             !date && "text-muted-foreground"
           )}
-          variant={"outline"}
         >
           <CalendarIcon />
           {date ? format(date, "PPP") : <span>Pick a date</span>}
@@ -43,7 +43,7 @@ export default function DatePickerWithPresets() {
       >
         <Select
           onValueChange={(value) =>
-            setDate(addDays(new Date(), Number.parseInt(value, 10)))
+            setDate(addDays(new Date(), parseInt(value)))
           }
         >
           <SelectTrigger>
@@ -57,9 +57,9 @@ export default function DatePickerWithPresets() {
           </SelectContent>
         </Select>
         <div className="rounded-md border">
-          <Calendar mode="single" onSelect={setDate} selected={date} />
+          <Calendar mode="single" selected={date} onSelect={setDate} />
         </div>
       </PopoverContent>
     </Popover>
-  );
+  )
 }

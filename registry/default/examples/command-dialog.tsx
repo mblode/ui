@@ -9,7 +9,6 @@ import {
   User,
 } from "blode-icons-react";
 import { useEffect, useState } from "react";
-
 import {
   CommandDialog,
   CommandEmpty,
@@ -21,7 +20,7 @@ import {
   CommandShortcut,
 } from "@/registry/default/ui/command";
 
-export default function CommandDialogDemo() {
+export function CommandDialogDemo() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
@@ -59,7 +58,7 @@ export default function CommandDialogDemo() {
             </CommandItem>
             <CommandItem>
               <CalculatorIcon />
-              <span>CalculatorIcon</span>
+              <span>Calculator</span>
             </CommandItem>
           </CommandGroup>
           <CommandSeparator />

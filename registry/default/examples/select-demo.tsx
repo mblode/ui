@@ -6,24 +6,33 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "@/registry/default/ui/select";
+} from "@/registry/default/ui/select"
 
-export default function SelectDemo() {
+const items = [
+  { label: "Select a fruit", value: null },
+  { label: "Apple", value: "apple" },
+  { label: "Banana", value: "banana" },
+  { label: "Blueberry", value: "blueberry" },
+  { label: "Grapes", value: "grapes" },
+  { label: "Pineapple", value: "pineapple" },
+]
+
+export function SelectDemo() {
   return (
-    <Select>
-      <SelectTrigger className="w-[180px]">
-        <SelectValue placeholder="Select a fruit" />
+    <Select items={items}>
+      <SelectTrigger className="w-full max-w-48">
+        <SelectValue />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
           <SelectLabel>Fruits</SelectLabel>
-          <SelectItem value="apple">Apple</SelectItem>
-          <SelectItem value="banana">Banana</SelectItem>
-          <SelectItem value="blueberry">Blueberry</SelectItem>
-          <SelectItem value="grapes">Grapes</SelectItem>
-          <SelectItem value="pineapple">Pineapple</SelectItem>
+          {items.map((item) => (
+            <SelectItem key={item.value} value={item.value}>
+              {item.label}
+            </SelectItem>
+          ))}
         </SelectGroup>
       </SelectContent>
     </Select>
-  );
+  )
 }

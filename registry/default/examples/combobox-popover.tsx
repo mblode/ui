@@ -1,8 +1,8 @@
-"use client";
+"use client"
 
-import { useState } from "react";
+import * as React from "react"
 
-import { Button } from "@/registry/default/ui/button";
+import { Button } from "@/registry/default/ui/button"
 import {
   Command,
   CommandEmpty,
@@ -10,16 +10,16 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/registry/default/ui/command";
+} from "@/registry/default/ui/command"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/registry/default/ui/popover";
+} from "@/registry/default/ui/popover"
 
-interface Status {
-  label: string;
-  value: string;
+type Status = {
+  value: string
+  label: string
 }
 
 const statuses: Status[] = [
@@ -43,22 +43,24 @@ const statuses: Status[] = [
     value: "canceled",
     label: "Canceled",
   },
-];
+]
 
 export default function ComboboxPopover() {
-  const [open, setOpen] = useState(false);
-  const [selectedStatus, setSelectedStatus] = useState<Status | null>(null);
+  const [open, setOpen] = React.useState(false)
+  const [selectedStatus, setSelectedStatus] = React.useState<Status | null>(
+    null
+  )
 
   return (
     <div className="flex items-center space-x-4">
       <p className="text-muted-foreground text-sm">Status</p>
-      <Popover onOpenChange={setOpen} open={open}>
+      <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
-          <Button className="w-[150px] justify-start" variant="outline">
-            {selectedStatus ? selectedStatus.label : <>+ Set status</>}
+          <Button variant="outline" className="w-[150px] justify-start">
+            {selectedStatus ? <>{selectedStatus.label}</> : <>+ Set status</>}
           </Button>
         </PopoverTrigger>
-        <PopoverContent align="start" className="p-0" side="right">
+        <PopoverContent className="p-0" side="right" align="start">
           <Command>
             <CommandInput placeholder="Change status..." />
             <CommandList>
@@ -67,14 +69,14 @@ export default function ComboboxPopover() {
                 {statuses.map((status) => (
                   <CommandItem
                     key={status.value}
+                    value={status.value}
                     onSelect={(value) => {
                       setSelectedStatus(
                         statuses.find((priority) => priority.value === value) ||
                           null
-                      );
-                      setOpen(false);
+                      )
+                      setOpen(false)
                     }}
-                    value={status.value}
                   >
                     {status.label}
                   </CommandItem>
@@ -85,5 +87,5 @@ export default function ComboboxPopover() {
         </PopoverContent>
       </Popover>
     </div>
-  );
+  )
 }

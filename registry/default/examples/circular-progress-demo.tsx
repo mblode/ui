@@ -30,26 +30,29 @@ export default function CircularProgressDemo() {
   }, [autoProgress]);
 
   return (
-    <div className="flex flex-col items-center space-y-8">
+    <div className="grid w-full max-w-md gap-6">
+      <div className="space-y-1">
+        <p className="font-medium text-sm">Profile completion</p>
+        <p className="text-muted-foreground text-sm">
+          Track required steps before launching your workspace.
+        </p>
+      </div>
+
       <div className="flex items-center justify-center gap-8">
         <div className="flex flex-col items-center">
-          <div className="h-24 w-24">
-            <CircularProgress value={progress} />
-          </div>
-          <span className="mt-2 text-muted-foreground text-sm">With Text</span>
+          <CircularProgress className="size-24" value={progress} />
+          <span className="mt-2 text-muted-foreground text-sm">With value</span>
         </div>
 
         <div className="flex flex-col items-center">
-          <div className="h-24 w-24">
-            <CircularProgress hideText value={progress} />
-          </div>
+          <CircularProgress className="size-24" hideText value={progress} />
           <span className="mt-2 text-muted-foreground text-sm">
-            Without Text
+            Indicator only
           </span>
         </div>
       </div>
 
-      <div className="flex w-full max-w-md flex-col gap-4">
+      <div className="space-y-4">
         <Slider
           max={100}
           min={0}
@@ -59,16 +62,26 @@ export default function CircularProgressDemo() {
           step={1}
           value={[progress]}
         />
+        <div className="flex items-center justify-between text-muted-foreground text-sm">
+          <span>{progress}% complete</span>
+          <span>{100 - progress}% left</span>
+        </div>
 
-        <div className="flex justify-center gap-4">
+        <div className="flex justify-end gap-2">
+          <Button
+            onClick={() => {
+              setAutoProgress(false);
+              setProgress(0);
+            }}
+            variant="outline"
+          >
+            Reset
+          </Button>
           <Button
             onClick={() => setAutoProgress((previous) => !previous)}
             variant="secondary"
           >
-            {autoProgress ? "Stop Animation" : "Animate Progress"}
-          </Button>
-          <Button onClick={() => setProgress(0)} variant="secondary">
-            Reset
+            {autoProgress ? "Pause" : "Auto-fill"}
           </Button>
         </div>
       </div>

@@ -112,6 +112,10 @@ function FormControl({
   const { error, formItemId, formDescriptionId, formMessageId } =
     useFormField();
 
+  if (!isValidElement(children)) {
+    return null;
+  }
+
   const rendered = useRender({
     defaultTagName: "div",
     props: mergeProps<"div">(
@@ -124,15 +128,11 @@ function FormControl({
       },
       props as React.ComponentProps<"div">
     ),
-    render: children,
+    render: children as React.ReactElement,
     state: {
       slot: "form-control",
     },
   });
-
-  if (!isValidElement(children)) {
-    return null;
-  }
 
   return rendered;
 }

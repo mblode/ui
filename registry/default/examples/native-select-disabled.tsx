@@ -1,16 +1,15 @@
 import {
   NativeSelect,
   NativeSelectOption,
-} from "@/registry/default/ui/native-select";
+} from "@/registry/default/ui/native-select"
 
-export default function NativeSelectDisabled() {
+export function NativeSelectDisabled() {
   return (
     <NativeSelect disabled>
-      <NativeSelectOption value="">Select priority</NativeSelectOption>
-      <NativeSelectOption value="low">Low</NativeSelectOption>
-      <NativeSelectOption value="medium">Medium</NativeSelectOption>
-      <NativeSelectOption value="high">High</NativeSelectOption>
-      <NativeSelectOption value="critical">Critical</NativeSelectOption>
+      <NativeSelectOption value="">Disabled</NativeSelectOption>
+      <NativeSelectOption value="apple">Apple</NativeSelectOption>
+      <NativeSelectOption value="banana">Banana</NativeSelectOption>
+      <NativeSelectOption value="blueberry">Blueberry</NativeSelectOption>
     </NativeSelect>
-  );
+  )
 }

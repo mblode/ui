@@ -1,6 +1,4 @@
-import { ShieldAlertIcon } from "blode-icons-react";
-
-import { Button } from "@/registry/default/ui/button";
+import { Button } from "@/registry/default/ui/button"
 import {
   Item,
   ItemActions,
@@ -8,9 +6,10 @@ import {
   ItemDescription,
   ItemMedia,
   ItemTitle,
-} from "@/registry/default/ui/item";
+} from "@/registry/default/ui/item"
+import { ShieldAlertIcon } from "blode-icons-react"
 
-export default function ItemIcon() {
+export function ItemIcon() {
   return (
     <div className="flex w-full max-w-lg flex-col gap-6">
       <Item variant="outline">
@@ -30,5 +29,5 @@ export default function ItemIcon() {
         </ItemActions>
       </Item>
     </div>
-  );
+  )
 }

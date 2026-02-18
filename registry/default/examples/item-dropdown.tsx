@@ -1,26 +1,22 @@
-"use client";
+"use client"
 
-import { ChevronDownIcon } from "blode-icons-react";
-
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/registry/default/ui/avatar";
-import { Button } from "@/registry/default/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/registry/default/ui/avatar"
+import { Button } from "@/registry/default/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/registry/default/ui/dropdown-menu";
+} from "@/registry/default/ui/dropdown-menu"
 import {
   Item,
   ItemContent,
   ItemDescription,
   ItemMedia,
   ItemTitle,
-} from "@/registry/default/ui/item";
+} from "@/registry/default/ui/item"
+import { ChevronDownIcon } from "blode-icons-react"
 
 const people = [
   {
@@ -38,36 +34,38 @@ const people = [
     avatar: "https://github.com/evilrabbit.png",
     email: "evilrabbit@vercel.com",
   },
-];
+]
 
-export default function ItemDropdown() {
+export function ItemDropdown() {
   return (
-    <div className="flex min-h-64 w-full max-w-md flex-col items-center gap-6">
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button className="w-fit" size="sm" variant="outline">
-            Select <ChevronDownIcon />
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" className="w-72 [--radius:0.65rem]">
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline">
+          Select <ChevronDownIcon />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-48" align="end">
+        <DropdownMenuGroup>
           {people.map((person) => (
-            <DropdownMenuItem className="p-0" key={person.username}>
-              <Item className="w-full p-2" size="sm">
+            <DropdownMenuItem key={person.username}>
+              <Item size="sm" className="w-full p-2">
                 <ItemMedia>
-                  <Avatar className="size-8">
-                    <AvatarImage className="grayscale" src={person.avatar} />
+                  <Avatar className="size-[--spacing(6.5)]">
+                    <AvatarImage src={person.avatar} className="grayscale" />
                     <AvatarFallback>{person.username.charAt(0)}</AvatarFallback>
                   </Avatar>
                 </ItemMedia>
-                <ItemContent className="gap-0.5">
+                <ItemContent className="gap-0">
                   <ItemTitle>{person.username}</ItemTitle>
-                  <ItemDescription>{person.email}</ItemDescription>
+                  <ItemDescription className="leading-none">
+                    {person.email}
+                  </ItemDescription>
                 </ItemContent>
               </Item>
             </DropdownMenuItem>
           ))}
-        </DropdownMenuContent>
-      </DropdownMenu>
-    </div>
-  );
+        </DropdownMenuGroup>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  )
 }

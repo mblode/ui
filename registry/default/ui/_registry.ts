@@ -4,6 +4,9 @@ export const ui: Registry["items"] = [
   {
     name: "accordion",
     type: "registry:ui",
+    title: "Accordion",
+    description:
+      "A vertically stacked set of interactive headings that reveal or hide associated content.",
     dependencies: ["@base-ui/react"],
     files: [
       {
@@ -15,6 +18,9 @@ export const ui: Registry["items"] = [
   {
     name: "alert",
     type: "registry:ui",
+    title: "Alert",
+    description:
+      "A callout that displays a short, important message to attract attention.",
     files: [
       {
         path: "ui/alert.tsx",
@@ -25,6 +31,9 @@ export const ui: Registry["items"] = [
   {
     name: "alert-dialog",
     type: "registry:ui",
+    title: "Alert Dialog",
+    description:
+      "A modal dialog that interrupts the user with important content and expects a response.",
     dependencies: ["@base-ui/react"],
     registryDependencies: ["button"],
     files: [
@@ -37,6 +46,8 @@ export const ui: Registry["items"] = [
   {
     name: "aspect-ratio",
     type: "registry:ui",
+    title: "Aspect Ratio",
+    description: "A component that maintains a consistent width-to-height ratio.",
     dependencies: ["@base-ui/react"],
     files: [
       {
@@ -48,6 +59,9 @@ export const ui: Registry["items"] = [
   {
     name: "avatar",
     type: "registry:ui",
+    title: "Avatar",
+    description:
+      "An image element with a fallback for representing the user.",
     dependencies: ["@base-ui/react"],
     files: [
       {
@@ -59,6 +73,9 @@ export const ui: Registry["items"] = [
   {
     name: "badge",
     type: "registry:ui",
+    title: "Badge",
+    description:
+      "A small status indicator for labelling and categorising items.",
     dependencies: ["@base-ui/react"],
     files: [
       {
@@ -70,6 +87,9 @@ export const ui: Registry["items"] = [
   {
     name: "breadcrumb",
     type: "registry:ui",
+    title: "Breadcrumb",
+    description:
+      "A navigation aid that shows the current page location within a hierarchy.",
     dependencies: ["@base-ui/react"],
     files: [
       {
@@ -81,6 +101,9 @@ export const ui: Registry["items"] = [
   {
     name: "button",
     type: "registry:ui",
+    title: "Button",
+    description:
+      "An interactive element that triggers an action when clicked.",
     dependencies: ["@base-ui/react"],
     files: [
       {
@@ -92,6 +115,9 @@ export const ui: Registry["items"] = [
   {
     name: "button-group",
     type: "registry:ui",
+    title: "Button Group",
+    description:
+      "A container that groups related buttons together with shared styling.",
     registryDependencies: ["button", "separator"],
     files: [
       {
@@ -103,6 +129,8 @@ export const ui: Registry["items"] = [
   {
     name: "calendar",
     type: "registry:ui",
+    title: "Calendar",
+    description: "A date field component that allows users to pick dates.",
     dependencies: ["react-day-picker@latest", "date-fns"],
     registryDependencies: ["button"],
     files: [
@@ -115,6 +143,9 @@ export const ui: Registry["items"] = [
   {
     name: "card",
     type: "registry:ui",
+    title: "Card",
+    description:
+      "A container for grouping related content and actions.",
     files: [
       {
         path: "ui/card.tsx",
@@ -125,6 +156,9 @@ export const ui: Registry["items"] = [
   {
     name: "carousel",
     type: "registry:ui",
+    title: "Carousel",
+    description:
+      "A slideshow component for cycling through a set of content.",
     files: [
       {
         path: "ui/carousel.tsx",
@@ -137,6 +171,9 @@ export const ui: Registry["items"] = [
   {
     name: "circular-progress",
     type: "registry:ui",
+    title: "Circular Progress",
+    description:
+      "A circular indicator that shows the progress of a task.",
     files: [
       {
         path: "ui/circular-progress.tsx",
@@ -147,6 +184,9 @@ export const ui: Registry["items"] = [
   {
     name: "chart",
     type: "registry:ui",
+    title: "Chart",
+    description:
+      "A composable charting component built on top of Recharts.",
     files: [
       {
         path: "ui/chart.tsx",
@@ -159,6 +199,9 @@ export const ui: Registry["items"] = [
   {
     name: "checkbox",
     type: "registry:ui",
+    title: "Checkbox",
+    description:
+      "A control that allows the user to toggle between checked and unchecked states.",
     dependencies: ["@base-ui/react"],
     files: [
       {
@@ -174,6 +217,9 @@ export const ui: Registry["items"] = [
   {
     name: "collapsible",
     type: "registry:ui",
+    title: "Collapsible",
+    description:
+      "An interactive component that expands and collapses a panel of content.",
     dependencies: ["@base-ui/react"],
     files: [
       {
@@ -185,6 +231,9 @@ export const ui: Registry["items"] = [
   {
     name: "currency-input",
     type: "registry:ui",
+    title: "Currency Input",
+    description:
+      "A formatted input field for entering monetary values.",
     dependencies: ["blode-icons-react", "react-currency-input-field"],
     files: [
       {
@@ -196,8 +245,11 @@ export const ui: Registry["items"] = [
   {
     name: "combobox",
     type: "registry:ui",
+    title: "Combobox",
+    description:
+      "An autocomplete input that combines a text field with a filterable dropdown list.",
     dependencies: ["@base-ui/react"],
-    registryDependencies: ["button", "input-group"],
+    registryDependencies: ["button", "input-group", "popover"],
     files: [
       {
         path: "ui/combobox.tsx",
@@ -208,6 +260,9 @@ export const ui: Registry["items"] = [
   {
     name: "multi-combobox",
     type: "registry:ui",
+    title: "Multi Combobox",
+    description:
+      "A combobox that allows selecting multiple items with tag-style badges.",
     dependencies: [
       "@base-ui/react",
       "downshift",
@@ -225,6 +280,9 @@ export const ui: Registry["items"] = [
   {
     name: "command",
     type: "registry:ui",
+    title: "Command",
+    description:
+      "A command palette for fast, keyboard-driven searching and navigation.",
     dependencies: ["cmdk"],
     registryDependencies: ["dialog"],
     files: [
@@ -237,6 +295,9 @@ export const ui: Registry["items"] = [
   {
     name: "context-menu",
     type: "registry:ui",
+    title: "Context Menu",
+    description:
+      "A menu that appears on right-click, providing contextual actions.",
     dependencies: ["@base-ui/react"],
     files: [
       {
@@ -248,7 +309,11 @@ export const ui: Registry["items"] = [
   {
     name: "dialog",
     type: "registry:ui",
+    title: "Dialog",
+    description:
+      "A modal window that overlays the main content and requires user interaction.",
     dependencies: ["@base-ui/react"],
+    registryDependencies: ["button"],
     files: [
       {
         path: "ui/dialog.tsx",
@@ -259,6 +324,9 @@ export const ui: Registry["items"] = [
   {
     name: "drawer",
     type: "registry:ui",
+    title: "Drawer",
+    description:
+      "A panel that slides in from the edge of the screen.",
     dependencies: ["vaul"],
     files: [
       {
@@ -270,6 +338,9 @@ export const ui: Registry["items"] = [
   {
     name: "dropdown-menu",
     type: "registry:ui",
+    title: "Dropdown Menu",
+    description:
+      "A menu that opens from a trigger button, displaying a list of actions.",
     dependencies: ["@base-ui/react"],
     files: [
       {
@@ -281,6 +352,9 @@ export const ui: Registry["items"] = [
   {
     name: "empty",
     type: "registry:ui",
+    title: "Empty",
+    description:
+      "A placeholder displayed when there is no content or data to show.",
     files: [
       {
         path: "ui/empty.tsx",
@@ -291,6 +365,9 @@ export const ui: Registry["items"] = [
   {
     name: "field",
     type: "registry:ui",
+    title: "Field",
+    description:
+      "A form field wrapper that pairs a label, input, and helper text.",
     registryDependencies: ["label", "separator"],
     files: [
       {
@@ -302,6 +379,9 @@ export const ui: Registry["items"] = [
   {
     name: "form",
     type: "registry:ui",
+    title: "Form",
+    description:
+      "A form component with validation powered by React Hook Form and Zod.",
     dependencies: [
       "@base-ui/react",
       "@hookform/resolvers",
@@ -319,6 +399,9 @@ export const ui: Registry["items"] = [
   {
     name: "hover-card",
     type: "registry:ui",
+    title: "Hover Card",
+    description:
+      "A popup card that appears when hovering over a trigger element.",
     dependencies: ["@base-ui/react"],
     files: [
       {
@@ -330,6 +413,8 @@ export const ui: Registry["items"] = [
   {
     name: "input",
     type: "registry:ui",
+    title: "Input",
+    description: "A text input field for capturing user data.",
     files: [
       {
         path: "ui/input.tsx",
@@ -340,6 +425,9 @@ export const ui: Registry["items"] = [
   {
     name: "input-group",
     type: "registry:ui",
+    title: "Input Group",
+    description:
+      "A wrapper that combines an input with addons like icons or buttons.",
     registryDependencies: ["button", "input", "textarea"],
     files: [
       {
@@ -351,6 +439,9 @@ export const ui: Registry["items"] = [
   {
     name: "input-otp",
     type: "registry:ui",
+    title: "Input OTP",
+    description:
+      "A one-time password input with individual character fields.",
     dependencies: ["input-otp"],
     files: [
       {
@@ -362,6 +453,9 @@ export const ui: Registry["items"] = [
   {
     name: "item",
     type: "registry:ui",
+    title: "Item",
+    description:
+      "A flexible list item component for menus, settings, and data rows.",
     dependencies: ["@base-ui/react"],
     registryDependencies: ["separator"],
     files: [
@@ -374,6 +468,9 @@ export const ui: Registry["items"] = [
   {
     name: "label",
     type: "registry:ui",
+    title: "Label",
+    description:
+      "An accessible label that associates text with a form control.",
     dependencies: ["@base-ui/react"],
     files: [
       {
@@ -385,6 +482,9 @@ export const ui: Registry["items"] = [
   {
     name: "menubar",
     type: "registry:ui",
+    title: "Menubar",
+    description:
+      "A horizontal menu bar with dropdown menus, commonly used for application navigation.",
     dependencies: ["@base-ui/react"],
     files: [
       {
@@ -396,6 +496,9 @@ export const ui: Registry["items"] = [
   {
     name: "navigation-menu",
     type: "registry:ui",
+    title: "Navigation Menu",
+    description:
+      "A responsive navigation component with support for dropdown panels.",
     dependencies: ["@base-ui/react"],
     files: [
       {
@@ -407,6 +510,9 @@ export const ui: Registry["items"] = [
   {
     name: "pagination",
     type: "registry:ui",
+    title: "Pagination",
+    description:
+      "A navigation component for paging through content across multiple pages.",
     registryDependencies: ["button"],
     files: [
       {
@@ -418,6 +524,9 @@ export const ui: Registry["items"] = [
   {
     name: "phone-input",
     type: "registry:ui",
+    title: "Phone Input",
+    description:
+      "An international phone number input with country code selector.",
     dependencies: ["blode-icons-react", "react-phone-number-input"],
     registryDependencies: [
       "button",
@@ -436,6 +545,9 @@ export const ui: Registry["items"] = [
   {
     name: "popover",
     type: "registry:ui",
+    title: "Popover",
+    description:
+      "A floating panel that appears next to a trigger element.",
     dependencies: ["@base-ui/react"],
     files: [
       {
@@ -447,6 +559,9 @@ export const ui: Registry["items"] = [
   {
     name: "progress",
     type: "registry:ui",
+    title: "Progress",
+    description:
+      "A horizontal bar that indicates the completion progress of a task.",
     dependencies: ["@base-ui/react"],
     files: [
       {
@@ -458,6 +573,9 @@ export const ui: Registry["items"] = [
   {
     name: "prompt",
     type: "registry:ui",
+    title: "Prompt",
+    description:
+      "A confirmation dialog that asks the user for input before proceeding.",
     dependencies: ["@base-ui/react"],
     registryDependencies: ["button"],
     files: [
@@ -470,6 +588,9 @@ export const ui: Registry["items"] = [
   {
     name: "radio-group",
     type: "registry:ui",
+    title: "Radio Group",
+    description:
+      "A set of mutually exclusive options where only one can be selected.",
     dependencies: ["@base-ui/react"],
     files: [
       {
@@ -481,6 +602,9 @@ export const ui: Registry["items"] = [
   {
     name: "resizable",
     type: "registry:ui",
+    title: "Resizable",
+    description:
+      "A layout component with draggable handles for resizing panels.",
     dependencies: ["react-resizable-panels@^4"],
     files: [
       {
@@ -492,6 +616,9 @@ export const ui: Registry["items"] = [
   {
     name: "scroll-area",
     type: "registry:ui",
+    title: "Scroll Area",
+    description:
+      "A scrollable container with custom styled scrollbars.",
     dependencies: ["@base-ui/react"],
     files: [
       {
@@ -503,6 +630,9 @@ export const ui: Registry["items"] = [
   {
     name: "select",
     type: "registry:ui",
+    title: "Select",
+    description:
+      "A dropdown control for choosing a single value from a list of options.",
     dependencies: ["@base-ui/react"],
     files: [
       {
@@ -514,6 +644,9 @@ export const ui: Registry["items"] = [
   {
     name: "separator",
     type: "registry:ui",
+    title: "Separator",
+    description:
+      "A visual divider that separates content into distinct sections.",
     dependencies: ["@base-ui/react"],
     files: [
       {
@@ -525,6 +658,9 @@ export const ui: Registry["items"] = [
   {
     name: "sheet",
     type: "registry:ui",
+    title: "Sheet",
+    description:
+      "A panel that slides in from the edge of the viewport with an overlay.",
     dependencies: ["@base-ui/react"],
     files: [
       {
@@ -536,6 +672,9 @@ export const ui: Registry["items"] = [
   {
     name: "sidebar",
     type: "registry:ui",
+    title: "Sidebar",
+    description:
+      "A collapsible side navigation component with multiple layout variants.",
     dependencies: [
       "@base-ui/react",
       "class-variance-authority",
@@ -556,26 +695,6 @@ export const ui: Registry["items"] = [
         type: "registry:ui",
       },
     ],
-    tailwind: {
-      config: {
-        theme: {
-          extend: {
-            colors: {
-              sidebar: {
-                DEFAULT: "hsl(var(--sidebar-background))",
-                foreground: "hsl(var(--sidebar-foreground))",
-                primary: "hsl(var(--sidebar-primary))",
-                "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-                accent: "hsl(var(--sidebar-accent))",
-                "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-                border: "hsl(var(--sidebar-border))",
-                ring: "hsl(var(--sidebar-ring))",
-              },
-            },
-          },
-        },
-      },
-    },
     cssVars: {
       light: {
         "sidebar-background": "0 0% 98%",
@@ -602,6 +721,9 @@ export const ui: Registry["items"] = [
   {
     name: "skeleton",
     type: "registry:ui",
+    title: "Skeleton",
+    description:
+      "A placeholder animation that indicates content is loading.",
     files: [
       {
         path: "ui/skeleton.tsx",
@@ -612,6 +734,9 @@ export const ui: Registry["items"] = [
   {
     name: "slider",
     type: "registry:ui",
+    title: "Slider",
+    description:
+      "A draggable control for selecting a numeric value within a range.",
     dependencies: ["@base-ui/react"],
     files: [
       {
@@ -623,6 +748,9 @@ export const ui: Registry["items"] = [
   {
     name: "sonner",
     type: "registry:ui",
+    title: "Sonner",
+    description:
+      "A toast notification component powered by Sonner.",
     dependencies: ["sonner", "next-themes"],
     files: [
       {
@@ -634,6 +762,9 @@ export const ui: Registry["items"] = [
   {
     name: "spinner",
     type: "registry:ui",
+    title: "Spinner",
+    description:
+      "An animated loading indicator for asynchronous operations.",
     files: [
       {
         path: "ui/spinner.tsx",
@@ -644,6 +775,9 @@ export const ui: Registry["items"] = [
   {
     name: "switch",
     type: "registry:ui",
+    title: "Switch",
+    description:
+      "A toggle control for switching between on and off states.",
     dependencies: ["@base-ui/react"],
     files: [
       {
@@ -655,6 +789,9 @@ export const ui: Registry["items"] = [
   {
     name: "table",
     type: "registry:ui",
+    title: "Table",
+    description:
+      "A responsive table for displaying structured data in rows and columns.",
     files: [
       {
         path: "ui/table.tsx",
@@ -665,6 +802,9 @@ export const ui: Registry["items"] = [
   {
     name: "tabs",
     type: "registry:ui",
+    title: "Tabs",
+    description:
+      "A tabbed interface that organises content into switchable panels.",
     dependencies: ["@base-ui/react"],
     registryDependencies: ["use-tab-observer"],
     files: [
@@ -677,6 +817,9 @@ export const ui: Registry["items"] = [
   {
     name: "textarea",
     type: "registry:ui",
+    title: "Textarea",
+    description:
+      "A multi-line text input field for longer form content.",
     files: [
       {
         path: "ui/textarea.tsx",
@@ -687,6 +830,9 @@ export const ui: Registry["items"] = [
   {
     name: "toggle",
     type: "registry:ui",
+    title: "Toggle",
+    description:
+      "A two-state button that can be toggled on or off.",
     dependencies: ["@base-ui/react"],
     files: [
       {
@@ -698,6 +844,9 @@ export const ui: Registry["items"] = [
   {
     name: "toggle-group",
     type: "registry:ui",
+    title: "Toggle Group",
+    description:
+      "A set of toggle buttons where one or more can be active.",
     dependencies: ["@base-ui/react"],
     registryDependencies: ["toggle"],
     files: [
@@ -710,6 +859,9 @@ export const ui: Registry["items"] = [
   {
     name: "tooltip",
     type: "registry:ui",
+    title: "Tooltip",
+    description:
+      "A popup that displays helpful information when hovering or focusing an element.",
     dependencies: ["@base-ui/react"],
     docs: `The \`tooltip\` component has been added. Remember to wrap your app with the \`TooltipProvider\` component.
 
@@ -737,6 +889,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   {
     name: "kbd",
     type: "registry:ui",
+    title: "Kbd",
+    description:
+      "A styled keyboard key indicator for displaying shortcuts and key combinations.",
     files: [
       {
         path: "ui/kbd.tsx",
@@ -747,6 +902,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   {
     name: "native-select",
     type: "registry:ui",
+    title: "Native Select",
+    description:
+      "A styled wrapper around the native HTML select element.",
     files: [
       {
         path: "ui/native-select.tsx",
@@ -757,6 +915,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   {
     name: "direction",
     type: "registry:ui",
+    title: "Direction",
+    description:
+      "A context provider for managing text direction (LTR/RTL) across components.",
     files: [
       {
         path: "ui/direction.tsx",

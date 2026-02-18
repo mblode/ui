@@ -12,7 +12,10 @@ function AspectRatio({
 }: React.ComponentProps<"div"> & { ratio: number }) {
   return (
     <div
-      className={cn("relative aspect-(--ratio)", className)}
+      className={cn(
+        "relative aspect-(--ratio) aspect-[var(--ratio)]",
+        className
+      )}
       data-slot="aspect-ratio"
       style={
         {

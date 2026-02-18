@@ -1,51 +1,48 @@
-"use client";
+"use client"
 
-import { ArrowRightIcon } from "blode-icons-react";
-import { useState } from "react";
-
-import { Button } from "@/registry/default/ui/button";
-import { ButtonGroup } from "@/registry/default/ui/button-group";
-import { Input } from "@/registry/default/ui/input";
+import * as React from "react"
+import { Button } from "@/registry/default/ui/button"
+import { ButtonGroup } from "@/registry/default/ui/button-group"
+import { Input } from "@/registry/default/ui/input"
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectTrigger,
-} from "@/registry/default/ui/select";
+} from "@/registry/default/ui/select"
+import { ArrowRightIcon } from "blode-icons-react"
 
 const CURRENCIES = [
-  {
-    value: "$",
-    label: "US Dollar",
-  },
-  {
-    value: "€",
-    label: "Euro",
-  },
-  {
-    value: "£",
-    label: "British Pound",
-  },
-];
+  { label: "US Dollar", value: "$" },
+  { label: "Euro", value: "€" },
+  { label: "British Pound", value: "£" },
+]
 
 export default function ButtonGroupSelect() {
-  const [currency, setCurrency] = useState("$");
+  const [currency, setCurrency] = React.useState("$")
 
   return (
     <ButtonGroup>
       <ButtonGroup>
-        <Select onValueChange={setCurrency} value={currency}>
+        <Select
+          items={CURRENCIES}
+          value={currency}
+          onValueChange={(value) => setCurrency(value as string)}
+        >
           <SelectTrigger className="font-mono">{currency}</SelectTrigger>
-          <SelectContent className="min-w-24">
-            {CURRENCIES.map((currency) => (
-              <SelectItem key={currency.value} value={currency.value}>
-                {currency.value}{" "}
-                <span className="text-muted-foreground">{currency.label}</span>
-              </SelectItem>
-            ))}
+          <SelectContent alignItemWithTrigger={false} align="start">
+            <SelectGroup>
+              {CURRENCIES.map((item) => (
+                <SelectItem key={item.value} value={item.value}>
+                  {item.value}{" "}
+                  <span className="text-muted-foreground">{item.label}</span>
+                </SelectItem>
+              ))}
+            </SelectGroup>
           </SelectContent>
         </Select>
-        <Input pattern="[0-9]*" placeholder="10.00" />
+        <Input placeholder="10.00" pattern="[0-9]*" />
       </ButtonGroup>
       <ButtonGroup>
         <Button aria-label="Send" size="icon" variant="outline">
@@ -53,5 +50,5 @@ export default function ButtonGroupSelect() {
         </Button>
       </ButtonGroup>
     </ButtonGroup>
-  );
+  )
 }

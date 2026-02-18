@@ -1,19 +1,18 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-
-import { Calendar } from "@/registry/default/ui/calendar";
+import * as React from "react"
+import { Calendar } from "@/registry/default/ui/calendar"
 
 export default function CalendarDemo() {
-  const [date, setDate] = useState<Date | undefined>(new Date());
+  const [date, setDate] = React.useState<Date | undefined>(new Date())
 
   return (
     <Calendar
-      captionLayout="dropdown"
-      className="rounded-md border shadow-sm"
       mode="single"
-      onSelect={setDate}
       selected={date}
+      onSelect={setDate}
+      className="rounded-lg border"
+      captionLayout="dropdown"
     />
-  );
+  )
 }

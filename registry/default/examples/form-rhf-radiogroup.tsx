@@ -1,12 +1,12 @@
-"use client";
+"use client"
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import type * as React from "react";
-import { Controller, useForm } from "react-hook-form";
-import { toast } from "sonner";
-import { z } from "zod";
+import * as React from "react"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { Controller, useForm } from "react-hook-form"
+import { toast } from "sonner"
+import * as z from "zod"
 
-import { Button } from "@/registry/default/ui/button";
+import { Button } from "@/registry/default/ui/button"
 import {
   Card,
   CardContent,
@@ -14,7 +14,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/default/ui/card";
+} from "@/registry/default/ui/card"
 import {
   Field,
   FieldContent,
@@ -25,8 +25,11 @@ import {
   FieldLegend,
   FieldSet,
   FieldTitle,
-} from "@/registry/default/ui/field";
-import { RadioGroup, RadioGroupItem } from "@/registry/default/ui/radio-group";
+} from "@/registry/default/ui/field"
+import {
+  RadioGroup,
+  RadioGroupItem,
+} from "@/registry/default/ui/radio-group"
 
 const plans = [
   {
@@ -44,11 +47,11 @@ const plans = [
     title: "Enterprise (Unlimited tokens)",
     description: "For large teams and heavy usage.",
   },
-] as const;
+] as const
 
 const formSchema = z.object({
   plan: z.string().min(1, "You must select a subscription plan to continue."),
-});
+})
 
 export default function FormRhfRadioGroup() {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -56,12 +59,12 @@ export default function FormRhfRadioGroup() {
     defaultValues: {
       plan: "",
     },
-  });
+  })
 
   function onSubmit(data: z.infer<typeof formSchema>) {
     toast("You submitted the following values:", {
       description: (
-        <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
+        <pre className="bg-code text-code-foreground mt-2 w-[320px] overflow-x-auto rounded-md p-4">
           <code>{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
@@ -72,7 +75,7 @@ export default function FormRhfRadioGroup() {
       style: {
         "--border-radius": "calc(var(--radius)  + 4px)",
       } as React.CSSProperties,
-    });
+    })
   }
 
   return (
@@ -87,8 +90,8 @@ export default function FormRhfRadioGroup() {
         <form id="form-rhf-radiogroup" onSubmit={form.handleSubmit(onSubmit)}>
           <FieldGroup>
             <Controller
-              control={form.control}
               name="plan"
+              control={form.control}
               render={({ field, fieldState }) => (
                 <FieldSet data-invalid={fieldState.invalid}>
                   <FieldLegend>Plan</FieldLegend>
@@ -96,19 +99,19 @@ export default function FormRhfRadioGroup() {
                     You can upgrade or downgrade your plan at any time.
                   </FieldDescription>
                   <RadioGroup
-                    aria-invalid={fieldState.invalid}
                     name={field.name}
-                    onValueChange={field.onChange}
                     value={field.value}
+                    onValueChange={field.onChange}
+                    aria-invalid={fieldState.invalid}
                   >
                     {plans.map((plan) => (
                       <FieldLabel
-                        htmlFor={`form-rhf-radiogroup-${plan.id}`}
                         key={plan.id}
+                        htmlFor={`form-rhf-radiogroup-${plan.id}`}
                       >
                         <Field
-                          data-invalid={fieldState.invalid}
                           orientation="horizontal"
+                          data-invalid={fieldState.invalid}
                         >
                           <FieldContent>
                             <FieldTitle>{plan.title}</FieldTitle>
@@ -117,9 +120,9 @@ export default function FormRhfRadioGroup() {
                             </FieldDescription>
                           </FieldContent>
                           <RadioGroupItem
-                            aria-invalid={fieldState.invalid}
-                            id={`form-rhf-radiogroup-${plan.id}`}
                             value={plan.id}
+                            id={`form-rhf-radiogroup-${plan.id}`}
+                            aria-invalid={fieldState.invalid}
                           />
                         </Field>
                       </FieldLabel>
@@ -136,14 +139,14 @@ export default function FormRhfRadioGroup() {
       </CardContent>
       <CardFooter>
         <Field orientation="horizontal">
-          <Button onClick={() => form.reset()} type="button" variant="outline">
+          <Button type="button" variant="outline" onClick={() => form.reset()}>
             Reset
           </Button>
-          <Button form="form-rhf-radiogroup" type="submit">
+          <Button type="submit" form="form-rhf-radiogroup">
             Save
           </Button>
         </Field>
       </CardFooter>
     </Card>
-  );
+  )
 }

@@ -1,27 +1,26 @@
-import { ArrowUpIcon } from "blode-icons-react";
-
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
   InputGroupTextarea,
-} from "@/registry/default/ui/input-group";
-import { Spinner } from "@/registry/default/ui/spinner";
+} from "@/registry/default/ui/input-group"
+import { Spinner } from "@/registry/default/ui/spinner"
+import { ArrowUpIcon } from "blode-icons-react"
 
-export default function SpinnerInputGroup() {
+export function SpinnerInputGroup() {
   return (
     <div className="flex w-full max-w-md flex-col gap-4">
       <InputGroup>
-        <InputGroupInput disabled placeholder="Send a message..." />
+        <InputGroupInput placeholder="Send a message..." disabled />
         <InputGroupAddon align="inline-end">
-          <Spinner size={16} />
+          <Spinner />
         </InputGroupAddon>
       </InputGroup>
       <InputGroup>
-        <InputGroupTextarea disabled placeholder="Send a message..." />
+        <InputGroupTextarea placeholder="Send a message..." disabled />
         <InputGroupAddon align="block-end">
-          <Spinner size={16} /> Validating...
+          <Spinner /> Validating...
           <InputGroupButton className="ml-auto" variant="default">
             <ArrowUpIcon />
             <span className="sr-only">Send</span>
@@ -29,5 +28,5 @@ export default function SpinnerInputGroup() {
         </InputGroupAddon>
       </InputGroup>
     </div>
-  );
+  )
 }

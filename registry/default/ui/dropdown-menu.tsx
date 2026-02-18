@@ -211,11 +211,11 @@ function DropdownMenuLabel({
   className,
   inset,
   ...props
-}: DropdownMenuPrimitive.GroupLabel.Props & {
+}: React.ComponentProps<"div"> & {
   inset?: boolean;
 }) {
   return (
-    <DropdownMenuPrimitive.GroupLabel
+    <div
       className={cn(
         "px-3 py-2 font-semibold text-base data-[inset]:pl-8",
         className

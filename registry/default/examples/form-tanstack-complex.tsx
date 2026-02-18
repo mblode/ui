@@ -1,14 +1,14 @@
 /* eslint-disable react/no-children-prop */
-"use client";
+"use client"
 
-import { useForm } from "@tanstack/react-form";
-import type * as React from "react";
-import { toast } from "sonner";
-import { z } from "zod";
+import * as React from "react"
+import { useForm } from "@tanstack/react-form"
+import { toast } from "sonner"
+import * as z from "zod"
 
-import { Button } from "@/registry/default/ui/button";
-import { Card, CardContent, CardFooter } from "@/registry/default/ui/card";
-import { Checkbox } from "@/registry/default/ui/checkbox";
+import { Button } from "@/registry/default/ui/button"
+import { Card, CardContent, CardFooter } from "@/registry/default/ui/card"
+import { Checkbox } from "@/registry/default/ui/checkbox"
 import {
   Field,
   FieldContent,
@@ -20,16 +20,19 @@ import {
   FieldSeparator,
   FieldSet,
   FieldTitle,
-} from "@/registry/default/ui/field";
-import { RadioGroup, RadioGroupItem } from "@/registry/default/ui/radio-group";
+} from "@/registry/default/ui/field"
+import {
+  RadioGroup,
+  RadioGroupItem,
+} from "@/registry/default/ui/radio-group"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/default/ui/select";
-import { Switch } from "@/registry/default/ui/switch";
+} from "@/registry/default/ui/select"
+import { Switch } from "@/registry/default/ui/switch"
 
 const addons = [
   {
@@ -47,16 +50,12 @@ const addons = [
     title: "Priority Support",
     description: "24/7 premium customer support",
   },
-] as const;
+] as const
 
 const formSchema = z.object({
-  plan: z.enum(["basic", "pro"], {
-    error: "Please select a subscription plan",
-  }),
+  plan: z.enum(["basic", "pro"]),
   billingPeriod: z
-    .string({
-      error: "Please select a billing period",
-    })
+    .string()
     .min(1, "Please select a billing period"),
   addons: z
     .array(z.string())
@@ -69,7 +68,7 @@ const formSchema = z.object({
       }
     ),
   emailNotifications: z.boolean(),
-});
+})
 
 export default function FormTanstackComplex() {
   const form = useForm({
@@ -85,7 +84,7 @@ export default function FormTanstackComplex() {
     onSubmit: async ({ value }) => {
       toast("You submitted the following values:", {
         description: (
-          <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
+          <pre className="bg-code text-code-foreground mt-2 w-[320px] overflow-x-auto rounded-md p-4">
             <code>{JSON.stringify(value, null, 2)}</code>
           </pre>
         ),
@@ -96,9 +95,9 @@ export default function FormTanstackComplex() {
         style: {
           "--border-radius": "calc(var(--radius)  + 4px)",
         } as React.CSSProperties,
-      });
+      })
     },
-  });
+  })
 
   return (
     <Card className="w-full max-w-sm">
@@ -106,15 +105,16 @@ export default function FormTanstackComplex() {
         <form
           id="subscription-form"
           onSubmit={(e) => {
-            e.preventDefault();
-            form.handleSubmit();
+            e.preventDefault()
+            form.handleSubmit()
           }}
         >
           <FieldGroup>
             <form.Field
+              name="plan"
               children={(field) => {
                 const isInvalid =
-                  field.state.meta.isTouched && !field.state.meta.isValid;
+                  field.state.meta.isTouched && !field.state.meta.isValid
                 return (
                   <FieldSet>
                     <FieldLegend>Subscription Plan</FieldLegend>
@@ -123,13 +123,13 @@ export default function FormTanstackComplex() {
                     </FieldDescription>
                     <RadioGroup
                       name={field.name}
-                      onValueChange={field.handleChange}
                       value={field.state.value}
+                      onValueChange={field.handleChange}
                     >
                       <FieldLabel htmlFor="basic">
                         <Field
-                          data-invalid={isInvalid}
                           orientation="horizontal"
+                          data-invalid={isInvalid}
                         >
                           <FieldContent>
                             <FieldTitle>Basic</FieldTitle>
@@ -138,16 +138,16 @@ export default function FormTanstackComplex() {
                             </FieldDescription>
                           </FieldContent>
                           <RadioGroupItem
-                            aria-invalid={isInvalid}
-                            id="basic"
                             value="basic"
+                            id="basic"
+                            aria-invalid={isInvalid}
                           />
                         </Field>
                       </FieldLabel>
                       <FieldLabel htmlFor="pro">
                         <Field
-                          data-invalid={isInvalid}
                           orientation="horizontal"
+                          data-invalid={isInvalid}
                         >
                           <FieldContent>
                             <FieldTitle>Pro</FieldTitle>
@@ -156,9 +156,9 @@ export default function FormTanstackComplex() {
                             </FieldDescription>
                           </FieldContent>
                           <RadioGroupItem
-                            aria-invalid={isInvalid}
-                            id="pro"
                             value="pro"
+                            id="pro"
+                            aria-invalid={isInvalid}
                           />
                         </Field>
                       </FieldLabel>
@@ -167,23 +167,23 @@ export default function FormTanstackComplex() {
                       <FieldError errors={field.state.meta.errors} />
                     )}
                   </FieldSet>
-                );
+                )
               }}
-              name="plan"
             />
             <FieldSeparator />
             <form.Field
+              name="billingPeriod"
               children={(field) => {
                 const isInvalid =
-                  field.state.meta.isTouched && !field.state.meta.isValid;
+                  field.state.meta.isTouched && !field.state.meta.isValid
                 return (
                   <Field data-invalid={isInvalid}>
                     <FieldLabel htmlFor={field.name}>Billing Period</FieldLabel>
                     <Select
-                      aria-invalid={isInvalid}
                       name={field.name}
-                      onValueChange={field.handleChange}
                       value={field.state.value}
+                      onValueChange={field.handleChange}
+                      aria-invalid={isInvalid}
                     >
                       <SelectTrigger id={field.name}>
                         <SelectValue placeholder="Select" />
@@ -200,15 +200,16 @@ export default function FormTanstackComplex() {
                       <FieldError errors={field.state.meta.errors} />
                     )}
                   </Field>
-                );
+                )
               }}
-              name="billingPeriod"
             />
             <FieldSeparator />
             <form.Field
+              name="addons"
+              mode="array"
               children={(field) => {
                 const isInvalid =
-                  field.state.meta.isTouched && !field.state.meta.isValid;
+                  field.state.meta.isTouched && !field.state.meta.isValid
                 return (
                   <FieldSet>
                     <FieldLegend>Add-ons</FieldLegend>
@@ -218,24 +219,24 @@ export default function FormTanstackComplex() {
                     <FieldGroup data-slot="checkbox-group">
                       {addons.map((addon) => (
                         <Field
-                          data-invalid={isInvalid}
                           key={addon.id}
                           orientation="horizontal"
+                          data-invalid={isInvalid}
                         >
                           <Checkbox
-                            aria-invalid={isInvalid}
-                            checked={field.state.value.includes(addon.id)}
                             id={addon.id}
                             name={field.name}
+                            aria-invalid={isInvalid}
+                            checked={field.state.value.includes(addon.id)}
                             onCheckedChange={(checked) => {
                               if (checked) {
-                                field.pushValue(addon.id);
+                                field.pushValue(addon.id)
                               } else {
                                 const index = field.state.value.indexOf(
                                   addon.id
-                                );
+                                )
                                 if (index > -1) {
-                                  field.removeValue(index);
+                                  field.removeValue(index)
                                 }
                               }
                             }}
@@ -255,18 +256,17 @@ export default function FormTanstackComplex() {
                       <FieldError errors={field.state.meta.errors} />
                     )}
                   </FieldSet>
-                );
+                )
               }}
-              mode="array"
-              name="addons"
             />
             <FieldSeparator />
             <form.Field
+              name="emailNotifications"
               children={(field) => {
                 const isInvalid =
-                  field.state.meta.isTouched && !field.state.meta.isValid;
+                  field.state.meta.isTouched && !field.state.meta.isValid
                 return (
-                  <Field data-invalid={isInvalid} orientation="horizontal">
+                  <Field orientation="horizontal" data-invalid={isInvalid}>
                     <FieldContent>
                       <FieldLabel htmlFor={field.name}>
                         Email Notifications
@@ -276,30 +276,29 @@ export default function FormTanstackComplex() {
                       </FieldDescription>
                     </FieldContent>
                     <Switch
-                      aria-invalid={isInvalid}
-                      checked={field.state.value}
                       id={field.name}
                       name={field.name}
+                      checked={field.state.value}
                       onCheckedChange={field.handleChange}
+                      aria-invalid={isInvalid}
                     />
                     {isInvalid && (
                       <FieldError errors={field.state.meta.errors} />
                     )}
                   </Field>
-                );
+                )
               }}
-              name="emailNotifications"
             />
           </FieldGroup>
         </form>
       </CardContent>
       <CardFooter>
-        <Field className="justify-end" orientation="horizontal">
-          <Button form="subscription-form" type="submit">
+        <Field orientation="horizontal" className="justify-end">
+          <Button type="submit" form="subscription-form">
             Save Preferences
           </Button>
         </Field>
       </CardFooter>
     </Card>
-  );
+  )
 }

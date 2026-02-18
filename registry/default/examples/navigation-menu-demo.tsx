@@ -1,10 +1,7 @@
-"use client";
+"use client"
 
-import { CircleCheckIcon, CircleHelpIcon, CircleIcon } from "blode-icons-react";
-import Link from "next/link";
-import type * as React from "react";
-
-import { useIsMobile } from "@/registry/default/hooks/use-mobile";
+import * as React from "react"
+import Link from "next/link"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -13,7 +10,12 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/registry/default/ui/navigation-menu";
+} from "@/registry/default/ui/navigation-menu"
+import {
+  CircleAlertIcon,
+  CircleCheckIcon,
+  CircleDashedIcon,
+} from "blode-icons-react"
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -51,35 +53,18 @@ const components: { title: string; href: string; description: string }[] = [
     description:
       "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
   },
-];
+]
 
 export default function NavigationMenuDemo() {
-  const isMobile = useIsMobile();
-
   return (
-    <NavigationMenu viewport={isMobile}>
-      <NavigationMenuList className="flex-wrap">
+    <NavigationMenu>
+      <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Home</NavigationMenuTrigger>
+          <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid gap-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-              <li className="row-span-3">
-                <NavigationMenuLink asChild>
-                  <a
-                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-linear-to-b from-muted/50 to-muted p-4 no-underline outline-hidden transition-all duration-200 focus:shadow-md md:p-6"
-                    href="/"
-                  >
-                    <div className="mb-2 font-medium text-lg sm:mt-4">
-                      shadcn/ui
-                    </div>
-                    <p className="text-muted-foreground text-sm leading-tight">
-                      Beautifully designed components built with Tailwind CSS.
-                    </p>
-                  </a>
-                </NavigationMenuLink>
-              </li>
+            <ul className="w-96">
               <ListItem href="/docs" title="Introduction">
-                Re-usable components built using Base UI and Tailwind CSS.
+                Re-usable components built with Tailwind CSS.
               </ListItem>
               <ListItem href="/docs/installation" title="Installation">
                 How to install dependencies and structure your app.
@@ -90,15 +75,15 @@ export default function NavigationMenuDemo() {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        <NavigationMenuItem>
+        <NavigationMenuItem className="hidden md:flex">
           <NavigationMenuTrigger>Components</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid gap-2 sm:w-[400px] md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+            <ul className="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
               {components.map((component) => (
                 <ListItem
-                  href={component.href}
                   key={component.title}
                   title={component.title}
+                  href={component.href}
                 >
                   {component.description}
                 </ListItem>
@@ -107,91 +92,49 @@ export default function NavigationMenuDemo() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-            <Link href="/docs">Docs</Link>
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-        <NavigationMenuItem className="hidden md:block">
-          <NavigationMenuTrigger>List</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid w-[300px] gap-4">
-              <li>
-                <NavigationMenuLink asChild>
-                  <Link href="#">
-                    <div className="font-medium">Components</div>
-                    <div className="text-muted-foreground">
-                      Browse all components in the library.
-                    </div>
-                  </Link>
-                </NavigationMenuLink>
-                <NavigationMenuLink asChild>
-                  <Link href="#">
-                    <div className="font-medium">Documentation</div>
-                    <div className="text-muted-foreground">
-                      Learn how to use the library.
-                    </div>
-                  </Link>
-                </NavigationMenuLink>
-                <NavigationMenuLink asChild>
-                  <Link href="#">
-                    <div className="font-medium">Blog</div>
-                    <div className="text-muted-foreground">
-                      Read our latest blog posts.
-                    </div>
-                  </Link>
-                </NavigationMenuLink>
-              </li>
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem className="hidden md:block">
-          <NavigationMenuTrigger>Simple</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid w-[200px] gap-4">
-              <li>
-                <NavigationMenuLink asChild>
-                  <Link href="#">Components</Link>
-                </NavigationMenuLink>
-                <NavigationMenuLink asChild>
-                  <Link href="#">Documentation</Link>
-                </NavigationMenuLink>
-                <NavigationMenuLink asChild>
-                  <Link href="#">Blocks</Link>
-                </NavigationMenuLink>
-              </li>
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem className="hidden md:block">
           <NavigationMenuTrigger>With Icon</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid w-[200px] gap-4">
+            <ul className="grid w-[200px]">
               <li>
-                <NavigationMenuLink asChild>
-                  <Link className="flex-row items-center gap-2" href="#">
-                    <CircleHelpIcon />
-                    Backlog
-                  </Link>
+                <NavigationMenuLink
+                  render={
+                    <Link href="#" className="flex-row items-center gap-2" />
+                  }
+                >
+                  <CircleAlertIcon />
+                  Backlog
                 </NavigationMenuLink>
-                <NavigationMenuLink asChild>
-                  <Link className="flex-row items-center gap-2" href="#">
-                    <CircleIcon />
-                    To Do
-                  </Link>
+                <NavigationMenuLink
+                  render={
+                    <Link href="#" className="flex-row items-center gap-2" />
+                  }
+                >
+                  <CircleDashedIcon />
+                  To Do
                 </NavigationMenuLink>
-                <NavigationMenuLink asChild>
-                  <Link className="flex-row items-center gap-2" href="#">
-                    <CircleCheckIcon />
-                    Done
-                  </Link>
+                <NavigationMenuLink
+                  render={
+                    <Link href="#" className="flex-row items-center gap-2" />
+                  }
+                >
+                  <CircleCheckIcon />
+                  Done
                 </NavigationMenuLink>
               </li>
             </ul>
           </NavigationMenuContent>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuLink
+            render={<Link href="/docs" />}
+            className={navigationMenuTriggerStyle()}
+          >
+            Docs
+          </NavigationMenuLink>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
-  );
+  )
 }
 
 function ListItem({
@@ -202,14 +145,12 @@ function ListItem({
 }: React.ComponentPropsWithoutRef<"li"> & { href: string }) {
   return (
     <li {...props}>
-      <NavigationMenuLink asChild>
-        <Link href={href}>
-          <div className="font-medium text-sm leading-none">{title}</div>
-          <p className="line-clamp-2 text-muted-foreground text-sm leading-snug">
-            {children}
-          </p>
-        </Link>
+      <NavigationMenuLink render={<Link href={href} />}>
+        <div className="flex flex-col gap-1 text-sm">
+          <div className="leading-none font-medium">{title}</div>
+          <div className="text-muted-foreground line-clamp-2">{children}</div>
+        </div>
       </NavigationMenuLink>
     </li>
-  );
+  )
 }

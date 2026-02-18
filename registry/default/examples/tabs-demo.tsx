@@ -1,78 +1,82 @@
-import { Button } from "@/registry/default/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/default/ui/card";
-import { Input } from "@/registry/default/ui/input";
-import { Label } from "@/registry/default/ui/label";
+} from "@/registry/default/ui/card"
 import {
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/registry/default/ui/tabs";
+} from "@/registry/default/ui/tabs"
 
-export default function TabsDemo() {
+export function TabsDemo() {
   return (
-    <div className="flex w-full max-w-sm flex-col gap-6">
-      <Tabs defaultValue="account">
-        <TabsList>
-          <TabsTrigger value="account">Account</TabsTrigger>
-          <TabsTrigger value="password">Password</TabsTrigger>
-        </TabsList>
-        <TabsContent value="account">
-          <Card>
-            <CardHeader>
-              <CardTitle>Account</CardTitle>
-              <CardDescription>
-                Make changes to your account here. Click save when you&apos;re
-                done.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="grid gap-6">
-              <div className="grid gap-3">
-                <Label htmlFor="tabs-demo-name">Name</Label>
-                <Input defaultValue="Pedro Duarte" id="tabs-demo-name" />
-              </div>
-              <div className="grid gap-3">
-                <Label htmlFor="tabs-demo-username">Username</Label>
-                <Input defaultValue="@peduarte" id="tabs-demo-username" />
-              </div>
-            </CardContent>
-            <CardFooter>
-              <Button>Save changes</Button>
-            </CardFooter>
-          </Card>
-        </TabsContent>
-        <TabsContent value="password">
-          <Card>
-            <CardHeader>
-              <CardTitle>Password</CardTitle>
-              <CardDescription>
-                Change your password here. After saving, you&apos;ll be logged
-                out.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="grid gap-6">
-              <div className="grid gap-3">
-                <Label htmlFor="tabs-demo-current">Current password</Label>
-                <Input id="tabs-demo-current" type="password" />
-              </div>
-              <div className="grid gap-3">
-                <Label htmlFor="tabs-demo-new">New password</Label>
-                <Input id="tabs-demo-new" type="password" />
-              </div>
-            </CardContent>
-            <CardFooter>
-              <Button>Save password</Button>
-            </CardFooter>
-          </Card>
-        </TabsContent>
-      </Tabs>
-    </div>
-  );
+    <Tabs defaultValue="overview" className="w-[400px]">
+      <TabsList>
+        <TabsTrigger value="overview">Overview</TabsTrigger>
+        <TabsTrigger value="analytics">Analytics</TabsTrigger>
+        <TabsTrigger value="reports">Reports</TabsTrigger>
+        <TabsTrigger value="settings">Settings</TabsTrigger>
+      </TabsList>
+      <TabsContent value="overview">
+        <Card>
+          <CardHeader>
+            <CardTitle>Overview</CardTitle>
+            <CardDescription>
+              View your key metrics and recent project activity. Track progress
+              across all your active projects.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="text-muted-foreground text-sm">
+            You have 12 active projects and 3 pending tasks.
+          </CardContent>
+        </Card>
+      </TabsContent>
+      <TabsContent value="analytics">
+        <Card>
+          <CardHeader>
+            <CardTitle>Analytics</CardTitle>
+            <CardDescription>
+              Track performance and user engagement metrics. Monitor trends and
+              identify growth opportunities.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="text-muted-foreground text-sm">
+            Page views are up 25% compared to last month.
+          </CardContent>
+        </Card>
+      </TabsContent>
+      <TabsContent value="reports">
+        <Card>
+          <CardHeader>
+            <CardTitle>Reports</CardTitle>
+            <CardDescription>
+              Generate and download your detailed reports. Export data in
+              multiple formats for analysis.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="text-muted-foreground text-sm">
+            You have 5 reports ready and available to export.
+          </CardContent>
+        </Card>
+      </TabsContent>
+      <TabsContent value="settings">
+        <Card>
+          <CardHeader>
+            <CardTitle>Settings</CardTitle>
+            <CardDescription>
+              Manage your account preferences and options. Customize your
+              experience to fit your needs.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="text-muted-foreground text-sm">
+            Configure notifications, security, and themes.
+          </CardContent>
+        </Card>
+      </TabsContent>
+    </Tabs>
+  )
 }

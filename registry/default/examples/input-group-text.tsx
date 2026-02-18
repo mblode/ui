@@ -4,7 +4,7 @@ import {
   InputGroupInput,
   InputGroupText,
   InputGroupTextarea,
-} from "@/registry/default/ui/input-group";
+} from "@/registry/default/ui/input-group"
 
 export default function InputGroupTextExample() {
   return (
@@ -22,7 +22,7 @@ export default function InputGroupTextExample() {
         <InputGroupAddon>
           <InputGroupText>https://</InputGroupText>
         </InputGroupAddon>
-        <InputGroupInput className="!pl-0.5" placeholder="example.com" />
+        <InputGroupInput placeholder="example.com" className="!pl-0.5" />
         <InputGroupAddon align="inline-end">
           <InputGroupText>.com</InputGroupText>
         </InputGroupAddon>
@@ -42,5 +42,5 @@ export default function InputGroupTextExample() {
         </InputGroupAddon>
       </InputGroup>
     </div>
-  );
+  )
 }

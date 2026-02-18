@@ -1,4 +1,4 @@
-import type { Registry } from "shadcn/schema";
+import { type Registry } from "shadcn/schema"
 
 export const examples: Registry["items"] = [
   {
@@ -541,17 +541,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "circular-progress-demo",
-    type: "registry:example",
-    registryDependencies: ["circular-progress", "button", "slider"],
-    files: [
-      {
-        path: "examples/circular-progress-demo.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
     name: "checkbox-demo",
     type: "registry:example",
     registryDependencies: ["checkbox"],
@@ -605,18 +594,6 @@ export const examples: Registry["items"] = [
         type: "registry:example",
       },
     ],
-  },
-  {
-    name: "multi-combobox-demo",
-    type: "registry:example",
-    registryDependencies: ["multi-combobox"],
-    files: [
-      {
-        path: "examples/multi-combobox-demo.tsx",
-        type: "registry:example",
-      },
-    ],
-    dependencies: ["react-hook-form"],
   },
   {
     name: "combobox-dropdown-menu",
@@ -680,17 +657,6 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/context-menu-demo.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "currency-input-demo",
-    type: "registry:example",
-    registryDependencies: ["currency-input", "label"],
-    files: [
-      {
-        path: "examples/currency-input-demo.tsx",
         type: "registry:example",
       },
     ],
@@ -1797,17 +1763,6 @@ export const examples: Registry["items"] = [
     ],
   },
   {
-    name: "phone-input-demo",
-    type: "registry:example",
-    registryDependencies: ["phone-input"],
-    files: [
-      {
-        path: "examples/phone-input-demo.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
     name: "popover-demo",
     type: "registry:example",
     registryDependencies: ["popover"],
@@ -1825,17 +1780,6 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/progress-demo.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "prompt-demo",
-    type: "registry:example",
-    registryDependencies: ["prompt", "button"],
-    files: [
-      {
-        path: "examples/prompt-demo.tsx",
         type: "registry:example",
       },
     ],
@@ -2226,6 +2170,61 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "toast-demo",
+    type: "registry:example",
+    registryDependencies: ["toast"],
+    files: [
+      {
+        path: "examples/toast-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "toast-destructive",
+    type: "registry:example",
+    registryDependencies: ["toast"],
+    files: [
+      {
+        path: "examples/toast-destructive.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "toast-simple",
+    type: "registry:example",
+    registryDependencies: ["toast"],
+    files: [
+      {
+        path: "examples/toast-simple.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "toast-with-action",
+    type: "registry:example",
+    registryDependencies: ["toast"],
+    files: [
+      {
+        path: "examples/toast-with-action.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "toast-with-title",
+    type: "registry:example",
+    registryDependencies: ["toast"],
+    files: [
+      {
+        path: "examples/toast-with-title.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "toggle-group-demo",
     type: "registry:example",
     registryDependencies: ["toggle-group"],
@@ -2608,4 +2607,60 @@ export const examples: Registry["items"] = [
       mobile: "component",
     },
   },
-];
+  {
+    name: "circular-progress-demo",
+    type: "registry:example",
+    registryDependencies: ["circular-progress", "button", "slider"],
+    files: [
+      {
+        path: "examples/circular-progress-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "multi-combobox-demo",
+    type: "registry:example",
+    registryDependencies: ["multi-combobox"],
+    files: [
+      {
+        path: "examples/multi-combobox-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    dependencies: ["react-hook-form"],
+  },
+  {
+    name: "currency-input-demo",
+    type: "registry:example",
+    registryDependencies: ["currency-input", "label"],
+    files: [
+      {
+        path: "examples/currency-input-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "phone-input-demo",
+    type: "registry:example",
+    registryDependencies: ["phone-input"],
+    files: [
+      {
+        path: "examples/phone-input-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "prompt-demo",
+    type: "registry:example",
+    registryDependencies: ["prompt", "button"],
+    files: [
+      {
+        path: "examples/prompt-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+]

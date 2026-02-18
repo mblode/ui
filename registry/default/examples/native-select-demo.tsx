@@ -1,7 +1,7 @@
 import {
   NativeSelect,
   NativeSelectOption,
-} from "@/registry/default/ui/native-select";
+} from "@/registry/default/ui/native-select"
 
 export default function NativeSelectDemo() {
   return (
@@ -12,5 +12,5 @@ export default function NativeSelectDemo() {
       <NativeSelectOption value="done">Done</NativeSelectOption>
       <NativeSelectOption value="cancelled">Cancelled</NativeSelectOption>
     </NativeSelect>
-  );
+  )
 }

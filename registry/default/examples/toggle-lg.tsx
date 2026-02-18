@@ -1,11 +1,17 @@
-import { Italic } from "blode-icons-react";
+import { Toggle } from "@/registry/default/ui/toggle"
 
-import { Toggle } from "@/registry/default/ui/toggle";
-
-export default function ToggleLg() {
+export function ToggleSizes() {
   return (
-    <Toggle aria-label="Toggle italic" size="lg">
-      <Italic />
-    </Toggle>
-  );
+    <div className="flex flex-wrap items-center gap-2">
+      <Toggle variant="outline" aria-label="Toggle small" size="sm">
+        Small
+      </Toggle>
+      <Toggle variant="outline" aria-label="Toggle default" size="default">
+        Default
+      </Toggle>
+      <Toggle variant="outline" aria-label="Toggle large" size="lg">
+        Large
+      </Toggle>
+    </div>
+  )
 }

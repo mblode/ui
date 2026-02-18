@@ -1,28 +1,29 @@
 "use client";
 
-import { useState } from "react";
-
 import { Button } from "@/registry/default/ui/button";
 import { Prompt } from "@/registry/default/ui/prompt";
 
 export default function PromptDemo() {
-  const [open, setOpen] = useState(false);
-
   return (
-    <div className="flex gap-2">
-      <Button onClick={() => setOpen(true)}>Show Prompt</Button>
-      <Prompt onOpenChange={setOpen} open={open}>
+    <div className="flex flex-col items-start gap-2">
+      <p className="text-muted-foreground text-sm">
+        Permanently remove this workspace and all project data.
+      </p>
+      <Prompt>
+        <Prompt.Trigger asChild>
+          <Button variant="destructive">Delete workspace</Button>
+        </Prompt.Trigger>
         <Prompt.Content>
           <Prompt.Header>
-            <Prompt.Title>Delete Account</Prompt.Title>
+            <Prompt.Title>Delete workspace?</Prompt.Title>
             <Prompt.Description>
               This action cannot be undone. This will permanently delete your
-              account and remove your data from our servers.
+              workspace, members, and billing history.
             </Prompt.Description>
           </Prompt.Header>
           <Prompt.Footer>
-            <Prompt.Cancel onClick={() => setOpen(false)}>Cancel</Prompt.Cancel>
-            <Prompt.Action onClick={() => setOpen(false)}>Delete</Prompt.Action>
+            <Prompt.Cancel>Cancel</Prompt.Cancel>
+            <Prompt.Action>Delete workspace</Prompt.Action>
           </Prompt.Footer>
         </Prompt.Content>
       </Prompt>

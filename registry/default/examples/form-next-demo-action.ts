@@ -1,6 +1,6 @@
-"use server";
+"use server"
 
-import { type FormState, formSchema } from "./form-next-demo-schema";
+import { formSchema, type FormState } from "./form-next-demo-schema"
 
 export async function demoFormAction(
   _prevState: FormState,
@@ -9,16 +9,16 @@ export async function demoFormAction(
   const values = {
     title: formData.get("title") as string,
     description: formData.get("description") as string,
-  };
+  }
 
-  const result = formSchema.safeParse(values);
+  const result = formSchema.safeParse(values)
 
   if (!result.success) {
     return {
       values,
       success: false,
       errors: result.error.flatten().fieldErrors,
-    };
+    }
   }
 
   // Do something with the values.
@@ -31,5 +31,5 @@ export async function demoFormAction(
     },
     errors: null,
     success: true,
-  };
+  }
 }

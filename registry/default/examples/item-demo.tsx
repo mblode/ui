@@ -1,6 +1,4 @@
-import { BadgeCheckIcon, ChevronRightIcon } from "blode-icons-react";
-
-import { Button } from "@/registry/default/ui/button";
+import { Button } from "@/registry/default/ui/button"
 import {
   Item,
   ItemActions,
@@ -8,9 +6,10 @@ import {
   ItemDescription,
   ItemMedia,
   ItemTitle,
-} from "@/registry/default/ui/item";
+} from "@/registry/default/ui/item"
+import { BadgeCheckIcon, ChevronRightIcon } from "blode-icons-react"
 
-export default function ItemDemo() {
+export function ItemDemo() {
   return (
     <div className="flex w-full max-w-md flex-col gap-6">
       <Item variant="outline">
@@ -21,12 +20,12 @@ export default function ItemDemo() {
           </ItemDescription>
         </ItemContent>
         <ItemActions>
-          <Button size="sm" variant="outline">
+          <Button variant="outline" size="sm">
             Action
           </Button>
         </ItemActions>
       </Item>
-      <Item asChild size="sm" variant="outline">
+      <Item asChild variant="outline" size="sm">
         <a href="#">
           <ItemMedia>
             <BadgeCheckIcon className="size-5" />
@@ -40,5 +39,5 @@ export default function ItemDemo() {
         </a>
       </Item>
     </div>
-  );
+  )
 }

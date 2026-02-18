@@ -1,21 +1,20 @@
-import { MinusIcon, PlusIcon } from "blode-icons-react";
-
-import { Button } from "@/registry/default/ui/button";
-import { ButtonGroup } from "@/registry/default/ui/button-group";
+import { Button } from "@/registry/default/ui/button"
+import { ButtonGroup } from "@/registry/default/ui/button-group"
+import { MinusIcon, PlusIcon } from "blode-icons-react"
 
 export default function ButtonGroupOrientation() {
   return (
     <ButtonGroup
+      orientation="vertical"
       aria-label="Media controls"
       className="h-fit"
-      orientation="vertical"
     >
-      <Button size="icon" variant="outline">
+      <Button variant="outline" size="icon">
         <PlusIcon />
       </Button>
-      <Button size="icon" variant="outline">
+      <Button variant="outline" size="icon">
         <MinusIcon />
       </Button>
     </ButtonGroup>
-  );
+  )
 }

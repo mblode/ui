@@ -1,22 +1,22 @@
-import { Button } from "@/registry/default/ui/button";
-import { Input } from "@/registry/default/ui/input";
-import { Label } from "@/registry/default/ui/label";
+import { Button } from "@/registry/default/ui/button"
+import { Input } from "@/registry/default/ui/input"
+import { Label } from "@/registry/default/ui/label"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/registry/default/ui/popover";
+} from "@/registry/default/ui/popover"
 
 export default function PopoverDemo() {
   return (
     <Popover>
-      <PopoverTrigger asChild>
-        <Button variant="outline">Open popover</Button>
+      <PopoverTrigger render={<Button variant="outline" />}>
+        Open popover
       </PopoverTrigger>
       <PopoverContent className="w-80">
         <div className="grid gap-4">
           <div className="space-y-2">
-            <h4 className="font-medium leading-none">Dimensions</h4>
+            <h4 className="leading-none font-medium">Dimensions</h4>
             <p className="text-muted-foreground text-sm">
               Set the dimensions for the layer.
             </p>
@@ -25,38 +25,38 @@ export default function PopoverDemo() {
             <div className="grid grid-cols-3 items-center gap-4">
               <Label htmlFor="width">Width</Label>
               <Input
-                className="col-span-2 h-8"
-                defaultValue="100%"
                 id="width"
+                defaultValue="100%"
+                className="col-span-2 h-8"
               />
             </div>
             <div className="grid grid-cols-3 items-center gap-4">
               <Label htmlFor="maxWidth">Max. width</Label>
               <Input
-                className="col-span-2 h-8"
-                defaultValue="300px"
                 id="maxWidth"
+                defaultValue="300px"
+                className="col-span-2 h-8"
               />
             </div>
             <div className="grid grid-cols-3 items-center gap-4">
               <Label htmlFor="height">Height</Label>
               <Input
-                className="col-span-2 h-8"
-                defaultValue="25px"
                 id="height"
+                defaultValue="25px"
+                className="col-span-2 h-8"
               />
             </div>
             <div className="grid grid-cols-3 items-center gap-4">
               <Label htmlFor="maxHeight">Max. height</Label>
               <Input
-                className="col-span-2 h-8"
-                defaultValue="none"
                 id="maxHeight"
+                defaultValue="none"
+                className="col-span-2 h-8"
               />
             </div>
           </div>
         </div>
       </PopoverContent>
     </Popover>
-  );
+  )
 }

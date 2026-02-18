@@ -1,13 +1,60 @@
-import { Button } from "@/registry/default/ui/button";
-import { Input } from "@/registry/default/ui/input";
+import { Button } from "@/registry/default/ui/button"
+import { Field, FieldGroup, FieldLabel } from "@/registry/default/ui/field"
+import { Input } from "@/registry/default/ui/input"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+} from "@/registry/default/ui/input-group"
+import { CopyIcon, TrashIcon } from "blode-icons-react"
 
-export default function InputWithButton() {
+export function InputGroupWithButtons() {
   return (
-    <div className="flex w-full max-w-sm items-center gap-2">
-      <Input placeholder="Email" type="email" />
-      <Button type="submit" variant="outline">
-        Subscribe
-      </Button>
-    </div>
-  );
+    <FieldGroup>
+      <Field>
+        <FieldLabel htmlFor="input-button-13">Button</FieldLabel>
+        <InputGroup>
+          <InputGroupInput id="input-button-13" />
+          <InputGroupAddon>
+            <InputGroupButton>Default</InputGroupButton>
+          </InputGroupAddon>
+        </InputGroup>
+        <InputGroup>
+          <InputGroupInput id="input-button-14" />
+          <InputGroupAddon>
+            <InputGroupButton variant="outline">Outline</InputGroupButton>
+          </InputGroupAddon>
+        </InputGroup>
+        <InputGroup>
+          <InputGroupInput id="input-button-15" />
+          <InputGroupAddon>
+            <InputGroupButton variant="secondary">Secondary</InputGroupButton>
+          </InputGroupAddon>
+        </InputGroup>
+        <InputGroup>
+          <InputGroupInput id="input-button-16" />
+          <InputGroupAddon align="inline-end">
+            <InputGroupButton variant="secondary">Button</InputGroupButton>
+          </InputGroupAddon>
+        </InputGroup>
+        <InputGroup>
+          <InputGroupInput id="input-button-17" />
+          <InputGroupAddon align="inline-end">
+            <InputGroupButton size="icon-xs">
+              <CopyIcon />
+            </InputGroupButton>
+          </InputGroupAddon>
+        </InputGroup>
+        <InputGroup>
+          <InputGroupInput id="input-button-18" />
+          <InputGroupAddon align="inline-end">
+            <InputGroupButton variant="secondary" size="icon-xs">
+              <TrashIcon />
+            </InputGroupButton>
+          </InputGroupAddon>
+        </InputGroup>
+      </Field>
+    </FieldGroup>
+  )
 }

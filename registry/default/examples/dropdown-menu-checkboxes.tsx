@@ -1,53 +1,50 @@
-"use client";
+"use client"
 
-import type * as React from "react";
-import { useState } from "react";
-
-import { Button } from "@/registry/default/ui/button";
+import * as React from "react"
+import { Button } from "@/registry/default/ui/button"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/registry/default/ui/dropdown-menu";
+} from "@/registry/default/ui/dropdown-menu"
 
-type Checked = React.ComponentProps<typeof DropdownMenuCheckboxItem>["checked"];
-
-export default function DropdownMenuCheckboxes() {
-  const [showStatusBar, setShowStatusBar] = useState<Checked>(true);
-  const [showActivityBar, setShowActivityBar] = useState<Checked>(false);
-  const [showPanel, setShowPanel] = useState<Checked>(false);
+export function DropdownMenuCheckboxes() {
+  const [showStatusBar, setShowStatusBar] = React.useState(true)
+  const [showActivityBar, setShowActivityBar] = React.useState(false)
+  const [showPanel, setShowPanel] = React.useState(false)
 
   return (
-    <DropdownMenu>
+      <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline">Open</Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56">
-        <DropdownMenuLabel>Appearance</DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        <DropdownMenuCheckboxItem
-          checked={showStatusBar}
-          onCheckedChange={setShowStatusBar}
-        >
-          Status Bar
-        </DropdownMenuCheckboxItem>
-        <DropdownMenuCheckboxItem
-          checked={showActivityBar}
-          disabled
-          onCheckedChange={setShowActivityBar}
-        >
-          Activity Bar
-        </DropdownMenuCheckboxItem>
-        <DropdownMenuCheckboxItem
-          checked={showPanel}
-          onCheckedChange={setShowPanel}
-        >
-          Panel
-        </DropdownMenuCheckboxItem>
+      <DropdownMenuContent className="w-40">
+        <DropdownMenuGroup>
+          <DropdownMenuLabel>Appearance</DropdownMenuLabel>
+          <DropdownMenuCheckboxItem
+            checked={showStatusBar ?? false}
+            onCheckedChange={(checked) => setShowStatusBar(checked === true)}
+          >
+            Status Bar
+          </DropdownMenuCheckboxItem>
+          <DropdownMenuCheckboxItem
+            checked={showActivityBar}
+            onCheckedChange={(checked) => setShowActivityBar(checked === true)}
+            disabled
+          >
+            Activity Bar
+          </DropdownMenuCheckboxItem>
+          <DropdownMenuCheckboxItem
+            checked={showPanel}
+            onCheckedChange={(checked) => setShowPanel(checked === true)}
+          >
+            Panel
+          </DropdownMenuCheckboxItem>
+        </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
-  );
+  )
 }

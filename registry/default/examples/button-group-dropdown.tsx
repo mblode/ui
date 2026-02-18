@@ -5,12 +5,11 @@ import {
   CheckIcon,
   ChevronDownIcon,
   CopyIcon,
+  PeopleRemoveIcon,
   ShareIcon,
   TrashIcon,
-  UserIcon,
   VolumeOffIcon,
 } from "blode-icons-react";
-
 import { Button } from "@/registry/default/ui/button";
 import { ButtonGroup } from "@/registry/default/ui/button-group";
 import {
@@ -32,7 +31,7 @@ export default function ButtonGroupDropdown() {
             <ChevronDownIcon />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" className="[--radius:1rem]">
+        <DropdownMenuContent align="end" className="w-44">
           <DropdownMenuGroup>
             <DropdownMenuItem>
               <VolumeOffIcon />
@@ -47,7 +46,7 @@ export default function ButtonGroupDropdown() {
               Report Conversation
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <UserIcon />
+              <PeopleRemoveIcon />
               Block User
             </DropdownMenuItem>
             <DropdownMenuItem>

@@ -1,5 +1,4 @@
-import Image from "next/image";
-
+import Image from "next/image"
 import {
   Item,
   ItemContent,
@@ -7,7 +6,7 @@ import {
   ItemGroup,
   ItemHeader,
   ItemTitle,
-} from "@/registry/default/ui/item";
+} from "@/registry/default/ui/item"
 
 const models = [
   {
@@ -31,9 +30,9 @@ const models = [
       "https://images.unsplash.com/photo-1602146057681-08560aee8cde?q=80&w=640&auto=format&fit=crop",
     credit: "Cherry Laithang on Unsplash",
   },
-];
+]
 
-export default function ItemHeaderDemo() {
+export function ItemHeaderDemo() {
   return (
     <div className="flex w-full max-w-xl flex-col gap-6">
       <ItemGroup className="grid grid-cols-3 gap-4">
@@ -41,11 +40,11 @@ export default function ItemHeaderDemo() {
           <Item key={model.name} variant="outline">
             <ItemHeader>
               <Image
-                alt={model.name}
-                className="aspect-square w-full rounded-sm object-cover"
-                height={128}
                 src={model.image}
+                alt={model.name}
                 width={128}
+                height={128}
+                className="aspect-square w-full rounded-sm object-cover"
               />
             </ItemHeader>
             <ItemContent>
@@ -56,5 +55,5 @@ export default function ItemHeaderDemo() {
         ))}
       </ItemGroup>
     </div>
-  );
+  )
 }

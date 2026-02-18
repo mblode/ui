@@ -1,11 +1,51 @@
-import { Input } from "@/registry/default/ui/input";
-import { Label } from "@/registry/default/ui/label";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+} from "@/registry/default/ui/input-group"
+import { Label } from "@/registry/default/ui/label"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/registry/default/ui/tooltip"
+import { InfoIcon } from "blode-icons-react"
 
-export default function InputWithLabel() {
+export default function InputGroupLabel() {
   return (
-    <div className="grid w-full max-w-sm items-center gap-3">
-      <Label htmlFor="email">Email</Label>
-      <Input id="email" placeholder="Email" type="email" />
+    <div className="grid w-full max-w-sm gap-4">
+      <InputGroup>
+        <InputGroupInput id="email" placeholder="shadcn" />
+        <InputGroupAddon>
+          <Label htmlFor="email">@</Label>
+        </InputGroupAddon>
+      </InputGroup>
+      <InputGroup>
+        <InputGroupInput id="email-2" placeholder="shadcn@vercel.com" />
+        <InputGroupAddon align="block-start">
+          <Label htmlFor="email-2" className="text-foreground">
+            Email
+          </Label>
+          <Tooltip>
+            <TooltipTrigger
+              render={
+                <InputGroupButton
+                  variant="ghost"
+                  aria-label="Help"
+                  className="ml-auto rounded-full"
+                  size="icon-xs"
+                />
+              }
+            >
+              <InfoIcon />
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>We&apos;ll use this to send you notifications</p>
+            </TooltipContent>
+          </Tooltip>
+        </InputGroupAddon>
+      </InputGroup>
     </div>
-  );
+  )
 }

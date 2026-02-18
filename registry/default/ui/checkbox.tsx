@@ -44,7 +44,7 @@ const Checkbox = React.forwardRef<
       <CheckboxPrimitive.Root
         checked={checked === "indeterminate" ? false : checked}
         className={cn(
-          "ft-checkbox peer relative size-5 shrink-0 cursor-pointer overflow-hidden rounded-[6px] bg-card shadow-input transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 data-disabled:cursor-not-allowed data-checked:text-primary-foreground data-indeterminate:text-primary-foreground data-disabled:opacity-50",
+          "ft-checkbox peer relative inline-flex size-5 shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-[6px] bg-card align-middle shadow-input transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 data-disabled:cursor-not-allowed data-checked:text-primary-foreground data-indeterminate:text-primary-foreground data-disabled:opacity-50",
           className
         )}
         data-slot="checkbox"
@@ -68,36 +68,37 @@ const Checkbox = React.forwardRef<
         )}
         {...props}
       >
-        <CheckboxPrimitive.Indicator keepMounted>
-          <div className="flex items-center justify-center text-current">
-            <svg
-              aria-hidden="true"
-              className="z-10 h-3 w-4"
-              role="presentation"
-              viewBox="0 0 17 18"
-            >
-              <polyline
-                className="ft-checkbox-polyline"
-                fill="none"
-                points="1 9 7 14 15 4"
-                stroke="currentColor"
-                strokeDasharray={22}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-              />
-              <line
-                className="ft-checkbox-line"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeWidth={2}
-                x1="3"
-                x2="13"
-                y1="9"
-                y2="9"
-              />
-            </svg>
-          </div>
+        <CheckboxPrimitive.Indicator
+          className="pointer-events-none flex items-center justify-center text-current"
+          keepMounted
+        >
+          <svg
+            aria-hidden="true"
+            className="z-10 h-3 w-4"
+            role="presentation"
+            viewBox="0 0 17 18"
+          >
+            <polyline
+              className="ft-checkbox-polyline"
+              fill="none"
+              points="1 9 7 14 15 4"
+              stroke="currentColor"
+              strokeDasharray={22}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+            />
+            <line
+              className="ft-checkbox-line"
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeWidth={2}
+              x1="3"
+              x2="13"
+              y1="9"
+              y2="9"
+            />
+          </svg>
         </CheckboxPrimitive.Indicator>
       </CheckboxPrimitive.Root>
     );

@@ -1,37 +1,36 @@
-import { LoaderIcon } from "blode-icons-react";
-
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
   InputGroupText,
-} from "@/registry/default/ui/input-group";
-import { Spinner } from "@/registry/default/ui/spinner";
+} from "@/registry/default/ui/input-group"
+import { Spinner } from "@/registry/default/ui/spinner"
+import { LoaderIcon } from "blode-icons-react"
 
 export default function InputGroupSpinner() {
   return (
     <div className="grid w-full max-w-sm gap-4">
-      <InputGroup data-disabled>
-        <InputGroupInput disabled placeholder="Searching..." />
+      <InputGroup>
+        <InputGroupInput placeholder="Searching..." />
         <InputGroupAddon align="inline-end">
-          <Spinner size={16} />
+          <Spinner />
         </InputGroupAddon>
       </InputGroup>
-      <InputGroup data-disabled>
-        <InputGroupInput disabled placeholder="Processing..." />
+      <InputGroup>
+        <InputGroupInput placeholder="Processing..." />
         <InputGroupAddon>
-          <Spinner size={16} />
+          <Spinner />
         </InputGroupAddon>
       </InputGroup>
-      <InputGroup data-disabled>
-        <InputGroupInput disabled placeholder="Saving changes..." />
+      <InputGroup>
+        <InputGroupInput placeholder="Saving changes..." />
         <InputGroupAddon align="inline-end">
           <InputGroupText>Saving...</InputGroupText>
-          <Spinner size={16} />
+          <Spinner />
         </InputGroupAddon>
       </InputGroup>
-      <InputGroup data-disabled>
-        <InputGroupInput disabled placeholder="Refreshing data..." />
+      <InputGroup>
+        <InputGroupInput placeholder="Refreshing data..." />
         <InputGroupAddon>
           <LoaderIcon className="animate-spin" />
         </InputGroupAddon>
@@ -42,5 +41,5 @@ export default function InputGroupSpinner() {
         </InputGroupAddon>
       </InputGroup>
     </div>
-  );
+  )
 }

@@ -1,6 +1,4 @@
-import { ChevronDownIcon, SlashIcon } from "blode-icons-react";
-import Link from "next/link";
-
+import Link from "next/link"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -8,15 +6,17 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/registry/default/ui/breadcrumb";
+} from "@/registry/default/ui/breadcrumb"
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/registry/default/ui/dropdown-menu";
+} from "@/registry/default/ui/dropdown-menu"
+import { ChevronDownIcon, DotIcon } from "blode-icons-react"
 
-export default function BreadcrumbWithDropdown() {
+export function BreadcrumbDropdown() {
   return (
     <Breadcrumb>
       <BreadcrumbList>
@@ -26,28 +26,32 @@ export default function BreadcrumbWithDropdown() {
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator>
-          <SlashIcon />
+          <DotIcon />
         </BreadcrumbSeparator>
         <BreadcrumbItem>
           <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center gap-1 [&_svg:not([class*='size-'])]:size-3.5 [&_svg]:pointer-events-none [&_svg]:shrink-0">
-              Components
-              <ChevronDownIcon />
+            <DropdownMenuTrigger asChild>
+              <button className="flex items-center gap-1">
+                Components
+                <ChevronDownIcon data-icon="inline-end" />
+              </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start">
-              <DropdownMenuItem>Documentation</DropdownMenuItem>
-              <DropdownMenuItem>Themes</DropdownMenuItem>
-              <DropdownMenuItem>GitHub</DropdownMenuItem>
+              <DropdownMenuGroup>
+                <DropdownMenuItem>Documentation</DropdownMenuItem>
+                <DropdownMenuItem>Themes</DropdownMenuItem>
+                <DropdownMenuItem>GitHub</DropdownMenuItem>
+              </DropdownMenuGroup>
             </DropdownMenuContent>
           </DropdownMenu>
         </BreadcrumbItem>
         <BreadcrumbSeparator>
-          <SlashIcon />
+          <DotIcon />
         </BreadcrumbSeparator>
         <BreadcrumbItem>
           <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
-  );
+  )
 }

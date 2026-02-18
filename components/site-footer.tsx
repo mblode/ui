@@ -6,12 +6,12 @@ export function SiteFooter() {
           Brought to you by{" "}
           <a
             className="font-medium underline underline-offset-4"
-            href="https://blode.co"
+            href="https://matthewblode.com"
             rel="noreferrer"
             target="_blank"
-            title="Fingertip"
+            title="Blode UI"
           >
-            blode.co
+            Matthew Blode
           </a>
           .
         </p>

@@ -1,29 +1,29 @@
-"use client";
+"use client"
 
-import {
-  CheckIcon,
-  CircleInfoIcon,
-  CopyIcon,
-  StarIcon,
-} from "blode-icons-react";
-import { useState } from "react";
-
-import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
+import * as React from "react"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/registry/default/ui/input-group";
+} from "@/registry/default/ui/input-group"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/registry/default/ui/popover";
+} from "@/registry/default/ui/popover"
+import {
+  CheckIcon,
+  CopyIcon,
+  InfoIcon,
+  StarIcon,
+} from "blode-icons-react"
+
+import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
 
 export default function InputGroupButtonExample() {
-  const { copyToClipboard, isCopied } = useCopyToClipboard();
-  const [isFavorite, setIsFavorite] = useState(false);
+  const { copyToClipboard, isCopied } = useCopyToClipboard()
+  const [isFavorite, setIsFavorite] = React.useState(false)
 
   return (
     <div className="grid w-full max-w-sm gap-6">
@@ -32,11 +32,11 @@ export default function InputGroupButtonExample() {
         <InputGroupAddon align="inline-end">
           <InputGroupButton
             aria-label="Copy"
-            onClick={() => {
-              copyToClipboard("https://x.com/shadcn");
-            }}
-            size="icon-xs"
             title="Copy"
+            size="icon-xs"
+            onClick={() => {
+              copyToClipboard("https://x.com/shadcn")
+            }}
           >
             {isCopied ? <CheckIcon /> : <CopyIcon />}
           </InputGroupButton>
@@ -44,12 +44,10 @@ export default function InputGroupButtonExample() {
       </InputGroup>
       <InputGroup className="[--radius:9999px]">
         <Popover>
-          <PopoverTrigger asChild>
-            <InputGroupAddon>
-              <InputGroupButton size="icon-xs" variant="secondary">
-                <CircleInfoIcon />
-              </InputGroupButton>
-            </InputGroupAddon>
+          <PopoverTrigger render={<InputGroupAddon />}>
+            <InputGroupButton variant="secondary" size="icon-xs">
+              <InfoIcon />
+            </InputGroupButton>
           </PopoverTrigger>
           <PopoverContent
             align="start"
@@ -59,7 +57,7 @@ export default function InputGroupButtonExample() {
             <p>You should not enter any sensitive information on this site.</p>
           </PopoverContent>
         </Popover>
-        <InputGroupAddon className="pl-1.5 text-muted-foreground">
+        <InputGroupAddon className="text-muted-foreground pl-1.5">
           https://
         </InputGroupAddon>
         <InputGroupInput id="input-secure-19" />
@@ -69,8 +67,8 @@ export default function InputGroupButtonExample() {
             size="icon-xs"
           >
             <StarIcon
-              className="data-[favorite=true]:fill-blue-600 data-[favorite=true]:stroke-blue-600"
               data-favorite={isFavorite}
+              className="data-[favorite=true]:fill-blue-600 data-[favorite=true]:stroke-blue-600"
             />
           </InputGroupButton>
         </InputGroupAddon>
@@ -82,5 +80,5 @@ export default function InputGroupButtonExample() {
         </InputGroupAddon>
       </InputGroup>
     </div>
-  );
+  )
 }

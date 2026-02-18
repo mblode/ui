@@ -1,22 +1,30 @@
-"use client";
+import { Checkbox } from "@/registry/default/ui/checkbox"
+import {
+  Field,
+  FieldContent,
+  FieldDescription,
+  FieldGroup,
+  FieldLabel,
+} from "@/registry/default/ui/field"
 
-import { Checkbox } from "@/registry/default/ui/checkbox";
-
-export default function CheckboxWithText() {
+export function CheckboxDescription() {
   return (
-    <div className="items-top flex gap-2">
-      <Checkbox id="terms1" />
-      <div className="grid gap-1.5 leading-none">
-        <label
-          className="font-medium text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-          htmlFor="terms1"
-        >
-          Accept terms and conditions
-        </label>
-        <p className="text-muted-foreground text-sm">
-          You agree to our Terms of Service and Privacy Policy.
-        </p>
-      </div>
-    </div>
-  );
+    <FieldGroup className="mx-auto w-72">
+      <Field orientation="horizontal">
+        <Checkbox
+          id="terms-checkbox-desc"
+          name="terms-checkbox-desc"
+          defaultChecked
+        />
+        <FieldContent>
+          <FieldLabel htmlFor="terms-checkbox-desc">
+            Accept terms and conditions
+          </FieldLabel>
+          <FieldDescription>
+            By clicking this checkbox, you agree to the terms and conditions.
+          </FieldDescription>
+        </FieldContent>
+      </Field>
+    </FieldGroup>
+  )
 }

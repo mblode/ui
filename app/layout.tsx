@@ -24,8 +24,11 @@ import type { Metadata, Viewport } from "next";
 
 export const metadata: Metadata = constructMetadata({
   title: "Blode UI",
-  description: "blode.co's UI components.",
-  image: absoluteUrl("/og"),
+  description: "Blode UI components.",
+  image: absoluteUrl("/opengraph-image"),
+  appleWebApp: {
+    title: "Blode UI",
+  },
 });
 
 export const viewport: Viewport = {

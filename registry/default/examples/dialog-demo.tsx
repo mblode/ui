@@ -1,4 +1,4 @@
-import { Button } from "@/registry/default/ui/button";
+import { Button } from "@/registry/default/ui/button"
 import {
   Dialog,
   DialogClose,
@@ -8,18 +8,19 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/registry/default/ui/dialog";
-import { Input } from "@/registry/default/ui/input";
-import { Label } from "@/registry/default/ui/label";
+} from "@/registry/default/ui/dialog"
+import { Field, FieldGroup } from "@/registry/default/ui/field"
+import { Input } from "@/registry/default/ui/input"
+import { Label } from "@/registry/default/ui/label"
 
-export default function DialogDemo() {
+export function DialogDemo() {
   return (
     <Dialog>
       <form>
-        <DialogTrigger asChild>
-          <Button variant="outline">Open Dialog</Button>
+        <DialogTrigger render={<Button variant="outline" />}>
+          Open Dialog
         </DialogTrigger>
-        <DialogContent className="sm:max-w-[425px]">
+        <DialogContent className="sm:max-w-sm">
           <DialogHeader>
             <DialogTitle>Edit profile</DialogTitle>
             <DialogDescription>
@@ -27,24 +28,24 @@ export default function DialogDemo() {
               done.
             </DialogDescription>
           </DialogHeader>
-          <div className="grid gap-4">
-            <div className="grid gap-3">
+          <FieldGroup>
+            <Field>
               <Label htmlFor="name-1">Name</Label>
-              <Input defaultValue="Pedro Duarte" id="name-1" name="name" />
-            </div>
-            <div className="grid gap-3">
+              <Input id="name-1" name="name" defaultValue="Pedro Duarte" />
+            </Field>
+            <Field>
               <Label htmlFor="username-1">Username</Label>
-              <Input defaultValue="@peduarte" id="username-1" name="username" />
-            </div>
-          </div>
+              <Input id="username-1" name="username" defaultValue="@peduarte" />
+            </Field>
+          </FieldGroup>
           <DialogFooter>
-            <DialogClose asChild>
-              <Button variant="outline">Cancel</Button>
+            <DialogClose render={<Button variant="outline" />}>
+              Cancel
             </DialogClose>
             <Button type="submit">Save changes</Button>
           </DialogFooter>
         </DialogContent>
       </form>
     </Dialog>
-  );
+  )
 }

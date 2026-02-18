@@ -1,15 +1,19 @@
-import { Checkbox } from "@/registry/default/ui/checkbox";
+import { Checkbox } from "@/registry/default/ui/checkbox"
+import { Field, FieldGroup, FieldLabel } from "@/registry/default/ui/field"
 
-export default function CheckboxDisabled() {
+export function CheckboxDisabled() {
   return (
-    <div className="flex items-center space-x-2">
-      <Checkbox disabled id="terms2" />
-      <label
-        className="font-medium text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-        htmlFor="terms2"
-      >
-        Accept terms and conditions
-      </label>
-    </div>
-  );
+    <FieldGroup className="mx-auto w-56">
+      <Field orientation="horizontal" data-disabled>
+        <Checkbox
+          id="toggle-checkbox-disabled"
+          name="toggle-checkbox-disabled"
+          disabled
+        />
+        <FieldLabel htmlFor="toggle-checkbox-disabled">
+          Enable notifications
+        </FieldLabel>
+      </Field>
+    </FieldGroup>
+  )
 }

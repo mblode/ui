@@ -1,19 +1,19 @@
-import { Button } from "@/registry/default/ui/button";
+import { Button } from "@/registry/default/ui/button"
 import {
   ButtonGroup,
   ButtonGroupSeparator,
-} from "@/registry/default/ui/button-group";
+} from "@/registry/default/ui/button-group"
 
 export default function ButtonGroupSeparatorDemo() {
   return (
     <ButtonGroup>
-      <Button size="sm" variant="secondary">
+      <Button variant="secondary" size="sm">
         Copy
       </Button>
       <ButtonGroupSeparator />
-      <Button size="sm" variant="secondary">
+      <Button variant="secondary" size="sm">
         Paste
       </Button>
     </ButtonGroup>
-  );
+  )
 }

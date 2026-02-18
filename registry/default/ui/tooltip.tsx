@@ -65,7 +65,7 @@ const TooltipContent = React.forwardRef<
       asChild = false,
       className,
       side = "top",
-      sideOffset = 0,
+      sideOffset = 6,
       align = "center",
       alignOffset = 0,
       children,
@@ -89,7 +89,7 @@ const TooltipContent = React.forwardRef<
         >
           <TooltipPrimitive.Popup
             className={cn(
-              "fade-in-0 zoom-in-95 data-closed:fade-out-0 data-closed:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-110 animate-in rounded-xl bg-gray-900 px-3 py-2 font-normal font-sans text-sm text-white shadow-soft ring-1 ring-gray-700 data-closed:animate-out",
+              "relative z-110 origin-(--transform-origin) rounded-xl bg-gray-900 px-3 py-2 font-normal font-sans text-sm text-white shadow-soft ring-1 ring-gray-700 data-closed:scale-95 data-open:scale-100 data-closed:opacity-0 data-open:opacity-100 motion-safe:transition-[opacity,scale] motion-safe:duration-150 motion-safe:ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none motion-reduce:data-closed:scale-100 motion-reduce:data-open:scale-100",
               className
             )}
             ref={ref}
@@ -97,7 +97,7 @@ const TooltipContent = React.forwardRef<
             {...props}
           >
             {asChild ? null : children}
-            <TooltipPrimitive.Arrow className="size-2.5 -translate-y-1/2 -rotate-45 rounded-bl-[3px] border border-gray-700 bg-gray-900 [clip-path:polygon(0_100%,0_0,100%_100%)]" />
+            <TooltipPrimitive.Arrow className="pointer-events-none absolute size-2.5 rotate-45 rounded-[2px] bg-gray-900 ring-1 ring-gray-700 data-[side=bottom]:top-0 data-[side=left]:right-0 data-[side=top]:bottom-0 data-[side=right]:left-0 data-[side=left]:translate-x-1/2 data-[side=right]:-translate-x-1/2 data-[side=bottom]:-translate-y-1/2 data-[side=top]:translate-y-1/2" />
           </TooltipPrimitive.Popup>
         </TooltipPrimitive.Positioner>
       </TooltipPrimitive.Portal>

@@ -1,19 +1,15 @@
-import { AlertCircleIcon } from "blode-icons-react";
-
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from "@/registry/default/ui/alert";
+import { Alert, AlertDescription, AlertTitle } from "@/registry/default/ui/alert"
+import { AlertCircleIcon } from "blode-icons-react"
 
 export default function AlertDestructive() {
   return (
-    <Alert variant="destructive">
+    <Alert variant="destructive" className="max-w-md">
       <AlertCircleIcon />
-      <AlertTitle>Error</AlertTitle>
+      <AlertTitle>Payment failed</AlertTitle>
       <AlertDescription>
-        Your session has expired. Please log in again.
+        Your payment could not be processed. Please check your payment method
+        and try again.
       </AlertDescription>
     </Alert>
-  );
+  )
 }

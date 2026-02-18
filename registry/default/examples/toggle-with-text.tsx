@@ -1,12 +1,11 @@
-import { Italic } from "blode-icons-react";
+import { Toggle } from "@/registry/default/ui/toggle"
+import { ItalicIcon } from "blode-icons-react"
 
-import { Toggle } from "@/registry/default/ui/toggle";
-
-export default function ToggleWithText() {
+export function ToggleText() {
   return (
     <Toggle aria-label="Toggle italic">
-      <Italic />
+      <ItalicIcon />
       Italic
     </Toggle>
-  );
+  )
 }

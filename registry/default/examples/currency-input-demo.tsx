@@ -6,55 +6,71 @@ import { CurrencyInput } from "@/registry/default/ui/currency-input";
 import { Label } from "@/registry/default/ui/label";
 
 export default function CurrencyInputDemo() {
-  const [value, setValue] = useState<string | undefined>("1234.56");
-
-  const handleValueChange = (value: string | undefined) => {
-    setValue(value);
-  };
+  const [monthlyPrice, setMonthlyPrice] = useState<string | undefined>("29.00");
+  const [credit, setCredit] = useState<string | undefined>("100.00");
 
   return (
-    <div className="grid w-full gap-6">
-      <div className="flex flex-col space-y-2">
-        <Label htmlFor="amount">Amount</Label>
+    <div className="grid w-full max-w-md gap-6">
+      <div className="space-y-1">
+        <p className="font-medium text-sm">Billing settings</p>
+        <p className="text-muted-foreground text-sm">
+          Configure workspace pricing and account credits.
+        </p>
+      </div>
+
+      <div className="space-y-2">
+        <Label htmlFor="monthly-price">Monthly price</Label>
         <CurrencyInput
           decimalSeparator="."
           decimalsLimit={2}
           groupSeparator=","
-          id="amount"
-          name="amount"
-          onValueChange={handleValueChange}
-          placeholder="Enter an amount"
+          id="monthly-price"
+          name="monthlyPrice"
+          onValueChange={(value) => setMonthlyPrice(value)}
+          placeholder="Enter monthly price"
           prefix="$"
-          value={value}
+          value={monthlyPrice}
         />
+        <p className="text-muted-foreground text-sm">
+          Charged once per workspace each month.
+        </p>
       </div>
-      <div className="flex flex-col space-y-2">
-        <Label htmlFor="customized">Customized</Label>
+
+      <div className="space-y-2">
+        <Label htmlFor="eu-price">EU price</Label>
         <CurrencyInput
           decimalSeparator=","
           decimalsLimit={2}
           groupSeparator="."
-          id="customized"
-          name="customized"
-          placeholder="Enter an amount (€)"
+          id="eu-price"
+          name="euPrice"
+          placeholder="Enter EU price"
           prefix="€"
           suffix=" EUR"
         />
+        <p className="text-muted-foreground text-sm">
+          Optional localized price for EU customers.
+        </p>
       </div>
-      <div className="flex flex-col space-y-2">
-        <Label htmlFor="clearable">Clearable</Label>
+
+      <div className="space-y-2">
+        <Label htmlFor="account-credit">Account credit</Label>
         <CurrencyInput
           clearable
           decimalSeparator="."
           decimalsLimit={2}
-          defaultValue="100.00"
           groupSeparator=","
-          id="clearable"
-          name="clearable"
-          onClear={() => setValue(undefined)}
-          placeholder="Enter an amount"
+          id="account-credit"
+          name="accountCredit"
+          onClear={() => setCredit(undefined)}
+          onValueChange={(value) => setCredit(value)}
+          placeholder="Enter credit amount"
           prefix="$"
+          value={credit}
         />
+        <p className="text-muted-foreground text-sm">
+          Use credits for support reimbursements or promo adjustments.
+        </p>
       </div>
     </div>
   );

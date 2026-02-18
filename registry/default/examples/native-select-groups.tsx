@@ -2,7 +2,7 @@ import {
   NativeSelect,
   NativeSelectOptGroup,
   NativeSelectOption,
-} from "@/registry/default/ui/native-select";
+} from "@/registry/default/ui/native-select"
 
 export default function NativeSelectGroups() {
   return (
@@ -34,5 +34,5 @@ export default function NativeSelectGroups() {
         </NativeSelectOption>
       </NativeSelectOptGroup>
     </NativeSelect>
-  );
+  )
 }

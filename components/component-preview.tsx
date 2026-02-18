@@ -9,12 +9,14 @@ import { Button } from "@/registry/default/ui/button";
 import { Spinner } from "@/registry/default/ui/spinner";
 import { styles } from "@/registry/registry-styles";
 
-interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
+interface ComponentPreviewProps
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, "preview"> {
   align?: "center" | "start" | "end";
   chromeLessOnMobile?: boolean;
   description?: string;
   hideCode?: boolean;
   name: string;
+  preview?: boolean;
   previewClassName?: string;
   type?: "block" | "component" | "example";
 }
@@ -32,8 +34,9 @@ export function ComponentPreview({
   description,
   hideCode = false,
   previewClassName,
+  preview: _preview,
   chromeLessOnMobile = false,
-  ...props
+  ...divProps
 }: ComponentPreviewProps) {
   const [config, setConfig] = useConfig();
   const [isMobileCodeVisible, setIsMobileCodeVisible] = React.useState(false);
@@ -123,7 +126,7 @@ export function ComponentPreview({
         className
       )}
       data-slot="component-preview"
-      {...props}
+      {...divProps}
     >
       <div data-slot="preview" dir="ltr">
         <div

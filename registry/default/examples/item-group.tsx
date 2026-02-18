@@ -1,12 +1,6 @@
-import { PlusIcon } from "blode-icons-react";
-import { Fragment } from "react";
-
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/registry/default/ui/avatar";
-import { Button } from "@/registry/default/ui/button";
+import * as React from "react"
+import { Avatar, AvatarFallback, AvatarImage } from "@/registry/default/ui/avatar"
+import { Button } from "@/registry/default/ui/button"
 import {
   Item,
   ItemActions,
@@ -16,7 +10,8 @@ import {
   ItemMedia,
   ItemSeparator,
   ItemTitle,
-} from "@/registry/default/ui/item";
+} from "@/registry/default/ui/item"
+import { PlusIcon } from "blode-icons-react"
 
 const people = [
   {
@@ -34,35 +29,30 @@ const people = [
     avatar: "https://github.com/evilrabbit.png",
     email: "evilrabbit@vercel.com",
   },
-];
+]
 
-export default function ItemGroupExample() {
+export function ItemGroupExample() {
   return (
-    <div className="flex w-full max-w-md flex-col gap-6">
-      <ItemGroup>
-        {people.map((person, index) => (
-          <Fragment key={person.username}>
-            <Item>
-              <ItemMedia>
-                <Avatar>
-                  <AvatarImage className="grayscale" src={person.avatar} />
-                  <AvatarFallback>{person.username.charAt(0)}</AvatarFallback>
-                </Avatar>
-              </ItemMedia>
-              <ItemContent className="gap-1">
-                <ItemTitle>{person.username}</ItemTitle>
-                <ItemDescription>{person.email}</ItemDescription>
-              </ItemContent>
-              <ItemActions>
-                <Button className="rounded-full" size="icon" variant="ghost">
-                  <PlusIcon />
-                </Button>
-              </ItemActions>
-            </Item>
-            {index !== people.length - 1 && <ItemSeparator />}
-          </Fragment>
-        ))}
-      </ItemGroup>
-    </div>
-  );
+    <ItemGroup className="max-w-sm">
+      {people.map((person, index) => (
+        <Item key={person.username} variant="outline">
+          <ItemMedia>
+            <Avatar>
+              <AvatarImage src={person.avatar} className="grayscale" />
+              <AvatarFallback>{person.username.charAt(0)}</AvatarFallback>
+            </Avatar>
+          </ItemMedia>
+          <ItemContent className="gap-1">
+            <ItemTitle>{person.username}</ItemTitle>
+            <ItemDescription>{person.email}</ItemDescription>
+          </ItemContent>
+          <ItemActions>
+            <Button variant="ghost" size="icon" className="rounded-full">
+              <PlusIcon />
+            </Button>
+          </ItemActions>
+        </Item>
+      ))}
+    </ItemGroup>
+  )
 }

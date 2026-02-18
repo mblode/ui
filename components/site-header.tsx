@@ -1,4 +1,3 @@
-import { LogoStandaloneIcon } from "blode-icons-react";
 import Link from "next/link";
 import { CommandMenu } from "@/components/command-menu";
 import { GitHubLink } from "@/components/github-link";
@@ -17,14 +16,11 @@ export function SiteHeader() {
           <MobileNav className="flex lg:hidden" items={siteConfig.navItems} />
           <Button
             asChild
-            className="hidden size-8 lg:flex"
-            size="icon"
+            className="hidden h-8 px-2 font-semibold tracking-tight lg:flex"
+            size="sm"
             variant="ghost"
           >
-            <Link href="/">
-              <LogoStandaloneIcon className="size-5" />
-              <span className="sr-only">{siteConfig.name}</span>
-            </Link>
+            <Link href="/">{siteConfig.name}</Link>
           </Button>
           <MainNav className="hidden lg:flex" items={siteConfig.navItems} />
           <div className="ml-auto flex items-center gap-2 md:flex-1 md:justify-end">

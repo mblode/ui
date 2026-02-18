@@ -1,5 +1,4 @@
-import Link from "next/link";
-
+import Link from "next/link"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -7,21 +6,21 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/registry/default/ui/breadcrumb";
+} from "@/registry/default/ui/breadcrumb"
 
-export default function BreadcrumbWithCustomSeparator() {
+export function BreadcrumbLinkDemo() {
   return (
     <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink asChild>
-            <Link href="/">Home</Link>
+            <Link href="#link-component">Home</Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
           <BreadcrumbLink asChild>
-            <Link href="/components">Components</Link>
+            <Link href="#link-component">Components</Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
@@ -30,5 +29,5 @@ export default function BreadcrumbWithCustomSeparator() {
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
-  );
+  )
 }

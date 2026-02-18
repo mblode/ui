@@ -1,19 +1,19 @@
-import { Kbd, KbdGroup } from "@/registry/default/ui/kbd";
+import { Kbd, KbdGroup } from "@/registry/default/ui/kbd"
 
 export default function KbdDemo() {
   return (
     <div className="flex flex-col items-center gap-4">
       <KbdGroup>
-        <Kbd icon="command" />
-        <Kbd icon="shift" />
-        <Kbd icon="alt" />
-        <Kbd icon="ctrl" />
+        <Kbd>⌘</Kbd>
+        <Kbd>⇧</Kbd>
+        <Kbd>⌥</Kbd>
+        <Kbd>⌃</Kbd>
       </KbdGroup>
       <KbdGroup>
-        <Kbd icon="ctrl" />
+        <Kbd>Ctrl</Kbd>
         <span>+</span>
         <Kbd>B</Kbd>
       </KbdGroup>
     </div>
-  );
+  )
 }

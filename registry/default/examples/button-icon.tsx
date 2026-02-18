@@ -1,11 +1,10 @@
-import { CircleFadingArrowUpIcon } from "blode-icons-react";
-
-import { Button } from "@/registry/default/ui/button";
+import { Button } from "@/registry/default/ui/button"
+import { CircleFadingArrowUpIcon } from "blode-icons-react"
 
 export default function ButtonIcon() {
   return (
-    <Button size="icon" variant="outline">
+    <Button variant="outline" size="icon">
       <CircleFadingArrowUpIcon />
     </Button>
-  );
+  )
 }

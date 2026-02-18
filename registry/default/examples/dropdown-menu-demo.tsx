@@ -1,4 +1,6 @@
-import { Button } from "@/registry/default/ui/button";
+"use client"
+
+import { Button } from "@/registry/default/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,17 +14,17 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/registry/default/ui/dropdown-menu";
+} from "@/registry/default/ui/dropdown-menu"
 
-export default function DropdownMenuDemo() {
+export function DropdownMenuDemo() {
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline">Open</Button>
+      <DropdownMenuTrigger render={<Button variant="outline" />}>
+        Open
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="start" className="w-56">
-        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+      <DropdownMenuContent className="w-40" align="start">
         <DropdownMenuGroup>
+          <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuItem>
             Profile
             <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
@@ -34,10 +36,6 @@ export default function DropdownMenuDemo() {
           <DropdownMenuItem>
             Settings
             <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            Keyboard shortcuts
-            <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
@@ -60,15 +58,19 @@ export default function DropdownMenuDemo() {
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>GitHub</DropdownMenuItem>
-        <DropdownMenuItem>Support</DropdownMenuItem>
-        <DropdownMenuItem disabled>API</DropdownMenuItem>
+        <DropdownMenuGroup>
+          <DropdownMenuItem>GitHub</DropdownMenuItem>
+          <DropdownMenuItem>Support</DropdownMenuItem>
+          <DropdownMenuItem disabled>API</DropdownMenuItem>
+        </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          Log out
-          <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
-        </DropdownMenuItem>
+        <DropdownMenuGroup>
+          <DropdownMenuItem>
+            Log out
+            <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
-  );
+  )
 }

@@ -7,7 +7,7 @@ import { lib } from "@/registry/default/lib/_registry";
 import { ui } from "@/registry/default/ui/_registry";
 
 export const registry = {
-  name: "fingertip/ui",
+  name: "blode/ui",
   homepage: "https://ui.blode.co",
   items: [
     ...ui,

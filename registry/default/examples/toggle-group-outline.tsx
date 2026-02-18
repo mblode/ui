@@ -1,22 +1,14 @@
-import { Bold, Italic, Underline } from "blode-icons-react";
+import { ToggleGroup, ToggleGroupItem } from "@/registry/default/ui/toggle-group"
 
-import {
-  ToggleGroup,
-  ToggleGroupItem,
-} from "@/registry/default/ui/toggle-group";
-
-export default function ToggleGroupDemo() {
+export function ToggleGroupOutline() {
   return (
-    <ToggleGroup type="multiple" variant="outline">
-      <ToggleGroupItem aria-label="Toggle bold" value="bold">
-        <Bold className="h-4 w-4" />
+    <ToggleGroup variant="outline" defaultValue={["all"]}>
+      <ToggleGroupItem value="all" aria-label="Toggle all">
+        All
       </ToggleGroupItem>
-      <ToggleGroupItem aria-label="Toggle italic" value="italic">
-        <Italic className="h-4 w-4" />
-      </ToggleGroupItem>
-      <ToggleGroupItem aria-label="Toggle strikethrough" value="strikethrough">
-        <Underline className="h-4 w-4" />
+      <ToggleGroupItem value="missed" aria-label="Toggle missed">
+        Missed
       </ToggleGroupItem>
     </ToggleGroup>
-  );
+  )
 }

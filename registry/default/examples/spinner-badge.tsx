@@ -1,21 +1,21 @@
-import { Badge } from "@/registry/default/ui/badge";
-import { Spinner } from "@/registry/default/ui/spinner";
+import { Badge } from "@/registry/default/ui/badge"
+import { Spinner } from "@/registry/default/ui/spinner"
 
-export default function SpinnerBadge() {
+export function SpinnerBadge() {
   return (
     <div className="flex items-center gap-4 [--radius:1.2rem]">
       <Badge>
-        <Spinner size={16} />
+        <Spinner data-icon="inline-start" />
         Syncing
       </Badge>
       <Badge variant="secondary">
-        <Spinner size={16} />
+        <Spinner data-icon="inline-start" />
         Updating
       </Badge>
       <Badge variant="outline">
-        <Spinner size={16} />
+        <Spinner data-icon="inline-start" />
         Processing
       </Badge>
     </div>
-  );
+  )
 }

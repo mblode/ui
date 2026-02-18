@@ -1,35 +1,35 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-
-import { Button } from "@/registry/default/ui/button";
+import * as React from "react"
+import { Button } from "@/registry/default/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuLabel,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/registry/default/ui/dropdown-menu";
+} from "@/registry/default/ui/dropdown-menu"
 
-export default function DropdownMenuRadioGroupDemo() {
-  const [position, setPosition] = useState("bottom");
+export function DropdownMenuRadioGroupDemo() {
+  const [position, setPosition] = React.useState("bottom")
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline">Open</Button>
+      <DropdownMenuTrigger render={<Button variant="outline" />}>
+        Open
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56">
-        <DropdownMenuLabel>Panel Position</DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        <DropdownMenuRadioGroup onValueChange={setPosition} value={position}>
-          <DropdownMenuRadioItem value="top">Top</DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="bottom">Bottom</DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="right">Right</DropdownMenuRadioItem>
-        </DropdownMenuRadioGroup>
+      <DropdownMenuContent className="w-32">
+        <DropdownMenuGroup>
+          <DropdownMenuLabel>Panel Position</DropdownMenuLabel>
+          <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
+            <DropdownMenuRadioItem value="top">Top</DropdownMenuRadioItem>
+            <DropdownMenuRadioItem value="bottom">Bottom</DropdownMenuRadioItem>
+            <DropdownMenuRadioItem value="right">Right</DropdownMenuRadioItem>
+          </DropdownMenuRadioGroup>
+        </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
-  );
+  )
 }

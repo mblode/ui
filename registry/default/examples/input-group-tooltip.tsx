@@ -1,16 +1,15 @@
-import { HelpCircle, InfoIcon } from "blode-icons-react";
-
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
-} from "@/registry/default/ui/input-group";
+} from "@/registry/default/ui/input-group"
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/registry/default/ui/tooltip";
+} from "@/registry/default/ui/tooltip"
+import { HelpCircle, InfoIcon } from "blode-icons-react"
 
 export default function InputGroupTooltip() {
   return (
@@ -19,14 +18,16 @@ export default function InputGroupTooltip() {
         <InputGroupInput placeholder="Enter password" type="password" />
         <InputGroupAddon align="inline-end">
           <Tooltip>
-            <TooltipTrigger asChild>
-              <InputGroupButton
-                aria-label="Info"
-                size="icon-xs"
-                variant="ghost"
-              >
-                <InfoIcon />
-              </InputGroupButton>
+            <TooltipTrigger
+              render={
+                <InputGroupButton
+                  variant="ghost"
+                  aria-label="Info"
+                  size="icon-xs"
+                />
+              }
+            >
+              <InfoIcon />
             </TooltipTrigger>
             <TooltipContent>
               <p>Password must be at least 8 characters</p>
@@ -38,14 +39,16 @@ export default function InputGroupTooltip() {
         <InputGroupInput placeholder="Your email address" />
         <InputGroupAddon align="inline-end">
           <Tooltip>
-            <TooltipTrigger asChild>
-              <InputGroupButton
-                aria-label="Help"
-                size="icon-xs"
-                variant="ghost"
-              >
-                <HelpCircle />
-              </InputGroupButton>
+            <TooltipTrigger
+              render={
+                <InputGroupButton
+                  variant="ghost"
+                  aria-label="Help"
+                  size="icon-xs"
+                />
+              }
+            >
+              <HelpCircle />
             </TooltipTrigger>
             <TooltipContent>
               <p>We&apos;ll use this to send you notifications</p>
@@ -56,16 +59,10 @@ export default function InputGroupTooltip() {
       <InputGroup>
         <InputGroupInput placeholder="Enter API key" />
         <Tooltip>
-          <TooltipTrigger asChild>
-            <InputGroupAddon>
-              <InputGroupButton
-                aria-label="Help"
-                size="icon-xs"
-                variant="ghost"
-              >
-                <HelpCircle />
-              </InputGroupButton>
-            </InputGroupAddon>
+          <TooltipTrigger render={<InputGroupAddon />}>
+            <InputGroupButton variant="ghost" aria-label="Help" size="icon-xs">
+              <HelpCircle />
+            </InputGroupButton>
           </TooltipTrigger>
           <TooltipContent side="left">
             <p>Click for help with API keys</p>
@@ -73,5 +70,5 @@ export default function InputGroupTooltip() {
         </Tooltip>
       </InputGroup>
     </div>
-  );
+  )
 }

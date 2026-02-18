@@ -1,22 +1,36 @@
-import { Bold, Italic, Underline } from "blode-icons-react";
+import { ToggleGroup, ToggleGroupItem } from "@/registry/default/ui/toggle-group"
 
-import {
-  ToggleGroup,
-  ToggleGroupItem,
-} from "@/registry/default/ui/toggle-group";
-
-export default function ToggleGroupDemo() {
+export function ToggleGroupSizes() {
   return (
-    <ToggleGroup size="lg" type="multiple">
-      <ToggleGroupItem aria-label="Toggle bold" value="bold">
-        <Bold className="h-4 w-4" />
-      </ToggleGroupItem>
-      <ToggleGroupItem aria-label="Toggle italic" value="italic">
-        <Italic className="h-4 w-4" />
-      </ToggleGroupItem>
-      <ToggleGroupItem aria-label="Toggle strikethrough" value="strikethrough">
-        <Underline className="h-4 w-4" />
-      </ToggleGroupItem>
-    </ToggleGroup>
-  );
+    <div className="flex flex-col gap-4">
+      <ToggleGroup size="sm" defaultValue={["top"]} variant="outline">
+        <ToggleGroupItem value="top" aria-label="Toggle top">
+          Top
+        </ToggleGroupItem>
+        <ToggleGroupItem value="bottom" aria-label="Toggle bottom">
+          Bottom
+        </ToggleGroupItem>
+        <ToggleGroupItem value="left" aria-label="Toggle left">
+          Left
+        </ToggleGroupItem>
+        <ToggleGroupItem value="right" aria-label="Toggle right">
+          Right
+        </ToggleGroupItem>
+      </ToggleGroup>
+      <ToggleGroup defaultValue={["top"]} variant="outline">
+        <ToggleGroupItem value="top" aria-label="Toggle top">
+          Top
+        </ToggleGroupItem>
+        <ToggleGroupItem value="bottom" aria-label="Toggle bottom">
+          Bottom
+        </ToggleGroupItem>
+        <ToggleGroupItem value="left" aria-label="Toggle left">
+          Left
+        </ToggleGroupItem>
+        <ToggleGroupItem value="right" aria-label="Toggle right">
+          Right
+        </ToggleGroupItem>
+      </ToggleGroup>
+    </div>
+  )
 }

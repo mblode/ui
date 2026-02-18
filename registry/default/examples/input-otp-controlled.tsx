@@ -1,22 +1,21 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-
+import * as React from "react"
 import {
   InputOTP,
   InputOTPGroup,
   InputOTPSlot,
-} from "@/registry/default/ui/input-otp";
+} from "@/registry/default/ui/input-otp"
 
 export default function InputOTPControlled() {
-  const [value, setValue] = useState("");
+  const [value, setValue] = React.useState("")
 
   return (
     <div className="space-y-2">
       <InputOTP
         maxLength={6}
-        onChange={(value) => setValue(value)}
         value={value}
+        onChange={(value) => setValue(value)}
       >
         <InputOTPGroup>
           <InputOTPSlot index={0} />
@@ -35,5 +34,5 @@ export default function InputOTPControlled() {
         )}
       </div>
     </div>
-  );
+  )
 }

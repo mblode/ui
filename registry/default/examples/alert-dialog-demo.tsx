@@ -8,21 +8,21 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/registry/default/ui/alert-dialog";
-import { Button } from "@/registry/default/ui/button";
+} from "@/registry/default/ui/alert-dialog"
+import { Button } from "@/registry/default/ui/button"
 
 export default function AlertDialogDemo() {
   return (
     <AlertDialog>
-      <AlertDialogTrigger asChild>
-        <Button variant="outline">Show Dialog</Button>
+      <AlertDialogTrigger render={<Button variant="outline" />}>
+        Show Dialog
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
           <AlertDialogDescription>
             This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
+            account from our servers.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
@@ -31,5 +31,5 @@ export default function AlertDialogDemo() {
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
-  );
+  )
 }

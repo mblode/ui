@@ -1,4 +1,4 @@
-import { Button } from "@/registry/default/ui/button";
+import { Button } from "@/registry/default/ui/button"
 import {
   Empty,
   EmptyContent,
@@ -6,10 +6,10 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/registry/default/ui/empty";
-import { Spinner } from "@/registry/default/ui/spinner";
+} from "@/registry/default/ui/empty"
+import { Spinner } from "@/registry/default/ui/spinner"
 
-export default function SpinnerEmpty() {
+export function SpinnerEmpty() {
   return (
     <Empty className="w-full">
       <EmptyHeader>
@@ -22,10 +22,10 @@ export default function SpinnerEmpty() {
         </EmptyDescription>
       </EmptyHeader>
       <EmptyContent>
-        <Button size="sm" variant="outline">
+        <Button variant="outline" size="sm">
           Cancel
         </Button>
       </EmptyContent>
     </Empty>
-  );
+  )
 }

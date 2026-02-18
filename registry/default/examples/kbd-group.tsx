@@ -1,4 +1,4 @@
-import { Kbd, KbdGroup } from "@/registry/default/ui/kbd";
+import { Kbd, KbdGroup } from "@/registry/default/ui/kbd"
 
 export default function KbdGroupExample() {
   return (
@@ -12,5 +12,5 @@ export default function KbdGroupExample() {
         to open the command palette
       </p>
     </div>
-  );
+  )
 }

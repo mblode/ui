@@ -1,11 +1,12 @@
-import { Input } from "@/registry/default/ui/input";
-import { Label } from "@/registry/default/ui/label";
+import { Field, FieldDescription, FieldLabel } from "@/registry/default/ui/field"
+import { Input } from "@/registry/default/ui/input"
 
-export default function InputFile() {
+export function InputFile() {
   return (
-    <div className="grid w-full max-w-sm items-center gap-3">
-      <Label htmlFor="picture">Picture</Label>
+    <Field>
+      <FieldLabel htmlFor="picture">Picture</FieldLabel>
       <Input id="picture" type="file" />
-    </div>
-  );
+      <FieldDescription>Select a picture to upload.</FieldDescription>
+    </Field>
+  )
 }

@@ -1,13 +1,16 @@
-import { Skeleton } from "@/registry/default/ui/skeleton";
+import { Card, CardContent, CardHeader } from "@/registry/default/ui/card"
+import { Skeleton } from "@/registry/default/ui/skeleton"
 
-export default function SkeletonCard() {
+export function SkeletonCard() {
   return (
-    <div className="flex flex-col space-y-3">
-      <Skeleton className="h-[125px] w-[250px] rounded-xl" />
-      <div className="space-y-2">
-        <Skeleton className="h-4 w-[250px]" />
-        <Skeleton className="h-4 w-[200px]" />
-      </div>
-    </div>
-  );
+    <Card className="w-full max-w-xs">
+      <CardHeader>
+        <Skeleton className="h-4 w-2/3" />
+        <Skeleton className="h-4 w-1/2" />
+      </CardHeader>
+      <CardContent>
+        <Skeleton className="aspect-video w-full" />
+      </CardContent>
+    </Card>
+  )
 }

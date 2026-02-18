@@ -1,22 +1,21 @@
-import { PlusIcon } from "blode-icons-react";
-
-import { Button } from "@/registry/default/ui/button";
-import { ButtonGroup } from "@/registry/default/ui/button-group";
+import { Button } from "@/registry/default/ui/button"
+import { ButtonGroup } from "@/registry/default/ui/button-group"
+import { PlusIcon } from "blode-icons-react"
 
 export default function ButtonGroupSize() {
   return (
     <div className="flex flex-col items-start gap-8">
       <ButtonGroup>
-        <Button size="sm" variant="outline">
+        <Button variant="outline" size="sm">
           Small
         </Button>
-        <Button size="sm" variant="outline">
+        <Button variant="outline" size="sm">
           Button
         </Button>
-        <Button size="sm" variant="outline">
+        <Button variant="outline" size="sm">
           Group
         </Button>
-        <Button size="icon-sm" variant="outline">
+        <Button variant="outline" size="icon-sm">
           <PlusIcon />
         </Button>
       </ButtonGroup>
@@ -24,24 +23,24 @@ export default function ButtonGroupSize() {
         <Button variant="outline">Default</Button>
         <Button variant="outline">Button</Button>
         <Button variant="outline">Group</Button>
-        <Button size="icon" variant="outline">
+        <Button variant="outline" size="icon">
           <PlusIcon />
         </Button>
       </ButtonGroup>
       <ButtonGroup>
-        <Button size="lg" variant="outline">
+        <Button variant="outline" size="lg">
           Large
         </Button>
-        <Button size="lg" variant="outline">
+        <Button variant="outline" size="lg">
           Button
         </Button>
-        <Button size="lg" variant="outline">
+        <Button variant="outline" size="lg">
           Group
         </Button>
-        <Button size="icon-lg" variant="outline">
+        <Button variant="outline" size="icon-lg">
           <PlusIcon />
         </Button>
       </ButtonGroup>
     </div>
-  );
+  )
 }

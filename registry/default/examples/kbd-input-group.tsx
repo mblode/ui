@@ -1,11 +1,10 @@
-import { SearchIcon } from "blode-icons-react";
-
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
-} from "@/registry/default/ui/input-group";
-import { Kbd } from "@/registry/default/ui/kbd";
+} from "@/registry/default/ui/input-group"
+import { Kbd } from "@/registry/default/ui/kbd"
+import { SearchIcon } from "blode-icons-react"
 
 export default function KbdInputGroup() {
   return (
@@ -16,10 +15,10 @@ export default function KbdInputGroup() {
           <SearchIcon />
         </InputGroupAddon>
         <InputGroupAddon align="inline-end">
-          <Kbd icon="command" />
+          <Kbd>⌘</Kbd>
           <Kbd>K</Kbd>
         </InputGroupAddon>
       </InputGroup>
     </div>
-  );
+  )
 }

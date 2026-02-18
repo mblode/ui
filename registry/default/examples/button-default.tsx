@@ -1,5 +1,5 @@
-import { Button } from "@/registry/default/ui/button";
+import { Button } from "@/registry/default/ui/button"
 
 export default function ButtonDefault() {
-  return <Button>Button</Button>;
+  return <Button>Button</Button>
 }

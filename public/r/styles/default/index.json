@@ -6,7 +6,9 @@
     "class-variance-authority",
     "blode-icons-react"
   ],
-  "registryDependencies": ["utils"],
+  "registryDependencies": [
+    "utils"
+  ],
   "cssVars": {},
   "files": []
 }

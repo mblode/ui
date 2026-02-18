@@ -2,13 +2,13 @@ import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from "@/registry/default/ui/resizable";
+} from "@/registry/default/ui/resizable"
 
-export default function ResizableDemo() {
+export function ResizableVertical() {
   return (
     <ResizablePanelGroup
-      className="min-h-[200px] max-w-md rounded-lg border md:min-w-[450px]"
       orientation="vertical"
+      className="min-h-[200px] max-w-sm rounded-lg border"
     >
       <ResizablePanel defaultSize="25%">
         <div className="flex h-full items-center justify-center p-6">
@@ -22,5 +22,5 @@ export default function ResizableDemo() {
         </div>
       </ResizablePanel>
     </ResizablePanelGroup>
-  );
+  )
 }

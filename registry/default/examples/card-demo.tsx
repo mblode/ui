@@ -1,4 +1,4 @@
-import { Button } from "@/registry/default/ui/button";
+import { Button } from "@/registry/default/ui/button"
 import {
   Card,
   CardAction,
@@ -7,9 +7,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/registry/default/ui/card";
-import { Input } from "@/registry/default/ui/input";
-import { Label } from "@/registry/default/ui/label";
+} from "@/registry/default/ui/card"
+import { Input } from "@/registry/default/ui/input"
+import { Label } from "@/registry/default/ui/label"
 
 export default function CardDemo() {
   return (
@@ -30,34 +30,34 @@ export default function CardDemo() {
               <Label htmlFor="email">Email</Label>
               <Input
                 id="email"
+                type="email"
                 placeholder="m@example.com"
                 required
-                type="email"
               />
             </div>
             <div className="grid gap-2">
               <div className="flex items-center">
                 <Label htmlFor="password">Password</Label>
                 <a
-                  className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
                   href="#"
+                  className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
                 >
                   Forgot your password?
                 </a>
               </div>
-              <Input id="password" required type="password" />
+              <Input id="password" type="password" required />
             </div>
           </div>
         </form>
       </CardContent>
       <CardFooter className="flex-col gap-2">
-        <Button className="w-full" type="submit">
+        <Button type="submit" className="w-full">
           Login
         </Button>
-        <Button className="w-full" variant="outline">
+        <Button variant="outline" className="w-full">
           Login with Google
         </Button>
       </CardFooter>
     </Card>
-  );
+  )
 }

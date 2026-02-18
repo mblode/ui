@@ -1,44 +1,44 @@
-"use client";
+"use client"
 
-import { toast } from "sonner";
+import { Button } from "@/registry/default/ui/button"
+import { toast } from "sonner"
 
-import { Button } from "@/registry/default/ui/button";
-
-export default function SonnerTypes() {
+export function SonnerTypes() {
   return (
     <div className="flex flex-wrap gap-2">
-      <Button onClick={() => toast("Event has been created")} variant="outline">
+      <Button variant="outline" onClick={() => toast("Event has been created")}>
         Default
       </Button>
       <Button
-        onClick={() => toast.success("Event has been created")}
         variant="outline"
+        onClick={() => toast.success("Event has been created")}
       >
         Success
       </Button>
       <Button
+        variant="outline"
         onClick={() =>
           toast.info("Be at the area 10 minutes before the event time")
         }
-        variant="outline"
       >
         Info
       </Button>
       <Button
+        variant="outline"
         onClick={() =>
           toast.warning("Event start time cannot be earlier than 8am")
         }
-        variant="outline"
       >
         Warning
       </Button>
       <Button
-        onClick={() => toast.error("Event has not been created")}
         variant="outline"
+        onClick={() => toast.error("Event has not been created")}
       >
         Error
       </Button>
       <Button
+        variant="outline"
         onClick={() => {
           toast.promise<{ name: string }>(
             () =>
@@ -50,12 +50,11 @@ export default function SonnerTypes() {
               success: (data) => `${data.name} has been created`,
               error: "Error",
             }
-          );
+          )
         }}
-        variant="outline"
       >
         Promise
       </Button>
     </div>
-  );
+  )
 }

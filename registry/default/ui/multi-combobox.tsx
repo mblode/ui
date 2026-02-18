@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronDownIcon, XIcon } from "blode-icons-react";
+import { ChevronDownIcon, CrossSmallIcon } from "blode-icons-react";
 import {
   type UseMultipleSelectionStateChange,
   useCombobox,
@@ -234,7 +234,7 @@ const MultiCombobox = React.forwardRef<MultiComboboxRef, MultiComboboxProps>(
                       role="button"
                       tabIndex={0}
                     >
-                      <XIcon className="size-3.5" />
+                      <CrossSmallIcon className="size-3.5" />
                     </span>
                   </Badge>
                 ))}

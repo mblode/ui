@@ -1,40 +1,46 @@
-import {
-  Field,
-  FieldDescription,
-  FieldLabel,
-} from "@/registry/default/ui/field";
+import { Field, FieldDescription, FieldLabel } from "@/registry/default/ui/field"
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/registry/default/ui/select";
+} from "@/registry/default/ui/select"
+
+const items = [
+  { label: "Choose department", value: null },
+  { label: "Engineering", value: "engineering" },
+  { label: "Design", value: "design" },
+  { label: "Marketing", value: "marketing" },
+  { label: "Sales", value: "sales" },
+  { label: "Customer Support", value: "support" },
+  { label: "Human Resources", value: "hr" },
+  { label: "Finance", value: "finance" },
+  { label: "Operations", value: "operations" },
+]
 
 export default function FieldSelect() {
   return (
-    <div className="w-full max-w-md">
-      <Field>
-        <FieldLabel>Department</FieldLabel>
-        <Select>
-          <SelectTrigger>
-            <SelectValue placeholder="Choose department" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="engineering">Engineering</SelectItem>
-            <SelectItem value="design">Design</SelectItem>
-            <SelectItem value="marketing">Marketing</SelectItem>
-            <SelectItem value="sales">Sales</SelectItem>
-            <SelectItem value="support">Customer Support</SelectItem>
-            <SelectItem value="hr">Human Resources</SelectItem>
-            <SelectItem value="finance">Finance</SelectItem>
-            <SelectItem value="operations">Operations</SelectItem>
-          </SelectContent>
-        </Select>
-        <FieldDescription>
-          Select your department or area of work.
-        </FieldDescription>
-      </Field>
-    </div>
-  );
+    <Field className="w-full max-w-xs">
+      <FieldLabel>Department</FieldLabel>
+      <Select items={items}>
+        <SelectTrigger>
+          <SelectValue />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectGroup>
+            {items.map((item) => (
+              <SelectItem key={item.value} value={item.value}>
+                {item.label}
+              </SelectItem>
+            ))}
+          </SelectGroup>
+        </SelectContent>
+      </Select>
+      <FieldDescription>
+        Select your department or area of work.
+      </FieldDescription>
+    </Field>
+  )
 }

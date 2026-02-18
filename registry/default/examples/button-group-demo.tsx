@@ -5,14 +5,13 @@ import {
   ArrowLeftIcon,
   CalendarPlusIcon,
   ClockIcon,
-  Email1Icon,
-  Filter1Icon,
+  FilterIcon,
+  MailOpenIcon,
   MoreHorizontalIcon,
   TagIcon,
   Trash2Icon,
 } from "blode-icons-react";
 import { useState } from "react";
-
 import { Button } from "@/registry/default/ui/button";
 import { ButtonGroup } from "@/registry/default/ui/button-group";
 import {
@@ -51,10 +50,10 @@ export default function ButtonGroupDemo() {
               <MoreHorizontalIcon />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-52">
+          <DropdownMenuContent align="end" className="w-40">
             <DropdownMenuGroup>
               <DropdownMenuItem>
-                <Email1Icon />
+                <MailOpenIcon />
                 Mark as Read
               </DropdownMenuItem>
               <DropdownMenuItem>
@@ -73,7 +72,7 @@ export default function ButtonGroupDemo() {
                 Add to Calendar
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <Filter1Icon />
+                <FilterIcon />
                 Add to List
               </DropdownMenuItem>
               <DropdownMenuSub>

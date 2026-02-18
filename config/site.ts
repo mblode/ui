@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Blode UI",
   url: "https://ui.blode.co",
-  ogImage: "https://ui.blode.co/og",
+  ogImage: "https://ui.blode.co/opengraph-image",
   description:
     "Beautifully designed landing page components built with React & Tailwind CSS.",
   links: {

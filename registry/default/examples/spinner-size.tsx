@@ -1,6 +1,6 @@
-import { Spinner } from "@/registry/default/ui/spinner";
+import { Spinner } from "@/registry/default/ui/spinner"
 
-export default function SpinnerSize() {
+export function SpinnerSize() {
   return (
     <div className="flex items-center gap-6">
       <Spinner size={12} />
@@ -8,5 +8,5 @@ export default function SpinnerSize() {
       <Spinner size={24} />
       <Spinner size={32} />
     </div>
-  );
+  )
 }

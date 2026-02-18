@@ -1,4 +1,4 @@
-import { Button } from "@/registry/default/ui/button";
+import { Button } from "@/registry/default/ui/button"
 import {
   Dialog,
   DialogClose,
@@ -8,16 +8,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/registry/default/ui/dialog";
-import { Input } from "@/registry/default/ui/input";
-import { Label } from "@/registry/default/ui/label";
+} from "@/registry/default/ui/dialog"
+import { Input } from "@/registry/default/ui/input"
+import { Label } from "@/registry/default/ui/label"
 
-export default function DialogCloseButton() {
+export function DialogCloseButton() {
   return (
     <Dialog>
-      <DialogTrigger asChild>
-        <Button variant="outline">Share</Button>
-      </DialogTrigger>
+      <DialogTrigger render={<Button variant="outline" />}>Share</DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle>Share link</DialogTitle>
@@ -27,24 +25,20 @@ export default function DialogCloseButton() {
         </DialogHeader>
         <div className="flex items-center gap-2">
           <div className="grid flex-1 gap-2">
-            <Label className="sr-only" htmlFor="link">
+            <Label htmlFor="link" className="sr-only">
               Link
             </Label>
             <Input
-              defaultValue="https://ui.shadcn.com/docs/installation"
               id="link"
+              defaultValue="https://ui.shadcn.com/docs/installation"
               readOnly
             />
           </div>
         </div>
         <DialogFooter className="sm:justify-start">
-          <DialogClose asChild>
-            <Button type="button" variant="secondary">
-              Close
-            </Button>
-          </DialogClose>
+          <DialogClose render={<Button type="button" />}>Close</DialogClose>
         </DialogFooter>
       </DialogContent>
     </Dialog>
-  );
+  )
 }

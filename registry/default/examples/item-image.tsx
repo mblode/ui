@@ -1,5 +1,4 @@
-import Image from "next/image";
-
+import Image from "next/image"
 import {
   Item,
   ItemContent,
@@ -7,7 +6,7 @@ import {
   ItemGroup,
   ItemMedia,
   ItemTitle,
-} from "@/registry/default/ui/item";
+} from "@/registry/default/ui/item"
 
 const music = [
   {
@@ -28,22 +27,22 @@ const music = [
     album: "Binary Beats",
     duration: "3:30",
   },
-];
+]
 
-export default function ItemImage() {
+export function ItemImage() {
   return (
     <div className="flex w-full max-w-md flex-col gap-6">
       <ItemGroup className="gap-4">
         {music.map((song) => (
-          <Item asChild key={song.title} role="listitem" variant="outline">
+          <Item asChild key={song.title} variant="outline" role="listitem">
             <a href="#">
               <ItemMedia variant="image">
                 <Image
-                  alt={song.title}
-                  className="object-cover grayscale"
-                  height={32}
                   src={`https://avatar.vercel.sh/${song.title}`}
+                  alt={song.title}
                   width={32}
+                  height={32}
+                  className="object-cover grayscale"
                 />
               </ItemMedia>
               <ItemContent>
@@ -61,5 +60,5 @@ export default function ItemImage() {
         ))}
       </ItemGroup>
     </div>
-  );
+  )
 }

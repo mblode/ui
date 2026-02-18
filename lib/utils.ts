@@ -61,7 +61,7 @@ export function absoluteUrl(path: string) {
 export function constructMetadata({
   title = "Blode UI - Modern React + Tailwind CSS components",
   description = "Blode UI is a curated collection of the best landing page components built using React + Tailwind CSS + Motion",
-  image = absoluteUrl("/og"),
+  image = absoluteUrl("/opengraph-image"),
   ...props
 }: {
   title?: string;

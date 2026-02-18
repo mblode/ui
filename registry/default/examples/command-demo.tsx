@@ -6,7 +6,6 @@ import {
   Settings,
   User,
 } from "blode-icons-react";
-
 import {
   Command,
   CommandEmpty,
@@ -18,9 +17,9 @@ import {
   CommandShortcut,
 } from "@/registry/default/ui/command";
 
-export default function CommandDemo() {
+export function CommandDemo() {
   return (
-    <Command className="rounded-lg border shadow-md md:min-w-[450px]">
+    <Command className="max-w-sm rounded-lg border">
       <CommandInput placeholder="Type a command or search..." />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
@@ -35,7 +34,7 @@ export default function CommandDemo() {
           </CommandItem>
           <CommandItem disabled>
             <CalculatorIcon />
-            <span>CalculatorIcon</span>
+            <span>Calculator</span>
           </CommandItem>
         </CommandGroup>
         <CommandSeparator />

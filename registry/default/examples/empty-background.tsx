@@ -1,6 +1,4 @@
-import { BellIcon, RefreshCcwIcon } from "blode-icons-react";
-
-import { Button } from "@/registry/default/ui/button";
+import { Button } from "@/registry/default/ui/button"
 import {
   Empty,
   EmptyContent,
@@ -8,26 +6,27 @@ import {
   EmptyHeader,
   EmptyMedia,
   EmptyTitle,
-} from "@/registry/default/ui/empty";
+} from "@/registry/default/ui/empty"
+import { BellIcon, RefreshCcwIcon } from "blode-icons-react"
 
-export default function EmptyMuted() {
+export function EmptyMuted() {
   return (
-    <Empty className="h-full bg-gradient-to-b from-30% from-muted/50 to-background">
+    <Empty className="bg-muted/30 h-full">
       <EmptyHeader>
         <EmptyMedia variant="icon">
           <BellIcon />
         </EmptyMedia>
         <EmptyTitle>No Notifications</EmptyTitle>
-        <EmptyDescription>
+        <EmptyDescription className="max-w-xs text-pretty">
           You&apos;re all caught up. New notifications will appear here.
         </EmptyDescription>
       </EmptyHeader>
       <EmptyContent>
-        <Button size="sm" variant="outline">
-          <RefreshCcwIcon />
+        <Button variant="outline">
+          <RefreshCcwIcon data-icon="inline-start" />
           Refresh
         </Button>
       </EmptyContent>
     </Empty>
-  );
+  )
 }

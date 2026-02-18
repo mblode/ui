@@ -1,6 +1,4 @@
-import { SlashIcon } from "blode-icons-react";
-import Link from "next/link";
-
+import Link from "next/link"
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -8,9 +6,10 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/registry/default/ui/breadcrumb";
+} from "@/registry/default/ui/breadcrumb"
+import { DotIcon } from "blode-icons-react"
 
-export default function BreadcrumbWithCustomSeparator() {
+export function BreadcrumbSeparatorDemo() {
   return (
     <Breadcrumb>
       <BreadcrumbList>
@@ -20,7 +19,7 @@ export default function BreadcrumbWithCustomSeparator() {
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator>
-          <SlashIcon />
+          <DotIcon />
         </BreadcrumbSeparator>
         <BreadcrumbItem>
           <BreadcrumbLink asChild>
@@ -28,12 +27,12 @@ export default function BreadcrumbWithCustomSeparator() {
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator>
-          <SlashIcon />
+          <DotIcon />
         </BreadcrumbSeparator>
         <BreadcrumbItem>
           <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
-  );
+  )
 }

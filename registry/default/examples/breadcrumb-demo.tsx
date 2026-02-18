@@ -1,5 +1,4 @@
-import Link from "next/link";
-
+import Link from "next/link"
 import {
   Breadcrumb,
   BreadcrumbEllipsis,
@@ -8,41 +7,47 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from "@/registry/default/ui/breadcrumb";
+} from "@/registry/default/ui/breadcrumb"
+import { Button } from "@/registry/default/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/registry/default/ui/dropdown-menu";
+} from "@/registry/default/ui/dropdown-menu"
 
-export default function BreadcrumbDemo() {
+export function BreadcrumbDemo() {
   return (
     <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink asChild>
-            <Link href="/">Home</Link>
+            <a href="#">Home</a>
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
           <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center gap-1">
-              <BreadcrumbEllipsis className="size-4" />
-              <span className="sr-only">Toggle menu</span>
+            <DropdownMenuTrigger asChild>
+              <Button size="icon-sm" variant="ghost">
+                <BreadcrumbEllipsis />
+                <span className="sr-only">Toggle menu</span>
+              </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start">
-              <DropdownMenuItem>Documentation</DropdownMenuItem>
-              <DropdownMenuItem>Themes</DropdownMenuItem>
-              <DropdownMenuItem>GitHub</DropdownMenuItem>
+              <DropdownMenuGroup>
+                <DropdownMenuItem>Documentation</DropdownMenuItem>
+                <DropdownMenuItem>Themes</DropdownMenuItem>
+                <DropdownMenuItem>GitHub</DropdownMenuItem>
+              </DropdownMenuGroup>
             </DropdownMenuContent>
           </DropdownMenu>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
           <BreadcrumbLink asChild>
-            <Link href="/docs/components">Components</Link>
+            <a href="#">Components</a>
           </BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
@@ -51,5 +56,5 @@ export default function BreadcrumbDemo() {
         </BreadcrumbItem>
       </BreadcrumbList>
     </Breadcrumb>
-  );
+  )
 }
