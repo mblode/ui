@@ -4,7 +4,10 @@
   "title": "Sonner",
   "author": "Matthew Blode",
   "description": "A toast notification component powered by Sonner.",
-  "dependencies": ["sonner", "next-themes"],
+  "dependencies": [
+    "sonner",
+    "next-themes"
+  ],
   "files": [
     {
       "path": "ui/sonner.tsx",

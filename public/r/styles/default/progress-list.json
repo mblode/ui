@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.blode.co/schema/registry-item.json",
+  "name": "progress-list",
+  "title": "Progress List",
+  "author": "Matthew Blode",
+  "description": "A vertical list of progress items with completed and pending states.",
+  "dependencies": [
+    "blode-icons-react"
+  ],
+  "files": [
+    {
+      "path": "ui/progress-list.tsx",
+      "content": "import {\n  CheckFilledIcon,\n  CirclePlaceholderDashedIcon,\n  CirclePlaceholderOnIcon,\n} from \"blode-icons-react\";\nimport type * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction ProgressList({ className, ...props }: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      className={cn(\"flex flex-col space-y-1\", className)}\n      data-slot=\"progress-list\"\n      {...props}\n    />\n  );\n}\n\ntype ProgressItemState = \"completed\" | \"current\" | \"pending\";\n\ninterface ProgressItemProps extends Omit<React.ComponentProps<\"div\">, \"title\"> {\n  completed?: boolean;\n  state?: ProgressItemState;\n  title: React.ReactNode;\n}\n\nfunction ProgressItem({\n  className,\n  completed,\n  state,\n  title,\n  ...props\n}: ProgressItemProps) {\n  const resolvedState = state ?? (completed ? \"completed\" : \"pending\");\n\n  return (\n    <div\n      className={cn(\"flex flex-row items-center space-x-2\", className)}\n      data-slot=\"progress-item\"\n      data-state={resolvedState}\n      {...props}\n    >\n      <div className=\"shrink-0\" data-slot=\"progress-item-icon\">\n        {resolvedState === \"completed\" ? (\n          <CheckFilledIcon className=\"size-4 shrink-0 transition-all\" />\n        ) : null}\n        {resolvedState === \"current\" ? (\n          <CirclePlaceholderDashedIcon className=\"size-4 shrink-0 animate-spin text-primary transition-all [animation-duration:2s]\" />\n        ) : null}\n        {resolvedState === \"pending\" ? (\n          <CirclePlaceholderOnIcon className=\"size-4 shrink-0 opacity-55 transition-all\" />\n        ) : null}\n      </div>\n      <div\n        className={cn(\"flex-1 text-left text-sm transition-all\", {\n          \"opacity-50\": resolvedState === \"pending\",\n          \"text-primary opacity-100\": resolvedState === \"current\",\n        })}\n        data-slot=\"progress-item-title\"\n      >\n        {title}\n      </div>\n    </div>\n  );\n}\n\nexport { ProgressList, ProgressItem };\nexport type { ProgressItemProps, ProgressItemState };\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:ui"
+}

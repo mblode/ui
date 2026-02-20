@@ -34,20 +34,17 @@ const resolveRegistryComponent = (mod: Record<string, unknown>) => {
 };
 
 export const Index: Record<string, unknown> = {
-  default: {
-    accordion: {
+  "default": {
+    "accordion": {
       name: "accordion",
-      description:
-        "A vertically stacked set of interactive headings that reveal or hide associated content.",
+      description: "A vertically stacked set of interactive headings that reveal or hide associated content.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/accordion.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/accordion.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/accordion.tsx").then((mod) => ({
@@ -57,19 +54,16 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    alert: {
+    "alert": {
       name: "alert",
-      description:
-        "A callout that displays a short, important message to attract attention.",
+      description: "A callout that displays a short, important message to attract attention.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/alert.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/alert.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/alert.tsx").then((mod) => ({
@@ -81,17 +75,14 @@ export const Index: Record<string, unknown> = {
     },
     "alert-dialog": {
       name: "alert-dialog",
-      description:
-        "A modal dialog that interrupts the user with important content and expects a response.",
+      description: "A modal dialog that interrupts the user with important content and expects a response.",
       type: "registry:ui",
       registryDependencies: ["button"],
-      files: [
-        {
-          path: "registry/default/ui/alert-dialog.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/alert-dialog.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/alert-dialog.tsx").then((mod) => ({
@@ -103,17 +94,14 @@ export const Index: Record<string, unknown> = {
     },
     "aspect-ratio": {
       name: "aspect-ratio",
-      description:
-        "A component that maintains a consistent width-to-height ratio.",
+      description: "A component that maintains a consistent width-to-height ratio.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/aspect-ratio.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/aspect-ratio.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/aspect-ratio.tsx").then((mod) => ({
@@ -123,19 +111,35 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    avatar: {
-      name: "avatar",
-      description:
-        "An image element with a fallback for representing the user.",
+    "autocomplete": {
+      name: "autocomplete",
+      description: "An input that suggests matching values while typing.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/avatar.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/autocomplete.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/ui/autocomplete.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "avatar": {
+      name: "avatar",
+      description: "An image element with a fallback for representing the user.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/ui/avatar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/avatar.tsx").then((mod) => ({
@@ -145,19 +149,35 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    badge: {
-      name: "badge",
-      description:
-        "A small status indicator for labelling and categorising items.",
+    "bar-list": {
+      name: "bar-list",
+      description: "A compact comparison list that visualises values as horizontal bars.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/badge.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/bar-list.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/ui/bar-list.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "badge": {
+      name: "badge",
+      description: "A small status indicator for labelling and categorising items.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/ui/badge.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/badge.tsx").then((mod) => ({
@@ -167,19 +187,16 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    breadcrumb: {
+    "breadcrumb": {
       name: "breadcrumb",
-      description:
-        "A navigation aid that shows the current page location within a hierarchy.",
+      description: "A navigation aid that shows the current page location within a hierarchy.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/breadcrumb.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/breadcrumb.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/breadcrumb.tsx").then((mod) => ({
@@ -189,19 +206,16 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    button: {
+    "button": {
       name: "button",
-      description:
-        "An interactive element that triggers an action when clicked.",
+      description: "An interactive element that triggers an action when clicked.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/button.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/button.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/button.tsx").then((mod) => ({
@@ -213,17 +227,14 @@ export const Index: Record<string, unknown> = {
     },
     "button-group": {
       name: "button-group",
-      description:
-        "A container that groups related buttons together with shared styling.",
+      description: "A container that groups related buttons together with shared styling.",
       type: "registry:ui",
-      registryDependencies: ["button", "separator"],
-      files: [
-        {
-          path: "registry/default/ui/button-group.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      registryDependencies: ["button","separator"],
+      files: [{
+        path: "registry/default/ui/button-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/button-group.tsx").then((mod) => ({
@@ -233,18 +244,16 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    calendar: {
+    "calendar": {
       name: "calendar",
       description: "A date field component that allows users to pick dates.",
       type: "registry:ui",
       registryDependencies: ["button"],
-      files: [
-        {
-          path: "registry/default/ui/calendar.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/calendar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/calendar.tsx").then((mod) => ({
@@ -254,18 +263,16 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    card: {
+    "card": {
       name: "card",
       description: "A container for grouping related content and actions.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/card.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/card.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/card.tsx").then((mod) => ({
@@ -275,19 +282,16 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    carousel: {
+    "carousel": {
       name: "carousel",
-      description:
-        "A slideshow component for cycling through a set of content.",
+      description: "A slideshow component for cycling through a set of content.",
       type: "registry:ui",
       registryDependencies: ["button"],
-      files: [
-        {
-          path: "registry/default/ui/carousel.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/carousel.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/carousel.tsx").then((mod) => ({
@@ -302,13 +306,11 @@ export const Index: Record<string, unknown> = {
       description: "A circular indicator that shows the progress of a task.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/circular-progress.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/circular-progress.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/circular-progress.tsx").then((mod) => ({
@@ -318,45 +320,20 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    chart: {
-      name: "chart",
-      description: "A composable charting component built on top of Recharts.",
-      type: "registry:ui",
-      registryDependencies: ["card"],
-      files: [
-        {
-          path: "registry/default/ui/chart.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      component: React.lazy(() =>
-        import("@/registry/default/ui/chart.tsx").then((mod) => ({
-          default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
-      ),
-      source: "",
-      meta: undefined,
-    },
-    checkbox: {
+    "checkbox": {
       name: "checkbox",
-      description:
-        "A control that allows the user to toggle between checked and unchecked states.",
+      description: "A control that allows the user to toggle between checked and unchecked states.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/checkbox.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-        {
-          path: "registry/default/ui/checkbox.css",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/checkbox.tsx",
+        type: "registry:ui",
+        target: ""
+      },{
+        path: "registry/default/ui/checkbox.css",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/checkbox.tsx").then((mod) => ({
@@ -366,19 +343,35 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    collapsible: {
+    "checkbox-group": {
+      name: "checkbox-group",
+      description: "A grouped set of related checkboxes managed with shared state.",
+      type: "registry:ui",
+      registryDependencies: ["checkbox"],
+      files: [{
+        path: "registry/default/ui/checkbox-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/ui/checkbox-group.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "collapsible": {
       name: "collapsible",
-      description:
-        "An interactive component that expands and collapses a panel of content.",
+      description: "An interactive component that expands and collapses a panel of content.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/collapsible.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/collapsible.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/collapsible.tsx").then((mod) => ({
@@ -393,13 +386,11 @@ export const Index: Record<string, unknown> = {
       description: "A formatted input field for entering monetary values.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/currency-input.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/currency-input.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/currency-input.tsx").then((mod) => ({
@@ -409,19 +400,16 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    combobox: {
+    "combobox": {
       name: "combobox",
-      description:
-        "An autocomplete input that combines a text field with a filterable dropdown list.",
+      description: "An autocomplete input that combines a text field with a filterable dropdown list.",
       type: "registry:ui",
-      registryDependencies: ["button", "input-group", "popover"],
-      files: [
-        {
-          path: "registry/default/ui/combobox.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      registryDependencies: ["button","input-group"],
+      files: [{
+        path: "registry/default/ui/combobox.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/combobox.tsx").then((mod) => ({
@@ -433,17 +421,14 @@ export const Index: Record<string, unknown> = {
     },
     "multi-combobox": {
       name: "multi-combobox",
-      description:
-        "A combobox that allows selecting multiple items with tag-style badges.",
+      description: "A combobox that allows selecting multiple items with tag-style badges.",
       type: "registry:ui",
       registryDependencies: ["badge"],
-      files: [
-        {
-          path: "registry/default/ui/multi-combobox.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/multi-combobox.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/multi-combobox.tsx").then((mod) => ({
@@ -453,19 +438,16 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    command: {
+    "command": {
       name: "command",
-      description:
-        "A command palette for fast, keyboard-driven searching and navigation.",
+      description: "A command palette for fast, keyboard-driven searching and navigation.",
       type: "registry:ui",
       registryDependencies: ["dialog"],
-      files: [
-        {
-          path: "registry/default/ui/command.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/command.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/command.tsx").then((mod) => ({
@@ -477,17 +459,14 @@ export const Index: Record<string, unknown> = {
     },
     "context-menu": {
       name: "context-menu",
-      description:
-        "A menu that appears on right-click, providing contextual actions.",
+      description: "A menu that appears on right-click, providing contextual actions.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/context-menu.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/context-menu.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/context-menu.tsx").then((mod) => ({
@@ -497,19 +476,16 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    dialog: {
+    "dialog": {
       name: "dialog",
-      description:
-        "A modal window that overlays the main content and requires user interaction.",
+      description: "A modal window that overlays the main content and requires user interaction.",
       type: "registry:ui",
       registryDependencies: ["button"],
-      files: [
-        {
-          path: "registry/default/ui/dialog.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/dialog.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/dialog.tsx").then((mod) => ({
@@ -519,18 +495,16 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    drawer: {
+    "drawer": {
       name: "drawer",
       description: "A panel that slides in from the edge of the screen.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/drawer.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/drawer.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/drawer.tsx").then((mod) => ({
@@ -542,17 +516,14 @@ export const Index: Record<string, unknown> = {
     },
     "dropdown-menu": {
       name: "dropdown-menu",
-      description:
-        "A menu that opens from a trigger button, displaying a list of actions.",
+      description: "A menu that opens from a trigger button, displaying a list of actions.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/dropdown-menu.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/dropdown-menu.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/dropdown-menu.tsx").then((mod) => ({
@@ -562,19 +533,16 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    empty: {
+    "empty": {
       name: "empty",
-      description:
-        "A placeholder displayed when there is no content or data to show.",
+      description: "A placeholder displayed when there is no content or data to show.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/empty.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/empty.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/empty.tsx").then((mod) => ({
@@ -584,19 +552,16 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    field: {
+    "field": {
       name: "field",
-      description:
-        "A form field wrapper that pairs a label, input, and helper text.",
+      description: "A form field wrapper that pairs a label, input, and helper text.",
       type: "registry:ui",
-      registryDependencies: ["label", "separator"],
-      files: [
-        {
-          path: "registry/default/ui/field.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      registryDependencies: ["label","separator"],
+      files: [{
+        path: "registry/default/ui/field.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/field.tsx").then((mod) => ({
@@ -606,19 +571,16 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    form: {
+    "form": {
       name: "form",
-      description:
-        "A form component with validation powered by React Hook Form and Zod.",
+      description: "A form component with validation powered by React Hook Form and Zod.",
       type: "registry:ui",
-      registryDependencies: ["button", "label"],
-      files: [
-        {
-          path: "registry/default/ui/form.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      registryDependencies: ["button","label"],
+      files: [{
+        path: "registry/default/ui/form.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/form.tsx").then((mod) => ({
@@ -630,17 +592,14 @@ export const Index: Record<string, unknown> = {
     },
     "hover-card": {
       name: "hover-card",
-      description:
-        "A popup card that appears when hovering over a trigger element.",
+      description: "A popup card that appears when hovering over a trigger element.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/hover-card.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/hover-card.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/hover-card.tsx").then((mod) => ({
@@ -650,18 +609,16 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    input: {
+    "input": {
       name: "input",
       description: "A text input field for capturing user data.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/input.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/input.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/input.tsx").then((mod) => ({
@@ -673,17 +630,14 @@ export const Index: Record<string, unknown> = {
     },
     "input-group": {
       name: "input-group",
-      description:
-        "A wrapper that combines an input with addons like icons or buttons.",
+      description: "A wrapper that combines an input with addons like icons or buttons.",
       type: "registry:ui",
-      registryDependencies: ["button", "input", "textarea"],
-      files: [
-        {
-          path: "registry/default/ui/input-group.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      registryDependencies: ["button","input","textarea"],
+      files: [{
+        path: "registry/default/ui/input-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/input-group.tsx").then((mod) => ({
@@ -695,17 +649,14 @@ export const Index: Record<string, unknown> = {
     },
     "input-otp": {
       name: "input-otp",
-      description:
-        "A one-time password input with individual character fields.",
+      description: "A one-time password input with individual character fields.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/input-otp.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/input-otp.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/input-otp.tsx").then((mod) => ({
@@ -715,19 +666,16 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    item: {
+    "item": {
       name: "item",
-      description:
-        "A flexible list item component for menus, settings, and data rows.",
+      description: "A flexible list item component for menus, settings, and data rows.",
       type: "registry:ui",
       registryDependencies: ["separator"],
-      files: [
-        {
-          path: "registry/default/ui/item.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/item.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/item.tsx").then((mod) => ({
@@ -737,19 +685,16 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    label: {
+    "label": {
       name: "label",
-      description:
-        "An accessible label that associates text with a form control.",
+      description: "An accessible label that associates text with a form control.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/label.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/label.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/label.tsx").then((mod) => ({
@@ -759,19 +704,16 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    menubar: {
+    "menubar": {
       name: "menubar",
-      description:
-        "A horizontal menu bar with dropdown menus, commonly used for application navigation.",
+      description: "A horizontal menu bar with dropdown menus, commonly used for application navigation.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/menubar.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/menubar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/menubar.tsx").then((mod) => ({
@@ -781,19 +723,35 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    "navigation-menu": {
-      name: "navigation-menu",
-      description:
-        "A responsive navigation component with support for dropdown panels.",
+    "meter": {
+      name: "meter",
+      description: "A meter that shows a scalar value within a bounded range.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/navigation-menu.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/meter.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/ui/meter.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "navigation-menu": {
+      name: "navigation-menu",
+      description: "A responsive navigation component with support for dropdown panels.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/ui/navigation-menu.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/navigation-menu.tsx").then((mod) => ({
@@ -803,19 +761,35 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    pagination: {
+    "number-field": {
+      name: "number-field",
+      description: "A numeric input with increment, decrement, and scrubbing interactions.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/ui/number-field.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/ui/number-field.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "pagination": {
       name: "pagination",
-      description:
-        "A navigation component for paging through content across multiple pages.",
+      description: "A navigation component for paging through content across multiple pages.",
       type: "registry:ui",
       registryDependencies: ["button"],
-      files: [
-        {
-          path: "registry/default/ui/pagination.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/pagination.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/pagination.tsx").then((mod) => ({
@@ -827,23 +801,14 @@ export const Index: Record<string, unknown> = {
     },
     "phone-input": {
       name: "phone-input",
-      description:
-        "An international phone number input with country code selector.",
+      description: "An international phone number input with country code selector.",
       type: "registry:ui",
-      registryDependencies: [
-        "button",
-        "command",
-        "input",
-        "popover",
-        "scroll-area",
-      ],
-      files: [
-        {
-          path: "registry/default/ui/phone-input.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      registryDependencies: ["button","command","input","popover","scroll-area"],
+      files: [{
+        path: "registry/default/ui/phone-input.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/phone-input.tsx").then((mod) => ({
@@ -853,18 +818,16 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    popover: {
+    "popover": {
       name: "popover",
       description: "A floating panel that appears next to a trigger element.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/popover.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/popover.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/popover.tsx").then((mod) => ({
@@ -874,19 +837,16 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    progress: {
+    "progress": {
       name: "progress",
-      description:
-        "A horizontal bar that indicates the completion progress of a task.",
+      description: "A horizontal bar that indicates the completion progress of a task.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/progress.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/progress.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/progress.tsx").then((mod) => ({
@@ -896,19 +856,35 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    prompt: {
+    "progress-list": {
+      name: "progress-list",
+      description: "A vertical list of progress items with completed and pending states.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/ui/progress-list.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/ui/progress-list.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "prompt": {
       name: "prompt",
-      description:
-        "A confirmation dialog that asks the user for input before proceeding.",
+      description: "A confirmation dialog that asks the user for input before proceeding.",
       type: "registry:ui",
       registryDependencies: ["button"],
-      files: [
-        {
-          path: "registry/default/ui/prompt.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/prompt.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/prompt.tsx").then((mod) => ({
@@ -920,17 +896,14 @@ export const Index: Record<string, unknown> = {
     },
     "radio-group": {
       name: "radio-group",
-      description:
-        "A set of mutually exclusive options where only one can be selected.",
+      description: "A set of mutually exclusive options where only one can be selected.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/radio-group.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/radio-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/radio-group.tsx").then((mod) => ({
@@ -940,19 +913,16 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    resizable: {
+    "resizable": {
       name: "resizable",
-      description:
-        "A layout component with draggable handles for resizing panels.",
+      description: "A layout component with draggable handles for resizing panels.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/resizable.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/resizable.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/resizable.tsx").then((mod) => ({
@@ -967,13 +937,11 @@ export const Index: Record<string, unknown> = {
       description: "A scrollable container with custom styled scrollbars.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/scroll-area.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/scroll-area.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/scroll-area.tsx").then((mod) => ({
@@ -983,19 +951,16 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    select: {
+    "select": {
       name: "select",
-      description:
-        "A dropdown control for choosing a single value from a list of options.",
+      description: "A dropdown control for choosing a single value from a list of options.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/select.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/select.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/select.tsx").then((mod) => ({
@@ -1005,19 +970,16 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    separator: {
+    "separator": {
       name: "separator",
-      description:
-        "A visual divider that separates content into distinct sections.",
+      description: "A visual divider that separates content into distinct sections.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/separator.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/separator.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/separator.tsx").then((mod) => ({
@@ -1027,19 +989,16 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    sheet: {
+    "sheet": {
       name: "sheet",
-      description:
-        "A panel that slides in from the edge of the viewport with an overlay.",
+      description: "A panel that slides in from the edge of the viewport with an overlay.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/sheet.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/sheet.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/sheet.tsx").then((mod) => ({
@@ -1049,27 +1008,16 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    sidebar: {
+    "sidebar": {
       name: "sidebar",
-      description:
-        "A collapsible side navigation component with multiple layout variants.",
+      description: "A collapsible side navigation component with multiple layout variants.",
       type: "registry:ui",
-      registryDependencies: [
-        "button",
-        "separator",
-        "sheet",
-        "tooltip",
-        "input",
-        "@blode/use-mobile",
-        "skeleton",
-      ],
-      files: [
-        {
-          path: "registry/default/ui/sidebar.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      registryDependencies: ["button","separator","sheet","tooltip","input","@blode/use-mobile","skeleton"],
+      files: [{
+        path: "registry/default/ui/sidebar.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/sidebar.tsx").then((mod) => ({
@@ -1079,18 +1027,16 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    skeleton: {
+    "skeleton": {
       name: "skeleton",
       description: "A placeholder animation that indicates content is loading.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/skeleton.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/skeleton.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/skeleton.tsx").then((mod) => ({
@@ -1100,19 +1046,16 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    slider: {
+    "slider": {
       name: "slider",
-      description:
-        "A draggable control for selecting a numeric value within a range.",
+      description: "A draggable control for selecting a numeric value within a range.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/slider.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/slider.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/slider.tsx").then((mod) => ({
@@ -1122,18 +1065,16 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    sonner: {
+    "sonner": {
       name: "sonner",
       description: "A toast notification component powered by Sonner.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/sonner.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/sonner.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/sonner.tsx").then((mod) => ({
@@ -1143,18 +1084,16 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    spinner: {
+    "spinner": {
       name: "spinner",
       description: "An animated loading indicator for asynchronous operations.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/spinner.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/spinner.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/spinner.tsx").then((mod) => ({
@@ -1164,18 +1103,35 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    switch: {
+    "stat": {
+      name: "stat",
+      description: "A compact metric card for showing a headline value and label.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [{
+        path: "registry/default/ui/stat.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/ui/stat.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "switch": {
       name: "switch",
       description: "A toggle control for switching between on and off states.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/switch.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/switch.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/switch.tsx").then((mod) => ({
@@ -1185,19 +1141,16 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    table: {
+    "table": {
       name: "table",
-      description:
-        "A responsive table for displaying structured data in rows and columns.",
+      description: "A responsive table for displaying structured data in rows and columns.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/table.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/table.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/table.tsx").then((mod) => ({
@@ -1207,19 +1160,16 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    tabs: {
+    "tabs": {
       name: "tabs",
-      description:
-        "A tabbed interface that organises content into switchable panels.",
+      description: "A tabbed interface that organises content into switchable panels.",
       type: "registry:ui",
       registryDependencies: ["@blode/use-tab-observer"],
-      files: [
-        {
-          path: "registry/default/ui/tabs.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/tabs.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/tabs.tsx").then((mod) => ({
@@ -1229,18 +1179,16 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    textarea: {
+    "textarea": {
       name: "textarea",
       description: "A multi-line text input field for longer form content.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/textarea.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/textarea.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/textarea.tsx").then((mod) => ({
@@ -1250,18 +1198,16 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    toggle: {
+    "toggle": {
       name: "toggle",
       description: "A two-state button that can be toggled on or off.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/toggle.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/toggle.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/toggle.tsx").then((mod) => ({
@@ -1276,13 +1222,11 @@ export const Index: Record<string, unknown> = {
       description: "A set of toggle buttons where one or more can be active.",
       type: "registry:ui",
       registryDependencies: ["toggle"],
-      files: [
-        {
-          path: "registry/default/ui/toggle-group.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/toggle-group.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/toggle-group.tsx").then((mod) => ({
@@ -1292,19 +1236,16 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    tooltip: {
+    "tooltip": {
       name: "tooltip",
-      description:
-        "A popup that displays helpful information when hovering or focusing an element.",
+      description: "A popup that displays helpful information when hovering or focusing an element.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/tooltip.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/tooltip.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/tooltip.tsx").then((mod) => ({
@@ -1314,19 +1255,16 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    kbd: {
+    "kbd": {
       name: "kbd",
-      description:
-        "A styled keyboard key indicator for displaying shortcuts and key combinations.",
+      description: "A styled keyboard key indicator for displaying shortcuts and key combinations.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/kbd.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/kbd.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/kbd.tsx").then((mod) => ({
@@ -1341,13 +1279,11 @@ export const Index: Record<string, unknown> = {
       description: "A styled wrapper around the native HTML select element.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/native-select.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/native-select.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/native-select.tsx").then((mod) => ({
@@ -1357,19 +1293,16 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    direction: {
+    "direction": {
       name: "direction",
-      description:
-        "A context provider for managing text direction (LTR/RTL) across components.",
+      description: "A context provider for managing text direction (LTR/RTL) across components.",
       type: "registry:ui",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/ui/direction.tsx",
-          type: "registry:ui",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/ui/direction.tsx",
+        type: "registry:ui",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/ui/direction.tsx").then((mod) => ({
@@ -1379,19 +1312,16 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    utils: {
+    "utils": {
       name: "utils",
-      description:
-        "Utility functions including cn() for merging Tailwind CSS classes.",
+      description: "Utility functions including cn() for merging Tailwind CSS classes.",
       type: "registry:lib",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/lib/utils.ts",
-          type: "registry:lib",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/lib/utils.ts",
+        type: "registry:lib",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/lib/utils.ts").then((mod) => ({
@@ -1403,17 +1333,14 @@ export const Index: Record<string, unknown> = {
     },
     "use-mobile": {
       name: "use-mobile",
-      description:
-        "A hook that detects whether the viewport matches a mobile breakpoint.",
+      description: "A hook that detects whether the viewport matches a mobile breakpoint.",
       type: "registry:lib",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/hooks/use-mobile.ts",
-          type: "registry:lib",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/hooks/use-mobile.ts",
+        type: "registry:lib",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/hooks/use-mobile.ts").then((mod) => ({
@@ -1425,17 +1352,14 @@ export const Index: Record<string, unknown> = {
     },
     "use-tab-observer": {
       name: "use-tab-observer",
-      description:
-        "A hook that observes and tracks the active tab indicator position.",
+      description: "A hook that observes and tracks the active tab indicator position.",
       type: "registry:lib",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/hooks/use-tab-observer.ts",
-          type: "registry:lib",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/hooks/use-tab-observer.ts",
+        type: "registry:lib",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/hooks/use-tab-observer.ts").then((mod) => ({
@@ -1450,20 +1374,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["accordion"],
-      files: [
-        {
-          path: "registry/default/examples/accordion-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/accordion-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/accordion-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/accordion-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -1473,13 +1393,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["alert"],
-      files: [
-        {
-          path: "registry/default/examples/alert-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/alert-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/alert-demo.tsx").then((mod) => ({
@@ -1494,20 +1412,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["alert"],
-      files: [
-        {
-          path: "registry/default/examples/alert-destructive.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/alert-destructive.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/alert-destructive.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/alert-destructive.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -1516,21 +1430,17 @@ export const Index: Record<string, unknown> = {
       name: "alert-dialog-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: ["alert-dialog", "button"],
-      files: [
-        {
-          path: "registry/default/examples/alert-dialog-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["alert-dialog","button"],
+      files: [{
+        path: "registry/default/examples/alert-dialog-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/alert-dialog-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/alert-dialog-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -1540,20 +1450,35 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["aspect-ratio"],
-      files: [
-        {
-          path: "registry/default/examples/aspect-ratio-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/aspect-ratio-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/aspect-ratio-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/aspect-ratio-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "autocomplete-demo": {
+      name: "autocomplete-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["autocomplete"],
+      files: [{
+        path: "registry/default/examples/autocomplete-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/autocomplete-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -1563,16 +1488,33 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["avatar"],
-      files: [
-        {
-          path: "registry/default/examples/avatar-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/avatar-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/avatar-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "bar-list-demo": {
+      name: "bar-list-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["bar-list"],
+      files: [{
+        path: "registry/default/examples/bar-list-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/bar-list-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
         }))
       ),
@@ -1584,13 +1526,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["badge"],
-      files: [
-        {
-          path: "registry/default/examples/badge-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/badge-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/badge-demo.tsx").then((mod) => ({
@@ -1605,20 +1545,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["badge"],
-      files: [
-        {
-          path: "registry/default/examples/badge-destructive.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/badge-destructive.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/badge-destructive.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/badge-destructive.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -1628,13 +1564,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["badge"],
-      files: [
-        {
-          path: "registry/default/examples/badge-outline.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/badge-outline.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/badge-outline.tsx").then((mod) => ({
@@ -1649,20 +1583,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["badge"],
-      files: [
-        {
-          path: "registry/default/examples/badge-secondary.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/badge-secondary.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/badge-secondary.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/badge-secondary.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -1672,20 +1602,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["breadcrumb"],
-      files: [
-        {
-          path: "registry/default/examples/breadcrumb-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/breadcrumb-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/breadcrumb-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/breadcrumb-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -1695,20 +1621,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["breadcrumb"],
-      files: [
-        {
-          path: "registry/default/examples/breadcrumb-separator.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/breadcrumb-separator.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/breadcrumb-separator.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/breadcrumb-separator.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -1718,20 +1640,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["breadcrumb"],
-      files: [
-        {
-          path: "registry/default/examples/breadcrumb-dropdown.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/breadcrumb-dropdown.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/breadcrumb-dropdown.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/breadcrumb-dropdown.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -1741,20 +1659,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["breadcrumb"],
-      files: [
-        {
-          path: "registry/default/examples/breadcrumb-ellipsis.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/breadcrumb-ellipsis.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/breadcrumb-ellipsis.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/breadcrumb-ellipsis.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -1764,20 +1678,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["breadcrumb"],
-      files: [
-        {
-          path: "registry/default/examples/breadcrumb-link.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/breadcrumb-link.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/breadcrumb-link.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/breadcrumb-link.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -1787,20 +1697,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["breadcrumb"],
-      files: [
-        {
-          path: "registry/default/examples/breadcrumb-responsive.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/breadcrumb-responsive.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/breadcrumb-responsive.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/breadcrumb-responsive.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -1810,13 +1716,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["button"],
-      files: [
-        {
-          path: "registry/default/examples/button-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/button-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/button-demo.tsx").then((mod) => ({
@@ -1831,20 +1735,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["button"],
-      files: [
-        {
-          path: "registry/default/examples/button-default.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/button-default.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/button-default.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/button-default.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -1854,20 +1754,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["button"],
-      files: [
-        {
-          path: "registry/default/examples/button-secondary.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/button-secondary.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/button-secondary.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/button-secondary.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -1877,20 +1773,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["button"],
-      files: [
-        {
-          path: "registry/default/examples/button-destructive.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/button-destructive.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/button-destructive.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/button-destructive.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -1900,20 +1792,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["button"],
-      files: [
-        {
-          path: "registry/default/examples/button-outline.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/button-outline.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/button-outline.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/button-outline.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -1923,13 +1811,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["button"],
-      files: [
-        {
-          path: "registry/default/examples/button-ghost.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/button-ghost.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/button-ghost.tsx").then((mod) => ({
@@ -1944,13 +1830,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["button"],
-      files: [
-        {
-          path: "registry/default/examples/button-link.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/button-link.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/button-link.tsx").then((mod) => ({
@@ -1965,20 +1849,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["button"],
-      files: [
-        {
-          path: "registry/default/examples/button-with-icon.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/button-with-icon.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/button-with-icon.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/button-with-icon.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -1988,20 +1868,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["button"],
-      files: [
-        {
-          path: "registry/default/examples/button-loading.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/button-loading.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/button-loading.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/button-loading.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -2011,13 +1887,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["button"],
-      files: [
-        {
-          path: "registry/default/examples/button-icon.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/button-icon.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/button-icon.tsx").then((mod) => ({
@@ -2032,20 +1906,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["button"],
-      files: [
-        {
-          path: "registry/default/examples/button-as-child.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/button-as-child.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/button-as-child.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/button-as-child.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -2055,20 +1925,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["button"],
-      files: [
-        {
-          path: "registry/default/examples/button-rounded.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/button-rounded.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/button-rounded.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/button-rounded.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -2078,13 +1944,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["button"],
-      files: [
-        {
-          path: "registry/default/examples/button-size.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/button-size.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/button-size.tsx").then((mod) => ({
@@ -2099,20 +1963,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["button-group"],
-      files: [
-        {
-          path: "registry/default/examples/button-group-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/button-group-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/button-group-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/button-group-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -2122,20 +1982,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["button-group"],
-      files: [
-        {
-          path: "registry/default/examples/button-group-nested.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/button-group-nested.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/button-group-nested.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/button-group-nested.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -2145,20 +2001,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["button-group"],
-      files: [
-        {
-          path: "registry/default/examples/button-group-size.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/button-group-size.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/button-group-size.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/button-group-size.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -2168,20 +2020,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["button-group"],
-      files: [
-        {
-          path: "registry/default/examples/button-group-separator.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/button-group-separator.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/button-group-separator.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/button-group-separator.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -2191,20 +2039,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["button-group"],
-      files: [
-        {
-          path: "registry/default/examples/button-group-split.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/button-group-split.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/button-group-split.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/button-group-split.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -2214,20 +2058,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["button-group"],
-      files: [
-        {
-          path: "registry/default/examples/button-group-input.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/button-group-input.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/button-group-input.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/button-group-input.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -2237,20 +2077,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["button-group"],
-      files: [
-        {
-          path: "registry/default/examples/button-group-dropdown.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/button-group-dropdown.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/button-group-dropdown.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/button-group-dropdown.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -2260,20 +2096,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["button-group"],
-      files: [
-        {
-          path: "registry/default/examples/button-group-select.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/button-group-select.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/button-group-select.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/button-group-select.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -2283,20 +2115,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["button-group"],
-      files: [
-        {
-          path: "registry/default/examples/button-group-popover.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/button-group-popover.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/button-group-popover.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/button-group-popover.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -2306,20 +2134,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["button-group"],
-      files: [
-        {
-          path: "registry/default/examples/button-group-input-group.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/button-group-input-group.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/button-group-input-group.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/button-group-input-group.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -2329,20 +2153,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["button-group"],
-      files: [
-        {
-          path: "registry/default/examples/button-group-orientation.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/button-group-orientation.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/button-group-orientation.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/button-group-orientation.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -2352,13 +2172,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["calendar"],
-      files: [
-        {
-          path: "registry/default/examples/calendar-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/calendar-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/calendar-demo.tsx").then((mod) => ({
@@ -2372,14 +2190,12 @@ export const Index: Record<string, unknown> = {
       name: "card-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: ["card", "button", "switch"],
-      files: [
-        {
-          path: "registry/default/examples/card-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["card","button","switch"],
+      files: [{
+        path: "registry/default/examples/card-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/card-demo.tsx").then((mod) => ({
@@ -2393,21 +2209,17 @@ export const Index: Record<string, unknown> = {
       name: "card-with-form",
       description: "",
       type: "registry:example",
-      registryDependencies: ["button", "card", "input", "label", "select"],
-      files: [
-        {
-          path: "registry/default/examples/card-with-form.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["button","card","input","label","select"],
+      files: [{
+        path: "registry/default/examples/card-with-form.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/card-with-form.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/card-with-form.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -2417,13 +2229,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["carousel"],
-      files: [
-        {
-          path: "registry/default/examples/carousel-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/carousel-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/carousel-demo.tsx").then((mod) => ({
@@ -2438,13 +2248,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["carousel"],
-      files: [
-        {
-          path: "registry/default/examples/carousel-size.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/carousel-size.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/carousel-size.tsx").then((mod) => ({
@@ -2459,20 +2267,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["carousel"],
-      files: [
-        {
-          path: "registry/default/examples/carousel-spacing.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/carousel-spacing.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/carousel-spacing.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/carousel-spacing.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -2482,20 +2286,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["carousel"],
-      files: [
-        {
-          path: "registry/default/examples/carousel-orientation.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/carousel-orientation.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/carousel-orientation.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/carousel-orientation.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -2505,13 +2305,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["carousel"],
-      files: [
-        {
-          path: "registry/default/examples/carousel-api.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/carousel-api.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/carousel-api.tsx").then((mod) => ({
@@ -2526,20 +2324,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["carousel"],
-      files: [
-        {
-          path: "registry/default/examples/carousel-plugin.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/carousel-plugin.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/carousel-plugin.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/carousel-plugin.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -2549,13 +2343,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["checkbox"],
-      files: [
-        {
-          path: "registry/default/examples/checkbox-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/checkbox-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/checkbox-demo.tsx").then((mod) => ({
@@ -2570,20 +2362,35 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["checkbox"],
-      files: [
-        {
-          path: "registry/default/examples/checkbox-disabled.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/checkbox-disabled.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/checkbox-disabled.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/checkbox-disabled.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "checkbox-group-demo": {
+      name: "checkbox-group-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["checkbox","checkbox-group"],
+      files: [{
+        path: "registry/default/examples/checkbox-group-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/checkbox-group-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -2593,20 +2400,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["checkbox"],
-      files: [
-        {
-          path: "registry/default/examples/checkbox-with-text.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/checkbox-with-text.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/checkbox-with-text.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/checkbox-with-text.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -2616,20 +2419,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["collapsible"],
-      files: [
-        {
-          path: "registry/default/examples/collapsible-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/collapsible-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/collapsible-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/collapsible-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -2639,13 +2438,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["command"],
-      files: [
-        {
-          path: "registry/default/examples/combobox-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/combobox-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/combobox-demo.tsx").then((mod) => ({
@@ -2659,21 +2456,17 @@ export const Index: Record<string, unknown> = {
       name: "combobox-dropdown-menu",
       description: "",
       type: "registry:example",
-      registryDependencies: ["command", "dropdown-menu", "button"],
-      files: [
-        {
-          path: "registry/default/examples/combobox-dropdown-menu.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["command","dropdown-menu","button"],
+      files: [{
+        path: "registry/default/examples/combobox-dropdown-menu.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/combobox-dropdown-menu.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/combobox-dropdown-menu.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -2682,21 +2475,17 @@ export const Index: Record<string, unknown> = {
       name: "combobox-popover",
       description: "",
       type: "registry:example",
-      registryDependencies: ["combobox", "popover"],
-      files: [
-        {
-          path: "registry/default/examples/combobox-popover.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["combobox","popover"],
+      files: [{
+        path: "registry/default/examples/combobox-popover.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/combobox-popover.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/combobox-popover.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -2705,21 +2494,17 @@ export const Index: Record<string, unknown> = {
       name: "combobox-responsive",
       description: "",
       type: "registry:example",
-      registryDependencies: ["combobox", "popover", "drawer"],
-      files: [
-        {
-          path: "registry/default/examples/combobox-responsive.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["combobox","popover","drawer"],
+      files: [{
+        path: "registry/default/examples/combobox-responsive.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/combobox-responsive.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/combobox-responsive.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -2729,13 +2514,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["command"],
-      files: [
-        {
-          path: "registry/default/examples/command-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/command-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/command-demo.tsx").then((mod) => ({
@@ -2749,21 +2532,17 @@ export const Index: Record<string, unknown> = {
       name: "command-dialog",
       description: "",
       type: "registry:example",
-      registryDependencies: ["command", "dialog"],
-      files: [
-        {
-          path: "registry/default/examples/command-dialog.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["command","dialog"],
+      files: [{
+        path: "registry/default/examples/command-dialog.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/command-dialog.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/command-dialog.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -2773,20 +2552,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["context-menu"],
-      files: [
-        {
-          path: "registry/default/examples/context-menu-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/context-menu-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/context-menu-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/context-menu-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -2796,20 +2571,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["data-table"],
-      files: [
-        {
-          path: "registry/default/examples/data-table-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/data-table-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/data-table-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/data-table-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -2818,21 +2589,17 @@ export const Index: Record<string, unknown> = {
       name: "date-picker-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: ["button", "calendar", "popover"],
-      files: [
-        {
-          path: "registry/default/examples/date-picker-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["button","calendar","popover"],
+      files: [{
+        path: "registry/default/examples/date-picker-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/date-picker-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/date-picker-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -2841,21 +2608,17 @@ export const Index: Record<string, unknown> = {
       name: "date-picker-with-presets",
       description: "",
       type: "registry:example",
-      registryDependencies: ["button", "calendar", "popover", "select"],
-      files: [
-        {
-          path: "registry/default/examples/date-picker-with-presets.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["button","calendar","popover","select"],
+      files: [{
+        path: "registry/default/examples/date-picker-with-presets.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/date-picker-with-presets.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/date-picker-with-presets.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -2864,21 +2627,17 @@ export const Index: Record<string, unknown> = {
       name: "date-picker-with-range",
       description: "",
       type: "registry:example",
-      registryDependencies: ["button", "calendar", "popover"],
-      files: [
-        {
-          path: "registry/default/examples/date-picker-with-range.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["button","calendar","popover"],
+      files: [{
+        path: "registry/default/examples/date-picker-with-range.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/date-picker-with-range.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/date-picker-with-range.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -2888,13 +2647,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["dialog"],
-      files: [
-        {
-          path: "registry/default/examples/dialog-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/dialog-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/dialog-demo.tsx").then((mod) => ({
@@ -2908,21 +2665,17 @@ export const Index: Record<string, unknown> = {
       name: "dialog-close-button",
       description: "",
       type: "registry:example",
-      registryDependencies: ["dialog", "button"],
-      files: [
-        {
-          path: "registry/default/examples/dialog-close-button.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["dialog","button"],
+      files: [{
+        path: "registry/default/examples/dialog-close-button.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/dialog-close-button.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/dialog-close-button.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -2932,13 +2685,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["drawer"],
-      files: [
-        {
-          path: "registry/default/examples/drawer-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/drawer-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/drawer-demo.tsx").then((mod) => ({
@@ -2952,14 +2703,12 @@ export const Index: Record<string, unknown> = {
       name: "empty-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: ["empty", "button"],
-      files: [
-        {
-          path: "registry/default/examples/empty-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["empty","button"],
+      files: [{
+        path: "registry/default/examples/empty-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/empty-demo.tsx").then((mod) => ({
@@ -2974,13 +2723,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["empty"],
-      files: [
-        {
-          path: "registry/default/examples/empty-icon.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/empty-icon.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/empty-icon.tsx").then((mod) => ({
@@ -2994,14 +2741,12 @@ export const Index: Record<string, unknown> = {
       name: "empty-avatar",
       description: "",
       type: "registry:example",
-      registryDependencies: ["empty", "button", "avatar"],
-      files: [
-        {
-          path: "registry/default/examples/empty-avatar.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["empty","button","avatar"],
+      files: [{
+        path: "registry/default/examples/empty-avatar.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/empty-avatar.tsx").then((mod) => ({
@@ -3015,21 +2760,17 @@ export const Index: Record<string, unknown> = {
       name: "empty-avatar-group",
       description: "",
       type: "registry:example",
-      registryDependencies: ["empty", "button", "avatar"],
-      files: [
-        {
-          path: "registry/default/examples/empty-avatar-group.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["empty","button","avatar"],
+      files: [{
+        path: "registry/default/examples/empty-avatar-group.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/empty-avatar-group.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/empty-avatar-group.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -3038,21 +2779,17 @@ export const Index: Record<string, unknown> = {
       name: "empty-input-group",
       description: "",
       type: "registry:example",
-      registryDependencies: ["empty", "button", "input"],
-      files: [
-        {
-          path: "registry/default/examples/empty-input-group.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["empty","button","input"],
+      files: [{
+        path: "registry/default/examples/empty-input-group.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/empty-input-group.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/empty-input-group.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -3061,14 +2798,12 @@ export const Index: Record<string, unknown> = {
       name: "empty-outline",
       description: "",
       type: "registry:example",
-      registryDependencies: ["empty", "button"],
-      files: [
-        {
-          path: "registry/default/examples/empty-outline.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["empty","button"],
+      files: [{
+        path: "registry/default/examples/empty-outline.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/empty-outline.tsx").then((mod) => ({
@@ -3083,20 +2818,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["empty"],
-      files: [
-        {
-          path: "registry/default/examples/empty-background.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/empty-background.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/empty-background.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/empty-background.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -3106,13 +2837,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["field"],
-      files: [
-        {
-          path: "registry/default/examples/field-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/field-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/field-demo.tsx").then((mod) => ({
@@ -3127,13 +2856,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["field"],
-      files: [
-        {
-          path: "registry/default/examples/field-input.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/field-input.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/field-input.tsx").then((mod) => ({
@@ -3148,20 +2875,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["field"],
-      files: [
-        {
-          path: "registry/default/examples/field-textarea.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/field-textarea.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/field-textarea.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/field-textarea.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -3171,20 +2894,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["field"],
-      files: [
-        {
-          path: "registry/default/examples/field-fieldset.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/field-fieldset.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/field-fieldset.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/field-fieldset.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -3194,13 +2913,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["field"],
-      files: [
-        {
-          path: "registry/default/examples/field-radio.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/field-radio.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/field-radio.tsx").then((mod) => ({
@@ -3215,20 +2932,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["field"],
-      files: [
-        {
-          path: "registry/default/examples/field-checkbox.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/field-checkbox.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/field-checkbox.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/field-checkbox.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -3238,13 +2951,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["field"],
-      files: [
-        {
-          path: "registry/default/examples/field-switch.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/field-switch.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/field-switch.tsx").then((mod) => ({
@@ -3259,13 +2970,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["field"],
-      files: [
-        {
-          path: "registry/default/examples/field-slider.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/field-slider.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/field-slider.tsx").then((mod) => ({
@@ -3280,13 +2989,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["field"],
-      files: [
-        {
-          path: "registry/default/examples/field-select.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/field-select.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/field-select.tsx").then((mod) => ({
@@ -3301,20 +3008,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["field"],
-      files: [
-        {
-          path: "registry/default/examples/field-choice-card.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/field-choice-card.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/field-choice-card.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/field-choice-card.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -3324,13 +3027,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["field"],
-      files: [
-        {
-          path: "registry/default/examples/field-group.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/field-group.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/field-group.tsx").then((mod) => ({
@@ -3345,20 +3046,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["field"],
-      files: [
-        {
-          path: "registry/default/examples/field-responsive.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/field-responsive.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/field-responsive.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/field-responsive.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -3367,14 +3064,12 @@ export const Index: Record<string, unknown> = {
       name: "form-rhf-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: ["field", "input", "input-group", "button", "card"],
-      files: [
-        {
-          path: "registry/default/examples/form-rhf-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["field","input","input-group","button","card"],
+      files: [{
+        path: "registry/default/examples/form-rhf-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/form-rhf-demo.tsx").then((mod) => ({
@@ -3388,21 +3083,17 @@ export const Index: Record<string, unknown> = {
       name: "form-rhf-input",
       description: "",
       type: "registry:example",
-      registryDependencies: ["field", "input", "button", "card"],
-      files: [
-        {
-          path: "registry/default/examples/form-rhf-input.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["field","input","button","card"],
+      files: [{
+        path: "registry/default/examples/form-rhf-input.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/form-rhf-input.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/form-rhf-input.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -3411,21 +3102,17 @@ export const Index: Record<string, unknown> = {
       name: "form-rhf-select",
       description: "",
       type: "registry:example",
-      registryDependencies: ["field", "select", "button", "card"],
-      files: [
-        {
-          path: "registry/default/examples/form-rhf-select.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["field","select","button","card"],
+      files: [{
+        path: "registry/default/examples/form-rhf-select.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/form-rhf-select.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/form-rhf-select.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -3434,21 +3121,17 @@ export const Index: Record<string, unknown> = {
       name: "form-rhf-checkbox",
       description: "",
       type: "registry:example",
-      registryDependencies: ["field", "checkbox", "button", "card"],
-      files: [
-        {
-          path: "registry/default/examples/form-rhf-checkbox.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["field","checkbox","button","card"],
+      files: [{
+        path: "registry/default/examples/form-rhf-checkbox.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/form-rhf-checkbox.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/form-rhf-checkbox.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -3457,21 +3140,17 @@ export const Index: Record<string, unknown> = {
       name: "form-rhf-switch",
       description: "",
       type: "registry:example",
-      registryDependencies: ["field", "switch", "button", "card"],
-      files: [
-        {
-          path: "registry/default/examples/form-rhf-switch.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["field","switch","button","card"],
+      files: [{
+        path: "registry/default/examples/form-rhf-switch.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/form-rhf-switch.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/form-rhf-switch.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -3480,21 +3159,17 @@ export const Index: Record<string, unknown> = {
       name: "form-rhf-textarea",
       description: "",
       type: "registry:example",
-      registryDependencies: ["field", "textarea", "button", "card"],
-      files: [
-        {
-          path: "registry/default/examples/form-rhf-textarea.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["field","textarea","button","card"],
+      files: [{
+        path: "registry/default/examples/form-rhf-textarea.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/form-rhf-textarea.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/form-rhf-textarea.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -3503,21 +3178,17 @@ export const Index: Record<string, unknown> = {
       name: "form-rhf-radiogroup",
       description: "",
       type: "registry:example",
-      registryDependencies: ["field", "radio-group", "button", "card"],
-      files: [
-        {
-          path: "registry/default/examples/form-rhf-radiogroup.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["field","radio-group","button","card"],
+      files: [{
+        path: "registry/default/examples/form-rhf-radiogroup.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/form-rhf-radiogroup.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/form-rhf-radiogroup.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -3526,21 +3197,17 @@ export const Index: Record<string, unknown> = {
       name: "form-rhf-array",
       description: "",
       type: "registry:example",
-      registryDependencies: ["field", "input", "input-group", "button", "card"],
-      files: [
-        {
-          path: "registry/default/examples/form-rhf-array.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["field","input","input-group","button","card"],
+      files: [{
+        path: "registry/default/examples/form-rhf-array.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/form-rhf-array.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/form-rhf-array.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -3549,29 +3216,17 @@ export const Index: Record<string, unknown> = {
       name: "form-rhf-complex",
       description: "",
       type: "registry:example",
-      registryDependencies: [
-        "field",
-        "button",
-        "card",
-        "checkbox",
-        "radio-group",
-        "select",
-        "switch",
-      ],
-      files: [
-        {
-          path: "registry/default/examples/form-rhf-complex.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["field","button","card","checkbox","radio-group","select","switch"],
+      files: [{
+        path: "registry/default/examples/form-rhf-complex.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/form-rhf-complex.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/form-rhf-complex.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -3580,27 +3235,17 @@ export const Index: Record<string, unknown> = {
       name: "form-rhf-password",
       description: "",
       type: "registry:example",
-      registryDependencies: [
-        "field",
-        "input-group",
-        "progress",
-        "button",
-        "card",
-      ],
-      files: [
-        {
-          path: "registry/default/examples/form-rhf-password.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["field","input-group","progress","button","card"],
+      files: [{
+        path: "registry/default/examples/form-rhf-password.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/form-rhf-password.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/form-rhf-password.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -3609,21 +3254,17 @@ export const Index: Record<string, unknown> = {
       name: "form-tanstack-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: ["field", "input", "input-group", "button", "card"],
-      files: [
-        {
-          path: "registry/default/examples/form-tanstack-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["field","input","input-group","button","card"],
+      files: [{
+        path: "registry/default/examples/form-tanstack-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/form-tanstack-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/form-tanstack-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -3632,21 +3273,17 @@ export const Index: Record<string, unknown> = {
       name: "form-tanstack-input",
       description: "",
       type: "registry:example",
-      registryDependencies: ["field", "input", "button", "card"],
-      files: [
-        {
-          path: "registry/default/examples/form-tanstack-input.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["field","input","button","card"],
+      files: [{
+        path: "registry/default/examples/form-tanstack-input.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/form-tanstack-input.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/form-tanstack-input.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -3655,21 +3292,17 @@ export const Index: Record<string, unknown> = {
       name: "form-tanstack-textarea",
       description: "",
       type: "registry:example",
-      registryDependencies: ["field", "textarea", "button", "card"],
-      files: [
-        {
-          path: "registry/default/examples/form-tanstack-textarea.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["field","textarea","button","card"],
+      files: [{
+        path: "registry/default/examples/form-tanstack-textarea.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/form-tanstack-textarea.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/form-tanstack-textarea.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -3678,21 +3311,17 @@ export const Index: Record<string, unknown> = {
       name: "form-tanstack-select",
       description: "",
       type: "registry:example",
-      registryDependencies: ["field", "select", "button", "card"],
-      files: [
-        {
-          path: "registry/default/examples/form-tanstack-select.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["field","select","button","card"],
+      files: [{
+        path: "registry/default/examples/form-tanstack-select.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/form-tanstack-select.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/form-tanstack-select.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -3701,21 +3330,17 @@ export const Index: Record<string, unknown> = {
       name: "form-tanstack-checkbox",
       description: "",
       type: "registry:example",
-      registryDependencies: ["field", "checkbox", "button", "card"],
-      files: [
-        {
-          path: "registry/default/examples/form-tanstack-checkbox.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["field","checkbox","button","card"],
+      files: [{
+        path: "registry/default/examples/form-tanstack-checkbox.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/form-tanstack-checkbox.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/form-tanstack-checkbox.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -3724,21 +3349,17 @@ export const Index: Record<string, unknown> = {
       name: "form-tanstack-switch",
       description: "",
       type: "registry:example",
-      registryDependencies: ["field", "switch", "button", "card"],
-      files: [
-        {
-          path: "registry/default/examples/form-tanstack-switch.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["field","switch","button","card"],
+      files: [{
+        path: "registry/default/examples/form-tanstack-switch.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/form-tanstack-switch.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/form-tanstack-switch.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -3747,21 +3368,17 @@ export const Index: Record<string, unknown> = {
       name: "form-tanstack-radiogroup",
       description: "",
       type: "registry:example",
-      registryDependencies: ["field", "radio-group", "button", "card"],
-      files: [
-        {
-          path: "registry/default/examples/form-tanstack-radiogroup.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["field","radio-group","button","card"],
+      files: [{
+        path: "registry/default/examples/form-tanstack-radiogroup.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/form-tanstack-radiogroup.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/form-tanstack-radiogroup.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -3770,21 +3387,17 @@ export const Index: Record<string, unknown> = {
       name: "form-tanstack-array",
       description: "",
       type: "registry:example",
-      registryDependencies: ["field", "input", "input-group", "button", "card"],
-      files: [
-        {
-          path: "registry/default/examples/form-tanstack-array.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["field","input","input-group","button","card"],
+      files: [{
+        path: "registry/default/examples/form-tanstack-array.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/form-tanstack-array.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/form-tanstack-array.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -3793,29 +3406,17 @@ export const Index: Record<string, unknown> = {
       name: "form-tanstack-complex",
       description: "",
       type: "registry:example",
-      registryDependencies: [
-        "field",
-        "button",
-        "card",
-        "checkbox",
-        "radio-group",
-        "select",
-        "switch",
-      ],
-      files: [
-        {
-          path: "registry/default/examples/form-tanstack-complex.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["field","button","card","checkbox","radio-group","select","switch"],
+      files: [{
+        path: "registry/default/examples/form-tanstack-complex.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/form-tanstack-complex.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/form-tanstack-complex.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -3824,14 +3425,12 @@ export const Index: Record<string, unknown> = {
       name: "drawer-dialog",
       description: "",
       type: "registry:example",
-      registryDependencies: ["drawer", "dialog"],
-      files: [
-        {
-          path: "registry/default/examples/drawer-dialog.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["drawer","dialog"],
+      files: [{
+        path: "registry/default/examples/drawer-dialog.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/drawer-dialog.tsx").then((mod) => ({
@@ -3846,20 +3445,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["dropdown-menu"],
-      files: [
-        {
-          path: "registry/default/examples/dropdown-menu-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/dropdown-menu-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/dropdown-menu-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/dropdown-menu-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -3868,21 +3463,17 @@ export const Index: Record<string, unknown> = {
       name: "dropdown-menu-checkboxes",
       description: "",
       type: "registry:example",
-      registryDependencies: ["dropdown-menu", "checkbox"],
-      files: [
-        {
-          path: "registry/default/examples/dropdown-menu-checkboxes.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["dropdown-menu","checkbox"],
+      files: [{
+        path: "registry/default/examples/dropdown-menu-checkboxes.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/dropdown-menu-checkboxes.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/dropdown-menu-checkboxes.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -3891,19 +3482,15 @@ export const Index: Record<string, unknown> = {
       name: "dropdown-menu-radio-group",
       description: "",
       type: "registry:example",
-      registryDependencies: ["dropdown-menu", "radio-group"],
-      files: [
-        {
-          path: "registry/default/examples/dropdown-menu-radio-group.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["dropdown-menu","radio-group"],
+      files: [{
+        path: "registry/default/examples/dropdown-menu-radio-group.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import(
-          "@/registry/default/examples/dropdown-menu-radio-group.tsx"
-        ).then((mod) => ({
+        import("@/registry/default/examples/dropdown-menu-radio-group.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
         }))
       ),
@@ -3914,27 +3501,17 @@ export const Index: Record<string, unknown> = {
       name: "dropdown-menu-dialog",
       description: "",
       type: "registry:example",
-      registryDependencies: [
-        "dropdown-menu",
-        "dialog",
-        "button",
-        "input",
-        "label",
-      ],
-      files: [
-        {
-          path: "registry/default/examples/dropdown-menu-dialog.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["dropdown-menu","dialog","button","input","label"],
+      files: [{
+        path: "registry/default/examples/dropdown-menu-dialog.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/dropdown-menu-dialog.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/dropdown-menu-dialog.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -3944,20 +3521,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["hover-card"],
-      files: [
-        {
-          path: "registry/default/examples/hover-card-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/hover-card-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/hover-card-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/hover-card-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -3967,13 +3540,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["input"],
-      files: [
-        {
-          path: "registry/default/examples/input-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/input-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/input-demo.tsx").then((mod) => ({
@@ -3988,20 +3559,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["input"],
-      files: [
-        {
-          path: "registry/default/examples/input-disabled.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/input-disabled.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/input-disabled.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/input-disabled.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -4011,13 +3578,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["input"],
-      files: [
-        {
-          path: "registry/default/examples/input-file.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/input-file.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/input-file.tsx").then((mod) => ({
@@ -4031,21 +3596,17 @@ export const Index: Record<string, unknown> = {
       name: "input-with-button",
       description: "",
       type: "registry:example",
-      registryDependencies: ["input", "button"],
-      files: [
-        {
-          path: "registry/default/examples/input-with-button.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["input","button"],
+      files: [{
+        path: "registry/default/examples/input-with-button.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/input-with-button.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/input-with-button.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -4054,21 +3615,17 @@ export const Index: Record<string, unknown> = {
       name: "input-with-label",
       description: "",
       type: "registry:example",
-      registryDependencies: ["input", "button", "label"],
-      files: [
-        {
-          path: "registry/default/examples/input-with-label.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["input","button","label"],
+      files: [{
+        path: "registry/default/examples/input-with-label.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/input-with-label.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/input-with-label.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -4077,21 +3634,17 @@ export const Index: Record<string, unknown> = {
       name: "input-with-text",
       description: "",
       type: "registry:example",
-      registryDependencies: ["input", "button", "label"],
-      files: [
-        {
-          path: "registry/default/examples/input-with-text.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["input","button","label"],
+      files: [{
+        path: "registry/default/examples/input-with-text.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/input-with-text.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/input-with-text.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -4101,20 +3654,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["input-group"],
-      files: [
-        {
-          path: "registry/default/examples/input-group-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/input-group-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/input-group-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/input-group-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -4123,21 +3672,17 @@ export const Index: Record<string, unknown> = {
       name: "input-group-label",
       description: "",
       type: "registry:example",
-      registryDependencies: ["input-group", "label"],
-      files: [
-        {
-          path: "registry/default/examples/input-group-label.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["input-group","label"],
+      files: [{
+        path: "registry/default/examples/input-group-label.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/input-group-label.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/input-group-label.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -4147,20 +3692,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["input-group"],
-      files: [
-        {
-          path: "registry/default/examples/input-group-text.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/input-group-text.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/input-group-text.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/input-group-text.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -4169,21 +3710,17 @@ export const Index: Record<string, unknown> = {
       name: "input-group-tooltip",
       description: "",
       type: "registry:example",
-      registryDependencies: ["input-group", "tooltip"],
-      files: [
-        {
-          path: "registry/default/examples/input-group-tooltip.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["input-group","tooltip"],
+      files: [{
+        path: "registry/default/examples/input-group-tooltip.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/input-group-tooltip.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/input-group-tooltip.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -4193,20 +3730,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["input-group"],
-      files: [
-        {
-          path: "registry/default/examples/input-group-button.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/input-group-button.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/input-group-button.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/input-group-button.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -4215,21 +3748,17 @@ export const Index: Record<string, unknown> = {
       name: "input-group-button-group",
       description: "",
       type: "registry:example",
-      registryDependencies: ["input-group", "button-group"],
-      files: [
-        {
-          path: "registry/default/examples/input-group-button-group.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["input-group","button-group"],
+      files: [{
+        path: "registry/default/examples/input-group-button-group.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/input-group-button-group.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/input-group-button-group.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -4238,21 +3767,17 @@ export const Index: Record<string, unknown> = {
       name: "input-group-dropdown",
       description: "",
       type: "registry:example",
-      registryDependencies: ["input-group", "dropdown-menu", "button"],
-      files: [
-        {
-          path: "registry/default/examples/input-group-dropdown.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["input-group","dropdown-menu","button"],
+      files: [{
+        path: "registry/default/examples/input-group-dropdown.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/input-group-dropdown.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/input-group-dropdown.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -4261,21 +3786,17 @@ export const Index: Record<string, unknown> = {
       name: "input-group-spinner",
       description: "",
       type: "registry:example",
-      registryDependencies: ["input-group", "spinner"],
-      files: [
-        {
-          path: "registry/default/examples/input-group-spinner.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["input-group","spinner"],
+      files: [{
+        path: "registry/default/examples/input-group-spinner.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/input-group-spinner.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/input-group-spinner.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -4284,21 +3805,17 @@ export const Index: Record<string, unknown> = {
       name: "input-group-textarea",
       description: "",
       type: "registry:example",
-      registryDependencies: ["input-group", "textarea"],
-      files: [
-        {
-          path: "registry/default/examples/input-group-textarea.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["input-group","textarea"],
+      files: [{
+        path: "registry/default/examples/input-group-textarea.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/input-group-textarea.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/input-group-textarea.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -4308,20 +3825,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["input-group"],
-      files: [
-        {
-          path: "registry/default/examples/input-group-icon.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/input-group-icon.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/input-group-icon.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/input-group-icon.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -4330,27 +3843,17 @@ export const Index: Record<string, unknown> = {
       name: "input-group-custom",
       description: "",
       type: "registry:example",
-      registryDependencies: [
-        "input-group",
-        "badge",
-        "progress",
-        "dropdown-menu",
-        "tooltip",
-      ],
-      files: [
-        {
-          path: "registry/default/examples/input-group-custom.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["input-group","badge","progress","dropdown-menu","tooltip"],
+      files: [{
+        path: "registry/default/examples/input-group-custom.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/input-group-custom.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/input-group-custom.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -4360,20 +3863,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["input-otp"],
-      files: [
-        {
-          path: "registry/default/examples/input-otp-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/input-otp-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/input-otp-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/input-otp-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -4383,20 +3882,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["input-otp"],
-      files: [
-        {
-          path: "registry/default/examples/input-otp-pattern.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/input-otp-pattern.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/input-otp-pattern.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/input-otp-pattern.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -4406,20 +3901,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["input-otp"],
-      files: [
-        {
-          path: "registry/default/examples/input-otp-separator.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/input-otp-separator.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/input-otp-separator.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/input-otp-separator.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -4429,20 +3920,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["input-otp"],
-      files: [
-        {
-          path: "registry/default/examples/input-otp-controlled.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/input-otp-controlled.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/input-otp-controlled.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/input-otp-controlled.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -4452,13 +3939,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["item"],
-      files: [
-        {
-          path: "registry/default/examples/item-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/item-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/item-demo.tsx").then((mod) => ({
@@ -4473,13 +3958,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["item"],
-      files: [
-        {
-          path: "registry/default/examples/item-size.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/item-size.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/item-size.tsx").then((mod) => ({
@@ -4494,13 +3977,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["item"],
-      files: [
-        {
-          path: "registry/default/examples/item-variant.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/item-variant.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/item-variant.tsx").then((mod) => ({
@@ -4515,13 +3996,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["item"],
-      files: [
-        {
-          path: "registry/default/examples/item-icon.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/item-icon.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/item-icon.tsx").then((mod) => ({
@@ -4536,13 +4015,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["item"],
-      files: [
-        {
-          path: "registry/default/examples/item-image.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/item-image.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/item-image.tsx").then((mod) => ({
@@ -4557,13 +4034,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["item"],
-      files: [
-        {
-          path: "registry/default/examples/item-avatar.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/item-avatar.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/item-avatar.tsx").then((mod) => ({
@@ -4578,13 +4053,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["item"],
-      files: [
-        {
-          path: "registry/default/examples/item-group.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/item-group.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/item-group.tsx").then((mod) => ({
@@ -4599,13 +4072,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["item"],
-      files: [
-        {
-          path: "registry/default/examples/item-header.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/item-header.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/item-header.tsx").then((mod) => ({
@@ -4620,13 +4091,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["item"],
-      files: [
-        {
-          path: "registry/default/examples/item-dropdown.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/item-dropdown.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/item-dropdown.tsx").then((mod) => ({
@@ -4641,13 +4110,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["item"],
-      files: [
-        {
-          path: "registry/default/examples/item-link.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/item-link.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/item-link.tsx").then((mod) => ({
@@ -4662,13 +4129,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["kbd"],
-      files: [
-        {
-          path: "registry/default/examples/kbd-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/kbd-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/kbd-demo.tsx").then((mod) => ({
@@ -4682,14 +4147,12 @@ export const Index: Record<string, unknown> = {
       name: "kbd-tooltip",
       description: "",
       type: "registry:example",
-      registryDependencies: ["kbd", "tooltip", "button"],
-      files: [
-        {
-          path: "registry/default/examples/kbd-tooltip.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["kbd","tooltip","button"],
+      files: [{
+        path: "registry/default/examples/kbd-tooltip.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/kbd-tooltip.tsx").then((mod) => ({
@@ -4703,21 +4166,17 @@ export const Index: Record<string, unknown> = {
       name: "kbd-input-group",
       description: "",
       type: "registry:example",
-      registryDependencies: ["kbd", "input", "button", "label"],
-      files: [
-        {
-          path: "registry/default/examples/kbd-input-group.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["kbd","input","button","label"],
+      files: [{
+        path: "registry/default/examples/kbd-input-group.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/kbd-input-group.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/kbd-input-group.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -4726,14 +4185,12 @@ export const Index: Record<string, unknown> = {
       name: "kbd-button",
       description: "",
       type: "registry:example",
-      registryDependencies: ["kbd", "button"],
-      files: [
-        {
-          path: "registry/default/examples/kbd-button.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["kbd","button"],
+      files: [{
+        path: "registry/default/examples/kbd-button.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/kbd-button.tsx").then((mod) => ({
@@ -4748,13 +4205,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["kbd"],
-      files: [
-        {
-          path: "registry/default/examples/kbd-group.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/kbd-group.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/kbd-group.tsx").then((mod) => ({
@@ -4769,13 +4224,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["label"],
-      files: [
-        {
-          path: "registry/default/examples/label-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/label-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/label-demo.tsx").then((mod) => ({
@@ -4790,16 +4243,33 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["menubar"],
-      files: [
-        {
-          path: "registry/default/examples/menubar-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/menubar-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/menubar-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "meter-demo": {
+      name: "meter-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["meter"],
+      files: [{
+        path: "registry/default/examples/meter-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/meter-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
         }))
       ),
@@ -4811,20 +4281,35 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["navigation-menu"],
-      files: [
-        {
-          path: "registry/default/examples/navigation-menu-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/navigation-menu-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/navigation-menu-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/navigation-menu-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "number-field-demo": {
+      name: "number-field-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["number-field"],
+      files: [{
+        path: "registry/default/examples/number-field-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/number-field-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -4834,20 +4319,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["native-select"],
-      files: [
-        {
-          path: "registry/default/examples/native-select-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/native-select-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/native-select-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/native-select-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -4857,20 +4338,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["native-select"],
-      files: [
-        {
-          path: "registry/default/examples/native-select-groups.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/native-select-groups.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/native-select-groups.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/native-select-groups.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -4880,20 +4357,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["native-select"],
-      files: [
-        {
-          path: "registry/default/examples/native-select-disabled.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/native-select-disabled.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/native-select-disabled.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/native-select-disabled.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -4903,20 +4376,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["native-select"],
-      files: [
-        {
-          path: "registry/default/examples/native-select-invalid.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/native-select-invalid.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/native-select-invalid.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/native-select-invalid.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -4926,20 +4395,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["pagination"],
-      files: [
-        {
-          path: "registry/default/examples/pagination-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/pagination-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/pagination-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/pagination-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -4949,13 +4414,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["popover"],
-      files: [
-        {
-          path: "registry/default/examples/popover-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/popover-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/popover-demo.tsx").then((mod) => ({
@@ -4970,16 +4433,33 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["progress"],
-      files: [
-        {
-          path: "registry/default/examples/progress-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/progress-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/progress-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "progress-list-demo": {
+      name: "progress-list-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["progress-list"],
+      files: [{
+        path: "registry/default/examples/progress-list-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/progress-list-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
         }))
       ),
@@ -4991,20 +4471,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["radio-group"],
-      files: [
-        {
-          path: "registry/default/examples/radio-group-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/radio-group-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/radio-group-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/radio-group-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -5014,20 +4490,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["resizable"],
-      files: [
-        {
-          path: "registry/default/examples/resizable-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/resizable-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/resizable-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/resizable-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -5037,18 +4509,14 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["resizable"],
-      files: [
-        {
-          path: "registry/default/examples/resizable-demo-with-handle.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/resizable-demo-with-handle.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import(
-          "@/registry/default/examples/resizable-demo-with-handle.tsx"
-        ).then((mod) => ({
+        import("@/registry/default/examples/resizable-demo-with-handle.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
         }))
       ),
@@ -5060,20 +4528,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["resizable"],
-      files: [
-        {
-          path: "registry/default/examples/resizable-vertical.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/resizable-vertical.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/resizable-vertical.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/resizable-vertical.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -5083,20 +4547,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["resizable"],
-      files: [
-        {
-          path: "registry/default/examples/resizable-handle.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/resizable-handle.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/resizable-handle.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/resizable-handle.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -5106,20 +4566,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["scroll-area"],
-      files: [
-        {
-          path: "registry/default/examples/scroll-area-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/scroll-area-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/scroll-area-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/scroll-area-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -5129,18 +4585,14 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["scroll-area"],
-      files: [
-        {
-          path: "registry/default/examples/scroll-area-horizontal-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/scroll-area-horizontal-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import(
-          "@/registry/default/examples/scroll-area-horizontal-demo.tsx"
-        ).then((mod) => ({
+        import("@/registry/default/examples/scroll-area-horizontal-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
         }))
       ),
@@ -5152,13 +4604,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["select"],
-      files: [
-        {
-          path: "registry/default/examples/select-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/select-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/select-demo.tsx").then((mod) => ({
@@ -5173,20 +4623,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["select"],
-      files: [
-        {
-          path: "registry/default/examples/select-scrollable.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/select-scrollable.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/select-scrollable.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/select-scrollable.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -5196,20 +4642,35 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["separator"],
-      files: [
-        {
-          path: "registry/default/examples/separator-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/separator-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/separator-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/separator-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "sidebar-demo": {
+      name: "sidebar-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["avatar","collapsible","dropdown-menu","sidebar"],
+      files: [{
+        path: "registry/default/examples/sidebar-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/sidebar-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -5219,13 +4680,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["sheet"],
-      files: [
-        {
-          path: "registry/default/examples/sheet-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/sheet-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/sheet-demo.tsx").then((mod) => ({
@@ -5240,13 +4699,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["sheet"],
-      files: [
-        {
-          path: "registry/default/examples/sheet-side.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/sheet-side.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/sheet-side.tsx").then((mod) => ({
@@ -5261,13 +4718,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["skeleton"],
-      files: [
-        {
-          path: "registry/default/examples/skeleton-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/skeleton-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/skeleton-demo.tsx").then((mod) => ({
@@ -5282,13 +4737,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["skeleton"],
-      files: [
-        {
-          path: "registry/default/examples/skeleton-card.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/skeleton-card.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/skeleton-card.tsx").then((mod) => ({
@@ -5303,13 +4756,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["slider"],
-      files: [
-        {
-          path: "registry/default/examples/slider-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/slider-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/slider-demo.tsx").then((mod) => ({
@@ -5324,13 +4775,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["sonner"],
-      files: [
-        {
-          path: "registry/default/examples/sonner-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/sonner-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/sonner-demo.tsx").then((mod) => ({
@@ -5345,13 +4794,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["sonner"],
-      files: [
-        {
-          path: "registry/default/examples/sonner-types.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/sonner-types.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/sonner-types.tsx").then((mod) => ({
@@ -5366,13 +4813,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["spinner"],
-      files: [
-        {
-          path: "registry/default/examples/spinner-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/spinner-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/spinner-demo.tsx").then((mod) => ({
@@ -5386,14 +4831,12 @@ export const Index: Record<string, unknown> = {
       name: "spinner-basic",
       description: "",
       type: "registry:example",
-      registryDependencies: ["spinner", "button"],
-      files: [
-        {
-          path: "registry/default/examples/spinner-basic.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["spinner","button"],
+      files: [{
+        path: "registry/default/examples/spinner-basic.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/spinner-basic.tsx").then((mod) => ({
@@ -5407,21 +4850,17 @@ export const Index: Record<string, unknown> = {
       name: "spinner-button",
       description: "",
       type: "registry:example",
-      registryDependencies: ["spinner", "button"],
-      files: [
-        {
-          path: "registry/default/examples/spinner-button.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["spinner","button"],
+      files: [{
+        path: "registry/default/examples/spinner-button.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/spinner-button.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/spinner-button.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -5430,14 +4869,12 @@ export const Index: Record<string, unknown> = {
       name: "spinner-badge",
       description: "",
       type: "registry:example",
-      registryDependencies: ["spinner", "badge"],
-      files: [
-        {
-          path: "registry/default/examples/spinner-badge.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["spinner","badge"],
+      files: [{
+        path: "registry/default/examples/spinner-badge.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/spinner-badge.tsx").then((mod) => ({
@@ -5451,21 +4888,17 @@ export const Index: Record<string, unknown> = {
       name: "spinner-input-group",
       description: "",
       type: "registry:example",
-      registryDependencies: ["spinner", "button", "input"],
-      files: [
-        {
-          path: "registry/default/examples/spinner-input-group.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["spinner","button","input"],
+      files: [{
+        path: "registry/default/examples/spinner-input-group.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/spinner-input-group.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/spinner-input-group.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -5475,13 +4908,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["spinner"],
-      files: [
-        {
-          path: "registry/default/examples/spinner-empty.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/spinner-empty.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/spinner-empty.tsx").then((mod) => ({
@@ -5496,13 +4927,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["spinner"],
-      files: [
-        {
-          path: "registry/default/examples/spinner-color.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/spinner-color.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/spinner-color.tsx").then((mod) => ({
@@ -5517,20 +4946,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["spinner"],
-      files: [
-        {
-          path: "registry/default/examples/spinner-custom.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/spinner-custom.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/spinner-custom.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/spinner-custom.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -5540,13 +4965,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["spinner"],
-      files: [
-        {
-          path: "registry/default/examples/spinner-size.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/spinner-size.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/spinner-size.tsx").then((mod) => ({
@@ -5561,16 +4984,33 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["spinner"],
-      files: [
-        {
-          path: "registry/default/examples/spinner-item.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/spinner-item.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/spinner-item.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "stat-demo": {
+      name: "stat-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["stat"],
+      files: [{
+        path: "registry/default/examples/stat-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/stat-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
         }))
       ),
@@ -5582,13 +5022,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["switch"],
-      files: [
-        {
-          path: "registry/default/examples/switch-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/switch-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/switch-demo.tsx").then((mod) => ({
@@ -5603,13 +5041,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["table"],
-      files: [
-        {
-          path: "registry/default/examples/table-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/table-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/table-demo.tsx").then((mod) => ({
@@ -5624,13 +5060,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["tabs"],
-      files: [
-        {
-          path: "registry/default/examples/tabs-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/tabs-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/tabs-demo.tsx").then((mod) => ({
@@ -5645,13 +5079,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["textarea"],
-      files: [
-        {
-          path: "registry/default/examples/textarea-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/textarea-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/textarea-demo.tsx").then((mod) => ({
@@ -5666,20 +5098,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["textarea"],
-      files: [
-        {
-          path: "registry/default/examples/textarea-disabled.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/textarea-disabled.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/textarea-disabled.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/textarea-disabled.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -5688,21 +5116,17 @@ export const Index: Record<string, unknown> = {
       name: "textarea-with-button",
       description: "",
       type: "registry:example",
-      registryDependencies: ["textarea", "button"],
-      files: [
-        {
-          path: "registry/default/examples/textarea-with-button.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["textarea","button"],
+      files: [{
+        path: "registry/default/examples/textarea-with-button.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/textarea-with-button.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/textarea-with-button.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -5711,21 +5135,17 @@ export const Index: Record<string, unknown> = {
       name: "textarea-with-label",
       description: "",
       type: "registry:example",
-      registryDependencies: ["textarea", "label"],
-      files: [
-        {
-          path: "registry/default/examples/textarea-with-label.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["textarea","label"],
+      files: [{
+        path: "registry/default/examples/textarea-with-label.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/textarea-with-label.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/textarea-with-label.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -5734,21 +5154,17 @@ export const Index: Record<string, unknown> = {
       name: "textarea-with-text",
       description: "",
       type: "registry:example",
-      registryDependencies: ["textarea", "label"],
-      files: [
-        {
-          path: "registry/default/examples/textarea-with-text.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["textarea","label"],
+      files: [{
+        path: "registry/default/examples/textarea-with-text.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/textarea-with-text.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/textarea-with-text.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -5758,13 +5174,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["toast"],
-      files: [
-        {
-          path: "registry/default/examples/toast-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/toast-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/toast-demo.tsx").then((mod) => ({
@@ -5779,20 +5193,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["toast"],
-      files: [
-        {
-          path: "registry/default/examples/toast-destructive.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/toast-destructive.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/toast-destructive.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/toast-destructive.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -5802,13 +5212,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["toast"],
-      files: [
-        {
-          path: "registry/default/examples/toast-simple.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/toast-simple.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/toast-simple.tsx").then((mod) => ({
@@ -5823,20 +5231,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["toast"],
-      files: [
-        {
-          path: "registry/default/examples/toast-with-action.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/toast-with-action.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/toast-with-action.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/toast-with-action.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -5846,20 +5250,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["toast"],
-      files: [
-        {
-          path: "registry/default/examples/toast-with-title.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/toast-with-title.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/toast-with-title.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/toast-with-title.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -5869,20 +5269,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["toggle-group"],
-      files: [
-        {
-          path: "registry/default/examples/toggle-group-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/toggle-group-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/toggle-group-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/toggle-group-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -5892,20 +5288,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["toggle-group"],
-      files: [
-        {
-          path: "registry/default/examples/toggle-group-disabled.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/toggle-group-disabled.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/toggle-group-disabled.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/toggle-group-disabled.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -5915,20 +5307,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["toggle-group"],
-      files: [
-        {
-          path: "registry/default/examples/toggle-group-lg.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/toggle-group-lg.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/toggle-group-lg.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/toggle-group-lg.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -5938,20 +5326,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["toggle-group"],
-      files: [
-        {
-          path: "registry/default/examples/toggle-group-outline.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/toggle-group-outline.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/toggle-group-outline.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/toggle-group-outline.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -5961,20 +5345,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["toggle-group"],
-      files: [
-        {
-          path: "registry/default/examples/toggle-group-sm.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/toggle-group-sm.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/toggle-group-sm.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/toggle-group-sm.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -5984,20 +5364,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["toggle-group"],
-      files: [
-        {
-          path: "registry/default/examples/toggle-group-single.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/toggle-group-single.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/toggle-group-single.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/toggle-group-single.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -6007,20 +5383,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["toggle-group"],
-      files: [
-        {
-          path: "registry/default/examples/toggle-group-spacing.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/toggle-group-spacing.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/toggle-group-spacing.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/toggle-group-spacing.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -6030,13 +5402,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["toggle"],
-      files: [
-        {
-          path: "registry/default/examples/toggle-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/toggle-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/toggle-demo.tsx").then((mod) => ({
@@ -6051,20 +5421,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["toggle"],
-      files: [
-        {
-          path: "registry/default/examples/toggle-disabled.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/toggle-disabled.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/toggle-disabled.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/toggle-disabled.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -6074,13 +5440,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["toggle"],
-      files: [
-        {
-          path: "registry/default/examples/toggle-lg.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/toggle-lg.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/toggle-lg.tsx").then((mod) => ({
@@ -6095,20 +5459,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["toggle"],
-      files: [
-        {
-          path: "registry/default/examples/toggle-outline.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/toggle-outline.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/toggle-outline.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/toggle-outline.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -6118,13 +5478,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["toggle"],
-      files: [
-        {
-          path: "registry/default/examples/toggle-sm.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/toggle-sm.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/toggle-sm.tsx").then((mod) => ({
@@ -6139,20 +5497,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["toggle"],
-      files: [
-        {
-          path: "registry/default/examples/toggle-with-text.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/toggle-with-text.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/toggle-with-text.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/toggle-with-text.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -6162,13 +5516,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["tooltip"],
-      files: [
-        {
-          path: "registry/default/examples/tooltip-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/tooltip-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/tooltip-demo.tsx").then((mod) => ({
@@ -6183,20 +5535,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/examples/typography-blockquote.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/typography-blockquote.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/typography-blockquote.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/typography-blockquote.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -6206,20 +5554,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/examples/typography-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/typography-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/typography-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/typography-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -6229,13 +5573,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/examples/typography-h1.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/typography-h1.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/typography-h1.tsx").then((mod) => ({
@@ -6250,13 +5592,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/examples/typography-h2.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/typography-h2.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/typography-h2.tsx").then((mod) => ({
@@ -6271,13 +5611,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/examples/typography-h3.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/typography-h3.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/typography-h3.tsx").then((mod) => ({
@@ -6292,13 +5630,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/examples/typography-h4.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/typography-h4.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/typography-h4.tsx").then((mod) => ({
@@ -6313,20 +5649,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/examples/typography-inline-code.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/typography-inline-code.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/typography-inline-code.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/typography-inline-code.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -6336,20 +5668,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/examples/typography-large.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/typography-large.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/typography-large.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/typography-large.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -6359,20 +5687,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/examples/typography-lead.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/typography-lead.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/typography-lead.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/typography-lead.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -6382,20 +5706,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/examples/typography-list.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/typography-list.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/typography-list.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/typography-list.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -6405,20 +5725,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/examples/typography-muted.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/typography-muted.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/typography-muted.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/typography-muted.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -6428,13 +5744,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/examples/typography-p.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/typography-p.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/typography-p.tsx").then((mod) => ({
@@ -6449,20 +5763,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/examples/typography-small.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/typography-small.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/typography-small.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/typography-small.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -6472,20 +5782,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/examples/typography-table.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/typography-table.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/typography-table.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/typography-table.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -6495,13 +5801,11 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/examples/mode-toggle.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/mode-toggle.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/mode-toggle.tsx").then((mod) => ({
@@ -6511,191 +5815,40 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    "chart-bar-demo": {
-      name: "chart-bar-demo",
-      description: "",
-      type: "registry:example",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/examples/chart-bar-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      component: React.lazy(() =>
-        import("@/registry/default/examples/chart-bar-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
-      ),
-      source: "",
-      meta: undefined,
-    },
-    "chart-bar-demo-grid": {
-      name: "chart-bar-demo-grid",
-      description: "",
-      type: "registry:example",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/examples/chart-bar-demo-grid.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      component: React.lazy(() =>
-        import("@/registry/default/examples/chart-bar-demo-grid.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
-      ),
-      source: "",
-      meta: undefined,
-    },
-    "chart-bar-demo-axis": {
-      name: "chart-bar-demo-axis",
-      description: "",
-      type: "registry:example",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/examples/chart-bar-demo-axis.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      component: React.lazy(() =>
-        import("@/registry/default/examples/chart-bar-demo-axis.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
-      ),
-      source: "",
-      meta: undefined,
-    },
-    "chart-bar-demo-tooltip": {
-      name: "chart-bar-demo-tooltip",
-      description: "",
-      type: "registry:example",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/examples/chart-bar-demo-tooltip.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      component: React.lazy(() =>
-        import("@/registry/default/examples/chart-bar-demo-tooltip.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
-      ),
-      source: "",
-      meta: undefined,
-    },
-    "chart-bar-demo-legend": {
-      name: "chart-bar-demo-legend",
-      description: "",
-      type: "registry:example",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/examples/chart-bar-demo-legend.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      component: React.lazy(() =>
-        import("@/registry/default/examples/chart-bar-demo-legend.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
-      ),
-      source: "",
-      meta: undefined,
-    },
-    "chart-tooltip-demo": {
-      name: "chart-tooltip-demo",
-      description: "",
-      type: "registry:example",
-      registryDependencies: undefined,
-      files: [
-        {
-          path: "registry/default/examples/chart-tooltip-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: undefined,
-      component: React.lazy(() =>
-        import("@/registry/default/examples/chart-tooltip-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
-      ),
-      source: "",
-      meta: undefined,
-    },
     "calendar-hijri": {
       name: "calendar-hijri",
       description: "A Persian calendar.",
       type: "registry:example",
       registryDependencies: ["calendar"],
-      files: [
-        {
-          path: "registry/default/examples/calendar-hijri.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: ["calendar", "date"],
+      files: [{
+        path: "registry/default/examples/calendar-hijri.tsx",
+        type: "registry:example",
+        target: ""
+      }],
+      categories: ["calendar","date"],
       component: React.lazy(() =>
-        import("@/registry/default/examples/calendar-hijri.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/calendar-hijri.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
-      meta: {
-        iframeHeight: "600px",
-        container:
-          "w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0",
-        mobile: "component",
-      },
+      meta: {"iframeHeight":"600px","container":"w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0","mobile":"component"},
     },
     "circular-progress-demo": {
       name: "circular-progress-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: ["circular-progress", "button", "slider"],
-      files: [
-        {
-          path: "registry/default/examples/circular-progress-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["circular-progress","button","slider"],
+      files: [{
+        path: "registry/default/examples/circular-progress-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/circular-progress-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/circular-progress-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -6705,20 +5858,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["multi-combobox"],
-      files: [
-        {
-          path: "registry/default/examples/multi-combobox-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/multi-combobox-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/multi-combobox-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/multi-combobox-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -6727,21 +5876,17 @@ export const Index: Record<string, unknown> = {
       name: "currency-input-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: ["currency-input", "label"],
-      files: [
-        {
-          path: "registry/default/examples/currency-input-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["currency-input","label"],
+      files: [{
+        path: "registry/default/examples/currency-input-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/currency-input-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/currency-input-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -6751,20 +5896,16 @@ export const Index: Record<string, unknown> = {
       description: "",
       type: "registry:example",
       registryDependencies: ["phone-input"],
-      files: [
-        {
-          path: "registry/default/examples/phone-input-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      files: [{
+        path: "registry/default/examples/phone-input-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/phone-input-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/phone-input-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
       ),
       source: "",
       meta: undefined,
@@ -6773,14 +5914,12 @@ export const Index: Record<string, unknown> = {
       name: "prompt-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: ["prompt", "button"],
-      files: [
-        {
-          path: "registry/default/examples/prompt-demo.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
+      registryDependencies: ["prompt","button"],
+      files: [{
+        path: "registry/default/examples/prompt-demo.tsx",
+        type: "registry:example",
+        target: ""
+      }],
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/prompt-demo.tsx").then((mod) => ({
@@ -6791,4 +5930,4 @@ export const Index: Record<string, unknown> = {
       meta: undefined,
     },
   },
-};
+}

@@ -1,0 +1,55 @@
+---
+title: Bar List
+description: Display ranked values as horizontal bars.
+component: true
+---
+
+<ComponentPreview name="bar-list-demo" description="A bar list with formatted values." />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ui.blode.co/r/styles/default/bar-list"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="bar-list" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { BarList } from "@/components/ui/bar-list";
+```
+
+```tsx
+const data = [
+  { name: "Search", value: 72 },
+  { name: "Email", value: 58 },
+  { name: "Social", value: 33 },
+];
+
+<BarList data={data} valueFormatter={(value) => `${value}%`} />;
+```

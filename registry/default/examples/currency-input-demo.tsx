@@ -35,43 +35,6 @@ export default function CurrencyInputDemo() {
           Charged once per workspace each month.
         </p>
       </div>
-
-      <div className="space-y-2">
-        <Label htmlFor="eu-price">EU price</Label>
-        <CurrencyInput
-          decimalSeparator=","
-          decimalsLimit={2}
-          groupSeparator="."
-          id="eu-price"
-          name="euPrice"
-          placeholder="Enter EU price"
-          prefix="€"
-          suffix=" EUR"
-        />
-        <p className="text-muted-foreground text-sm">
-          Optional localized price for EU customers.
-        </p>
-      </div>
-
-      <div className="space-y-2">
-        <Label htmlFor="account-credit">Account credit</Label>
-        <CurrencyInput
-          clearable
-          decimalSeparator="."
-          decimalsLimit={2}
-          groupSeparator=","
-          id="account-credit"
-          name="accountCredit"
-          onClear={() => setCredit(undefined)}
-          onValueChange={(value) => setCredit(value)}
-          placeholder="Enter credit amount"
-          prefix="$"
-          value={credit}
-        />
-        <p className="text-muted-foreground text-sm">
-          Use credits for support reimbursements or promo adjustments.
-        </p>
-      </div>
     </div>
   );
 }

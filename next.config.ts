@@ -28,6 +28,11 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/docs/typography",
+        destination: "/docs/font",
+        permanent: true,
+      },
+      {
         source: "/components/:path*",
         destination: "/docs/components/:path*",
         permanent: true,

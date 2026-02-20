@@ -4,7 +4,9 @@
   "title": "Label",
   "author": "Matthew Blode",
   "description": "An accessible label that associates text with a form control.",
-  "dependencies": ["@base-ui/react"],
+  "dependencies": [
+    "@base-ui/react"
+  ],
   "files": [
     {
       "path": "ui/label.tsx",

@@ -4,8 +4,13 @@
   "title": "Calendar",
   "author": "Matthew Blode",
   "description": "A date field component that allows users to pick dates.",
-  "dependencies": ["react-day-picker@latest", "date-fns"],
-  "registryDependencies": ["button"],
+  "dependencies": [
+    "react-day-picker@latest",
+    "date-fns"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
   "files": [
     {
       "path": "ui/calendar.tsx",

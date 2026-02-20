@@ -1,0 +1,61 @@
+---
+title: Empty
+description: Display an empty state with optional media, copy, and actions.
+component: true
+---
+
+<ComponentPreview name="empty-demo" description="An empty project state with actions." />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ui.blode.co/r/styles/default/empty"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="empty" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyTitle,
+} from "@/components/ui/empty";
+```
+
+```tsx
+<Empty>
+  <EmptyHeader>
+    <EmptyTitle>No Results</EmptyTitle>
+    <EmptyDescription>Try changing your filters.</EmptyDescription>
+  </EmptyHeader>
+  <EmptyContent>...</EmptyContent>
+</Empty>
+```

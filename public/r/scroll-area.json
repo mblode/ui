@@ -4,7 +4,9 @@
   "title": "Scroll Area",
   "author": "Matthew Blode",
   "description": "A scrollable container with custom styled scrollbars.",
-  "dependencies": ["@base-ui/react"],
+  "dependencies": [
+    "@base-ui/react"
+  ],
   "files": [
     {
       "path": "ui/scroll-area.tsx",

@@ -4,7 +4,9 @@
   "title": "Tooltip",
   "author": "Matthew Blode",
   "description": "A popup that displays helpful information when hovering or focusing an element.",
-  "dependencies": ["@base-ui/react"],
+  "dependencies": [
+    "@base-ui/react"
+  ],
   "files": [
     {
       "path": "ui/tooltip.tsx",

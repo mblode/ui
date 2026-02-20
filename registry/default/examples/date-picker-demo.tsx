@@ -19,9 +19,10 @@ export function DatePickerDemo() {
       <PopoverTrigger
         render={
           <Button
-            className="w-[212px] justify-between text-left font-normal data-[empty=true]:text-muted-foreground"
+            className="w-[212px] justify-between text-left data-[empty=true]:text-placeholder-foreground"
             data-empty={!date}
-            variant={"outline"}
+            size="input"
+            variant="input"
           />
         }
       >

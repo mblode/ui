@@ -58,6 +58,19 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "autocomplete",
+    type: "registry:ui",
+    title: "Autocomplete",
+    description: "An input that suggests matching values while typing.",
+    dependencies: ["@base-ui/react"],
+    files: [
+      {
+        path: "ui/autocomplete.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "avatar",
     type: "registry:ui",
     title: "Avatar",
@@ -66,6 +79,19 @@ export const ui: Registry["items"] = [
     files: [
       {
         path: "ui/avatar.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "bar-list",
+    type: "registry:ui",
+    title: "Bar List",
+    description:
+      "A compact comparison list that visualises values as horizontal bars.",
+    files: [
+      {
+        path: "ui/bar-list.tsx",
         type: "registry:ui",
       },
     ],
@@ -178,20 +204,6 @@ export const ui: Registry["items"] = [
     ],
   },
   {
-    name: "chart",
-    type: "registry:ui",
-    title: "Chart",
-    description: "A composable charting component built on top of Recharts.",
-    files: [
-      {
-        path: "ui/chart.tsx",
-        type: "registry:ui",
-      },
-    ],
-    registryDependencies: ["card"],
-    dependencies: ["recharts@2.15.4", "blode-icons-react"],
-  },
-  {
     name: "checkbox",
     type: "registry:ui",
     title: "Checkbox",
@@ -205,6 +217,21 @@ export const ui: Registry["items"] = [
       },
       {
         path: "ui/checkbox.css",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "checkbox-group",
+    type: "registry:ui",
+    title: "Checkbox Group",
+    description:
+      "A grouped set of related checkboxes managed with shared state.",
+    dependencies: ["@base-ui/react"],
+    registryDependencies: ["checkbox"],
+    files: [
+      {
+        path: "ui/checkbox-group.tsx",
         type: "registry:ui",
       },
     ],
@@ -242,8 +269,8 @@ export const ui: Registry["items"] = [
     title: "Combobox",
     description:
       "An autocomplete input that combines a text field with a filterable dropdown list.",
-    dependencies: ["@base-ui/react", "downshift"],
-    registryDependencies: ["button", "input-group", "popover"],
+    dependencies: ["@base-ui/react", "blode-icons-react"],
+    registryDependencies: ["button", "input-group"],
     files: [
       {
         path: "ui/combobox.tsx",
@@ -320,7 +347,7 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
     title: "Drawer",
     description: "A panel that slides in from the edge of the screen.",
-    dependencies: ["vaul"],
+    dependencies: ["@base-ui/react"],
     files: [
       {
         path: "ui/drawer.tsx",
@@ -487,6 +514,19 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "meter",
+    type: "registry:ui",
+    title: "Meter",
+    description: "A meter that shows a scalar value within a bounded range.",
+    dependencies: ["@base-ui/react"],
+    files: [
+      {
+        path: "ui/meter.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "navigation-menu",
     type: "registry:ui",
     title: "Navigation Menu",
@@ -496,6 +536,20 @@ export const ui: Registry["items"] = [
     files: [
       {
         path: "ui/navigation-menu.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "number-field",
+    type: "registry:ui",
+    title: "Number Field",
+    description:
+      "A numeric input with increment, decrement, and scrubbing interactions.",
+    dependencies: ["@base-ui/react"],
+    files: [
+      {
+        path: "ui/number-field.tsx",
         type: "registry:ui",
       },
     ],
@@ -558,6 +612,20 @@ export const ui: Registry["items"] = [
     files: [
       {
         path: "ui/progress.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "progress-list",
+    type: "registry:ui",
+    title: "Progress List",
+    description:
+      "A vertical list of progress items with completed and pending states.",
+    dependencies: ["blode-icons-react"],
+    files: [
+      {
+        path: "ui/progress-list.tsx",
         type: "registry:ui",
       },
     ],
@@ -756,6 +824,19 @@ export const ui: Registry["items"] = [
     files: [
       {
         path: "ui/spinner.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
+    name: "stat",
+    type: "registry:ui",
+    title: "Stat",
+    description:
+      "A compact metric card for showing a headline value and label.",
+    files: [
+      {
+        path: "ui/stat.tsx",
         type: "registry:ui",
       },
     ],

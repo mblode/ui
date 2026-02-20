@@ -4,7 +4,9 @@
   "title": "Toggle",
   "author": "Matthew Blode",
   "description": "A two-state button that can be toggled on or off.",
-  "dependencies": ["@base-ui/react"],
+  "dependencies": [
+    "@base-ui/react"
+  ],
   "files": [
     {
       "path": "ui/toggle.tsx",

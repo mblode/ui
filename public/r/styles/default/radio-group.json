@@ -4,7 +4,9 @@
   "title": "Radio Group",
   "author": "Matthew Blode",
   "description": "A set of mutually exclusive options where only one can be selected.",
-  "dependencies": ["@base-ui/react"],
+  "dependencies": [
+    "@base-ui/react"
+  ],
   "files": [
     {
       "path": "ui/radio-group.tsx",

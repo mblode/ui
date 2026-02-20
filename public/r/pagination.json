@@ -4,7 +4,9 @@
   "title": "Pagination",
   "author": "Matthew Blode",
   "description": "A navigation component for paging through content across multiple pages.",
-  "registryDependencies": ["button"],
+  "registryDependencies": [
+    "button"
+  ],
   "files": [
     {
       "path": "ui/pagination.tsx",

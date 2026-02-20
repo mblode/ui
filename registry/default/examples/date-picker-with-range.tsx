@@ -26,9 +26,10 @@ export function DatePickerWithRange() {
         <PopoverTrigger
           render={
             <Button
-              className="justify-start px-2.5 font-normal"
+              className="justify-start"
               id="date-picker-range"
-              variant="outline"
+              size="input"
+              variant="input"
             />
           }
         >

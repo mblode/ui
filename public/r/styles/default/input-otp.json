@@ -4,7 +4,9 @@
   "title": "Input OTP",
   "author": "Matthew Blode",
   "description": "A one-time password input with individual character fields.",
-  "dependencies": ["input-otp"],
+  "dependencies": [
+    "input-otp"
+  ],
   "files": [
     {
       "path": "ui/input-otp.tsx",

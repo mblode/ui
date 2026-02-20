@@ -4,8 +4,12 @@
   "title": "Carousel",
   "author": "Matthew Blode",
   "description": "A slideshow component for cycling through a set of content.",
-  "dependencies": ["embla-carousel-react"],
-  "registryDependencies": ["button"],
+  "dependencies": [
+    "embla-carousel-react"
+  ],
+  "registryDependencies": [
+    "button"
+  ],
   "files": [
     {
       "path": "ui/carousel.tsx",

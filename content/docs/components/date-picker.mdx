@@ -40,10 +40,11 @@ export function DatePickerDemo() {
     <Popover>
       <PopoverTrigger asChild>
         <Button
-          variant="secondary"
+          size="input"
+          variant="input"
           className={cn(
-            "w-[280px] justify-start text-left font-normal",
-            !date && "text-muted-foreground",
+            "w-[280px] justify-start text-left",
+            !date && "text-placeholder-foreground",
           )}
         >
           <Calendar1Icon className="mr-2 h-4 w-4" />

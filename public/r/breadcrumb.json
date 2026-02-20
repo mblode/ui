@@ -4,7 +4,9 @@
   "title": "Breadcrumb",
   "author": "Matthew Blode",
   "description": "A navigation aid that shows the current page location within a hierarchy.",
-  "dependencies": ["@base-ui/react"],
+  "dependencies": [
+    "@base-ui/react"
+  ],
   "files": [
     {
       "path": "ui/breadcrumb.tsx",

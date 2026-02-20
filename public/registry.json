@@ -1775,66 +1775,6 @@
       ]
     },
     {
-      "name": "chart-bar-demo",
-      "type": "registry:example",
-      "files": [
-        {
-          "path": "examples/chart-bar-demo.tsx",
-          "type": "registry:example"
-        }
-      ]
-    },
-    {
-      "name": "chart-bar-demo-grid",
-      "type": "registry:example",
-      "files": [
-        {
-          "path": "examples/chart-bar-demo-grid.tsx",
-          "type": "registry:example"
-        }
-      ]
-    },
-    {
-      "name": "chart-bar-demo-axis",
-      "type": "registry:example",
-      "files": [
-        {
-          "path": "examples/chart-bar-demo-axis.tsx",
-          "type": "registry:example"
-        }
-      ]
-    },
-    {
-      "name": "chart-bar-demo-tooltip",
-      "type": "registry:example",
-      "files": [
-        {
-          "path": "examples/chart-bar-demo-tooltip.tsx",
-          "type": "registry:example"
-        }
-      ]
-    },
-    {
-      "name": "chart-bar-demo-legend",
-      "type": "registry:example",
-      "files": [
-        {
-          "path": "examples/chart-bar-demo-legend.tsx",
-          "type": "registry:example"
-        }
-      ]
-    },
-    {
-      "name": "chart-tooltip-demo",
-      "type": "registry:example",
-      "files": [
-        {
-          "path": "examples/chart-tooltip-demo.tsx",
-          "type": "registry:example"
-        }
-      ]
-    },
-    {
       "name": "utils",
       "type": "registry:lib",
       "dependencies": ["clsx", "tailwind-merge"],

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.blode.co/schema/registry-item.json",
+  "name": "stat",
+  "title": "Stat",
+  "author": "Matthew Blode",
+  "description": "A compact metric card for showing a headline value and label.",
+  "files": [
+    {
+      "path": "ui/stat.tsx",
+      "content": "import type * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ninterface StatProps extends Omit<React.ComponentProps<\"dl\">, \"title\"> {\n  description?: React.ReactNode;\n  title: React.ReactNode;\n  value: React.ReactNode;\n}\n\nfunction Stat({ className, description, title, value, ...props }: StatProps) {\n  return (\n    <dl\n      className={cn(\n        \"flex flex-col rounded-3xl border border-border bg-card p-4 text-center\",\n        className\n      )}\n      data-slot=\"stat\"\n      {...props}\n    >\n      <dd\n        className=\"font-semibold text-2xl tracking-tight\"\n        data-slot=\"stat-value\"\n      >\n        {value}\n      </dd>\n      <dt className=\"truncate font-medium text-sm\" data-slot=\"stat-title\">\n        {title}\n      </dt>\n      {description ? (\n        <div\n          className=\"text-muted-foreground text-sm\"\n          data-slot=\"stat-description\"\n        >\n          {description}\n        </div>\n      ) : null}\n    </dl>\n  );\n}\n\nexport { Stat };\nexport type { StatProps };\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:ui"
+}

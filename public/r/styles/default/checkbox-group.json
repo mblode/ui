@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.blode.co/schema/registry-item.json",
+  "name": "checkbox-group",
+  "title": "Checkbox Group",
+  "author": "Matthew Blode",
+  "description": "A grouped set of related checkboxes managed with shared state.",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "registryDependencies": [
+    "checkbox"
+  ],
+  "files": [
+    {
+      "path": "ui/checkbox-group.tsx",
+      "content": "\"use client\";\n\nimport { CheckboxGroup as CheckboxGroupPrimitive } from \"@base-ui/react/checkbox-group\";\nimport type * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction CheckboxGroup({\n  className,\n  ...props\n}: React.ComponentProps<typeof CheckboxGroupPrimitive>) {\n  return (\n    <CheckboxGroupPrimitive\n      className={cn(\"flex flex-col gap-3\", className)}\n      data-slot=\"checkbox-group\"\n      {...props}\n    />\n  );\n}\n\nfunction CheckboxGroupLabel({\n  className,\n  ...props\n}: React.ComponentProps<\"div\">) {\n  return (\n    <div\n      className={cn(\"font-medium text-sm leading-none\", className)}\n      data-slot=\"checkbox-group-label\"\n      {...props}\n    />\n  );\n}\n\nexport { CheckboxGroup, CheckboxGroupLabel };\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:ui"
+}

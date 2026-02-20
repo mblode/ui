@@ -130,6 +130,7 @@ const MultiCombobox = React.forwardRef<MultiComboboxRef, MultiComboboxProps>(
       highlightedIndex,
       getItemProps,
       setInputValue: comboboxSetInputValue,
+      openMenu,
     } = useCombobox({
       labelId: id,
       items,
@@ -244,11 +245,22 @@ const MultiCombobox = React.forwardRef<MultiComboboxRef, MultiComboboxProps>(
                   disabled={disabled}
                   placeholder={selectedItems.length === 0 ? placeholder : ""}
                   {...getInputProps(
-                    getDropdownProps({ preventKeyAction: isOpen, id })
+                    getDropdownProps({
+                      preventKeyAction: isOpen,
+                      id,
+                      onFocus: () => {
+                        if (!disabled) {
+                          openMenu();
+                        }
+                      },
+                      onClick: (event) => {
+                        event.stopPropagation();
+                        if (!disabled) {
+                          openMenu();
+                        }
+                      },
+                    })
                   )}
-                  onClick={(event) => {
-                    event.stopPropagation();
-                  }}
                 />
               </span>
               <div className="flex h-full items-center">

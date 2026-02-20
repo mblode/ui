@@ -1,0 +1,56 @@
+---
+title: Button Group
+description: Group related buttons and controls into a single, compact action row.
+component: true
+---
+
+<ComponentPreview
+  name="button-group-demo"
+  description="A grouped action row with nested controls."
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ui.blode.co/r/styles/default/button-group"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="button-group" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Button } from "@/components/ui/button";
+import { ButtonGroup } from "@/components/ui/button-group";
+```
+
+```tsx
+<ButtonGroup>
+  <Button variant="outline">Back</Button>
+  <Button variant="outline">Next</Button>
+</ButtonGroup>
+```

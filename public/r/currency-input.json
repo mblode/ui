@@ -4,7 +4,10 @@
   "title": "Currency Input",
   "author": "Matthew Blode",
   "description": "A formatted input field for entering monetary values.",
-  "dependencies": ["blode-icons-react", "react-currency-input-field"],
+  "dependencies": [
+    "blode-icons-react",
+    "react-currency-input-field"
+  ],
   "files": [
     {
       "path": "ui/currency-input.tsx",

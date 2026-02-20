@@ -4,7 +4,9 @@
   "title": "Progress",
   "author": "Matthew Blode",
   "description": "A horizontal bar that indicates the completion progress of a task.",
-  "dependencies": ["@base-ui/react"],
+  "dependencies": [
+    "@base-ui/react"
+  ],
   "files": [
     {
       "path": "ui/progress.tsx",

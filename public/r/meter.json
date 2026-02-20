@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.blode.co/schema/registry-item.json",
+  "name": "meter",
+  "title": "Meter",
+  "author": "Matthew Blode",
+  "description": "A meter that shows a scalar value within a bounded range.",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "files": [
+    {
+      "path": "ui/meter.tsx",
+      "content": "\"use client\";\n\nimport { Meter as MeterPrimitive } from \"@base-ui/react/meter\";\nimport type * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction Meter({\n  className,\n  ...props\n}: React.ComponentProps<typeof MeterPrimitive.Root>) {\n  return (\n    <MeterPrimitive.Root\n      className={cn(\"flex w-full flex-col gap-2\", className)}\n      data-slot=\"meter\"\n      {...props}\n    />\n  );\n}\n\nfunction MeterLabel({\n  className,\n  ...props\n}: React.ComponentProps<typeof MeterPrimitive.Label>) {\n  return (\n    <MeterPrimitive.Label\n      className={cn(\"font-medium text-sm leading-none\", className)}\n      data-slot=\"meter-label\"\n      {...props}\n    />\n  );\n}\n\nfunction MeterValue({\n  className,\n  ...props\n}: React.ComponentProps<typeof MeterPrimitive.Value>) {\n  return (\n    <MeterPrimitive.Value\n      className={cn(\"text-muted-foreground text-sm tabular-nums\", className)}\n      data-slot=\"meter-value\"\n      {...props}\n    />\n  );\n}\n\nfunction MeterTrack({\n  className,\n  ...props\n}: React.ComponentProps<typeof MeterPrimitive.Track>) {\n  return (\n    <MeterPrimitive.Track\n      className={cn(\n        \"h-2 w-full overflow-hidden rounded-full bg-primary/20\",\n        className\n      )}\n      data-slot=\"meter-track\"\n      {...props}\n    />\n  );\n}\n\nfunction MeterIndicator({\n  className,\n  ...props\n}: React.ComponentProps<typeof MeterPrimitive.Indicator>) {\n  return (\n    <MeterPrimitive.Indicator\n      className={cn(\"h-full bg-primary transition-[width]\", className)}\n      data-slot=\"meter-indicator\"\n      {...props}\n    />\n  );\n}\n\nexport { Meter, MeterIndicator, MeterLabel, MeterTrack, MeterValue };\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:ui"
+}

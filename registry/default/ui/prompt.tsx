@@ -48,7 +48,7 @@ const Overlay = forwardRef<
   return (
     <AlertDialogPrimitive.Backdrop
       className={cn(
-        "fixed inset-0 z-110 bg-overlay backdrop-blur-[10px] data-closed:opacity-0 data-open:opacity-100 motion-safe:transition-opacity motion-safe:ease-in-out motion-safe:data-closed:duration-300 motion-safe:data-open:duration-500 motion-reduce:transition-none",
+        "data-closed:fade-out-0 data-open:fade-in-0 fixed inset-0 z-110 bg-overlay backdrop-blur-[10px] data-closed:animate-out data-open:animate-in data-closed:duration-300 data-open:duration-500 motion-reduce:transition-none",
         className
       )}
       ref={ref}
@@ -112,13 +112,9 @@ const Action = forwardRef<
 >(({ className, children, ...props }, ref) => {
   return (
     <AlertDialogPrimitive.Close
-      className={cn("w-full", className)}
+      className={cn(className)}
       ref={ref}
-      render={
-        <Button className="w-full" variant="destructive">
-          {children}
-        </Button>
-      }
+      render={<Button variant="destructive">{children}</Button>}
       {...props}
     />
   );
@@ -131,13 +127,9 @@ const Cancel = forwardRef<
 >(({ className, children, ...props }, ref) => {
   return (
     <AlertDialogPrimitive.Close
-      className={cn("w-full", className)}
+      className={cn(className)}
       ref={ref}
-      render={
-        <Button className="w-full" variant="secondary">
-          {children}
-        </Button>
-      }
+      render={<Button variant="secondary">{children}</Button>}
       {...props}
     />
   );
@@ -163,7 +155,10 @@ Header.displayName = "Prompt.Header";
 const Footer = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => {
   return (
     <div
-      className={cn("mt-4 flex flex-row justify-between gap-2", className)}
+      className={cn(
+        "mt-4 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
+        className
+      )}
       {...props}
     />
   );

@@ -57,12 +57,34 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "autocomplete-demo",
+    type: "registry:example",
+    registryDependencies: ["autocomplete"],
+    files: [
+      {
+        path: "examples/autocomplete-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "avatar-demo",
     type: "registry:example",
     registryDependencies: ["avatar"],
     files: [
       {
         path: "examples/avatar-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "bar-list-demo",
+    type: "registry:example",
+    registryDependencies: ["bar-list"],
+    files: [
+      {
+        path: "examples/bar-list-demo.tsx",
         type: "registry:example",
       },
     ],
@@ -558,6 +580,17 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/checkbox-disabled.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "checkbox-group-demo",
+    type: "registry:example",
+    registryDependencies: ["checkbox", "checkbox-group"],
+    files: [
+      {
+        path: "examples/checkbox-group-demo.tsx",
         type: "registry:example",
       },
     ],
@@ -1697,12 +1730,34 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "meter-demo",
+    type: "registry:example",
+    registryDependencies: ["meter"],
+    files: [
+      {
+        path: "examples/meter-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "navigation-menu-demo",
     type: "registry:example",
     registryDependencies: ["navigation-menu"],
     files: [
       {
         path: "examples/navigation-menu-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "number-field-demo",
+    type: "registry:example",
+    registryDependencies: ["number-field"],
+    files: [
+      {
+        path: "examples/number-field-demo.tsx",
         type: "registry:example",
       },
     ],
@@ -1780,6 +1835,17 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/progress-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "progress-list-demo",
+    type: "registry:example",
+    registryDependencies: ["progress-list"],
+    files: [
+      {
+        path: "examples/progress-list-demo.tsx",
         type: "registry:example",
       },
     ],
@@ -1890,6 +1956,17 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/separator-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "sidebar-demo",
+    type: "registry:example",
+    registryDependencies: ["avatar", "collapsible", "dropdown-menu", "sidebar"],
+    files: [
+      {
+        path: "examples/sidebar-demo.tsx",
         type: "registry:example",
       },
     ],
@@ -2077,6 +2154,17 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/spinner-item.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
+    name: "stat-demo",
+    type: "registry:example",
+    registryDependencies: ["stat"],
+    files: [
+      {
+        path: "examples/stat-demo.tsx",
         type: "registry:example",
       },
     ],
@@ -2524,66 +2612,6 @@ export const examples: Registry["items"] = [
     files: [
       {
         path: "examples/mode-toggle.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "chart-bar-demo",
-    type: "registry:example",
-    files: [
-      {
-        path: "examples/chart-bar-demo.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "chart-bar-demo-grid",
-    type: "registry:example",
-    files: [
-      {
-        path: "examples/chart-bar-demo-grid.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "chart-bar-demo-axis",
-    type: "registry:example",
-    files: [
-      {
-        path: "examples/chart-bar-demo-axis.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "chart-bar-demo-tooltip",
-    type: "registry:example",
-    files: [
-      {
-        path: "examples/chart-bar-demo-tooltip.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "chart-bar-demo-legend",
-    type: "registry:example",
-    files: [
-      {
-        path: "examples/chart-bar-demo-legend.tsx",
-        type: "registry:example",
-      },
-    ],
-  },
-  {
-    name: "chart-tooltip-demo",
-    type: "registry:example",
-    files: [
-      {
-        path: "examples/chart-tooltip-demo.tsx",
         type: "registry:example",
       },
     ],

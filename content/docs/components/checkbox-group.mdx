@@ -1,0 +1,80 @@
+---
+title: Checkbox Group
+description: Manage a set of related checkboxes with shared group state.
+component: true
+links:
+  doc: https://base-ui.com/react/components/checkbox-group
+  api: https://base-ui.com/react/components/checkbox-group
+---
+
+<ComponentPreview
+  name="checkbox-group-demo"
+  description="A checkbox group for selecting apple varieties."
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ui.blode.co/r/styles/default/checkbox-group"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @base-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="checkbox-group" />
+
+<Step>Use with the `checkbox` component for each option.</Step>
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Checkbox } from "@/components/ui/checkbox";
+import {
+  CheckboxGroup,
+  CheckboxGroupLabel,
+} from "@/components/ui/checkbox-group";
+```
+
+```tsx
+const fujiId = "apple-fuji";
+const galaId = "apple-gala";
+
+<CheckboxGroup defaultValue={["fuji-apple"]}>
+  <CheckboxGroupLabel>Apples</CheckboxGroupLabel>
+  <div className="flex items-center gap-2">
+    <Checkbox id={fujiId} name="apple" value="fuji-apple" />
+    <label htmlFor={fujiId}>Fuji</label>
+  </div>
+  <div className="flex items-center gap-2">
+    <Checkbox id={galaId} name="apple" value="gala-apple" />
+    <label htmlFor={galaId}>Gala</label>
+  </div>
+</CheckboxGroup>
+```

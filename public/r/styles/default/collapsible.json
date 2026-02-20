@@ -4,7 +4,9 @@
   "title": "Collapsible",
   "author": "Matthew Blode",
   "description": "An interactive component that expands and collapses a panel of content.",
-  "dependencies": ["@base-ui/react"],
+  "dependencies": [
+    "@base-ui/react"
+  ],
   "files": [
     {
       "path": "ui/collapsible.tsx",

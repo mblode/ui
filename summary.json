@@ -139,19 +139,6 @@
     ],
     "alias_members": {}
   },
-  "chart.tsx": {
-    "imports": [],
-    "exports": [
-      "ChartConfig",
-      "ChartContainer",
-      "ChartLegend",
-      "ChartLegendContent",
-      "ChartStyle",
-      "ChartTooltip",
-      "ChartTooltipContent"
-    ],
-    "alias_members": {}
-  },
   "checkbox.tsx": {
     "imports": ["@base-ui/react/checkbox"],
     "exports": ["Checkbox"],

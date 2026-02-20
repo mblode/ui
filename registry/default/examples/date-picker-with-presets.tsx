@@ -28,10 +28,11 @@ export default function DatePickerWithPresets() {
       <PopoverTrigger asChild>
         <Button
           className={cn(
-            "w-[240px] justify-start text-left font-normal",
-            !date && "text-muted-foreground"
+            "w-[240px] justify-start text-left",
+            !date && "text-placeholder-foreground"
           )}
-          variant={"outline"}
+          size="input"
+          variant="input"
         >
           <CalendarIcon />
           {date ? format(date, "PPP") : <span>Pick a date</span>}

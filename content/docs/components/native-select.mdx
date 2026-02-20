@@ -1,0 +1,55 @@
+---
+title: Native Select
+description: A styled native select for simple, accessible option picking.
+component: true
+---
+
+<ComponentPreview name="native-select-demo" description="A native select with status options." />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ui.blode.co/r/styles/default/native-select"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="native-select" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  NativeSelect,
+  NativeSelectOption,
+} from "@/components/ui/native-select";
+```
+
+```tsx
+<NativeSelect>
+  <NativeSelectOption value="todo">Todo</NativeSelectOption>
+  <NativeSelectOption value="done">Done</NativeSelectOption>
+</NativeSelect>
+```

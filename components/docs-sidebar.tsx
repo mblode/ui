@@ -17,6 +17,7 @@ import type { SidebarNavItem } from "@/types";
 
 const MENU_BUTTON_CLASS =
   "data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md";
+const EXTERNAL_HREF_PATTERN = /^(https?:)?\/\//;
 
 function stripTrailingSlash(path: string) {
   if (path.length > 1 && path.endsWith("/")) {
@@ -26,8 +27,12 @@ function stripTrailingSlash(path: string) {
   return path;
 }
 
+function isExternalHref(href: string) {
+  return EXTERNAL_HREF_PATTERN.test(href);
+}
+
 function isItemActive(pathname: string, item: SidebarNavItem) {
-  if (!item.href || item.external) {
+  if (!item.href || item.external || isExternalHref(item.href)) {
     return false;
   }
 
@@ -83,6 +88,8 @@ export function DocsSidebar({
                     return null;
                   }
 
+                  const isExternal = item.external || isExternalHref(item.href);
+
                   return (
                     <SidebarMenuItem key={item.href}>
                       <SidebarMenuButton
@@ -92,8 +99,8 @@ export function DocsSidebar({
                       >
                         <Link
                           href={item.href}
-                          rel={item.external ? "noreferrer" : ""}
-                          target={item.external ? "_blank" : ""}
+                          rel={isExternal ? "noreferrer" : undefined}
+                          target={isExternal ? "_blank" : undefined}
                         >
                           <span className="absolute inset-0 flex w-(--sidebar-menu-width) bg-transparent" />
                           {item.title}

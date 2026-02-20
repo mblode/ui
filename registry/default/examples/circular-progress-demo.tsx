@@ -1,8 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
-import { Button } from "@/registry/default/ui/button";
 import { CircularProgress } from "@/registry/default/ui/circular-progress";
 import { Slider } from "@/registry/default/ui/slider";
 
@@ -31,13 +29,6 @@ export default function CircularProgressDemo() {
 
   return (
     <div className="grid w-full max-w-md gap-6">
-      <div className="space-y-1">
-        <p className="font-medium text-sm">Profile completion</p>
-        <p className="text-muted-foreground text-sm">
-          Track required steps before launching your workspace.
-        </p>
-      </div>
-
       <div className="flex items-center justify-center gap-8">
         <div className="flex flex-col items-center">
           <CircularProgress className="size-24" value={progress} />
@@ -62,28 +53,6 @@ export default function CircularProgressDemo() {
           step={1}
           value={[progress]}
         />
-        <div className="flex items-center justify-between text-muted-foreground text-sm">
-          <span>{progress}% complete</span>
-          <span>{100 - progress}% left</span>
-        </div>
-
-        <div className="flex justify-end gap-2">
-          <Button
-            onClick={() => {
-              setAutoProgress(false);
-              setProgress(0);
-            }}
-            variant="outline"
-          >
-            Reset
-          </Button>
-          <Button
-            onClick={() => setAutoProgress((previous) => !previous)}
-            variant="secondary"
-          >
-            {autoProgress ? "Pause" : "Auto-fill"}
-          </Button>
-        </div>
       </div>
     </div>
   );

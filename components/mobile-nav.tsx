@@ -1,7 +1,6 @@
 "use client";
 
-import Link, { type LinkProps } from "next/link";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { type ReactNode, useState } from "react";
 import { docsConfig } from "@/config/docs";
 import { cn } from "@/lib/utils";
@@ -11,6 +10,12 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/registry/default/ui/popover";
+
+const EXTERNAL_HREF_PATTERN = /^(https?:)?\/\//;
+
+function isExternalHref(href: string) {
+  return EXTERNAL_HREF_PATTERN.test(href);
+}
 
 export function MobileNav({
   items,
@@ -86,18 +91,24 @@ export function MobileNav({
                 {group.title}
               </div>
               <div className="flex flex-col gap-3">
-                {group.items?.map((item) =>
-                  item.href ? (
+                {group.items?.map((item) => {
+                  if (!item.href) {
+                    return null;
+                  }
+                  const isExternal = item.external || isExternalHref(item.href);
+                  return (
                     <MobileLink
                       className="flex items-center gap-2"
                       href={item.href}
                       key={item.href}
                       onOpenChange={setOpen}
+                      rel={isExternal ? "noreferrer" : undefined}
+                      target={isExternal ? "_blank" : undefined}
                     >
                       {item.title}
                     </MobileLink>
-                  ) : null
-                )}
+                  );
+                })}
               </div>
             </div>
           ))}
@@ -112,19 +123,19 @@ function MobileLink({
   onOpenChange,
   className,
   children,
+  onClick,
   ...props
-}: LinkProps & {
+}: React.ComponentProps<typeof Link> & {
   onOpenChange?: (open: boolean) => void;
   children: ReactNode;
   className?: string;
 }) {
-  const router = useRouter();
   return (
     <Link
       className={cn("flex items-center gap-2 font-medium text-2xl", className)}
       href={href}
-      onClick={() => {
-        router.push(href.toString());
+      onClick={(event) => {
+        onClick?.(event);
         onOpenChange?.(false);
       }}
       {...props}

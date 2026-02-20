@@ -132,7 +132,7 @@ export function ComponentPreview({
         <div
           className={cn(
             // biome-ignore lint/nursery/useSortedClasses: keep class order identical to shadcn-ui v4
-            "preview relative flex h-72 w-full justify-center p-10 data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start data-[chromeless=true]:h-auto data-[chromeless=true]:p-0",
+            "preview relative flex h-72 w-full justify-center overflow-hidden p-10 isolate transform-gpu data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start data-[chromeless=true]:h-auto data-[chromeless=true]:p-0",
             previewClassName
           )}
           data-align={align}

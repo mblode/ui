@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.blode.co/schema/registry-item.json",
+  "name": "autocomplete",
+  "title": "Autocomplete",
+  "author": "Matthew Blode",
+  "description": "An input that suggests matching values while typing.",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "files": [
+    {
+      "path": "ui/autocomplete.tsx",
+      "content": "\"use client\";\n\nimport { Autocomplete as AutocompletePrimitive } from \"@base-ui/react/autocomplete\";\nimport type * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nconst Autocomplete = AutocompletePrimitive.Root;\n\nfunction AutocompleteInput({\n  className,\n  ...props\n}: React.ComponentProps<typeof AutocompletePrimitive.Input>) {\n  return (\n    <AutocompletePrimitive.Input\n      className={cn(\n        \"input flex h-[var(--field-height)] w-full rounded-[var(--field-radius)] border border-input bg-card px-[var(--field-padding-x)] py-[var(--field-padding-y)] font-normal font-sans text-base text-foreground leading-snug shadow-input transition-colors placeholder:text-placeholder-foreground hover:border-input-hover focus-visible:border-ring focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring/15 focus-visible:ring-offset-1 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50\",\n        className\n      )}\n      data-slot=\"autocomplete-input\"\n      {...props}\n    />\n  );\n}\n\nfunction AutocompletePortal({\n  ...props\n}: React.ComponentProps<typeof AutocompletePrimitive.Portal>) {\n  return <AutocompletePrimitive.Portal {...props} />;\n}\n\nfunction AutocompletePositioner({\n  className,\n  ...props\n}: React.ComponentProps<typeof AutocompletePrimitive.Positioner>) {\n  return (\n    <AutocompletePrimitive.Positioner\n      className={cn(\"isolate z-110\", className)}\n      data-slot=\"autocomplete-positioner\"\n      {...props}\n    />\n  );\n}\n\nfunction AutocompletePopup({\n  className,\n  ...props\n}: React.ComponentProps<typeof AutocompletePrimitive.Popup>) {\n  return (\n    <AutocompletePrimitive.Popup\n      className={cn(\n        \"fade-in-80 relative z-110 max-h-[250px] w-(--anchor-width) max-w-(--available-width) origin-(--transform-origin) animate-in overflow-hidden rounded-xl border border-border bg-popover p-0 text-popover-foreground shadow-soft\",\n        className\n      )}\n      data-slot=\"autocomplete-popup\"\n      {...props}\n    />\n  );\n}\n\nfunction AutocompleteEmpty({\n  className,\n  ...props\n}: React.ComponentProps<typeof AutocompletePrimitive.Empty>) {\n  return (\n    <AutocompletePrimitive.Empty\n      className={cn(\n        \"cursor-default px-4 py-3 text-center text-muted-foreground text-sm empty:hidden\",\n        className\n      )}\n      data-slot=\"autocomplete-empty\"\n      {...props}\n    />\n  );\n}\n\nfunction AutocompleteList({\n  className,\n  ...props\n}: React.ComponentProps<typeof AutocompletePrimitive.List>) {\n  return (\n    <AutocompletePrimitive.List\n      className={cn(\"w-full overflow-y-auto p-1\", className)}\n      data-slot=\"autocomplete-list\"\n      {...props}\n    />\n  );\n}\n\nfunction AutocompleteItem({\n  className,\n  ...props\n}: React.ComponentProps<typeof AutocompletePrimitive.Item>) {\n  return (\n    <AutocompletePrimitive.Item\n      className={cn(\n        \"cursor-pointer touch-manipulation rounded-lg px-3 py-2 outline-hidden data-highlighted:bg-accent data-highlighted:text-accent-foreground\",\n        className\n      )}\n      data-slot=\"autocomplete-item\"\n      {...props}\n    />\n  );\n}\n\nexport {\n  Autocomplete,\n  AutocompleteEmpty,\n  AutocompleteInput,\n  AutocompleteItem,\n  AutocompleteList,\n  AutocompletePopup,\n  AutocompletePortal,\n  AutocompletePositioner,\n};\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:ui"
+}

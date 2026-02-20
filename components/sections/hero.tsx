@@ -66,7 +66,7 @@ export default function Hero() {
                       }),
                       "w-full gap-2"
                     )}
-                    href="/components"
+                    href="/docs/components"
                   >
                     Browse components
                   </Link>

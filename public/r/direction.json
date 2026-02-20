@@ -4,7 +4,9 @@
   "title": "Direction",
   "author": "Matthew Blode",
   "description": "A context provider for managing text direction (LTR/RTL) across components.",
-  "dependencies": ["@base-ui/react"],
+  "dependencies": [
+    "@base-ui/react"
+  ],
   "files": [
     {
       "path": "ui/direction.tsx",

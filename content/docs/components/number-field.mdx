@@ -1,0 +1,84 @@
+---
+title: Number Field
+description: Input and scrub a numeric value with increment and decrement controls.
+component: true
+links:
+  doc: https://base-ui.com/react/components/number-field
+  api: https://base-ui.com/react/components/number-field
+---
+
+<ComponentPreview
+  name="number-field-demo"
+  className="[&_div[data-slot='number-field']]:max-w-xs"
+  description="A number field with scrub area and stepper controls."
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ui.blode.co/r/styles/default/number-field"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @base-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="number-field" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import * as React from "react";
+import {
+  NumberField,
+  NumberFieldDecrement,
+  NumberFieldGroup,
+  NumberFieldIncrement,
+  NumberFieldInput,
+  NumberFieldScrubArea,
+  NumberFieldScrubAreaCursor,
+} from "@/components/ui/number-field";
+```
+
+```tsx
+const id = React.useId();
+
+<NumberField id={id} defaultValue={100}>
+  <NumberFieldScrubArea>
+    <label htmlFor={id}>Amount</label>
+    <NumberFieldScrubAreaCursor>...</NumberFieldScrubAreaCursor>
+  </NumberFieldScrubArea>
+
+  <NumberFieldGroup>
+    <NumberFieldDecrement aria-label="Decrement">-</NumberFieldDecrement>
+    <NumberFieldInput />
+    <NumberFieldIncrement aria-label="Increment">+</NumberFieldIncrement>
+  </NumberFieldGroup>
+</NumberField>;
+```

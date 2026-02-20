@@ -1,0 +1,94 @@
+---
+title: Autocomplete
+description: Suggest matching options as users type.
+component: true
+links:
+  doc: https://base-ui.com/react/components/autocomplete
+  api: https://base-ui.com/react/components/autocomplete
+---
+
+<ComponentPreview
+  name="autocomplete-demo"
+  description="An autocomplete input for searching tags."
+  align="start"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ui.blode.co/r/styles/default/autocomplete"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @base-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="autocomplete" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  Autocomplete,
+  AutocompleteEmpty,
+  AutocompleteInput,
+  AutocompleteItem,
+  AutocompleteList,
+  AutocompletePopup,
+  AutocompletePortal,
+  AutocompletePositioner,
+} from "@/components/ui/autocomplete";
+```
+
+```tsx
+type Tag = { id: string; value: string };
+
+const tags: Tag[] = [
+  { id: "t1", value: "feature" },
+  { id: "t2", value: "bug" },
+];
+
+<Autocomplete items={tags} itemToStringValue={(tag) => tag.value}>
+  <AutocompleteInput placeholder="Search tags..." />
+  <AutocompletePortal>
+    <AutocompletePositioner sideOffset={4}>
+      <AutocompletePopup>
+        <AutocompleteEmpty>No tags found.</AutocompleteEmpty>
+        <AutocompleteList>
+          {(tag: Tag) => (
+            <AutocompleteItem key={tag.id} value={tag}>
+              {tag.value}
+            </AutocompleteItem>
+          )}
+        </AutocompleteList>
+      </AutocompletePopup>
+    </AutocompletePositioner>
+  </AutocompletePortal>
+</Autocomplete>;
+```

@@ -1,0 +1,72 @@
+---
+title: Meter
+description: Display a scalar value within a known range.
+component: true
+links:
+  doc: https://base-ui.com/react/components/meter
+  api: https://base-ui.com/react/components/meter
+---
+
+<ComponentPreview name="meter-demo" description="A meter showing storage usage." />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ui.blode.co/r/styles/default/meter"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @base-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="meter" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  Meter,
+  MeterIndicator,
+  MeterLabel,
+  MeterTrack,
+  MeterValue,
+} from "@/components/ui/meter";
+```
+
+```tsx
+<Meter value={24}>
+  <div className="flex items-center justify-between">
+    <MeterLabel>Storage Used</MeterLabel>
+    <MeterValue>{(formattedValue) => `${formattedValue}%`}</MeterValue>
+  </div>
+  <MeterTrack>
+    <MeterIndicator />
+  </MeterTrack>
+</Meter>
+```

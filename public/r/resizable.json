@@ -4,7 +4,9 @@
   "title": "Resizable",
   "author": "Matthew Blode",
   "description": "A layout component with draggable handles for resizing panels.",
-  "dependencies": ["react-resizable-panels@^4"],
+  "dependencies": [
+    "react-resizable-panels@^4"
+  ],
   "files": [
     {
       "path": "ui/resizable.tsx",

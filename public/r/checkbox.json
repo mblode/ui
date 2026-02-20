@@ -4,7 +4,9 @@
   "title": "Checkbox",
   "author": "Matthew Blode",
   "description": "A control that allows the user to toggle between checked and unchecked states.",
-  "dependencies": ["@base-ui/react"],
+  "dependencies": [
+    "@base-ui/react"
+  ],
   "files": [
     {
       "path": "ui/checkbox.tsx",

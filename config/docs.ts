@@ -71,8 +71,8 @@ export const docsConfig: DocsConfig = {
           ],
         },
         {
-          title: "Typography",
-          href: "/docs/typography",
+          title: "Font",
+          href: "/docs/font",
           items: [],
         },
         {
@@ -111,8 +111,18 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Autocomplete",
+          href: "/docs/components/autocomplete",
+          items: [],
+        },
+        {
           title: "Avatar",
           href: "/docs/components/avatar",
+          items: [],
+        },
+        {
+          title: "Bar List",
+          href: "/docs/components/bar-list",
           items: [],
         },
         {
@@ -128,6 +138,11 @@ export const docsConfig: DocsConfig = {
         {
           title: "Button",
           href: "/docs/components/button",
+          items: [],
+        },
+        {
+          title: "Button Group",
+          href: "/docs/components/button-group",
           items: [],
         },
         {
@@ -156,6 +171,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Checkbox Group",
+          href: "/docs/components/checkbox-group",
+          items: [],
+        },
+        {
           title: "Collapsible",
           href: "/docs/components/collapsible",
           items: [],
@@ -173,6 +193,11 @@ export const docsConfig: DocsConfig = {
         {
           title: "Command",
           href: "/docs/components/command",
+          items: [],
+        },
+        {
+          title: "Context Menu",
+          href: "/docs/components/context-menu",
           items: [],
         },
         {
@@ -196,8 +221,28 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Drawer",
+          href: "/docs/components/drawer",
+          items: [],
+        },
+        {
           title: "Dropdown Menu",
           href: "/docs/components/dropdown-menu",
+          items: [],
+        },
+        {
+          title: "Empty",
+          href: "/docs/components/empty",
+          items: [],
+        },
+        {
+          title: "Field",
+          href: "/docs/components/field",
+          items: [],
+        },
+        {
+          title: "Hover Card",
+          href: "/docs/components/hover-card",
           items: [],
         },
         {
@@ -206,8 +251,18 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Input Group",
+          href: "/docs/components/input-group",
+          items: [],
+        },
+        {
           title: "Input OTP",
           href: "/docs/components/input-otp",
+          items: [],
+        },
+        {
+          title: "Item",
+          href: "/docs/components/item",
           items: [],
         },
         {
@@ -231,13 +286,43 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Native Select",
+          href: "/docs/components/native-select",
+          items: [],
+        },
+        {
+          title: "Navigation Menu",
+          href: "/docs/components/navigation-menu",
+          items: [],
+        },
+        {
+          title: "Meter",
+          href: "/docs/components/meter",
+          items: [],
+        },
+        {
+          title: "Number Field",
+          href: "/docs/components/number-field",
+          items: [],
+        },
+        {
           title: "Popover",
           href: "/docs/components/popover",
           items: [],
         },
         {
+          title: "Pagination",
+          href: "/docs/components/pagination",
+          items: [],
+        },
+        {
           title: "Progress",
           href: "/docs/components/progress",
+          items: [],
+        },
+        {
+          title: "Progress List",
+          href: "/docs/components/progress-list",
           items: [],
         },
         {
@@ -248,6 +333,11 @@ export const docsConfig: DocsConfig = {
         {
           title: "Radio Group",
           href: "/docs/components/radio-group",
+          items: [],
+        },
+        {
+          title: "Resizable",
+          href: "/docs/components/resizable",
           items: [],
         },
         {
@@ -271,6 +361,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Sidebar",
+          href: "/docs/components/sidebar",
+          items: [],
+        },
+        {
           title: "Skeleton",
           href: "/docs/components/skeleton",
           items: [],
@@ -288,6 +383,11 @@ export const docsConfig: DocsConfig = {
         {
           title: "Spinner",
           href: "/docs/components/spinner",
+          items: [],
+        },
+        {
+          title: "Stat",
+          href: "/docs/components/stat",
           items: [],
         },
         {
@@ -323,6 +423,11 @@ export const docsConfig: DocsConfig = {
         {
           title: "Tooltip",
           href: "/docs/components/tooltip",
+          items: [],
+        },
+        {
+          title: "Typography",
+          href: "/docs/components/typography",
           items: [],
         },
       ],
