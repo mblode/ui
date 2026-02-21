@@ -71,6 +71,20 @@ export default function Hero() {
                     Browse components
                   </Link>
                 </div>
+                <div className="mt-2 flex justify-center">
+                  <Link
+                    className={cn(
+                      buttonVariants({
+                        variant: "ghost",
+                        size: "sm",
+                      }),
+                      "w-full sm:w-auto"
+                    )}
+                    href="/theme-visualizer"
+                  >
+                    Visualize themes
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
