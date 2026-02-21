@@ -4,10 +4,7 @@
   "title": "Field",
   "author": "Matthew Blode",
   "description": "A form field wrapper that pairs a label, input, and helper text.",
-  "registryDependencies": [
-    "label",
-    "separator"
-  ],
+  "registryDependencies": ["label", "separator"],
   "files": [
     {
       "path": "ui/field.tsx",

@@ -4,9 +4,7 @@
   "title": "Avatar",
   "author": "Matthew Blode",
   "description": "An image element with a fallback for representing the user.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
+  "dependencies": ["@base-ui/react"],
   "files": [
     {
       "path": "ui/avatar.tsx",

@@ -4,9 +4,7 @@
   "title": "Progress List",
   "author": "Matthew Blode",
   "description": "A vertical list of progress items with completed and pending states.",
-  "dependencies": [
-    "blode-icons-react"
-  ],
+  "dependencies": ["blode-icons-react"],
   "files": [
     {
       "path": "ui/progress-list.tsx",

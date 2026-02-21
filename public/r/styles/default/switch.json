@@ -4,9 +4,7 @@
   "title": "Switch",
   "author": "Matthew Blode",
   "description": "A toggle control for switching between on and off states.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
+  "dependencies": ["@base-ui/react"],
   "files": [
     {
       "path": "ui/switch.tsx",

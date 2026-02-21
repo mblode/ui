@@ -4,10 +4,7 @@
   "title": "Phone Input",
   "author": "Matthew Blode",
   "description": "An international phone number input with country code selector.",
-  "dependencies": [
-    "blode-icons-react",
-    "react-phone-number-input"
-  ],
+  "dependencies": ["blode-icons-react", "react-phone-number-input"],
   "registryDependencies": [
     "button",
     "command",

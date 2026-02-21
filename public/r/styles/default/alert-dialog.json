@@ -4,12 +4,8 @@
   "title": "Alert Dialog",
   "author": "Matthew Blode",
   "description": "A modal dialog that interrupts the user with important content and expects a response.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
-  "registryDependencies": [
-    "button"
-  ],
+  "dependencies": ["@base-ui/react"],
+  "registryDependencies": ["button"],
   "files": [
     {
       "path": "ui/alert-dialog.tsx",

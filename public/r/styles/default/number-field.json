@@ -4,9 +4,7 @@
   "title": "Number Field",
   "author": "Matthew Blode",
   "description": "A numeric input with increment, decrement, and scrubbing interactions.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
+  "dependencies": ["@base-ui/react"],
   "files": [
     {
       "path": "ui/number-field.tsx",

@@ -4,12 +4,8 @@
   "title": "Checkbox Group",
   "author": "Matthew Blode",
   "description": "A grouped set of related checkboxes managed with shared state.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
-  "registryDependencies": [
-    "checkbox"
-  ],
+  "dependencies": ["@base-ui/react"],
+  "registryDependencies": ["checkbox"],
   "files": [
     {
       "path": "ui/checkbox-group.tsx",

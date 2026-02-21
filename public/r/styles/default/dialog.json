@@ -4,12 +4,8 @@
   "title": "Dialog",
   "author": "Matthew Blode",
   "description": "A modal window that overlays the main content and requires user interaction.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
-  "registryDependencies": [
-    "button"
-  ],
+  "dependencies": ["@base-ui/react"],
+  "registryDependencies": ["button"],
   "files": [
     {
       "path": "ui/dialog.tsx",

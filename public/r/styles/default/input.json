@@ -4,9 +4,7 @@
   "title": "Input",
   "author": "Matthew Blode",
   "description": "A text input field for capturing user data.",
-  "dependencies": [
-    "blode-icons-react"
-  ],
+  "dependencies": ["blode-icons-react"],
   "files": [
     {
       "path": "ui/input.tsx",

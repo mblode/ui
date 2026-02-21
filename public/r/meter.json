@@ -4,9 +4,7 @@
   "title": "Meter",
   "author": "Matthew Blode",
   "description": "A meter that shows a scalar value within a bounded range.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
+  "dependencies": ["@base-ui/react"],
   "files": [
     {
       "path": "ui/meter.tsx",

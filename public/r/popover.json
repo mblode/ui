@@ -4,9 +4,7 @@
   "title": "Popover",
   "author": "Matthew Blode",
   "description": "A floating panel that appears next to a trigger element.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
+  "dependencies": ["@base-ui/react"],
   "files": [
     {
       "path": "ui/popover.tsx",

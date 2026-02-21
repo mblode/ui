@@ -4,9 +4,7 @@
   "title": "Select",
   "author": "Matthew Blode",
   "description": "A dropdown control for choosing a single value from a list of options.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
+  "dependencies": ["@base-ui/react"],
   "files": [
     {
       "path": "ui/select.tsx",

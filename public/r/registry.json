@@ -8,10 +8,7 @@
       "type": "registry:ui",
       "title": "Accordion",
       "description": "A vertically stacked set of interactive headings that reveal or hide associated content.",
-      "dependencies": [
-        "@base-ui/react",
-        "motion"
-      ],
+      "dependencies": ["@base-ui/react", "motion"],
       "files": [
         {
           "path": "registry/default/ui/accordion.tsx",
@@ -36,12 +33,8 @@
       "type": "registry:ui",
       "title": "Alert Dialog",
       "description": "A modal dialog that interrupts the user with important content and expects a response.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
-      "registryDependencies": [
-        "button"
-      ],
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "registry/default/ui/alert-dialog.tsx",
@@ -54,9 +47,7 @@
       "type": "registry:ui",
       "title": "Aspect Ratio",
       "description": "A component that maintains a consistent width-to-height ratio.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/default/ui/aspect-ratio.tsx",
@@ -69,9 +60,7 @@
       "type": "registry:ui",
       "title": "Autocomplete",
       "description": "An input that suggests matching values while typing.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/default/ui/autocomplete.tsx",
@@ -84,9 +73,7 @@
       "type": "registry:ui",
       "title": "Avatar",
       "description": "An image element with a fallback for representing the user.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/default/ui/avatar.tsx",
@@ -111,9 +98,7 @@
       "type": "registry:ui",
       "title": "Badge",
       "description": "A small status indicator for labelling and categorising items.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/default/ui/badge.tsx",
@@ -126,9 +111,7 @@
       "type": "registry:ui",
       "title": "Breadcrumb",
       "description": "A navigation aid that shows the current page location within a hierarchy.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/default/ui/breadcrumb.tsx",
@@ -141,9 +124,7 @@
       "type": "registry:ui",
       "title": "Button",
       "description": "An interactive element that triggers an action when clicked.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/default/ui/button.tsx",
@@ -156,10 +137,7 @@
       "type": "registry:ui",
       "title": "Button Group",
       "description": "A container that groups related buttons together with shared styling.",
-      "registryDependencies": [
-        "button",
-        "separator"
-      ],
+      "registryDependencies": ["button", "separator"],
       "files": [
         {
           "path": "registry/default/ui/button-group.tsx",
@@ -172,13 +150,8 @@
       "type": "registry:ui",
       "title": "Calendar",
       "description": "A date field component that allows users to pick dates.",
-      "dependencies": [
-        "react-day-picker@latest",
-        "date-fns"
-      ],
-      "registryDependencies": [
-        "button"
-      ],
+      "dependencies": ["react-day-picker@latest", "date-fns"],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "registry/default/ui/calendar.tsx",
@@ -203,12 +176,8 @@
       "type": "registry:ui",
       "title": "Carousel",
       "description": "A slideshow component for cycling through a set of content.",
-      "dependencies": [
-        "embla-carousel-react"
-      ],
-      "registryDependencies": [
-        "button"
-      ],
+      "dependencies": ["embla-carousel-react"],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "registry/default/ui/carousel.tsx",
@@ -233,9 +202,7 @@
       "type": "registry:ui",
       "title": "Checkbox",
       "description": "A control that allows the user to toggle between checked and unchecked states.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/default/ui/checkbox.tsx",
@@ -252,12 +219,8 @@
       "type": "registry:ui",
       "title": "Checkbox Group",
       "description": "A grouped set of related checkboxes managed with shared state.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
-      "registryDependencies": [
-        "checkbox"
-      ],
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["checkbox"],
       "files": [
         {
           "path": "registry/default/ui/checkbox-group.tsx",
@@ -270,9 +233,7 @@
       "type": "registry:ui",
       "title": "Collapsible",
       "description": "An interactive component that expands and collapses a panel of content.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/default/ui/collapsible.tsx",
@@ -285,10 +246,7 @@
       "type": "registry:ui",
       "title": "Currency Input",
       "description": "A formatted input field for entering monetary values.",
-      "dependencies": [
-        "blode-icons-react",
-        "react-currency-input-field"
-      ],
+      "dependencies": ["blode-icons-react", "react-currency-input-field"],
       "files": [
         {
           "path": "registry/default/ui/currency-input.tsx",
@@ -301,14 +259,8 @@
       "type": "registry:ui",
       "title": "Combobox",
       "description": "An autocomplete input that combines a text field with a filterable dropdown list.",
-      "dependencies": [
-        "@base-ui/react",
-        "blode-icons-react"
-      ],
-      "registryDependencies": [
-        "button",
-        "input-group"
-      ],
+      "dependencies": ["@base-ui/react", "blode-icons-react"],
+      "registryDependencies": ["button", "input-group"],
       "files": [
         {
           "path": "registry/default/ui/combobox.tsx",
@@ -327,9 +279,7 @@
         "lodash",
         "blode-icons-react"
       ],
-      "registryDependencies": [
-        "badge"
-      ],
+      "registryDependencies": ["badge"],
       "files": [
         {
           "path": "registry/default/ui/multi-combobox.tsx",
@@ -342,12 +292,8 @@
       "type": "registry:ui",
       "title": "Command",
       "description": "A command palette for fast, keyboard-driven searching and navigation.",
-      "dependencies": [
-        "cmdk"
-      ],
-      "registryDependencies": [
-        "dialog"
-      ],
+      "dependencies": ["cmdk"],
+      "registryDependencies": ["dialog"],
       "files": [
         {
           "path": "registry/default/ui/command.tsx",
@@ -360,9 +306,7 @@
       "type": "registry:ui",
       "title": "Context Menu",
       "description": "A menu that appears on right-click, providing contextual actions.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/default/ui/context-menu.tsx",
@@ -375,12 +319,8 @@
       "type": "registry:ui",
       "title": "Dialog",
       "description": "A modal window that overlays the main content and requires user interaction.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
-      "registryDependencies": [
-        "button"
-      ],
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "registry/default/ui/dialog.tsx",
@@ -393,9 +333,7 @@
       "type": "registry:ui",
       "title": "Drawer",
       "description": "A panel that slides in from the edge of the screen.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/default/ui/drawer.tsx",
@@ -408,9 +346,7 @@
       "type": "registry:ui",
       "title": "Dropdown Menu",
       "description": "A menu that opens from a trigger button, displaying a list of actions.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/default/ui/dropdown-menu.tsx",
@@ -435,10 +371,7 @@
       "type": "registry:ui",
       "title": "Field",
       "description": "A form field wrapper that pairs a label, input, and helper text.",
-      "registryDependencies": [
-        "label",
-        "separator"
-      ],
+      "registryDependencies": ["label", "separator"],
       "files": [
         {
           "path": "registry/default/ui/field.tsx",
@@ -457,10 +390,7 @@
         "zod",
         "react-hook-form"
       ],
-      "registryDependencies": [
-        "button",
-        "label"
-      ],
+      "registryDependencies": ["button", "label"],
       "files": [
         {
           "path": "registry/default/ui/form.tsx",
@@ -473,9 +403,7 @@
       "type": "registry:ui",
       "title": "Hover Card",
       "description": "A popup card that appears when hovering over a trigger element.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/default/ui/hover-card.tsx",
@@ -488,9 +416,7 @@
       "type": "registry:ui",
       "title": "Input",
       "description": "A text input field for capturing user data.",
-      "dependencies": [
-        "blode-icons-react"
-      ],
+      "dependencies": ["blode-icons-react"],
       "files": [
         {
           "path": "registry/default/ui/input.tsx",
@@ -503,11 +429,7 @@
       "type": "registry:ui",
       "title": "Input Group",
       "description": "A wrapper that combines an input with addons like icons or buttons.",
-      "registryDependencies": [
-        "button",
-        "input",
-        "textarea"
-      ],
+      "registryDependencies": ["button", "input", "textarea"],
       "files": [
         {
           "path": "registry/default/ui/input-group.tsx",
@@ -520,9 +442,7 @@
       "type": "registry:ui",
       "title": "Input OTP",
       "description": "A one-time password input with individual character fields.",
-      "dependencies": [
-        "input-otp"
-      ],
+      "dependencies": ["input-otp"],
       "files": [
         {
           "path": "registry/default/ui/input-otp.tsx",
@@ -535,12 +455,8 @@
       "type": "registry:ui",
       "title": "Item",
       "description": "A flexible list item component for menus, settings, and data rows.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
-      "registryDependencies": [
-        "separator"
-      ],
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["separator"],
       "files": [
         {
           "path": "registry/default/ui/item.tsx",
@@ -553,9 +469,7 @@
       "type": "registry:ui",
       "title": "Label",
       "description": "An accessible label that associates text with a form control.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/default/ui/label.tsx",
@@ -568,9 +482,7 @@
       "type": "registry:ui",
       "title": "Menubar",
       "description": "A horizontal menu bar with dropdown menus, commonly used for application navigation.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/default/ui/menubar.tsx",
@@ -583,9 +495,7 @@
       "type": "registry:ui",
       "title": "Meter",
       "description": "A meter that shows a scalar value within a bounded range.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/default/ui/meter.tsx",
@@ -598,9 +508,7 @@
       "type": "registry:ui",
       "title": "Navigation Menu",
       "description": "A responsive navigation component with support for dropdown panels.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/default/ui/navigation-menu.tsx",
@@ -613,9 +521,7 @@
       "type": "registry:ui",
       "title": "Number Field",
       "description": "A numeric input with increment, decrement, and scrubbing interactions.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/default/ui/number-field.tsx",
@@ -628,9 +534,7 @@
       "type": "registry:ui",
       "title": "Pagination",
       "description": "A navigation component for paging through content across multiple pages.",
-      "registryDependencies": [
-        "button"
-      ],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "registry/default/ui/pagination.tsx",
@@ -643,10 +547,7 @@
       "type": "registry:ui",
       "title": "Phone Input",
       "description": "An international phone number input with country code selector.",
-      "dependencies": [
-        "blode-icons-react",
-        "react-phone-number-input"
-      ],
+      "dependencies": ["blode-icons-react", "react-phone-number-input"],
       "registryDependencies": [
         "button",
         "command",
@@ -666,9 +567,7 @@
       "type": "registry:ui",
       "title": "Popover",
       "description": "A floating panel that appears next to a trigger element.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/default/ui/popover.tsx",
@@ -681,9 +580,7 @@
       "type": "registry:ui",
       "title": "Progress",
       "description": "A horizontal bar that indicates the completion progress of a task.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/default/ui/progress.tsx",
@@ -696,9 +593,7 @@
       "type": "registry:ui",
       "title": "Progress List",
       "description": "A vertical list of progress items with completed and pending states.",
-      "dependencies": [
-        "blode-icons-react"
-      ],
+      "dependencies": ["blode-icons-react"],
       "files": [
         {
           "path": "registry/default/ui/progress-list.tsx",
@@ -711,12 +606,8 @@
       "type": "registry:ui",
       "title": "Prompt",
       "description": "A confirmation dialog that asks the user for input before proceeding.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
-      "registryDependencies": [
-        "button"
-      ],
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["button"],
       "files": [
         {
           "path": "registry/default/ui/prompt.tsx",
@@ -729,9 +620,7 @@
       "type": "registry:ui",
       "title": "Radio Group",
       "description": "A set of mutually exclusive options where only one can be selected.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/default/ui/radio-group.tsx",
@@ -744,9 +633,7 @@
       "type": "registry:ui",
       "title": "Resizable",
       "description": "A layout component with draggable handles for resizing panels.",
-      "dependencies": [
-        "react-resizable-panels@^4"
-      ],
+      "dependencies": ["react-resizable-panels@^4"],
       "files": [
         {
           "path": "registry/default/ui/resizable.tsx",
@@ -759,9 +646,7 @@
       "type": "registry:ui",
       "title": "Scroll Area",
       "description": "A scrollable container with custom styled scrollbars.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/default/ui/scroll-area.tsx",
@@ -774,9 +659,7 @@
       "type": "registry:ui",
       "title": "Select",
       "description": "A dropdown control for choosing a single value from a list of options.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/default/ui/select.tsx",
@@ -789,9 +672,7 @@
       "type": "registry:ui",
       "title": "Separator",
       "description": "A visual divider that separates content into distinct sections.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/default/ui/separator.tsx",
@@ -804,9 +685,7 @@
       "type": "registry:ui",
       "title": "Sheet",
       "description": "A panel that slides in from the edge of the viewport with an overlay.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/default/ui/sheet.tsx",
@@ -857,9 +736,7 @@
       "type": "registry:ui",
       "title": "Slider",
       "description": "A draggable control for selecting a numeric value within a range.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/default/ui/slider.tsx",
@@ -872,10 +749,7 @@
       "type": "registry:ui",
       "title": "Sonner",
       "description": "A toast notification component powered by Sonner.",
-      "dependencies": [
-        "sonner",
-        "next-themes"
-      ],
+      "dependencies": ["sonner", "next-themes"],
       "files": [
         {
           "path": "registry/default/ui/sonner.tsx",
@@ -912,9 +786,7 @@
       "type": "registry:ui",
       "title": "Switch",
       "description": "A toggle control for switching between on and off states.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/default/ui/switch.tsx",
@@ -944,9 +816,7 @@
         "class-variance-authority",
         "merge-refs"
       ],
-      "registryDependencies": [
-        "@blode/use-tab-observer"
-      ],
+      "registryDependencies": ["@blode/use-tab-observer"],
       "files": [
         {
           "path": "registry/default/ui/tabs.tsx",
@@ -971,9 +841,7 @@
       "type": "registry:ui",
       "title": "Toggle",
       "description": "A two-state button that can be toggled on or off.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/default/ui/toggle.tsx",
@@ -986,12 +854,8 @@
       "type": "registry:ui",
       "title": "Toggle Group",
       "description": "A set of toggle buttons where one or more can be active.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
-      "registryDependencies": [
-        "toggle"
-      ],
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["toggle"],
       "files": [
         {
           "path": "registry/default/ui/toggle-group.tsx",
@@ -1004,9 +868,7 @@
       "type": "registry:ui",
       "title": "Tooltip",
       "description": "A popup that displays helpful information when hovering or focusing an element.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/default/ui/tooltip.tsx",
@@ -1043,9 +905,7 @@
       "type": "registry:ui",
       "title": "Direction",
       "description": "A context provider for managing text direction (LTR/RTL) across components.",
-      "dependencies": [
-        "@base-ui/react"
-      ],
+      "dependencies": ["@base-ui/react"],
       "files": [
         {
           "path": "registry/default/ui/direction.tsx",
@@ -1058,10 +918,7 @@
       "type": "registry:lib",
       "title": "Utils",
       "description": "Utility functions including cn() for merging Tailwind CSS classes.",
-      "dependencies": [
-        "clsx",
-        "tailwind-merge"
-      ],
+      "dependencies": ["clsx", "tailwind-merge"],
       "files": [
         {
           "path": "registry/default/lib/utils.ts",

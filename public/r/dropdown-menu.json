@@ -4,9 +4,7 @@
   "title": "Dropdown Menu",
   "author": "Matthew Blode",
   "description": "A menu that opens from a trigger button, displaying a list of actions.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
+  "dependencies": ["@base-ui/react"],
   "files": [
     {
       "path": "ui/dropdown-menu.tsx",

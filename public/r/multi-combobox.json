@@ -10,9 +10,7 @@
     "lodash",
     "blode-icons-react"
   ],
-  "registryDependencies": [
-    "badge"
-  ],
+  "registryDependencies": ["badge"],
   "files": [
     {
       "path": "ui/multi-combobox.tsx",

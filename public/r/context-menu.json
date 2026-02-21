@@ -4,9 +4,7 @@
   "title": "Context Menu",
   "author": "Matthew Blode",
   "description": "A menu that appears on right-click, providing contextual actions.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
+  "dependencies": ["@base-ui/react"],
   "files": [
     {
       "path": "ui/context-menu.tsx",

@@ -4,12 +4,8 @@
   "title": "Item",
   "author": "Matthew Blode",
   "description": "A flexible list item component for menus, settings, and data rows.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
-  "registryDependencies": [
-    "separator"
-  ],
+  "dependencies": ["@base-ui/react"],
+  "registryDependencies": ["separator"],
   "files": [
     {
       "path": "ui/item.tsx",

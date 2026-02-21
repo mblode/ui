@@ -4,9 +4,7 @@
   "title": "Navigation Menu",
   "author": "Matthew Blode",
   "description": "A responsive navigation component with support for dropdown panels.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
+  "dependencies": ["@base-ui/react"],
   "files": [
     {
       "path": "ui/navigation-menu.tsx",

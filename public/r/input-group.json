@@ -4,11 +4,7 @@
   "title": "Input Group",
   "author": "Matthew Blode",
   "description": "A wrapper that combines an input with addons like icons or buttons.",
-  "registryDependencies": [
-    "button",
-    "input",
-    "textarea"
-  ],
+  "registryDependencies": ["button", "input", "textarea"],
   "files": [
     {
       "path": "ui/input-group.tsx",

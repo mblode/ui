@@ -4,9 +4,7 @@
   "title": "Drawer",
   "author": "Matthew Blode",
   "description": "A panel that slides in from the edge of the screen.",
-  "dependencies": [
-    "@base-ui/react"
-  ],
+  "dependencies": ["@base-ui/react"],
   "files": [
     {
       "path": "ui/drawer.tsx",
