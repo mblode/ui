@@ -1,0 +1,3 @@
+interface:
+  display_name: "shadcn (compatibility)"
+  short_description: "Handles generic shadcn/ui CLI and registry mechanics when the task is not Blode-specific."

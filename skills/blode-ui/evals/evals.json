@@ -1,0 +1,57 @@
+{
+  "skill_name": "blode-ui",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I want to install Blode UI in a fresh Next.js app and add the button component. Show me the commands and explain the flow briefly.",
+      "expected_output": "Uses the canonical Blode namespace flow and describes Blode UI as a third-party shadcn registry hosted at ui.blode.co.",
+      "files": [],
+      "expectations": [
+        "Starts with `npx shadcn@latest init`",
+        "Includes `npx shadcn@latest registry add @blode=https://ui.blode.co/r/{name}.json`",
+        "Uses `npx shadcn@latest add @blode/button` instead of `@shadcn/button`",
+        "Mentions that Blode UI is a third-party shadcn registry hosted at `ui.blode.co`",
+        "Does not teach raw `https://ui.blode.co/r/...` URLs as the default quick start"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Build a Blode UI settings form for notification preferences with email, timezone, and digest frequency. Include validation and make it feel consistent with the registry.",
+      "expected_output": "Uses Blode field components, semantic spacing, and validation states instead of ad hoc markup.",
+      "files": [],
+      "expectations": [
+        "Uses `FieldGroup` and `Field` for form layout",
+        "Uses a purpose-built control like `ToggleGroup` instead of looping buttons for active state",
+        "Uses `data-invalid` on `Field` and `aria-invalid` on the invalid control",
+        "Uses `gap-*` spacing instead of `space-*` utilities",
+        "Uses semantic tokens rather than raw Tailwind color classes"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Create a Blode UI dialog for editing a profile with an avatar, name input, bio textarea, and Save/Cancel actions with icons.",
+      "expected_output": "Includes required accessibility subcomponents, Blode icon conventions, and complete composition.",
+      "files": [],
+      "expectations": [
+        "Includes `DialogTitle` for accessibility",
+        "Uses `AvatarFallback` alongside `AvatarImage`",
+        "Imports icons from `blode-icons-react`",
+        "Uses `data-icon` attributes on icons inside buttons",
+        "Does not add icon sizing classes like `size-4`, `w-4`, or `h-4` inside button content"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "I'm adding a new component to the Blode UI registry in this repo. What conventions and follow-up steps do I need to respect?",
+      "expected_output": "Points to the registry source paths, React and Tailwind conventions, icon library, and registry build step.",
+      "files": [],
+      "expectations": [
+        "Mentions `registry/default/ui/`, `registry/default/examples/`, or `registry/index.ts` as relevant repo paths",
+        "Mentions `npm run build:registry` after changing registry items",
+        "Mentions React 19 ref-as-prop and not using `React.forwardRef`",
+        "Mentions Tailwind v4 conventions and CSS-variable-based styling",
+        "Mentions `blode-icons-react` for repo examples and docs"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Blode UI"
+  short_description: "Works with the Blode UI registry, install flow, docs, and component conventions."
+
