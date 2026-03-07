@@ -20,17 +20,20 @@ npm run dev
 
 ## Project Structure
 
+- `registry/default/base/` — Design-system payloads emitted as `registry:base` items
+- `registry/default/fonts/` — First-class font payloads emitted as `registry:font` items
 - `registry/default/ui/` — Component source files (shadcn-style registry)
 - `registry/default/examples/` — Example/demo components
+- `registry/default/hooks/` — Shared hooks distributed as `registry:lib`
 - `registry/default/lib/` — Shared utilities (e.g., `utils.ts` with `cn()`)
-- `registry/index.ts` — Main registry manifest combining UI, examples, and lib
+- `registry/index.ts` — Main registry manifest combining base, fonts, UI, hooks, lib, and examples
 - `content/docs/` — MDX documentation pages
 - `scripts/build-registry.mts` — Builds JSON registry into `public/r/` using ts-morph
 - `styles/globals.css` — Tailwind v4 global styles and design tokens
 
 ## Key Conventions
 
-- **Registry pattern**: Components live in `registry/default/ui/`. Auto-generated `_registry.ts` files in `ui/`, `examples/`, and `lib/` directories are combined by `registry/index.ts`. Run `npm run build:registry` after adding or changing components.
+- **Registry pattern**: Registry items are assembled from `registry/default/base/`, `fonts/`, `ui/`, `hooks/`, `lib/`, and `examples/` via `_registry.ts` files combined by `registry/index.ts`. Run `npm run build:registry` after adding or changing registry items.
 - **React 19**: Use ref as a prop directly — do NOT use `React.forwardRef`.
 - **Tailwind v4**: Uses `@import "tailwindcss"` with CSS custom properties for design tokens. No `tailwind.config.js`.
 - **Icons**: Use `blode-icons-react` — don't install other icon libraries.
@@ -42,6 +45,7 @@ npm run dev
 
 - IMPORTANT: Do NOT run `tsc --noEmit` directly — it will fail without content-collections build artifacts. Use `npm run typecheck` instead, which builds docs first.
 - New components must be added to the auto-generated `_registry.ts` files and follow the shadcn schema (type, files, dependencies, registryDependencies).
-- The registry build filters items by type whitelist: `registry:ui`, `registry:lib`, `registry:block`. Other types are excluded from output.
+- The registry build filters items by type whitelist: `registry:ui`, `registry:lib`, `registry:block`, `registry:base`, `registry:font`.
+- `registry:base` and `registry:font` items can ship without source files. Blode publishes Google-backed `@blode/font-*` items through the registry, but the default Glide setup still uses `next/font/local`.
 - Content-collections must be built before the Next.js build — `npm run build` handles the ordering automatically.
 - Dark mode uses a custom variant: `@custom-variant dark (&:where(.dark, .dark *))` — not Tailwind's built-in dark mode.

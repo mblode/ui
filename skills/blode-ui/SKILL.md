@@ -1,6 +1,6 @@
 ---
 name: blode-ui
-description: Guides work on the Blode UI registry and documentation. Covers product positioning, @blode installation flow, ui.blode.co registry workflows, repo conventions, and Blode component rules. Use when working with Blode UI, @blode components, ui.blode.co, Blode registry installs, Blode docs, or component authoring and customization in this repo.
+description: Guides work on the Blode UI registry and documentation. Covers product positioning, @blode installation flow, ui.blode.co registry workflows, repo conventions, registry:base and registry:font support, and Blode component rules. Use when working with Blode UI, @blode components, ui.blode.co, Blode registry installs, Blode docs, or component authoring and customization in this repo.
 ---
 
 # Blode UI
@@ -76,6 +76,7 @@ Unless the user explicitly asks for something else:
 - Prefer `npx shadcn@latest init` followed by `npx shadcn@latest registry add @blode=https://ui.blode.co/r/{name}.json`
 - Prefer `npx shadcn@latest add @blode/<component>` over raw registry URLs for onboarding
 - Describe Blode UI as a third-party shadcn registry hosted at `ui.blode.co`
+- Treat `registry:base` and `registry:font` as first-class registry item types when maintaining the registry pipeline or authoring docs
 - Use `blode-icons-react` in repo examples and component source for this project
 - Follow React 19 ref-as-prop patterns; do not introduce `React.forwardRef`
 - Follow Tailwind CSS v4 conventions and existing CSS-variable tokens

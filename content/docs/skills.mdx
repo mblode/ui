@@ -1,0 +1,100 @@
+---
+title: Skills
+description: Give your AI assistant deep knowledge of the Blode UI registry, install flow, and component conventions.
+---
+
+Skills give AI assistants like Claude Code project-aware context about Blode UI. When installed, your assistant knows how to install from the `@blode` registry, follow the canonical `ui.blode.co` setup flow, and generate code that matches Blode UI conventions.
+
+For example, you can ask your AI assistant to:
+
+- _"Install Blode UI and add the button component."_
+- _"Build a settings form that feels consistent with Blode UI."_
+- _"Create a profile dialog using Blode UI patterns and icons."_
+- _"Show me the right `@blode` command for this component."_
+- _"Help me update a Blode component without overwriting my local edits."_
+
+The skill keeps your assistant anchored in the Blode UI defaults: the `@blode` namespace, the hosted registry at [ui.blode.co](https://ui.blode.co), and the product's design and composition patterns.
+
+This repository ships one public skill: `blode-ui`.
+
+## Install
+
+```bash
+npx skills add mblode/blode-ui
+```
+
+This installs the `blode-ui` skill from this repository. Once installed, your AI assistant can load it automatically when you are working with Blode UI.
+
+Learn more about skills at [skills.sh](https://skills.sh).
+
+## What's Included
+
+### Product Positioning
+
+The skill preserves the Blode UI framing:
+
+- an opinionated shadcn/ui registry
+- built by Matthew Blode
+- focused on good taste, care, and craft
+- hosted at [ui.blode.co](https://ui.blode.co)
+
+### Installation Flow
+
+The skill teaches the canonical setup flow:
+
+```bash
+npx shadcn@latest init
+npx shadcn@latest registry add @blode=https://ui.blode.co/r/{name}.json
+npx shadcn@latest add @blode/button
+```
+
+It prefers the namespace flow for quick starts and only falls back to raw registry URLs for manual or low-level workflows.
+
+### Registry Workflows
+
+The skill helps your assistant search, view, add, and update Blode registry items with the right commands and safer update workflows such as `--dry-run` and `--diff`.
+
+It also understands that registries can ship more than components now, including design-system payloads via `registry:base` and first-class font payloads via `registry:font`, such as `@blode/font-inter`.
+
+### Component Rules
+
+The skill includes Blode-specific rules for:
+
+- component composition and accessibility
+- field and form patterns
+- semantic styling and Tailwind v4-friendly usage
+- Base UI versus Radix API differences
+- `blode-icons-react` conventions
+
+### Repo Conventions
+
+When working inside the Blode UI repo itself, the skill also carries the repo defaults:
+
+- React 19 ref-as-prop patterns
+- Tailwind CSS v4
+- `blode-icons-react`
+- registry source layout, build commands, and supported item types
+
+## How It Works
+
+1. The skill activates when your task is clearly about Blode UI, `@blode`, or `ui.blode.co`.
+2. It loads only the focused references needed for the task, such as install flow, registry workflows, or repo conventions.
+3. It applies the Blode defaults before generating commands, examples, or code.
+4. It uses the bundled rules to keep examples aligned with the registry's composition and styling patterns.
+
+## When To Use It
+
+Install this skill if you want your AI assistant to be better at:
+
+- onboarding a project to Blode UI
+- adding and updating `@blode` components
+- writing Blode-consistent examples and forms
+- working in this repo without drifting back to generic shadcn answers
+
+## Learn More
+
+- [Installation](/docs/installation) — canonical setup flow
+- [Components](/docs/components) — browse the registry
+- [Font](/docs/font) — install the Glide font system
+- [Tailwind v4](/docs/tailwind-v4) — current Tailwind guidance
+- [skills.sh](https://skills.sh) — learn more about AI skills

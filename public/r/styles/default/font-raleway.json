@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.blode.co/schema/registry-item.json",
+  "name": "font-raleway",
+  "title": "Raleway",
+  "author": "Matthew Blode",
+  "type": "registry:font",
+  "font": {
+    "family": "'Raleway Variable', sans-serif",
+    "provider": "google",
+    "import": "Raleway",
+    "variable": "--font-sans",
+    "subsets": ["latin"]
+  }
+}

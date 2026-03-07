@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.blode.co/schema/registry-item.json",
+  "name": "font-playfair-display",
+  "title": "Playfair Display",
+  "author": "Matthew Blode",
+  "type": "registry:font",
+  "font": {
+    "family": "'Playfair Display Variable', serif",
+    "provider": "google",
+    "import": "Playfair_Display",
+    "variable": "--font-serif",
+    "subsets": ["latin"]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.blode.co/schema/registry-item.json",
+  "name": "font-merriweather",
+  "title": "Merriweather",
+  "author": "Matthew Blode",
+  "type": "registry:font",
+  "font": {
+    "family": "'Merriweather Variable', serif",
+    "provider": "google",
+    "import": "Merriweather",
+    "variable": "--font-serif",
+    "subsets": ["latin"]
+  }
+}

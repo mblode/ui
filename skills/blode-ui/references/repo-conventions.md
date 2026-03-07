@@ -2,8 +2,11 @@
 
 ## Architecture
 
+- Design-system payloads can live in `registry/default/base/`
+- First-class font payloads can live in `registry/default/fonts/`
 - Component source lives in `registry/default/ui/`
 - Examples live in `registry/default/examples/`
+- Shared hooks live in `registry/default/hooks/`
 - Shared utilities live in `registry/default/lib/`
 - Registry assembly happens in `registry/index.ts`
 - Docs live in `content/docs/`
@@ -27,5 +30,7 @@
 
 - Do not run `tsc --noEmit` directly in this repo; use `npm run typecheck`
 - New registry items must fit the shadcn registry schema and auto-generated registry manifests
-- The registry build only emits whitelisted registry types
+- The registry build only emits whitelisted registry types: `registry:ui`, `registry:lib`, `registry:block`, `registry:base`, and `registry:font`
+- `registry:base` items can carry design-system config, dependencies, CSS vars, and CSS without source files
+- `registry:font` items are first-class registry payloads; Blode publishes Google-backed `@blode/font-*` items, while the default Glide setup still uses `next/font/local`
 - Dark mode uses the custom `@custom-variant dark` pattern already defined in the repo

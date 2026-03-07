@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.blode.co/schema/registry-item.json",
+  "name": "font-figtree",
+  "title": "Figtree",
+  "author": "Matthew Blode",
+  "type": "registry:font",
+  "font": {
+    "family": "'Figtree Variable', sans-serif",
+    "provider": "google",
+    "import": "Figtree",
+    "variable": "--font-sans",
+    "subsets": ["latin"]
+  }
+}

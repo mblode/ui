@@ -13,6 +13,8 @@ const CHECKED_TYPES = new Set([
   "registry:ui",
   "registry:lib",
   "registry:block",
+  "registry:base",
+  "registry:font",
 ]);
 const IGNORED_PACKAGES = new Set(["next", "react", "react-dom"]);
 
@@ -184,7 +186,10 @@ function collectSpecifiers(
   return specifiers;
 }
 
-function createRegistryItemLookup(items: RegistryItem[], registryName: string) {
+function createRegistryItemLookup(
+  items: RegistryItem[],
+  registryName: string
+): Map<string, RegistryItem> {
   const lookup = new Map<string, RegistryItem>();
   const [rawScope] = registryName.split("/");
   const scope = rawScope ? rawScope.replace(LEADING_AT_RE, "") : "";

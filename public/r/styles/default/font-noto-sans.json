@@ -1,0 +1,13 @@
+{
+  "$schema": "https://ui.blode.co/schema/registry-item.json",
+  "name": "font-noto-sans",
+  "title": "Noto Sans",
+  "author": "Matthew Blode",
+  "type": "registry:font",
+  "font": {
+    "family": "'Noto Sans Variable', sans-serif",
+    "provider": "google",
+    "import": "Noto_Sans",
+    "variable": "--font-sans"
+  }
+}

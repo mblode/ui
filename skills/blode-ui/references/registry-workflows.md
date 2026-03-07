@@ -14,10 +14,15 @@ npx shadcn@latest view @blode/button
 # Add a component.
 npx shadcn@latest add @blode/button
 
+# Add a registry font.
+npx shadcn@latest add @blode/font-inter
+
 # Preview changes before updating an installed component.
 npx shadcn@latest add @blode/button --dry-run
 npx shadcn@latest add @blode/button --diff button.tsx
 ```
+
+The same `add` flow applies to non-component registry payloads such as `registry:base` and `registry:font` items.
 
 ## Default Workflow
 
@@ -34,5 +39,4 @@ npx shadcn@latest add @blode/button --diff button.tsx
 
 ## Fallback To Generic shadcn Mechanics
 
-If the user asks about generic CLI behavior, `components.json`, or non-Blode registries, use the repo's `shadcn` compatibility skill as supporting context. Do not let that override Blode-specific defaults.
-
+If the user asks about generic CLI behavior, `components.json`, or non-Blode registries, use upstream shadcn knowledge as supporting context. Do not let that override Blode-specific defaults.

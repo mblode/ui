@@ -4,6 +4,208 @@
   "homepage": "https://ui.blode.co",
   "items": [
     {
+      "name": "font-geist",
+      "type": "registry:font",
+      "title": "Geist",
+      "font": {
+        "family": "'Geist Variable', sans-serif",
+        "provider": "google",
+        "import": "Geist",
+        "variable": "--font-sans",
+        "subsets": ["latin"]
+      }
+    },
+    {
+      "name": "font-inter",
+      "type": "registry:font",
+      "title": "Inter",
+      "font": {
+        "family": "'Inter Variable', sans-serif",
+        "provider": "google",
+        "import": "Inter",
+        "variable": "--font-sans",
+        "subsets": ["latin"]
+      }
+    },
+    {
+      "name": "font-noto-sans",
+      "type": "registry:font",
+      "title": "Noto Sans",
+      "font": {
+        "family": "'Noto Sans Variable', sans-serif",
+        "provider": "google",
+        "import": "Noto_Sans",
+        "variable": "--font-sans"
+      }
+    },
+    {
+      "name": "font-nunito-sans",
+      "type": "registry:font",
+      "title": "Nunito Sans",
+      "font": {
+        "family": "'Nunito Sans Variable', sans-serif",
+        "provider": "google",
+        "import": "Nunito_Sans",
+        "variable": "--font-sans"
+      }
+    },
+    {
+      "name": "font-figtree",
+      "type": "registry:font",
+      "title": "Figtree",
+      "font": {
+        "family": "'Figtree Variable', sans-serif",
+        "provider": "google",
+        "import": "Figtree",
+        "variable": "--font-sans",
+        "subsets": ["latin"]
+      }
+    },
+    {
+      "name": "font-roboto",
+      "type": "registry:font",
+      "title": "Roboto",
+      "font": {
+        "family": "'Roboto Variable', sans-serif",
+        "provider": "google",
+        "import": "Roboto",
+        "variable": "--font-sans",
+        "subsets": ["latin"]
+      }
+    },
+    {
+      "name": "font-raleway",
+      "type": "registry:font",
+      "title": "Raleway",
+      "font": {
+        "family": "'Raleway Variable', sans-serif",
+        "provider": "google",
+        "import": "Raleway",
+        "variable": "--font-sans",
+        "subsets": ["latin"]
+      }
+    },
+    {
+      "name": "font-dm-sans",
+      "type": "registry:font",
+      "title": "DM Sans",
+      "font": {
+        "family": "'DM Sans Variable', sans-serif",
+        "provider": "google",
+        "import": "DM_Sans",
+        "variable": "--font-sans",
+        "subsets": ["latin"]
+      }
+    },
+    {
+      "name": "font-public-sans",
+      "type": "registry:font",
+      "title": "Public Sans",
+      "font": {
+        "family": "'Public Sans Variable', sans-serif",
+        "provider": "google",
+        "import": "Public_Sans",
+        "variable": "--font-sans",
+        "subsets": ["latin"]
+      }
+    },
+    {
+      "name": "font-outfit",
+      "type": "registry:font",
+      "title": "Outfit",
+      "font": {
+        "family": "'Outfit Variable', sans-serif",
+        "provider": "google",
+        "import": "Outfit",
+        "variable": "--font-sans",
+        "subsets": ["latin"]
+      }
+    },
+    {
+      "name": "font-jetbrains-mono",
+      "type": "registry:font",
+      "title": "JetBrains Mono",
+      "font": {
+        "family": "'JetBrains Mono Variable', monospace",
+        "provider": "google",
+        "import": "JetBrains_Mono",
+        "variable": "--font-mono",
+        "subsets": ["latin"]
+      }
+    },
+    {
+      "name": "font-geist-mono",
+      "type": "registry:font",
+      "title": "Geist Mono",
+      "font": {
+        "family": "'Geist Mono Variable', monospace",
+        "provider": "google",
+        "import": "Geist_Mono",
+        "variable": "--font-mono",
+        "subsets": ["latin"]
+      }
+    },
+    {
+      "name": "font-noto-serif",
+      "type": "registry:font",
+      "title": "Noto Serif",
+      "font": {
+        "family": "'Noto Serif Variable', serif",
+        "provider": "google",
+        "import": "Noto_Serif",
+        "variable": "--font-serif",
+        "subsets": ["latin"]
+      }
+    },
+    {
+      "name": "font-roboto-slab",
+      "type": "registry:font",
+      "title": "Roboto Slab",
+      "font": {
+        "family": "'Roboto Slab Variable', serif",
+        "provider": "google",
+        "import": "Roboto_Slab",
+        "variable": "--font-serif",
+        "subsets": ["latin"]
+      }
+    },
+    {
+      "name": "font-merriweather",
+      "type": "registry:font",
+      "title": "Merriweather",
+      "font": {
+        "family": "'Merriweather Variable', serif",
+        "provider": "google",
+        "import": "Merriweather",
+        "variable": "--font-serif",
+        "subsets": ["latin"]
+      }
+    },
+    {
+      "name": "font-lora",
+      "type": "registry:font",
+      "title": "Lora",
+      "font": {
+        "family": "'Lora Variable', serif",
+        "provider": "google",
+        "import": "Lora",
+        "variable": "--font-serif",
+        "subsets": ["latin"]
+      }
+    },
+    {
+      "name": "font-playfair-display",
+      "type": "registry:font",
+      "title": "Playfair Display",
+      "font": {
+        "family": "'Playfair Display Variable', serif",
+        "provider": "google",
+        "import": "Playfair_Display",
+        "variable": "--font-serif",
+        "subsets": ["latin"]
+      }
+    },
+    {
       "name": "accordion",
       "type": "registry:ui",
       "title": "Accordion",
@@ -712,6 +914,28 @@
         "@blode/use-mobile",
         "skeleton"
       ],
+      "cssVars": {
+        "light": {
+          "sidebar-background": "0 0% 98%",
+          "sidebar-foreground": "240 5.3% 26.1%",
+          "sidebar-primary": "240 5.9% 10%",
+          "sidebar-primary-foreground": "0 0% 98%",
+          "sidebar-accent": "240 4.8% 95.9%",
+          "sidebar-accent-foreground": "240 5.9% 10%",
+          "sidebar-border": "220 13% 91%",
+          "sidebar-ring": "217.2 91.2% 59.8%"
+        },
+        "dark": {
+          "sidebar-background": "240 5.9% 10%",
+          "sidebar-foreground": "240 4.8% 95.9%",
+          "sidebar-primary": "224.3 76.3% 48%",
+          "sidebar-primary-foreground": "0 0% 100%",
+          "sidebar-accent": "240 3.7% 15.9%",
+          "sidebar-accent-foreground": "240 4.8% 95.9%",
+          "sidebar-border": "240 3.7% 15.9%",
+          "sidebar-ring": "217.2 91.2% 59.8%"
+        }
+      },
       "files": [
         {
           "path": "registry/default/ui/sidebar.tsx",
@@ -869,6 +1093,7 @@
       "title": "Tooltip",
       "description": "A popup that displays helpful information when hovering or focusing an element.",
       "dependencies": ["@base-ui/react"],
+      "docs": "The `tooltip` component has been added. Remember to wrap your app with the `TooltipProvider` component.\n\n```tsx title=\"app/layout.tsx\"\nimport { TooltipProvider } from \"@/components/ui/tooltip\"\n\nexport default function RootLayout({ children }: { children: React.ReactNode }) {\n  return (\n    <html lang=\"en\">\n      <body>\n        <TooltipProvider>{children}</TooltipProvider>\n      </body>\n    </html>\n  )\n}\n```\n",
       "files": [
         {
           "path": "registry/default/ui/tooltip.tsx",

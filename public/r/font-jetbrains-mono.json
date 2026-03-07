@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.blode.co/schema/registry-item.json",
+  "name": "font-jetbrains-mono",
+  "title": "JetBrains Mono",
+  "author": "Matthew Blode",
+  "type": "registry:font",
+  "font": {
+    "family": "'JetBrains Mono Variable', monospace",
+    "provider": "google",
+    "import": "JetBrains_Mono",
+    "variable": "--font-mono",
+    "subsets": ["latin"]
+  }
+}
