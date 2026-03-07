@@ -17,7 +17,7 @@
 - Tailwind CSS v4: use the existing global CSS variables; do not introduce a `tailwind.config.js`-first workflow
 - Icons: use `blode-icons-react`
 - Class merging: use `cn()` from `registry/default/lib/utils.ts`
-- Preserve Base UI and Radix accessibility and keyboard behavior
+- Preserve Base UI accessibility and keyboard behavior
 
 ## Commands
 

@@ -19,10 +19,10 @@ This file defines the Blode UI rule categories, their ordering, impact levels, a
 **Impact:** HIGH
 **Description:** Blode UI relies on semantic tokens, built-in variants, and disciplined Tailwind usage rather than raw color classes.
 
-## 4. Base vs Radix APIs (api)
+## 4. Base UI Primitive APIs (api)
 
 **Impact:** HIGH
-**Description:** Primitive API differences must be checked before using `asChild`, `render`, or value-shape props.
+**Description:** Base UI primitive APIs (`render`, value-shape props, `nativeButton`) must be used correctly — do not use Radix conventions like `asChild`.
 
 ## 5. Icons (icon)
 

@@ -30,7 +30,7 @@ Load the relevant rule files before writing component code, examples, or docs sn
 | 1 | Composition and accessibility | CRITICAL | `comp-` | 1 |
 | 2 | Forms and validation | HIGH | `form-` | 1 |
 | 3 | Styling and tokens | HIGH | `style-` | 1 |
-| 4 | Base vs Radix APIs | HIGH | `api-` | 1 |
+| 4 | Base UI Primitive APIs | HIGH | `api-` | 1 |
 | 5 | Icons | MEDIUM | `icon-` | 1 |
 
 See `rules/_sections.md` for the category map before loading an individual rule file.
@@ -80,7 +80,7 @@ Unless the user explicitly asks for something else:
 - Use `blode-icons-react` in repo examples and component source for this project
 - Follow React 19 ref-as-prop patterns; do not introduce `React.forwardRef`
 - Follow Tailwind CSS v4 conventions and existing CSS-variable tokens
-- Preserve Radix and Base UI accessibility patterns instead of replacing them with custom markup
+- Preserve Base UI accessibility patterns instead of replacing them with custom markup
 
 Use raw `https://ui.blode.co/r/...` URLs only for low-level or manual-install contexts.
 
@@ -90,7 +90,7 @@ Use raw `https://ui.blode.co/r/...` URLs only for low-level or manual-install co
 - Forms, fields, or validation: `rules/form-layout-and-validation.md`
 - Styling, spacing, tokens, or conditional classes: `rules/style-tokens-and-layout.md`
 - Icon usage: `rules/icon-blode-icons.md`
-- Base vs Radix API differences: `rules/api-base-vs-radix.md`
+- Base UI primitive APIs: `rules/api-base-ui-primitives.md`
 
 ### Step 5: Validate before finishing
 
