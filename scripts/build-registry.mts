@@ -35,13 +35,11 @@ const REGISTRY_INDEX_WHITELIST = new Set<
   "registry:lib",
   "registry:block",
   "registry:base",
-  "registry:font",
 ]);
 
 const PUBLIC_INDEX_TYPES = new Set<z.infer<typeof registryItemTypeSchema>>([
   "registry:ui",
   "registry:base",
-  "registry:font",
 ]);
 
 const project = new Project({

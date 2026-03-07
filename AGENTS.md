@@ -21,7 +21,7 @@ npm run dev
 ## Project Structure
 
 - `registry/default/base/` — Design-system payloads emitted as `registry:base` items
-- `registry/default/fonts/` — First-class font payloads emitted as `registry:font` items
+- `registry/default/fonts/` — Font registry (currently empty; Glide uses `next/font/local`)
 - `registry/default/ui/` — Component source files (shadcn-style registry)
 - `registry/default/examples/` — Example/demo components
 - `registry/default/hooks/` — Shared hooks distributed as `registry:lib`
@@ -45,7 +45,7 @@ npm run dev
 
 - IMPORTANT: Do NOT run `tsc --noEmit` directly — it will fail without content-collections build artifacts. Use `npm run typecheck` instead, which builds docs first.
 - New components must be added to the auto-generated `_registry.ts` files and follow the shadcn schema (type, files, dependencies, registryDependencies).
-- The registry build filters items by type whitelist: `registry:ui`, `registry:lib`, `registry:block`, `registry:base`, `registry:font`.
-- `registry:base` and `registry:font` items can ship without source files. Blode publishes Google-backed `@blode/font-*` items through the registry, but the default Glide setup still uses `next/font/local`.
+- The registry build filters items by type whitelist: `registry:ui`, `registry:lib`, `registry:block`, `registry:base`.
+- `registry:base` items can ship without source files.
 - Content-collections must be built before the Next.js build — `npm run build` handles the ordering automatically.
 - Dark mode uses a custom variant: `@custom-variant dark (&:where(.dark, .dark *))` — not Tailwind's built-in dark mode.

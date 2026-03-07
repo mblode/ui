@@ -30,7 +30,6 @@
 
 - Do not run `tsc --noEmit` directly in this repo; use `npm run typecheck`
 - New registry items must fit the shadcn registry schema and auto-generated registry manifests
-- The registry build only emits whitelisted registry types: `registry:ui`, `registry:lib`, `registry:block`, `registry:base`, and `registry:font`
+- The registry build only emits whitelisted registry types: `registry:ui`, `registry:lib`, `registry:block`, and `registry:base`
 - `registry:base` items can carry design-system config, dependencies, CSS vars, and CSS without source files
-- `registry:font` items are first-class registry payloads; Blode publishes Google-backed `@blode/font-*` items, while the default Glide setup still uses `next/font/local`
 - Dark mode uses the custom `@custom-variant dark` pattern already defined in the repo

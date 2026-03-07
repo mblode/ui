@@ -3,33 +3,6 @@ title: Font
 description: Install and use the Glide font system used throughout Blode UI.
 ---
 
-<Callout>
-
-Blode UI currently documents Glide as a local font setup using `next/font/local`.
-Blode also publishes Google-backed `@blode/font-*` registry items for projects
-that want a one-command font install. Glide itself is still a local font setup,
-not a published registry font item.
-
-</Callout>
-
-## Install a registry font
-
-Fonts are now a first-class registry type. Install them with the same `add`
-command you use for components:
-
-```bash
-npx shadcn@latest add @blode/font-inter
-```
-
-Blode currently publishes Google-backed font items across three families:
-
-- Sans: `@blode/font-geist`, `@blode/font-inter`, `@blode/font-dm-sans`, `@blode/font-public-sans`, `@blode/font-outfit`
-- Mono: `@blode/font-geist-mono`, `@blode/font-jetbrains-mono`
-- Serif: `@blode/font-lora`, `@blode/font-merriweather`, `@blode/font-playfair-display`
-
-Use these when you want the registry to install and configure the font variable
-for you. Use Glide when you want the default Blode UI font stack.
-
 ## Font family
 
 The default font family in Blode UI is "Glide", a variable font that supports weights from 400 (regular) to 900 (black). This versatile font is applied using Tailwind's `font-sans` utility class.

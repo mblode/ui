@@ -14,15 +14,12 @@ npx shadcn@latest view @blode/button
 # Add a component.
 npx shadcn@latest add @blode/button
 
-# Add a registry font.
-npx shadcn@latest add @blode/font-inter
-
 # Preview changes before updating an installed component.
 npx shadcn@latest add @blode/button --dry-run
 npx shadcn@latest add @blode/button --diff button.tsx
 ```
 
-The same `add` flow applies to non-component registry payloads such as `registry:base` and `registry:font` items.
+The same `add` flow applies to non-component registry payloads such as `registry:base` items.
 
 ## Default Workflow
 

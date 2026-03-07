@@ -14,7 +14,6 @@ const CHECKED_TYPES = new Set([
   "registry:lib",
   "registry:block",
   "registry:base",
-  "registry:font",
 ]);
 const IGNORED_PACKAGES = new Set(["next", "react", "react-dom"]);
 
