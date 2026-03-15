@@ -22,14 +22,19 @@ const glide = localFont({
 
 import type { Metadata, Viewport } from "next";
 
-export const metadata: Metadata = constructMetadata({
-  title: "Blode UI",
-  description: "Blode UI components.",
-  image: absoluteUrl("/opengraph-image"),
-  appleWebApp: {
+export const metadata: Metadata = {
+  ...constructMetadata({
     title: "Blode UI",
+    description: "Blode UI components.",
+    image: absoluteUrl("/opengraph-image"),
+    appleWebApp: {
+      title: "Blode UI",
+    },
+  }),
+  verification: {
+    google: "mFwyBIbXTaKK4uF_NA0MzVWFyY40hPgBjFObg3rje04",
   },
-});
+};
 
 export const viewport: Viewport = {
   colorScheme: "dark",
