@@ -86,6 +86,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Theming",
+          href: "/docs/theming",
+          items: [],
+        },
+        {
           title: "Icons",
           href: "https://icons.blode.co",
           items: [],
