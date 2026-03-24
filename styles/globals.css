@@ -8,8 +8,11 @@
 @theme inline {
   --breakpoint-3xl: 1600px;
   --breakpoint-4xl: 2000px;
-  --font-sans: var(--font-glide);
-  --font-mono: var(--font-mono);
+  --font-sans: "Glide", sans-serif;
+  --font-display: "Glide", sans-serif;
+  --font-mono:
+    ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -221,14 +224,9 @@
     @apply opacity-60 md:opacity-100;
   }
 
-  button:not(:disabled),
-  [role="button"]:not(:disabled),
-  [type="button"]:not(:disabled),
-  [type="submit"]:not(:disabled),
-  [type="reset"]:not(:disabled),
-  select:not(:disabled),
-  summary,
-  a[href] {
+  button,
+  [role="button"],
+  summary {
     cursor: pointer;
   }
 
