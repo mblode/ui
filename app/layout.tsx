@@ -13,6 +13,11 @@ const glide = localFont({
   src: [
     {
       path: "../public/glide-variable.woff2",
+      style: "normal",
+    },
+    {
+      path: "../public/glide-variable-italic.woff2",
+      style: "italic",
     },
   ],
   variable: "--font-glide",

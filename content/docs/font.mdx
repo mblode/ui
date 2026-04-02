@@ -5,10 +5,11 @@ description: Install and use the Glide font system used throughout Blode UI.
 
 ## Font family
 
-The default font family in Blode UI is "Glide", a variable font that supports weights from 400 (regular) to 900 (black). This versatile font is applied using Tailwind's `font-sans` utility class.
+The default font family in Blode UI is "Glide", a variable font that supports weights from 400 (regular) to 900 (black) in both roman and italic styles. This versatile font is applied using Tailwind's `font-sans` utility class.
 
 ```tsx
 <p className="font-sans">This text uses the Glide font</p>
+<p className="font-sans italic">This text uses Glide italic</p>
 ```
 
 ## Install Glide
@@ -17,7 +18,7 @@ The default font family in Blode UI is "Glide", a variable font that supports we
 
 ### Download the font
 
-Download [glide-variable.woff2](https://ui.blode.co/glide-variable.woff2) and place it in your project's `public/` directory.
+Download [glide-variable.woff2](https://ui.blode.co/glide-variable.woff2) and [glide-variable-italic.woff2](https://ui.blode.co/glide-variable-italic.woff2) and place them in your project's `public/` directory.
 
 ### Configure the font in your root layout
 
@@ -27,7 +28,10 @@ In `app/layout.tsx`, import `localFont` and configure the Glide variable font:
 import localFont from "next/font/local";
 
 const glide = localFont({
-  src: [{ path: "../public/glide-variable.woff2" }],
+  src: [
+    { path: "../public/glide-variable.woff2", style: "normal" },
+    { path: "../public/glide-variable-italic.woff2", style: "italic" },
+  ],
   variable: "--font-glide",
   weight: "400 900",
   display: "swap",
@@ -68,7 +72,7 @@ Glide is now your default sans-serif font. Use `font-sans` with any weight from 
 
 ## Variable font
 
-Glide is a variable font, which means it contains all weights in a single file, allowing for precise typography with minimal file size impact. This technology enables smooth transitions between font weights and provides greater design flexibility.
+Glide is a variable font shipped as two files: regular and italic. Each contains all weights in a single file, allowing for precise typography with minimal file size impact. This technology enables smooth transitions between font weights and provides greater design flexibility.
 
 ## Font weights
 
@@ -163,6 +167,10 @@ Blode UI has configured Tailwind CSS to use Glide as the default sans-serif font
 <p className="font-sans font-bold">Bold text (700)</p>
 <p className="font-sans font-extrabold">Extra Bold text (800)</p>
 <p className="font-sans font-black">Black text (900)</p>
+
+// Italic variants
+<p className="font-sans italic">Regular italic (400)</p>
+<p className="font-sans font-bold italic">Bold italic (700)</p>
 ```
 
 ## Technical details
@@ -171,6 +179,6 @@ Glide is loaded as a variable font using Next.js's `localFont` utility. This ens
 
 - Loading the font locally rather than from an external CDN
 - Utilizing the variable font format to reduce file size
-- Enabling the full range of weights (400-900) in a single file
+- Enabling the full range of weights (400-900) in two files (regular and italic)
 
 The font is applied site-wide via CSS variables, making it consistent across all components and pages.
