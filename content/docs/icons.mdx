@@ -1,0 +1,71 @@
+---
+title: Icons
+description: Install and use blode-icons-react, a drop-in replacement for lucide-react.
+---
+
+[Browse all icons](https://icons.blode.co) | [GitHub](https://github.com/mblode/blode-icons)
+
+## Installation
+
+```bash tab="npm"
+npm install blode-icons-react
+```
+
+```bash tab="pnpm"
+pnpm add blode-icons-react
+```
+
+```bash tab="yarn"
+yarn add blode-icons-react
+```
+
+```bash tab="bun"
+bun add blode-icons-react
+```
+
+## Usage
+
+Import icons by name and use them as React components.
+
+```tsx
+import { SearchIcon, PlusIcon } from "blode-icons-react";
+
+<SearchIcon size={32} />
+<PlusIcon color="red" strokeWidth={1.5} />
+```
+
+## Lucide Compatibility
+
+Drop-in replacement for `lucide-react`. Same names, same props.
+
+```tsx
+// Lucide-compatible names (drop-in replacement)
+import { ChevronDown, Search, Plus } from "blode-icons-react";
+
+// Full library names (with Icon suffix)
+import { ChevronDownIcon, SparkleIcon } from "blode-icons-react";
+```
+
+## Props
+
+All icons accept the same props as `lucide-react`.
+
+| Prop          | Type               | Default        |
+| ------------- | ------------------ | -------------- |
+| `size`        | `string \| number` | `24`           |
+| `color`       | `string`           | `currentColor` |
+| `strokeWidth` | `string \| number` | `2`            |
+
+## Dynamic Imports
+
+Load icons by name at runtime. Useful when the icon comes from a database or API.
+
+```tsx
+import { DynamicIcon } from "blode-icons-react/dynamic";
+
+<DynamicIcon
+  name="SearchIcon"
+  size={24}
+  fallback={<span>Loading...</span>}
+/>
+```
