@@ -1,3 +1,4 @@
+import { ArrowRightIcon } from "blode-icons-react";
 import Link from "next/link";
 
 import { docsConfig } from "@/config/docs";
@@ -24,6 +25,7 @@ export function ComponentsList() {
           key={component.href}
         >
           {component.title}
+          <ArrowRightIcon />
           {component.label && (
             <span
               className="flex size-2 rounded-full bg-blue-500"
