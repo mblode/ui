@@ -27,37 +27,32 @@ export function MobileNav({
   const [open, setOpen] = useState(false);
 
   return (
-    <Popover onOpenChange={setOpen} open={open}>
-      <PopoverTrigger asChild>
-        <Button
-          className={cn(
-            "extend-touch-target !p-0 h-8 touch-manipulation items-center justify-start gap-2.5 hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 active:bg-transparent dark:hover:bg-transparent",
-            className
-          )}
-          variant="ghost"
-        >
-          <div className="relative flex h-8 w-4 items-center justify-center">
-            <div className="relative size-4">
-              <span
-                className={cn(
-                  "absolute left-0 block h-0.5 w-4 bg-foreground transition-all duration-100",
-                  open ? "top-[0.4rem] -rotate-45" : "top-1"
-                )}
-              />
-              <span
-                className={cn(
-                  "absolute left-0 block h-0.5 w-4 bg-foreground transition-all duration-100",
-                  open ? "top-[0.4rem] rotate-45" : "top-2.5"
-                )}
-              />
+    <div className={cn("flex items-center gap-2.5", className)}>
+      <Popover onOpenChange={setOpen} open={open}>
+        <PopoverTrigger asChild>
+          <Button
+            className="extend-touch-target !p-0 h-8 w-4 touch-manipulation items-center justify-start hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 active:bg-transparent dark:hover:bg-transparent"
+            variant="ghost"
+          >
+            <div className="relative flex h-8 w-4 items-center justify-center">
+              <div className="relative size-4">
+                <span
+                  className={cn(
+                    "absolute left-0 block h-0.5 w-4 bg-foreground transition-all duration-100",
+                    open ? "top-[0.4rem] -rotate-45" : "top-1"
+                  )}
+                />
+                <span
+                  className={cn(
+                    "absolute left-0 block h-0.5 w-4 bg-foreground transition-all duration-100",
+                    open ? "top-[0.4rem] rotate-45" : "top-2.5"
+                  )}
+                />
+              </div>
+              <span className="sr-only">Toggle Menu</span>
             </div>
-            <span className="sr-only">Toggle Menu</span>
-          </div>
-          <span className="flex h-8 items-center font-medium text-lg leading-none">
-            Menu
-          </span>
-        </Button>
-      </PopoverTrigger>
+          </Button>
+        </PopoverTrigger>
       <PopoverContent
         align="start"
         alignOffset={-16}
@@ -115,6 +110,13 @@ export function MobileNav({
         </div>
       </PopoverContent>
     </Popover>
+    <Link
+      className="flex h-8 items-center font-medium text-lg leading-none"
+      href="/"
+    >
+      Blode UI
+    </Link>
+    </div>
   );
 }
 
