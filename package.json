@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "portless run next dev --turbopack",
     "build": "npm run build:docs && npm run check:registry-deps && npm run build:registry && node scripts/build-well-known-skills.mjs && next build --turbopack",
     "build:docs": "content-collections build",
     "build:registry": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.mts",
@@ -86,6 +86,7 @@
     "knip": "^5.84.1",
     "lint-staged": "^16.2.7",
     "mdast-util-toc": "^7.1.0",
+    "portless": "^0.9.6",
     "rehype": "^13.0.2",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-pretty-code": "^0.14.1",
