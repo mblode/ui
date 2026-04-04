@@ -17,7 +17,7 @@ export const docsConfig: DocsConfig = {
     },
     {
       title: "Icons",
-      href: "https://icons.blode.co",
+      href: "/docs/icons",
     },
   ],
   sidebarNav: [
@@ -92,7 +92,7 @@ export const docsConfig: DocsConfig = {
         },
         {
           title: "Icons",
-          href: "https://icons.blode.co",
+          href: "/docs/icons",
           items: [],
         },
       ],
