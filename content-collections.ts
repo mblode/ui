@@ -13,7 +13,7 @@ import { rehypeComponent } from "./lib/rehype-component";
 import { rehypeNpmCommand } from "./lib/rehype-npm-command";
 
 const EVENT_META_REGEX = /event="([^"]*)"/;
-const INDEX_PATH_SUFFIX_REGEX = /\/index$/;
+const INDEX_PATH_SUFFIX_REGEX = /(?:^|\/)index$/;
 const WINDOWS_PATH_SEPARATOR_REGEX = /\\/g;
 
 const prettyCodeOptions: Options = {
@@ -215,7 +215,7 @@ const documents = defineCollection({
       image: `${process.env.NEXT_PUBLIC_APP_URL}/og?title=${encodeURI(
         document.title
       )}&description=${encodeURI(document.description)}`,
-      slug: `/docs/${slugAsParams}`,
+      slug: slugAsParams ? `/docs/${slugAsParams}` : "/docs",
       slugAsParams,
       body: {
         raw: document.content,
