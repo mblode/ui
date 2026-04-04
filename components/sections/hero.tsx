@@ -54,7 +54,7 @@ export default function Hero() {
                       }),
                       "w-full gap-2"
                     )}
-                    href="/docs/installation"
+                    href="/docs"
                   >
                     Get started
                   </Link>
