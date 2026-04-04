@@ -24,7 +24,7 @@ interface DocPageProps {
 
 async function getDocFromParams({ params }: DocPageProps) {
   const { slug } = await params;
-  const slugStr = slug?.join("/") || "index";
+  const slugStr = slug?.join("/") ?? "";
   const doc = allDocs.find((doc) => doc.slugAsParams === slugStr);
 
   if (!doc) {
@@ -73,7 +73,7 @@ export async function generateStaticParams(): Promise<
   Awaited<DocPageProps["params"]>[]
 > {
   return allDocs.map((doc) => ({
-    slug: doc.slugAsParams.split("/"),
+    slug: doc.slugAsParams ? doc.slugAsParams.split("/") : [],
   }));
 }
 
