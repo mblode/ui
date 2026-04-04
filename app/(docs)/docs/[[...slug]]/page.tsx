@@ -97,7 +97,7 @@ export default async function DocPage({ params }: DocPageProps) {
                   {doc.title}
                 </h1>
                 <div className="docs-nav flex items-center gap-2">
-                  <div className="hidden sm:block">
+                  <div>
                     <DocsCopyPage
                       page={doc.body.raw}
                       url={absoluteUrl(doc.slug)}
