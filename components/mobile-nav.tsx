@@ -54,7 +54,7 @@ export function MobileNav({
             <span className="sr-only">Toggle Menu</span>
           </div>
           <span className="flex h-8 items-center font-medium text-lg leading-none">
-            Menu
+            Blode UI
           </span>
         </Button>
       </PopoverTrigger>
