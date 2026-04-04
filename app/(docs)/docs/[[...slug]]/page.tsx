@@ -1,4 +1,9 @@
-import { ArrowLeftIcon, ArrowRightIcon } from "blode-icons-react";
+import {
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+} from "blode-icons-react";
 import { allDocs } from "content-collections";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -143,32 +148,51 @@ export default async function DocPage({ params }: DocPageProps) {
           <div className="w-full flex-1 pb-16 *:data-[slot=alert]:first:mt-0 sm:pb-0">
             <Mdx code={doc.body.code} />
           </div>
-          <div className="hidden h-16 w-full items-center gap-2 px-4 sm:flex sm:px-0">
-            {pager?.prev?.href && (
-              <Button
-                asChild
-                className="shadow-none"
-                size="sm"
-                variant="secondary"
-              >
-                <Link href={pager.prev.href}>
-                  <ArrowLeftIcon /> {pager.prev.title}
+          {pager?.prev?.href || pager?.next?.href ? (
+            <nav
+              className="flex w-full rounded-2xl bg-muted/50 p-1 text-sm"
+              id="pagination"
+            >
+              {pager?.prev?.href ? (
+                <Link
+                  className="group flex items-center justify-between gap-1.5 pl-3 pr-6"
+                  href={pager.prev.href}
+                >
+                  <ChevronLeftIcon
+                    aria-hidden="true"
+                    className="size-3 text-muted-foreground/50 group-hover:text-muted-foreground"
+                  />
+                  <span className="font-medium tracking-tight text-muted-foreground group-hover:text-foreground">
+                    Previous
+                  </span>
                 </Link>
-              </Button>
-            )}
-            {pager?.next?.href && (
-              <Button
-                asChild
-                className="ml-auto shadow-none"
-                size="sm"
-                variant="secondary"
-              >
-                <Link href={pager.next.href}>
-                  {pager.next.title} <ArrowRightIcon />
+              ) : null}
+              {pager?.next?.href ? (
+                <Link
+                  className="group ml-auto flex w-full min-w-0 flex-1"
+                  href={pager.next.href}
+                >
+                  <div className="flex flex-1 items-center justify-end rounded-xl bg-background hover:ring-1 hover:ring-border sm:h-16">
+                    <div className="flex min-w-0 flex-col items-end justify-center px-5">
+                      <span className="text-right font-semibold text-foreground/80">
+                        {pager.next.title}
+                      </span>
+                    </div>
+                    <div className="h-8 w-px bg-border/50" />
+                    <div className="flex items-center gap-1.5 pl-5 pr-3">
+                      <span className="font-medium tracking-tight text-muted-foreground group-hover:text-foreground">
+                        Next
+                      </span>
+                      <ChevronRightIcon
+                        aria-hidden="true"
+                        className="size-3 text-muted-foreground/50 group-hover:text-muted-foreground"
+                      />
+                    </div>
+                  </div>
                 </Link>
-              </Button>
-            )}
-          </div>
+              ) : null}
+            </nav>
+          ) : null}
         </div>
       </div>
       <div className="sticky top-[calc(var(--header-height)+1px)] z-30 ml-auto hidden h-[90svh] w-(--sidebar-width) flex-col gap-4 overflow-hidden overscroll-none pb-8 xl:flex">
