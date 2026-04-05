@@ -31,7 +31,7 @@ export function MobileNav({
       <Popover onOpenChange={setOpen} open={open}>
         <PopoverTrigger asChild>
           <Button
-            className="!p-0 size-10 touch-manipulation items-center justify-center hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 active:bg-transparent dark:hover:bg-transparent"
+            className="!p-0 -ml-3 size-10 touch-manipulation items-center justify-center hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 active:bg-transparent dark:hover:bg-transparent"
             variant="ghost"
           >
             <div className="relative flex size-4 items-center justify-center">
