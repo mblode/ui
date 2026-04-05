@@ -75,7 +75,9 @@ export function flatten(links: NavItemWithChildren[]): NavItem[] {
   return links
     .reduce<NavItem[]>((flat, link) => {
       if (link.items?.length) {
-        return flat.concat(link.href ? [link, ...flatten(link.items)] : flatten(link.items));
+        return flat.concat(
+          link.href ? [link, ...flatten(link.items)] : flatten(link.items)
+        );
       }
       return flat.concat(link);
     }, [])

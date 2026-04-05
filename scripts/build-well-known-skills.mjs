@@ -4,9 +4,16 @@
 // Zero dependencies — uses only Node.js built-ins.
 // Parses SKILL.md frontmatter to auto-extract name and description.
 
-import { createHash } from "node:crypto";
 import { execSync } from "node:child_process";
-import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync, copyFileSync } from "node:fs";
+import { createHash } from "node:crypto";
+import {
+  copyFileSync,
+  existsSync,
+  mkdirSync,
+  readFileSync,
+  rmSync,
+  writeFileSync,
+} from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -27,20 +34,28 @@ const CONFIG = {
 // --- Frontmatter parser ---
 function parseFrontmatter(content) {
   const match = content.match(/^---\n([\s\S]*?)\n---/);
-  if (!match) throw new Error("No YAML frontmatter found in SKILL.md");
+  if (!match) {
+    throw new Error("No YAML frontmatter found in SKILL.md");
+  }
 
   const yaml = match[1];
   const fields = {};
   for (const line of yaml.split("\n")) {
     const colonIdx = line.indexOf(":");
-    if (colonIdx === -1) continue;
+    if (colonIdx === -1) {
+      continue;
+    }
     const key = line.slice(0, colonIdx).trim();
     const value = line.slice(colonIdx + 1).trim();
     fields[key] = value;
   }
 
-  if (!fields.name) throw new Error("SKILL.md frontmatter missing 'name' field");
-  if (!fields.description) throw new Error("SKILL.md frontmatter missing 'description' field");
+  if (!fields.name) {
+    throw new Error("SKILL.md frontmatter missing 'name' field");
+  }
+  if (!fields.description) {
+    throw new Error("SKILL.md frontmatter missing 'description' field");
+  }
 
   return { name: fields.name, description: fields.description };
 }
@@ -89,14 +104,19 @@ function main() {
         digest,
       });
 
-      console.log(`  ${name} (skill-md) -> ${name}/SKILL.md [${digest.slice(0, 20)}...]`);
+      console.log(
+        `  ${name} (skill-md) -> ${name}/SKILL.md [${digest.slice(0, 20)}...]`
+      );
     } else if (skill.type === "archive") {
       const archiveName = `${name}.tar.gz`;
       const archivePath = join(OUTPUT_DIR, archiveName);
 
-      execSync(`tar czf "${archivePath}" -C "${dirname(sourceDir)}" "${name}"`, {
-        stdio: "pipe",
-      });
+      execSync(
+        `tar czf "${archivePath}" -C "${dirname(sourceDir)}" "${name}"`,
+        {
+          stdio: "pipe",
+        }
+      );
 
       const digest = sha256(archivePath);
       skills.push({
@@ -107,7 +127,9 @@ function main() {
         digest,
       });
 
-      console.log(`  ${name} (archive) -> ${archiveName} [${digest.slice(0, 20)}...]`);
+      console.log(
+        `  ${name} (archive) -> ${archiveName} [${digest.slice(0, 20)}...]`
+      );
     } else {
       console.error(`ERROR: Unknown skill type "${skill.type}" for ${name}`);
       process.exit(1);
@@ -119,10 +141,15 @@ function main() {
     skills,
   };
 
-  writeFileSync(join(OUTPUT_DIR, "index.json"), JSON.stringify(index, null, 2) + "\n");
+  writeFileSync(
+    join(OUTPUT_DIR, "index.json"),
+    JSON.stringify(index, null, 2) + "\n"
+  );
 
   const elapsed = ((performance.now() - t0) / 1000).toFixed(1);
-  console.log(`\n.well-known/agent-skills built (${skills.length} skill${skills.length === 1 ? "" : "s"}) in ${elapsed}s`);
+  console.log(
+    `\n.well-known/agent-skills built (${skills.length} skill${skills.length === 1 ? "" : "s"}) in ${elapsed}s`
+  );
 }
 
 main();

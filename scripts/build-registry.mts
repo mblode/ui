@@ -30,12 +30,7 @@ const REGISTRY_PATH = path.join(process.cwd(), "public/r");
 
 const REGISTRY_INDEX_WHITELIST = new Set<
   z.infer<typeof registryItemTypeSchema>
->([
-  "registry:ui",
-  "registry:lib",
-  "registry:block",
-  "registry:base",
-]);
+>(["registry:ui", "registry:lib", "registry:block", "registry:base"]);
 
 const PUBLIC_INDEX_TYPES = new Set<z.infer<typeof registryItemTypeSchema>>([
   "registry:ui",
@@ -213,9 +208,7 @@ export const Index: Record<string, unknown> = {
       type: "${item.type}",
       registryDependencies: ${JSON.stringify(item.registryDependencies)},
       files: [${files.map((file) => {
-        const filePath = `registry/${style.name}/${
-          file.path
-        }`;
+        const filePath = `registry/${style.name}/${file.path}`;
         const resolvedFilePath = path.resolve(filePath);
         return usesStringFiles
           ? `"${resolvedFilePath}"`
@@ -302,7 +295,9 @@ async function buildStyles(registry: Registry): Promise<void> {
                 });
 
                 sourceFile.getVariableDeclaration("iframeHeight")?.remove();
-                sourceFile.getVariableDeclaration("containerClassName")?.remove();
+                sourceFile
+                  .getVariableDeclaration("containerClassName")
+                  ?.remove();
                 sourceFile.getVariableDeclaration("description")?.remove();
 
                 let target = file.target;

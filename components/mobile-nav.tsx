@@ -53,69 +53,70 @@ export function MobileNav({
             </div>
           </Button>
         </PopoverTrigger>
-      <PopoverContent
-        align="start"
-        alignOffset={-16}
-        className="no-scrollbar h-(--available-height) w-(--available-width) overflow-y-auto rounded-none border-none bg-background/90 p-0 shadow-none backdrop-blur duration-100 data-open:animate-none!"
-        side="bottom"
-        sideOffset={14}
-      >
-        <div className="flex flex-col gap-12 overflow-auto px-6 py-6">
-          <div className="flex flex-col gap-4">
-            <div className="font-medium text-muted-foreground text-sm">
-              Menu
-            </div>
-            <div className="flex flex-col gap-3">
-              <MobileLink href="/" onOpenChange={setOpen}>
-                Home
-              </MobileLink>
-              {items.map((item) => (
-                <MobileLink
-                  href={item.href}
-                  key={item.href}
-                  onOpenChange={setOpen}
-                >
-                  {item.label}
-                </MobileLink>
-              ))}
-            </div>
-          </div>
-          {docsConfig.sidebarNav.map((group) => (
-            <div className="flex flex-col gap-4" key={group.title}>
+        <PopoverContent
+          align="start"
+          alignOffset={-16}
+          className="no-scrollbar h-(--available-height) w-(--available-width) overflow-y-auto rounded-none border-none bg-background/90 p-0 shadow-none backdrop-blur duration-100 data-open:animate-none!"
+          side="bottom"
+          sideOffset={14}
+        >
+          <div className="flex flex-col gap-12 overflow-auto px-6 py-6">
+            <div className="flex flex-col gap-4">
               <div className="font-medium text-muted-foreground text-sm">
-                {group.title}
+                Menu
               </div>
               <div className="flex flex-col gap-3">
-                {group.items?.map((item) => {
-                  if (!item.href) {
-                    return null;
-                  }
-                  const isExternal = item.external || isExternalHref(item.href);
-                  return (
-                    <MobileLink
-                      className="flex items-center gap-2"
-                      href={item.href}
-                      key={item.href}
-                      onOpenChange={setOpen}
-                      rel={isExternal ? "noreferrer" : undefined}
-                      target={isExternal ? "_blank" : undefined}
-                    >
-                      {item.title}
-                    </MobileLink>
-                  );
-                })}
+                <MobileLink href="/" onOpenChange={setOpen}>
+                  Home
+                </MobileLink>
+                {items.map((item) => (
+                  <MobileLink
+                    href={item.href}
+                    key={item.href}
+                    onOpenChange={setOpen}
+                  >
+                    {item.label}
+                  </MobileLink>
+                ))}
               </div>
             </div>
-          ))}
-        </div>
-      </PopoverContent>
-    </Popover>
-    <Link
-      className="flex h-8 items-center font-medium text-lg leading-none"
-      href="/"
-    >
-      Blode UI
-    </Link>
+            {docsConfig.sidebarNav.map((group) => (
+              <div className="flex flex-col gap-4" key={group.title}>
+                <div className="font-medium text-muted-foreground text-sm">
+                  {group.title}
+                </div>
+                <div className="flex flex-col gap-3">
+                  {group.items?.map((item) => {
+                    if (!item.href) {
+                      return null;
+                    }
+                    const isExternal =
+                      item.external || isExternalHref(item.href);
+                    return (
+                      <MobileLink
+                        className="flex items-center gap-2"
+                        href={item.href}
+                        key={item.href}
+                        onOpenChange={setOpen}
+                        rel={isExternal ? "noreferrer" : undefined}
+                        target={isExternal ? "_blank" : undefined}
+                      >
+                        {item.title}
+                      </MobileLink>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+          </div>
+        </PopoverContent>
+      </Popover>
+      <Link
+        className="flex h-8 items-center font-medium text-lg leading-none"
+        href="/"
+      >
+        Blode UI
+      </Link>
     </div>
   );
 }

@@ -155,14 +155,14 @@ export default async function DocPage({ params }: DocPageProps) {
             >
               {pager?.prev?.href ? (
                 <Link
-                  className="group flex items-center justify-between gap-1.5 pl-3 pr-6"
+                  className="group flex items-center justify-between gap-1.5 pr-6 pl-3"
                   href={pager.prev.href}
                 >
                   <ChevronLeftIcon
                     aria-hidden="true"
                     className="size-3 text-muted-foreground/50 group-hover:text-muted-foreground"
                   />
-                  <span className="font-medium tracking-tight text-muted-foreground group-hover:text-foreground">
+                  <span className="font-medium text-muted-foreground tracking-tight group-hover:text-foreground">
                     Previous
                   </span>
                 </Link>
@@ -179,8 +179,8 @@ export default async function DocPage({ params }: DocPageProps) {
                       </span>
                     </div>
                     <div className="h-8 w-px bg-border/50" />
-                    <div className="flex items-center gap-1.5 pl-5 pr-3">
-                      <span className="font-medium tracking-tight text-muted-foreground group-hover:text-foreground">
+                    <div className="flex items-center gap-1.5 pr-3 pl-5">
+                      <span className="font-medium text-muted-foreground tracking-tight group-hover:text-foreground">
                         Next
                       </span>
                       <ChevronRightIcon
