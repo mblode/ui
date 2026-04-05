@@ -50,7 +50,7 @@ function MenubarTrigger({
     return (
       <MenuPrimitive.Trigger
         className={cn(
-          "flex min-w-9 select-none items-center justify-center rounded-sm px-1.5 py-[2px] font-medium text-sm outline-hidden hover:bg-muted aria-expanded:bg-muted data-popup-open:bg-muted",
+          "flex select-none items-center rounded-sm px-1.5 py-[2px] font-medium text-sm outline-hidden hover:bg-muted aria-expanded:bg-muted data-popup-open:bg-muted",
           className
         )}
         data-slot="menubar-trigger"
@@ -63,7 +63,7 @@ function MenubarTrigger({
   return (
     <MenuPrimitive.Trigger
       className={cn(
-        "flex min-w-9 select-none items-center justify-center rounded-sm px-1.5 py-[2px] font-medium text-sm outline-hidden hover:bg-muted aria-expanded:bg-muted data-popup-open:bg-muted",
+        "flex select-none items-center rounded-sm px-1.5 py-[2px] font-medium text-sm outline-hidden hover:bg-muted aria-expanded:bg-muted data-popup-open:bg-muted",
         className
       )}
       data-slot="menubar-trigger"
