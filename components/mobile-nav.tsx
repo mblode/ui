@@ -27,7 +27,7 @@ export function MobileNav({
   const [open, setOpen] = useState(false);
 
   return (
-    <div className={cn("flex items-center gap-2.5", className)}>
+    <div className={cn("flex items-center gap-1.5", className)}>
       <Popover onOpenChange={setOpen} open={open}>
         <PopoverTrigger asChild>
           <Button
