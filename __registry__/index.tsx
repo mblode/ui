@@ -912,6 +912,28 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
+    "password-input": {
+      name: "password-input",
+      description:
+        "A password input with a toggle button to show or hide the password.",
+      type: "registry:ui",
+      registryDependencies: ["input"],
+      files: [
+        {
+          path: "registry/default/ui/password-input.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/ui/password-input.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
+      ),
+      source: "",
+      meta: undefined,
+    },
     "phone-input": {
       name: "phone-input",
       description:
@@ -5155,6 +5177,29 @@ export const Index: Record<string, unknown> = {
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/native-select-invalid.tsx").then(
+          (mod) => ({
+            default: resolveRegistryComponent(mod as Record<string, unknown>),
+          })
+        )
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "password-input-demo": {
+      name: "password-input-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["password-input", "field"],
+      files: [
+        {
+          path: "registry/default/examples/password-input-demo.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/password-input-demo.tsx").then(
           (mod) => ({
             default: resolveRegistryComponent(mod as Record<string, unknown>),
           })

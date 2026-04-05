@@ -1807,6 +1807,17 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "password-input-demo",
+    type: "registry:example",
+    registryDependencies: ["password-input", "field"],
+    files: [
+      {
+        path: "examples/password-input-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "pagination-demo",
     type: "registry:example",
     registryDependencies: ["pagination"],

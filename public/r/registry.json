@@ -543,6 +543,20 @@
       ]
     },
     {
+      "name": "password-input",
+      "type": "registry:ui",
+      "title": "Password Input",
+      "description": "A password input with a toggle button to show or hide the password.",
+      "dependencies": ["blode-icons-react"],
+      "registryDependencies": ["input"],
+      "files": [
+        {
+          "path": "registry/default/ui/password-input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "phone-input",
       "type": "registry:ui",
       "title": "Phone Input",
