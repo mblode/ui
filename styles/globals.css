@@ -191,6 +191,12 @@
   --overlay: rgba(43, 53, 68, 0.7);
 }
 
+.no-transition *,
+.no-transition *::before,
+.no-transition *::after {
+  transition-duration: 0s !important;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
