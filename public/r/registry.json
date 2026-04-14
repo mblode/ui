@@ -315,6 +315,20 @@
       ]
     },
     {
+      "name": "copy-button",
+      "type": "registry:ui",
+      "title": "Copy Button",
+      "description": "A button that copies text to the clipboard with animated feedback.",
+      "dependencies": ["blode-icons-react", "motion"],
+      "registryDependencies": ["button", "@blode/use-copy-to-clipboard"],
+      "files": [
+        {
+          "path": "registry/default/ui/copy-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "dialog",
       "type": "registry:ui",
       "title": "Dialog",
@@ -959,6 +973,18 @@
       "files": [
         {
           "path": "registry/default/lib/utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "use-copy-to-clipboard",
+      "type": "registry:lib",
+      "title": "Use Copy To Clipboard",
+      "description": "A hook that copies text to the clipboard and resets after a timeout.",
+      "files": [
+        {
+          "path": "registry/default/hooks/use-copy-to-clipboard.ts",
           "type": "registry:lib"
         }
       ]

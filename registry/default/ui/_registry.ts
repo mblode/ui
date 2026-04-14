@@ -328,6 +328,21 @@ export const ui: Registry["items"] = [
     ],
   },
   {
+    name: "copy-button",
+    type: "registry:ui",
+    title: "Copy Button",
+    description:
+      "A button that copies text to the clipboard with animated feedback.",
+    dependencies: ["blode-icons-react", "motion"],
+    registryDependencies: ["button", "@blode/use-copy-to-clipboard"],
+    files: [
+      {
+        path: "ui/copy-button.tsx",
+        type: "registry:ui",
+      },
+    ],
+  },
+  {
     name: "dialog",
     type: "registry:ui",
     title: "Dialog",

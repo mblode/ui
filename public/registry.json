@@ -1,4 +1,5 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "blode/ui",
   "homepage": "https://ui.blode.co",
   "items": [

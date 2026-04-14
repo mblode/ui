@@ -541,6 +541,28 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
+    "copy-button": {
+      name: "copy-button",
+      description:
+        "A button that copies text to the clipboard with animated feedback.",
+      type: "registry:ui",
+      registryDependencies: ["button", "@blode/use-copy-to-clipboard"],
+      files: [
+        {
+          path: "registry/default/ui/copy-button.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/ui/copy-button.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        }))
+      ),
+      source: "",
+      meta: undefined,
+    },
     dialog: {
       name: "dialog",
       description:
@@ -1550,6 +1572,30 @@ export const Index: Record<string, unknown> = {
         import("@/registry/default/lib/utils.ts").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
         }))
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "use-copy-to-clipboard": {
+      name: "use-copy-to-clipboard",
+      description:
+        "A hook that copies text to the clipboard and resets after a timeout.",
+      type: "registry:lib",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/default/hooks/use-copy-to-clipboard.ts",
+          type: "registry:lib",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/hooks/use-copy-to-clipboard.ts").then(
+          (mod) => ({
+            default: resolveRegistryComponent(mod as Record<string, unknown>),
+          })
+        )
       ),
       source: "",
       meta: undefined,
@@ -3003,6 +3049,29 @@ export const Index: Record<string, unknown> = {
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/context-menu-demo.tsx").then(
+          (mod) => ({
+            default: resolveRegistryComponent(mod as Record<string, unknown>),
+          })
+        )
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "copy-button-demo": {
+      name: "copy-button-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["copy-button"],
+      files: [
+        {
+          path: "registry/default/examples/copy-button-demo.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/copy-button-demo.tsx").then(
           (mod) => ({
             default: resolveRegistryComponent(mod as Record<string, unknown>),
           })

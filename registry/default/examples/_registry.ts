@@ -695,6 +695,17 @@ export const examples: Registry["items"] = [
     ],
   },
   {
+    name: "copy-button-demo",
+    type: "registry:example",
+    registryDependencies: ["copy-button"],
+    files: [
+      {
+        path: "examples/copy-button-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+  },
+  {
     name: "data-table-demo",
     type: "registry:example",
     registryDependencies: ["data-table"],
