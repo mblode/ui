@@ -211,6 +211,11 @@ export const docsConfig: DocsConfig = {
           items: [],
         },
         {
+          title: "Copy Button",
+          href: "/docs/components/copy-button",
+          items: [],
+        },
+        {
           title: "Currency Input",
           href: "/docs/components/currency-input",
           items: [],
