@@ -14,9 +14,7 @@ export function ItemLink() {
         <a href="#">
           <ItemContent>
             <ItemTitle>Visit our documentation</ItemTitle>
-            <ItemDescription>
-              Learn how to get started with our components.
-            </ItemDescription>
+            <ItemDescription>Learn how to get started with our components.</ItemDescription>
           </ItemContent>
           <ItemActions>
             <ChevronRightIcon className="size-4" />
@@ -27,9 +25,7 @@ export function ItemLink() {
         <a href="#" rel="noopener noreferrer" target="_blank">
           <ItemContent>
             <ItemTitle>External resource</ItemTitle>
-            <ItemDescription>
-              Opens in a new tab with security attributes.
-            </ItemDescription>
+            <ItemDescription>Opens in a new tab with security attributes.</ItemDescription>
           </ItemContent>
           <ItemActions>
             <ExternalLinkIcon className="size-4" />

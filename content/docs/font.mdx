@@ -37,11 +37,7 @@ const glide = localFont({
   display: "swap",
 });
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className={glide.variable}>{children}</body>
@@ -85,39 +81,23 @@ Explore how Glide looks at different font weights:
   </div>
 
 <div>
-  <div className="text-sm text-muted-foreground mb-2">
-    Font weight: 500 (Medium)
-  </div>
-  <p className="font-sans font-medium text-xl">
-    The quick brown fox jumps over the lazy dog.
-  </p>
+  <div className="text-sm text-muted-foreground mb-2">Font weight: 500 (Medium)</div>
+  <p className="font-sans font-medium text-xl">The quick brown fox jumps over the lazy dog.</p>
 </div>
 
 <div>
-  <div className="text-sm text-muted-foreground mb-2">
-    Font weight: 600 (Semibold)
-  </div>
-  <p className="font-sans font-semibold text-xl">
-    The quick brown fox jumps over the lazy dog.
-  </p>
+  <div className="text-sm text-muted-foreground mb-2">Font weight: 600 (Semibold)</div>
+  <p className="font-sans font-semibold text-xl">The quick brown fox jumps over the lazy dog.</p>
 </div>
 
 <div>
-  <div className="text-sm text-muted-foreground mb-2">
-    Font weight: 700 (Bold)
-  </div>
-  <p className="font-sans font-bold text-xl">
-    The quick brown fox jumps over the lazy dog.
-  </p>
+  <div className="text-sm text-muted-foreground mb-2">Font weight: 700 (Bold)</div>
+  <p className="font-sans font-bold text-xl">The quick brown fox jumps over the lazy dog.</p>
 </div>
 
 <div>
-  <div className="text-sm text-muted-foreground mb-2">
-    Font weight: 800 (Extrabold)
-  </div>
-  <p className="font-sans font-extrabold text-xl">
-    The quick brown fox jumps over the lazy dog.
-  </p>
+  <div className="text-sm text-muted-foreground mb-2">Font weight: 800 (Extrabold)</div>
+  <p className="font-sans font-extrabold text-xl">The quick brown fox jumps over the lazy dog.</p>
 </div>
 
   <div>
@@ -144,15 +124,14 @@ Blode UI provides consistent styling for all heading levels:
 The default paragraph text uses the Glide font at weight 400 (regular):
 
 <p>
-  This is a standard paragraph with the Glide font. The font provides excellent
-  readability at various sizes while maintaining a modern, clean aesthetic. The
-  variable font technology ensures that characters remain crisp and balanced
-  across different weights and sizes.
+  This is a standard paragraph with the Glide font. The font provides excellent readability at
+  various sizes while maintaining a modern, clean aesthetic. The variable font technology ensures
+  that characters remain crisp and balanced across different weights and sizes.
 </p>
 
 <p className="text-sm">
-  This is a smaller paragraph showing how Glide performs at reduced sizes. Even
-  at smaller sizes, the font maintains its legibility and character.
+  This is a smaller paragraph showing how Glide performs at reduced sizes. Even at smaller sizes,
+  the font maintains its legibility and character.
 </p>
 
 ## Usage in Tailwind

@@ -6,11 +6,7 @@ import {
   EmptyHeader,
   EmptyTitle,
 } from "@/registry/default/ui/empty";
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupInput,
-} from "@/registry/default/ui/input-group";
+import { InputGroup, InputGroupAddon, InputGroupInput } from "@/registry/default/ui/input-group";
 import { Kbd } from "@/registry/default/ui/kbd";
 
 export default function EmptyInputGroup() {
@@ -19,8 +15,8 @@ export default function EmptyInputGroup() {
       <EmptyHeader>
         <EmptyTitle>404 - Not Found</EmptyTitle>
         <EmptyDescription>
-          The page you&apos;re looking for doesn&apos;t exist. Try searching for
-          what you need below.
+          The page you&apos;re looking for doesn&apos;t exist. Try searching for what you need
+          below.
         </EmptyDescription>
       </EmptyHeader>
       <EmptyContent>

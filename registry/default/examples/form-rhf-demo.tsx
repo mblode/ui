@@ -31,36 +31,36 @@ import {
 } from "@/registry/default/ui/input-group";
 
 const formSchema = z.object({
-  title: z
-    .string()
-    .min(5, "Bug title must be at least 5 characters.")
-    .max(32, "Bug title must be at most 32 characters."),
   description: z
     .string()
     .min(20, "Description must be at least 20 characters.")
     .max(100, "Description must be at most 100 characters."),
+  title: z
+    .string()
+    .min(5, "Bug title must be at least 5 characters.")
+    .max(32, "Bug title must be at most 32 characters."),
 });
 
 export default function BugReportForm() {
   const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
     defaultValues: {
-      title: "",
       description: "",
+      title: "",
     },
+    resolver: zodResolver(formSchema),
   });
 
   function onSubmit(data: z.infer<typeof formSchema>) {
     toast("You submitted the following values:", {
+      classNames: {
+        content: "flex flex-col gap-2",
+      },
       description: (
         <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
           <code>{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
       position: "bottom-right",
-      classNames: {
-        content: "flex flex-col gap-2",
-      },
       style: {
         "--border-radius": "calc(var(--radius)  + 4px)",
       } as React.CSSProperties,
@@ -71,9 +71,7 @@ export default function BugReportForm() {
     <Card className="w-full sm:max-w-md">
       <CardHeader>
         <CardTitle>Bug Report</CardTitle>
-        <CardDescription>
-          Help us improve by reporting bugs you encounter.
-        </CardDescription>
+        <CardDescription>Help us improve by reporting bugs you encounter.</CardDescription>
       </CardHeader>
       <CardContent>
         <form id="form-rhf-demo" onSubmit={form.handleSubmit(onSubmit)}>
@@ -83,9 +81,7 @@ export default function BugReportForm() {
               name="title"
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel htmlFor="form-rhf-demo-title">
-                    Bug Title
-                  </FieldLabel>
+                  <FieldLabel htmlFor="form-rhf-demo-title">Bug Title</FieldLabel>
                   <Input
                     {...field}
                     aria-invalid={fieldState.invalid}
@@ -93,9 +89,7 @@ export default function BugReportForm() {
                     id="form-rhf-demo-title"
                     placeholder="Login button not working on mobile"
                   />
-                  {fieldState.invalid && (
-                    <FieldError errors={[fieldState.error]} />
-                  )}
+                  {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
                 </Field>
               )}
             />
@@ -104,9 +98,7 @@ export default function BugReportForm() {
               name="description"
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel htmlFor="form-rhf-demo-description">
-                    Description
-                  </FieldLabel>
+                  <FieldLabel htmlFor="form-rhf-demo-description">Description</FieldLabel>
                   <InputGroup>
                     <InputGroupTextarea
                       {...field}
@@ -123,12 +115,9 @@ export default function BugReportForm() {
                     </InputGroupAddon>
                   </InputGroup>
                   <FieldDescription>
-                    Include steps to reproduce, expected behavior, and what
-                    actually happened.
+                    Include steps to reproduce, expected behavior, and what actually happened.
                   </FieldDescription>
-                  {fieldState.invalid && (
-                    <FieldError errors={[fieldState.error]} />
-                  )}
+                  {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
                 </Field>
               )}
             />

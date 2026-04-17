@@ -18,10 +18,7 @@ function CheckboxGroup({
   );
 }
 
-function CheckboxGroupLabel({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
+function CheckboxGroupLabel({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       className={cn("font-medium text-sm leading-none", className)}

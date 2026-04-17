@@ -89,12 +89,8 @@ export function DrawerDemo() {
                 <span className="sr-only">Decrease</span>
               </Button>
               <div className="flex-1 text-center">
-                <div className="font-bold text-7xl tracking-tighter">
-                  {goal}
-                </div>
-                <div className="text-[0.70rem] text-muted-foreground uppercase">
-                  Calories/day
-                </div>
+                <div className="font-bold text-7xl tracking-tighter">{goal}</div>
+                <div className="text-[0.70rem] text-muted-foreground uppercase">Calories/day</div>
               </div>
               <Button
                 className="h-8 w-8 shrink-0 rounded-full"

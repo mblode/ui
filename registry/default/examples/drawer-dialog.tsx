@@ -33,15 +33,12 @@ export function DrawerDialogDemo() {
   if (isDesktop) {
     return (
       <Dialog onOpenChange={setOpen} open={open}>
-        <DialogTrigger render={<Button variant="outline" />}>
-          Edit Profile
-        </DialogTrigger>
+        <DialogTrigger render={<Button variant="outline" />}>Edit Profile</DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
             <DialogTitle>Edit profile</DialogTitle>
             <DialogDescription>
-              Make changes to your profile here. Click save when you&apos;re
-              done.
+              Make changes to your profile here. Click save when you&apos;re done.
             </DialogDescription>
           </DialogHeader>
           <ProfileForm />

@@ -1,11 +1,7 @@
 "use client";
 
 import { ChevronDownIcon } from "blode-icons-react";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/registry/default/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/registry/default/ui/avatar";
 import { Button } from "@/registry/default/ui/button";
 import {
   DropdownMenu,
@@ -24,19 +20,19 @@ import {
 
 const people = [
   {
-    username: "shadcn",
     avatar: "https://github.com/shadcn.png",
     email: "shadcn@vercel.com",
+    username: "shadcn",
   },
   {
-    username: "maxleiter",
     avatar: "https://github.com/maxleiter.png",
     email: "maxleiter@vercel.com",
+    username: "maxleiter",
   },
   {
-    username: "evilrabbit",
     avatar: "https://github.com/evilrabbit.png",
     email: "evilrabbit@vercel.com",
+    username: "evilrabbit",
   },
 ];
 
@@ -61,9 +57,7 @@ export function ItemDropdown() {
                 </ItemMedia>
                 <ItemContent className="gap-0">
                   <ItemTitle>{person.username}</ItemTitle>
-                  <ItemDescription className="leading-none">
-                    {person.email}
-                  </ItemDescription>
+                  <ItemDescription className="leading-none">{person.email}</ItemDescription>
                 </ItemContent>
               </Item>
             </DropdownMenuItem>

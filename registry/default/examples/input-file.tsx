@@ -1,8 +1,4 @@
-import {
-  Field,
-  FieldDescription,
-  FieldLabel,
-} from "@/registry/default/ui/field";
+import { Field, FieldDescription, FieldLabel } from "@/registry/default/ui/field";
 import { Input } from "@/registry/default/ui/input";
 
 export function InputFile() {

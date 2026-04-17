@@ -1,9 +1,5 @@
 import { CheckCircle2Icon, CircleInfoIcon } from "blode-icons-react";
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from "@/registry/default/ui/alert";
+import { Alert, AlertDescription, AlertTitle } from "@/registry/default/ui/alert";
 
 export default function AlertDemo() {
   return (
@@ -12,16 +8,14 @@ export default function AlertDemo() {
         <CheckCircle2Icon />
         <AlertTitle>Payment successful</AlertTitle>
         <AlertDescription>
-          Your payment of $29.99 has been processed. A receipt has been sent to
-          your email address.
+          Your payment of $29.99 has been processed. A receipt has been sent to your email address.
         </AlertDescription>
       </Alert>
       <Alert>
         <CircleInfoIcon />
         <AlertTitle>New feature available</AlertTitle>
         <AlertDescription>
-          We&apos;ve added dark mode support. You can enable it in your account
-          settings.
+          We&apos;ve added dark mode support. You can enable it in your account settings.
         </AlertDescription>
       </Alert>
     </div>

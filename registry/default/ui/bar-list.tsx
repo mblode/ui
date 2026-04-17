@@ -12,10 +12,11 @@ interface BarListItemBase {
   value: number;
 }
 
-interface BarListProps<T extends object = Record<string, never>>
-  extends React.ComponentProps<"div"> {
+interface BarListProps<
+  T extends object = Record<string, never>,
+> extends React.ComponentProps<"div"> {
   color?: string;
-  data?: Array<T & BarListItemBase>;
+  data?: (T & BarListItemBase)[];
   labelFormatter?: (label: string) => React.ReactNode;
   showAnimation?: boolean;
   sortOrder?: "ascending" | "descending";
@@ -40,14 +41,11 @@ function BarList<T extends object = Record<string, never>>({
   valueFormatter = defaultValueFormatter,
   ...props
 }: BarListProps<T>) {
-  const sortedData = [...data].sort((a, b) =>
-    sortOrder === "ascending" ? a.value - b.value : b.value - a.value
+  const sortedData = [...data].toSorted((a, b) =>
+    sortOrder === "ascending" ? a.value - b.value : b.value - a.value,
   );
 
-  const maxValue = sortedData.reduce(
-    (currentMax, item) => Math.max(currentMax, item.value),
-    0
-  );
+  const maxValue = sortedData.reduce((currentMax, item) => Math.max(currentMax, item.value), 0);
 
   const widths = sortedData.map((item) => {
     if (item.value === 0 || maxValue === 0) {
@@ -77,14 +75,10 @@ function BarList<T extends object = Record<string, never>>({
               key={item.key ?? item.name}
             >
               <div
-                className={cn(
-                  "relative flex items-center rounded-sm transition-all",
-                  rowHeight,
-                  {
-                    "duration-500": showAnimation,
-                    "mb-0": index === sortedData.length - 1,
-                  }
-                )}
+                className={cn("relative flex items-center rounded-sm transition-all", rowHeight, {
+                  "duration-500": showAnimation,
+                  "mb-0": index === sortedData.length - 1,
+                })}
                 style={{
                   transition: showAnimation ? "all 1s" : undefined,
                   width: `${widths[index]}%`,
@@ -97,9 +91,7 @@ function BarList<T extends object = Record<string, never>>({
               </div>
 
               <div className="absolute left-2 flex max-w-full pr-4">
-                {Icon ? (
-                  <Icon className="mr-2 h-5 w-5 flex-none text-muted-foreground" />
-                ) : null}
+                {Icon ? <Icon className="mr-2 h-5 w-5 flex-none text-muted-foreground" /> : null}
 
                 {item.href ? (
                   <a
@@ -128,7 +120,7 @@ function BarList<T extends object = Record<string, never>>({
             className={cn(
               "flex items-center justify-end",
               rowHeight,
-              index === 0 ? "mt-1" : "my-2"
+              index === 0 ? "mt-1" : "my-2",
             )}
             data-slot="bar-list-value"
             key={item.key ?? item.name}

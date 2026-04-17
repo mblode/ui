@@ -41,19 +41,11 @@ export default function FieldDemo() {
         <FieldGroup>
           <FieldSet>
             <FieldLegend>Payment Method</FieldLegend>
-            <FieldDescription>
-              All transactions are secure and encrypted
-            </FieldDescription>
+            <FieldDescription>All transactions are secure and encrypted</FieldDescription>
             <FieldGroup>
               <Field>
-                <FieldLabel htmlFor="checkout-7j9-card-name-43j">
-                  Name on Card
-                </FieldLabel>
-                <Input
-                  id="checkout-7j9-card-name-43j"
-                  placeholder="Evil Rabbit"
-                  required
-                />
+                <FieldLabel htmlFor="checkout-7j9-card-name-43j">Name on Card</FieldLabel>
+                <Input id="checkout-7j9-card-name-43j" placeholder="Evil Rabbit" required />
               </Field>
             </FieldGroup>
           </FieldSet>

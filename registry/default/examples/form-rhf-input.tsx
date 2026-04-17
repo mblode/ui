@@ -28,31 +28,28 @@ const formSchema = z.object({
     .string()
     .min(3, "Username must be at least 3 characters.")
     .max(10, "Username must be at most 10 characters.")
-    .regex(
-      /^[a-zA-Z0-9_]+$/,
-      "Username can only contain letters, numbers, and underscores."
-    ),
+    .regex(/^[a-zA-Z0-9_]+$/, "Username can only contain letters, numbers, and underscores."),
 });
 
 export default function FormRhfInput() {
   const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
     defaultValues: {
       username: "",
     },
+    resolver: zodResolver(formSchema),
   });
 
   function onSubmit(data: z.infer<typeof formSchema>) {
     toast("You submitted the following values:", {
+      classNames: {
+        content: "flex flex-col gap-2",
+      },
       description: (
         <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
           <code>{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
       position: "bottom-right",
-      classNames: {
-        content: "flex flex-col gap-2",
-      },
       style: {
         "--border-radius": "calc(var(--radius)  + 4px)",
       } as React.CSSProperties,
@@ -63,9 +60,7 @@ export default function FormRhfInput() {
     <Card className="w-full sm:max-w-md">
       <CardHeader>
         <CardTitle>Profile Settings</CardTitle>
-        <CardDescription>
-          Update your profile information below.
-        </CardDescription>
+        <CardDescription>Update your profile information below.</CardDescription>
       </CardHeader>
       <CardContent>
         <form id="form-rhf-input" onSubmit={form.handleSubmit(onSubmit)}>
@@ -75,9 +70,7 @@ export default function FormRhfInput() {
               name="username"
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel htmlFor="form-rhf-input-username">
-                    Username
-                  </FieldLabel>
+                  <FieldLabel htmlFor="form-rhf-input-username">Username</FieldLabel>
                   <Input
                     {...field}
                     aria-invalid={fieldState.invalid}
@@ -86,13 +79,10 @@ export default function FormRhfInput() {
                     placeholder="shadcn"
                   />
                   <FieldDescription>
-                    This is your public display name. Must be between 3 and 10
-                    characters. Must only contain letters, numbers, and
-                    underscores.
+                    This is your public display name. Must be between 3 and 10 characters. Must only
+                    contain letters, numbers, and underscores.
                   </FieldDescription>
-                  {fieldState.invalid && (
-                    <FieldError errors={[fieldState.error]} />
-                  )}
+                  {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
                 </Field>
               )}
             />

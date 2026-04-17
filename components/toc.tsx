@@ -20,7 +20,7 @@ function flattenToc(toc: TocData, depth = 2): FlatItem[] {
 
   for (const item of toc.items) {
     if (item.title && item.url) {
-      result.push({ title: item.title, url: item.url, depth });
+      result.push({ depth, title: item.title, url: item.url });
     }
     if (item.items) {
       result.push(...flattenToc(item, depth + 1));
@@ -42,11 +42,11 @@ function useActiveItem(itemIds: string[]) {
           }
         }
       },
-      { rootMargin: "0% 0% -80% 0%" }
+      { rootMargin: "0% 0% -80% 0%" },
     );
 
     for (const id of itemIds ?? []) {
-      const element = document.getElementById(id);
+      const element = document.querySelector(`#${id}`);
       if (element) {
         observer.observe(element);
       }
@@ -54,7 +54,7 @@ function useActiveItem(itemIds: string[]) {
 
     return () => {
       for (const id of itemIds ?? []) {
-        const element = document.getElementById(id);
+        const element = document.querySelector(`#${id}`);
         if (element) {
           observer.unobserve(element);
         }
@@ -72,10 +72,7 @@ interface TocProps {
 
 export function TableOfContents({ toc, className }: TocProps) {
   const flatItems = useMemo(() => flattenToc(toc), [toc]);
-  const itemIds = useMemo(
-    () => flatItems.map((item) => item.url.replace("#", "")),
-    [flatItems]
-  );
+  const itemIds = useMemo(() => flatItems.map((item) => item.url.replace("#", "")), [flatItems]);
   const activeHeading = useActiveItem(itemIds);
 
   if (!flatItems.length) {

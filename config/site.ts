@@ -1,16 +1,13 @@
 import packageJson from "../package.json" with { type: "json" };
 
 export const siteConfig = {
-  name: "Blode UI",
-  url: "https://ui.blode.co",
-  ogImage: "https://ui.blode.co/opengraph-image",
-  description:
-    "Beautifully designed landing page components built with React & Tailwind CSS.",
-  version: packageJson.version,
+  description: "Beautifully designed landing page components built with React & Tailwind CSS.",
+  keywords: ["React", "Tailwind CSS", "Motion", "Landing Page", "Components", "Next.js"],
   links: {
     author: "https://matthewblode.com",
     github: "https://github.com/mblode/blode-ui",
   },
+  name: "Blode UI",
   navItems: [
     {
       href: "/docs",
@@ -25,19 +22,14 @@ export const siteConfig = {
       label: "Theme Visualizer",
     },
   ],
-  keywords: [
-    "React",
-    "Tailwind CSS",
-    "Motion",
-    "Landing Page",
-    "Components",
-    "Next.js",
-  ],
+  ogImage: "https://ui.blode.co/opengraph-image",
+  url: "https://ui.blode.co",
+  version: packageJson.version,
 };
 
 export const META_THEME_COLORS = {
-  light: "#ffffff",
   dark: "#09090b",
+  light: "#ffffff",
 };
 
 export type SiteConfig = typeof siteConfig;

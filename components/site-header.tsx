@@ -27,10 +27,7 @@ export function SiteHeader() {
             <div className="hidden w-full flex-1 md:flex md:w-auto md:flex-none">
               <CommandMenu />
             </div>
-            <Separator
-              className="ml-2 hidden lg:block"
-              orientation="vertical"
-            />
+            <Separator className="ml-2 hidden lg:block" orientation="vertical" />
             <GitHubLink />
             <Separator orientation="vertical" />
             <ModeSwitcher />

@@ -9,13 +9,7 @@ import {
   ComboboxList,
 } from "@/registry/default/ui/combobox";
 
-const frameworks = [
-  "Next.js",
-  "SvelteKit",
-  "Nuxt.js",
-  "Remix",
-  "Astro",
-] as const;
+const frameworks = ["Next.js", "SvelteKit", "Nuxt.js", "Remix", "Astro"] as const;
 
 export default function ComboboxBasic() {
   return (

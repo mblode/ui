@@ -17,8 +17,8 @@ export default function PromptDemo() {
           <Prompt.Header>
             <Prompt.Title>Delete workspace?</Prompt.Title>
             <Prompt.Description>
-              This action cannot be undone. This will permanently delete your
-              workspace, members, and billing history.
+              This action cannot be undone. This will permanently delete your workspace, members,
+              and billing history.
             </Prompt.Description>
           </Prompt.Header>
           <Prompt.Footer>

@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 
-import DocPage, {
-  generateMetadata as generateDocMetadata,
-} from "../[[...slug]]/page";
+import DocPage, { generateMetadata as generateDocMetadata } from "../[[...slug]]/page";
 
 const componentsParams = Promise.resolve({ slug: ["components"] });
 

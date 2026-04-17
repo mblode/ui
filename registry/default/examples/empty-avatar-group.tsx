@@ -1,9 +1,5 @@
 import { PlusIcon } from "blode-icons-react";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/registry/default/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/registry/default/ui/avatar";
 import { Button } from "@/registry/default/ui/button";
 import {
   Empty,
@@ -25,25 +21,17 @@ export default function EmptyAvatarGroup() {
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
             <Avatar>
-              <AvatarImage
-                alt="@maxleiter"
-                src="https://github.com/maxleiter.png"
-              />
+              <AvatarImage alt="@maxleiter" src="https://github.com/maxleiter.png" />
               <AvatarFallback>LR</AvatarFallback>
             </Avatar>
             <Avatar>
-              <AvatarImage
-                alt="@evilrabbit"
-                src="https://github.com/evilrabbit.png"
-              />
+              <AvatarImage alt="@evilrabbit" src="https://github.com/evilrabbit.png" />
               <AvatarFallback>ER</AvatarFallback>
             </Avatar>
           </div>
         </EmptyMedia>
         <EmptyTitle>No Team Members</EmptyTitle>
-        <EmptyDescription>
-          Invite your team to collaborate on this project.
-        </EmptyDescription>
+        <EmptyDescription>Invite your team to collaborate on this project.</EmptyDescription>
       </EmptyHeader>
       <EmptyContent>
         <Button size="sm">

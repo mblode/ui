@@ -1,15 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { type ReactNode, useState } from "react";
+import { useState } from "react";
+import type { ReactNode } from "react";
 import { docsConfig } from "@/config/docs";
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/default/ui/button";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/registry/default/ui/popover";
+import { Popover, PopoverContent, PopoverTrigger } from "@/registry/default/ui/popover";
 
 const EXTERNAL_HREF_PATTERN = /^(https?:)?\/\//;
 
@@ -39,13 +36,13 @@ export function MobileNav({
                 <span
                   className={cn(
                     "absolute left-0 block h-0.5 w-4 bg-foreground transition-all duration-100",
-                    open ? "top-[0.4rem] -rotate-45" : "top-1"
+                    open ? "top-[0.4rem] -rotate-45" : "top-1",
                   )}
                 />
                 <span
                   className={cn(
                     "absolute left-0 block h-0.5 w-4 bg-foreground transition-all duration-100",
-                    open ? "top-[0.4rem] rotate-45" : "top-2.5"
+                    open ? "top-[0.4rem] rotate-45" : "top-2.5",
                   )}
                 />
               </div>
@@ -62,19 +59,13 @@ export function MobileNav({
         >
           <div className="flex flex-col gap-12 overflow-auto px-6 py-6">
             <div className="flex flex-col gap-4">
-              <div className="font-medium text-muted-foreground text-sm">
-                Menu
-              </div>
+              <div className="font-medium text-muted-foreground text-sm">Menu</div>
               <div className="flex flex-col gap-3">
                 <MobileLink href="/" onOpenChange={setOpen}>
                   Home
                 </MobileLink>
                 {items.map((item) => (
-                  <MobileLink
-                    href={item.href}
-                    key={item.href}
-                    onOpenChange={setOpen}
-                  >
+                  <MobileLink href={item.href} key={item.href} onOpenChange={setOpen}>
                     {item.label}
                   </MobileLink>
                 ))}
@@ -82,16 +73,13 @@ export function MobileNav({
             </div>
             {docsConfig.sidebarNav.map((group) => (
               <div className="flex flex-col gap-4" key={group.title}>
-                <div className="font-medium text-muted-foreground text-sm">
-                  {group.title}
-                </div>
+                <div className="font-medium text-muted-foreground text-sm">{group.title}</div>
                 <div className="flex flex-col gap-3">
                   {group.items?.map((item) => {
                     if (!item.href) {
                       return null;
                     }
-                    const isExternal =
-                      item.external || isExternalHref(item.href);
+                    const isExternal = item.external || isExternalHref(item.href);
                     return (
                       <MobileLink
                         className="flex items-center gap-2"
@@ -111,10 +99,7 @@ export function MobileNav({
           </div>
         </PopoverContent>
       </Popover>
-      <Link
-        className="flex h-8 items-center font-medium text-lg leading-none"
-        href="/"
-      >
+      <Link className="flex h-8 items-center font-medium text-lg leading-none" href="/">
         Blode UI
       </Link>
     </div>

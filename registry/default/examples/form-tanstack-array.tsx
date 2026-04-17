@@ -37,7 +37,7 @@ const formSchema = z.object({
     .array(
       z.object({
         address: z.string().email("Enter a valid email address."),
-      })
+      }),
     )
     .min(1, "Add at least one email address.")
     .max(5, "You can add up to 5 email addresses."),
@@ -48,24 +48,24 @@ export default function FormTanstackArray() {
     defaultValues: {
       emails: [{ address: "" }],
     },
-    validators: {
-      onBlur: formSchema,
-    },
     onSubmit: async ({ value }) => {
       toast("You submitted the following values:", {
+        classNames: {
+          content: "flex flex-col gap-2",
+        },
         description: (
           <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
             <code>{JSON.stringify(value, null, 2)}</code>
           </pre>
         ),
         position: "bottom-right",
-        classNames: {
-          content: "flex flex-col gap-2",
-        },
         style: {
           "--border-radius": "calc(var(--radius)  + 4px)",
         } as React.CSSProperties,
       });
+    },
+    validators: {
+      onBlur: formSchema,
     },
   });
 
@@ -85,8 +85,7 @@ export default function FormTanstackArray() {
         >
           <form.Field mode="array" name="emails">
             {(field) => {
-              const isInvalid =
-                field.state.meta.isTouched && !field.state.meta.isValid;
+              const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid;
               return (
                 <FieldSet className="gap-4">
                   <FieldLegend variant="label">Email Addresses</FieldLegend>
@@ -98,13 +97,9 @@ export default function FormTanstackArray() {
                       <form.Field
                         children={(subField) => {
                           const isSubFieldInvalid =
-                            subField.state.meta.isTouched &&
-                            !subField.state.meta.isValid;
+                            subField.state.meta.isTouched && !subField.state.meta.isValid;
                           return (
-                            <Field
-                              data-invalid={isSubFieldInvalid}
-                              orientation="horizontal"
-                            >
+                            <Field data-invalid={isSubFieldInvalid} orientation="horizontal">
                               <FieldContent>
                                 <InputGroup>
                                   <InputGroupInput
@@ -113,9 +108,7 @@ export default function FormTanstackArray() {
                                     id={`form-tanstack-array-email-${index}`}
                                     name={subField.name}
                                     onBlur={subField.handleBlur}
-                                    onChange={(e) =>
-                                      subField.handleChange(e.target.value)
-                                    }
+                                    onChange={(e) => subField.handleChange(e.target.value)}
                                     placeholder="name@example.com"
                                     type="email"
                                     value={subField.state.value}
@@ -135,9 +128,7 @@ export default function FormTanstackArray() {
                                   )}
                                 </InputGroup>
                                 {isSubFieldInvalid && (
-                                  <FieldError
-                                    errors={subField.state.meta.errors}
-                                  />
+                                  <FieldError errors={subField.state.meta.errors} />
                                 )}
                               </FieldContent>
                             </Field>

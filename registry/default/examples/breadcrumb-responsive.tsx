@@ -59,18 +59,13 @@ export default function BreadcrumbResponsive() {
             <BreadcrumbItem>
               {isDesktop ? (
                 <DropdownMenu onOpenChange={setOpen} open={open}>
-                  <DropdownMenuTrigger
-                    aria-label="Toggle menu"
-                    className="flex items-center gap-1"
-                  >
+                  <DropdownMenuTrigger aria-label="Toggle menu" className="flex items-center gap-1">
                     <BreadcrumbEllipsis className="size-4" />
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="start">
                     {items.slice(1, -2).map((item, index) => (
                       <DropdownMenuItem key={index}>
-                        <Link href={item.href ? item.href : "#"}>
-                          {item.label}
-                        </Link>
+                        <Link href={item.href ? item.href : "#"}>{item.label}</Link>
                       </DropdownMenuItem>
                     ))}
                   </DropdownMenuContent>
@@ -83,9 +78,7 @@ export default function BreadcrumbResponsive() {
                   <DrawerContent>
                     <DrawerHeader className="text-left">
                       <DrawerTitle>Navigate to</DrawerTitle>
-                      <DrawerDescription>
-                        Select a page to navigate to.
-                      </DrawerDescription>
+                      <DrawerDescription>Select a page to navigate to.</DrawerDescription>
                     </DrawerHeader>
                     <div className="grid gap-1 px-4">
                       {items.slice(1, -2).map((item, index) => (
@@ -114,10 +107,7 @@ export default function BreadcrumbResponsive() {
           <BreadcrumbItem key={index}>
             {item.href ? (
               <>
-                <BreadcrumbLink
-                  asChild
-                  className="max-w-20 truncate md:max-w-none"
-                >
+                <BreadcrumbLink asChild className="max-w-20 truncate md:max-w-none">
                   <Link href={item.href}>{item.label}</Link>
                 </BreadcrumbLink>
                 <BreadcrumbSeparator />

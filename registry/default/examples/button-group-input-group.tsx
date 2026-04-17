@@ -10,11 +10,7 @@ import {
   InputGroupButton,
   InputGroupInput,
 } from "@/registry/default/ui/input-group";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/registry/default/ui/tooltip";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/registry/default/ui/tooltip";
 
 export default function ButtonGroupInputGroup() {
   const [voiceEnabled, setVoiceEnabled] = useState(false);
@@ -30,9 +26,7 @@ export default function ButtonGroupInputGroup() {
         <InputGroup>
           <InputGroupInput
             disabled={voiceEnabled}
-            placeholder={
-              voiceEnabled ? "Record and send audio..." : "Send a message..."
-            }
+            placeholder={voiceEnabled ? "Record and send audio..." : "Send a message..."}
           />
           <InputGroupAddon align="inline-end">
             <Tooltip>

@@ -1,9 +1,4 @@
-import {
-  BookmarkIcon,
-  HeartIcon,
-  InboxIcon,
-  StarIcon,
-} from "blode-icons-react";
+import { BookmarkIcon, HeartIcon, InboxIcon, StarIcon } from "blode-icons-react";
 
 import {
   Empty,
@@ -22,9 +17,7 @@ export default function EmptyIcon() {
             <InboxIcon />
           </EmptyMedia>
           <EmptyTitle>No messages</EmptyTitle>
-          <EmptyDescription>
-            Your inbox is empty. New messages will appear here.
-          </EmptyDescription>
+          <EmptyDescription>Your inbox is empty. New messages will appear here.</EmptyDescription>
         </EmptyHeader>
       </Empty>
 
@@ -34,9 +27,7 @@ export default function EmptyIcon() {
             <StarIcon />
           </EmptyMedia>
           <EmptyTitle>No favorites</EmptyTitle>
-          <EmptyDescription>
-            Items you mark as favorites will appear here.
-          </EmptyDescription>
+          <EmptyDescription>Items you mark as favorites will appear here.</EmptyDescription>
         </EmptyHeader>
       </Empty>
 
@@ -46,9 +37,7 @@ export default function EmptyIcon() {
             <HeartIcon />
           </EmptyMedia>
           <EmptyTitle>No likes yet</EmptyTitle>
-          <EmptyDescription>
-            Content you like will be saved here for easy access.
-          </EmptyDescription>
+          <EmptyDescription>Content you like will be saved here for easy access.</EmptyDescription>
         </EmptyHeader>
       </Empty>
 
@@ -58,9 +47,7 @@ export default function EmptyIcon() {
             <BookmarkIcon />
           </EmptyMedia>
           <EmptyTitle>No bookmarks</EmptyTitle>
-          <EmptyDescription>
-            Save interesting content by bookmarking it.
-          </EmptyDescription>
+          <EmptyDescription>Save interesting content by bookmarking it.</EmptyDescription>
         </EmptyHeader>
       </Empty>
     </div>

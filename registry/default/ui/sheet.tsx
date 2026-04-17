@@ -18,13 +18,7 @@ function SheetTrigger({
   asChild?: boolean;
 }) {
   if (asChild && React.isValidElement(children)) {
-    return (
-      <SheetPrimitive.Trigger
-        data-slot="sheet-trigger"
-        render={children}
-        {...props}
-      />
-    );
+    return <SheetPrimitive.Trigger data-slot="sheet-trigger" render={children} {...props} />;
   }
 
   return (
@@ -42,13 +36,7 @@ function SheetClose({
   asChild?: boolean;
 }) {
   if (asChild && React.isValidElement(children)) {
-    return (
-      <SheetPrimitive.Close
-        data-slot="sheet-close"
-        render={children}
-        {...props}
-      />
-    );
+    return <SheetPrimitive.Close data-slot="sheet-close" render={children} {...props} />;
   }
 
   return (
@@ -67,7 +55,7 @@ function SheetOverlay({ className, ...props }: SheetPrimitive.Backdrop.Props) {
     <SheetPrimitive.Backdrop
       className={cn(
         "data-closed:fade-out-0 data-open:fade-in-0 fixed inset-0 z-50 bg-overlay backdrop-blur-[10px] data-closed:animate-out data-open:animate-in data-closed:duration-300 data-open:duration-500 motion-reduce:transition-none",
-        className
+        className,
       )}
       data-slot="sheet-overlay"
       {...props}
@@ -99,7 +87,7 @@ function SheetContent({
             "data-[side=top]:data-closed:slide-out-to-top data-[side=top]:data-open:slide-in-from-top inset-x-0 top-0 h-auto border-b",
           side === "bottom" &&
             "data-[side=bottom]:data-closed:slide-out-to-bottom data-[side=bottom]:data-open:slide-in-from-bottom inset-x-0 bottom-0 h-auto border-t",
-          className
+          className,
         )}
         data-side={side}
         data-slot="sheet-content"
@@ -137,10 +125,7 @@ function SheetFooter({ className, ...props }: React.ComponentProps<"div">) {
   );
 }
 
-function SheetTitle({
-  className,
-  ...props
-}: React.ComponentProps<typeof SheetPrimitive.Title>) {
+function SheetTitle({ className, ...props }: React.ComponentProps<typeof SheetPrimitive.Title>) {
   return (
     <SheetPrimitive.Title
       className={cn("font-semibold text-foreground", className)}

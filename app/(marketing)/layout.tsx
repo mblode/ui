@@ -5,14 +5,9 @@ interface MarketingLayoutProps {
   children: React.ReactNode;
 }
 
-export default async function MarketingLayout({
-  children,
-}: MarketingLayoutProps) {
+export default async function MarketingLayout({ children }: MarketingLayoutProps) {
   return (
-    <div
-      className="relative z-10 flex min-h-svh flex-col bg-background"
-      data-slot="layout"
-    >
+    <div className="relative z-10 flex min-h-svh flex-col bg-background" data-slot="layout">
       <SiteHeader />
       <main className="flex flex-1 flex-col">{children}</main>
       <SiteFooter />

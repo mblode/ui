@@ -1,7 +1,4 @@
-import {
-  ProgressItem,
-  ProgressList,
-} from "@/registry/default/ui/progress-list";
+import { ProgressItem, ProgressList } from "@/registry/default/ui/progress-list";
 
 export function ProgressListDemo() {
   return (

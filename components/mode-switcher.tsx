@@ -5,11 +5,7 @@ import { useCallback, useEffect } from "react";
 import { useMetaColor } from "@/hooks/use-meta-color";
 import { Button } from "@/registry/default/ui/button";
 import { Kbd } from "@/registry/default/ui/kbd";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/registry/default/ui/tooltip";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/registry/default/ui/tooltip";
 
 export function ModeSwitcher() {
   const { setTheme, resolvedTheme } = useTheme();

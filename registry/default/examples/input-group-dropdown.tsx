@@ -23,13 +23,7 @@ export function InputGroupDropdown() {
         <InputGroupAddon align="inline-end">
           <DropdownMenu>
             <DropdownMenuTrigger
-              render={
-                <InputGroupButton
-                  aria-label="More"
-                  size="icon-xs"
-                  variant="ghost"
-                />
-              }
+              render={<InputGroupButton aria-label="More" size="icon-xs" variant="ghost" />}
             >
               <MoreHorizontal />
             </DropdownMenuTrigger>
@@ -48,9 +42,7 @@ export function InputGroupDropdown() {
         <InputGroupAddon align="inline-end">
           <DropdownMenu>
             <DropdownMenuTrigger
-              render={
-                <InputGroupButton className="!pr-1.5 text-xs" variant="ghost" />
-              }
+              render={<InputGroupButton className="!pr-1.5 text-xs" variant="ghost" />}
             >
               Search In... <ChevronDownIcon className="size-3" />
             </DropdownMenuTrigger>

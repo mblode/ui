@@ -1,8 +1,4 @@
-import {
-  Field,
-  FieldDescription,
-  FieldLabel,
-} from "@/registry/default/ui/field";
+import { Field, FieldDescription, FieldLabel } from "@/registry/default/ui/field";
 import { PasswordInput } from "@/registry/default/ui/password-input";
 
 export default function PasswordInputDemo() {
@@ -14,9 +10,7 @@ export default function PasswordInputDemo() {
         id="password-input-demo"
         placeholder="Enter your password"
       />
-      <FieldDescription>
-        Click the eye icon to reveal your password.
-      </FieldDescription>
+      <FieldDescription>Click the eye icon to reveal your password.</FieldDescription>
     </Field>
   );
 }

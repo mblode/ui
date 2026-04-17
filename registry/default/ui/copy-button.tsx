@@ -7,8 +7,10 @@ import { cn } from "@/lib/utils";
 import { useCopyToClipboard } from "@/registry/default/hooks/use-copy-to-clipboard";
 import { Button } from "@/registry/default/ui/button";
 
-export interface CopyButtonProps
-  extends Omit<React.ComponentProps<typeof Button>, "onClick" | "children"> {
+export interface CopyButtonProps extends Omit<
+  React.ComponentProps<typeof Button>,
+  "onClick" | "children"
+> {
   /** Accessible label (default: "Copy") */
   label?: string;
   /** Callback when text is copied */
@@ -30,8 +32,8 @@ const CopyButton = ({
   ...props
 }: CopyButtonProps) => {
   const { isCopied, copyToClipboard } = useCopyToClipboard({
-    timeout,
     onCopy,
+    timeout,
   });
 
   return (

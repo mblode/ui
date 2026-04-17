@@ -1,4 +1,5 @@
-import clsx, { type ClassValue } from "clsx";
+import clsx from "clsx";
+import type { ClassValue } from "clsx";
 import type { Metadata } from "next";
 import { twMerge } from "tailwind-merge";
 import { env } from "@/env.mjs";
@@ -11,11 +12,11 @@ export function cn(...inputs: ClassValue[]) {
 
 export function humanize(name: string): string {
   return name
-    .replace(/-/g, " ")
-    .replace(/([A-Z])/g, " $1")
+    .replaceAll("-", " ")
+    .replaceAll(/([A-Z])/g, " $1")
     .trim()
     .split(WHITESPACE_REGEX)
-    .map((word) => word[0].toUpperCase() + word.substring(1).toLowerCase())
+    .map((word) => word[0].toUpperCase() + word.slice(1).toLowerCase())
     .join(" ");
 }
 
@@ -41,15 +42,15 @@ export const fetcher = (...args: Parameters<typeof fetch>) =>
  *   capitalize('javaSCrIPT', true);    // -> 'Javascript'
  */
 export const capitalize = (str: string, lower = false) =>
-  (lower ? str.toLowerCase() : str).replace(/(?:^|\s|["'([{])+\S/g, (match) =>
-    match.toUpperCase()
+  (lower ? str.toLowerCase() : str).replaceAll(/(?:^|\s|["'([{])+\S/g, (match) =>
+    match.toUpperCase(),
   );
 
 export function formatDate(input: string | number): string {
   const date = new Date(input);
   return date.toLocaleDateString("en-US", {
-    month: "long",
     day: "numeric",
+    month: "long",
     year: "numeric",
   });
 }
@@ -70,37 +71,6 @@ export function constructMetadata({
   [key: string]: Metadata[keyof Metadata];
 }): Metadata {
   return {
-    title,
-    description,
-    keywords: [
-      "React",
-      "Tailwind CSS",
-      "Motion",
-      "Landing Page",
-      "Components",
-      "Next.js",
-    ],
-    openGraph: {
-      title,
-      description,
-      type: "website",
-      images: [
-        {
-          url: image,
-          width: 1200,
-          height: 630,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [image],
-      creator: "@dillionverma",
-    },
-    icons: "/favicon.ico",
-    metadataBase: new URL("https://ui.blode.co"),
     authors: [
       {
         name: "dillionverma",
@@ -108,14 +78,33 @@ export function constructMetadata({
       },
     ],
     creator: "dillionverma",
+    description,
+    icons: "/favicon.ico",
+    keywords: ["React", "Tailwind CSS", "Motion", "Landing Page", "Components", "Next.js"],
+    metadataBase: new URL("https://ui.blode.co"),
+    openGraph: {
+      description,
+      images: [
+        {
+          height: 630,
+          url: image,
+          width: 1200,
+        },
+      ],
+      title,
+      type: "website",
+    },
+    title,
+    twitter: {
+      card: "summary_large_image",
+      creator: "@dillionverma",
+      description,
+      images: [image],
+      title,
+    },
     ...props,
   };
 }
 
-export const pluralize = (
-  count: number | undefined,
-  singular: string,
-  plural?: string
-) => {
-  return count === 1 ? singular : plural || `${singular}s`;
-};
+export const pluralize = (count: number | undefined, singular: string, plural?: string) =>
+  count === 1 ? singular : plural || `${singular}s`;

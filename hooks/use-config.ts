@@ -9,9 +9,9 @@ interface Config {
 }
 
 const configAtom = atomWithStorage<Config>("config", {
-  style: "default",
-  packageManager: "npm",
   installationType: "cli",
+  packageManager: "npm",
+  style: "default",
 });
 
 export function useConfig() {

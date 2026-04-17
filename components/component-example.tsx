@@ -3,12 +3,7 @@
 import React from "react";
 import { CopyButton, CopyWithClassNames } from "@/components/copy-button";
 import { cn } from "@/lib/utils";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/registry/default/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/default/ui/tabs";
 
 interface ComponentExampleProps extends React.HTMLAttributes<HTMLDivElement> {
   align?: "center" | "start" | "end";
@@ -30,24 +25,19 @@ interface CopyButtonDataProps {
 export function ComponentExample({
   children,
   className,
-  extractClassname,
+  extractClassname: _extractClassname,
   extractedClassNames,
   align = "center",
   src: _,
   ...props
 }: ComponentExampleProps) {
-  const [Example, Code, ...Children] = React.Children.toArray(
-    children
-  ) as React.ReactElement[];
+  const [Example, Code, ...Children] = React.Children.toArray(children) as React.ReactElement[];
 
   const codeString = React.useMemo(() => {
     const codeElement = Code as React.ReactElement<CodeBlockProps>;
-    if (
-      typeof codeElement?.props["data-rehype-pretty-code-fragment"] !==
-      "undefined"
-    ) {
+    if (codeElement?.props["data-rehype-pretty-code-fragment"] !== undefined) {
       const [, Button] = React.Children.toArray(
-        codeElement.props.children
+        codeElement.props.children,
       ) as React.ReactElement<CopyButtonDataProps>[];
       return Button?.props?.value ?? Button?.props?.__rawString__ ?? null;
     }
@@ -55,10 +45,7 @@ export function ComponentExample({
   }, [Code]);
 
   return (
-    <div
-      className={cn("group relative my-4 flex flex-col space-y-2", className)}
-      {...props}
-    >
+    <div className={cn("group relative my-4 flex flex-col space-y-2", className)} {...props}>
       <Tabs className="relative mr-auto w-full" defaultValue="preview">
         <div className="flex items-center justify-between pb-3">
           <TabsList className="w-full">
@@ -72,20 +59,15 @@ export function ComponentExample({
               value={codeString ?? ""}
             />
           ) : (
-            codeString && (
-              <CopyButton
-                className="absolute top-20 right-4"
-                value={codeString}
-              />
-            )
+            codeString && <CopyButton className="absolute top-20 right-4" value={codeString} />
           )}
         </div>
         <TabsContent className="rounded-md border" value="preview">
           <div
             className={cn("flex min-h-[350px] justify-center p-10", {
               "items-center": align === "center",
-              "items-start": align === "start",
               "items-end": align === "end",
+              "items-start": align === "start",
             })}
           >
             {Example}

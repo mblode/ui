@@ -31,9 +31,7 @@ export default function CurrencyInputDemo() {
           prefix="$"
           value={monthlyPrice}
         />
-        <p className="text-muted-foreground text-sm">
-          Charged once per workspace each month.
-        </p>
+        <p className="text-muted-foreground text-sm">Charged once per workspace each month.</p>
       </div>
     </div>
   );

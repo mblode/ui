@@ -1,8 +1,4 @@
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from "@/registry/default/ui/alert";
+import { Alert, AlertDescription, AlertTitle } from "@/registry/default/ui/alert";
 
 interface CalloutProps {
   children?: React.ReactNode;

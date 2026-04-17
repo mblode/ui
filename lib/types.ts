@@ -1,6 +1,6 @@
 export interface SiteConfig {
   avatar?: string;
-  nav: Array<{ label: string; href: string }>;
+  nav: { label: string; href: string }[];
   siteDescription: string;
   siteName: string;
   siteThumbnail: string;

@@ -9,10 +9,6 @@ const data = [
 
 export function BarListDemo() {
   return (
-    <BarList
-      className="w-full max-w-md"
-      data={data}
-      valueFormatter={(value) => `${value}%`}
-    />
+    <BarList className="w-full max-w-md" data={data} valueFormatter={(value) => `${value}%`} />
   );
 }

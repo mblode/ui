@@ -11,12 +11,12 @@ For Blode docs, examples, and repo code, default to `blode-icons-react`. Placeme
 **Incorrect (wrong package and manual icon sizing):**
 
 ```tsx
-import { SearchIcon } from "lucide-react"
+import { SearchIcon } from "lucide-react";
 
 <Button>
   <SearchIcon className="mr-2 size-4" />
   Search
-</Button>
+</Button>;
 ```
 
 **Correct (Blode package and component-managed sizing):**

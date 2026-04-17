@@ -5,10 +5,7 @@ import type * as React from "react";
 
 import { cn } from "@/lib/utils";
 
-function Meter({
-  className,
-  ...props
-}: React.ComponentProps<typeof MeterPrimitive.Root>) {
+function Meter({ className, ...props }: React.ComponentProps<typeof MeterPrimitive.Root>) {
   return (
     <MeterPrimitive.Root
       className={cn("flex w-full flex-col gap-2", className)}
@@ -18,10 +15,7 @@ function Meter({
   );
 }
 
-function MeterLabel({
-  className,
-  ...props
-}: React.ComponentProps<typeof MeterPrimitive.Label>) {
+function MeterLabel({ className, ...props }: React.ComponentProps<typeof MeterPrimitive.Label>) {
   return (
     <MeterPrimitive.Label
       className={cn("font-medium text-sm leading-none", className)}
@@ -31,10 +25,7 @@ function MeterLabel({
   );
 }
 
-function MeterValue({
-  className,
-  ...props
-}: React.ComponentProps<typeof MeterPrimitive.Value>) {
+function MeterValue({ className, ...props }: React.ComponentProps<typeof MeterPrimitive.Value>) {
   return (
     <MeterPrimitive.Value
       className={cn("text-muted-foreground text-sm tabular-nums", className)}
@@ -44,16 +35,10 @@ function MeterValue({
   );
 }
 
-function MeterTrack({
-  className,
-  ...props
-}: React.ComponentProps<typeof MeterPrimitive.Track>) {
+function MeterTrack({ className, ...props }: React.ComponentProps<typeof MeterPrimitive.Track>) {
   return (
     <MeterPrimitive.Track
-      className={cn(
-        "h-2 w-full overflow-hidden rounded-full bg-primary/20",
-        className
-      )}
+      className={cn("h-2 w-full overflow-hidden rounded-full bg-primary/20", className)}
       data-slot="meter-track"
       {...props}
     />

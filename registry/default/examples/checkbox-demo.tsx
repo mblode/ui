@@ -19,18 +19,10 @@ export default function CheckboxDemo() {
         <Label htmlFor="terms-checkbox">Accept terms and conditions</Label>
       </Field>
       <Field orientation="horizontal">
-        <Checkbox
-          defaultChecked
-          id="terms-checkbox-2"
-          name="terms-checkbox-2"
-        />
+        <Checkbox defaultChecked id="terms-checkbox-2" name="terms-checkbox-2" />
         <FieldContent>
-          <FieldLabel htmlFor="terms-checkbox-2">
-            Accept terms and conditions
-          </FieldLabel>
-          <FieldDescription>
-            By clicking this checkbox, you agree to the terms.
-          </FieldDescription>
+          <FieldLabel htmlFor="terms-checkbox-2">Accept terms and conditions</FieldLabel>
+          <FieldDescription>By clicking this checkbox, you agree to the terms.</FieldDescription>
         </FieldContent>
       </Field>
       <Field data-disabled orientation="horizontal">

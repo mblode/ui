@@ -24,12 +24,9 @@ import {
   TerminalIcon,
   Trash2Icon,
 } from "blode-icons-react";
-import { type ComponentProps, type ElementType, useState } from "react";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/registry/default/ui/avatar";
+import { useState } from "react";
+import type { ComponentProps, ElementType } from "react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/registry/default/ui/avatar";
 import {
   Collapsible,
   CollapsibleContent,
@@ -67,32 +64,8 @@ import {
 } from "@/registry/default/ui/sidebar";
 
 const data = {
-  user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
-  teams: [
-    {
-      name: "Acme Inc",
-      logo: GalleryVerticalEndIcon,
-      plan: "Enterprise",
-    },
-    {
-      name: "Acme Corp.",
-      logo: AudioLinesIcon,
-      plan: "Startup",
-    },
-    {
-      name: "Evil Corp.",
-      logo: CommandIcon,
-      plan: "Free",
-    },
-  ],
   navMain: [
     {
-      title: "Playground",
-      url: "#",
       icon: TerminalIcon,
       isActive: true,
       items: [
@@ -109,10 +82,10 @@ const data = {
           url: "#",
         },
       ],
+      title: "Playground",
+      url: "#",
     },
     {
-      title: "Models",
-      url: "#",
       icon: BotIcon,
       items: [
         {
@@ -128,10 +101,10 @@ const data = {
           url: "#",
         },
       ],
+      title: "Models",
+      url: "#",
     },
     {
-      title: "Documentation",
-      url: "#",
       icon: BookIcon,
       items: [
         {
@@ -151,10 +124,10 @@ const data = {
           url: "#",
         },
       ],
+      title: "Documentation",
+      url: "#",
     },
     {
-      title: "Settings",
-      url: "#",
       icon: Settings2Icon,
       items: [
         {
@@ -174,25 +147,49 @@ const data = {
           url: "#",
         },
       ],
+      title: "Settings",
+      url: "#",
     },
   ],
   projects: [
     {
+      icon: FrameIcon,
       name: "Design Engineering",
       url: "#",
-      icon: FrameIcon,
     },
     {
+      icon: PieChartIcon,
       name: "Sales & Marketing",
       url: "#",
-      icon: PieChartIcon,
     },
     {
+      icon: MapIcon,
       name: "Travel",
       url: "#",
-      icon: MapIcon,
     },
   ],
+  teams: [
+    {
+      logo: GalleryVerticalEndIcon,
+      name: "Acme Inc",
+      plan: "Enterprise",
+    },
+    {
+      logo: AudioLinesIcon,
+      name: "Acme Corp.",
+      plan: "Startup",
+    },
+    {
+      logo: CommandIcon,
+      name: "Evil Corp.",
+      plan: "Free",
+    },
+  ],
+  user: {
+    avatar: "/avatars/shadcn.jpg",
+    email: "m@example.com",
+    name: "shadcn",
+  },
 };
 
 function TeamSwitcher({
@@ -263,9 +260,7 @@ function TeamSwitcher({
                   <div className="flex size-6 items-center justify-center rounded-md border bg-transparent">
                     <PlusIcon className="size-4" />
                   </div>
-                  <div className="font-medium text-muted-foreground">
-                    Add team
-                  </div>
+                  <div className="font-medium text-muted-foreground">Add team</div>
                 </DropdownMenuItem>
               </DropdownMenuGroup>
             </DropdownMenuContent>
@@ -295,15 +290,9 @@ function NavMain({
       <SidebarGroupLabel>Platform</SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item) => (
-          <Collapsible
-            className="group/collapsible"
-            defaultOpen={item.isActive}
-            key={item.title}
-          >
+          <Collapsible className="group/collapsible" defaultOpen={item.isActive} key={item.title}>
             <SidebarMenuItem>
-              <CollapsibleTrigger
-                render={<SidebarMenuButton tooltip={item.title} />}
-              >
+              <CollapsibleTrigger render={<SidebarMenuButton tooltip={item.title} />}>
                 {item.icon && <item.icon />}
                 <span>{item.title}</span>
                 <ChevronRightIcon className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
@@ -479,9 +468,7 @@ function NavUser({
   );
 }
 
-export default function SidebarDemo({
-  ...props
-}: ComponentProps<typeof Sidebar>) {
+export default function SidebarDemo({ ...props }: ComponentProps<typeof Sidebar>) {
   return (
     <SidebarProvider>
       <Sidebar collapsible="icon" {...props}>

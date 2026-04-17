@@ -34,9 +34,7 @@ async function getDocFromParams({ params }: DocPageProps) {
   return doc;
 }
 
-export async function generateMetadata({
-  params,
-}: DocPageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: DocPageProps): Promise<Metadata> {
   const doc = await getDocFromParams({ params });
 
   if (!doc) {
@@ -44,34 +42,32 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${doc.title} | Blode UI`,
     description: doc.description,
     openGraph: {
-      title: doc.title,
       description: doc.description,
-      type: "article",
-      url: absoluteUrl(doc.slug),
       images: [
         {
+          height: 630,
           url: doc.image,
           width: 1200,
-          height: 630,
         },
       ],
+      title: doc.title,
+      type: "article",
+      url: absoluteUrl(doc.slug),
     },
+    title: `${doc.title} | Blode UI`,
     twitter: {
       card: "summary_large_image",
-      title: doc.title,
+      creator: "@mblode",
       description: doc.description,
       images: [doc.image],
-      creator: "@mblode",
+      title: doc.title,
     },
   };
 }
 
-export async function generateStaticParams(): Promise<
-  Awaited<DocPageProps["params"]>[]
-> {
+export async function generateStaticParams(): Promise<Awaited<DocPageProps["params"]>[]> {
   return allDocs.map((doc) => ({
     slug: doc.slugAsParams ? doc.slugAsParams.split("/") : [],
   }));
@@ -103,10 +99,7 @@ export default async function DocPage({ params }: DocPageProps) {
                 </h1>
                 <div className="docs-nav flex items-center gap-2">
                   <div>
-                    <DocsCopyPage
-                      page={doc.body.raw}
-                      url={absoluteUrl(doc.slug)}
-                    />
+                    <DocsCopyPage page={doc.body.raw} url={absoluteUrl(doc.slug)} />
                   </div>
                   <div className="ml-auto flex gap-2">
                     {pager?.prev?.href && (
@@ -149,10 +142,7 @@ export default async function DocPage({ params }: DocPageProps) {
             <Mdx code={doc.body.code} />
           </div>
           {pager?.prev?.href || pager?.next?.href ? (
-            <nav
-              className="flex w-full rounded-2xl bg-muted/50 p-1 text-sm"
-              id="pagination"
-            >
+            <nav className="flex w-full rounded-2xl bg-muted/50 p-1 text-sm" id="pagination">
               {pager?.prev?.href ? (
                 <Link
                   className="group flex items-center justify-between gap-1.5 pr-6 pl-3"
@@ -168,10 +158,7 @@ export default async function DocPage({ params }: DocPageProps) {
                 </Link>
               ) : null}
               {pager?.next?.href ? (
-                <Link
-                  className="group ml-auto flex w-full min-w-0 flex-1"
-                  href={pager.next.href}
-                >
+                <Link className="group ml-auto flex w-full min-w-0 flex-1" href={pager.next.href}>
                   <div className="flex flex-1 items-center justify-end rounded-xl bg-background hover:ring-1 hover:ring-border sm:h-16">
                     <div className="flex min-w-0 flex-col items-end justify-center px-5">
                       <span className="text-right font-semibold text-foreground/80">

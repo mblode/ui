@@ -15,8 +15,8 @@ const ToggleGroupContext = createContext<
   }
 >({
   size: "default",
-  variant: "default",
   spacing: 0,
+  variant: "default",
 });
 
 type ToggleGroupValue = string | string[];
@@ -35,7 +35,7 @@ type ToggleGroupProps = Omit<
   };
 
 const normalizeToggleGroupValue = (
-  value: ToggleGroupValue | undefined
+  value: ToggleGroupValue | undefined,
 ): readonly string[] | undefined => {
   if (value === undefined) {
     return undefined;
@@ -67,7 +67,7 @@ function ToggleGroup({
     <ToggleGroupPrimitive
       className={cn(
         "group/toggle-group flex w-fit items-center gap-[--spacing(var(--gap))] rounded-md data-[spacing=default]:data-[variant=outline]:shadow-xs",
-        className
+        className,
       )}
       data-size={size}
       data-slot="toggle-group"
@@ -91,7 +91,7 @@ function ToggleGroup({
       value={normalizeToggleGroupValue(value)}
       {...props}
     >
-      <ToggleGroupContext.Provider value={{ variant, size, spacing }}>
+      <ToggleGroupContext.Provider value={{ size, spacing, variant }}>
         {children}
       </ToggleGroupContext.Provider>
     </ToggleGroupPrimitive>
@@ -104,20 +104,19 @@ function ToggleGroupItem({
   variant,
   size,
   ...props
-}: React.ComponentProps<typeof TogglePrimitive> &
-  VariantProps<typeof toggleVariants>) {
+}: React.ComponentProps<typeof TogglePrimitive> & VariantProps<typeof toggleVariants>) {
   const context = useContext(ToggleGroupContext);
 
   return (
     <TogglePrimitive
       className={cn(
         toggleVariants({
-          variant: context.variant || variant,
           size: context.size || size,
+          variant: context.variant || variant,
         }),
         "w-auto min-w-0 shrink-0 px-3 focus:z-10 focus-visible:z-10",
         "data-[spacing=0]:data-[variant=outline]:border-l-0 data-[spacing=0]:rounded-none data-[spacing=0]:shadow-none data-[spacing=0]:last:rounded-r-md data-[spacing=0]:data-[variant=outline]:first:border-l data-[spacing=0]:first:rounded-l-md",
-        className
+        className,
       )}
       data-size={context.size || size}
       data-slot="toggle-group-item"

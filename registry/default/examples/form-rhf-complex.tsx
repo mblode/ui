@@ -40,60 +40,57 @@ import { Switch } from "@/registry/default/ui/switch";
 
 const addons = [
   {
+    description: "Advanced analytics and reporting",
     id: "analytics",
     title: "Analytics",
-    description: "Advanced analytics and reporting",
   },
   {
+    description: "Automated daily backups",
     id: "backup",
     title: "Backup",
-    description: "Automated daily backups",
   },
   {
+    description: "24/7 premium customer support",
     id: "support",
     title: "Priority Support",
-    description: "24/7 premium customer support",
   },
 ] as const;
 
 const formSchema = z.object({
-  plan: z.enum(["basic", "pro"]),
-  billingPeriod: z.string().min(1, "Please select a billing period"),
   addons: z
     .array(z.string())
     .min(1, "Please select at least one add-on")
     .max(3, "You can select up to 3 add-ons")
-    .refine(
-      (value) => value.every((addon) => addons.some((a) => a.id === addon)),
-      {
-        message: "You selected an invalid add-on",
-      }
-    ),
+    .refine((value) => value.every((addon) => addons.some((a) => a.id === addon)), {
+      message: "You selected an invalid add-on",
+    }),
+  billingPeriod: z.string().min(1, "Please select a billing period"),
   emailNotifications: z.boolean(),
+  plan: z.enum(["basic", "pro"]),
 });
 
 export default function FormRhfComplex() {
   const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
     defaultValues: {
-      plan: "basic",
-      billingPeriod: "",
       addons: [],
+      billingPeriod: "",
       emailNotifications: false,
+      plan: "basic",
     },
+    resolver: zodResolver(formSchema),
   });
 
   function onSubmit(data: z.infer<typeof formSchema>) {
     toast("You submitted the following values:", {
+      classNames: {
+        content: "flex flex-col gap-2",
+      },
       description: (
         <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
           <code>{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
       position: "bottom-right",
-      classNames: {
-        content: "flex flex-col gap-2",
-      },
       style: {
         "--border-radius": "calc(var(--radius)  + 4px)",
       } as React.CSSProperties,
@@ -104,9 +101,7 @@ export default function FormRhfComplex() {
     <Card className="w-full max-w-sm">
       <CardHeader className="border-b">
         <CardTitle>You&apos;re almost there!</CardTitle>
-        <CardDescription>
-          Choose your subscription plan and billing period.
-        </CardDescription>
+        <CardDescription>Choose your subscription plan and billing period.</CardDescription>
       </CardHeader>
       <CardContent>
         <form id="form-rhf-complex" onSubmit={form.handleSubmit(onSubmit)}>
@@ -119,9 +114,7 @@ export default function FormRhfComplex() {
                 return (
                   <FieldSet data-invalid={isInvalid}>
                     <FieldLegend variant="label">Subscription Plan</FieldLegend>
-                    <FieldDescription>
-                      Choose your subscription plan.
-                    </FieldDescription>
+                    <FieldDescription>Choose your subscription plan.</FieldDescription>
                     <RadioGroup
                       aria-invalid={isInvalid}
                       name={field.name}
@@ -132,28 +125,18 @@ export default function FormRhfComplex() {
                         <Field orientation="horizontal">
                           <FieldContent>
                             <FieldTitle>Basic</FieldTitle>
-                            <FieldDescription>
-                              For individuals and small teams
-                            </FieldDescription>
+                            <FieldDescription>For individuals and small teams</FieldDescription>
                           </FieldContent>
-                          <RadioGroupItem
-                            id="form-rhf-complex-basic"
-                            value="basic"
-                          />
+                          <RadioGroupItem id="form-rhf-complex-basic" value="basic" />
                         </Field>
                       </FieldLabel>
                       <FieldLabel htmlFor="form-rhf-complex-pro">
                         <Field orientation="horizontal">
                           <FieldContent>
                             <FieldTitle>Pro</FieldTitle>
-                            <FieldDescription>
-                              For businesses with higher demands
-                            </FieldDescription>
+                            <FieldDescription>For businesses with higher demands</FieldDescription>
                           </FieldContent>
-                          <RadioGroupItem
-                            id="form-rhf-complex-pro"
-                            value="pro"
-                          />
+                          <RadioGroupItem id="form-rhf-complex-pro" value="pro" />
                         </Field>
                       </FieldLabel>
                     </RadioGroup>
@@ -168,14 +151,8 @@ export default function FormRhfComplex() {
               name="billingPeriod"
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel htmlFor="form-rhf-complex-billingPeriod">
-                    Billing Period
-                  </FieldLabel>
-                  <Select
-                    name={field.name}
-                    onValueChange={field.onChange}
-                    value={field.value}
-                  >
+                  <FieldLabel htmlFor="form-rhf-complex-billingPeriod">Billing Period</FieldLabel>
+                  <Select name={field.name} onValueChange={field.onChange} value={field.value}>
                     <SelectTrigger
                       aria-invalid={fieldState.invalid}
                       id="form-rhf-complex-billingPeriod"
@@ -187,12 +164,8 @@ export default function FormRhfComplex() {
                       <SelectItem value="yearly">Yearly</SelectItem>
                     </SelectContent>
                   </Select>
-                  <FieldDescription>
-                    Choose how often you want to be billed.
-                  </FieldDescription>
-                  {fieldState.invalid && (
-                    <FieldError errors={[fieldState.error]} />
-                  )}
+                  <FieldDescription>Choose how often you want to be billed.</FieldDescription>
+                  {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
                 </Field>
               )}
             />
@@ -221,9 +194,7 @@ export default function FormRhfComplex() {
                           onCheckedChange={(checked) => {
                             const newValue = checked
                               ? [...field.value, addon.id]
-                              : field.value.filter(
-                                  (value) => value !== addon.id
-                                );
+                              : field.value.filter((value) => value !== addon.id);
                             field.onChange(newValue);
                             field.onBlur();
                           }}
@@ -232,16 +203,12 @@ export default function FormRhfComplex() {
                           <FieldLabel htmlFor={`form-rhf-complex-${addon.id}`}>
                             {addon.title}
                           </FieldLabel>
-                          <FieldDescription>
-                            {addon.description}
-                          </FieldDescription>
+                          <FieldDescription>{addon.description}</FieldDescription>
                         </FieldContent>
                       </Field>
                     ))}
                   </FieldGroup>
-                  {fieldState.invalid && (
-                    <FieldError errors={[fieldState.error]} />
-                  )}
+                  {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
                 </FieldSet>
               )}
             />
@@ -250,10 +217,7 @@ export default function FormRhfComplex() {
               control={form.control}
               name="emailNotifications"
               render={({ field, fieldState }) => (
-                <Field
-                  data-invalid={fieldState.invalid}
-                  orientation="horizontal"
-                >
+                <Field data-invalid={fieldState.invalid} orientation="horizontal">
                   <FieldContent>
                     <FieldLabel htmlFor="form-rhf-complex-emailNotifications">
                       Email Notifications
@@ -269,9 +233,7 @@ export default function FormRhfComplex() {
                     name={field.name}
                     onCheckedChange={field.onChange}
                   />
-                  {fieldState.invalid && (
-                    <FieldError errors={[fieldState.error]} />
-                  )}
+                  {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
                 </Field>
               )}
             />

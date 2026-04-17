@@ -1,6 +1,7 @@
 "use client";
 
-import Image, { type ImageProps } from "next/image";
+import Image from "next/image";
+import type { ImageProps } from "next/image";
 import { useEffect, useState } from "react";
 
 export default function BlurImage(props: ImageProps) {

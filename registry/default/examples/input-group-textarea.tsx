@@ -1,9 +1,4 @@
-import {
-  CodeIcon,
-  CopyIcon,
-  CornerDownLeftIcon,
-  RefreshCcwIcon,
-} from "blode-icons-react";
+import { CodeIcon, CopyIcon, CornerDownLeftIcon, RefreshCcwIcon } from "blode-icons-react";
 import {
   InputGroup,
   InputGroupAddon,

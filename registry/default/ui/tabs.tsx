@@ -1,7 +1,8 @@
 "use client";
 
 import { Tabs as TabsPrimitive } from "@base-ui/react/tabs";
-import { cva, type VariantProps } from "class-variance-authority";
+import { cva } from "class-variance-authority";
+import type { VariantProps } from "class-variance-authority";
 import mergeRefs from "merge-refs";
 import * as React from "react";
 
@@ -15,10 +16,7 @@ function Tabs({
 }: React.ComponentProps<typeof TabsPrimitive.Root>) {
   return (
     <TabsPrimitive.Root
-      className={cn(
-        "group/tabs flex gap-2 data-horizontal:flex-col",
-        className
-      )}
+      className={cn("group/tabs flex gap-2 data-horizontal:flex-col", className)}
       data-orientation={orientation}
       data-slot="tabs"
       orientation={orientation}
@@ -30,16 +28,16 @@ function Tabs({
 const tabsListVariants = cva(
   "group/tabs-list relative isolate inline-flex w-fit items-center justify-center rounded-lg p-[3px] text-muted-foreground data-[variant=line]:rounded-none group-data-horizontal/tabs:h-8 group-data-vertical/tabs:h-fit group-data-vertical/tabs:flex-col",
   {
+    defaultVariants: {
+      variant: "default",
+    },
     variants: {
       variant: {
         default: "bg-muted",
         line: "gap-1 bg-transparent",
       },
     },
-    defaultVariants: {
-      variant: "default",
-    },
-  }
+  },
 );
 
 function TabsList({
@@ -47,8 +45,7 @@ function TabsList({
   variant = "default",
   ref,
   ...props
-}: React.ComponentProps<typeof TabsPrimitive.List> &
-  VariantProps<typeof tabsListVariants>) {
+}: React.ComponentProps<typeof TabsPrimitive.List> & VariantProps<typeof tabsListVariants>) {
   const [indicatorStyle, setIndicatorStyle] = React.useState({
     height: 0,
     left: 0,
@@ -96,7 +93,7 @@ function TabsList({
             canAnimateIndicator
               ? "transition-[width,height,transform,opacity] duration-300"
               : "transition-none",
-            hasIndicatorPosition ? "opacity-100" : "opacity-0"
+            hasIndicatorPosition ? "opacity-100" : "opacity-0",
           )}
           style={{
             height: `${indicatorStyle.height}px`,
@@ -111,10 +108,7 @@ function TabsList({
   );
 }
 
-function TabsTrigger({
-  className,
-  ...props
-}: React.ComponentProps<typeof TabsPrimitive.Tab>) {
+function TabsTrigger({ className, ...props }: React.ComponentProps<typeof TabsPrimitive.Tab>) {
   return (
     <TabsPrimitive.Tab
       className={cn(
@@ -122,7 +116,7 @@ function TabsTrigger({
         "group-data-[variant=line]/tabs-list:bg-transparent group-data-[variant=line]/tabs-list:data-active:bg-transparent dark:group-data-[variant=line]/tabs-list:data-active:border-transparent dark:group-data-[variant=line]/tabs-list:data-active:bg-transparent",
         "data-active:text-foreground group-data-[variant=default]/tabs-list:data-active:bg-transparent dark:data-active:text-foreground group-data-[variant=default]/tabs-list:dark:data-active:border-transparent group-data-[variant=default]/tabs-list:dark:data-active:bg-transparent",
         "after:absolute after:bg-foreground after:opacity-0 after:transition-opacity group-data-horizontal/tabs:after:inset-x-0 group-data-vertical/tabs:after:inset-y-0 group-data-vertical/tabs:after:-right-1 group-data-horizontal/tabs:after:bottom-[-5px] group-data-horizontal/tabs:after:h-0.5 group-data-vertical/tabs:after:w-0.5 group-data-[variant=line]/tabs-list:data-active:after:opacity-100",
-        className
+        className,
       )}
       data-slot="tabs-trigger"
       {...props}
@@ -130,10 +124,7 @@ function TabsTrigger({
   );
 }
 
-function TabsContent({
-  className,
-  ...props
-}: React.ComponentProps<typeof TabsPrimitive.Panel>) {
+function TabsContent({ className, ...props }: React.ComponentProps<typeof TabsPrimitive.Panel>) {
   return (
     <TabsPrimitive.Panel
       className={cn("flex-1 text-sm outline-none", className)}

@@ -4,17 +4,9 @@ import { registrySchema } from "shadcn/schema";
 import { Project, SyntaxKind } from "ts-morph";
 
 import { registry } from "../registry/index";
-import {
-  STYLE_BASE_DEPENDENCIES,
-  STYLE_BASE_REGISTRY_DEPENDENCIES,
-} from "../registry/style-base";
+import { STYLE_BASE_DEPENDENCIES, STYLE_BASE_REGISTRY_DEPENDENCIES } from "../registry/style-base";
 
-const CHECKED_TYPES = new Set([
-  "registry:ui",
-  "registry:lib",
-  "registry:block",
-  "registry:base",
-]);
+const CHECKED_TYPES = new Set(["registry:ui", "registry:lib", "registry:block", "registry:base"]);
 const IGNORED_PACKAGES = new Set(["next", "react", "react-dom"]);
 
 const NODE_PREFIX_RE = /^node:/;
@@ -25,14 +17,14 @@ const UNSCOPED_DECLARED_WITH_VERSION_RE = /^([^/@]+)(?:@.*)?$/;
 const UNSCOPED_REGISTRY_WITH_VERSION_RE = /^([^@]+)(?:@.*)?$/;
 
 const NODE_BUILTINS = new Set(
-  builtinModules.flatMap((mod) => [mod, mod.replace(NODE_PREFIX_RE, "")])
+  builtinModules.flatMap((mod) => [mod, mod.replace(NODE_PREFIX_RE, "")]),
 );
 
 type AliasMatcher = (specifier: string) => boolean;
 type RegistryItem = (typeof registry.items)[number];
 interface DependencyIssue {
   item: string;
-  missing: Array<{ dependency: string; files: string[] }>;
+  missing: { dependency: string; files: string[] }[];
   type: string;
 }
 
@@ -44,15 +36,12 @@ function createAliasMatchers(project: Project): AliasMatcher[] {
     if (alias.includes("*")) {
       const [prefix, suffix] = alias.split("*");
       matchers.push(
-        (specifier) =>
-          specifier.startsWith(prefix) && specifier.endsWith(suffix ?? "")
+        (specifier) => specifier.startsWith(prefix) && specifier.endsWith(suffix ?? ""),
       );
       continue;
     }
 
-    matchers.push(
-      (specifier) => specifier === alias || specifier.startsWith(`${alias}/`)
-    );
+    matchers.push((specifier) => specifier === alias || specifier.startsWith(`${alias}/`));
   }
 
   return matchers;
@@ -110,10 +99,7 @@ function extractPackageName(specifier: string): string | null {
   return name || null;
 }
 
-function resolveExternalPackage(
-  specifier: string,
-  aliasMatchers: AliasMatcher[]
-): string | null {
+function resolveExternalPackage(specifier: string, aliasMatchers: AliasMatcher[]): string | null {
   if (
     !specifier ||
     specifier.startsWith(".") ||
@@ -147,9 +133,7 @@ function resolveExternalPackage(
   return packageName;
 }
 
-function collectSpecifiers(
-  sourceFile: import("ts-morph").SourceFile
-): Set<string> {
+function collectSpecifiers(sourceFile: import("ts-morph").SourceFile): Set<string> {
   const specifiers = new Set<string>();
 
   for (const declaration of sourceFile.getImportDeclarations()) {
@@ -163,9 +147,7 @@ function collectSpecifiers(
     }
   }
 
-  for (const call of sourceFile.getDescendantsOfKind(
-    SyntaxKind.CallExpression
-  )) {
+  for (const call of sourceFile.getDescendantsOfKind(SyntaxKind.CallExpression)) {
     const [firstArg] = call.getArguments();
     if (!firstArg?.isKind(SyntaxKind.StringLiteral)) {
       continue;
@@ -174,8 +156,7 @@ function collectSpecifiers(
     const expression = call.getExpression();
     const isDynamicImport = expression.isKind(SyntaxKind.ImportKeyword);
     const isRequireCall =
-      expression.isKind(SyntaxKind.Identifier) &&
-      expression.getText() === "require";
+      expression.isKind(SyntaxKind.Identifier) && expression.getText() === "require";
 
     if (isDynamicImport || isRequireCall) {
       specifiers.add(firstArg.getLiteralText());
@@ -187,7 +168,7 @@ function collectSpecifiers(
 
 function createRegistryItemLookup(
   items: RegistryItem[],
-  registryName: string
+  registryName: string,
 ): Map<string, RegistryItem> {
   const lookup = new Map<string, RegistryItem>();
   const [rawScope] = registryName.split("/");
@@ -214,7 +195,7 @@ function createRegistryItemLookup(
 
 function resolveRegistryItem(
   reference: string,
-  lookup: Map<string, RegistryItem>
+  lookup: Map<string, RegistryItem>,
 ): RegistryItem | null {
   const normalized = normalizeRegistryReference(reference);
   if (!normalized || HTTP_URL_RE.test(normalized)) {
@@ -241,7 +222,7 @@ function collectDeclaredDependencies(
   item: RegistryItem,
   lookup: Map<string, RegistryItem>,
   cache: Map<string, Set<string>>,
-  visiting: Set<string> = new Set()
+  visiting = new Set<string>(),
 ): Set<string> {
   const cached = cache.get(item.name);
   if (cached) {
@@ -256,8 +237,8 @@ function collectDeclaredDependencies(
 
   const collected = new Set(
     [...(item.dependencies ?? []), ...(item.devDependencies ?? [])].map(
-      normalizeDeclaredDependency
-    )
+      normalizeDeclaredDependency,
+    ),
   );
 
   for (const registryDependency of item.registryDependencies ?? []) {
@@ -270,7 +251,7 @@ function collectDeclaredDependencies(
       dependencyItem,
       lookup,
       cache,
-      visiting
+      visiting,
     );
     for (const dependency of transitiveDependencies) {
       collected.add(dependency);
@@ -284,12 +265,10 @@ function collectDeclaredDependencies(
 
 function collectSharedStyleDependencies(
   lookup: Map<string, RegistryItem>,
-  cache: Map<string, Set<string>>
+  cache: Map<string, Set<string>>,
 ): Set<string> {
   const shared = new Set(
-    STYLE_BASE_DEPENDENCIES.map((dependency) =>
-      normalizeDeclaredDependency(dependency)
-    )
+    STYLE_BASE_DEPENDENCIES.map((dependency) => normalizeDeclaredDependency(dependency)),
   );
 
   for (const registryDependency of STYLE_BASE_REGISTRY_DEPENDENCIES) {
@@ -298,11 +277,7 @@ function collectSharedStyleDependencies(
       continue;
     }
 
-    const transitiveDependencies = collectDeclaredDependencies(
-      dependencyItem,
-      lookup,
-      cache
-    );
+    const transitiveDependencies = collectDeclaredDependencies(dependencyItem, lookup, cache);
     for (const dependency of transitiveDependencies) {
       shared.add(dependency);
     }
@@ -314,18 +289,13 @@ function collectSharedStyleDependencies(
 function collectImportedPackagesForItem(
   item: RegistryItem,
   project: Project,
-  aliasMatchers: AliasMatcher[]
+  aliasMatchers: AliasMatcher[],
 ): Map<string, Set<string>> {
   const packageToFiles = new Map<string, Set<string>>();
 
   for (const rawFile of item.files ?? []) {
     const filePath = typeof rawFile === "string" ? rawFile : rawFile.path;
-    const absolutePath = path.join(
-      process.cwd(),
-      "registry",
-      "default",
-      filePath
-    );
+    const absolutePath = path.join(process.cwd(), "registry", "default", filePath);
     const sourceFile = project.addSourceFileAtPathIfExists(absolutePath);
 
     if (!sourceFile) {
@@ -354,33 +324,25 @@ function findIssueForItem(
   aliasMatchers: AliasMatcher[],
   itemLookup: Map<string, RegistryItem>,
   dependencyCache: Map<string, Set<string>>,
-  sharedStyleDependencies: Set<string>
+  sharedStyleDependencies: Set<string>,
 ): DependencyIssue | null {
   if (!CHECKED_TYPES.has(item.type)) {
     return null;
   }
 
-  const declaredDependencies = collectDeclaredDependencies(
-    item,
-    itemLookup,
-    dependencyCache
-  );
+  const declaredDependencies = collectDeclaredDependencies(item, itemLookup, dependencyCache);
   for (const dependency of sharedStyleDependencies) {
     declaredDependencies.add(dependency);
   }
 
-  const packageToFiles = collectImportedPackagesForItem(
-    item,
-    project,
-    aliasMatchers
-  );
+  const packageToFiles = collectImportedPackagesForItem(item, project, aliasMatchers);
 
-  const missing = Array.from(packageToFiles.entries())
+  const missing = [...packageToFiles.entries()]
     .filter(([dependency]) => !declaredDependencies.has(dependency))
-    .sort(([left], [right]) => left.localeCompare(right))
+    .toSorted(([left], [right]) => left.localeCompare(right))
     .map(([dependency, files]) => ({
       dependency,
-      files: Array.from(files).sort(),
+      files: [...files].toSorted(),
     }));
 
   if (missing.length === 0) {
@@ -389,8 +351,8 @@ function findIssueForItem(
 
   return {
     item: item.name,
-    type: item.type,
     missing,
+    type: item.type,
   };
 }
 
@@ -400,7 +362,7 @@ function collectIssues(
   aliasMatchers: AliasMatcher[],
   itemLookup: Map<string, RegistryItem>,
   dependencyCache: Map<string, Set<string>>,
-  sharedStyleDependencies: Set<string>
+  sharedStyleDependencies: Set<string>,
 ): DependencyIssue[] {
   const issues: DependencyIssue[] = [];
 
@@ -411,7 +373,7 @@ function collectIssues(
       aliasMatchers,
       itemLookup,
       dependencyCache,
-      sharedStyleDependencies
+      sharedStyleDependencies,
     );
 
     if (issue) {
@@ -432,14 +394,12 @@ function reportIssues(issues: DependencyIssue[]): void {
   for (const issue of issues) {
     console.error(`\n- ${issue.item} (${issue.type})`);
     for (const missing of issue.missing) {
-      console.error(
-        `  - missing "${missing.dependency}" imported by: ${missing.files.join(", ")}`
-      );
+      console.error(`  - missing "${missing.dependency}" imported by: ${missing.files.join(", ")}`);
     }
   }
 
   console.error(
-    "\nAdd missing packages to the relevant item `dependencies` in its `_registry.ts` entry."
+    "\nAdd missing packages to the relevant item `dependencies` in its `_registry.ts` entry.",
   );
   process.exit(1);
 }
@@ -447,20 +407,14 @@ function reportIssues(issues: DependencyIssue[]): void {
 function run(): void {
   const parsedRegistry = registrySchema.parse(registry);
   const project = new Project({
-    tsConfigFilePath: path.join(process.cwd(), "tsconfig.json"),
     skipAddingFilesFromTsConfig: true,
+    tsConfigFilePath: path.join(process.cwd(), "tsconfig.json"),
   });
   const aliasMatchers = createAliasMatchers(project);
 
-  const itemLookup = createRegistryItemLookup(
-    parsedRegistry.items,
-    parsedRegistry.name
-  );
+  const itemLookup = createRegistryItemLookup(parsedRegistry.items, parsedRegistry.name);
   const dependencyCache = new Map<string, Set<string>>();
-  const sharedStyleDependencies = collectSharedStyleDependencies(
-    itemLookup,
-    dependencyCache
-  );
+  const sharedStyleDependencies = collectSharedStyleDependencies(itemLookup, dependencyCache);
 
   const issues = collectIssues(
     parsedRegistry.items,
@@ -468,7 +422,7 @@ function run(): void {
     aliasMatchers,
     itemLookup,
     dependencyCache,
-    sharedStyleDependencies
+    sharedStyleDependencies,
   );
 
   reportIssues(issues);

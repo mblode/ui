@@ -27,11 +27,7 @@ export function CodeBlockWrapper({
     >
       <CollapsibleTrigger asChild>
         <div className="absolute top-1.5 right-9 z-10 flex items-center">
-          <Button
-            className="h-7 rounded-md px-2 text-muted-foreground"
-            size="sm"
-            variant="ghost"
-          >
+          <Button className="h-7 rounded-md px-2 text-muted-foreground" size="sm" variant="ghost">
             {isOpened ? "Collapse" : "Expand"}
           </Button>
           <Separator className="!h-4 mx-1.5" orientation="vertical" />

@@ -12,14 +12,10 @@ type PopoverInteractOutsideEvent = Event & {
 interface PopoverContextType {
   anchor: HTMLElement | null;
   setAnchor: (anchor: HTMLElement | null) => void;
-  setOnInteractOutside: (
-    handler?: (event: PopoverInteractOutsideEvent) => void
-  ) => void;
+  setOnInteractOutside: (handler?: (event: PopoverInteractOutsideEvent) => void) => void;
 }
 
-const PopoverContext = React.createContext<PopoverContextType | undefined>(
-  undefined
-);
+const PopoverContext = React.createContext<PopoverContextType | undefined>(undefined);
 
 const usePopoverContext = () => React.useContext(PopoverContext);
 
@@ -34,28 +30,21 @@ function setRef<T>(ref: React.Ref<T> | undefined, value: T) {
   }
 }
 
-function Popover({
-  onOpenChange,
-  ...props
-}: React.ComponentProps<typeof PopoverPrimitive.Root>) {
+function Popover({ onOpenChange, ...props }: React.ComponentProps<typeof PopoverPrimitive.Root>) {
   const [anchor, setAnchor] = React.useState<HTMLElement | null>(null);
   const onInteractOutsideRef = React.useRef<
     ((event: PopoverInteractOutsideEvent) => void) | undefined
   >(undefined);
 
   const handleOpenChange = React.useCallback<
-    NonNullable<
-      React.ComponentProps<typeof PopoverPrimitive.Root>["onOpenChange"]
-    >
+    NonNullable<React.ComponentProps<typeof PopoverPrimitive.Root>["onOpenChange"]>
   >(
     (open, eventDetails) => {
       if (!open && eventDetails.reason === "outside-press") {
         const interactHandler = onInteractOutsideRef.current;
 
         if (interactHandler) {
-          const wrappedEvent = Object.create(
-            eventDetails.event
-          ) as PopoverInteractOutsideEvent;
+          const wrappedEvent = Object.create(eventDetails.event) as PopoverInteractOutsideEvent;
           wrappedEvent.preventDefault = () => eventDetails.cancel();
           interactHandler(wrappedEvent);
         }
@@ -63,7 +52,7 @@ function Popover({
 
       onOpenChange?.(open, eventDetails);
     },
-    [onOpenChange]
+    [onOpenChange],
   );
 
   return (
@@ -76,11 +65,7 @@ function Popover({
         },
       }}
     >
-      <PopoverPrimitive.Root
-        data-slot="popover"
-        onOpenChange={handleOpenChange}
-        {...props}
-      />
+      <PopoverPrimitive.Root data-slot="popover" onOpenChange={handleOpenChange} {...props} />
     </PopoverContext.Provider>
   );
 }
@@ -93,16 +78,10 @@ function PopoverTrigger({
   asChild?: boolean;
 }) {
   const render =
-    asChild && React.isValidElement(children)
-      ? (children as React.ReactElement)
-      : undefined;
+    asChild && React.isValidElement(children) ? (children as React.ReactElement) : undefined;
 
   return (
-    <PopoverPrimitive.Trigger
-      data-slot="popover-trigger"
-      render={render}
-      {...props}
-    >
+    <PopoverPrimitive.Trigger data-slot="popover-trigger" render={render} {...props}>
       {asChild ? null : children}
     </PopoverPrimitive.Trigger>
   );
@@ -151,9 +130,7 @@ function PopoverContent({
   }, [onOpenAutoFocus]);
 
   const render =
-    asChild && React.isValidElement(children)
-      ? (children as React.ReactElement)
-      : undefined;
+    asChild && React.isValidElement(children) ? (children as React.ReactElement) : undefined;
 
   return (
     <PopoverPrimitive.Portal>
@@ -168,7 +145,7 @@ function PopoverContent({
         <PopoverPrimitive.Popup
           className={cn(
             "data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 w-72 origin-(--transform-origin) rounded-md border bg-popover p-4 text-popover-foreground shadow-soft outline-hidden data-closed:animate-out data-open:animate-in",
-            className
+            className,
           )}
           data-slot="popover-content"
           initialFocus={onOpenAutoFocus ? false : initialFocus}
@@ -197,7 +174,7 @@ function PopoverAnchor({
       popoverContext?.setAnchor(node);
       setRef(ref as React.Ref<HTMLElement> | undefined, node);
     },
-    [popoverContext, ref]
+    [popoverContext, ref],
   );
 
   if (asChild && React.isValidElement(children)) {
@@ -233,19 +210,10 @@ function PopoverHeader({ className, ...props }: React.ComponentProps<"div">) {
 }
 
 function PopoverTitle({ className, ...props }: React.ComponentProps<"h2">) {
-  return (
-    <div
-      className={cn("font-medium", className)}
-      data-slot="popover-title"
-      {...props}
-    />
-  );
+  return <div className={cn("font-medium", className)} data-slot="popover-title" {...props} />;
 }
 
-function PopoverDescription({
-  className,
-  ...props
-}: React.ComponentProps<"p">) {
+function PopoverDescription({ className, ...props }: React.ComponentProps<"p">) {
   return (
     <p
       className={cn("text-muted-foreground", className)}

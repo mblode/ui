@@ -25,27 +25,18 @@ export function DocPager({ doc }: DocsPagerProps) {
           href={pager.prev.href}
           title={pager.prev.title}
         >
-          <ChevronLeftIcon
-            aria-hidden="true"
-            className="mr-2 size-4 shrink-0"
-          />
+          <ChevronLeftIcon aria-hidden="true" className="mr-2 size-4 shrink-0" />
           <span className="truncate">{pager.prev.title}</span>
         </Link>
       )}
       {pager?.next?.href && (
         <Link
-          className={cn(
-            buttonVariants({ variant: "ghost" }),
-            "ml-auto min-w-0 text-right"
-          )}
+          className={cn(buttonVariants({ variant: "ghost" }), "ml-auto min-w-0 text-right")}
           href={pager.next.href}
           title={pager.next.title}
         >
           <span className="truncate">{pager.next.title}</span>
-          <ChevronRightIcon
-            aria-hidden="true"
-            className="ml-2 size-4 shrink-0"
-          />
+          <ChevronRightIcon aria-hidden="true" className="ml-2 size-4 shrink-0" />
         </Link>
       )}
     </div>
@@ -58,16 +49,13 @@ export function getPagerForDoc(doc: Doc) {
     (link) =>
       doc.slug === link?.href ||
       doc.slug === `${link?.href}/index` ||
-      doc.slug === `${link?.href}/`
+      doc.slug === `${link?.href}/`,
   );
   const prev = activeIndex !== 0 ? flattenedLinks[activeIndex - 1] : null;
-  const next =
-    activeIndex !== flattenedLinks.length - 1
-      ? flattenedLinks[activeIndex + 1]
-      : null;
+  const next = activeIndex !== flattenedLinks.length - 1 ? flattenedLinks[activeIndex + 1] : null;
   return {
-    prev,
     next,
+    prev,
   };
 }
 
@@ -75,9 +63,7 @@ export function flatten(links: NavItemWithChildren[]): NavItem[] {
   return links
     .reduce<NavItem[]>((flat, link) => {
       if (link.items?.length) {
-        return flat.concat(
-          link.href ? [link, ...flatten(link.items)] : flatten(link.items)
-        );
+        return flat.concat(link.href ? [link, ...flatten(link.items)] : flatten(link.items));
       }
       return flat.concat(link);
     }, [])

@@ -43,34 +43,31 @@ const formSchema = z.object({
   tasks: z
     .array(z.string())
     .min(1, "Please select at least one notification type.")
-    .refine(
-      (value) => value.every((task) => tasks.some((t) => t.id === task)),
-      {
-        message: "Invalid notification type selected.",
-      }
-    ),
+    .refine((value) => value.every((task) => tasks.some((t) => t.id === task)), {
+      message: "Invalid notification type selected.",
+    }),
 });
 
 export default function FormRhfCheckbox() {
   const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
     defaultValues: {
       responses: true,
       tasks: [],
     },
+    resolver: zodResolver(formSchema),
   });
 
   function onSubmit(data: z.infer<typeof formSchema>) {
     toast("You submitted the following values:", {
+      classNames: {
+        content: "flex flex-col gap-2",
+      },
       description: (
         <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
           <code>{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
       position: "bottom-right",
-      classNames: {
-        content: "flex flex-col gap-2",
-      },
       style: {
         "--border-radius": "calc(var(--radius)  + 4px)",
       } as React.CSSProperties,
@@ -94,8 +91,7 @@ export default function FormRhfCheckbox() {
                   <FieldSet data-invalid={fieldState.invalid}>
                     <FieldLegend variant="label">Responses</FieldLegend>
                     <FieldDescription>
-                      Get notified for requests that take time, like research or
-                      image generation.
+                      Get notified for requests that take time, like research or image generation.
                     </FieldDescription>
                     <FieldGroup data-slot="checkbox-group">
                       <Field orientation="horizontal">
@@ -106,18 +102,13 @@ export default function FormRhfCheckbox() {
                           name={field.name}
                           onCheckedChange={field.onChange}
                         />
-                        <FieldLabel
-                          className="font-normal"
-                          htmlFor="form-rhf-checkbox-responses"
-                        >
+                        <FieldLabel className="font-normal" htmlFor="form-rhf-checkbox-responses">
                           Push notifications
                         </FieldLabel>
                       </Field>
                     </FieldGroup>
                   </FieldSet>
-                  {fieldState.invalid && (
-                    <FieldError errors={[fieldState.error]} />
-                  )}
+                  {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
                 </div>
               )}
             />
@@ -147,9 +138,7 @@ export default function FormRhfCheckbox() {
                             onCheckedChange={(checked) => {
                               const newValue = checked
                                 ? [...field.value, task.id]
-                                : field.value.filter(
-                                    (value) => value !== task.id
-                                  );
+                                : field.value.filter((value) => value !== task.id);
                               field.onChange(newValue);
                             }}
                           />
@@ -163,9 +152,7 @@ export default function FormRhfCheckbox() {
                       ))}
                     </FieldGroup>
                   </FieldSet>
-                  {fieldState.invalid && (
-                    <FieldError errors={[fieldState.error]} />
-                  )}
+                  {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
                 </FieldGroup>
               )}
             />

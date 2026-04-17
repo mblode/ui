@@ -22,8 +22,7 @@
   --shadow-popover:
     0 24px 40px -12px oklch(0.255 0.078 116.06 / 0.08),
     0 16px 28px -8px oklch(0.255 0.078 116.06 / 0.04),
-    0 4px 6px -2px oklch(0.255 0.078 116.06 / 0.04),
-    0 0 2px 0 oklch(0.255 0.078 116.06 / 0.04),
+    0 4px 6px -2px oklch(0.255 0.078 116.06 / 0.04), 0 0 2px 0 oklch(0.255 0.078 116.06 / 0.04),
     0 0 0 1px oklch(0.255 0.078 116.06 / 0.04);
   --shadow-xs:
     0 0 0 1px rgba(51, 51, 51, 0.04), 0 4px 8px -2px rgba(51, 51, 51, 0.06),
@@ -31,26 +30,18 @@
     inset 0 -1px 1px -0.5px rgba(51, 51, 51, 0.06);
   --shadow-sm:
     0 0 0 1px rgba(51, 51, 51, 0.04), 0 16px 8px -8px rgba(51, 51, 51, 0.01),
-    0 12px 6px -6px rgba(51, 51, 51, 0.02),
-    0 5px 5px -2.5px rgba(51, 51, 51, 0.08),
-    0 1px 3px -1.5px rgba(51, 51, 51, 0.16),
-    inset 0 -0.5px 0.5px rgba(51, 51, 51, 0.08);
+    0 12px 6px -6px rgba(51, 51, 51, 0.02), 0 5px 5px -2.5px rgba(51, 51, 51, 0.08),
+    0 1px 3px -1.5px rgba(51, 51, 51, 0.16), inset 0 -0.5px 0.5px rgba(51, 51, 51, 0.08);
   --shadow-md:
     0 0 0 1px rgba(51, 51, 51, 0.04), 0 1px 1px 0.5px rgba(51, 51, 51, 0.04),
-    0 3px 3px -1.5px rgba(51, 51, 51, 0.02),
-    0 6px 6px -3px rgba(51, 51, 51, 0.04),
-    0 12px 12px -6px rgba(51, 51, 51, 0.04),
-    0 24px 24px -12px rgba(51, 51, 51, 0.04),
-    0 48px 48px -24px rgba(51, 51, 51, 0.04),
-    inset 0 -1px 1px -0.5px rgba(51, 51, 51, 0.06);
+    0 3px 3px -1.5px rgba(51, 51, 51, 0.02), 0 6px 6px -3px rgba(51, 51, 51, 0.04),
+    0 12px 12px -6px rgba(51, 51, 51, 0.04), 0 24px 24px -12px rgba(51, 51, 51, 0.04),
+    0 48px 48px -24px rgba(51, 51, 51, 0.04), inset 0 -1px 1px -0.5px rgba(51, 51, 51, 0.06);
   --shadow-lg:
     0 0 0 1px rgba(51, 51, 51, 0.04), 0 1px 1px 0.5px rgba(51, 51, 51, 0.04),
-    0 3px 3px -1.5px rgba(51, 51, 51, 0.02),
-    0 6px 6px -3px rgba(51, 51, 51, 0.04),
-    0 12px 12px -6px rgba(51, 51, 51, 0.04),
-    0 24px 24px -12px rgba(51, 51, 51, 0.04),
-    0 48px 48px -24px rgba(51, 51, 51, 0.04),
-    0 96px 96px -32px rgba(51, 51, 51, 0.06),
+    0 3px 3px -1.5px rgba(51, 51, 51, 0.02), 0 6px 6px -3px rgba(51, 51, 51, 0.04),
+    0 12px 12px -6px rgba(51, 51, 51, 0.04), 0 24px 24px -12px rgba(51, 51, 51, 0.04),
+    0 48px 48px -24px rgba(51, 51, 51, 0.04), 0 96px 96px -32px rgba(51, 51, 51, 0.06),
     inset 0 -1px 1px -0.5px rgba(51, 51, 51, 0.06);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -397,11 +388,7 @@
       width: 2px;
       height: 100%;
       content: "";
-      background-color: color-mix(
-        in oklab,
-        var(--muted-foreground) 50%,
-        transparent
-      );
+      background-color: color-mix(in oklab, var(--muted-foreground) 50%, transparent);
     }
   }
 

@@ -37,7 +37,7 @@ const formSchema = z.object({
     .array(
       z.object({
         address: z.string().email("Enter a valid email address."),
-      })
+      }),
     )
     .min(1, "Add at least one email address.")
     .max(5, "You can add up to 5 email addresses."),
@@ -45,10 +45,10 @@ const formSchema = z.object({
 
 export default function FormRhfArray() {
   const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
     defaultValues: {
       emails: [{ address: "" }, { address: "" }],
     },
+    resolver: zodResolver(formSchema),
   });
 
   const { fields, append, remove } = useFieldArray({
@@ -58,15 +58,15 @@ export default function FormRhfArray() {
 
   function onSubmit(data: z.infer<typeof formSchema>) {
     toast("You submitted the following values:", {
+      classNames: {
+        content: "flex flex-col gap-2",
+      },
       description: (
         <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
           <code>{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
       position: "bottom-right",
-      classNames: {
-        content: "flex flex-col gap-2",
-      },
       style: {
         "--border-radius": "calc(var(--radius)  + 4px)",
       } as React.CSSProperties,
@@ -93,10 +93,7 @@ export default function FormRhfArray() {
                   key={field.id}
                   name={`emails.${index}.address`}
                   render={({ field: controllerField, fieldState }) => (
-                    <Field
-                      data-invalid={fieldState.invalid}
-                      orientation="horizontal"
-                    >
+                    <Field data-invalid={fieldState.invalid} orientation="horizontal">
                       <FieldContent>
                         <InputGroup>
                           <InputGroupInput
@@ -121,9 +118,7 @@ export default function FormRhfArray() {
                             </InputGroupAddon>
                           )}
                         </InputGroup>
-                        {fieldState.invalid && (
-                          <FieldError errors={[fieldState.error]} />
-                        )}
+                        {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
                       </FieldContent>
                     </Field>
                   )}

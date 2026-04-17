@@ -6,11 +6,7 @@ import {
   InputGroupInput,
 } from "@/registry/default/ui/input-group";
 import { Label } from "@/registry/default/ui/label";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/registry/default/ui/tooltip";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/registry/default/ui/tooltip";
 
 export default function InputGroupLabel() {
   return (

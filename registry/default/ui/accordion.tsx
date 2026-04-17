@@ -1,14 +1,9 @@
 "use client";
 
 import { Accordion as AccordionPrimitive } from "@base-ui/react/accordion";
+import { AnimatePresence, motion } from "motion/react";
+import type { HTMLMotionProps, Transition } from "motion/react";
 import {
-  AnimatePresence,
-  type HTMLMotionProps,
-  motion,
-  type Transition,
-} from "motion/react";
-import {
-  type ComponentProps,
   createContext,
   useCallback,
   useContext,
@@ -17,6 +12,7 @@ import {
   useRef,
   useState,
 } from "react";
+import type { ComponentProps } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -27,9 +23,7 @@ interface AccordionItemContextType {
   setIsOpen: (open: boolean) => void;
 }
 
-const AccordionItemContext = createContext<
-  AccordionItemContextType | undefined
->(undefined);
+const AccordionItemContext = createContext<AccordionItemContextType | undefined>(undefined);
 
 const useAccordionItem = (): AccordionItemContextType => {
   const context = useContext(AccordionItemContext);
@@ -52,9 +46,7 @@ type AccordionProps = Omit<
   onValueChange?: (value: AccordionValue) => void;
 };
 
-const normalizeAccordionValue = (
-  value: AccordionValue | undefined
-): string[] | undefined => {
+const normalizeAccordionValue = (value: AccordionValue | undefined): string[] | undefined => {
   if (value === undefined) {
     return undefined;
   }
@@ -82,9 +74,7 @@ function Accordion({
         return;
       }
 
-      const nextStringValues = nextValue.filter(
-        (item): item is string => typeof item === "string"
-      );
+      const nextStringValues = nextValue.filter((item): item is string => typeof item === "string");
 
       if (multiple) {
         onValueChange(nextStringValues);
@@ -101,7 +91,7 @@ function Accordion({
         onValueChange("");
       }
     },
-    [collapsible, multiple, onValueChange]
+    [collapsible, multiple, onValueChange],
   );
 
   return (
@@ -125,9 +115,7 @@ function AccordionItem({
   const [canAnimate, setCanAnimate] = useState(false);
 
   return (
-    <AccordionItemContext.Provider
-      value={{ isOpen, setIsOpen, canAnimate, setCanAnimate }}
-    >
+    <AccordionItemContext.Provider value={{ canAnimate, isOpen, setCanAnimate, setIsOpen }}>
       <AccordionPrimitive.Item
         className={cn("border-b last:border-b-0", className)}
         data-slot="accordion-item"
@@ -139,9 +127,7 @@ function AccordionItem({
   );
 }
 
-type AccordionTriggerProps = ComponentProps<
-  typeof AccordionPrimitive.Trigger
-> & {
+type AccordionTriggerProps = ComponentProps<typeof AccordionPrimitive.Trigger> & {
   chevron?: boolean;
 };
 
@@ -164,8 +150,7 @@ function AccordionTrigger({
 
     const updateState = () => {
       const isExpanded =
-        node.hasAttribute("data-panel-open") ||
-        node.getAttribute("aria-expanded") === "true";
+        Object.hasOwn(node.dataset, "panelOpen") || node.getAttribute("aria-expanded") === "true";
       setIsOpen(isExpanded);
     };
 
@@ -181,8 +166,8 @@ function AccordionTrigger({
     });
 
     observer.observe(node, {
-      attributes: true,
       attributeFilter: ["data-panel-open", "aria-expanded"],
+      attributes: true,
     });
 
     updateState();
@@ -201,7 +186,7 @@ function AccordionTrigger({
       <AccordionPrimitive.Trigger
         className={cn(
           "flex flex-1 cursor-pointer items-start justify-between gap-4 rounded-md py-4 text-left font-medium text-sm outline-none transition-all focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50",
-          className
+          className,
         )}
         data-slot="accordion-trigger"
         ref={triggerRef}
@@ -214,9 +199,7 @@ function AccordionTrigger({
               animate={{ rotate: isOpen ? 180 : 0 }}
               className="absolute top-1/2 left-1/2 h-[1.5px] w-[12px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-foreground"
               transition={
-                canAnimate
-                  ? { duration: 0.3, ease: [0.645, 0.045, 0.355, 1] }
-                  : { duration: 0 }
+                canAnimate ? { duration: 0.3, ease: [0.645, 0.045, 0.355, 1] } : { duration: 0 }
               }
             />
             <motion.div
@@ -224,9 +207,7 @@ function AccordionTrigger({
               className="absolute top-1/2 left-1/2 h-[12px] w-[1.5px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-foreground"
               style={{ transformOrigin: "center" }}
               transition={
-                canAnimate
-                  ? { duration: 0.3, ease: [0.645, 0.045, 0.355, 1] }
-                  : { duration: 0 }
+                canAnimate ? { duration: 0.3, ease: [0.645, 0.045, 0.355, 1] } : { duration: 0 }
               }
             />
           </div>
@@ -244,7 +225,7 @@ type AccordionContentProps = ComponentProps<typeof AccordionPrimitive.Panel> &
 function AccordionContent({
   className,
   children,
-  transition = { type: "spring", stiffness: 150, damping: 22 },
+  transition = { damping: 22, stiffness: 150, type: "spring" },
   ...props
 }: AccordionContentProps) {
   const { isOpen, canAnimate } = useAccordionItem();
@@ -258,23 +239,16 @@ function AccordionContent({
             className="overflow-hidden"
             data-slot="accordion-content"
             exit={{ "--mask-stop": "0%", height: 0, opacity: 0 }}
-            initial={
-              canAnimate
-                ? { "--mask-stop": "0%", height: 0, opacity: 0 }
-                : false
-            }
+            initial={canAnimate ? { "--mask-stop": "0%", height: 0, opacity: 0 } : false}
             key="accordion-content"
             style={{
               WebkitMaskImage:
                 "linear-gradient(black var(--mask-stop), transparent var(--mask-stop))",
-              maskImage:
-                "linear-gradient(black var(--mask-stop), transparent var(--mask-stop))",
+              maskImage: "linear-gradient(black var(--mask-stop), transparent var(--mask-stop))",
             }}
             transition={canAnimate ? transition : { duration: 0 }}
           >
-            <div className={cn("pt-0 pb-4 text-sm leading-[1.5]", className)}>
-              {children}
-            </div>
+            <div className={cn("pt-0 pb-4 text-sm leading-[1.5]", className)}>{children}</div>
           </motion.div>
         ) : null}
       </AnimatePresence>

@@ -29,19 +29,19 @@ import { RadioGroup, RadioGroupItem } from "@/registry/default/ui/radio-group";
 
 const plans = [
   {
+    description: "For everyday use with basic features.",
     id: "starter",
     title: "Starter (100K tokens/month)",
-    description: "For everyday use with basic features.",
   },
   {
+    description: "For advanced AI usage with more features.",
     id: "pro",
     title: "Pro (1M tokens/month)",
-    description: "For advanced AI usage with more features.",
   },
   {
+    description: "For large teams and heavy usage.",
     id: "enterprise",
     title: "Enterprise (Unlimited tokens)",
-    description: "For large teams and heavy usage.",
   },
 ] as const;
 
@@ -54,24 +54,24 @@ export default function FormTanstackRadioGroup() {
     defaultValues: {
       plan: "",
     },
-    validators: {
-      onSubmit: formSchema,
-    },
     onSubmit: async ({ value }) => {
       toast("You submitted the following values:", {
+        classNames: {
+          content: "flex flex-col gap-2",
+        },
         description: (
           <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
             <code>{JSON.stringify(value, null, 2)}</code>
           </pre>
         ),
         position: "bottom-right",
-        classNames: {
-          content: "flex flex-col gap-2",
-        },
         style: {
           "--border-radius": "calc(var(--radius)  + 4px)",
         } as React.CSSProperties,
       });
+    },
+    validators: {
+      onSubmit: formSchema,
     },
   });
 
@@ -79,9 +79,7 @@ export default function FormTanstackRadioGroup() {
     <Card className="w-full sm:max-w-md">
       <CardHeader>
         <CardTitle>Subscription Plan</CardTitle>
-        <CardDescription>
-          See pricing and features for each plan.
-        </CardDescription>
+        <CardDescription>See pricing and features for each plan.</CardDescription>
       </CardHeader>
       <CardContent>
         <form
@@ -94,8 +92,7 @@ export default function FormTanstackRadioGroup() {
           <FieldGroup>
             <form.Field
               children={(field) => {
-                const isInvalid =
-                  field.state.meta.isTouched && !field.state.meta.isValid;
+                const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid;
                 return (
                   <FieldSet>
                     <FieldLegend>Plan</FieldLegend>
@@ -108,19 +105,11 @@ export default function FormTanstackRadioGroup() {
                       value={field.state.value}
                     >
                       {plans.map((plan) => (
-                        <FieldLabel
-                          htmlFor={`form-tanstack-radiogroup-${plan.id}`}
-                          key={plan.id}
-                        >
-                          <Field
-                            data-invalid={isInvalid}
-                            orientation="horizontal"
-                          >
+                        <FieldLabel htmlFor={`form-tanstack-radiogroup-${plan.id}`} key={plan.id}>
+                          <Field data-invalid={isInvalid} orientation="horizontal">
                             <FieldContent>
                               <FieldTitle>{plan.title}</FieldTitle>
-                              <FieldDescription>
-                                {plan.description}
-                              </FieldDescription>
+                              <FieldDescription>{plan.description}</FieldDescription>
                             </FieldContent>
                             <RadioGroupItem
                               aria-invalid={isInvalid}
@@ -131,9 +120,7 @@ export default function FormTanstackRadioGroup() {
                         </FieldLabel>
                       ))}
                     </RadioGroup>
-                    {isInvalid && (
-                      <FieldError errors={field.state.meta.errors} />
-                    )}
+                    {isInvalid && <FieldError errors={field.state.meta.errors} />}
                   </FieldSet>
                 );
               }}

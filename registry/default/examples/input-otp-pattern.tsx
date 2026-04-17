@@ -2,11 +2,7 @@
 
 import { REGEXP_ONLY_DIGITS } from "input-otp";
 import { Field, FieldLabel } from "@/registry/default/ui/field";
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSlot,
-} from "@/registry/default/ui/input-otp";
+import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/registry/default/ui/input-otp";
 
 export function InputOTPPattern() {
   return (

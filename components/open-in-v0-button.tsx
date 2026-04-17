@@ -7,11 +7,7 @@ export function OpenInV0Button({ url }: { url: string }) {
       asChild
       className="h-8 gap-1 rounded-[6px] bg-black px-3 text-white text-xs hover:bg-black hover:text-white dark:bg-white dark:text-black"
     >
-      <a
-        href={`https://v0.dev/chat/api/open?url=${url}`}
-        rel="noreferrer"
-        target="_blank"
-      >
+      <a href={`https://v0.dev/chat/api/open?url=${url}`} rel="noreferrer" target="_blank">
         Open in{" "}
         <svg
           className="size-5 text-current"

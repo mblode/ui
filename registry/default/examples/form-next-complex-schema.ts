@@ -1,19 +1,16 @@
 import { z } from "zod";
 
 export const formSchema = z.object({
-  plan: z.enum(["basic", "pro"]),
-  billingPeriod: z.string().min(1, "Please select a billing period"),
   addons: z
     .array(z.string())
     .min(1, "Please select at least one add-on")
     .max(3, "You can select up to 3 add-ons")
-    .refine(
-      (value) => value.every((addon) => addons.some((a) => a.id === addon)),
-      {
-        message: "You selected an invalid add-on",
-      }
-    ),
+    .refine((value) => value.every((addon) => addons.some((a) => a.id === addon)), {
+      message: "You selected an invalid add-on",
+    }),
+  billingPeriod: z.string().min(1, "Please select a billing period"),
   emailNotifications: z.boolean(),
+  plan: z.enum(["basic", "pro"]),
 });
 
 export interface FormState {
@@ -24,18 +21,18 @@ export interface FormState {
 
 export const addons = [
   {
+    description: "Advanced analytics and reporting",
     id: "analytics",
     title: "Analytics",
-    description: "Advanced analytics and reporting",
   },
   {
+    description: "Automated daily backups",
     id: "backup",
     title: "Backup",
-    description: "Automated daily backups",
   },
   {
+    description: "24/7 premium customer support",
     id: "support",
     title: "Priority Support",
-    description: "24/7 premium customer support",
   },
 ] as const;

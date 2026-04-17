@@ -17,15 +17,12 @@ export function DialogDemo() {
   return (
     <Dialog>
       <form>
-        <DialogTrigger render={<Button variant="outline" />}>
-          Open Dialog
-        </DialogTrigger>
+        <DialogTrigger render={<Button variant="outline" />}>Open Dialog</DialogTrigger>
         <DialogContent className="sm:max-w-sm">
           <DialogHeader>
             <DialogTitle>Edit profile</DialogTitle>
             <DialogDescription>
-              Make changes to your profile here. Click save when you&apos;re
-              done.
+              Make changes to your profile here. Click save when you&apos;re done.
             </DialogDescription>
           </DialogHeader>
           <FieldGroup>
@@ -39,9 +36,7 @@ export function DialogDemo() {
             </Field>
           </FieldGroup>
           <DialogFooter>
-            <DialogClose render={<Button variant="outline" />}>
-              Cancel
-            </DialogClose>
+            <DialogClose render={<Button variant="outline" />}>Cancel</DialogClose>
             <Button type="submit">Save changes</Button>
           </DialogFooter>
         </DialogContent>

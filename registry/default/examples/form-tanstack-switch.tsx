@@ -35,24 +35,24 @@ export default function FormTanstackSwitch() {
     defaultValues: {
       twoFactor: false,
     },
-    validators: {
-      onSubmit: formSchema,
-    },
     onSubmit: async ({ value }) => {
       toast("You submitted the following values:", {
+        classNames: {
+          content: "flex flex-col gap-2",
+        },
         description: (
           <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
             <code>{JSON.stringify(value, null, 2)}</code>
           </pre>
         ),
         position: "bottom-right",
-        classNames: {
-          content: "flex flex-col gap-2",
-        },
         style: {
           "--border-radius": "calc(var(--radius)  + 4px)",
         } as React.CSSProperties,
       });
+    },
+    validators: {
+      onSubmit: formSchema,
     },
   });
 
@@ -60,9 +60,7 @@ export default function FormTanstackSwitch() {
     <Card className="w-full sm:max-w-md">
       <CardHeader>
         <CardTitle>Security Settings</CardTitle>
-        <CardDescription>
-          Manage your account security preferences.
-        </CardDescription>
+        <CardDescription>Manage your account security preferences.</CardDescription>
       </CardHeader>
       <CardContent>
         <form
@@ -75,8 +73,7 @@ export default function FormTanstackSwitch() {
           <FieldGroup>
             <form.Field
               children={(field) => {
-                const isInvalid =
-                  field.state.meta.isTouched && !field.state.meta.isValid;
+                const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid;
                 return (
                   <Field data-invalid={isInvalid} orientation="horizontal">
                     <FieldContent>
@@ -84,12 +81,9 @@ export default function FormTanstackSwitch() {
                         Multi-factor authentication
                       </FieldLabel>
                       <FieldDescription>
-                        Enable multi-factor authentication to secure your
-                        account.
+                        Enable multi-factor authentication to secure your account.
                       </FieldDescription>
-                      {isInvalid && (
-                        <FieldError errors={field.state.meta.errors} />
-                      )}
+                      {isInvalid && <FieldError errors={field.state.meta.errors} />}
                     </FieldContent>
                     <Switch
                       aria-invalid={isInvalid}

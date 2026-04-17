@@ -5,7 +5,8 @@ import * as React from "react";
 import { useState } from "react";
 
 import { cn } from "@/lib/utils";
-import { Input, type InputProps } from "@/registry/default/ui/input";
+import { Input } from "@/registry/default/ui/input";
+import type { InputProps } from "@/registry/default/ui/input";
 
 export interface PasswordInputProps extends Omit<InputProps, "type"> {
   defaultShowPassword?: boolean;
@@ -13,10 +14,7 @@ export interface PasswordInputProps extends Omit<InputProps, "type"> {
   showPassword?: boolean;
 }
 
-export const PasswordInput = React.forwardRef<
-  HTMLInputElement,
-  PasswordInputProps
->(
+export const PasswordInput = React.forwardRef<HTMLInputElement, PasswordInputProps>(
   (
     {
       className,
@@ -26,10 +24,9 @@ export const PasswordInput = React.forwardRef<
       showPassword: showPasswordProp,
       ...props
     },
-    ref
+    ref,
   ) => {
-    const [internalShowPassword, setInternalShowPassword] =
-      useState(defaultShowPassword);
+    const [internalShowPassword, setInternalShowPassword] = useState(defaultShowPassword);
     const isVisible = showPasswordProp ?? internalShowPassword;
 
     return (
@@ -51,16 +48,12 @@ export const PasswordInput = React.forwardRef<
             tabIndex={-1}
             type="button"
           >
-            {isVisible ? (
-              <EyeSlashIcon className="size-5" />
-            ) : (
-              <EyeOpenIcon className="size-5" />
-            )}
+            {isVisible ? <EyeSlashIcon className="size-5" /> : <EyeOpenIcon className="size-5" />}
           </button>
         }
         type={isVisible ? "text" : "password"}
       />
     );
-  }
+  },
 );
 PasswordInput.displayName = "PasswordInput";

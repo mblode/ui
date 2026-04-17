@@ -1,11 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import {
-  Field,
-  FieldDescription,
-  FieldTitle,
-} from "@/registry/default/ui/field";
+import { Field, FieldDescription, FieldTitle } from "@/registry/default/ui/field";
 import { Slider } from "@/registry/default/ui/slider";
 
 export default function FieldSlider() {

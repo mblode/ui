@@ -25,13 +25,7 @@ interface ProgressItemProps extends Omit<React.ComponentProps<"div">, "title"> {
   title: React.ReactNode;
 }
 
-function ProgressItem({
-  className,
-  completed,
-  state,
-  title,
-  ...props
-}: ProgressItemProps) {
+function ProgressItem({ className, completed, state, title, ...props }: ProgressItemProps) {
   const resolvedState = state ?? (completed ? "completed" : "pending");
 
   return (

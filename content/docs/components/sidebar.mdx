@@ -43,11 +43,7 @@ npx shadcn@latest add sidebar
 
 <TabsContent value="manual">
 
-<ComponentSource
-  name="sidebar"
-  title="components/ui/sidebar.tsx"
-  styleName="base-nova"
-/>
+<ComponentSource name="sidebar" title="components/ui/sidebar.tsx" styleName="base-nova" />
 
 </TabsContent>
 
@@ -67,8 +63,8 @@ A `Sidebar` component is composed of the following parts:
 ## Usage
 
 ```tsx showLineNumbers title="app/layout.tsx"
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
-import { AppSidebar } from "@/components/app-sidebar"
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/app-sidebar";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -79,7 +75,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         {children}
       </main>
     </SidebarProvider>
-  )
+  );
 }
 ```
 
@@ -90,7 +86,7 @@ import {
   SidebarFooter,
   SidebarGroup,
   SidebarHeader,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 
 export function AppSidebar() {
   return (
@@ -102,7 +98,7 @@ export function AppSidebar() {
       </SidebarContent>
       <SidebarFooter />
     </Sidebar>
-  )
+  );
 }
 ```
 
@@ -123,18 +119,20 @@ The `SidebarProvider` component is used to provide the sidebar context to the `S
 If you have a single sidebar in your application, you can use the `SIDEBAR_WIDTH` and `SIDEBAR_WIDTH_MOBILE` variables in `sidebar.tsx` to set the width of the sidebar.
 
 ```tsx showLineNumbers title="components/ui/sidebar.tsx"
-const SIDEBAR_WIDTH = "16rem"
-const SIDEBAR_WIDTH_MOBILE = "18rem"
+const SIDEBAR_WIDTH = "16rem";
+const SIDEBAR_WIDTH_MOBILE = "18rem";
 ```
 
 For multiple sidebars in your application, you can use the `--sidebar-width` and `--sidebar-width-mobile` CSS variables in the `style` prop.
 
 ```tsx showLineNumbers
 <SidebarProvider
-  style={{
-    "--sidebar-width": "20rem",
-    "--sidebar-width-mobile": "20rem",
-  } as React.CSSProperties}
+  style={
+    {
+      "--sidebar-width": "20rem",
+      "--sidebar-width-mobile": "20rem",
+    } as React.CSSProperties
+  }
 >
   <Sidebar />
 </SidebarProvider>
@@ -145,7 +143,7 @@ For multiple sidebars in your application, you can use the `--sidebar-width` and
 To trigger the sidebar, you use the `cmd+b` keyboard shortcut on Mac and `ctrl+b` on Windows.
 
 ```tsx showLineNumbers title="components/ui/sidebar.tsx"
-const SIDEBAR_KEYBOARD_SHORTCUT = "b"
+const SIDEBAR_KEYBOARD_SHORTCUT = "b";
 ```
 
 ## Sidebar
@@ -167,8 +165,8 @@ The main `Sidebar` component used to render a collapsible sidebar.
 | `none`      | A non-collapsible sidebar.                                   |
 
 <Callout>
-  **Note:** If you use the `inset` variant, remember to wrap your main content
-  in a `SidebarInset` component.
+  **Note:** If you use the `inset` variant, remember to wrap your main content in a `SidebarInset`
+  component.
 </Callout>
 
 ```tsx showLineNumbers
@@ -185,18 +183,10 @@ The main `Sidebar` component used to render a collapsible sidebar.
 The `useSidebar` hook is used to control the sidebar.
 
 ```tsx showLineNumbers
-import { useSidebar } from "@/components/ui/sidebar"
+import { useSidebar } from "@/components/ui/sidebar";
 
 export function AppSidebar() {
-  const {
-    state,
-    open,
-    setOpen,
-    openMobile,
-    setOpenMobile,
-    isMobile,
-    toggleSidebar,
-  } = useSidebar()
+  const { state, open, setOpen, openMobile, setOpenMobile, isMobile, toggleSidebar } = useSidebar();
 }
 ```
 
@@ -399,12 +389,12 @@ The `SidebarMenuSkeleton` component is used to render a skeleton for a `SidebarM
 Use the `SidebarTrigger` component to render a button that toggles the sidebar.
 
 ```tsx showLineNumbers
-import { useSidebar } from "@/components/ui/sidebar"
+import { useSidebar } from "@/components/ui/sidebar";
 
 export function CustomTrigger() {
-  const { toggleSidebar } = useSidebar()
+  const { toggleSidebar } = useSidebar();
 
-  return <button onClick={toggleSidebar}>Toggle Sidebar</button>
+  return <button onClick={toggleSidebar}>Toggle Sidebar</button>;
 }
 ```
 
@@ -429,13 +419,13 @@ Use the `open` and `onOpenChange` props to control the sidebar.
 
 ```tsx showLineNumbers
 export function AppSidebar() {
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = React.useState(false);
 
   return (
     <SidebarProvider open={open} onOpenChange={setOpen}>
       <Sidebar />
     </SidebarProvider>
-  )
+  );
 }
 ```
 

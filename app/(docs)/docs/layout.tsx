@@ -2,11 +2,7 @@ import { DocsSidebar } from "@/components/docs-sidebar";
 import { docsConfig } from "@/config/docs";
 import { SidebarProvider } from "@/registry/default/ui/sidebar";
 
-export default function DocsLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function DocsLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="container-wrapper flex flex-1 flex-col px-2">
       <SidebarProvider

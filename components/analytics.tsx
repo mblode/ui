@@ -7,11 +7,7 @@ export function Analytics() {
     <>
       <Script id="id">{`window.lemonSqueezyAffiliateConfig = { store: "ui" };`}</Script>
       <Script defer src="https://lmsqueezy.com/affiliate.js" />
-      <Script
-        async
-        defer
-        src="https://www.googletagmanager.com/gtag/js?id=G-4CVHZX68BT"
-      />
+      <Script async defer src="https://www.googletagmanager.com/gtag/js?id=G-4CVHZX68BT" />
       <Script id="gtag">
         {`
 window.dataLayer = window.dataLayer || [];

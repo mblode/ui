@@ -66,9 +66,7 @@ function getItems(node: MdastLikeNode | null, current: Item): Item {
   }
 
   if (node.type === "list") {
-    current.items = (node.children ?? []).map((childNode) =>
-      getItems(childNode, {})
-    );
+    current.items = (node.children ?? []).map((childNode) => getItems(childNode, {}));
     return current;
   }
 
@@ -93,9 +91,7 @@ const getToc = () => (node: unknown, file: { data?: unknown }) => {
 
 export type TableOfContents = Items;
 
-export async function getTableOfContents(
-  content: string
-): Promise<TableOfContents> {
+export async function getTableOfContents(content: string): Promise<TableOfContents> {
   const result = await remark().use(getToc).process(content);
 
   return result.data as TableOfContents;

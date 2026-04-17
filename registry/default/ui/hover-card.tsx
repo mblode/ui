@@ -5,9 +5,7 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
-function HoverCard({
-  ...props
-}: React.ComponentProps<typeof HoverCardPrimitive.Root>) {
+function HoverCard({ ...props }: React.ComponentProps<typeof HoverCardPrimitive.Root>) {
   return <HoverCardPrimitive.Root data-slot="hover-card" {...props} />;
 }
 
@@ -19,16 +17,10 @@ function HoverCardTrigger({
   asChild?: boolean;
 }) {
   const render =
-    asChild && React.isValidElement(children)
-      ? (children as React.ReactElement)
-      : undefined;
+    asChild && React.isValidElement(children) ? (children as React.ReactElement) : undefined;
 
   return (
-    <HoverCardPrimitive.Trigger
-      data-slot="hover-card-trigger"
-      render={render}
-      {...props}
-    >
+    <HoverCardPrimitive.Trigger data-slot="hover-card-trigger" render={render} {...props}>
       {asChild ? null : children}
     </HoverCardPrimitive.Trigger>
   );
@@ -51,9 +43,7 @@ function HoverCardContent({
     asChild?: boolean;
   }) {
   const render =
-    asChild && React.isValidElement(children)
-      ? (children as React.ReactElement)
-      : undefined;
+    asChild && React.isValidElement(children) ? (children as React.ReactElement) : undefined;
 
   return (
     <HoverCardPrimitive.Portal data-slot="hover-card-portal">
@@ -67,7 +57,7 @@ function HoverCardContent({
         <HoverCardPrimitive.Popup
           className={cn(
             "data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 w-72 origin-(--transform-origin) rounded-md border bg-popover p-4 text-popover-foreground shadow-soft outline-hidden data-closed:animate-out data-open:animate-in",
-            className
+            className,
           )}
           data-slot="hover-card-content"
           render={render}

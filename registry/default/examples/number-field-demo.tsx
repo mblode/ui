@@ -1,6 +1,7 @@
 "use client";
 
-import { type ComponentProps, useId } from "react";
+import { useId } from "react";
+import type { ComponentProps } from "react";
 
 import {
   NumberField,

@@ -9,7 +9,5 @@ interface ComponentSourceProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export function ComponentSource({ children, className }: ComponentSourceProps) {
-  return (
-    <CodeBlockWrapper className={cn(className)}>{children}</CodeBlockWrapper>
-  );
+  return <CodeBlockWrapper className={cn(className)}>{children}</CodeBlockWrapper>;
 }

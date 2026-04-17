@@ -13,25 +13,19 @@ function Stat({ className, description, title, value, ...props }: StatProps) {
     <dl
       className={cn(
         "flex flex-col rounded-3xl border border-border bg-card p-4 text-center",
-        className
+        className,
       )}
       data-slot="stat"
       {...props}
     >
-      <dd
-        className="font-semibold text-2xl tracking-tight"
-        data-slot="stat-value"
-      >
+      <dd className="font-semibold text-2xl tracking-tight" data-slot="stat-value">
         {value}
       </dd>
       <dt className="truncate font-medium text-sm" data-slot="stat-title">
         {title}
       </dt>
       {description ? (
-        <div
-          className="text-muted-foreground text-sm"
-          data-slot="stat-description"
-        >
+        <div className="text-muted-foreground text-sm" data-slot="stat-description">
           {description}
         </div>
       ) : null}

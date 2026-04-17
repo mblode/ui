@@ -12,21 +12,21 @@ import {
 const invoices = [
   {
     invoice: "INV001",
+    paymentMethod: "Credit Card",
     paymentStatus: "Paid",
     totalAmount: "$250.00",
-    paymentMethod: "Credit Card",
   },
   {
     invoice: "INV002",
+    paymentMethod: "PayPal",
     paymentStatus: "Pending",
     totalAmount: "$150.00",
-    paymentMethod: "PayPal",
   },
   {
     invoice: "INV003",
+    paymentMethod: "Bank Transfer",
     paymentStatus: "Unpaid",
     totalAmount: "$350.00",
-    paymentMethod: "Bank Transfer",
   },
 ];
 

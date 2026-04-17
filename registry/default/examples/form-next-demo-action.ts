@@ -1,23 +1,21 @@
 "use server";
 
-import { type FormState, formSchema } from "./form-next-demo-schema";
+import { formSchema } from "./form-next-demo-schema";
+import type { FormState } from "./form-next-demo-schema";
 
-export async function demoFormAction(
-  _prevState: FormState,
-  formData: FormData
-) {
+export async function demoFormAction(_prevState: FormState, formData: FormData) {
   const values = {
-    title: formData.get("title") as string,
     description: formData.get("description") as string,
+    title: formData.get("title") as string,
   };
 
   const result = formSchema.safeParse(values);
 
   if (!result.success) {
     return {
-      values,
-      success: false,
       errors: result.error.flatten().fieldErrors,
+      success: false,
+      values,
     };
   }
 
@@ -25,11 +23,11 @@ export async function demoFormAction(
   // Call your database or API here.
 
   return {
-    values: {
-      title: "",
-      description: "",
-    },
     errors: null,
     success: true,
+    values: {
+      description: "",
+      title: "",
+    },
   };
 }

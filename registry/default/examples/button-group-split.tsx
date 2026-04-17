@@ -1,9 +1,6 @@
 import { PlusIcon } from "blode-icons-react";
 import { Button } from "@/registry/default/ui/button";
-import {
-  ButtonGroup,
-  ButtonGroupSeparator,
-} from "@/registry/default/ui/button-group";
+import { ButtonGroup, ButtonGroupSeparator } from "@/registry/default/ui/button-group";
 
 export default function ButtonGroupSplit() {
   return (

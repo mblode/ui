@@ -29,20 +29,15 @@ function Slider({
   ...props
 }: SliderProps) {
   const values = useMemo(
-    () =>
-      Array.isArray(value)
-        ? value
-        : Array.isArray(defaultValue)
-          ? defaultValue
-          : [min, max],
-    [value, defaultValue, min, max]
+    () => (Array.isArray(value) ? value : Array.isArray(defaultValue) ? defaultValue : [min, max]),
+    [value, defaultValue, min, max],
   );
 
   return (
     <SliderPrimitive.Root
       className={cn(
         "data-[orientation=vertical]:h-full data-[orientation=horizontal]:w-full",
-        className
+        className,
       )}
       data-slot="slider"
       defaultValue={defaultValue}

@@ -1,12 +1,8 @@
 {
-  "name": "default",
-  "type": "registry:style",
-  "dependencies": [
-    "tw-animate-css",
-    "class-variance-authority",
-    "blode-icons-react"
-  ],
-  "registryDependencies": ["utils"],
   "cssVars": {},
-  "files": []
+  "dependencies": ["tw-animate-css", "class-variance-authority", "blode-icons-react"],
+  "files": [],
+  "name": "default",
+  "registryDependencies": ["utils"],
+  "type": "registry:style"
 }

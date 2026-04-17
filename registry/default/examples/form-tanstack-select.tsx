@@ -46,8 +46,7 @@ const formSchema = z.object({
     .string()
     .min(1, "Please select your spoken language.")
     .refine((val) => val !== "auto", {
-      message:
-        "Auto-detection is not allowed. Please select a specific language.",
+      message: "Auto-detection is not allowed. Please select a specific language.",
     }),
 });
 
@@ -56,24 +55,24 @@ export default function FormTanstackSelect() {
     defaultValues: {
       language: "",
     },
-    validators: {
-      onSubmit: formSchema,
-    },
     onSubmit: async ({ value }) => {
       toast("You submitted the following values:", {
+        classNames: {
+          content: "flex flex-col gap-2",
+        },
         description: (
           <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
             <code>{JSON.stringify(value, null, 2)}</code>
           </pre>
         ),
         position: "bottom-right",
-        classNames: {
-          content: "flex flex-col gap-2",
-        },
         style: {
           "--border-radius": "calc(var(--radius)  + 4px)",
         } as React.CSSProperties,
       });
+    },
+    validators: {
+      onSubmit: formSchema,
     },
   });
 
@@ -81,9 +80,7 @@ export default function FormTanstackSelect() {
     <Card className="w-full sm:max-w-lg">
       <CardHeader>
         <CardTitle>Language Preferences</CardTitle>
-        <CardDescription>
-          Select your preferred spoken language.
-        </CardDescription>
+        <CardDescription>Select your preferred spoken language.</CardDescription>
       </CardHeader>
       <CardContent>
         <form
@@ -96,8 +93,7 @@ export default function FormTanstackSelect() {
           <FieldGroup>
             <form.Field
               children={(field) => {
-                const isInvalid =
-                  field.state.meta.isTouched && !field.state.meta.isValid;
+                const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid;
                 return (
                   <Field data-invalid={isInvalid} orientation="responsive">
                     <FieldContent>
@@ -107,9 +103,7 @@ export default function FormTanstackSelect() {
                       <FieldDescription>
                         For best results, select the language you speak.
                       </FieldDescription>
-                      {isInvalid && (
-                        <FieldError errors={field.state.meta.errors} />
-                      )}
+                      {isInvalid && <FieldError errors={field.state.meta.errors} />}
                     </FieldContent>
                     <Select
                       name={field.name}
@@ -127,10 +121,7 @@ export default function FormTanstackSelect() {
                         <SelectItem value="auto">Auto</SelectItem>
                         <SelectSeparator />
                         {spokenLanguages.map((language) => (
-                          <SelectItem
-                            key={language.value}
-                            value={language.value}
-                          >
+                          <SelectItem key={language.value} value={language.value}>
                             {language.label}
                           </SelectItem>
                         ))}

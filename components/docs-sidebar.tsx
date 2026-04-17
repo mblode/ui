@@ -67,20 +67,17 @@ export function DocsSidebar({
       <div className="absolute top-12 right-2 bottom-0 hidden h-full w-px bg-gradient-to-b from-transparent via-border to-transparent lg:flex" />
       <SidebarContent className="no-scrollbar mx-auto w-(--sidebar-menu-width) overflow-x-hidden px-2">
         {items.map((group, index) => (
-          <SidebarGroup
-            className={index === 0 ? "pt-6" : undefined}
-            key={group.title}
-          >
+          <SidebarGroup className={index === 0 ? "pt-6" : undefined} key={group.title}>
             <SidebarGroupLabel className="font-medium text-muted-foreground">
               {group.title}
             </SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu className={index === 0 ? undefined : "gap-0.5"}>
                 {(group.title === "Components"
-                  ? [...(group.items ?? [])].sort((a, b) =>
+                  ? [...(group.items ?? [])].toSorted((a, b) =>
                       a.title.localeCompare(b.title, undefined, {
                         sensitivity: "base",
-                      })
+                      }),
                     )
                   : (group.items ?? [])
                 ).map((item) => {

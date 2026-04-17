@@ -16,17 +16,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/registry/default/ui/card";
-import {
-  Field,
-  FieldError,
-  FieldGroup,
-  FieldLabel,
-} from "@/registry/default/ui/field";
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupInput,
-} from "@/registry/default/ui/input-group";
+import { Field, FieldError, FieldGroup, FieldLabel } from "@/registry/default/ui/field";
+import { InputGroup, InputGroupAddon, InputGroupInput } from "@/registry/default/ui/input-group";
 import { Progress } from "@/registry/default/ui/progress";
 
 const passwordRequirements = [
@@ -57,30 +48,21 @@ const formSchema = z.object({
   password: z
     .string()
     .min(8, "Password must be at least 8 characters")
-    .refine(
-      (val) => /[a-z]/.test(val),
-      "Password must contain at least one lowercase letter"
-    )
-    .refine(
-      (val) => /[A-Z]/.test(val),
-      "Password must contain at least one uppercase letter"
-    )
-    .refine(
-      (val) => /\d/.test(val),
-      "Password must contain at least one number"
-    )
+    .refine((val) => /[a-z]/.test(val), "Password must contain at least one lowercase letter")
+    .refine((val) => /[A-Z]/.test(val), "Password must contain at least one uppercase letter")
+    .refine((val) => /\d/.test(val), "Password must contain at least one number")
     .refine(
       (val) => /[!@#$%^&*(),.?":{}|<>]/.test(val),
-      "Password must contain at least one special character"
+      "Password must contain at least one special character",
     ),
 });
 
 export default function FormRhfPassword() {
   const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
     defaultValues: {
       password: "",
     },
+    resolver: zodResolver(formSchema),
   });
 
   const password = useWatch({
@@ -89,11 +71,8 @@ export default function FormRhfPassword() {
   });
 
   // Calculate password strength.
-  const metRequirements = passwordRequirements.filter((req) =>
-    req.test(password || "")
-  );
-  const strengthPercentage =
-    (metRequirements.length / passwordRequirements.length) * 100;
+  const metRequirements = passwordRequirements.filter((req) => req.test(password || ""));
+  const strengthPercentage = (metRequirements.length / passwordRequirements.length) * 100;
 
   // Determine strength level and color.
   const getStrengthColor = () => {
@@ -109,20 +88,19 @@ export default function FormRhfPassword() {
     return "bg-green-500";
   };
 
-  const allRequirementsMet =
-    metRequirements.length === passwordRequirements.length;
+  const allRequirementsMet = metRequirements.length === passwordRequirements.length;
 
   function onSubmit(data: z.infer<typeof formSchema>) {
     toast("You submitted the following values:", {
+      classNames: {
+        content: "flex flex-col gap-2",
+      },
       description: (
         <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
           <code>{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
       position: "bottom-right",
-      classNames: {
-        content: "flex flex-col gap-2",
-      },
       style: {
         "--border-radius": "calc(var(--radius)  + 4px)",
       } as React.CSSProperties,
@@ -133,9 +111,7 @@ export default function FormRhfPassword() {
     <Card className="w-full sm:max-w-md">
       <CardHeader className="border-b">
         <CardTitle>Create Password</CardTitle>
-        <CardDescription>
-          Choose a strong password to secure your account.
-        </CardDescription>
+        <CardDescription>Choose a strong password to secure your account.</CardDescription>
       </CardHeader>
       <CardContent>
         <form id="form-rhf-password" onSubmit={form.handleSubmit(onSubmit)}>
@@ -145,9 +121,7 @@ export default function FormRhfPassword() {
               name="password"
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel htmlFor="form-rhf-password-input">
-                    Password
-                  </FieldLabel>
+                  <FieldLabel htmlFor="form-rhf-password-input">Password</FieldLabel>
                   <InputGroup>
                     <InputGroupInput
                       {...field}
@@ -159,45 +133,27 @@ export default function FormRhfPassword() {
                     />
                     <InputGroupAddon align="inline-end">
                       <CheckIcon
-                        className={
-                          allRequirementsMet
-                            ? "text-green-500"
-                            : "text-muted-foreground"
-                        }
+                        className={allRequirementsMet ? "text-green-500" : "text-muted-foreground"}
                       />
                     </InputGroupAddon>
                   </InputGroup>
 
                   {/* Password strength meter. */}
                   <div className="space-y-2">
-                    <Progress
-                      className={getStrengthColor()}
-                      value={strengthPercentage}
-                    />
+                    <Progress className={getStrengthColor()} value={strengthPercentage} />
 
                     {/* Requirements list. */}
                     <div className="space-y-1.5">
                       {passwordRequirements.map((requirement) => {
                         const isMet = requirement.test(password || "");
                         return (
-                          <div
-                            className="flex items-center gap-2 text-sm"
-                            key={requirement.id}
-                          >
+                          <div className="flex items-center gap-2 text-sm" key={requirement.id}>
                             <CheckIcon
                               className={
-                                isMet
-                                  ? "size-4 text-green-500"
-                                  : "size-4 text-muted-foreground"
+                                isMet ? "size-4 text-green-500" : "size-4 text-muted-foreground"
                               }
                             />
-                            <span
-                              className={
-                                isMet
-                                  ? "text-foreground"
-                                  : "text-muted-foreground"
-                              }
-                            >
+                            <span className={isMet ? "text-foreground" : "text-muted-foreground"}>
                               {requirement.label}
                             </span>
                           </div>
@@ -206,9 +162,7 @@ export default function FormRhfPassword() {
                     </div>
                   </div>
 
-                  {fieldState.invalid && (
-                    <FieldError errors={[fieldState.error]} />
-                  )}
+                  {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
                 </Field>
               )}
             />

@@ -1,28 +1,26 @@
 "use server";
 
-import { type FormState, formSchema } from "./form-next-complex-schema";
+import { formSchema } from "./form-next-complex-schema";
+import type { FormState } from "./form-next-complex-schema";
 
-export async function complexFormAction(
-  _prevState: FormState,
-  formData: FormData
-) {
+export async function complexFormAction(_prevState: FormState, formData: FormData) {
   // Sleep for 1 second
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
   const values = {
-    plan: formData.get("plan") as FormState["values"]["plan"],
-    billingPeriod: formData.get("billingPeriod") as string,
     addons: formData.getAll("addons") as string[],
+    billingPeriod: formData.get("billingPeriod") as string,
     emailNotifications: formData.get("emailNotifications") === "on",
+    plan: formData.get("plan") as FormState["values"]["plan"],
   };
 
   const result = formSchema.safeParse(values);
 
   if (!result.success) {
     return {
-      values,
-      success: false,
       errors: result.error.flatten().fieldErrors,
+      success: false,
+      values,
     };
   }
 
@@ -30,8 +28,8 @@ export async function complexFormAction(
   // Call your database or API here.
 
   return {
-    values,
     errors: null,
     success: true,
+    values,
   };
 }

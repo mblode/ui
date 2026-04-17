@@ -24,44 +24,38 @@ type RadioGroupItemProps = Omit<
 };
 
 const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
-  ({ className, onValueChange, ...props }, ref) => {
-    return (
-      <RadioGroupPrimitive
-        className={cn("grid w-full gap-2", className)}
-        data-slot="radio-group"
-        onValueChange={(nextValue) =>
-          onValueChange?.(
-            typeof nextValue === "string" ? nextValue : String(nextValue ?? "")
-          )
-        }
-        ref={ref}
-        {...props}
-      />
-    );
-  }
+  ({ className, onValueChange, ...props }, ref) => (
+    <RadioGroupPrimitive
+      className={cn("grid w-full gap-2", className)}
+      data-slot="radio-group"
+      onValueChange={(nextValue) =>
+        onValueChange?.(typeof nextValue === "string" ? nextValue : String(nextValue ?? ""))
+      }
+      ref={ref}
+      {...props}
+    />
+  ),
 );
 RadioGroup.displayName = "RadioGroup";
 
 const RadioGroupItem = React.forwardRef<HTMLSpanElement, RadioGroupItemProps>(
-  ({ className, ...props }, ref) => {
-    return (
-      <RadioPrimitive.Root
-        className={cn(
-          "relative inline-flex aspect-square size-5 shrink-0 cursor-pointer items-center justify-center rounded-full border border-input bg-card align-middle text-primary-foreground shadow-input ring-offset-background hover:border-input-hover",
-          "data-checked:border-primary data-checked:bg-primary",
-          "focus:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-          "data-disabled:cursor-not-allowed data-disabled:opacity-50",
-          className
-        )}
-        ref={ref}
-        {...props}
-      >
-        <RadioPrimitive.Indicator className="pointer-events-none flex items-center justify-center text-current">
-          <CirclePlaceholderOnIcon className="size-2.5 fill-current text-primary-foreground" />
-        </RadioPrimitive.Indicator>
-      </RadioPrimitive.Root>
-    );
-  }
+  ({ className, ...props }, ref) => (
+    <RadioPrimitive.Root
+      className={cn(
+        "relative inline-flex aspect-square size-5 shrink-0 cursor-pointer items-center justify-center rounded-full border border-input bg-card align-middle text-primary-foreground shadow-input ring-offset-background hover:border-input-hover",
+        "data-checked:border-primary data-checked:bg-primary",
+        "focus:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+        "data-disabled:cursor-not-allowed data-disabled:opacity-50",
+        className,
+      )}
+      ref={ref}
+      {...props}
+    >
+      <RadioPrimitive.Indicator className="pointer-events-none flex items-center justify-center text-current">
+        <CirclePlaceholderOnIcon className="size-2.5 fill-current text-primary-foreground" />
+      </RadioPrimitive.Indicator>
+    </RadioPrimitive.Root>
+  ),
 );
 RadioGroupItem.displayName = "RadioGroupItem";
 

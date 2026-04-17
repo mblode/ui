@@ -64,11 +64,7 @@ export default function ComboboxDropdownMenu() {
               <DropdownMenuSubTrigger>Apply label</DropdownMenuSubTrigger>
               <DropdownMenuSubContent className="p-0">
                 <Command>
-                  <CommandInput
-                    autoFocus={true}
-                    className="h-9"
-                    placeholder="Filter label..."
-                  />
+                  <CommandInput autoFocus={true} className="h-9" placeholder="Filter label..." />
                   <CommandList>
                     <CommandEmpty>No label found.</CommandEmpty>
                     <CommandGroup>

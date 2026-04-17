@@ -31,22 +31,20 @@ import { Spinner } from "@/registry/default/ui/spinner";
 import { Switch } from "@/registry/default/ui/switch";
 
 import { complexFormAction } from "./form-next-complex-action";
-import { addons, type FormState } from "./form-next-complex-schema";
+import { addons } from "./form-next-complex-schema";
+import type { FormState } from "./form-next-complex-schema";
 
 export default function FormNextComplex() {
-  const [formState, formAction, pending] = useActionState<FormState, FormData>(
-    complexFormAction,
-    {
-      values: {
-        plan: "basic",
-        billingPeriod: "monthly",
-        addons: [],
-        emailNotifications: false,
-      },
-      errors: null,
-      success: false,
-    }
-  );
+  const [formState, formAction, pending] = useActionState<FormState, FormData>(complexFormAction, {
+    errors: null,
+    success: false,
+    values: {
+      addons: [],
+      billingPeriod: "monthly",
+      emailNotifications: false,
+      plan: "basic",
+    },
+  });
 
   useEffect(() => {
     if (formState.success) {
@@ -63,9 +61,7 @@ export default function FormNextComplex() {
           <FieldGroup>
             <FieldSet data-invalid={!!formState.errors?.plan?.length}>
               <FieldLegend>Subscription Plan</FieldLegend>
-              <FieldDescription>
-                Choose your subscription plan.
-              </FieldDescription>
+              <FieldDescription>Choose your subscription plan.</FieldDescription>
               <RadioGroup
                 aria-invalid={!!formState.errors?.plan?.length}
                 defaultValue={formState.values.plan}
@@ -76,9 +72,7 @@ export default function FormNextComplex() {
                   <Field orientation="horizontal">
                     <FieldContent>
                       <FieldTitle>Basic</FieldTitle>
-                      <FieldDescription>
-                        For individuals and small teams
-                      </FieldDescription>
+                      <FieldDescription>For individuals and small teams</FieldDescription>
                     </FieldContent>
                     <RadioGroupItem id="basic" value="basic" />
                   </Field>
@@ -87,17 +81,13 @@ export default function FormNextComplex() {
                   <Field orientation="horizontal">
                     <FieldContent>
                       <FieldTitle>Pro</FieldTitle>
-                      <FieldDescription>
-                        For businesses with higher demands
-                      </FieldDescription>
+                      <FieldDescription>For businesses with higher demands</FieldDescription>
                     </FieldContent>
                     <RadioGroupItem id="pro" value="pro" />
                   </Field>
                 </FieldLabel>
               </RadioGroup>
-              {formState.errors?.plan && (
-                <FieldError>{formState.errors.plan[0]}</FieldError>
-              )}
+              {formState.errors?.plan && <FieldError>{formState.errors.plan[0]}</FieldError>}
             </FieldSet>
             <FieldSeparator />
             <Field data-invalid={!!formState.errors?.billingPeriod?.length}>
@@ -116,9 +106,7 @@ export default function FormNextComplex() {
                   <SelectItem value="yearly">Yearly</SelectItem>
                 </SelectContent>
               </Select>
-              <FieldDescription>
-                Choose how often you want to be billed.
-              </FieldDescription>
+              <FieldDescription>Choose how often you want to be billed.</FieldDescription>
               {formState.errors?.billingPeriod && (
                 <FieldError>{formState.errors.billingPeriod[0]}</FieldError>
               )}
@@ -138,9 +126,7 @@ export default function FormNextComplex() {
                   >
                     <Checkbox
                       aria-invalid={!!formState.errors?.addons?.length}
-                      defaultChecked={formState.values.addons.includes(
-                        addon.id
-                      )}
+                      defaultChecked={formState.values.addons.includes(addon.id)}
                       disabled={pending}
                       id={addon.id}
                       name="addons"
@@ -153,19 +139,13 @@ export default function FormNextComplex() {
                   </Field>
                 ))}
               </FieldGroup>
-              {formState.errors?.addons && (
-                <FieldError>{formState.errors.addons[0]}</FieldError>
-              )}
+              {formState.errors?.addons && <FieldError>{formState.errors.addons[0]}</FieldError>}
             </FieldSet>
             <FieldSeparator />
             <Field orientation="horizontal">
               <FieldContent>
-                <FieldLabel htmlFor="emailNotifications">
-                  Email Notifications
-                </FieldLabel>
-                <FieldDescription>
-                  Receive email updates about your subscription
-                </FieldDescription>
+                <FieldLabel htmlFor="emailNotifications">Email Notifications</FieldLabel>
+                <FieldDescription>Receive email updates about your subscription</FieldDescription>
               </FieldContent>
               <Switch
                 aria-invalid={!!formState.errors?.emailNotifications?.length}

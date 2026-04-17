@@ -12,13 +12,7 @@ function TooltipProvider({
 }: React.ComponentProps<typeof TooltipPrimitive.Provider> & {
   delayDuration?: number;
 }) {
-  return (
-    <TooltipPrimitive.Provider
-      data-slot="tooltip-provider"
-      delay={delay}
-      {...props}
-    />
-  );
+  return <TooltipPrimitive.Provider data-slot="tooltip-provider" delay={delay} {...props} />;
 }
 
 const Tooltip = TooltipPrimitive.Root;
@@ -31,24 +25,16 @@ function TooltipTrigger({
   asChild?: boolean;
 }) {
   const render =
-    asChild && React.isValidElement(children)
-      ? (children as React.ReactElement)
-      : undefined;
+    asChild && React.isValidElement(children) ? (children as React.ReactElement) : undefined;
 
   return (
-    <TooltipPrimitive.Trigger
-      data-slot="tooltip-trigger"
-      render={render}
-      {...props}
-    >
+    <TooltipPrimitive.Trigger data-slot="tooltip-trigger" render={render} {...props}>
       {asChild ? null : children}
     </TooltipPrimitive.Trigger>
   );
 }
 
-type TooltipContentProps = React.ComponentPropsWithoutRef<
-  typeof TooltipPrimitive.Popup
-> &
+type TooltipContentProps = React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Popup> &
   Pick<
     React.ComponentProps<typeof TooltipPrimitive.Positioner>,
     "align" | "alignOffset" | "side" | "sideOffset"
@@ -71,12 +57,10 @@ const TooltipContent = React.forwardRef<
       children,
       ...props
     },
-    ref
+    ref,
   ) => {
     const render =
-      asChild && React.isValidElement(children)
-        ? (children as React.ReactElement)
-        : undefined;
+      asChild && React.isValidElement(children) ? (children as React.ReactElement) : undefined;
 
     return (
       <TooltipPrimitive.Portal>
@@ -90,7 +74,7 @@ const TooltipContent = React.forwardRef<
           <TooltipPrimitive.Popup
             className={cn(
               "fade-in-0 zoom-in-95 data-closed:fade-out-0 data-closed:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 relative z-110 origin-(--transform-origin) animate-in rounded-xl bg-gray-900 px-3 py-2 font-normal font-sans text-sm text-white shadow-soft ring-1 ring-gray-700 data-closed:animate-out motion-reduce:animate-none",
-              className
+              className,
             )}
             ref={ref}
             render={render}
@@ -102,7 +86,7 @@ const TooltipContent = React.forwardRef<
         </TooltipPrimitive.Positioner>
       </TooltipPrimitive.Portal>
     );
-  }
+  },
 );
 TooltipContent.displayName = TooltipPrimitive.Popup.displayName;
 

@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  CircleAlertIcon,
-  CircleCheckIcon,
-  CircleDashedIcon,
-} from "blode-icons-react";
+import { CircleAlertIcon, CircleCheckIcon, CircleDashedIcon } from "blode-icons-react";
 import Link from "next/link";
 import type * as React from "react";
 import {
@@ -19,39 +15,38 @@ import {
 
 const components: { title: string; href: string; description: string }[] = [
   {
-    title: "Alert Dialog",
-    href: "/docs/primitives/alert-dialog",
     description:
       "A modal dialog that interrupts the user with important content and expects a response.",
+    href: "/docs/primitives/alert-dialog",
+    title: "Alert Dialog",
   },
   {
-    title: "Hover Card",
+    description: "For sighted users to preview content available behind a link.",
     href: "/docs/primitives/hover-card",
-    description:
-      "For sighted users to preview content available behind a link.",
+    title: "Hover Card",
   },
   {
-    title: "Progress",
-    href: "/docs/primitives/progress",
     description:
       "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+    href: "/docs/primitives/progress",
+    title: "Progress",
   },
   {
-    title: "Scroll-area",
-    href: "/docs/primitives/scroll-area",
     description: "Visually or semantically separates content.",
+    href: "/docs/primitives/scroll-area",
+    title: "Scroll-area",
   },
   {
-    title: "Tabs",
-    href: "/docs/primitives/tabs",
     description:
       "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
+    href: "/docs/primitives/tabs",
+    title: "Tabs",
   },
   {
-    title: "Tooltip",
-    href: "/docs/primitives/tooltip",
     description:
       "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+    href: "/docs/primitives/tooltip",
+    title: "Tooltip",
   },
 ];
 
@@ -80,11 +75,7 @@ export default function NavigationMenuDemo() {
           <NavigationMenuContent>
             <ul className="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
               {components.map((component) => (
-                <ListItem
-                  href={component.href}
-                  key={component.title}
-                  title={component.title}
-                >
+                <ListItem href={component.href} key={component.title} title={component.title}>
                   {component.description}
                 </ListItem>
               ))}
@@ -97,25 +88,19 @@ export default function NavigationMenuDemo() {
             <ul className="grid w-[200px]">
               <li>
                 <NavigationMenuLink
-                  render={
-                    <Link className="flex-row items-center gap-2" href="#" />
-                  }
+                  render={<Link className="flex-row items-center gap-2" href="#" />}
                 >
                   <CircleAlertIcon />
                   Backlog
                 </NavigationMenuLink>
                 <NavigationMenuLink
-                  render={
-                    <Link className="flex-row items-center gap-2" href="#" />
-                  }
+                  render={<Link className="flex-row items-center gap-2" href="#" />}
                 >
                   <CircleDashedIcon />
                   To Do
                 </NavigationMenuLink>
                 <NavigationMenuLink
-                  render={
-                    <Link className="flex-row items-center gap-2" href="#" />
-                  }
+                  render={<Link className="flex-row items-center gap-2" href="#" />}
                 >
                   <CircleCheckIcon />
                   Done

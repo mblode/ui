@@ -7,31 +7,31 @@ import { getGitHubIssueUrl, getGithubFileUrl } from "@/lib/github";
 export function Contribute({ doc }: { doc: Doc }) {
   const contributeLinks = [
     {
-      text: "Report an issue",
-      icon: BugIcon,
       href: getGitHubIssueUrl({
-        owner: "mblode",
-        repo: "blode-ui",
-        title: `[bug]: ${doc.slug}`,
         labels: ["bug", "documentation"],
-        template: "bug_report.md",
-      }),
-    },
-    {
-      text: "Request a feature",
-      icon: LightBulbIcon,
-      href: getGitHubIssueUrl({
         owner: "mblode",
         repo: "blode-ui",
-        title: `[feat]: ${doc.slug}`,
-        labels: ["enhancement"],
-        template: "feature_request.md",
+        template: "bug_report.md",
+        title: `[bug]: ${doc.slug}`,
       }),
+      icon: BugIcon,
+      text: "Report an issue",
     },
     {
-      text: "Edit this page",
-      icon: PencilIcon,
+      href: getGitHubIssueUrl({
+        labels: ["enhancement"],
+        owner: "mblode",
+        repo: "blode-ui",
+        template: "feature_request.md",
+        title: `[feat]: ${doc.slug}`,
+      }),
+      icon: LightBulbIcon,
+      text: "Request a feature",
+    },
+    {
       href: getGithubFileUrl(doc.slug),
+      icon: PencilIcon,
+      text: "Edit this page",
     },
   ];
 

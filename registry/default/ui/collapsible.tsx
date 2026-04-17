@@ -3,9 +3,7 @@
 import { Collapsible as CollapsiblePrimitive } from "@base-ui/react/collapsible";
 import * as React from "react";
 
-function Collapsible({
-  ...props
-}: React.ComponentProps<typeof CollapsiblePrimitive.Root>) {
+function Collapsible({ ...props }: React.ComponentProps<typeof CollapsiblePrimitive.Root>) {
   return <CollapsiblePrimitive.Root data-slot="collapsible" {...props} />;
 }
 
@@ -17,16 +15,10 @@ function CollapsibleTrigger({
   asChild?: boolean;
 }) {
   const render =
-    asChild && React.isValidElement(children)
-      ? (children as React.ReactElement)
-      : undefined;
+    asChild && React.isValidElement(children) ? (children as React.ReactElement) : undefined;
 
   return (
-    <CollapsiblePrimitive.Trigger
-      data-slot="collapsible-trigger"
-      render={render}
-      {...props}
-    >
+    <CollapsiblePrimitive.Trigger data-slot="collapsible-trigger" render={render} {...props}>
       {asChild ? null : children}
     </CollapsiblePrimitive.Trigger>
   );

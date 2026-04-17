@@ -1,12 +1,7 @@
 {
   "accordion.tsx": {
     "imports": ["@base-ui/react/accordion"],
-    "exports": [
-      "Accordion",
-      "AccordionContent",
-      "AccordionItem",
-      "AccordionTrigger"
-    ],
+    "exports": ["Accordion", "AccordionContent", "AccordionItem", "AccordionTrigger"],
     "alias_members": {
       "AccordionPrimitive": ["Header", "Item", "Panel", "Root", "Trigger"]
     }
@@ -90,12 +85,7 @@
   },
   "button-group.tsx": {
     "imports": ["@base-ui/react/merge-props", "@base-ui/react/use-render"],
-    "exports": [
-      "ButtonGroup",
-      "ButtonGroupSeparator",
-      "ButtonGroupText",
-      "buttonGroupVariants"
-    ],
+    "exports": ["ButtonGroup", "ButtonGroupSeparator", "ButtonGroupText", "buttonGroupVariants"],
     "alias_members": {
       "mergeProps": [],
       "useRender": ["ComponentProps"]
@@ -372,13 +362,7 @@
     "imports": ["@base-ui/react/preview-card"],
     "exports": ["HoverCard", "HoverCardContent", "HoverCardTrigger"],
     "alias_members": {
-      "PreviewCardPrimitive": [
-        "Popup",
-        "Portal",
-        "Positioner",
-        "Root",
-        "Trigger"
-      ]
+      "PreviewCardPrimitive": ["Popup", "Portal", "Positioner", "Root", "Trigger"]
     }
   },
   "input-group.tsx": {
@@ -395,12 +379,7 @@
   },
   "input-otp.tsx": {
     "imports": [],
-    "exports": [
-      "InputOTP",
-      "InputOTPGroup",
-      "InputOTPSeparator",
-      "InputOTPSlot"
-    ],
+    "exports": ["InputOTP", "InputOTPGroup", "InputOTPSeparator", "InputOTPSlot"],
     "alias_members": {}
   },
   "input.tsx": {
@@ -460,12 +439,7 @@
       "MenubarTrigger"
     ],
     "alias_members": {
-      "MenuPrimitive": [
-        "CheckboxItem",
-        "CheckboxItemIndicator",
-        "RadioItem",
-        "RadioItemIndicator"
-      ],
+      "MenuPrimitive": ["CheckboxItem", "CheckboxItemIndicator", "RadioItem", "RadioItemIndicator"],
       "MenubarPrimitive": ["Props"]
     }
   },
@@ -540,13 +514,7 @@
   },
   "progress.tsx": {
     "imports": ["@base-ui/react/progress"],
-    "exports": [
-      "Progress",
-      "ProgressIndicator",
-      "ProgressLabel",
-      "ProgressTrack",
-      "ProgressValue"
-    ],
+    "exports": ["Progress", "ProgressIndicator", "ProgressLabel", "ProgressTrack", "ProgressValue"],
     "alias_members": {
       "ProgressPrimitive": ["Indicator", "Label", "Root", "Track", "Value"]
     }
@@ -568,13 +536,7 @@
     "imports": ["@base-ui/react/scroll-area"],
     "exports": ["ScrollArea", "ScrollBar"],
     "alias_members": {
-      "ScrollAreaPrimitive": [
-        "Corner",
-        "Root",
-        "Scrollbar",
-        "Thumb",
-        "Viewport"
-      ]
+      "ScrollAreaPrimitive": ["Corner", "Root", "Scrollbar", "Thumb", "Viewport"]
     }
   },
   "select.tsx": {
@@ -722,13 +684,7 @@
   },
   "tabs.tsx": {
     "imports": ["@base-ui/react/tabs"],
-    "exports": [
-      "Tabs",
-      "TabsContent",
-      "TabsList",
-      "TabsTrigger",
-      "tabsListVariants"
-    ],
+    "exports": ["Tabs", "TabsContent", "TabsList", "TabsTrigger", "tabsListVariants"],
     "alias_members": {
       "TabsPrimitive": ["List", "Panel", "Root", "Tab"]
     }
@@ -755,22 +711,9 @@
   },
   "tooltip.tsx": {
     "imports": ["@base-ui/react/tooltip"],
-    "exports": [
-      "Tooltip",
-      "TooltipContent",
-      "TooltipProvider",
-      "TooltipTrigger"
-    ],
+    "exports": ["Tooltip", "TooltipContent", "TooltipProvider", "TooltipTrigger"],
     "alias_members": {
-      "TooltipPrimitive": [
-        "Arrow",
-        "Popup",
-        "Portal",
-        "Positioner",
-        "Provider",
-        "Root",
-        "Trigger"
-      ]
+      "TooltipPrimitive": ["Arrow", "Popup", "Portal", "Positioner", "Provider", "Root", "Trigger"]
     }
   }
 }

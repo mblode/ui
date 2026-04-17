@@ -4,8 +4,8 @@ const DEFAULT_TITLE = "Blode UI";
 const DEFAULT_DESCRIPTION = "An opinionated shadcn/ui registry";
 
 const OG_IMAGE_SIZE = {
-  width: 1200,
   height: 630,
+  width: 1200,
 } as const;
 
 interface FontAsset {
@@ -22,11 +22,7 @@ export interface OgImageOptions {
   width?: number;
 }
 
-function clampText(
-  value: string | null | undefined,
-  fallback: string,
-  maxLength: number
-) {
+function clampText(value: string | null | undefined, fallback: string, maxLength: number) {
   const text = value?.trim();
   if (!text) {
     return fallback;
@@ -56,34 +52,31 @@ function getTitleSize(title: string) {
 }
 
 async function loadFonts(): Promise<FontAsset[]> {
-  const [
-    { base64Font: normal },
-    { base64Font: mono },
-    { base64Font: semibold },
-  ] = await Promise.all([
-    import("./geist-regular-otf.json").then((mod) => mod.default || mod),
-    import("./geistmono-regular-otf.json").then((mod) => mod.default || mod),
-    import("./geist-semibold-otf.json").then((mod) => mod.default || mod),
-  ]);
+  const [{ base64Font: normal }, { base64Font: mono }, { base64Font: semibold }] =
+    await Promise.all([
+      import("./geist-regular-otf.json").then((mod) => mod.default || mod),
+      import("./geistmono-regular-otf.json").then((mod) => mod.default || mod),
+      import("./geist-semibold-otf.json").then((mod) => mod.default || mod),
+    ]);
 
   return [
     {
-      name: "Geist",
       data: Buffer.from(normal, "base64"),
-      weight: 400 as const,
-      style: "normal" as const,
-    },
-    {
-      name: "Geist Mono",
-      data: Buffer.from(mono, "base64"),
-      weight: 400 as const,
-      style: "normal" as const,
-    },
-    {
       name: "Geist",
-      data: Buffer.from(semibold, "base64"),
-      weight: 600 as const,
       style: "normal" as const,
+      weight: 400 as const,
+    },
+    {
+      data: Buffer.from(mono, "base64"),
+      name: "Geist Mono",
+      style: "normal" as const,
+      weight: 400 as const,
+    },
+    {
+      data: Buffer.from(semibold, "base64"),
+      name: "Geist",
+      style: "normal" as const,
+      weight: 600 as const,
     },
   ];
 }
@@ -95,14 +88,10 @@ export async function createOgImage(options: OgImageOptions = {}) {
   const titleSize = getTitleSize(title);
 
   return new ImageResponse(
-    <div
-      style={{ fontFamily: "Geist" }}
-      tw="relative flex h-full w-full bg-white text-black"
-    >
+    <div style={{ fontFamily: "Geist" }} tw="relative flex h-full w-full bg-white text-black">
       <div
         style={{
-          background:
-            "radial-gradient(circle at 12% 8%, #f5f5f5 0%, rgba(245, 245, 245, 0) 48%)",
+          background: "radial-gradient(circle at 12% 8%, #f5f5f5 0%, rgba(245, 245, 245, 0) 48%)",
         }}
         tw="absolute inset-0"
       />
@@ -124,22 +113,18 @@ export async function createOgImage(options: OgImageOptions = {}) {
           {title}
         </div>
 
-        <div tw="mt-8 max-w-[920px] text-[34px] leading-[1.3] text-neutral-600">
-          {description}
-        </div>
+        <div tw="mt-8 max-w-[920px] text-[34px] leading-[1.3] text-neutral-600">{description}</div>
       </div>
 
       <div tw="absolute bottom-24 right-24 flex items-center">
-        <div tw="ml-3 text-[34px] text-neutral-700 tracking-tight">
-          blode/ui
-        </div>
+        <div tw="ml-3 text-[34px] text-neutral-700 tracking-tight">blode/ui</div>
       </div>
     </div>,
     {
-      width: options.width ?? OG_IMAGE_SIZE.width,
-      height: options.height ?? OG_IMAGE_SIZE.height,
       fonts,
-    }
+      height: options.height ?? OG_IMAGE_SIZE.height,
+      width: options.width ?? OG_IMAGE_SIZE.width,
+    },
   );
 }
 

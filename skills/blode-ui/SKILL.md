@@ -13,25 +13,25 @@ Use generic shadcn knowledge only for CLI mechanics that are not overridden by t
 
 Load only what the task needs.
 
-| File | Read when |
-| --- | --- |
+| File                                | Read when                                                                                          |
+| ----------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `references/product-positioning.md` | Writing or reviewing intros, landing-page copy, installation copy, contact info, or brand language |
-| `references/install-flow.md` | Explaining how to install Blode UI, add the registry namespace, or import the first component |
-| `references/registry-workflows.md` | Searching, viewing, adding, or updating registry items with `npx shadcn@latest` |
-| `references/repo-conventions.md` | Editing components, docs, or registry files inside this repo |
-| `references/source-of-truth.md` | Reconciling conflicting docs, examples, or habits before choosing an answer |
+| `references/install-flow.md`        | Explaining how to install Blode UI, add the registry namespace, or import the first component      |
+| `references/registry-workflows.md`  | Searching, viewing, adding, or updating registry items with `npx shadcn@latest`                    |
+| `references/repo-conventions.md`    | Editing components, docs, or registry files inside this repo                                       |
+| `references/source-of-truth.md`     | Reconciling conflicting docs, examples, or habits before choosing an answer                        |
 
 ## Rules
 
 Load the relevant rule files before writing component code, examples, or docs snippets.
 
-| Priority | Category | Impact | Prefix | Rules |
-| --- | --- | --- | --- | --- |
-| 1 | Composition and accessibility | CRITICAL | `comp-` | 1 |
-| 2 | Forms and validation | HIGH | `form-` | 1 |
-| 3 | Styling and tokens | HIGH | `style-` | 1 |
-| 4 | Base UI Primitive APIs | HIGH | `api-` | 1 |
-| 5 | Icons | MEDIUM | `icon-` | 1 |
+| Priority | Category                      | Impact   | Prefix   | Rules |
+| -------- | ----------------------------- | -------- | -------- | ----- |
+| 1        | Composition and accessibility | CRITICAL | `comp-`  | 1     |
+| 2        | Forms and validation          | HIGH     | `form-`  | 1     |
+| 3        | Styling and tokens            | HIGH     | `style-` | 1     |
+| 4        | Base UI Primitive APIs        | HIGH     | `api-`   | 1     |
+| 5        | Icons                         | MEDIUM   | `icon-`  | 1     |
 
 See `rules/_sections.md` for the category map before loading an individual rule file.
 

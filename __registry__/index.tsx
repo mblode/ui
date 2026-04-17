@@ -9,9 +9,7 @@ const isRenderableComponent = (value: unknown) => {
   }
 
   return (
-    typeof value === "object" &&
-    value !== null &&
-    "$$typeof" in (value as Record<string, unknown>)
+    typeof value === "object" && value !== null && "$$typeof" in (value as Record<string, unknown>)
   );
 };
 
@@ -52,15 +50,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/accordion.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     alert: {
       name: "alert",
-      description:
-        "A callout that displays a short, important message to attract attention.",
+      description: "A callout that displays a short, important message to attract attention.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -74,7 +71,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/alert.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -96,15 +93,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/alert-dialog.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     "aspect-ratio": {
       name: "aspect-ratio",
-      description:
-        "A component that maintains a consistent width-to-height ratio.",
+      description: "A component that maintains a consistent width-to-height ratio.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -118,7 +114,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/aspect-ratio.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -139,15 +135,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/autocomplete.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     avatar: {
       name: "avatar",
-      description:
-        "An image element with a fallback for representing the user.",
+      description: "An image element with a fallback for representing the user.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -161,15 +156,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/avatar.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     "bar-list": {
       name: "bar-list",
-      description:
-        "A compact comparison list that visualises values as horizontal bars.",
+      description: "A compact comparison list that visualises values as horizontal bars.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -183,15 +177,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/bar-list.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     badge: {
       name: "badge",
-      description:
-        "A small status indicator for labelling and categorising items.",
+      description: "A small status indicator for labelling and categorising items.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -205,15 +198,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/badge.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     breadcrumb: {
       name: "breadcrumb",
-      description:
-        "A navigation aid that shows the current page location within a hierarchy.",
+      description: "A navigation aid that shows the current page location within a hierarchy.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -227,15 +219,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/breadcrumb.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     button: {
       name: "button",
-      description:
-        "An interactive element that triggers an action when clicked.",
+      description: "An interactive element that triggers an action when clicked.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -249,15 +240,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/button.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     "button-group": {
       name: "button-group",
-      description:
-        "A container that groups related buttons together with shared styling.",
+      description: "A container that groups related buttons together with shared styling.",
       type: "registry:ui",
       registryDependencies: ["button", "separator"],
       files: [
@@ -271,7 +261,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/button-group.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -292,7 +282,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/calendar.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -313,15 +303,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/card.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     carousel: {
       name: "carousel",
-      description:
-        "A slideshow component for cycling through a set of content.",
+      description: "A slideshow component for cycling through a set of content.",
       type: "registry:ui",
       registryDependencies: ["button"],
       files: [
@@ -335,7 +324,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/carousel.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -356,15 +345,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/circular-progress.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     checkbox: {
       name: "checkbox",
-      description:
-        "A control that allows the user to toggle between checked and unchecked states.",
+      description: "A control that allows the user to toggle between checked and unchecked states.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -383,15 +371,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/checkbox.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     "checkbox-group": {
       name: "checkbox-group",
-      description:
-        "A grouped set of related checkboxes managed with shared state.",
+      description: "A grouped set of related checkboxes managed with shared state.",
       type: "registry:ui",
       registryDependencies: ["checkbox"],
       files: [
@@ -405,15 +392,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/checkbox-group.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     collapsible: {
       name: "collapsible",
-      description:
-        "An interactive component that expands and collapses a panel of content.",
+      description: "An interactive component that expands and collapses a panel of content.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -427,7 +413,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/collapsible.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -448,7 +434,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/currency-input.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -470,15 +456,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/combobox.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     "multi-combobox": {
       name: "multi-combobox",
-      description:
-        "A combobox that allows selecting multiple items with tag-style badges.",
+      description: "A combobox that allows selecting multiple items with tag-style badges.",
       type: "registry:ui",
       registryDependencies: ["badge"],
       files: [
@@ -492,15 +477,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/multi-combobox.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     command: {
       name: "command",
-      description:
-        "A command palette for fast, keyboard-driven searching and navigation.",
+      description: "A command palette for fast, keyboard-driven searching and navigation.",
       type: "registry:ui",
       registryDependencies: ["dialog"],
       files: [
@@ -514,15 +498,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/command.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     "context-menu": {
       name: "context-menu",
-      description:
-        "A menu that appears on right-click, providing contextual actions.",
+      description: "A menu that appears on right-click, providing contextual actions.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -536,15 +519,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/context-menu.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     "copy-button": {
       name: "copy-button",
-      description:
-        "A button that copies text to the clipboard with animated feedback.",
+      description: "A button that copies text to the clipboard with animated feedback.",
       type: "registry:ui",
       registryDependencies: ["button", "@blode/use-copy-to-clipboard"],
       files: [
@@ -558,15 +540,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/copy-button.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     dialog: {
       name: "dialog",
-      description:
-        "A modal window that overlays the main content and requires user interaction.",
+      description: "A modal window that overlays the main content and requires user interaction.",
       type: "registry:ui",
       registryDependencies: ["button"],
       files: [
@@ -580,7 +561,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/dialog.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -601,15 +582,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/drawer.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     "dropdown-menu": {
       name: "dropdown-menu",
-      description:
-        "A menu that opens from a trigger button, displaying a list of actions.",
+      description: "A menu that opens from a trigger button, displaying a list of actions.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -623,15 +603,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/dropdown-menu.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     empty: {
       name: "empty",
-      description:
-        "A placeholder displayed when there is no content or data to show.",
+      description: "A placeholder displayed when there is no content or data to show.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -645,15 +624,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/empty.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     field: {
       name: "field",
-      description:
-        "A form field wrapper that pairs a label, input, and helper text.",
+      description: "A form field wrapper that pairs a label, input, and helper text.",
       type: "registry:ui",
       registryDependencies: ["label", "separator"],
       files: [
@@ -667,15 +645,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/field.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     form: {
       name: "form",
-      description:
-        "A form component with validation powered by React Hook Form and Zod.",
+      description: "A form component with validation powered by React Hook Form and Zod.",
       type: "registry:ui",
       registryDependencies: ["button", "label"],
       files: [
@@ -689,15 +666,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/form.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     "hover-card": {
       name: "hover-card",
-      description:
-        "A popup card that appears when hovering over a trigger element.",
+      description: "A popup card that appears when hovering over a trigger element.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -711,7 +687,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/hover-card.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -732,15 +708,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/input.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     "input-group": {
       name: "input-group",
-      description:
-        "A wrapper that combines an input with addons like icons or buttons.",
+      description: "A wrapper that combines an input with addons like icons or buttons.",
       type: "registry:ui",
       registryDependencies: ["button", "input", "textarea"],
       files: [
@@ -754,15 +729,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/input-group.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     "input-otp": {
       name: "input-otp",
-      description:
-        "A one-time password input with individual character fields.",
+      description: "A one-time password input with individual character fields.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -776,15 +750,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/input-otp.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     item: {
       name: "item",
-      description:
-        "A flexible list item component for menus, settings, and data rows.",
+      description: "A flexible list item component for menus, settings, and data rows.",
       type: "registry:ui",
       registryDependencies: ["separator"],
       files: [
@@ -798,15 +771,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/item.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     label: {
       name: "label",
-      description:
-        "An accessible label that associates text with a form control.",
+      description: "An accessible label that associates text with a form control.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -820,7 +792,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/label.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -842,7 +814,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/menubar.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -863,15 +835,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/meter.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     "navigation-menu": {
       name: "navigation-menu",
-      description:
-        "A responsive navigation component with support for dropdown panels.",
+      description: "A responsive navigation component with support for dropdown panels.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -885,15 +856,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/navigation-menu.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     "number-field": {
       name: "number-field",
-      description:
-        "A numeric input with increment, decrement, and scrubbing interactions.",
+      description: "A numeric input with increment, decrement, and scrubbing interactions.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -907,15 +877,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/number-field.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     pagination: {
       name: "pagination",
-      description:
-        "A navigation component for paging through content across multiple pages.",
+      description: "A navigation component for paging through content across multiple pages.",
       type: "registry:ui",
       registryDependencies: ["button"],
       files: [
@@ -929,15 +898,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/pagination.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     "password-input": {
       name: "password-input",
-      description:
-        "A password input with a toggle button to show or hide the password.",
+      description: "A password input with a toggle button to show or hide the password.",
       type: "registry:ui",
       registryDependencies: ["input"],
       files: [
@@ -951,23 +919,16 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/password-input.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     "phone-input": {
       name: "phone-input",
-      description:
-        "An international phone number input with country code selector.",
+      description: "An international phone number input with country code selector.",
       type: "registry:ui",
-      registryDependencies: [
-        "button",
-        "command",
-        "input",
-        "popover",
-        "scroll-area",
-      ],
+      registryDependencies: ["button", "command", "input", "popover", "scroll-area"],
       files: [
         {
           path: "registry/default/ui/phone-input.tsx",
@@ -979,7 +940,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/phone-input.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -1000,15 +961,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/popover.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     progress: {
       name: "progress",
-      description:
-        "A horizontal bar that indicates the completion progress of a task.",
+      description: "A horizontal bar that indicates the completion progress of a task.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -1022,15 +982,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/progress.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     "progress-list": {
       name: "progress-list",
-      description:
-        "A vertical list of progress items with completed and pending states.",
+      description: "A vertical list of progress items with completed and pending states.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -1044,15 +1003,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/progress-list.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     prompt: {
       name: "prompt",
-      description:
-        "A confirmation dialog that asks the user for input before proceeding.",
+      description: "A confirmation dialog that asks the user for input before proceeding.",
       type: "registry:ui",
       registryDependencies: ["button"],
       files: [
@@ -1066,15 +1024,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/prompt.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     "radio-group": {
       name: "radio-group",
-      description:
-        "A set of mutually exclusive options where only one can be selected.",
+      description: "A set of mutually exclusive options where only one can be selected.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -1088,15 +1045,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/radio-group.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     resizable: {
       name: "resizable",
-      description:
-        "A layout component with draggable handles for resizing panels.",
+      description: "A layout component with draggable handles for resizing panels.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -1110,7 +1066,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/resizable.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -1131,15 +1087,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/scroll-area.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     select: {
       name: "select",
-      description:
-        "A dropdown control for choosing a single value from a list of options.",
+      description: "A dropdown control for choosing a single value from a list of options.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -1153,15 +1108,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/select.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     separator: {
       name: "separator",
-      description:
-        "A visual divider that separates content into distinct sections.",
+      description: "A visual divider that separates content into distinct sections.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -1175,15 +1129,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/separator.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     sheet: {
       name: "sheet",
-      description:
-        "A panel that slides in from the edge of the viewport with an overlay.",
+      description: "A panel that slides in from the edge of the viewport with an overlay.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -1197,15 +1150,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/sheet.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     sidebar: {
       name: "sidebar",
-      description:
-        "A collapsible side navigation component with multiple layout variants.",
+      description: "A collapsible side navigation component with multiple layout variants.",
       type: "registry:ui",
       registryDependencies: [
         "button",
@@ -1227,7 +1179,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/sidebar.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -1248,15 +1200,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/skeleton.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     slider: {
       name: "slider",
-      description:
-        "A draggable control for selecting a numeric value within a range.",
+      description: "A draggable control for selecting a numeric value within a range.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -1270,7 +1221,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/slider.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -1291,7 +1242,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/sonner.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -1312,15 +1263,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/spinner.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     stat: {
       name: "stat",
-      description:
-        "A compact metric card for showing a headline value and label.",
+      description: "A compact metric card for showing a headline value and label.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -1334,7 +1284,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/stat.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -1355,15 +1305,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/switch.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     table: {
       name: "table",
-      description:
-        "A responsive table for displaying structured data in rows and columns.",
+      description: "A responsive table for displaying structured data in rows and columns.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -1377,15 +1326,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/table.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     tabs: {
       name: "tabs",
-      description:
-        "A tabbed interface that organises content into switchable panels.",
+      description: "A tabbed interface that organises content into switchable panels.",
       type: "registry:ui",
       registryDependencies: ["@blode/use-tab-observer"],
       files: [
@@ -1399,7 +1347,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/tabs.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -1420,7 +1368,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/textarea.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -1441,7 +1389,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/toggle.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -1462,7 +1410,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/toggle-group.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -1484,15 +1432,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/tooltip.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     kbd: {
       name: "kbd",
-      description:
-        "A styled keyboard key indicator for displaying shortcuts and key combinations.",
+      description: "A styled keyboard key indicator for displaying shortcuts and key combinations.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -1506,7 +1453,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/kbd.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -1527,15 +1474,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/native-select.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     direction: {
       name: "direction",
-      description:
-        "A context provider for managing text direction (LTR/RTL) across components.",
+      description: "A context provider for managing text direction (LTR/RTL) across components.",
       type: "registry:ui",
       registryDependencies: undefined,
       files: [
@@ -1549,15 +1495,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/ui/direction.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     utils: {
       name: "utils",
-      description:
-        "Utility functions including cn() for merging Tailwind CSS classes.",
+      description: "Utility functions including cn() for merging Tailwind CSS classes.",
       type: "registry:lib",
       registryDependencies: undefined,
       files: [
@@ -1571,15 +1516,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/lib/utils.ts").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     "use-copy-to-clipboard": {
       name: "use-copy-to-clipboard",
-      description:
-        "A hook that copies text to the clipboard and resets after a timeout.",
+      description: "A hook that copies text to the clipboard and resets after a timeout.",
       type: "registry:lib",
       registryDependencies: undefined,
       files: [
@@ -1591,19 +1535,16 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/hooks/use-copy-to-clipboard.ts").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/hooks/use-copy-to-clipboard.ts").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
     },
     "use-mobile": {
       name: "use-mobile",
-      description:
-        "A hook that detects whether the viewport matches a mobile breakpoint.",
+      description: "A hook that detects whether the viewport matches a mobile breakpoint.",
       type: "registry:lib",
       registryDependencies: undefined,
       files: [
@@ -1617,15 +1558,14 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/hooks/use-mobile.ts").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
     },
     "use-tab-observer": {
       name: "use-tab-observer",
-      description:
-        "A hook that observes and tracks the active tab indicator position.",
+      description: "A hook that observes and tracks the active tab indicator position.",
       type: "registry:lib",
       registryDependencies: undefined,
       files: [
@@ -1639,7 +1579,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/hooks/use-tab-observer.ts").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -1658,11 +1598,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/accordion-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/accordion-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -1683,7 +1621,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/alert-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -1702,11 +1640,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/alert-destructive.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/alert-destructive.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -1725,11 +1661,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/alert-dialog-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/alert-dialog-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -1748,11 +1682,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/aspect-ratio-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/aspect-ratio-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -1771,11 +1703,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/autocomplete-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/autocomplete-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -1796,7 +1726,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/avatar-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -1817,7 +1747,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/bar-list-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -1838,7 +1768,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/badge-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -1857,11 +1787,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/badge-destructive.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/badge-destructive.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -1882,7 +1810,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/badge-outline.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -1901,11 +1829,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/badge-secondary.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/badge-secondary.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -1924,11 +1850,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/breadcrumb-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/breadcrumb-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -1947,11 +1871,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/breadcrumb-separator.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/breadcrumb-separator.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -1970,11 +1892,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/breadcrumb-dropdown.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/breadcrumb-dropdown.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -1993,11 +1913,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/breadcrumb-ellipsis.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/breadcrumb-ellipsis.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2016,11 +1934,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/breadcrumb-link.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/breadcrumb-link.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2039,11 +1955,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/breadcrumb-responsive.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/breadcrumb-responsive.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2064,7 +1978,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/button-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2083,11 +1997,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/button-default.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/button-default.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2106,11 +2018,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/button-secondary.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/button-secondary.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2129,11 +2039,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/button-destructive.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/button-destructive.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2152,11 +2060,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/button-outline.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/button-outline.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2177,7 +2083,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/button-ghost.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2198,7 +2104,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/button-link.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2217,11 +2123,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/button-with-icon.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/button-with-icon.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2240,11 +2144,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/button-loading.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/button-loading.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2265,7 +2167,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/button-icon.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2284,11 +2186,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/button-as-child.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/button-as-child.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2307,11 +2207,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/button-rounded.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/button-rounded.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2332,7 +2230,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/button-size.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2351,11 +2249,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/button-group-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/button-group-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2374,11 +2270,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/button-group-nested.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/button-group-nested.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2397,11 +2291,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/button-group-size.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/button-group-size.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2420,11 +2312,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/button-group-separator.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/button-group-separator.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2443,11 +2333,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/button-group-split.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/button-group-split.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2466,11 +2354,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/button-group-input.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/button-group-input.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2489,11 +2375,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/button-group-dropdown.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/button-group-dropdown.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2512,11 +2396,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/button-group-select.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/button-group-select.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2535,11 +2417,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/button-group-popover.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/button-group-popover.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2558,11 +2438,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/button-group-input-group.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/button-group-input-group.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2581,11 +2459,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/button-group-orientation.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/button-group-orientation.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2606,7 +2482,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/calendar-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2627,7 +2503,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/card-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2646,11 +2522,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/card-with-form.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/card-with-form.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2671,7 +2545,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/carousel-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2692,7 +2566,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/carousel-size.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2711,11 +2585,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/carousel-spacing.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/carousel-spacing.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2734,11 +2606,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/carousel-orientation.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/carousel-orientation.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2759,7 +2629,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/carousel-api.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2778,11 +2648,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/carousel-plugin.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/carousel-plugin.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2803,7 +2671,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/checkbox-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2822,11 +2690,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/checkbox-disabled.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/checkbox-disabled.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2845,11 +2711,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/checkbox-group-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/checkbox-group-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2868,11 +2732,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/checkbox-with-text.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/checkbox-with-text.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2891,11 +2753,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/collapsible-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/collapsible-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2916,7 +2776,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/combobox-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2935,11 +2795,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/combobox-dropdown-menu.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/combobox-dropdown-menu.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2958,11 +2816,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/combobox-popover.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/combobox-popover.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -2981,11 +2837,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/combobox-responsive.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/combobox-responsive.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3006,7 +2860,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/command-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3025,11 +2879,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/command-dialog.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/command-dialog.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3048,11 +2900,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/context-menu-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/context-menu-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3071,11 +2921,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/copy-button-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/copy-button-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3094,11 +2942,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/data-table-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/data-table-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3117,11 +2963,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/date-picker-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/date-picker-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3140,11 +2984,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/date-picker-with-presets.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/date-picker-with-presets.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3163,11 +3005,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/date-picker-with-range.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/date-picker-with-range.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3188,7 +3028,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/dialog-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3207,11 +3047,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/dialog-close-button.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/dialog-close-button.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3232,7 +3070,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/drawer-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3253,7 +3091,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/empty-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3274,7 +3112,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/empty-icon.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3295,7 +3133,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/empty-avatar.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3314,11 +3152,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/empty-avatar-group.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/empty-avatar-group.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3337,11 +3173,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/empty-input-group.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/empty-input-group.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3362,7 +3196,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/empty-outline.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3381,11 +3215,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/empty-background.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/empty-background.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3406,7 +3238,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/field-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3427,7 +3259,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/field-input.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3446,11 +3278,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/field-textarea.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/field-textarea.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3469,11 +3299,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/field-fieldset.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/field-fieldset.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3494,7 +3322,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/field-radio.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3513,11 +3341,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/field-checkbox.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/field-checkbox.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3538,7 +3364,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/field-switch.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3559,7 +3385,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/field-slider.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3580,7 +3406,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/field-select.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3599,11 +3425,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/field-choice-card.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/field-choice-card.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3624,7 +3448,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/field-group.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3643,11 +3467,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/field-responsive.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/field-responsive.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3668,7 +3490,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/form-rhf-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3687,11 +3509,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/form-rhf-input.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/form-rhf-input.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3710,11 +3530,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/form-rhf-select.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/form-rhf-select.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3733,11 +3551,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/form-rhf-checkbox.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/form-rhf-checkbox.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3756,11 +3572,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/form-rhf-switch.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/form-rhf-switch.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3779,11 +3593,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/form-rhf-textarea.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/form-rhf-textarea.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3802,11 +3614,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/form-rhf-radiogroup.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/form-rhf-radiogroup.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3825,11 +3635,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/form-rhf-array.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/form-rhf-array.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3856,11 +3664,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/form-rhf-complex.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/form-rhf-complex.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3869,13 +3675,7 @@ export const Index: Record<string, unknown> = {
       name: "form-rhf-password",
       description: "",
       type: "registry:example",
-      registryDependencies: [
-        "field",
-        "input-group",
-        "progress",
-        "button",
-        "card",
-      ],
+      registryDependencies: ["field", "input-group", "progress", "button", "card"],
       files: [
         {
           path: "registry/default/examples/form-rhf-password.tsx",
@@ -3885,11 +3685,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/form-rhf-password.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/form-rhf-password.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3908,11 +3706,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/form-tanstack-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/form-tanstack-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3931,11 +3727,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/form-tanstack-input.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/form-tanstack-input.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3954,11 +3748,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/form-tanstack-textarea.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/form-tanstack-textarea.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -3977,11 +3769,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/form-tanstack-select.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/form-tanstack-select.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4000,11 +3790,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/form-tanstack-checkbox.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/form-tanstack-checkbox.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4023,11 +3811,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/form-tanstack-switch.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/form-tanstack-switch.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4046,11 +3832,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/form-tanstack-radiogroup.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/form-tanstack-radiogroup.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4069,11 +3853,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/form-tanstack-array.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/form-tanstack-array.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4100,11 +3882,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/form-tanstack-complex.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/form-tanstack-complex.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4125,7 +3905,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/drawer-dialog.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4144,11 +3924,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/dropdown-menu-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/dropdown-menu-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4167,11 +3945,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/dropdown-menu-checkboxes.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/dropdown-menu-checkboxes.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4190,11 +3966,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import(
-          "@/registry/default/examples/dropdown-menu-radio-group.tsx"
-        ).then((mod) => ({
+        import("@/registry/default/examples/dropdown-menu-radio-group.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4203,13 +3977,7 @@ export const Index: Record<string, unknown> = {
       name: "dropdown-menu-dialog",
       description: "",
       type: "registry:example",
-      registryDependencies: [
-        "dropdown-menu",
-        "dialog",
-        "button",
-        "input",
-        "label",
-      ],
+      registryDependencies: ["dropdown-menu", "dialog", "button", "input", "label"],
       files: [
         {
           path: "registry/default/examples/dropdown-menu-dialog.tsx",
@@ -4219,11 +3987,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/dropdown-menu-dialog.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/dropdown-menu-dialog.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4242,11 +4008,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/hover-card-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/hover-card-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4267,7 +4031,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/input-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4286,11 +4050,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/input-disabled.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/input-disabled.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4311,7 +4073,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/input-file.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4330,11 +4092,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/input-with-button.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/input-with-button.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4353,11 +4113,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/input-with-label.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/input-with-label.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4376,11 +4134,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/input-with-text.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/input-with-text.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4399,11 +4155,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/input-group-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/input-group-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4422,11 +4176,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/input-group-label.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/input-group-label.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4445,11 +4197,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/input-group-text.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/input-group-text.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4468,11 +4218,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/input-group-tooltip.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/input-group-tooltip.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4491,11 +4239,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/input-group-button.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/input-group-button.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4514,11 +4260,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/input-group-button-group.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/input-group-button-group.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4537,11 +4281,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/input-group-dropdown.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/input-group-dropdown.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4560,11 +4302,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/input-group-spinner.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/input-group-spinner.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4583,11 +4323,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/input-group-textarea.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/input-group-textarea.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4606,11 +4344,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/input-group-icon.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/input-group-icon.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4619,13 +4355,7 @@ export const Index: Record<string, unknown> = {
       name: "input-group-custom",
       description: "",
       type: "registry:example",
-      registryDependencies: [
-        "input-group",
-        "badge",
-        "progress",
-        "dropdown-menu",
-        "tooltip",
-      ],
+      registryDependencies: ["input-group", "badge", "progress", "dropdown-menu", "tooltip"],
       files: [
         {
           path: "registry/default/examples/input-group-custom.tsx",
@@ -4635,11 +4365,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/input-group-custom.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/input-group-custom.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4658,11 +4386,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/input-otp-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/input-otp-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4681,11 +4407,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/input-otp-pattern.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/input-otp-pattern.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4704,11 +4428,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/input-otp-separator.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/input-otp-separator.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4727,11 +4449,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/input-otp-controlled.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/input-otp-controlled.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4752,7 +4472,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/item-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4773,7 +4493,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/item-size.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4794,7 +4514,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/item-variant.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4815,7 +4535,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/item-icon.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4836,7 +4556,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/item-image.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4857,7 +4577,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/item-avatar.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4878,7 +4598,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/item-group.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4899,7 +4619,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/item-header.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4920,7 +4640,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/item-dropdown.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4941,7 +4661,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/item-link.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4962,7 +4682,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/kbd-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -4983,7 +4703,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/kbd-tooltip.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5002,11 +4722,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/kbd-input-group.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/kbd-input-group.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5027,7 +4745,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/kbd-button.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5048,7 +4766,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/kbd-group.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5069,7 +4787,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/label-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5090,7 +4808,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/menubar-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5111,7 +4829,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/meter-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5130,11 +4848,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/navigation-menu-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/navigation-menu-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5153,11 +4869,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/number-field-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/number-field-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5176,11 +4890,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/native-select-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/native-select-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5199,11 +4911,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/native-select-groups.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/native-select-groups.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5222,11 +4932,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/native-select-disabled.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/native-select-disabled.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5245,11 +4953,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/native-select-invalid.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/native-select-invalid.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5268,11 +4974,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/password-input-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/password-input-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5291,11 +4995,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/pagination-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/pagination-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5316,7 +5018,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/popover-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5337,7 +5039,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/progress-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5356,11 +5058,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/progress-list-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/progress-list-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5379,11 +5079,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/radio-group-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/radio-group-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5402,11 +5100,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/resizable-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/resizable-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5425,11 +5121,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import(
-          "@/registry/default/examples/resizable-demo-with-handle.tsx"
-        ).then((mod) => ({
+        import("@/registry/default/examples/resizable-demo-with-handle.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5448,11 +5142,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/resizable-vertical.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/resizable-vertical.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5471,11 +5163,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/resizable-handle.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/resizable-handle.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5494,11 +5184,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/scroll-area-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/scroll-area-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5517,11 +5205,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import(
-          "@/registry/default/examples/scroll-area-horizontal-demo.tsx"
-        ).then((mod) => ({
+        import("@/registry/default/examples/scroll-area-horizontal-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5542,7 +5228,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/select-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5561,11 +5247,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/select-scrollable.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/select-scrollable.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5584,11 +5268,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/separator-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/separator-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5597,12 +5279,7 @@ export const Index: Record<string, unknown> = {
       name: "sidebar-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: [
-        "avatar",
-        "collapsible",
-        "dropdown-menu",
-        "sidebar",
-      ],
+      registryDependencies: ["avatar", "collapsible", "dropdown-menu", "sidebar"],
       files: [
         {
           path: "registry/default/examples/sidebar-demo.tsx",
@@ -5614,7 +5291,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/sidebar-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5635,7 +5312,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/sheet-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5656,7 +5333,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/sheet-side.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5677,7 +5354,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/skeleton-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5698,7 +5375,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/skeleton-card.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5719,7 +5396,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/slider-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5740,7 +5417,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/sonner-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5761,7 +5438,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/sonner-types.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5782,7 +5459,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/spinner-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5803,7 +5480,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/spinner-basic.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5822,11 +5499,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/spinner-button.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/spinner-button.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5847,7 +5522,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/spinner-badge.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5866,11 +5541,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/spinner-input-group.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/spinner-input-group.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5891,7 +5564,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/spinner-empty.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5912,7 +5585,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/spinner-color.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5931,11 +5604,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/spinner-custom.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/spinner-custom.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5956,7 +5627,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/spinner-size.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5977,7 +5648,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/spinner-item.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -5998,7 +5669,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/stat-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6019,7 +5690,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/switch-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6040,7 +5711,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/table-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6061,7 +5732,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/tabs-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6082,7 +5753,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/textarea-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6101,11 +5772,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/textarea-disabled.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/textarea-disabled.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6124,11 +5793,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/textarea-with-button.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/textarea-with-button.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6147,11 +5814,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/textarea-with-label.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/textarea-with-label.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6170,11 +5835,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/textarea-with-text.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/textarea-with-text.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6195,7 +5858,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/toast-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6214,11 +5877,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/toast-destructive.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/toast-destructive.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6239,7 +5900,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/toast-simple.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6258,11 +5919,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/toast-with-action.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/toast-with-action.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6281,11 +5940,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/toast-with-title.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/toast-with-title.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6304,11 +5961,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/toggle-group-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/toggle-group-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6327,11 +5982,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/toggle-group-disabled.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/toggle-group-disabled.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6350,11 +6003,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/toggle-group-lg.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/toggle-group-lg.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6373,11 +6024,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/toggle-group-outline.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/toggle-group-outline.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6396,11 +6045,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/toggle-group-sm.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/toggle-group-sm.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6419,11 +6066,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/toggle-group-single.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/toggle-group-single.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6442,11 +6087,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/toggle-group-spacing.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/toggle-group-spacing.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6467,7 +6110,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/toggle-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6486,11 +6129,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/toggle-disabled.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/toggle-disabled.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6511,7 +6152,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/toggle-lg.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6530,11 +6171,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/toggle-outline.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/toggle-outline.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6555,7 +6194,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/toggle-sm.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6574,11 +6213,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/toggle-with-text.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/toggle-with-text.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6599,7 +6236,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/tooltip-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6618,11 +6255,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/typography-blockquote.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/typography-blockquote.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6641,11 +6276,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/typography-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/typography-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6666,7 +6299,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/typography-h1.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6687,7 +6320,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/typography-h2.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6708,7 +6341,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/typography-h3.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6729,7 +6362,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/typography-h4.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6748,11 +6381,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/typography-inline-code.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/typography-inline-code.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6771,11 +6402,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/typography-large.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/typography-large.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6794,11 +6423,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/typography-lead.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/typography-lead.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6817,11 +6444,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/typography-list.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/typography-list.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6840,11 +6465,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/typography-muted.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/typography-muted.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6865,7 +6488,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/typography-p.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6884,11 +6507,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/typography-small.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/typography-small.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6907,11 +6528,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/typography-table.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/typography-table.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6932,7 +6551,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/mode-toggle.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,
@@ -6951,17 +6570,15 @@ export const Index: Record<string, unknown> = {
       ],
       categories: ["calendar", "date"],
       component: React.lazy(() =>
-        import("@/registry/default/examples/calendar-hijri.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/calendar-hijri.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: {
-        iframeHeight: "600px",
         container:
           "w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0",
+        iframeHeight: "600px",
         mobile: "component",
       },
     },
@@ -6979,11 +6596,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/circular-progress-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/circular-progress-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -7002,11 +6617,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/multi-combobox-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/multi-combobox-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -7025,11 +6638,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/currency-input-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/currency-input-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -7048,11 +6659,9 @@ export const Index: Record<string, unknown> = {
       ],
       categories: undefined,
       component: React.lazy(() =>
-        import("@/registry/default/examples/phone-input-demo.tsx").then(
-          (mod) => ({
-            default: resolveRegistryComponent(mod as Record<string, unknown>),
-          })
-        )
+        import("@/registry/default/examples/phone-input-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
       ),
       source: "",
       meta: undefined,
@@ -7073,7 +6682,7 @@ export const Index: Record<string, unknown> = {
       component: React.lazy(() =>
         import("@/registry/default/examples/prompt-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
-        }))
+        })),
       ),
       source: "",
       meta: undefined,

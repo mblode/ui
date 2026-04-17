@@ -11,9 +11,7 @@ export function FieldRadio() {
   return (
     <FieldSet className="w-full max-w-xs">
       <FieldLegend variant="label">Subscription Plan</FieldLegend>
-      <FieldDescription>
-        Yearly and lifetime plans offer significant savings.
-      </FieldDescription>
+      <FieldDescription>Yearly and lifetime plans offer significant savings.</FieldDescription>
       <RadioGroup defaultValue="monthly">
         <Field orientation="horizontal">
           <RadioGroupItem id="plan-monthly" value="monthly" />

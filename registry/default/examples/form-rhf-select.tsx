@@ -47,30 +47,29 @@ const formSchema = z.object({
     .string()
     .min(1, "Please select your spoken language.")
     .refine((val) => val !== "auto", {
-      message:
-        "Auto-detection is not allowed. Please select a specific language.",
+      message: "Auto-detection is not allowed. Please select a specific language.",
     }),
 });
 
 export default function FormRhfSelect() {
   const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
     defaultValues: {
       language: "",
     },
+    resolver: zodResolver(formSchema),
   });
 
   function onSubmit(data: z.infer<typeof formSchema>) {
     toast("You submitted the following values:", {
+      classNames: {
+        content: "flex flex-col gap-2",
+      },
       description: (
         <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
           <code>{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
       position: "bottom-right",
-      classNames: {
-        content: "flex flex-col gap-2",
-      },
       style: {
         "--border-radius": "calc(var(--radius)  + 4px)",
       } as React.CSSProperties,
@@ -81,9 +80,7 @@ export default function FormRhfSelect() {
     <Card className="w-full sm:max-w-lg">
       <CardHeader>
         <CardTitle>Language Preferences</CardTitle>
-        <CardDescription>
-          Select your preferred spoken language.
-        </CardDescription>
+        <CardDescription>Select your preferred spoken language.</CardDescription>
       </CardHeader>
       <CardContent>
         <form id="form-rhf-select" onSubmit={form.handleSubmit(onSubmit)}>
@@ -92,26 +89,15 @@ export default function FormRhfSelect() {
               control={form.control}
               name="language"
               render={({ field, fieldState }) => (
-                <Field
-                  data-invalid={fieldState.invalid}
-                  orientation="responsive"
-                >
+                <Field data-invalid={fieldState.invalid} orientation="responsive">
                   <FieldContent>
-                    <FieldLabel htmlFor="form-rhf-select-language">
-                      Spoken Language
-                    </FieldLabel>
+                    <FieldLabel htmlFor="form-rhf-select-language">Spoken Language</FieldLabel>
                     <FieldDescription>
                       For best results, select the language you speak.
                     </FieldDescription>
-                    {fieldState.invalid && (
-                      <FieldError errors={[fieldState.error]} />
-                    )}
+                    {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
                   </FieldContent>
-                  <Select
-                    name={field.name}
-                    onValueChange={field.onChange}
-                    value={field.value}
-                  >
+                  <Select name={field.name} onValueChange={field.onChange} value={field.value}>
                     <SelectTrigger
                       aria-invalid={fieldState.invalid}
                       className="min-w-[120px]"

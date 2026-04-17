@@ -9,7 +9,6 @@ import { lib } from "@/registry/default/lib/_registry";
 import { ui } from "@/registry/default/ui/_registry";
 
 export const registry = {
-  name: "blode/ui",
   homepage: "https://ui.blode.co",
   items: [
     ...base,
@@ -21,4 +20,5 @@ export const registry = {
     // Internal use only.
     ...examples,
   ],
+  name: "blode/ui",
 } satisfies z.infer<typeof registrySchema>;

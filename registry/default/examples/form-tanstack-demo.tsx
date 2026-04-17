@@ -31,40 +31,40 @@ import {
 } from "@/registry/default/ui/input-group";
 
 const formSchema = z.object({
-  title: z
-    .string()
-    .min(5, "Bug title must be at least 5 characters.")
-    .max(32, "Bug title must be at most 32 characters."),
   description: z
     .string()
     .min(20, "Description must be at least 20 characters.")
     .max(100, "Description must be at most 100 characters."),
+  title: z
+    .string()
+    .min(5, "Bug title must be at least 5 characters.")
+    .max(32, "Bug title must be at most 32 characters."),
 });
 
 export default function BugReportForm() {
   const form = useForm({
     defaultValues: {
-      title: "",
       description: "",
-    },
-    validators: {
-      onSubmit: formSchema,
+      title: "",
     },
     onSubmit: async ({ value }) => {
       toast("You submitted the following values:", {
+        classNames: {
+          content: "flex flex-col gap-2",
+        },
         description: (
           <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
             <code>{JSON.stringify(value, null, 2)}</code>
           </pre>
         ),
         position: "bottom-right",
-        classNames: {
-          content: "flex flex-col gap-2",
-        },
         style: {
           "--border-radius": "calc(var(--radius)  + 4px)",
         } as React.CSSProperties,
       });
+    },
+    validators: {
+      onSubmit: formSchema,
     },
   });
 
@@ -72,9 +72,7 @@ export default function BugReportForm() {
     <Card className="w-full sm:max-w-md">
       <CardHeader>
         <CardTitle>Bug Report</CardTitle>
-        <CardDescription>
-          Help us improve by reporting bugs you encounter.
-        </CardDescription>
+        <CardDescription>Help us improve by reporting bugs you encounter.</CardDescription>
       </CardHeader>
       <CardContent>
         <form
@@ -87,8 +85,7 @@ export default function BugReportForm() {
           <FieldGroup>
             <form.Field
               children={(field) => {
-                const isInvalid =
-                  field.state.meta.isTouched && !field.state.meta.isValid;
+                const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid;
                 return (
                   <Field data-invalid={isInvalid}>
                     <FieldLabel htmlFor={field.name}>Bug Title</FieldLabel>
@@ -102,9 +99,7 @@ export default function BugReportForm() {
                       placeholder="Login button not working on mobile"
                       value={field.state.value}
                     />
-                    {isInvalid && (
-                      <FieldError errors={field.state.meta.errors} />
-                    )}
+                    {isInvalid && <FieldError errors={field.state.meta.errors} />}
                   </Field>
                 );
               }}
@@ -112,8 +107,7 @@ export default function BugReportForm() {
             />
             <form.Field
               children={(field) => {
-                const isInvalid =
-                  field.state.meta.isTouched && !field.state.meta.isValid;
+                const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid;
                 return (
                   <Field data-invalid={isInvalid}>
                     <FieldLabel htmlFor={field.name}>Description</FieldLabel>
@@ -136,12 +130,9 @@ export default function BugReportForm() {
                       </InputGroupAddon>
                     </InputGroup>
                     <FieldDescription>
-                      Include steps to reproduce, expected behavior, and what
-                      actually happened.
+                      Include steps to reproduce, expected behavior, and what actually happened.
                     </FieldDescription>
-                    {isInvalid && (
-                      <FieldError errors={field.state.meta.errors} />
-                    )}
+                    {isInvalid && <FieldError errors={field.state.meta.errors} />}
                   </Field>
                 );
               }}

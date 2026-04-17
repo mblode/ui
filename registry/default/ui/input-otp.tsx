@@ -16,10 +16,7 @@ function InputOTP({
   return (
     <OTPInput
       className={cn("disabled:cursor-not-allowed", className)}
-      containerClassName={cn(
-        "flex items-center gap-2 has-disabled:opacity-50",
-        containerClassName
-      )}
+      containerClassName={cn("flex items-center gap-2 has-disabled:opacity-50", containerClassName)}
       data-slot="input-otp"
       {...props}
     />
@@ -28,11 +25,7 @@ function InputOTP({
 
 function InputOTPGroup({ className, ...props }: React.ComponentProps<"div">) {
   return (
-    <div
-      className={cn("flex items-center", className)}
-      data-slot="input-otp-group"
-      {...props}
-    />
+    <div className={cn("flex items-center", className)} data-slot="input-otp-group" {...props} />
   );
 }
 
@@ -50,7 +43,7 @@ function InputOTPSlot({
     <div
       className={cn(
         "group/slot relative flex h-[var(--field-height)] w-10 items-center justify-center border-input border-y border-r text-2xl shadow-input transition-all first:rounded-l-lg first:border-l last:rounded-r-lg hover:bg-background",
-        className
+        className,
       )}
       data-active={isActive}
       data-slot="input-otp-slot"

@@ -33,17 +33,14 @@ import { demoFormAction } from "./form-next-demo-action";
 import type { FormState } from "./form-next-demo-schema";
 
 export default function FormNextDemo() {
-  const [formState, formAction, pending] = useActionState<FormState, FormData>(
-    demoFormAction,
-    {
-      values: {
-        title: "",
-        description: "",
-      },
-      errors: null,
-      success: false,
-    }
-  );
+  const [formState, formAction, pending] = useActionState<FormState, FormData>(demoFormAction, {
+    errors: null,
+    success: false,
+    values: {
+      description: "",
+      title: "",
+    },
+  });
   const [descriptionLength, setDescriptionLength] = useState(0);
 
   useEffect(() => {
@@ -62,9 +59,7 @@ export default function FormNextDemo() {
     <Card className="w-full max-w-md">
       <CardHeader>
         <CardTitle>Bug Report</CardTitle>
-        <CardDescription>
-          Help us improve by reporting bugs you encounter.
-        </CardDescription>
+        <CardDescription>Help us improve by reporting bugs you encounter.</CardDescription>
       </CardHeader>
       <CardContent>
         <Form action={formAction} id="bug-report-form">
@@ -80,9 +75,7 @@ export default function FormNextDemo() {
                 name="title"
                 placeholder="Login button not working on mobile"
               />
-              {formState.errors?.title && (
-                <FieldError>{formState.errors.title[0]}</FieldError>
-              )}
+              {formState.errors?.title && <FieldError>{formState.errors.title[0]}</FieldError>}
             </Field>
             <Field data-invalid={!!formState.errors?.description?.length}>
               <FieldLabel htmlFor="description">Description</FieldLabel>
@@ -105,8 +98,7 @@ export default function FormNextDemo() {
                 </InputGroupAddon>
               </InputGroup>
               <FieldDescription>
-                Include steps to reproduce, expected behavior, and what actually
-                happened.
+                Include steps to reproduce, expected behavior, and what actually happened.
               </FieldDescription>
               {formState.errors?.description && (
                 <FieldError>{formState.errors.description[0]}</FieldError>

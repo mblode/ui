@@ -102,8 +102,7 @@ const OKLCH_FUNCTION_REGEX = /^oklch\(\s*(.+)\s*\)$/i;
 const COLOR_SRGB_FUNCTION_REGEX = /^color\(\s*srgb\s+(.+)\)$/i;
 const WHITESPACE_REGEX = /\s+/;
 const NUMBER_REGEX = /^[+-]?(?:\d+\.?\d*|\.\d+)(?:e[+-]?\d+)?$/i;
-const ANGLE_REGEX =
-  /^([+-]?(?:\d+\.?\d*|\.\d+)(?:e[+-]?\d+)?)(deg|grad|rad|turn)?$/i;
+const ANGLE_REGEX = /^([+-]?(?:\d+\.?\d*|\.\d+)(?:e[+-]?\d+)?)(deg|grad|rad|turn)?$/i;
 
 function clampColorChannel(value: number): number {
   return Math.max(0, Math.min(255, value));
@@ -126,9 +125,7 @@ function parseNumberToken(token: string): number | null {
   return parsed;
 }
 
-function parsePercentageOrNumberToken(
-  token: string
-): { isPercent: boolean; value: number } | null {
+function parsePercentageOrNumberToken(token: string): { isPercent: boolean; value: number } | null {
   const value = token.trim();
   if (!value) {
     return null;
@@ -355,7 +352,7 @@ function parseOklchColor(input: string): RgbColor | null {
 
   const [oklchPart] = match[1].split("/");
   const channels = oklchPart
-    .replace(/,/g, " ")
+    .replaceAll(",", " ")
     .split(WHITESPACE_REGEX)
     .map((part) => part.trim())
     .filter(Boolean);
@@ -385,18 +382,10 @@ function parseOklchColor(input: string): RgbColor | null {
   const mLinear = mComponent ** 3;
   const sLinear = sComponent ** 3;
 
-  const rLinear =
-    4.076_741_662_1 * lLinear -
-    3.307_711_591_3 * mLinear +
-    0.230_969_929_2 * sLinear;
+  const rLinear = 4.076_741_662_1 * lLinear - 3.307_711_591_3 * mLinear + 0.230_969_929_2 * sLinear;
   const gLinear =
-    -1.268_438_004_6 * lLinear +
-    2.609_757_401_1 * mLinear -
-    0.341_319_396_5 * sLinear;
-  const bLinear =
-    -0.004_196_086_3 * lLinear -
-    0.703_418_614_7 * mLinear +
-    1.707_614_701 * sLinear;
+    -1.268_438_004_6 * lLinear + 2.609_757_401_1 * mLinear - 0.341_319_396_5 * sLinear;
+  const bLinear = -0.004_196_086_3 * lLinear - 0.703_418_614_7 * mLinear + 1.707_614_701 * sLinear;
 
   return {
     r: clampColorChannel(srgbEncode(rLinear) * 255),
@@ -435,10 +424,7 @@ export function relativeLuminance(rgb: RgbColor): number {
   return 0.2126 * r + 0.7152 * g + 0.0722 * b;
 }
 
-export function contrastRatio(
-  foregroundRgb: RgbColor,
-  backgroundRgb: RgbColor
-): number {
+export function contrastRatio(foregroundRgb: RgbColor, backgroundRgb: RgbColor): number {
   const foregroundLuminance = relativeLuminance(foregroundRgb);
   const backgroundLuminance = relativeLuminance(backgroundRgb);
   const lighter = Math.max(foregroundLuminance, backgroundLuminance);
@@ -471,7 +457,7 @@ function normalizeCssVariableName(cssVariableName: string): string {
 
 export function resolveCssVariableColor(
   scopeEl: HTMLElement,
-  cssVariableName: string
+  cssVariableName: string,
 ): RgbColor | null {
   if (typeof window === "undefined" || !scopeEl) {
     return null;
@@ -491,7 +477,7 @@ export function resolveCssVariableColor(
   probe.style.fontSize = "0";
   probe.style.lineHeight = "0";
 
-  scopeEl.appendChild(probe);
+  scopeEl.append(probe);
 
   try {
     const resolvedColor = view.getComputedStyle(probe).color;
@@ -503,17 +489,11 @@ export function resolveCssVariableColor(
 
 export function evaluateContrastPairs(
   scopeEl: HTMLElement,
-  pairs: ContrastPair[] = defaultContrastPairs
+  pairs: ContrastPair[] = defaultContrastPairs,
 ): EvaluatedContrastPair[] {
   return pairs.map((pair) => {
-    const foregroundColor = resolveCssVariableColor(
-      scopeEl,
-      pair.foregroundVar
-    );
-    const backgroundColor = resolveCssVariableColor(
-      scopeEl,
-      pair.backgroundVar
-    );
+    const foregroundColor = resolveCssVariableColor(scopeEl, pair.foregroundVar);
+    const backgroundColor = resolveCssVariableColor(scopeEl, pair.backgroundVar);
 
     if (!(foregroundColor && backgroundColor)) {
       return {

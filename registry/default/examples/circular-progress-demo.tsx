@@ -37,9 +37,7 @@ export default function CircularProgressDemo() {
 
         <div className="flex flex-col items-center">
           <CircularProgress className="size-24" hideText value={progress} />
-          <span className="mt-2 text-muted-foreground text-sm">
-            Indicator only
-          </span>
+          <span className="mt-2 text-muted-foreground text-sm">Indicator only</span>
         </div>
       </div>
 

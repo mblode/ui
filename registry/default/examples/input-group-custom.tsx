@@ -1,11 +1,7 @@
 "use client";
 
 import TextareaAutosize from "react-textarea-autosize";
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupButton,
-} from "@/registry/default/ui/input-group";
+import { InputGroup, InputGroupAddon, InputGroupButton } from "@/registry/default/ui/input-group";
 
 export default function InputGroupCustom() {
   return (

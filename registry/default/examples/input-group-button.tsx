@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  CheckIcon,
-  CircleInfoIcon,
-  CopyIcon,
-  StarIcon,
-} from "blode-icons-react";
+import { CheckIcon, CircleInfoIcon, CopyIcon, StarIcon } from "blode-icons-react";
 import { useState } from "react";
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 import {
@@ -14,11 +9,7 @@ import {
   InputGroupButton,
   InputGroupInput,
 } from "@/registry/default/ui/input-group";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/registry/default/ui/popover";
+import { Popover, PopoverContent, PopoverTrigger } from "@/registry/default/ui/popover";
 
 export default function InputGroupButtonExample() {
   const { copyToClipboard, isCopied } = useCopyToClipboard();
@@ -48,23 +39,15 @@ export default function InputGroupButtonExample() {
               <CircleInfoIcon />
             </InputGroupButton>
           </PopoverTrigger>
-          <PopoverContent
-            align="start"
-            className="flex flex-col gap-1 rounded-xl text-sm"
-          >
+          <PopoverContent align="start" className="flex flex-col gap-1 rounded-xl text-sm">
             <p className="font-medium">Your connection is not secure.</p>
             <p>You should not enter any sensitive information on this site.</p>
           </PopoverContent>
         </Popover>
-        <InputGroupAddon className="pl-1.5 text-muted-foreground">
-          https://
-        </InputGroupAddon>
+        <InputGroupAddon className="pl-1.5 text-muted-foreground">https://</InputGroupAddon>
         <InputGroupInput id="input-secure-19" />
         <InputGroupAddon align="inline-end">
-          <InputGroupButton
-            onClick={() => setIsFavorite(!isFavorite)}
-            size="icon-xs"
-          >
+          <InputGroupButton onClick={() => setIsFavorite(!isFavorite)} size="icon-xs">
             <StarIcon
               className="data-[favorite=true]:fill-blue-600 data-[favorite=true]:stroke-blue-600"
               data-favorite={isFavorite}

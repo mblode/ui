@@ -25,19 +25,10 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/registry/default/ui/accordion";
-import {
-  Alert,
-  AlertDescription,
-  AlertTitle,
-} from "@/registry/default/ui/alert";
+import { Alert, AlertDescription, AlertTitle } from "@/registry/default/ui/alert";
 import { AspectRatio } from "@/registry/default/ui/aspect-ratio";
 import { Button } from "@/registry/default/ui/button";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/registry/default/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/registry/default/ui/tabs";
 import type { Style } from "@/registry/registry-styles";
 
 const components = {
@@ -46,16 +37,94 @@ const components = {
   AccordionItem,
   AccordionTrigger,
   Alert,
-  AlertTitle,
   AlertDescription,
+  AlertTitle,
+  AspectRatio,
   Button,
+  Callout,
+  CodeBlockWrapper,
+  CodeTabs,
+  ComponentExample,
+  ComponentPreview,
+  ComponentSource,
+  ComponentsList,
   FontWeightSlider,
+  Image,
+  Link: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
+    <Link className={cn("font-medium underline underline-offset-4", className)} {...props} />
+  ),
+  LinkedCard: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
+    <Link
+      className={cn(
+        "flex w-full flex-col items-center rounded-xl bg-surface p-6 text-surface-foreground transition-colors hover:bg-surface/80 sm:p-10",
+        className,
+      )}
+      {...props}
+    />
+  ),
+  Step: ({ className, ...props }: React.ComponentProps<"h3">) => (
+    <h3
+      className={cn("mt-8 scroll-m-32 font-heading font-medium text-lg tracking-tight", className)}
+      {...props}
+    />
+  ),
+  Steps: ({ className, ...props }: React.ComponentProps<"div">) => (
+    <div
+      className={cn(
+        "[&>h3]:step steps mb-12 [counter-reset:step] md:ml-4 md:border-l md:pl-8",
+        className,
+      )}
+      {...props}
+    />
+  ),
+  Tabs: ({ className, ...props }: React.ComponentProps<typeof Tabs>) => (
+    <Tabs className={cn("relative mt-6 w-full", className)} {...props} />
+  ),
+  TabsContent: ({ className, ...props }: React.ComponentProps<typeof TabsContent>) => (
+    <TabsContent className={cn(className)} {...props} />
+  ),
+  TabsList: ({ className, ...props }: React.ComponentProps<typeof TabsList>) => (
+    <TabsList className={cn(className)} {...props} />
+  ),
+  TabsTrigger: ({ className, ...props }: React.ComponentProps<typeof TabsTrigger>) => (
+    <TabsTrigger className={cn(className)} {...props} />
+  ),
+  a: ({ className, ...props }: React.HTMLAttributes<HTMLAnchorElement>) => (
+    <a className={cn("font-medium underline underline-offset-4", className)} {...props} />
+  ),
+  blockquote: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
+    <blockquote className={cn("mt-6 border-l-2 pl-6 italic", className)} {...props} />
+  ),
+  code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => {
+    if (typeof props.children === "string") {
+      return (
+        <code
+          className={cn(
+            "relative break-words rounded-md bg-muted px-[0.3rem] py-[0.2rem] font-mono text-[0.8rem] outline-none",
+            className,
+          )}
+          {...props}
+        />
+      );
+    }
+
+    return <code className={cn(className)} {...props} />;
+  },
+  figcaption: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
+    <figcaption
+      className={cn(
+        "flex items-center gap-2 text-code-foreground [&_svg]:size-4 [&_svg]:text-code-foreground [&_svg]:opacity-70",
+        className,
+      )}
+      {...props}
+    />
+  ),
+  figure: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
+    <figure className={cn(className)} {...props} />
+  ),
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
-      className={cn(
-        "mt-2 scroll-m-28 font-bold font-heading text-3xl tracking-tight",
-        className
-      )}
+      className={cn("mt-2 scroll-m-28 font-bold font-heading text-3xl tracking-tight", className)}
       {...props}
     />
   ),
@@ -63,7 +132,7 @@ const components = {
     <h2
       className={cn(
         "[&+.steps]:!mt-0 [&+.steps>h3]:!mt-4 [&+h3]:!mt-6 [&+p]:!mt-4 mt-10 scroll-m-28 font-heading font-medium text-xl tracking-tight first:mt-0 lg:mt-12",
-        className
+        className,
       )}
       {...props}
     />
@@ -72,7 +141,7 @@ const components = {
     <h3
       className={cn(
         "[&+p]:!mt-4 mt-12 scroll-m-28 font-heading font-medium text-lg tracking-tight",
-        className
+        className,
       )}
       {...props}
     />
@@ -81,58 +150,25 @@ const components = {
     <h4
       className={cn(
         "mt-8 scroll-m-28 font-heading font-medium text-base tracking-tight",
-        className
+        className,
       )}
       {...props}
     />
   ),
   h5: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h5
-      className={cn(
-        "mt-8 scroll-m-28 font-medium text-base tracking-tight",
-        className
-      )}
+      className={cn("mt-8 scroll-m-28 font-medium text-base tracking-tight", className)}
       {...props}
     />
   ),
   h6: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h6
-      className={cn(
-        "mt-8 scroll-m-28 font-medium text-base tracking-tight",
-        className
-      )}
+      className={cn("mt-8 scroll-m-28 font-medium text-base tracking-tight", className)}
       {...props}
     />
   ),
-  a: ({ className, ...props }: React.HTMLAttributes<HTMLAnchorElement>) => (
-    <a
-      className={cn("font-medium underline underline-offset-4", className)}
-      {...props}
-    />
-  ),
-  p: ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
-    <p
-      className={cn("leading-relaxed [&:not(:first-child)]:mt-6", className)}
-      {...props}
-    />
-  ),
-  strong: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
-    <strong className={cn("font-medium", className)} {...props} />
-  ),
-  ul: ({ className, ...props }: React.HTMLAttributes<HTMLUListElement>) => (
-    <ul className={cn("my-6 ml-6 list-disc", className)} {...props} />
-  ),
-  ol: ({ className, ...props }: React.HTMLAttributes<HTMLOListElement>) => (
-    <ol className={cn("my-6 ml-6 list-decimal", className)} {...props} />
-  ),
-  li: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
-    <li className={cn("mt-2", className)} {...props} />
-  ),
-  blockquote: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
-    <blockquote
-      className={cn("mt-6 border-l-2 pl-6 italic", className)}
-      {...props}
-    />
+  hr: ({ ...props }: React.HTMLAttributes<HTMLHRElement>) => (
+    <hr className="my-4 md:my-8" {...props} />
   ),
   img: ({
     className,
@@ -151,40 +187,14 @@ const components = {
       {...props}
     />
   ),
-  hr: ({ ...props }: React.HTMLAttributes<HTMLHRElement>) => (
-    <hr className="my-4 md:my-8" {...props} />
+  li: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
+    <li className={cn("mt-2", className)} {...props} />
   ),
-  table: ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
-    <div className="no-scrollbar my-6 w-full overflow-y-auto rounded-xl border">
-      <table
-        className={cn(
-          "relative w-full overflow-hidden border-none text-sm [&_tbody_tr:last-child]:border-b-0",
-          className
-        )}
-        {...props}
-      />
-    </div>
+  ol: ({ className, ...props }: React.HTMLAttributes<HTMLOListElement>) => (
+    <ol className={cn("my-6 ml-6 list-decimal", className)} {...props} />
   ),
-  tr: ({ className, ...props }: React.HTMLAttributes<HTMLTableRowElement>) => (
-    <tr className={cn("m-0 border-b", className)} {...props} />
-  ),
-  th: ({ className, ...props }: React.HTMLAttributes<HTMLTableCellElement>) => (
-    <th
-      className={cn(
-        "px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right",
-        className
-      )}
-      {...props}
-    />
-  ),
-  td: ({ className, ...props }: React.HTMLAttributes<HTMLTableCellElement>) => (
-    <td
-      className={cn(
-        "whitespace-nowrap px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right",
-        className
-      )}
-      {...props}
-    />
+  p: ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
+    <p className={cn("leading-relaxed [&:not(:first-child)]:mt-6", className)} {...props} />
   ),
   pre: ({
     className,
@@ -206,8 +216,7 @@ const components = {
     __src__?: string;
     __event__?: Event["name"];
   } & NpmCommands) => {
-    const isNpmCommand =
-      __npmCommand__ && __yarnCommand__ && __pnpmCommand__ && __bunCommand__;
+    const isNpmCommand = __npmCommand__ && __yarnCommand__ && __pnpmCommand__ && __bunCommand__;
 
     if (isNpmCommand) {
       return (
@@ -224,7 +233,7 @@ const components = {
       <pre
         className={cn(
           "no-scrollbar min-w-0 overflow-x-auto overflow-y-auto overscroll-y-auto overscroll-x-contain px-4 py-3.5 outline-none has-[[data-slot=tabs]]:p-0 has-[[data-highlighted-line]]:px-0 has-[[data-line-numbers]]:px-0",
-          className
+          className,
         )}
         {...props}
       >
@@ -233,95 +242,43 @@ const components = {
       </pre>
     );
   },
-  figure: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
-    <figure className={cn(className)} {...props} />
+  strong: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
+    <strong className={cn("font-medium", className)} {...props} />
   ),
-  figcaption: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
-    <figcaption
+  table: ({ className, ...props }: React.HTMLAttributes<HTMLTableElement>) => (
+    <div className="no-scrollbar my-6 w-full overflow-y-auto rounded-xl border">
+      <table
+        className={cn(
+          "relative w-full overflow-hidden border-none text-sm [&_tbody_tr:last-child]:border-b-0",
+          className,
+        )}
+        {...props}
+      />
+    </div>
+  ),
+  td: ({ className, ...props }: React.HTMLAttributes<HTMLTableCellElement>) => (
+    <td
       className={cn(
-        "flex items-center gap-2 text-code-foreground [&_svg]:size-4 [&_svg]:text-code-foreground [&_svg]:opacity-70",
-        className
+        "whitespace-nowrap px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right",
+        className,
       )}
       {...props}
     />
   ),
-  code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => {
-    if (typeof props.children === "string") {
-      return (
-        <code
-          className={cn(
-            "relative break-words rounded-md bg-muted px-[0.3rem] py-[0.2rem] font-mono text-[0.8rem] outline-none",
-            className
-          )}
-          {...props}
-        />
-      );
-    }
-
-    return <code className={cn(className)} {...props} />;
-  },
-  Image,
-  Callout,
-  ComponentPreview,
-  ComponentExample,
-  ComponentsList,
-  ComponentSource,
-  AspectRatio,
-  CodeBlockWrapper,
-  CodeTabs,
-  Step: ({ className, ...props }: React.ComponentProps<"h3">) => (
-    <h3
+  th: ({ className, ...props }: React.HTMLAttributes<HTMLTableCellElement>) => (
+    <th
       className={cn(
-        "mt-8 scroll-m-32 font-heading font-medium text-lg tracking-tight",
-        className
+        "px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right",
+        className,
       )}
       {...props}
     />
   ),
-  Steps: ({ className, ...props }: React.ComponentProps<"div">) => (
-    <div
-      className={cn(
-        "[&>h3]:step steps mb-12 [counter-reset:step] md:ml-4 md:border-l md:pl-8",
-        className
-      )}
-      {...props}
-    />
+  tr: ({ className, ...props }: React.HTMLAttributes<HTMLTableRowElement>) => (
+    <tr className={cn("m-0 border-b", className)} {...props} />
   ),
-  Tabs: ({ className, ...props }: React.ComponentProps<typeof Tabs>) => (
-    <Tabs className={cn("relative mt-6 w-full", className)} {...props} />
-  ),
-  TabsList: ({
-    className,
-    ...props
-  }: React.ComponentProps<typeof TabsList>) => (
-    <TabsList className={cn(className)} {...props} />
-  ),
-  TabsTrigger: ({
-    className,
-    ...props
-  }: React.ComponentProps<typeof TabsTrigger>) => (
-    <TabsTrigger className={cn(className)} {...props} />
-  ),
-  TabsContent: ({
-    className,
-    ...props
-  }: React.ComponentProps<typeof TabsContent>) => (
-    <TabsContent className={cn(className)} {...props} />
-  ),
-  Link: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
-    <Link
-      className={cn("font-medium underline underline-offset-4", className)}
-      {...props}
-    />
-  ),
-  LinkedCard: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
-    <Link
-      className={cn(
-        "flex w-full flex-col items-center rounded-xl bg-surface p-6 text-surface-foreground transition-colors hover:bg-surface/80 sm:p-10",
-        className
-      )}
-      {...props}
-    />
+  ul: ({ className, ...props }: React.HTMLAttributes<HTMLUListElement>) => (
+    <ul className={cn("my-6 ml-6 list-disc", className)} {...props} />
   ),
 };
 

@@ -269,12 +269,7 @@
     "type": "registry:ui",
     "title": "Multi Combobox",
     "description": "A combobox that allows selecting multiple items with tag-style badges.",
-    "dependencies": [
-      "@base-ui/react",
-      "downshift",
-      "lodash",
-      "blode-icons-react"
-    ],
+    "dependencies": ["@base-ui/react", "downshift", "lodash", "blode-icons-react"],
     "registryDependencies": ["badge"],
     "files": [
       {
@@ -394,12 +389,7 @@
     "type": "registry:ui",
     "title": "Form",
     "description": "A form component with validation powered by React Hook Form and Zod.",
-    "dependencies": [
-      "@base-ui/react",
-      "@hookform/resolvers",
-      "zod",
-      "react-hook-form"
-    ],
+    "dependencies": ["@base-ui/react", "@hookform/resolvers", "zod", "react-hook-form"],
     "registryDependencies": ["button", "label"],
     "files": [
       {
@@ -572,13 +562,7 @@
     "title": "Phone Input",
     "description": "An international phone number input with country code selector.",
     "dependencies": ["blode-icons-react", "react-phone-number-input"],
-    "registryDependencies": [
-      "button",
-      "command",
-      "input",
-      "popover",
-      "scroll-area"
-    ],
+    "registryDependencies": ["button", "command", "input", "popover", "scroll-area"],
     "files": [
       {
         "path": "ui/phone-input.tsx",
@@ -722,11 +706,7 @@
     "type": "registry:ui",
     "title": "Sidebar",
     "description": "A collapsible side navigation component with multiple layout variants.",
-    "dependencies": [
-      "@base-ui/react",
-      "class-variance-authority",
-      "blode-icons-react"
-    ],
+    "dependencies": ["@base-ui/react", "class-variance-authority", "blode-icons-react"],
     "registryDependencies": [
       "button",
       "separator",
@@ -738,23 +718,23 @@
     ],
     "cssVars": {
       "light": {
+        "sidebar-accent": "240 4.8% 95.9%",
+        "sidebar-accent-foreground": "240 5.9% 10%",
         "sidebar-background": "0 0% 98%",
+        "sidebar-border": "220 13% 91%",
         "sidebar-foreground": "240 5.3% 26.1%",
         "sidebar-primary": "240 5.9% 10%",
         "sidebar-primary-foreground": "0 0% 98%",
-        "sidebar-accent": "240 4.8% 95.9%",
-        "sidebar-accent-foreground": "240 5.9% 10%",
-        "sidebar-border": "220 13% 91%",
         "sidebar-ring": "217.2 91.2% 59.8%"
       },
       "dark": {
+        "sidebar-accent": "240 3.7% 15.9%",
+        "sidebar-accent-foreground": "240 4.8% 95.9%",
         "sidebar-background": "240 5.9% 10%",
+        "sidebar-border": "240 3.7% 15.9%",
         "sidebar-foreground": "240 4.8% 95.9%",
         "sidebar-primary": "224.3 76.3% 48%",
         "sidebar-primary-foreground": "0 0% 100%",
-        "sidebar-accent": "240 3.7% 15.9%",
-        "sidebar-accent-foreground": "240 4.8% 95.9%",
-        "sidebar-border": "240 3.7% 15.9%",
         "sidebar-ring": "217.2 91.2% 59.8%"
       }
     },
@@ -857,11 +837,7 @@
     "type": "registry:ui",
     "title": "Tabs",
     "description": "A tabbed interface that organises content into switchable panels.",
-    "dependencies": [
-      "@base-ui/react",
-      "class-variance-authority",
-      "merge-refs"
-    ],
+    "dependencies": ["@base-ui/react", "class-variance-authority", "merge-refs"],
     "registryDependencies": ["@blode/use-tab-observer"],
     "files": [
       {

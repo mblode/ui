@@ -12,16 +12,8 @@ import {
   CommandItem,
   CommandList,
 } from "@/registry/default/ui/command";
-import {
-  Drawer,
-  DrawerContent,
-  DrawerTrigger,
-} from "@/registry/default/ui/drawer";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/registry/default/ui/popover";
+import { Drawer, DrawerContent, DrawerTrigger } from "@/registry/default/ui/drawer";
+import { Popover, PopoverContent, PopoverTrigger } from "@/registry/default/ui/popover";
 
 interface Status {
   label: string;
@@ -30,24 +22,24 @@ interface Status {
 
 const statuses: Status[] = [
   {
-    value: "backlog",
     label: "Backlog",
+    value: "backlog",
   },
   {
-    value: "todo",
     label: "Todo",
+    value: "todo",
   },
   {
-    value: "in progress",
     label: "In Progress",
+    value: "in progress",
   },
   {
-    value: "done",
     label: "Done",
+    value: "done",
   },
   {
-    value: "canceled",
     label: "Canceled",
+    value: "canceled",
   },
 ];
 
@@ -104,9 +96,7 @@ function StatusList({
             <CommandItem
               key={status.value}
               onSelect={(value) => {
-                setSelectedStatus(
-                  statuses.find((priority) => priority.value === value) || null
-                );
+                setSelectedStatus(statuses.find((priority) => priority.value === value) || null);
                 setOpen(false);
               }}
               value={status.value}

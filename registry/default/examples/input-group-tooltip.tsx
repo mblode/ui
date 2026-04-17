@@ -5,11 +5,7 @@ import {
   InputGroupButton,
   InputGroupInput,
 } from "@/registry/default/ui/input-group";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/registry/default/ui/tooltip";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/registry/default/ui/tooltip";
 
 export default function InputGroupTooltip() {
   return (
@@ -19,13 +15,7 @@ export default function InputGroupTooltip() {
         <InputGroupAddon align="inline-end">
           <Tooltip>
             <TooltipTrigger
-              render={
-                <InputGroupButton
-                  aria-label="Info"
-                  size="icon-xs"
-                  variant="ghost"
-                />
-              }
+              render={<InputGroupButton aria-label="Info" size="icon-xs" variant="ghost" />}
             >
               <CircleInfoIcon />
             </TooltipTrigger>
@@ -40,13 +30,7 @@ export default function InputGroupTooltip() {
         <InputGroupAddon align="inline-end">
           <Tooltip>
             <TooltipTrigger
-              render={
-                <InputGroupButton
-                  aria-label="Help"
-                  size="icon-xs"
-                  variant="ghost"
-                />
-              }
+              render={<InputGroupButton aria-label="Help" size="icon-xs" variant="ghost" />}
             >
               <HelpCircle />
             </TooltipTrigger>

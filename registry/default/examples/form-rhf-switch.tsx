@@ -33,23 +33,23 @@ const formSchema = z.object({
 
 export default function FormRhfSwitch() {
   const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
     defaultValues: {
       twoFactor: false,
     },
+    resolver: zodResolver(formSchema),
   });
 
   function onSubmit(data: z.infer<typeof formSchema>) {
     toast("You submitted the following values:", {
+      classNames: {
+        content: "flex flex-col gap-2",
+      },
       description: (
         <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
           <code>{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
       position: "bottom-right",
-      classNames: {
-        content: "flex flex-col gap-2",
-      },
       style: {
         "--border-radius": "calc(var(--radius)  + 4px)",
       } as React.CSSProperties,
@@ -60,9 +60,7 @@ export default function FormRhfSwitch() {
     <Card className="w-full sm:max-w-md">
       <CardHeader>
         <CardTitle>Security Settings</CardTitle>
-        <CardDescription>
-          Manage your account security preferences.
-        </CardDescription>
+        <CardDescription>Manage your account security preferences.</CardDescription>
       </CardHeader>
       <CardContent>
         <form id="form-rhf-switch" onSubmit={form.handleSubmit(onSubmit)}>
@@ -71,10 +69,7 @@ export default function FormRhfSwitch() {
               control={form.control}
               name="twoFactor"
               render={({ field, fieldState }) => (
-                <Field
-                  data-invalid={fieldState.invalid}
-                  orientation="horizontal"
-                >
+                <Field data-invalid={fieldState.invalid} orientation="horizontal">
                   <FieldContent>
                     <FieldLabel htmlFor="form-rhf-switch-twoFactor">
                       Multi-factor authentication
@@ -82,9 +77,7 @@ export default function FormRhfSwitch() {
                     <FieldDescription>
                       Enable multi-factor authentication to secure your account.
                     </FieldDescription>
-                    {fieldState.invalid && (
-                      <FieldError errors={[fieldState.error]} />
-                    )}
+                    {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
                   </FieldContent>
                   <Switch
                     aria-invalid={fieldState.invalid}

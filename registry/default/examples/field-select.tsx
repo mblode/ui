@@ -1,8 +1,4 @@
-import {
-  Field,
-  FieldDescription,
-  FieldLabel,
-} from "@/registry/default/ui/field";
+import { Field, FieldDescription, FieldLabel } from "@/registry/default/ui/field";
 import {
   Select,
   SelectContent,
@@ -42,9 +38,7 @@ export default function FieldSelect() {
           </SelectGroup>
         </SelectContent>
       </Select>
-      <FieldDescription>
-        Select your department or area of work.
-      </FieldDescription>
+      <FieldDescription>Select your department or area of work.</FieldDescription>
     </Field>
   );
 }

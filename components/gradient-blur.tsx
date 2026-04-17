@@ -7,10 +7,7 @@ interface GradientBlurProps {
   numberOfLayers?: number;
 }
 
-const GradientBlur: React.FC<GradientBlurProps> = ({
-  numberOfLayers = 6,
-  className = "",
-}) => {
+const GradientBlur: React.FC<GradientBlurProps> = ({ numberOfLayers = 6, className = "" }) => {
   const generateLayers = () => {
     const layers: React.ReactElement[] = [];
     for (let i = 0; i < numberOfLayers; i++) {
@@ -23,7 +20,6 @@ const GradientBlur: React.FC<GradientBlurProps> = ({
           className="absolute inset-0"
           key={i}
           style={{
-            zIndex: i + 2,
             backdropFilter: `blur(${blurAmount}px)`,
             mask: `linear-gradient(
               to bottom,
@@ -32,8 +28,9 @@ const GradientBlur: React.FC<GradientBlurProps> = ({
               rgba(0, 0, 0, 1) ${endPercent}%,
               rgba(0, 0, 0, 0) ${endPercent + (endPercent - midPercent)}%
             )`,
+            zIndex: i + 2,
           }}
-        />
+        />,
       );
     }
     return layers;
@@ -44,7 +41,6 @@ const GradientBlur: React.FC<GradientBlurProps> = ({
       <div
         className="absolute inset-0"
         style={{
-          zIndex: 1,
           backdropFilter: "blur(0.5px)",
           mask: `linear-gradient(
             to bottom,
@@ -53,19 +49,20 @@ const GradientBlur: React.FC<GradientBlurProps> = ({
             rgba(0, 0, 0, 1) ${100 / (numberOfLayers * 2)}%,
             rgba(0, 0, 0, 0) ${(100 * 3) / (numberOfLayers * 4)}%
           )`,
+          zIndex: 1,
         }}
       />
       {generateLayers()}
       <div
         className="absolute inset-0"
         style={{
-          zIndex: numberOfLayers + 2,
           backdropFilter: `blur(${2 ** numberOfLayers}px)`,
           mask: `linear-gradient(
             to bottom,
             rgba(0, 0, 0, 0) ${100 - 100 / (numberOfLayers * 2)}%,
             rgba(0, 0, 0, 1) 100%
           )`,
+          zIndex: numberOfLayers + 2,
         }}
       />
     </div>

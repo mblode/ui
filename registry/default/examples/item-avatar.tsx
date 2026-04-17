@@ -1,9 +1,5 @@
 import { Plus } from "blode-icons-react";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/registry/default/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/registry/default/ui/avatar";
 import { Button } from "@/registry/default/ui/button";
 import {
   Item,
@@ -29,12 +25,7 @@ export function ItemAvatar() {
           <ItemDescription>Last seen 5 months ago</ItemDescription>
         </ItemContent>
         <ItemActions>
-          <Button
-            aria-label="Invite"
-            className="rounded-full"
-            size="icon-sm"
-            variant="outline"
-          >
+          <Button aria-label="Invite" className="rounded-full" size="icon-sm" variant="outline">
             <Plus />
           </Button>
         </ItemActions>
@@ -47,26 +38,18 @@ export function ItemAvatar() {
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
             <Avatar className="hidden sm:flex">
-              <AvatarImage
-                alt="@maxleiter"
-                src="https://github.com/maxleiter.png"
-              />
+              <AvatarImage alt="@maxleiter" src="https://github.com/maxleiter.png" />
               <AvatarFallback>LR</AvatarFallback>
             </Avatar>
             <Avatar>
-              <AvatarImage
-                alt="@evilrabbit"
-                src="https://github.com/evilrabbit.png"
-              />
+              <AvatarImage alt="@evilrabbit" src="https://github.com/evilrabbit.png" />
               <AvatarFallback>ER</AvatarFallback>
             </Avatar>
           </div>
         </ItemMedia>
         <ItemContent>
           <ItemTitle>No Team Members</ItemTitle>
-          <ItemDescription>
-            Invite your team to collaborate on this project.
-          </ItemDescription>
+          <ItemDescription>Invite your team to collaborate on this project.</ItemDescription>
         </ItemContent>
         <ItemActions>
           <Button size="sm" variant="outline">

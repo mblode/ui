@@ -19,11 +19,7 @@ function AlertDialogTrigger({
 }) {
   if (asChild && React.isValidElement(children)) {
     return (
-      <AlertDialogPrimitive.Trigger
-        data-slot="alert-dialog-trigger"
-        render={children}
-        {...props}
-      />
+      <AlertDialogPrimitive.Trigger data-slot="alert-dialog-trigger" render={children} {...props} />
     );
   }
 
@@ -35,20 +31,15 @@ function AlertDialogTrigger({
 }
 
 function AlertDialogPortal({ ...props }: AlertDialogPrimitive.Portal.Props) {
-  return (
-    <AlertDialogPrimitive.Portal data-slot="alert-dialog-portal" {...props} />
-  );
+  return <AlertDialogPrimitive.Portal data-slot="alert-dialog-portal" {...props} />;
 }
 
-function AlertDialogOverlay({
-  className,
-  ...props
-}: AlertDialogPrimitive.Backdrop.Props) {
+function AlertDialogOverlay({ className, ...props }: AlertDialogPrimitive.Backdrop.Props) {
   return (
     <AlertDialogPrimitive.Backdrop
       className={cn(
         "data-closed:fade-out-0 data-open:fade-in-0 fixed inset-0 z-110 bg-overlay backdrop-blur-[10px] data-closed:animate-out data-open:animate-in data-closed:duration-300 data-open:duration-500 motion-reduce:transition-none",
-        className
+        className,
       )}
       data-slot="alert-dialog-overlay"
       {...props}
@@ -69,7 +60,7 @@ function AlertDialogContent({
       <AlertDialogPrimitive.Popup
         className={cn(
           "group/alert-dialog-content data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 fixed top-[50%] left-[50%] z-110 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] gap-4 rounded-2xl border bg-background p-6 shadow-lg duration-200 data-[size=sm]:max-w-xs data-closed:animate-out data-open:animate-in data-[size=default]:sm:max-w-lg md:w-full",
-          className
+          className,
         )}
         data-size={size}
         data-slot="alert-dialog-content"
@@ -79,15 +70,12 @@ function AlertDialogContent({
   );
 }
 
-function AlertDialogHeader({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
+function AlertDialogHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       className={cn(
         "grid grid-rows-[auto_1fr] place-items-center gap-1.5 text-center has-data-[slot=alert-dialog-media]:grid-rows-[auto_auto_1fr] has-data-[slot=alert-dialog-media]:gap-x-6 sm:group-data-[size=default]/alert-dialog-content:place-items-start sm:group-data-[size=default]/alert-dialog-content:text-left sm:group-data-[size=default]/alert-dialog-content:has-data-[slot=alert-dialog-media]:grid-rows-[auto_1fr]",
-        className
+        className,
       )}
       data-slot="alert-dialog-header"
       {...props}
@@ -95,15 +83,12 @@ function AlertDialogHeader({
   );
 }
 
-function AlertDialogFooter({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
+function AlertDialogFooter({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       className={cn(
         "flex flex-col-reverse gap-2 group-data-[size=sm]/alert-dialog-content:grid group-data-[size=sm]/alert-dialog-content:grid-cols-2 sm:flex-row sm:justify-end",
-        className
+        className,
       )}
       data-slot="alert-dialog-footer"
       {...props}
@@ -119,7 +104,7 @@ function AlertDialogTitle({
     <AlertDialogPrimitive.Title
       className={cn(
         "font-semibold text-lg sm:group-data-[size=default]/alert-dialog-content:group-has-data-[slot=alert-dialog-media]/alert-dialog-content:col-start-2",
-        className
+        className,
       )}
       data-slot="alert-dialog-title"
       {...props}
@@ -140,15 +125,12 @@ function AlertDialogDescription({
   );
 }
 
-function AlertDialogMedia({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
+function AlertDialogMedia({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       className={cn(
         "mb-2 inline-flex size-16 items-center justify-center rounded-md bg-muted sm:group-data-[size=default]/alert-dialog-content:row-span-2 *:[svg:not([class*='size-'])]:size-8",
-        className
+        className,
       )}
       data-slot="alert-dialog-media"
       {...props}

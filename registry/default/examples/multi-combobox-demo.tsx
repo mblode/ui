@@ -1,21 +1,16 @@
 "use client";
 
 import type { UseMultipleSelectionStateChange } from "downshift";
-import {
-  type ReactNode,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
-import { type Control, useController, useForm } from "react-hook-form";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import type { ReactNode } from "react";
+import { useController, useForm } from "react-hook-form";
+import type { Control } from "react-hook-form";
 
-import {
-  MultiCombobox,
-  type MultiComboboxOption,
-  type MultiComboboxRef,
-  type OnMultiChangeParams,
+import { MultiCombobox } from "@/registry/default/ui/multi-combobox";
+import type {
+  MultiComboboxOption,
+  MultiComboboxRef,
+  OnMultiChangeParams,
 } from "@/registry/default/ui/multi-combobox";
 
 const frameworks: MultiComboboxOption[] = [
@@ -94,15 +89,13 @@ function MultiComboboxField({
       const lowerCasedInputValue = value.toLowerCase();
       setItems(
         options.filter(
-          (option) =>
-            !value ||
-            (option.label || "").toLowerCase().includes(lowerCasedInputValue)
-        )
+          (option) => !value || (option.label || "").toLowerCase().includes(lowerCasedInputValue),
+        ),
       );
 
       onInputChange?.(value);
     },
-    [options, onInputChange]
+    [options, onInputChange],
   );
 
   const handleChange = useCallback(
@@ -111,12 +104,12 @@ function MultiComboboxField({
       field.onChange(
         (changes.selectedItems ?? [])
           .map((item) => item.id)
-          .filter((item): item is string => typeof item === "string")
+          .filter((item): item is string => typeof item === "string"),
       );
       onChange?.(changes);
       multiComboboxRef.current?.clearInput();
     },
-    [field, onChange]
+    [field, onChange],
   );
 
   useEffect(() => {
@@ -127,7 +120,7 @@ function MultiComboboxField({
     const fieldValues = field.value ?? [];
 
     if (!Array.isArray(fieldValues) || fieldValues.length === 0) {
-      return undefined;
+      return;
     }
 
     return fieldValues.map((value) => {
@@ -156,9 +149,7 @@ function MultiComboboxField({
         options={items}
         values={values}
       />
-      {caption ? (
-        <p className="text-muted-foreground text-sm">{caption}</p>
-      ) : null}
+      {caption ? <p className="text-muted-foreground text-sm">{caption}</p> : null}
       {fieldState.error?.message ? (
         <p className="text-destructive text-sm">{fieldState.error.message}</p>
       ) : null}

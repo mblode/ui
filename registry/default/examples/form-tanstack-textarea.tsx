@@ -35,24 +35,24 @@ export default function FormTanstackTextarea() {
     defaultValues: {
       about: "",
     },
-    validators: {
-      onSubmit: formSchema,
-    },
     onSubmit: async ({ value }) => {
       toast("You submitted the following values:", {
+        classNames: {
+          content: "flex flex-col gap-2",
+        },
         description: (
           <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
             <code>{JSON.stringify(value, null, 2)}</code>
           </pre>
         ),
         position: "bottom-right",
-        classNames: {
-          content: "flex flex-col gap-2",
-        },
         style: {
           "--border-radius": "calc(var(--radius)  + 4px)",
         } as React.CSSProperties,
       });
+    },
+    validators: {
+      onSubmit: formSchema,
     },
   });
 
@@ -75,13 +75,10 @@ export default function FormTanstackTextarea() {
           <FieldGroup>
             <form.Field
               children={(field) => {
-                const isInvalid =
-                  field.state.meta.isTouched && !field.state.meta.isValid;
+                const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid;
                 return (
                   <Field data-invalid={isInvalid}>
-                    <FieldLabel htmlFor="form-tanstack-textarea-about">
-                      More about you
-                    </FieldLabel>
+                    <FieldLabel htmlFor="form-tanstack-textarea-about">More about you</FieldLabel>
                     <Textarea
                       aria-invalid={isInvalid}
                       className="min-h-[120px]"
@@ -93,12 +90,10 @@ export default function FormTanstackTextarea() {
                       value={field.state.value}
                     />
                     <FieldDescription>
-                      Tell us more about yourself. This will be used to help us
-                      personalize your experience.
+                      Tell us more about yourself. This will be used to help us personalize your
+                      experience.
                     </FieldDescription>
-                    {isInvalid && (
-                      <FieldError errors={field.state.meta.errors} />
-                    )}
+                    {isInvalid && <FieldError errors={field.state.meta.errors} />}
                   </Field>
                 );
               }}

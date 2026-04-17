@@ -10,7 +10,7 @@ export default function ToastWithAction() {
         toast("Your message has been archived.", {
           action: {
             label: "Undo",
-            onClick: () => undefined,
+            onClick: () => {},
           },
         })
       }

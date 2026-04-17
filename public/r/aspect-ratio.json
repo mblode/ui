@@ -8,7 +8,7 @@
   "files": [
     {
       "path": "ui/aspect-ratio.tsx",
-      "content": "\"use client\";\n\nimport type * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction AspectRatio({\n  ratio,\n  className,\n  style,\n  ...props\n}: React.ComponentProps<\"div\"> & { ratio: number }) {\n  return (\n    <div\n      className={cn(\n        \"relative aspect-(--ratio) aspect-[var(--ratio)]\",\n        className\n      )}\n      data-slot=\"aspect-ratio\"\n      style={\n        {\n          \"--ratio\": ratio,\n          ...style,\n        } as React.CSSProperties\n      }\n      {...props}\n    />\n  );\n}\n\nexport { AspectRatio };\n",
+      "content": "\"use client\";\n\nimport type * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction AspectRatio({\n  ratio,\n  className,\n  style,\n  ...props\n}: React.ComponentProps<\"div\"> & { ratio: number }) {\n  return (\n    <div\n      className={cn(\"relative aspect-(--ratio) aspect-[var(--ratio)]\", className)}\n      data-slot=\"aspect-ratio\"\n      style={\n        {\n          \"--ratio\": ratio,\n          ...style,\n        } as React.CSSProperties\n      }\n      {...props}\n    />\n  );\n}\n\nexport { AspectRatio };\n",
       "type": "registry:ui",
       "target": ""
     }

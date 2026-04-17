@@ -11,6 +11,7 @@ import { TooltipProvider } from "@/registry/default/ui/tooltip";
 import "@/styles/globals.css";
 
 const glide = localFont({
+  display: "swap",
   src: [
     {
       path: "../public/glide-variable.woff2",
@@ -23,19 +24,18 @@ const glide = localFont({
   ],
   variable: "--font-glide",
   weight: "400 900",
-  display: "swap",
 });
 
 import type { Metadata, Viewport } from "next";
 
 export const metadata: Metadata = {
   ...constructMetadata({
-    title: "Blode UI",
-    description: "Blode UI components.",
-    image: absoluteUrl("/opengraph-image"),
     appleWebApp: {
       title: "Blode UI",
     },
+    description: "Blode UI components.",
+    image: absoluteUrl("/opengraph-image"),
+    title: "Blode UI",
   }),
   verification: {
     google: "mFwyBIbXTaKK4uF_NA0MzVWFyY40hPgBjFObg3rje04",
@@ -45,16 +45,12 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   colorScheme: "dark",
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
+    { color: "white", media: "(prefers-color-scheme: light)" },
+    { color: "black", media: "(prefers-color-scheme: dark)" },
   ],
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -66,7 +62,7 @@ export default function RootLayout({
       <body
         className={cn(
           "relative flex w-full flex-col justify-center overflow-x-hidden scroll-smooth bg-background font-sans antialiased [--header-height:calc(var(--spacing)*14)]",
-          glide.variable
+          glide.variable,
         )}
       >
         <JotaiProvider>

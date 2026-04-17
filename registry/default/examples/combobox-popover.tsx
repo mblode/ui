@@ -11,11 +11,7 @@ import {
   CommandItem,
   CommandList,
 } from "@/registry/default/ui/command";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/registry/default/ui/popover";
+import { Popover, PopoverContent, PopoverTrigger } from "@/registry/default/ui/popover";
 
 interface Status {
   label: string;
@@ -24,24 +20,24 @@ interface Status {
 
 const statuses: Status[] = [
   {
-    value: "backlog",
     label: "Backlog",
+    value: "backlog",
   },
   {
-    value: "todo",
     label: "Todo",
+    value: "todo",
   },
   {
-    value: "in progress",
     label: "In Progress",
+    value: "in progress",
   },
   {
-    value: "done",
     label: "Done",
+    value: "done",
   },
   {
-    value: "canceled",
     label: "Canceled",
+    value: "canceled",
   },
 ];
 
@@ -69,8 +65,7 @@ export default function ComboboxPopover() {
                     key={status.value}
                     onSelect={(value) => {
                       setSelectedStatus(
-                        statuses.find((priority) => priority.value === value) ||
-                          null
+                        statuses.find((priority) => priority.value === value) || null,
                       );
                       setOpen(false);
                     }}

@@ -22,9 +22,7 @@ export default function PhoneInputDemo() {
         value={value}
       />
       <p className="text-muted-foreground text-sm">
-        {value
-          ? `Stored as E.164: ${value}`
-          : "Used for login recovery and billing alerts."}
+        {value ? `Stored as E.164: ${value}` : "Used for login recovery and billing alerts."}
       </p>
     </div>
   );

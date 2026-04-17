@@ -1,9 +1,5 @@
 import { Search } from "blode-icons-react";
-import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupInput,
-} from "@/registry/default/ui/input-group";
+import { InputGroup, InputGroupAddon, InputGroupInput } from "@/registry/default/ui/input-group";
 
 export function InputGroupDemo() {
   return (

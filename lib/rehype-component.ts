@@ -8,22 +8,20 @@ import { Index } from "../__registry__";
 import { styles } from "../registry/registry-styles";
 
 interface RegistryComponent {
-  files?: Array<
+  files?: (
     | string
     | {
         path?: string;
       }
-  >;
+  )[];
 }
 
 type RegistryByStyle = Record<string, Record<string, RegistryComponent>>;
 const registryIndex = Index as RegistryByStyle;
 
-function getFilePath(
-  file: NonNullable<RegistryComponent["files"]>[number] | undefined
-) {
+function getFilePath(file: NonNullable<RegistryComponent["files"]>[number] | undefined) {
   if (!file) {
-    return undefined;
+    return;
   }
 
   return typeof file === "string" ? file : file.path;
@@ -43,9 +41,7 @@ export function rehypeComponent() {
 
       if (node.name === "ComponentSource") {
         const name = getNodeAttributeByName(node, "name")?.value as string;
-        const fileName = getNodeAttributeByName(node, "fileName")?.value as
-          | string
-          | undefined;
+        const fileName = getNodeAttributeByName(node, "fileName")?.value as string | undefined;
 
         if (!(name || srcPath)) {
           return null;
@@ -60,9 +56,7 @@ export function rehypeComponent() {
             } else {
               const component = registryIndex[style.name]?.[name];
               if (!component?.files) {
-                console.warn(
-                  `Component "${name}" not found in registry or has no files.`
-                );
+                console.warn(`Component "${name}" not found in registry or has no files.`);
                 return;
               }
               if (fileName) {
@@ -71,22 +65,16 @@ export function rehypeComponent() {
 
                   return Boolean(
                     filePath &&
-                      (filePath.endsWith(`${fileName}.tsx`) ||
-                        filePath.endsWith(`${fileName}.ts`))
+                    (filePath.endsWith(`${fileName}.tsx`) || filePath.endsWith(`${fileName}.ts`)),
                   );
                 });
-                src =
-                  getFilePath(matchedFile) ??
-                  getFilePath(component.files[0]) ??
-                  "";
+                src = getFilePath(matchedFile) ?? getFilePath(component.files[0]) ?? "";
               } else {
                 src = getFilePath(component.files[0]) ?? "";
               }
 
               if (!src) {
-                console.warn(
-                  `Could not resolve source path for component "${name}".`
-                );
+                console.warn(`Could not resolve source path for component "${name}".`);
                 return;
               }
             }
@@ -95,7 +83,7 @@ export function rehypeComponent() {
             const filePath = src;
             let source = "";
             try {
-              source = fs.readFileSync(filePath, "utf8");
+              source = fs.readFileSync(filePath, "utf-8");
             } catch (error) {
               console.warn(`Could not read file: ${filePath}`, error);
               return;
@@ -104,20 +92,12 @@ export function rehypeComponent() {
             // Replace imports.
             // TODO: Use @swc/core and a visitor to replace this.
             // For now a simple regex should do.
-            source = source.replaceAll(
-              `@/registry/${style.name}/`,
-              "@/components/"
-            );
+            source = source.replaceAll(`@/registry/${style.name}/`, "@/components/");
             source = source.replaceAll("export default", "export");
 
             // Add code as children so that rehype can take over at build time.
             node.children?.push(
               u("element", {
-                tagName: "pre",
-                properties: {
-                  __src__: src,
-                  __style__: style.name,
-                },
                 attributes: [
                   {
                     name: "styleName",
@@ -127,19 +107,24 @@ export function rehypeComponent() {
                 ],
                 children: [
                   u("element", {
-                    tagName: "code",
-                    properties: {
-                      className: ["language-tsx"],
-                    },
                     children: [
                       {
                         type: "text",
                         value: source,
                       },
                     ],
+                    properties: {
+                      className: ["language-tsx"],
+                    },
+                    tagName: "code",
                   }),
                 ],
-              })
+                properties: {
+                  __src__: src,
+                  __style__: style.name,
+                },
+                tagName: "pre",
+              }),
             );
           }
         } catch (error) {
@@ -158,17 +143,13 @@ export function rehypeComponent() {
           for (const style of styles) {
             const component = registryIndex[style.name]?.[name];
             if (!component?.files?.length) {
-              console.warn(
-                `Component "${name}" not found in registry or has no files.`
-              );
+              console.warn(`Component "${name}" not found in registry or has no files.`);
               continue;
             }
             const src = getFilePath(component.files[0]);
 
             if (!src) {
-              console.warn(
-                `Could not resolve source path for component "${name}".`
-              );
+              console.warn(`Could not resolve source path for component "${name}".`);
               continue;
             }
 
@@ -176,7 +157,7 @@ export function rehypeComponent() {
             const filePath = src;
             let source = "";
             try {
-              source = fs.readFileSync(filePath, "utf8");
+              source = fs.readFileSync(filePath, "utf-8");
             } catch (error) {
               console.warn(`Could not read file: ${filePath}`, error);
               continue;
@@ -185,34 +166,31 @@ export function rehypeComponent() {
             // Replace imports.
             // TODO: Use @swc/core and a visitor to replace this.
             // For now a simple regex should do.
-            source = source.replaceAll(
-              `@/registry/${style.name}/`,
-              "@/components/"
-            );
+            source = source.replaceAll(`@/registry/${style.name}/`, "@/components/");
             source = source.replaceAll("export default", "export");
 
             // Add code as children so that rehype can take over at build time.
             node.children?.push(
               u("element", {
-                tagName: "pre",
-                properties: {
-                  __src__: src,
-                },
                 children: [
                   u("element", {
-                    tagName: "code",
-                    properties: {
-                      className: ["language-tsx"],
-                    },
                     children: [
                       {
                         type: "text",
                         value: source,
                       },
                     ],
+                    properties: {
+                      className: ["language-tsx"],
+                    },
+                    tagName: "code",
                   }),
                 ],
-              })
+                properties: {
+                  __src__: src,
+                },
+                tagName: "pre",
+              }),
             );
           }
         } catch (error) {
@@ -343,7 +321,7 @@ function _getComponentSourceFileContent(node: UnistNode) {
 
   // Read the source file.
   const filePath = path.join(process.cwd(), src);
-  const source = fs.readFileSync(filePath, "utf8");
+  const source = fs.readFileSync(filePath, "utf-8");
 
   return source;
 }

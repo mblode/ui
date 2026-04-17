@@ -12,54 +12,27 @@ export function rehypeNpmCommand() {
       if (node.properties?.__rawString__?.startsWith("npm install")) {
         const npmCommand = node.properties?.__rawString__;
         node.properties.__npmCommand__ = npmCommand;
-        node.properties.__yarnCommand__ = npmCommand.replace(
-          "npm install",
-          "yarn add"
-        );
-        node.properties.__pnpmCommand__ = npmCommand.replace(
-          "npm install",
-          "pnpm add"
-        );
-        node.properties.__bunCommand__ = npmCommand.replace(
-          "npm install",
-          "bun add"
-        );
+        node.properties.__yarnCommand__ = npmCommand.replace("npm install", "yarn add");
+        node.properties.__pnpmCommand__ = npmCommand.replace("npm install", "pnpm add");
+        node.properties.__bunCommand__ = npmCommand.replace("npm install", "bun add");
       }
 
       // npx create-.
       if (node.properties?.__rawString__?.startsWith("npx create-")) {
         const npmCommand = node.properties?.__rawString__;
         node.properties.__npmCommand__ = npmCommand;
-        node.properties.__yarnCommand__ = npmCommand.replace(
-          "npx create-",
-          "yarn create "
-        );
-        node.properties.__pnpmCommand__ = npmCommand.replace(
-          "npx create-",
-          "pnpm create "
-        );
-        node.properties.__bunCommand__ = npmCommand.replace(
-          "npx",
-          "bun x --bun"
-        );
+        node.properties.__yarnCommand__ = npmCommand.replace("npx create-", "yarn create ");
+        node.properties.__pnpmCommand__ = npmCommand.replace("npx create-", "pnpm create ");
+        node.properties.__bunCommand__ = npmCommand.replace("npx", "bun x --bun");
       }
 
       // npm create.
       if (node.properties?.__rawString__?.startsWith("npm create")) {
         const npmCommand = node.properties?.__rawString__;
         node.properties.__npmCommand__ = npmCommand;
-        node.properties.__yarnCommand__ = npmCommand.replace(
-          "npm create",
-          "yarn create"
-        );
-        node.properties.__pnpmCommand__ = npmCommand.replace(
-          "npm create",
-          "pnpm create"
-        );
-        node.properties.__bunCommand__ = npmCommand.replace(
-          "npm create",
-          "bun create"
-        );
+        node.properties.__yarnCommand__ = npmCommand.replace("npm create", "yarn create");
+        node.properties.__pnpmCommand__ = npmCommand.replace("npm create", "pnpm create");
+        node.properties.__bunCommand__ = npmCommand.replace("npm create", "bun create");
       }
 
       // npx.
@@ -71,10 +44,7 @@ export function rehypeNpmCommand() {
         node.properties.__npmCommand__ = npmCommand;
         node.properties.__yarnCommand__ = npmCommand;
         node.properties.__pnpmCommand__ = npmCommand.replace("npx", "pnpm dlx");
-        node.properties.__bunCommand__ = npmCommand.replace(
-          "npx",
-          "bun x --bun"
-        );
+        node.properties.__bunCommand__ = npmCommand.replace("npx", "bun x --bun");
       }
 
       // npm run.

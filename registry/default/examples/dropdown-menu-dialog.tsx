@@ -41,12 +41,8 @@ export default function DropdownMenuDialog() {
         <DropdownMenuContent align="end" className="w-40">
           <DropdownMenuLabel>File Actions</DropdownMenuLabel>
           <DropdownMenuGroup>
-            <DropdownMenuItem onSelect={() => setShowNewDialog(true)}>
-              New File...
-            </DropdownMenuItem>
-            <DropdownMenuItem onSelect={() => setShowShareDialog(true)}>
-              Share...
-            </DropdownMenuItem>
+            <DropdownMenuItem onSelect={() => setShowNewDialog(true)}>New File...</DropdownMenuItem>
+            <DropdownMenuItem onSelect={() => setShowShareDialog(true)}>Share...</DropdownMenuItem>
             <DropdownMenuItem disabled>Download</DropdownMenuItem>
           </DropdownMenuGroup>
         </DropdownMenuContent>
@@ -56,8 +52,7 @@ export default function DropdownMenuDialog() {
           <DialogHeader>
             <DialogTitle>Create New File</DialogTitle>
             <DialogDescription>
-              Provide a name for your new file. Click create when you&apos;re
-              done.
+              Provide a name for your new file. Click create when you&apos;re done.
             </DialogDescription>
           </DialogHeader>
           <FieldGroup className="pb-3">
@@ -95,11 +90,7 @@ export default function DropdownMenuDialog() {
             </Field>
             <Field>
               <FieldLabel htmlFor="message">Message (Optional)</FieldLabel>
-              <Textarea
-                id="message"
-                name="message"
-                placeholder="Check out this file"
-              />
+              <Textarea id="message" name="message" placeholder="Check out this file" />
             </Field>
           </FieldGroup>
           <DialogFooter>

@@ -16,13 +16,7 @@ interface CommitItem {
   sha?: string;
 }
 
-export default function CommitList({
-  repo,
-  owner,
-}: {
-  repo: string;
-  owner: string;
-}) {
+export default function CommitList({ repo, owner }: { repo: string; owner: string }) {
   const [, setLoading] = useState(false);
   const [commits, setCommits] = useState<CommitItem[]>([]);
 
@@ -30,16 +24,13 @@ export default function CommitList({
     const loadCommits = async () => {
       setLoading(true);
       try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_APP_URL}/api/repo/commits`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ repo, owner }),
-          }
-        );
+        const response = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/repo/commits`, {
+          body: JSON.stringify({ owner, repo }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+        });
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }

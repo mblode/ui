@@ -33,23 +33,23 @@ const formSchema = z.object({
 
 export default function FormRhfTextarea() {
   const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
     defaultValues: {
       about: "",
     },
+    resolver: zodResolver(formSchema),
   });
 
   function onSubmit(data: z.infer<typeof formSchema>) {
     toast("You submitted the following values:", {
+      classNames: {
+        content: "flex flex-col gap-2",
+      },
       description: (
         <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
           <code>{JSON.stringify(data, null, 2)}</code>
         </pre>
       ),
       position: "bottom-right",
-      classNames: {
-        content: "flex flex-col gap-2",
-      },
       style: {
         "--border-radius": "calc(var(--radius)  + 4px)",
       } as React.CSSProperties,
@@ -72,9 +72,7 @@ export default function FormRhfTextarea() {
               name="about"
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel htmlFor="form-rhf-textarea-about">
-                    More about you
-                  </FieldLabel>
+                  <FieldLabel htmlFor="form-rhf-textarea-about">More about you</FieldLabel>
                   <Textarea
                     {...field}
                     aria-invalid={fieldState.invalid}
@@ -83,12 +81,10 @@ export default function FormRhfTextarea() {
                     placeholder="I'm a software engineer..."
                   />
                   <FieldDescription>
-                    Tell us more about yourself. This will be used to help us
-                    personalize your experience.
+                    Tell us more about yourself. This will be used to help us personalize your
+                    experience.
                   </FieldDescription>
-                  {fieldState.invalid && (
-                    <FieldError errors={[fieldState.error]} />
-                  )}
+                  {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
                 </Field>
               )}
             />

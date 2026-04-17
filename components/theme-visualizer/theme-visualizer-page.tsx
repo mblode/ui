@@ -14,22 +14,14 @@ import {
   TextSizeIcon,
   UnlockedIcon,
 } from "blode-icons-react";
-import {
-  type CSSProperties,
-  type ReactNode,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import {
   DEFAULT_CONTRAST_PAIRS,
-  type EvaluatedContrastPair,
   evaluateContrastPairs,
   formatRatio,
-  type RgbColor,
 } from "@/components/theme-visualizer/contrast";
+import type { EvaluatedContrastPair, RgbColor } from "@/components/theme-visualizer/contrast";
 import {
   buildPreviewStyle,
   buildThemeCss,
@@ -43,11 +35,13 @@ import {
   THEME_SANS_FONT_OPTIONS,
   THEME_SERIF_FONT_OPTIONS,
   THEME_SHADE_LIST,
-  type ThemeColorFamily,
-  type ThemeFontFamily,
-  type ThemeRadius,
-  type ThemeShade,
-  type ThemeState,
+} from "@/components/theme-visualizer/theme-config";
+import type {
+  ThemeColorFamily,
+  ThemeFontFamily,
+  ThemeRadius,
+  ThemeShade,
+  ThemeState,
 } from "@/components/theme-visualizer/theme-config";
 import { cn, humanize } from "@/lib/utils";
 import { Button } from "@/registry/default/ui/button";
@@ -76,27 +70,20 @@ import {
   TableHeader,
   TableRow,
 } from "@/registry/default/ui/table";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/registry/default/ui/tooltip";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/registry/default/ui/tooltip";
 
 const FONT_PREVIEW_TEXT =
   "Write better faster Everywhere Products Use Cases Docs Blog FAQ Sign in Get started";
 
 const RADIUS_LABELS: Record<ThemeRadius, string> = {
+  full: "Full",
+  large: "Large",
+  medium: "Medium",
   none: "None",
   small: "Small",
-  medium: "Medium",
-  large: "Large",
-  full: "Full",
 };
 
-function getSwatchColor(
-  colorFamily: ThemeColorFamily,
-  shade: ThemeShade
-): string {
+function getSwatchColor(colorFamily: ThemeColorFamily, shade: ThemeShade): string {
   return `var(--color-${colorFamily}-${shade}, ${THEME_COLOR_SCALES[colorFamily][shade]})`;
 }
 
@@ -119,15 +106,12 @@ function ensureGoogleFontLoaded(fontFamily: ThemeFontFamily): void {
   }
 
   const stylesheetId = getFontStylesheetId(fontFamily);
-  if (document.getElementById(stylesheetId)) {
+  if (document.querySelector(`#${stylesheetId}`)) {
     return;
   }
 
   const url = new URL("https://fonts.googleapis.com/css2");
-  url.searchParams.set(
-    "family",
-    `${toGoogleFontFamilyParam(fontFamily)}:wght@400;500;600;700`
-  );
+  url.searchParams.set("family", `${toGoogleFontFamilyParam(fontFamily)}:wght@400;500;600;700`);
   url.searchParams.set("display", "swap");
   url.searchParams.set("text", FONT_PREVIEW_TEXT);
 
@@ -137,7 +121,7 @@ function ensureGoogleFontLoaded(fontFamily: ThemeFontFamily): void {
   stylesheet.href = url.toString();
   stylesheet.dataset.themePreviewFont = fontFamily;
 
-  document.head.appendChild(stylesheet);
+  document.head.append(stylesheet);
 }
 
 function rgbToCssColor(rgb: RgbColor | null): string {
@@ -168,12 +152,7 @@ interface IconActionButtonProps {
   onClick: () => void;
 }
 
-function IconActionButton({
-  active,
-  children,
-  label,
-  onClick,
-}: IconActionButtonProps) {
+function IconActionButton({ active, children, label, onClick }: IconActionButtonProps) {
   return (
     <Tooltip>
       <TooltipTrigger asChild>
@@ -207,7 +186,7 @@ export default function ThemeVisualizerPage() {
       ...buildPreviewStyle(theme),
       fontFamily: getThemeFontStack(theme.textFont),
     }),
-    [theme]
+    [theme],
   );
 
   useEffect(() => {
@@ -225,9 +204,7 @@ export default function ThemeVisualizerPage() {
       if (!(previewRef.current && currentThemeCss)) {
         return;
       }
-      setContrastRows(
-        evaluateContrastPairs(previewRef.current, DEFAULT_CONTRAST_PAIRS)
-      );
+      setContrastRows(evaluateContrastPairs(previewRef.current, DEFAULT_CONTRAST_PAIRS));
     });
 
     return () => window.cancelAnimationFrame(frame);
@@ -243,14 +220,13 @@ export default function ThemeVisualizerPage() {
   }, [hasCopiedCss]);
 
   const aaFailures = useMemo(
-    () =>
-      contrastRows.filter((row) => row.ratio !== null && !row.passesAA).length,
-    [contrastRows]
+    () => contrastRows.filter((row) => row.ratio !== null && !row.passesAA).length,
+    [contrastRows],
   );
 
   const unresolvedCount = useMemo(
     () => contrastRows.filter((row) => row.ratio === null).length,
-    [contrastRows]
+    [contrastRows],
   );
 
   const contrastSummary = useMemo(() => {
@@ -277,28 +253,25 @@ export default function ThemeVisualizerPage() {
   const handleTextFontChange = useCallback((textFont: ThemeFontFamily) => {
     setTheme((current) => ({
       ...current,
-      textFont,
       headingFont: current.isFontLocked ? textFont : current.headingFont,
+      textFont,
     }));
   }, []);
 
-  const handleHeadingFontChange = useCallback(
-    (headingFont: ThemeFontFamily) => {
-      setTheme((current) => ({
-        ...current,
-        headingFont,
-      }));
-    },
-    []
-  );
+  const handleHeadingFontChange = useCallback((headingFont: ThemeFontFamily) => {
+    setTheme((current) => ({
+      ...current,
+      headingFont,
+    }));
+  }, []);
 
   const handleFontLockToggle = useCallback(() => {
     setTheme((current) => {
       const nextIsFontLocked = !current.isFontLocked;
       return {
         ...current,
-        isFontLocked: nextIsFontLocked,
         headingFont: nextIsFontLocked ? current.textFont : current.headingFont,
+        isFontLocked: nextIsFontLocked,
       };
     });
   }, []);
@@ -321,29 +294,23 @@ export default function ThemeVisualizerPage() {
     <section className="container py-8 lg:py-12">
       <div className="mx-auto w-full max-w-[1200px] space-y-6">
         <div className="space-y-2">
-          <h1 className="font-semibold text-3xl tracking-tight">
-            Theme Visualizer
-          </h1>
+          <h1 className="font-semibold text-3xl tracking-tight">Theme Visualizer</h1>
         </div>
 
         <div className="overflow-hidden rounded-2xl border bg-card">
           <div className="flex items-center gap-2 overflow-x-auto border-b p-3">
             <Select<ThemeColorFamily>
               items={THEME_COLOR_FAMILY_LIST.map((family) => ({
-                value: family,
                 label: humanize(family),
+                value: family,
               }))}
-              onValueChange={(colorFamily) =>
-                setTheme((current) => ({ ...current, colorFamily }))
-              }
+              onValueChange={(colorFamily) => setTheme((current) => ({ ...current, colorFamily }))}
               value={theme.colorFamily}
             >
               <SelectTrigger className="w-[11.5rem]" size="sm">
                 <span className="flex items-center gap-2">
                   <ColorPaletteIcon className="size-4 text-muted-foreground" />
-                  <Swatch
-                    color={getSwatchColor(theme.colorFamily, theme.shade)}
-                  />
+                  <Swatch color={getSwatchColor(theme.colorFamily, theme.shade)} />
                   {humanize(theme.colorFamily)}
                 </span>
               </SelectTrigger>
@@ -361,19 +328,15 @@ export default function ThemeVisualizerPage() {
 
             <Select<ThemeShade>
               items={THEME_SHADE_LIST.map((shade) => ({
-                value: shade,
                 label: shade,
+                value: shade,
               }))}
-              onValueChange={(shade) =>
-                setTheme((current) => ({ ...current, shade }))
-              }
+              onValueChange={(shade) => setTheme((current) => ({ ...current, shade }))}
               value={theme.shade}
             >
               <SelectTrigger className="w-32" size="sm">
                 <span className="flex items-center gap-2">
-                  <Swatch
-                    color={getSwatchColor(theme.colorFamily, theme.shade)}
-                  />
+                  <Swatch color={getSwatchColor(theme.colorFamily, theme.shade)} />
                   {theme.shade}
                 </span>
               </SelectTrigger>
@@ -381,9 +344,7 @@ export default function ThemeVisualizerPage() {
                 {THEME_SHADE_LIST.map((shade) => (
                   <SelectItem key={shade} value={shade}>
                     <span className="flex w-full items-center gap-2">
-                      <Swatch
-                        color={getSwatchColor(theme.colorFamily, shade)}
-                      />
+                      <Swatch color={getSwatchColor(theme.colorFamily, shade)} />
                       {shade}
                       {Number(shade) <= 200 ? (
                         <MoonIcon className="ml-auto size-3.5 text-muted-foreground" />
@@ -396,12 +357,10 @@ export default function ThemeVisualizerPage() {
 
             <Select<ThemeRadius>
               items={THEME_RADIUS_LIST.map((radius) => ({
-                value: radius,
                 label: RADIUS_LABELS[radius],
+                value: radius,
               }))}
-              onValueChange={(radius) =>
-                setTheme((current) => ({ ...current, radius }))
-              }
+              onValueChange={(radius) => setTheme((current) => ({ ...current, radius }))}
               value={theme.radius}
             >
               <SelectTrigger className="w-36" size="sm">
@@ -424,18 +383,12 @@ export default function ThemeVisualizerPage() {
               </SelectContent>
             </Select>
 
-            <Separator
-              className="mx-1 hidden h-8 sm:block"
-              orientation="vertical"
-            />
+            <Separator className="mx-1 hidden h-8 sm:block" orientation="vertical" />
 
             <Select<ThemeFontFamily>
-              items={[
-                ...THEME_SANS_FONT_OPTIONS,
-                ...THEME_SERIF_FONT_OPTIONS,
-              ].map((font) => ({
-                value: font.family,
+              items={[...THEME_SANS_FONT_OPTIONS, ...THEME_SERIF_FONT_OPTIONS].map((font) => ({
                 label: font.label,
+                value: font.family,
               }))}
               onValueChange={handleTextFontChange}
               value={theme.textFont}
@@ -491,21 +444,14 @@ export default function ThemeVisualizerPage() {
             </Tooltip>
 
             <Select<ThemeFontFamily>
-              items={[
-                ...THEME_SANS_FONT_OPTIONS,
-                ...THEME_SERIF_FONT_OPTIONS,
-              ].map((font) => ({
-                value: font.family,
+              items={[...THEME_SANS_FONT_OPTIONS, ...THEME_SERIF_FONT_OPTIONS].map((font) => ({
                 label: font.label,
+                value: font.family,
               }))}
               onValueChange={handleHeadingFontChange}
               value={theme.headingFont}
             >
-              <SelectTrigger
-                className="w-[13.5rem]"
-                disabled={theme.isFontLocked}
-                size="sm"
-              >
+              <SelectTrigger className="w-[13.5rem]" disabled={theme.isFontLocked} size="sm">
                 <span className="flex items-center gap-2">
                   <span className="inline-flex size-4 items-center justify-center font-semibold text-muted-foreground text-xs">
                     H
@@ -537,11 +483,7 @@ export default function ThemeVisualizerPage() {
             <div className="ml-auto flex items-center gap-2">
               <IconActionButton
                 active={theme.darkMode}
-                label={
-                  theme.darkMode
-                    ? "Switch to light mode"
-                    : "Switch to dark mode"
-                }
+                label={theme.darkMode ? "Switch to light mode" : "Switch to dark mode"}
                 onClick={() =>
                   setTheme((current) => ({
                     ...current,
@@ -549,16 +491,9 @@ export default function ThemeVisualizerPage() {
                   }))
                 }
               >
-                {theme.darkMode ? (
-                  <MoonIcon className="size-4" />
-                ) : (
-                  <SunIcon className="size-4" />
-                )}
+                {theme.darkMode ? <MoonIcon className="size-4" /> : <SunIcon className="size-4" />}
               </IconActionButton>
-              <IconActionButton
-                label="Randomize theme"
-                onClick={handleRandomizeTheme}
-              >
+              <IconActionButton label="Randomize theme" onClick={handleRandomizeTheme}>
                 <DicesIcon className="size-4" />
               </IconActionButton>
               <IconActionButton
@@ -568,16 +503,10 @@ export default function ThemeVisualizerPage() {
               >
                 <ContrastIcon className="size-4" />
               </IconActionButton>
-              <IconActionButton
-                label="Reset to defaults"
-                onClick={handleResetTheme}
-              >
+              <IconActionButton label="Reset to defaults" onClick={handleResetTheme}>
                 <ArrowRotateCounterClockwiseIcon className="size-4" />
               </IconActionButton>
-              <IconActionButton
-                label="Copy theme CSS"
-                onClick={handleCopyThemeCss}
-              >
+              <IconActionButton label="Copy theme CSS" onClick={handleCopyThemeCss}>
                 {hasCopiedCss ? (
                   <CheckIcon className="size-4" />
                 ) : (
@@ -590,7 +519,7 @@ export default function ThemeVisualizerPage() {
           <div
             className={cn(
               "overflow-hidden bg-background text-foreground",
-              theme.darkMode && "dark"
+              theme.darkMode && "dark",
             )}
             ref={previewRef}
             style={previewStyle}
@@ -632,8 +561,8 @@ export default function ThemeVisualizerPage() {
                   Everywhere.
                 </h2>
                 <p className="max-w-[44ch] text-lg text-muted-foreground">
-                  Tune color, radius, and typography in one place, then copy the
-                  generated CSS variables directly into your app.
+                  Tune color, radius, and typography in one place, then copy the generated CSS
+                  variables directly into your app.
                 </p>
                 <ul className="space-y-2 text-muted-foreground">
                   <li className="flex items-center gap-2">
@@ -709,15 +638,13 @@ export default function ThemeVisualizerPage() {
                         <Swatch color={rgbToCssColor(pair.backgroundColor)} />
                       </div>
                     </TableCell>
-                    <TableCell>
-                      {hasRatio ? formatRatio(pair.ratio ?? 0) : "—"}
-                    </TableCell>
+                    <TableCell>{hasRatio ? formatRatio(pair.ratio ?? 0) : "—"}</TableCell>
                     <TableCell>
                       {hasRatio ? (
                         <span
                           className={cn(
                             "font-medium",
-                            pair.passesAA ? "text-green-600" : "text-red-600"
+                            pair.passesAA ? "text-green-600" : "text-red-600",
                           )}
                         >
                           {pair.passesAA ? "Pass" : "Fail"}
@@ -731,7 +658,7 @@ export default function ThemeVisualizerPage() {
                         <span
                           className={cn(
                             "font-medium",
-                            pair.passesAAA ? "text-green-600" : "text-red-600"
+                            pair.passesAAA ? "text-green-600" : "text-red-600",
                           )}
                         >
                           {pair.passesAAA ? "Pass" : "Fail"}
@@ -747,8 +674,7 @@ export default function ThemeVisualizerPage() {
           </Table>
 
           <p className="text-muted-foreground text-xs">
-            AA requires 4.5:1 for normal text, 3:1 for large text. AAA requires
-            7:1 for normal text.
+            AA requires 4.5:1 for normal text, 3:1 for large text. AAA requires 7:1 for normal text.
           </p>
         </DialogContent>
       </Dialog>

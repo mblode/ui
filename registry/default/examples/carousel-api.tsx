@@ -4,12 +4,12 @@ import { useEffect, useState } from "react";
 import { Card, CardContent } from "@/registry/default/ui/card";
 import {
   Carousel,
-  type CarouselApi,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
 } from "@/registry/default/ui/carousel";
+import type { CarouselApi } from "@/registry/default/ui/carousel";
 
 export default function CarouselDApiDemo() {
   const [api, setApi] = useState<CarouselApi>();

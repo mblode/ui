@@ -35,9 +35,7 @@ export default function InputGroupSpinner() {
           <LoaderIcon className="animate-spin" />
         </InputGroupAddon>
         <InputGroupAddon align="inline-end">
-          <InputGroupText className="text-muted-foreground">
-            Please wait...
-          </InputGroupText>
+          <InputGroupText className="text-muted-foreground">Please wait...</InputGroupText>
         </InputGroupAddon>
       </InputGroup>
     </div>

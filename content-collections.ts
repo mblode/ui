@@ -1,7 +1,8 @@
 import { defineCollection, defineConfig } from "@content-collections/core";
 import { compileMDX } from "@content-collections/mdx";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-import rehypePrettyCode, { type Options } from "rehype-pretty-code";
+import rehypePrettyCode from "rehype-pretty-code";
+import type { Options } from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import { codeImport } from "remark-code-import";
 import remarkGfm from "remark-gfm";
@@ -17,16 +18,24 @@ const INDEX_PATH_SUFFIX_REGEX = /(?:^|\/)index$/;
 const WINDOWS_PATH_SEPARATOR_REGEX = /\\/g;
 
 const prettyCodeOptions: Options = {
-  theme: {
-    dark: "github-dark",
-    light: "github-light",
-  },
-  grid: false,
-  keepBackground: false,
   getHighlighter: (options) =>
     createHighlighter({
       ...options,
     }),
+  grid: false,
+  keepBackground: false,
+  onVisitHighlightedChars(node) {
+    if (!node.properties.className) {
+      node.properties.className = [];
+    }
+    node.properties.className = ["word--highlighted"];
+  },
+  onVisitHighlightedLine(node) {
+    if (!node.properties.className) {
+      node.properties.className = [];
+    }
+    node.properties.className.push("line--highlighted");
+  },
   onVisitLine(node) {
     // Prevent lines from collapsing in `display: grid` mode, and allow empty
     // lines to be copy/pasted
@@ -40,28 +49,20 @@ const prettyCodeOptions: Options = {
 
     node.properties.className.push("line");
   },
-  onVisitHighlightedLine(node) {
-    if (!node.properties.className) {
-      node.properties.className = [];
-    }
-    node.properties.className.push("line--highlighted");
-  },
-  onVisitHighlightedChars(node) {
-    if (!node.properties.className) {
-      node.properties.className = [];
-    }
-    node.properties.className = ["word--highlighted"];
+  theme: {
+    dark: "github-dark",
+    light: "github-light",
   },
 };
 
 const pages = defineCollection({
-  name: "Page",
   directory: "content/pages",
   include: "**/*.mdx",
+  name: "Page",
   schema: z.object({
-    title: z.string(),
-    description: z.string(),
     content: z.string(),
+    description: z.string(),
+    title: z.string(),
   }),
   transform: async (document, context) => {
     const body = await compileMDX(context, document, {
@@ -69,43 +70,42 @@ const pages = defineCollection({
     });
     return {
       ...document,
+      body: {
+        code: body,
+        raw: document.content,
+      },
       slug: `/${document._meta.path}`,
       slugAsParams: document._meta.path,
-      body: {
-        raw: document.content,
-        code: body,
-      },
     };
   },
 });
 
 const documents = defineCollection({
-  name: "Doc",
   directory: "content/docs",
   include: "**/*.mdx",
+  name: "Doc",
   schema: z.object({
-    title: z.string(),
-    description: z.string(),
+    component: z.boolean().optional().default(false),
     content: z.string(),
-    published: z.boolean().default(true),
     date: z.string().optional(),
+    description: z.string(),
+    featured: z.boolean().optional().default(false),
+    image: z.string().optional(),
     links: z
       .object({
-        doc: z.string().optional(),
         api: z.string().optional(),
+        doc: z.string().optional(),
       })
       .optional(),
-    featured: z.boolean().optional().default(false),
-    component: z.boolean().optional().default(false),
+    published: z.boolean().default(true),
+    title: z.string(),
     toc: z.boolean().optional().default(true),
-    image: z.string().optional(),
   }),
   transform: async (document, context) => {
     const slugAsParams = document._meta.path
       .replace(WINDOWS_PATH_SEPARATOR_REGEX, "/")
       .replace(INDEX_PATH_SUFFIX_REGEX, "");
     const body = await compileMDX(context, document, {
-      remarkPlugins: [codeImport, remarkGfm],
       rehypePlugins: [
         rehypeSlug,
         rehypeComponent,
@@ -121,10 +121,7 @@ const documents = defineCollection({
                 const match = codeEl.data?.meta.match(EVENT_META_REGEX);
                 if (match) {
                   node.__event__ = match ? match[1] : null;
-                  codeEl.data.meta = codeEl.data.meta.replace(
-                    EVENT_META_REGEX,
-                    ""
-                  );
+                  codeEl.data.meta = codeEl.data.meta.replace(EVENT_META_REGEX, "");
                 }
               }
               node.__rawString__ = codeEl.children?.[0].value;
@@ -146,8 +143,7 @@ const documents = defineCollection({
                 return;
               }
 
-              preElement.properties.__withMeta__ =
-                node.children.at(0).tagName === "div";
+              preElement.properties.__withMeta__ = node.children.at(0).tagName === "div";
               preElement.properties.__rawString__ = node.__rawString__;
 
               if (node.__src__) {
@@ -163,10 +159,7 @@ const documents = defineCollection({
               }
 
               const codeElement = preElement.children?.[0];
-              if (
-                codeElement?.type === "element" &&
-                codeElement?.tagName === "code"
-              ) {
+              if (codeElement?.type === "element" && codeElement?.tagName === "code") {
                 codeElement.properties["data-line-numbers"] = "";
                 codeElement.properties["data-theme"] = undefined;
                 codeElement.properties.style = undefined;
@@ -187,10 +180,7 @@ const documents = defineCollection({
                         lineElement.properties.className.push("line");
                       }
                     } else {
-                      lineElement.properties.className = [
-                        lineElement.properties.className,
-                        "line",
-                      ];
+                      lineElement.properties.className = [lineElement.properties.className, "line"];
                     }
                   }
                 }
@@ -203,24 +193,25 @@ const documents = defineCollection({
           rehypeAutolinkHeadings,
           {
             properties: {
-              className: ["subheading-anchor"],
               ariaLabel: "Link to section",
+              className: ["subheading-anchor"],
             },
           },
         ],
       ],
+      remarkPlugins: [codeImport, remarkGfm],
     });
     return {
       ...document,
+      body: {
+        code: body,
+        raw: document.content,
+      },
       image: `${process.env.NEXT_PUBLIC_APP_URL}/og?title=${encodeURI(
-        document.title
+        document.title,
       )}&description=${encodeURI(document.description)}`,
       slug: slugAsParams ? `/docs/${slugAsParams}` : "/docs",
       slugAsParams,
-      body: {
-        raw: document.content,
-        code: body,
-      },
     };
   },
 });

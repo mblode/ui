@@ -17,9 +17,7 @@ export function DropdownMenuRadioGroupDemo() {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger render={<Button variant="outline" />}>
-        Open
-      </DropdownMenuTrigger>
+      <DropdownMenuTrigger render={<Button variant="outline" />}>Open</DropdownMenuTrigger>
       <DropdownMenuContent className="w-32">
         <DropdownMenuGroup>
           <DropdownMenuLabel>Panel Position</DropdownMenuLabel>

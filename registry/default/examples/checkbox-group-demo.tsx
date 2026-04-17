@@ -3,10 +3,7 @@
 import { useId } from "react";
 
 import { Checkbox } from "@/registry/default/ui/checkbox";
-import {
-  CheckboxGroup,
-  CheckboxGroupLabel,
-} from "@/registry/default/ui/checkbox-group";
+import { CheckboxGroup, CheckboxGroupLabel } from "@/registry/default/ui/checkbox-group";
 
 export function CheckboxGroupDemo() {
   const id = useId();
@@ -15,11 +12,7 @@ export function CheckboxGroupDemo() {
   const grannySmithId = `${id}-granny-smith`;
 
   return (
-    <CheckboxGroup
-      aria-labelledby={id}
-      className="w-full max-w-xs"
-      defaultValue={["fuji-apple"]}
-    >
+    <CheckboxGroup aria-labelledby={id} className="w-full max-w-xs" defaultValue={["fuji-apple"]}>
       <CheckboxGroupLabel id={id}>Apples</CheckboxGroupLabel>
 
       <div className="flex items-center gap-2 font-normal text-sm">

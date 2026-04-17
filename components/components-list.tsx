@@ -6,12 +6,12 @@ const componentItems = docsConfig.sidebarNav
   .flatMap((group) => group.items ?? [])
   .filter(
     (item): item is { title: string; href: string; label?: string } =>
-      typeof item.href === "string" && item.href.startsWith("/docs/components/")
+      typeof item.href === "string" && item.href.startsWith("/docs/components/"),
   )
   .toSorted((a, b) =>
     a.title.localeCompare(b.title, undefined, {
       sensitivity: "base",
-    })
+    }),
   );
 
 export function ComponentsList() {
@@ -25,10 +25,7 @@ export function ComponentsList() {
         >
           {component.title}
           {component.label && (
-            <span
-              className="flex size-2 rounded-full bg-blue-500"
-              title={component.label}
-            />
+            <span className="flex size-2 rounded-full bg-blue-500" title={component.label} />
           )}
         </Link>
       ))}

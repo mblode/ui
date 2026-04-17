@@ -9,16 +9,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     {
-      url: `${protocol}://${domain}`,
       lastModified: new Date(),
+      url: `${protocol}://${domain}`,
     },
     ...allPages.map((post) => ({
-      url: `${protocol}://${domain}/${post.slugAsParams}`,
       lastModified: new Date(),
+      url: `${protocol}://${domain}/${post.slugAsParams}`,
     })),
     ...allDocs.map((post) => ({
-      url: `${protocol}://${domain}/docs/${post.slugAsParams}`,
       lastModified: post.date,
+      url: `${protocol}://${domain}/docs/${post.slugAsParams}`,
     })),
   ];
 }

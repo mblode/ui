@@ -17,8 +17,7 @@ export default function ComponentDemos() {
         Component demos
       </h2>
       <h3 className="mx-auto mb-8 text-balance text-center font-medium text-foreground/80 text-lg tracking-tight">
-        Here are some of the components that you can use to build your landing
-        pages.
+        Here are some of the components that you can use to build your landing pages.
       </h3>
       <Mdx code={page.body.code} />
     </section>

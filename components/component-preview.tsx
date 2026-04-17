@@ -9,8 +9,7 @@ import { Button } from "@/registry/default/ui/button";
 import { Spinner } from "@/registry/default/ui/spinner";
 import { styles } from "@/registry/registry-styles";
 
-interface ComponentPreviewProps
-  extends Omit<React.HTMLAttributes<HTMLDivElement>, "preview"> {
+interface ComponentPreviewProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "preview"> {
   align?: "center" | "start" | "end";
   chromeLessOnMobile?: boolean;
   description?: string;
@@ -31,7 +30,7 @@ export function ComponentPreview({
   children,
   className,
   align = "center",
-  description,
+  description: _description,
   hideCode = false,
   previewClassName,
   preview: _preview,
@@ -123,7 +122,7 @@ export function ComponentPreview({
     <div
       className={cn(
         "group relative mt-4 mb-12 flex flex-col overflow-hidden rounded-xl border",
-        className
+        className,
       )}
       data-slot="component-preview"
       {...divProps}
@@ -133,7 +132,7 @@ export function ComponentPreview({
           className={cn(
             // biome-ignore lint/nursery/useSortedClasses: keep class order identical to shadcn-ui v4
             "preview relative flex h-72 w-full justify-center overflow-hidden p-10 isolate transform-gpu data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start data-[chromeless=true]:h-auto data-[chromeless=true]:p-0",
-            previewClassName
+            previewClassName,
           )}
           data-align={align}
           data-chromeless={chromeLessOnMobile}

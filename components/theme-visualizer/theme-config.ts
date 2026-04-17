@@ -49,53 +49,47 @@ type ThemeScaleShade = ThemeShade | "50" | "950";
 export type ThemeColorScale = Record<ThemeScaleShade, string>;
 
 export const THEME_COLOR_SCALES = {
-  red: tailwindColors.red,
-  orange: tailwindColors.orange,
   amber: tailwindColors.amber,
-  yellow: tailwindColors.yellow,
-  lime: tailwindColors.lime,
-  green: tailwindColors.green,
-  emerald: tailwindColors.emerald,
-  teal: tailwindColors.teal,
-  cyan: tailwindColors.cyan,
-  sky: tailwindColors.sky,
   blue: tailwindColors.blue,
-  indigo: tailwindColors.indigo,
-  violet: tailwindColors.violet,
-  purple: tailwindColors.purple,
+  cyan: tailwindColors.cyan,
+  emerald: tailwindColors.emerald,
   fuchsia: tailwindColors.fuchsia,
-  pink: tailwindColors.pink,
-  rose: tailwindColors.rose,
-  slate: tailwindColors.slate,
   gray: tailwindColors.gray,
-  zinc: tailwindColors.zinc,
-  neutral: tailwindColors.neutral,
-  stone: tailwindColors.stone,
+  green: tailwindColors.green,
+  indigo: tailwindColors.indigo,
+  lime: tailwindColors.lime,
   mauve: tailwindColors.mauve,
-  olive: tailwindColors.olive,
   mist: tailwindColors.mist,
+  neutral: tailwindColors.neutral,
+  olive: tailwindColors.olive,
+  orange: tailwindColors.orange,
+  pink: tailwindColors.pink,
+  purple: tailwindColors.purple,
+  red: tailwindColors.red,
+  rose: tailwindColors.rose,
+  sky: tailwindColors.sky,
+  slate: tailwindColors.slate,
+  stone: tailwindColors.stone,
   taupe: tailwindColors.taupe,
+  teal: tailwindColors.teal,
+  violet: tailwindColors.violet,
+  yellow: tailwindColors.yellow,
+  zinc: tailwindColors.zinc,
 } satisfies Record<ThemeColorFamily, ThemeColorScale>;
 
 export const DEFAULT_THEME_COLOR_FAMILY: ThemeColorFamily = "indigo";
 export const DEFAULT_THEME_SHADE: ThemeShade = "600";
 
-export const THEME_RADIUS_LIST = [
-  "none",
-  "small",
-  "medium",
-  "large",
-  "full",
-] as const;
+export const THEME_RADIUS_LIST = ["none", "small", "medium", "large", "full"] as const;
 
 export type ThemeRadius = (typeof THEME_RADIUS_LIST)[number];
 
 export const THEME_RADIUS_OPTIONS = {
+  full: "999rem",
+  large: "1rem",
+  medium: "0.625rem",
   none: "0rem",
   small: "0.375rem",
-  medium: "0.625rem",
-  large: "1rem",
-  full: "999rem",
 } as const satisfies Record<ThemeRadius, `${number}rem`>;
 
 export const DEFAULT_THEME_RADIUS: ThemeRadius = "medium";
@@ -108,85 +102,84 @@ export interface ThemeFontOption {
 
 const SANS_FALLBACK_STACK =
   'ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
-const SERIF_FALLBACK_STACK =
-  'ui-serif, Georgia, Cambria, "Times New Roman", Times, serif';
+const SERIF_FALLBACK_STACK = 'ui-serif, Georgia, Cambria, "Times New Roman", Times, serif';
 
 export const THEME_SANS_FONT_OPTIONS = [
-  { family: "Glide", label: "Glide", fallback: SANS_FALLBACK_STACK },
-  { family: "Inter", label: "Inter", fallback: SANS_FALLBACK_STACK },
-  { family: "DM Sans", label: "DM Sans", fallback: SANS_FALLBACK_STACK },
+  { fallback: SANS_FALLBACK_STACK, family: "Glide", label: "Glide" },
+  { fallback: SANS_FALLBACK_STACK, family: "Inter", label: "Inter" },
+  { fallback: SANS_FALLBACK_STACK, family: "DM Sans", label: "DM Sans" },
   {
+    fallback: SANS_FALLBACK_STACK,
     family: "Instrument Sans",
     label: "Instrument Sans",
-    fallback: SANS_FALLBACK_STACK,
   },
   {
+    fallback: SANS_FALLBACK_STACK,
     family: "IBM Plex Sans",
     label: "IBM Plex Sans",
-    fallback: SANS_FALLBACK_STACK,
   },
-  { family: "Lato", label: "Lato", fallback: SANS_FALLBACK_STACK },
-  { family: "Manrope", label: "Manrope", fallback: SANS_FALLBACK_STACK },
+  { fallback: SANS_FALLBACK_STACK, family: "Lato", label: "Lato" },
+  { fallback: SANS_FALLBACK_STACK, family: "Manrope", label: "Manrope" },
   {
+    fallback: SANS_FALLBACK_STACK,
     family: "Nunito Sans",
     label: "Nunito Sans",
-    fallback: SANS_FALLBACK_STACK,
   },
-  { family: "Onest", label: "Onest", fallback: SANS_FALLBACK_STACK },
-  { family: "Open Sans", label: "Open Sans", fallback: SANS_FALLBACK_STACK },
-  { family: "Outfit", label: "Outfit", fallback: SANS_FALLBACK_STACK },
+  { fallback: SANS_FALLBACK_STACK, family: "Onest", label: "Onest" },
+  { fallback: SANS_FALLBACK_STACK, family: "Open Sans", label: "Open Sans" },
+  { fallback: SANS_FALLBACK_STACK, family: "Outfit", label: "Outfit" },
   {
+    fallback: SANS_FALLBACK_STACK,
     family: "Plus Jakarta Sans",
     label: "Plus Jakarta Sans",
-    fallback: SANS_FALLBACK_STACK,
   },
-  { family: "Poppins", label: "Poppins", fallback: SANS_FALLBACK_STACK },
+  { fallback: SANS_FALLBACK_STACK, family: "Poppins", label: "Poppins" },
   {
+    fallback: SANS_FALLBACK_STACK,
     family: "Public Sans",
     label: "Public Sans",
-    fallback: SANS_FALLBACK_STACK,
   },
-  { family: "Roboto", label: "Roboto", fallback: SANS_FALLBACK_STACK },
-  { family: "Rubik", label: "Rubik", fallback: SANS_FALLBACK_STACK },
+  { fallback: SANS_FALLBACK_STACK, family: "Roboto", label: "Roboto" },
+  { fallback: SANS_FALLBACK_STACK, family: "Rubik", label: "Rubik" },
   {
+    fallback: SANS_FALLBACK_STACK,
     family: "Source Sans 3",
     label: "Source Sans 3",
-    fallback: SANS_FALLBACK_STACK,
   },
   {
+    fallback: SANS_FALLBACK_STACK,
     family: "Space Grotesk",
     label: "Space Grotesk",
-    fallback: SANS_FALLBACK_STACK,
   },
 ] as const satisfies readonly ThemeFontOption[];
 
 export const THEME_SERIF_FONT_OPTIONS = [
-  { family: "Bitter", label: "Bitter", fallback: SERIF_FALLBACK_STACK },
+  { fallback: SERIF_FALLBACK_STACK, family: "Bitter", label: "Bitter" },
   {
+    fallback: SERIF_FALLBACK_STACK,
     family: "DM Serif Display",
     label: "DM Serif Display",
-    fallback: SERIF_FALLBACK_STACK,
   },
   {
+    fallback: SERIF_FALLBACK_STACK,
     family: "Libre Baskerville",
     label: "Libre Baskerville",
-    fallback: SERIF_FALLBACK_STACK,
   },
-  { family: "Lora", label: "Lora", fallback: SERIF_FALLBACK_STACK },
+  { fallback: SERIF_FALLBACK_STACK, family: "Lora", label: "Lora" },
   {
+    fallback: SERIF_FALLBACK_STACK,
     family: "Merriweather",
     label: "Merriweather",
-    fallback: SERIF_FALLBACK_STACK,
   },
   {
+    fallback: SERIF_FALLBACK_STACK,
     family: "Source Serif 4",
     label: "Source Serif 4",
-    fallback: SERIF_FALLBACK_STACK,
   },
   {
+    fallback: SERIF_FALLBACK_STACK,
     family: "Playfair Display",
     label: "Playfair Display",
-    fallback: SERIF_FALLBACK_STACK,
   },
 ] as const satisfies readonly ThemeFontOption[];
 
@@ -214,12 +207,12 @@ export interface ThemeState {
 
 export const DEFAULT_THEME_STATE: ThemeState = {
   colorFamily: DEFAULT_THEME_COLOR_FAMILY,
-  shade: DEFAULT_THEME_SHADE,
-  radius: DEFAULT_THEME_RADIUS,
-  textFont: DEFAULT_THEME_TEXT_FONT,
+  darkMode: DEFAULT_THEME_DARK_MODE,
   headingFont: DEFAULT_THEME_HEADING_FONT,
   isFontLocked: DEFAULT_THEME_IS_FONT_LOCKED,
-  darkMode: DEFAULT_THEME_DARK_MODE,
+  radius: DEFAULT_THEME_RADIUS,
+  shade: DEFAULT_THEME_SHADE,
+  textFont: DEFAULT_THEME_TEXT_FONT,
 };
 
 type ThemeVariableRecord = Record<`--${string}`, string>;
@@ -251,16 +244,14 @@ const SHADE_INDEX_MAP: Record<ThemeShade, number> = {
   "900": 8,
 };
 
-function isNeutralColorFamily(
-  colorFamily: ThemeColorFamily
-): colorFamily is NeutralColorFamily {
+function isNeutralColorFamily(colorFamily: ThemeColorFamily): colorFamily is NeutralColorFamily {
   return NEUTRAL_COLOR_FAMILY_LIST.includes(colorFamily as NeutralColorFamily);
 }
 
 function shiftShade(shade: ThemeShade, offset: number): ThemeShade {
   const nextIndex = Math.min(
     Math.max(SHADE_INDEX_MAP[shade] + offset, 0),
-    THEME_SHADE_LIST.length - 1
+    THEME_SHADE_LIST.length - 1,
   );
   return THEME_SHADE_LIST[nextIndex];
 }
@@ -307,10 +298,7 @@ function pickRandom<T>(values: readonly T[], exclude?: T): T {
   return filteredValues[Math.floor(Math.random() * filteredValues.length)];
 }
 
-function buildCssBlock(
-  selector: string,
-  variables: ThemeVariableRecord
-): string {
+function buildCssBlock(selector: string, variables: ThemeVariableRecord): string {
   const declarations = Object.entries(variables)
     .map(([name, value]) => `  ${name}: ${value};`)
     .join("\n");
@@ -322,9 +310,7 @@ export function getThemeVariables(state: ThemeState = DEFAULT_THEME_STATE): {
   root: ThemeVariableRecord;
   dark: ThemeVariableRecord;
 } {
-  const neutralFamily: ThemeColorFamily = isNeutralColorFamily(
-    state.colorFamily
-  )
+  const neutralFamily: ThemeColorFamily = isNeutralColorFamily(state.colorFamily)
     ? state.colorFamily
     : "slate";
   const primaryShade = state.shade;
@@ -337,88 +323,79 @@ export function getThemeVariables(state: ThemeState = DEFAULT_THEME_STATE): {
     : getColorVar(neutralFamily, "900");
 
   const root: ThemeVariableRecord = {
-    "--background": getColorVar(neutralFamily, "100"),
-    "--foreground": getColorVar(neutralFamily, "900"),
-    "--card": `var(--color-white, ${WHITE_COLOR_FALLBACK})`,
-    "--card-foreground": getColorVar(neutralFamily, "900"),
-    "--popover": `var(--color-white, ${WHITE_COLOR_FALLBACK})`,
-    "--popover-foreground": getColorVar(neutralFamily, "900"),
-    "--primary": getColorVar(state.colorFamily, primaryShade),
-    "--primary-foreground": primaryForeground,
-    "--secondary": getColorVar(state.colorFamily, shiftShade(primaryShade, -4)),
-    "--secondary-foreground": getColorVar(neutralFamily, "900"),
-    "--muted": getColorVar(neutralFamily, "200"),
-    "--muted-foreground": getColorVar(neutralFamily, "700"),
     "--accent": getColorVar(state.colorFamily, shiftShade(primaryShade, -3)),
     "--accent-foreground": getColorVar(neutralFamily, "900"),
-    "--destructive": `var(--color-red-600, ${THEME_COLOR_SCALES.red["600"]})`,
-    "--destructive-foreground": `var(--color-white, ${WHITE_COLOR_FALLBACK})`,
+    "--background": getColorVar(neutralFamily, "100"),
     "--border": getColorVar(neutralFamily, "300"),
-    "--input": getColorVar(neutralFamily, "300"),
-    "--ring": getColorVar(state.colorFamily, shiftShade(primaryShade, -1)),
-    "--sidebar": getColorVar(neutralFamily, "100"),
-    "--sidebar-foreground": getColorVar(neutralFamily, "900"),
-    "--sidebar-primary": getColorVar(state.colorFamily, primaryShade),
-    "--sidebar-primary-foreground": primaryForeground,
-    "--sidebar-accent": getColorVar(
-      state.colorFamily,
-      shiftShade(primaryShade, -4)
-    ),
-    "--sidebar-accent-foreground": getColorVar(neutralFamily, "900"),
-    "--sidebar-border": getColorVar(neutralFamily, "300"),
-    "--sidebar-ring": getColorVar(
-      state.colorFamily,
-      shiftShade(primaryShade, -1)
-    ),
+    "--card": `var(--color-white, ${WHITE_COLOR_FALLBACK})`,
+    "--card-foreground": getColorVar(neutralFamily, "900"),
     "--chart-1": getColorVar(state.colorFamily, shiftShade(primaryShade, -2)),
     "--chart-2": getColorVar(state.colorFamily, shiftShade(primaryShade, -1)),
     "--chart-3": getColorVar(state.colorFamily, primaryShade),
     "--chart-4": getColorVar(state.colorFamily, shiftShade(primaryShade, 1)),
     "--chart-5": getColorVar(state.colorFamily, shiftShade(primaryShade, 2)),
-    "--radius": THEME_RADIUS_OPTIONS[state.radius],
+    "--destructive": `var(--color-red-600, ${THEME_COLOR_SCALES.red["600"]})`,
+    "--destructive-foreground": `var(--color-white, ${WHITE_COLOR_FALLBACK})`,
     "--font-glide": getFontStack(state.textFont),
+    "--foreground": getColorVar(neutralFamily, "900"),
+    "--input": getColorVar(neutralFamily, "300"),
+    "--muted": getColorVar(neutralFamily, "200"),
+    "--muted-foreground": getColorVar(neutralFamily, "700"),
+    "--popover": `var(--color-white, ${WHITE_COLOR_FALLBACK})`,
+    "--popover-foreground": getColorVar(neutralFamily, "900"),
+    "--primary": getColorVar(state.colorFamily, primaryShade),
+    "--primary-foreground": primaryForeground,
+    "--radius": THEME_RADIUS_OPTIONS[state.radius],
+    "--ring": getColorVar(state.colorFamily, shiftShade(primaryShade, -1)),
+    "--secondary": getColorVar(state.colorFamily, shiftShade(primaryShade, -4)),
+    "--secondary-foreground": getColorVar(neutralFamily, "900"),
+    "--sidebar": getColorVar(neutralFamily, "100"),
+    "--sidebar-accent": getColorVar(state.colorFamily, shiftShade(primaryShade, -4)),
+    "--sidebar-accent-foreground": getColorVar(neutralFamily, "900"),
+    "--sidebar-border": getColorVar(neutralFamily, "300"),
+    "--sidebar-foreground": getColorVar(neutralFamily, "900"),
+    "--sidebar-primary": getColorVar(state.colorFamily, primaryShade),
+    "--sidebar-primary-foreground": primaryForeground,
+    "--sidebar-ring": getColorVar(state.colorFamily, shiftShade(primaryShade, -1)),
     "--theme-heading-font": getFontStack(state.headingFont),
   };
 
   const dark: ThemeVariableRecord = {
-    "--background": getColorVar(neutralFamily, "900"),
-    "--foreground": getColorVar(neutralFamily, "100"),
-    "--card": getColorVar(neutralFamily, "800"),
-    "--card-foreground": getColorVar(neutralFamily, "100"),
-    "--popover": getColorVar(neutralFamily, "800"),
-    "--popover-foreground": getColorVar(neutralFamily, "100"),
-    "--primary": getColorVar(state.colorFamily, darkPrimaryShade),
-    "--primary-foreground": darkPrimaryForeground,
-    "--secondary": getColorVar(neutralFamily, "800"),
-    "--secondary-foreground": getColorVar(neutralFamily, "100"),
-    "--muted": getColorVar(neutralFamily, "800"),
-    "--muted-foreground": getColorVar(neutralFamily, "300"),
     "--accent": getColorVar(state.colorFamily, shiftShade(primaryShade, -1)),
     "--accent-foreground": getColorVar(neutralFamily, "100"),
-    "--destructive": `var(--color-red-500, ${THEME_COLOR_SCALES.red["500"]})`,
-    "--destructive-foreground": `var(--color-white, ${WHITE_COLOR_FALLBACK})`,
+    "--background": getColorVar(neutralFamily, "900"),
     "--border": getColorVar(neutralFamily, "700"),
-    "--input": getColorVar(neutralFamily, "700"),
-    "--ring": getColorVar(state.colorFamily, shiftShade(primaryShade, -2)),
-    "--sidebar": getColorVar(neutralFamily, "900"),
-    "--sidebar-foreground": getColorVar(neutralFamily, "100"),
-    "--sidebar-primary": getColorVar(state.colorFamily, darkPrimaryShade),
-    "--sidebar-primary-foreground": darkPrimaryForeground,
-    "--sidebar-accent": getColorVar(neutralFamily, "800"),
-    "--sidebar-accent-foreground": getColorVar(neutralFamily, "100"),
-    "--sidebar-border": getColorVar(neutralFamily, "700"),
-    "--sidebar-ring": getColorVar(
-      state.colorFamily,
-      shiftShade(primaryShade, -2)
-    ),
+    "--card": getColorVar(neutralFamily, "800"),
+    "--card-foreground": getColorVar(neutralFamily, "100"),
     "--chart-1": getColorVar(state.colorFamily, shiftShade(primaryShade, -4)),
     "--chart-2": getColorVar(state.colorFamily, shiftShade(primaryShade, -3)),
     "--chart-3": getColorVar(state.colorFamily, shiftShade(primaryShade, -2)),
     "--chart-4": getColorVar(state.colorFamily, shiftShade(primaryShade, -1)),
     "--chart-5": getColorVar(state.colorFamily, primaryShade),
+    "--destructive": `var(--color-red-500, ${THEME_COLOR_SCALES.red["500"]})`,
+    "--destructive-foreground": `var(--color-white, ${WHITE_COLOR_FALLBACK})`,
+    "--foreground": getColorVar(neutralFamily, "100"),
+    "--input": getColorVar(neutralFamily, "700"),
+    "--muted": getColorVar(neutralFamily, "800"),
+    "--muted-foreground": getColorVar(neutralFamily, "300"),
+    "--popover": getColorVar(neutralFamily, "800"),
+    "--popover-foreground": getColorVar(neutralFamily, "100"),
+    "--primary": getColorVar(state.colorFamily, darkPrimaryShade),
+    "--primary-foreground": darkPrimaryForeground,
+    "--ring": getColorVar(state.colorFamily, shiftShade(primaryShade, -2)),
+    "--secondary": getColorVar(neutralFamily, "800"),
+    "--secondary-foreground": getColorVar(neutralFamily, "100"),
+    "--sidebar": getColorVar(neutralFamily, "900"),
+    "--sidebar-accent": getColorVar(neutralFamily, "800"),
+    "--sidebar-accent-foreground": getColorVar(neutralFamily, "100"),
+    "--sidebar-border": getColorVar(neutralFamily, "700"),
+    "--sidebar-foreground": getColorVar(neutralFamily, "100"),
+    "--sidebar-primary": getColorVar(state.colorFamily, darkPrimaryShade),
+    "--sidebar-primary-foreground": darkPrimaryForeground,
+    "--sidebar-ring": getColorVar(state.colorFamily, shiftShade(primaryShade, -2)),
   };
 
-  return { root, dark };
+  return { dark, root };
 }
 
 export function buildThemeCss(state: ThemeState = DEFAULT_THEME_STATE): string {
@@ -426,9 +403,7 @@ export function buildThemeCss(state: ThemeState = DEFAULT_THEME_STATE): string {
   return `${buildCssBlock(":root", root)}\n\n${buildCssBlock(".dark", dark)}`;
 }
 
-export function buildPreviewStyle(
-  state: ThemeState = DEFAULT_THEME_STATE
-): CSSProperties {
+export function buildPreviewStyle(state: ThemeState = DEFAULT_THEME_STATE): CSSProperties {
   const { root, dark } = getThemeVariables(state);
   const activeVariables = state.darkMode ? { ...root, ...dark } : root;
   return activeVariables as CSSProperties;
@@ -442,9 +417,7 @@ export function getRandomThemeState(current?: ThemeState): ThemeState {
   const darkMode = pickRandom(THEME_BOOLEAN_LIST, current?.darkMode);
 
   const currentTextFont = current ? getFontOption(current.textFont) : undefined;
-  const currentHeadingFont = current
-    ? getFontOption(current.headingFont)
-    : undefined;
+  const currentHeadingFont = current ? getFontOption(current.headingFont) : undefined;
   const textFont = pickRandom(THEME_FONT_OPTIONS, currentTextFont).family;
   const headingFont = isFontLocked
     ? textFont
@@ -452,11 +425,11 @@ export function getRandomThemeState(current?: ThemeState): ThemeState {
 
   return {
     colorFamily,
-    shade,
-    radius,
-    textFont,
+    darkMode,
     headingFont,
     isFontLocked,
-    darkMode,
+    radius,
+    shade,
+    textFont,
   };
 }

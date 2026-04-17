@@ -2,35 +2,31 @@ import { existsSync, promises as fs } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { rimraf } from "rimraf";
-import {
-  registryItemSchema,
-  type registryItemTypeSchema,
-  registrySchema,
-} from "shadcn/schema";
+import { registryItemSchema, registrySchema } from "shadcn/schema";
+import type { registryItemTypeSchema } from "shadcn/schema";
 import { Project, ScriptKind } from "ts-morph";
 import type { z } from "zod";
+import { registry } from "../registry/index";
+import { styles } from "../registry/registry-styles";
+import { STYLE_BASE_DEPENDENCIES, STYLE_BASE_REGISTRY_DEPENDENCIES } from "../registry/style-base";
+import { fixImport } from "./fix-import.mts";
 
 type Registry = z.infer<typeof registrySchema>;
 type RegistryItem = Registry["items"][number];
-type NormalizedRegistryFile = {
+interface NormalizedRegistryFile {
   path: string;
   target: string;
   type: string;
-};
-
-import { registry } from "../registry/index";
-import { styles } from "../registry/registry-styles";
-import {
-  STYLE_BASE_DEPENDENCIES,
-  STYLE_BASE_REGISTRY_DEPENDENCIES,
-} from "../registry/style-base";
-import { fixImport } from "./fix-import.mts";
+}
 
 const REGISTRY_PATH = path.join(process.cwd(), "public/r");
 
-const REGISTRY_INDEX_WHITELIST = new Set<
-  z.infer<typeof registryItemTypeSchema>
->(["registry:ui", "registry:lib", "registry:block", "registry:base"]);
+const REGISTRY_INDEX_WHITELIST = new Set<z.infer<typeof registryItemTypeSchema>>([
+  "registry:ui",
+  "registry:lib",
+  "registry:block",
+  "registry:base",
+]);
 
 const PUBLIC_INDEX_TYPES = new Set<z.infer<typeof registryItemTypeSchema>>([
   "registry:ui",
@@ -58,14 +54,14 @@ function getRegistryFiles(item: RegistryItem): NormalizedRegistryFile[] {
           path: file.path,
           target: file.target ?? "",
           type: file.type,
-        }
+        },
   );
 }
 
 function normalizeRegistryFiles(
   item: RegistryItem,
-  options: { prefix?: string } = {}
-): Array<{ path: string; type: string }> | undefined {
+  options: { prefix?: string } = {},
+): { path: string; type: string }[] | undefined {
   const files = getRegistryFiles(item);
   if (files.length === 0) {
     return undefined;
@@ -79,7 +75,7 @@ function normalizeRegistryFiles(
 
 function serializeRegistryItem(
   item: RegistryItem,
-  options: { filesPrefix?: string } = {}
+  options: { filesPrefix?: string } = {},
 ): Record<string, unknown> {
   return {
     name: item.name,
@@ -88,9 +84,7 @@ function serializeRegistryItem(
     ...(item.description ? { description: item.description } : {}),
     ...(item.author ? { author: item.author } : {}),
     ...(item.dependencies?.length ? { dependencies: item.dependencies } : {}),
-    ...(item.devDependencies?.length
-      ? { devDependencies: item.devDependencies }
-      : {}),
+    ...(item.devDependencies?.length ? { devDependencies: item.devDependencies } : {}),
     ...(item.registryDependencies?.length
       ? { registryDependencies: item.registryDependencies }
       : {}),
@@ -168,9 +162,7 @@ export const Index: Record<string, unknown> = {
 
       const [firstFile] = files;
       const usesStringFiles = typeof item.files?.[0] === "string";
-      const resolvedFiles = files.map(
-        (file) => `registry/${style.name}/${file.path}`
-      );
+      const resolvedFiles = files.map((file) => `registry/${style.name}/${file.path}`);
       let sourceFilename = "";
 
       if (item.type === "registry:block") {
@@ -178,8 +170,8 @@ export const Index: Record<string, unknown> = {
         const filename = path.basename(file);
         let raw: string;
         try {
-          raw = await fs.readFile(file, "utf8");
-        } catch (_error) {
+          raw = await fs.readFile(file, "utf-8");
+        } catch {
           continue;
         }
         const tempFile = await createTempSourceFile(filename);
@@ -245,11 +237,7 @@ export const Index: Record<string, unknown> = {
     .map((item) => serializeRegistryItem(item));
   const registryJson = JSON.stringify(items, null, 2);
   rimraf.sync(path.join(REGISTRY_PATH, "index.json"));
-  await fs.writeFile(
-    path.join(REGISTRY_PATH, "index.json"),
-    registryJson,
-    "utf8"
-  );
+  await fs.writeFile(path.join(REGISTRY_PATH, "index.json"), registryJson, "utf-8");
 
   // Write style index.
   rimraf.sync(path.join(process.cwd(), "__registry__/index.tsx"));
@@ -281,11 +269,11 @@ async function buildStyles(registry: Registry): Promise<void> {
                 try {
                   content = await fs.readFile(
                     path.join(process.cwd(), "registry", style.name, file.path),
-                    "utf8"
+                    "utf-8",
                   );
 
                   content = fixImport(content);
-                } catch (_error) {
+                } catch {
                   return;
                 }
 
@@ -295,19 +283,14 @@ async function buildStyles(registry: Registry): Promise<void> {
                 });
 
                 sourceFile.getVariableDeclaration("iframeHeight")?.remove();
-                sourceFile
-                  .getVariableDeclaration("containerClassName")
-                  ?.remove();
+                sourceFile.getVariableDeclaration("containerClassName")?.remove();
                 sourceFile.getVariableDeclaration("description")?.remove();
 
-                let target = file.target;
+                let { target } = file;
 
                 if (!target && item.name.startsWith("v0-")) {
                   const fileName = file.path.split("/").pop();
-                  if (
-                    file.type === "registry:component" ||
-                    file.type === "registry:example"
-                  ) {
+                  if (file.type === "registry:component" || file.type === "registry:example") {
                     target = `components/${fileName}`;
                   }
 
@@ -321,12 +304,12 @@ async function buildStyles(registry: Registry): Promise<void> {
                 }
 
                 return {
-                  path: file.path,
-                  type: file.type,
                   content: sourceFile.getText(),
+                  path: file.path,
                   target,
+                  type: file.type,
                 };
-              })
+              }),
             )
           : undefined;
 
@@ -341,13 +324,10 @@ async function buildStyles(registry: Registry): Promise<void> {
         await fs.writeFile(
           path.join(targetPath, `${item.name}.json`),
           JSON.stringify(payload.data, null, 2),
-          "utf8"
+          "utf-8",
         );
       } else {
-        console.warn(
-          `⚠️  Validation failed for ${item.name}:`,
-          payload.error.format()
-        );
+        console.warn(`⚠️  Validation failed for ${item.name}:`, payload.error.format());
       }
     }
   }
@@ -356,11 +336,7 @@ async function buildStyles(registry: Registry): Promise<void> {
   // Build registry/styles/index.json.
   // ----------------------------------------------------------------------------
   const stylesJson = JSON.stringify(styles, null, 2);
-  await fs.writeFile(
-    path.join(REGISTRY_PATH, "styles/index.json"),
-    stylesJson,
-    "utf8"
-  );
+  await fs.writeFile(path.join(REGISTRY_PATH, "styles/index.json"), stylesJson, "utf-8");
 }
 
 // ----------------------------------------------------------------------------
@@ -372,20 +348,20 @@ async function buildRegistryJson(registry: Registry): Promise<void> {
     .map((item) =>
       serializeRegistryItem(item, {
         filesPrefix: "registry/default/",
-      })
+      }),
     );
 
   const payload = {
     $schema: "https://ui.shadcn.com/schema/registry.json",
-    name: registry.name,
     homepage: registry.homepage,
     items,
+    name: registry.name,
   };
 
   await fs.writeFile(
     path.join(REGISTRY_PATH, "registry.json"),
     JSON.stringify(payload, null, 2),
-    "utf8"
+    "utf-8",
   );
 }
 
@@ -396,11 +372,7 @@ async function buildFlatFiles(registry: Registry): Promise<void> {
   // Clean stale flat files first.
   const existingFiles = await fs.readdir(REGISTRY_PATH);
   for (const file of existingFiles) {
-    if (
-      file.endsWith(".json") &&
-      file !== "index.json" &&
-      file !== "registry.json"
-    ) {
+    if (file.endsWith(".json") && file !== "index.json" && file !== "registry.json") {
       rimraf.sync(path.join(REGISTRY_PATH, file));
     }
   }
@@ -431,18 +403,18 @@ async function buildStylesIndex(): Promise<void> {
     const targetPath = path.join(REGISTRY_PATH, "styles", style.name);
 
     const payload: z.infer<typeof registryItemSchema> = {
-      name: style.name,
-      type: "registry:style",
-      dependencies: Array.from(STYLE_BASE_DEPENDENCIES),
-      registryDependencies: Array.from(STYLE_BASE_REGISTRY_DEPENDENCIES),
       cssVars: {},
+      dependencies: [...STYLE_BASE_DEPENDENCIES],
       files: [],
+      name: style.name,
+      registryDependencies: [...STYLE_BASE_REGISTRY_DEPENDENCIES],
+      type: "registry:style",
     };
 
     await fs.writeFile(
       path.join(targetPath, "index.json"),
       JSON.stringify(payload, null, 2),
-      "utf8"
+      "utf-8",
     );
   }
 }

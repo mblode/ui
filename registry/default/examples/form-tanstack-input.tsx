@@ -28,10 +28,7 @@ const formSchema = z.object({
     .string()
     .min(3, "Username must be at least 3 characters.")
     .max(10, "Username must be at most 10 characters.")
-    .regex(
-      /^[a-zA-Z0-9_]+$/,
-      "Username can only contain letters, numbers, and underscores."
-    ),
+    .regex(/^[a-zA-Z0-9_]+$/, "Username can only contain letters, numbers, and underscores."),
 });
 
 export default function FormTanstackInput() {
@@ -39,24 +36,24 @@ export default function FormTanstackInput() {
     defaultValues: {
       username: "",
     },
-    validators: {
-      onSubmit: formSchema,
-    },
     onSubmit: async ({ value }) => {
       toast("You submitted the following values:", {
+        classNames: {
+          content: "flex flex-col gap-2",
+        },
         description: (
           <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
             <code>{JSON.stringify(value, null, 2)}</code>
           </pre>
         ),
         position: "bottom-right",
-        classNames: {
-          content: "flex flex-col gap-2",
-        },
         style: {
           "--border-radius": "calc(var(--radius)  + 4px)",
         } as React.CSSProperties,
       });
+    },
+    validators: {
+      onSubmit: formSchema,
     },
   });
 
@@ -64,9 +61,7 @@ export default function FormTanstackInput() {
     <Card className="w-full sm:max-w-md">
       <CardHeader>
         <CardTitle>Profile Settings</CardTitle>
-        <CardDescription>
-          Update your profile information below.
-        </CardDescription>
+        <CardDescription>Update your profile information below.</CardDescription>
       </CardHeader>
       <CardContent>
         <form
@@ -79,13 +74,10 @@ export default function FormTanstackInput() {
           <FieldGroup>
             <form.Field
               children={(field) => {
-                const isInvalid =
-                  field.state.meta.isTouched && !field.state.meta.isValid;
+                const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid;
                 return (
                   <Field data-invalid={isInvalid}>
-                    <FieldLabel htmlFor="form-tanstack-input-username">
-                      Username
-                    </FieldLabel>
+                    <FieldLabel htmlFor="form-tanstack-input-username">Username</FieldLabel>
                     <Input
                       aria-invalid={isInvalid}
                       autoComplete="username"
@@ -97,13 +89,10 @@ export default function FormTanstackInput() {
                       value={field.state.value}
                     />
                     <FieldDescription>
-                      This is your public display name. Must be between 3 and 10
-                      characters. Must only contain letters, numbers, and
-                      underscores.
+                      This is your public display name. Must be between 3 and 10 characters. Must
+                      only contain letters, numbers, and underscores.
                     </FieldDescription>
-                    {isInvalid && (
-                      <FieldError errors={field.state.meta.errors} />
-                    )}
+                    {isInvalid && <FieldError errors={field.state.meta.errors} />}
                   </Field>
                 );
               }}
