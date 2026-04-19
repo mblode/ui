@@ -63,7 +63,7 @@ export function TabsDemo() {
           <CardHeader>
             <CardTitle>Settings</CardTitle>
             <CardDescription>
-              Manage your account preferences and options. Customize your experience to fit your
+              Manage your account preferences and options. Customise your experience to fit your
               needs.
             </CardDescription>
           </CardHeader>

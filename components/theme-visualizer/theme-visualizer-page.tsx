@@ -493,12 +493,12 @@ export default function ThemeVisualizerPage() {
               >
                 {theme.darkMode ? <MoonIcon className="size-4" /> : <SunIcon className="size-4" />}
               </IconActionButton>
-              <IconActionButton label="Randomize theme" onClick={handleRandomizeTheme}>
+              <IconActionButton label="Randomise theme" onClick={handleRandomizeTheme}>
                 <DicesIcon className="size-4" />
               </IconActionButton>
               <IconActionButton
                 active={isContrastOpen}
-                label="Check color contrast"
+                label="Check colour contrast"
                 onClick={() => setIsContrastOpen(true)}
               >
                 <ContrastIcon className="size-4" />
@@ -561,7 +561,7 @@ export default function ThemeVisualizerPage() {
                   Everywhere.
                 </h2>
                 <p className="max-w-[44ch] text-lg text-muted-foreground">
-                  Tune color, radius, and typography in one place, then copy the generated CSS
+                  Tune colour, radius, and typography in one place, then copy the generated CSS
                   variables directly into your app.
                 </p>
                 <ul className="space-y-2 text-muted-foreground">

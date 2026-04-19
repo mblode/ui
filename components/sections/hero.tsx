@@ -79,7 +79,7 @@ export default function Hero() {
                     )}
                     href="/theme-visualizer"
                   >
-                    Visualize themes
+                    Visualise themes
                   </Link>
                 </div>
               </div>

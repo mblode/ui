@@ -6,9 +6,9 @@ tags: styling, tailwind, tokens, variants
 
 ## Style With Blode Tokens And Variants
 
-Blode UI is opinionated about taste. Prefer semantic tokens, built-in variants, and light-touch layout classes. Do not repaint components with arbitrary Tailwind colors or typography overrides.
+Blode UI is opinionated about taste. Prefer semantic tokens, built-in variants, and light-touch layout classes. Do not repaint components with arbitrary Tailwind colours or typography overrides.
 
-**Incorrect (raw colors and ad hoc overrides):**
+**Incorrect (raw colours and ad hoc overrides):**
 
 ```tsx
 <Card className="bg-blue-100 text-blue-900 font-bold">
@@ -33,8 +33,8 @@ Keep these defaults:
 
 - Use semantic utilities like `bg-background`, `text-foreground`, and `text-muted-foreground`
 - Prefer built-in variants before adding custom classes
-- Use `className` for layout, spacing, and sizing, not for overriding core color or typography
+- Use `className` for layout, spacing, and sizing, not for overriding core colour or typography
 - Use `gap-*` instead of `space-*`
 - Use `size-*` when width and height match
 - Use `cn()` for conditional classes
-- Do not add manual `dark:` color overrides or arbitrary `z-index` values to overlay components
+- Do not add manual `dark:` colour overrides or arbitrary `z-index` values to overlay components

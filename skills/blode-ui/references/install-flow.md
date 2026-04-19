@@ -16,7 +16,7 @@ Use this as the default answer for installation and quick-start questions.
 
 ## Step Breakdown
 
-### Create or initialize a project
+### Create or initialise a project
 
 ```bash
 npx shadcn@latest init

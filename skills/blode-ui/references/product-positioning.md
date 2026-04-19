@@ -17,7 +17,7 @@ Use these ideas when writing copy, docs intros, or answering high-level question
 
 - Blode UI is a third-party shadcn registry hosted at `ui.blode.co`.
 - The setup flow is the same as shadcn/ui, with one extra step: add the `@blode` registry namespace.
-- Components are added as source code and are meant to be customized, extended, and owned.
+- Components are added as source code and are meant to be customised, extended, and owned.
 
 ## Canonical Links
 

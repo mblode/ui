@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     background_color: "#ffffff",
     description:
-      "A set of beautifully designed components that you can customize, extend, and build on. Start here then make it your own.",
+      "A set of beautifully designed components that you can customise, extend, and build on. Start here then make it your own.",
     display: "standalone",
     icons: [
       {

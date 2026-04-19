@@ -59,9 +59,9 @@ export default function FormTanstackTextarea() {
   return (
     <Card className="w-full sm:max-w-md">
       <CardHeader>
-        <CardTitle>Personalization</CardTitle>
+        <CardTitle>Personalisation</CardTitle>
         <CardDescription>
-          Customize your experience by telling us more about yourself.
+          Customise your experience by telling us more about yourself.
         </CardDescription>
       </CardHeader>
       <CardContent>

@@ -6,7 +6,7 @@ tags: forms, field, validation, toggle-group
 
 ## Use Blode Field And Control Patterns
 
-Blode forms should use the registry's field, group, and validation primitives instead of generic layout wrappers. The component set already encodes the spacing and accessibility behavior the docs expect.
+Blode forms should use the registry's field, group, and validation primitives instead of generic layout wrappers. The component set already encodes the spacing and accessibility behaviour the docs expect.
 
 **Incorrect (manual layout and improvised controls):**
 

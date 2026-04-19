@@ -9,7 +9,7 @@ export default function SeparatorDemo() {
       </div>
       <Separator />
       <div>
-        A set of beautifully designed components that you can customize, extend, and build on.
+        A set of beautifully designed components that you can customise, extend, and build on.
       </div>
     </div>
   );

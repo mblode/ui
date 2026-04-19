@@ -130,7 +130,7 @@ export default function BugReportForm() {
                       </InputGroupAddon>
                     </InputGroup>
                     <FieldDescription>
-                      Include steps to reproduce, expected behavior, and what actually happened.
+                      Include steps to reproduce, expected behaviour, and what actually happened.
                     </FieldDescription>
                     {isInvalid && <FieldError errors={field.state.meta.errors} />}
                   </Field>

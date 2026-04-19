@@ -98,7 +98,7 @@ export default function FormNextDemo() {
                 </InputGroupAddon>
               </InputGroup>
               <FieldDescription>
-                Include steps to reproduce, expected behavior, and what actually happened.
+                Include steps to reproduce, expected behaviour, and what actually happened.
               </FieldDescription>
               {formState.errors?.description && (
                 <FieldError>{formState.errors.description[0]}</FieldError>

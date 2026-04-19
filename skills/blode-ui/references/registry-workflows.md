@@ -36,4 +36,4 @@ The same `add` flow applies to non-component registry payloads such as `registry
 
 ## Fallback To Generic shadcn Mechanics
 
-If the user asks about generic CLI behavior, `components.json`, or non-Blode registries, use upstream shadcn knowledge as supporting context. Do not let that override Blode-specific defaults.
+If the user asks about generic CLI behaviour, `components.json`, or non-Blode registries, use upstream shadcn knowledge as supporting context. Do not let that override Blode-specific defaults.
