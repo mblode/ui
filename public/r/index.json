@@ -121,6 +121,7 @@
     "title": "Button",
     "description": "An interactive element that triggers an action when clicked.",
     "dependencies": ["@base-ui/react"],
+    "registryDependencies": ["spinner"],
     "files": [
       {
         "path": "ui/button.tsx",

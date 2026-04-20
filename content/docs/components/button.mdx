@@ -99,6 +99,8 @@ Alternatively, you can set the `asChild` parameter and nest the link component.
 
 ### Loading
 
+Set the `loading` prop to render a centred spinner overlay while preserving the button's width. Loading buttons are automatically `disabled` and receive `aria-busy="true"`. The `asChild` prop is ignored while `loading` is true so the spinner overlay can render inside a real `<button>`.
+
 <ComponentPreview name="button-loading" description="A button with a loading state." />
 
 ### As Child

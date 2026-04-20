@@ -129,6 +129,7 @@ export const ui: Registry["items"] = [
       },
     ],
     name: "button",
+    registryDependencies: ["spinner"],
     title: "Button",
     type: "registry:ui",
   },

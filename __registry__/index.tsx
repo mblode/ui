@@ -228,7 +228,7 @@ export const Index: Record<string, unknown> = {
       name: "button",
       description: "An interactive element that triggers an action when clicked.",
       type: "registry:ui",
-      registryDependencies: undefined,
+      registryDependencies: ["spinner"],
       files: [
         {
           path: "registry/default/ui/button.tsx",

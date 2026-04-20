@@ -5,9 +5,10 @@ import type { VariantProps } from "class-variance-authority";
 import type * as React from "react";
 
 import { cn } from "@/lib/utils";
+import { Spinner } from "@/registry/default/ui/spinner";
 
 const buttonVariants = cva(
-  "group/button inline-flex shrink-0 select-none items-center justify-center whitespace-nowrap rounded-lg border border-transparent bg-clip-padding font-medium text-sm outline-none transition-[color,background-color,border-color,box-shadow,opacity,transform] duration-150 ease-out focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-45 aria-disabled:pointer-events-none aria-disabled:cursor-not-allowed aria-disabled:opacity-45 aria-invalid:border-destructive aria-invalid:ring-2 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+  "group/button relative inline-flex shrink-0 select-none items-center justify-center whitespace-nowrap rounded-lg border border-transparent bg-clip-padding font-medium text-sm outline-none transition-[color,background-color,border-color,box-shadow,opacity,transform] duration-150 ease-out focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-45 aria-disabled:pointer-events-none aria-disabled:cursor-not-allowed aria-disabled:opacity-45 aria-invalid:border-destructive aria-invalid:ring-2 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
   {
     defaultVariants: {
       size: "default",
@@ -65,21 +66,47 @@ function Button({
   variant = "default",
   size = "default",
   asChild = false,
+  loading = false,
+  disabled,
   children,
   ...props
 }: React.ComponentProps<"button"> &
   VariantProps<typeof buttonVariants> & {
     asChild?: boolean;
+    loading?: boolean;
   }) {
+  const isDisabled = disabled || loading;
+  const useAsChild = asChild && !loading;
+
+  const renderedChildren = loading ? (
+    <>
+      <span aria-hidden="true" className="invisible opacity-0">
+        {children}
+      </span>
+      <span className="-translate-x-1/2 -translate-y-1/2 absolute top-1/2 left-1/2">
+        <Spinner />
+      </span>
+    </>
+  ) : (
+    children
+  );
+
   return useRender({
     defaultTagName: "button",
     props: mergeProps<"button">(
       {
-        className: cn(buttonVariants({ className, size, variant })),
+        className: cn(buttonVariants({ className, size, variant }), loading && "cursor-wait"),
       },
-      asChild ? props : { ...props, children },
+      useAsChild
+        ? props
+        : {
+            ...props,
+            ...(loading && { "aria-busy": true }),
+            children: renderedChildren,
+            disabled: isDisabled,
+          },
     ),
-    render: asChild ? (children as React.ReactElement) : undefined,
+    render: useAsChild ? (children as React.ReactElement) : undefined,
     state: {
       size,
       slot: "button",
