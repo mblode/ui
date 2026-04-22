@@ -52,6 +52,19 @@
         "Mentions Tailwind v4 conventions and CSS-variable-based styling",
         "Mentions `blode-icons-react` for repo examples and docs"
       ]
+    },
+    {
+      "id": 5,
+      "prompt": "I want a pricing section to feel like Blode UI. What should I do for typography, color, spacing, radius, and motion before I start coding?",
+      "expected_output": "Explains the bundled Blode visual system instead of inventing a generic SaaS style.",
+      "files": [],
+      "expectations": [
+        "Mentions a neutral-first palette with dark primary actions instead of a permanent brand accent",
+        "Uses `Glide` as the default sans and keeps monospace for code, commands, or token-like content",
+        "Mentions the `8px` spacing rhythm with comfortable control sizing such as `48px` fields and `40px` compact controls",
+        "Mentions the soft radius system around `10px` to `18px` with rounder fields and calmer cards",
+        "Recommends restrained shadows and fast tonal hover motion instead of gradients, neon, or glassmorphism"
+      ]
     }
   ]
 }

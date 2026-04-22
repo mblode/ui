@@ -14,6 +14,12 @@ npx shadcn@latest add @blode/button
 
 [ui.blode.co/docs](https://ui.blode.co/docs)
 
+## AI Skills
+
+| Skill | Phase | Description |
+| --- | --- | --- |
+| `blode-ui` | Design/dev | Project-aware guidance for Blode UI installation, visual system defaults, docs, and component authoring. |
+
 ## License
 
 [MIT](https://github.com/mblode/blode-ui/blob/main/LICENSE.md)
