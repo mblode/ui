@@ -13,14 +13,14 @@ Use generic shadcn knowledge only for CLI mechanics that are not overridden by t
 
 Load only what the task needs.
 
-| File                                | Read when                                                                                          |
-| ----------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `references/product-positioning.md` | Writing or reviewing intros, landing-page copy, installation copy, contact info, or brand language |
+| File                                | Read when                                                                                               |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `references/product-positioning.md` | Writing or reviewing intros, landing-page copy, installation copy, contact info, or brand language      |
 | `references/design-system.md`       | Making visual decisions about colors, typography, spacing, radius, elevation, motion, or component feel |
-| `references/install-flow.md`        | Explaining how to install Blode UI, add the registry namespace, or import the first component      |
-| `references/registry-workflows.md`  | Searching, viewing, adding, or updating registry items with `npx shadcn@latest`                    |
-| `references/repo-conventions.md`    | Editing components, docs, or registry files inside this repo                                       |
-| `references/source-of-truth.md`     | Reconciling conflicting docs, examples, or habits before choosing an answer                        |
+| `references/install-flow.md`        | Explaining how to install Blode UI, add the registry namespace, or import the first component           |
+| `references/registry-workflows.md`  | Searching, viewing, adding, or updating registry items with `npx shadcn@latest`                         |
+| `references/repo-conventions.md`    | Editing components, docs, or registry files inside this repo                                            |
+| `references/source-of-truth.md`     | Reconciling conflicting docs, examples, or habits before choosing an answer                             |
 
 ## Rules
 

@@ -3,9 +3,10 @@
 
 ## Installation
 
-Add the blode/ui registry to your project, then install any component:
+Initialize shadcn, add the Blode UI registry to your project, then install any component:
 
 ```bash
+npx shadcn@latest init
 npx shadcn@latest registry add @blode=https://ui.blode.co/r/{name}.json
 npx shadcn@latest add @blode/button
 ```
@@ -16,8 +17,8 @@ npx shadcn@latest add @blode/button
 
 ## AI Skills
 
-| Skill | Phase | Description |
-| --- | --- | --- |
+| Skill      | Phase      | Description                                                                                              |
+| ---------- | ---------- | -------------------------------------------------------------------------------------------------------- |
 | `blode-ui` | Design/dev | Project-aware guidance for Blode UI installation, visual system defaults, docs, and component authoring. |
 
 ## License
