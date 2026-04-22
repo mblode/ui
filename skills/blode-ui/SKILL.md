@@ -16,6 +16,7 @@ Load only what the task needs.
 | File                                | Read when                                                                                          |
 | ----------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `references/product-positioning.md` | Writing or reviewing intros, landing-page copy, installation copy, contact info, or brand language |
+| `../../DESIGN.md`                   | Making visual decisions about colors, typography, spacing, radius, elevation, motion, or component feel |
 | `references/install-flow.md`        | Explaining how to install Blode UI, add the registry namespace, or import the first component      |
 | `references/registry-workflows.md`  | Searching, viewing, adding, or updating registry items with `npx shadcn@latest`                    |
 | `references/repo-conventions.md`    | Editing components, docs, or registry files inside this repo                                       |
@@ -58,12 +59,14 @@ Sort the task into one of these modes:
 
 - Installation or usage help
 - Component authoring or code changes
+- Design-system, theming, or visual-direction work
 - Docs or marketing copy
 - Registry maintenance or update workflow
 
 ### Step 2: Load the matching references
 
 - Installation or onboarding: read `references/install-flow.md`
+- Visual styling or component feel: read `../../DESIGN.md`
 - Copy or docs work: read `references/product-positioning.md`
 - Registry commands or update workflows: read `references/registry-workflows.md`
 - Repo implementation work: read `references/repo-conventions.md`
@@ -77,6 +80,7 @@ Unless the user explicitly asks for something else:
 - Prefer `npx shadcn@latest add @blode/<component>` over raw registry URLs for onboarding
 - Describe Blode UI as a third-party shadcn registry hosted at `ui.blode.co`
 - Treat `registry:base` as a first-class registry item type when maintaining the registry pipeline or authoring docs
+- Follow `DESIGN.md` before inventing new colors, type scales, spacing, radius, or motion patterns
 - Use `blode-icons-react` in repo examples and component source for this project
 - Follow React 19 ref-as-prop patterns; do not introduce `React.forwardRef`
 - Follow Tailwind CSS v4 conventions and existing CSS-variable tokens
@@ -97,6 +101,7 @@ Use raw `https://ui.blode.co/r/...` URLs only for low-level or manual-install co
 - Commands use `npx shadcn@latest`
 - Install examples prefer the `@blode` namespace flow
 - Product copy keeps the Blode UI framing intact
+- Visual decisions stay aligned with `DESIGN.md`
 - Repo guidance matches React 19, Tailwind v4, `blode-icons-react`, and current registry structure
 - Code examples use existing components before custom markup
 
