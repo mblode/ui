@@ -15,6 +15,50 @@ export const examples: Registry["items"] = [
   {
     files: [
       {
+        path: "examples/accordion-basic.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "accordion-basic",
+    registryDependencies: ["accordion"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/accordion-multiple.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "accordion-multiple",
+    registryDependencies: ["accordion"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/accordion-disabled.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "accordion-disabled",
+    registryDependencies: ["accordion"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/accordion-card.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "accordion-card",
+    registryDependencies: ["accordion", "card"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
         path: "examples/alert-demo.tsx",
         type: "registry:example",
       },

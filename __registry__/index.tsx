@@ -1605,6 +1605,90 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
+    "accordion-basic": {
+      name: "accordion-basic",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["accordion"],
+      files: [
+        {
+          path: "registry/default/examples/accordion-basic.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/accordion-basic.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "accordion-multiple": {
+      name: "accordion-multiple",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["accordion"],
+      files: [
+        {
+          path: "registry/default/examples/accordion-multiple.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/accordion-multiple.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "accordion-disabled": {
+      name: "accordion-disabled",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["accordion"],
+      files: [
+        {
+          path: "registry/default/examples/accordion-disabled.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/accordion-disabled.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "accordion-card": {
+      name: "accordion-card",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["accordion", "card"],
+      files: [
+        {
+          path: "registry/default/examples/accordion-card.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/accordion-card.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
     "alert-demo": {
       name: "alert-demo",
       description: "",
