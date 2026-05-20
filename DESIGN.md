@@ -393,7 +393,7 @@ import { SearchIcon } from "blode-icons-react";
 <Button>
   <SearchIcon data-icon="inline-start" />
   Search
-</Button>
+</Button>;
 ```
 
 - Inside Blode components, set placement with `data-icon="inline-start"` or `data-icon="inline-end"`. Don't add `size-*`, `w-*`, or `h-*` classes inside components — the host manages sizing.
@@ -425,8 +425,8 @@ dark-colors:
   accent-foreground: "#FAFAFA"
   destructive: "#FF6568"
   destructive-foreground: "#DF2225"
-  border: "#FFFFFF1A"          # 10% white
-  input: "#FFFFFF26"           # 15% white
+  border: "#FFFFFF1A" # 10% white
+  input: "#FFFFFF26" # 15% white
   ring: "#737373"
   sidebar: "#171717"
   sidebar-foreground: "#FAFAFA"
@@ -442,7 +442,7 @@ dark-colors:
   code-number: "#A4A4A4"
   selection: "#E5E5E5"
   selection-foreground: "#171717"
-  overlay: "#2B3544B3"         # rgba(43, 53, 68, 0.7)
+  overlay: "#2B3544B3" # rgba(43, 53, 68, 0.7)
 ```
 
 Borders and inputs use alpha-white in dark mode so they read consistently against varying card tones.
