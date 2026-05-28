@@ -1,7 +1,7 @@
 "use client";
 
 import { Combobox as ComboboxPrimitive } from "@base-ui/react";
-import { CheckIcon, ChevronDownIcon, CrossSmallIcon } from "blode-icons-react";
+import { CheckIcon, ChevronDownIcon, CrossSmallIcon, XIcon } from "blode-icons-react";
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
@@ -48,7 +48,7 @@ function ComboboxClear({ className, ...props }: ComboboxPrimitive.Clear.Props) {
       render={<InputGroupButton size="icon-xs" variant="ghost" />}
       {...props}
     >
-      <CrossSmallIcon className="pointer-events-none" />
+      <XIcon className="pointer-events-none" />
     </ComboboxPrimitive.Clear>
   );
 }
