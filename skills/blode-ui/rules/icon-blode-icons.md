@@ -38,6 +38,7 @@ import { SearchIcon, ArrowRightIcon } from "blode-icons-react"
 Use these icon rules:
 
 - Default to `blode-icons-react` for Blode work in this repo
+- Never use literal unicode or arrow glyphs (`→`, `↗`, `←`, `✓`, `×`) as icons — render the matching `blode-icons-react` component instead (e.g. `<ArrowRightIcon data-icon="inline-end" />`, not `→`)
 - Add `data-icon="inline-start"` or `data-icon="inline-end"` inside buttons
 - Do not add `size-*`, `w-*`, or `h-*` classes to icons inside Blode components
 - Pass icon components as component objects, not string keys
