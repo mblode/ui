@@ -1,20 +1,15 @@
-import {
-  ArrowLeftIcon,
-  ArrowRightIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-} from "blode-icons-react";
+import { ChevronLeftIcon, ChevronRightIcon } from "blode-icons-react";
 import { allDocs } from "content-collections";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { DocNavButtons } from "@/components/doc-nav-buttons";
 import { DocsCopyPage } from "@/components/docs-copy-page";
 import { Mdx } from "@/components/mdx-components";
 import { getPagerForDoc } from "@/components/pager";
 import { TableOfContents } from "@/components/toc";
 import { getTableOfContents } from "@/lib/toc";
 import { absoluteUrl } from "@/lib/utils";
-import { Button } from "@/registry/default/ui/button";
 
 interface DocPageProps {
   params: Promise<{
@@ -101,34 +96,7 @@ export default async function DocPage({ params }: DocPageProps) {
                   <div>
                     <DocsCopyPage page={doc.body.raw} url={absoluteUrl(doc.slug)} />
                   </div>
-                  <div className="ml-auto flex gap-2">
-                    {pager?.prev?.href && (
-                      <Button
-                        asChild
-                        className="extend-touch-target size-8 shadow-none md:size-7"
-                        size="icon"
-                        variant="secondary"
-                      >
-                        <Link href={pager.prev.href}>
-                          <ArrowLeftIcon />
-                          <span className="sr-only">Previous</span>
-                        </Link>
-                      </Button>
-                    )}
-                    {pager?.next?.href && (
-                      <Button
-                        asChild
-                        className="extend-touch-target size-8 shadow-none md:size-7"
-                        size="icon"
-                        variant="secondary"
-                      >
-                        <Link href={pager.next.href}>
-                          <span className="sr-only">Next</span>
-                          <ArrowRightIcon />
-                        </Link>
-                      </Button>
-                    )}
-                  </div>
+                  <DocNavButtons next={pager?.next} prev={pager?.prev} />
                 </div>
               </div>
               {doc.description && (

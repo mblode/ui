@@ -59,6 +59,33 @@ export function getPagerForDoc(doc: Doc) {
   };
 }
 
+function normalizePath(path: string) {
+  if (path.length > 1 && path.endsWith("/")) {
+    return path.slice(0, -1);
+  }
+
+  return path;
+}
+
+export function getPagerForPath(pathname: string) {
+  const flattenedLinks = [null, ...flatten(docsConfig.sidebarNav), null];
+  const current = normalizePath(pathname);
+  const activeIndex = flattenedLinks.findIndex(
+    (link) => link?.href && normalizePath(link.href) === current,
+  );
+
+  if (activeIndex === -1) {
+    return null;
+  }
+
+  const prev = activeIndex > 0 ? flattenedLinks[activeIndex - 1] : null;
+  const next = activeIndex < flattenedLinks.length - 1 ? flattenedLinks[activeIndex + 1] : null;
+  return {
+    next,
+    prev,
+  };
+}
+
 export function flatten(links: NavItemWithChildren[]): NavItem[] {
   return links
     .reduce<NavItem[]>((flat, link) => {

@@ -19,7 +19,7 @@ export const siteConfig = {
     },
     {
       href: "/theme-visualizer",
-      label: "Theme Visualizer",
+      label: "Theme Visualiser",
     },
   ],
   ogImage: "https://ui.blode.co/opengraph-image",

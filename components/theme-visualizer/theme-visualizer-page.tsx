@@ -294,7 +294,7 @@ export default function ThemeVisualizerPage() {
     <section className="container py-8 lg:py-12">
       <div className="mx-auto w-full max-w-[1200px] space-y-6">
         <div className="space-y-2">
-          <h1 className="font-semibold text-3xl tracking-tight">Theme Visualizer</h1>
+          <h1 className="font-semibold text-3xl tracking-tight">Theme Visualiser</h1>
         </div>
 
         <div className="overflow-hidden rounded-2xl border bg-card">

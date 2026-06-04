@@ -24,6 +24,11 @@ export const docsConfig: DocsConfig = {
     {
       items: [
         {
+          href: "/",
+          items: [],
+          title: "Showcase",
+        },
+        {
           href: "/docs",
           items: [],
           title: "Introduction",
