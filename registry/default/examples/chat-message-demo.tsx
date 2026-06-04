@@ -1,29 +1,54 @@
-import { CopyIcon, RefreshCwIcon } from "blode-icons-react";
+import {
+  ArrowRotateCounterClockwiseIcon,
+  PencilIcon,
+  SquareBehindSquare1Icon,
+} from "blode-icons-react";
 
 import { Button } from "@/registry/default/ui/button";
 import { ChatMessage } from "@/registry/default/ui/chat-message";
 
+// Icon-only action buttons for the hover-revealed meta row. Assistant replies
+// get copy + regenerate; user messages get copy + edit. Illustrative only —
+// the buttons carry no behaviour in this demo.
+function MessageActions({ from }: { from: "user" | "assistant" }) {
+  return (
+    <>
+      <Button aria-label="Copy message" size="icon-xs" variant="ghost">
+        <SquareBehindSquare1Icon />
+      </Button>
+      {from === "user" ? (
+        <Button aria-label="Edit message" size="icon-xs" variant="ghost">
+          <PencilIcon />
+        </Button>
+      ) : (
+        <Button aria-label="Regenerate response" size="icon-xs" variant="ghost">
+          <ArrowRotateCounterClockwiseIcon />
+        </Button>
+      )}
+    </>
+  );
+}
+
 export default function ChatMessageDemo() {
   return (
-    <div className="flex w-full max-w-md flex-col gap-3">
-      <ChatMessage from="user" time="Wednesday 6:08 PM">
-        Can you summarize the Q3 report for me?
+    <div className="flex w-full max-w-xl flex-col gap-2">
+      <ChatMessage actions={<MessageActions from="user" />} from="user" time="Wednesday 6:06 PM">
+        What does &ldquo;good design&rdquo; actually mean? Everyone says it, no one defines it.
       </ChatMessage>
-      <ChatMessage
-        actions={
-          <>
-            <Button aria-label="Copy" size="icon-xs" variant="ghost">
-              <CopyIcon />
-            </Button>
-            <Button aria-label="Regenerate" size="icon-xs" variant="ghost">
-              <RefreshCwIcon />
-            </Button>
-          </>
-        }
-        from="assistant"
-      >
-        Revenue grew 14% quarter-over-quarter, driven mostly by the new self-serve plan. Churn held
-        steady at 2.1%.
+      <ChatMessage actions={<MessageActions from="assistant" />} from="assistant">
+        Good design is mostly invisible — you only notice it when it&apos;s missing. It&apos;s less
+        about how something looks and more about how effortlessly it lets you do what you came to
+        do.
+      </ChatMessage>
+      <ChatMessage actions={<MessageActions from="user" />} from="user" time="Wednesday 6:07 PM">
+        So function over form?
+      </ChatMessage>
+      <ChatMessage actions={<MessageActions from="assistant" />} from="assistant">
+        Not quite. Form is part of function — something that feels good to use is, in a real sense,
+        working better. The split between the two is mostly a myth.
+      </ChatMessage>
+      <ChatMessage actions={<MessageActions from="user" />} from="user" time="Wednesday 6:08 PM">
+        That reframes it completely.
       </ChatMessage>
     </div>
   );

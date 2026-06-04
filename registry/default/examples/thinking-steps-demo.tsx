@@ -1,10 +1,8 @@
-import { GlobeIcon, SearchIcon, SparkleIcon } from "blode-icons-react";
+import { CheckIcon, GlobeIcon, SearchIcon } from "blode-icons-react";
 
 import {
   ThinkingStep,
   ThinkingStepDetails,
-  ThinkingStepSource,
-  ThinkingStepSources,
   ThinkingSteps,
   ThinkingStepsContent,
   ThinkingStepsHeader,
@@ -15,25 +13,14 @@ export default function ThinkingStepsDemo() {
     <ThinkingSteps>
       <ThinkingStepsHeader>Thinking</ThinkingStepsHeader>
       <ThinkingStepsContent>
-        <ThinkingStep
-          description="Looking for recent benchmarks"
-          icon={SearchIcon}
-          label="Searching the web"
-        />
-        <ThinkingStep icon={GlobeIcon} label="Reading sources">
-          <ThinkingStepSources>
-            <ThinkingStepSource color="blue">arxiv.org</ThinkingStepSource>
-            <ThinkingStepSource color="green" delay={0.05}>
-              github.com
-            </ThinkingStepSource>
-          </ThinkingStepSources>
-        </ThinkingStep>
-        <ThinkingStep icon={SparkleIcon} isLast label="Synthesizing an answer" status="active">
+        <ThinkingStep icon={SearchIcon} label="Searched the web" />
+        <ThinkingStep icon={GlobeIcon} label="Read 3 sources">
           <ThinkingStepDetails
             details={["Compared three approaches", "Weighed latency against accuracy"]}
-            summary="Show reasoning"
+            summary="Explored 6 files"
           />
         </ThinkingStep>
+        <ThinkingStep icon={CheckIcon} isLast label="Done" />
       </ThinkingStepsContent>
     </ThinkingSteps>
   );

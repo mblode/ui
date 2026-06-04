@@ -1,6 +1,6 @@
 "use client";
 
-import { DotFilledIcon } from "blode-icons-react";
+import { ChevronRightIcon, DotFilledIcon } from "blode-icons-react";
 import { motion } from "motion/react";
 import type * as React from "react";
 
@@ -83,10 +83,18 @@ function ThinkingStepsHeader({
   return (
     <div className="w-fit">
       <AccordionTrigger
-        className={cn("w-auto [&>span:first-child]:flex-none", className)}
+        chevron={false}
+        className={cn(
+          "w-auto gap-1.5 [&>span:first-child]:flex-none [&[data-panel-open]_[data-chevron]]:rotate-90",
+          className,
+        )}
         {...props}
       >
         {children}
+        <ChevronRightIcon
+          className="size-3.5 shrink-0 text-muted-foreground transition-transform duration-200"
+          data-chevron
+        />
       </AccordionTrigger>
     </div>
   );
@@ -209,8 +217,15 @@ function ThinkingStepDetails({
     >
       <AccordionItem value="details">
         <div className="w-fit">
-          <AccordionTrigger className="w-auto gap-1.5 rounded-lg px-3 py-1 [&>span:first-child]:flex-none">
+          <AccordionTrigger
+            chevron={false}
+            className="w-auto gap-1.5 rounded-lg px-3 py-1 text-muted-foreground [&>span:first-child]:flex-none [&[data-panel-open]_[data-chevron]]:rotate-90"
+          >
             {summary}
+            <ChevronRightIcon
+              className="size-3.5 shrink-0 transition-transform duration-200"
+              data-chevron
+            />
           </AccordionTrigger>
         </div>
         <AccordionContent>

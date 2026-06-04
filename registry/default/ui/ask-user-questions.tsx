@@ -1,13 +1,17 @@
 "use client";
 
-import { CheckIcon } from "blode-icons-react";
+import { ArrowLeftIcon, ArrowRightIcon } from "blode-icons-react";
 import { AnimatePresence, motion } from "motion/react";
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
-import { Badge } from "@/registry/default/ui/badge";
 import { Button } from "@/registry/default/ui/button";
-import { Textarea } from "@/registry/default/ui/textarea";
+
+const springs = {
+  fast: { bounce: 0, duration: 0.08, type: "spring" as const },
+  moderate: { bounce: 0.15, duration: 0.16, type: "spring" as const },
+  slow: { bounce: 0.15, duration: 0.24, type: "spring" as const },
+};
 
 interface AskUserOption {
   id: string;
@@ -27,12 +31,12 @@ interface AskUserQuestion {
   /** Reveal a textarea for a free-form answer. */
   allowOther?: boolean;
   otherPlaceholder?: string;
+  /** Label for the Next button in multi-select mode. Defaults to "Next" / "Finish". */
+  nextLabel?: string;
   /** Show the Skip control. Defaults to true. */
   skippable?: boolean;
   /** Description placement: inline with the title or stacked beneath it. */
   layout?: "inline" | "stacked";
-  /** Number-chip placement. */
-  chipPosition?: "left" | "right";
 }
 
 interface AskUserAnswer {
@@ -77,18 +81,12 @@ function useControllable<T>(
   return [value, setValue];
 }
 
-function NumberChip({ n }: { n: number }) {
-  return (
-    <Badge className="size-5 shrink-0 justify-center p-0 tabular-nums" variant="secondary">
-      {n}
-    </Badge>
-  );
-}
-
 // ─── AskUserQuestions ───────────────────────────────────────────────────────
-// A stepped questionnaire: single- or multi-select options with an optional
-// free-form answer and skip control. Single-select questions advance on click;
-// multi-select (or "other"-enabled) questions advance via Next / Finish.
+// A stepped questionnaire rendered as a single card: single- or multi-select
+// options with an optional free-form answer and skip control. A morphing
+// background slides between options on hover and selection. Single-select
+// questions advance on click (an arrow overlays the number chip); multi-select
+// (or "other"-enabled) questions advance via the footer Next / Finish button.
 function AskUserQuestions({
   questions,
   currentIndex,
@@ -114,6 +112,7 @@ function AskUserQuestions({
     defaultAnswers ?? {},
     onAnswersChange,
   );
+  const [hoverIndex, setHoverIndex] = React.useState<number | null>(null);
 
   const current = questions[index];
 
@@ -132,6 +131,7 @@ function AskUserQuestions({
 
   const goNext = React.useCallback(
     (nextAnswers: AnswersMap) => {
+      setHoverIndex(null);
       if (index >= questions.length - 1) {
         onComplete?.(nextAnswers);
         return;
@@ -146,15 +146,18 @@ function AskUserQuestions({
   }
 
   const layout = current.layout ?? "inline";
-  const chipPosition = current.chipPosition ?? "right";
   const skippable = current.skippable !== false;
+  const isMulti = Boolean(current.multiSelect);
   const showConfirm = Boolean(current.multiSelect || current.allowOther);
   const isLast = index === questions.length - 1;
   const otherText = currentAnswer.otherText ?? "";
   const canProceed = currentAnswer.selectedIds.length > 0 || otherText.trim().length > 0;
+  const showBack = index > 0;
+  const showSkip = skippable && questions.length > 1;
+  const showFooter = showBack || showSkip || showConfirm;
 
   const selectOption = (optionId: string) => {
-    if (current.multiSelect) {
+    if (isMulti) {
       const selected = currentAnswer.selectedIds.includes(optionId);
       const selectedIds = selected
         ? currentAnswer.selectedIds.filter((id) => id !== optionId)
@@ -182,6 +185,13 @@ function AskUserQuestions({
     goNext(commit({ ...currentAnswer, skipped: false }));
   };
 
+  const handleBack = () => {
+    if (index > 0) {
+      setHoverIndex(null);
+      setIndex(index - 1);
+    }
+  };
+
   const handleSkip = () => {
     const next = commit({
       otherText: "",
@@ -195,85 +205,197 @@ function AskUserQuestions({
 
   return (
     <div
-      className={cn("flex w-full max-w-md flex-col gap-3", className)}
+      className={cn(
+        "relative w-full max-w-[520px] overflow-hidden rounded-2xl border border-border bg-card",
+        className,
+      )}
       data-slot="ask-user-questions"
       ref={ref}
       {...props}
     >
+      {/* Header — progress sits at the top, fixed across questions. */}
+      <div className="flex items-center px-4 pt-4 pb-2 text-muted-foreground text-xs tabular-nums sm:px-5 sm:pt-5">
+        Question {index + 1} of {questions.length}
+      </div>
+
       <AnimatePresence initial={false} mode="wait">
         <motion.div
           animate={{ opacity: 1, y: 0 }}
-          className="flex flex-col gap-3"
-          exit={{ opacity: 0, transition: { duration: 0.12 }, y: -8 }}
+          className="px-4 pb-1 sm:px-5"
+          exit={{ opacity: 0, transition: { duration: 0.1 }, y: -6 }}
           initial={{ opacity: 0, y: 8 }}
           key={current.id}
-          transition={{ bounce: 0.15, duration: 0.16, type: "spring" }}
+          layout
+          transition={springs.moderate}
         >
-          <h3 className="font-medium text-foreground text-sm leading-snug">{current.title}</h3>
+          <h3 className="font-semibold text-base text-foreground leading-snug">{current.title}</h3>
 
-          <div className="flex flex-col gap-2">
+          <div
+            className="relative mt-2 flex flex-col gap-0.5"
+            onMouseLeave={() => setHoverIndex(null)}
+            role={isMulti ? "group" : "radiogroup"}
+          >
             {current.options.map((option, i) => {
               const selected = currentAnswer.selectedIds.includes(option.id);
+              const hovered = hoverIndex === i;
+              const showArrow = !isMulti && hovered;
               return (
                 <button
-                  aria-pressed={selected}
+                  aria-checked={selected}
                   className={cn(
-                    "flex w-full items-start gap-3 rounded-xl border p-3 text-left outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring/50",
-                    selected
-                      ? "border-foreground/30 bg-accent"
-                      : "border-border hover:bg-accent/60",
+                    "relative z-10 flex items-center gap-3 rounded-lg px-3 text-left outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[#6B97FF]",
+                    layout === "stacked" ? "min-h-14 py-2" : "min-h-10 py-1.5",
                   )}
                   key={option.id}
                   onClick={() => selectOption(option.id)}
+                  onMouseEnter={() => setHoverIndex(i)}
+                  role={isMulti ? "checkbox" : "radio"}
                   type="button"
                 >
-                  {chipPosition === "left" && <NumberChip n={i + 1} />}
+                  {hovered && !selected && (
+                    <motion.span
+                      aria-hidden="true"
+                      className="absolute inset-0 -z-10 rounded-lg bg-muted"
+                      layoutId="ask-user-hover"
+                      transition={springs.fast}
+                    />
+                  )}
+                  {selected &&
+                    (isMulti ? (
+                      <span
+                        aria-hidden="true"
+                        className="absolute inset-0 -z-10 rounded-lg bg-accent"
+                      />
+                    ) : (
+                      <motion.span
+                        aria-hidden="true"
+                        className="absolute inset-0 -z-10 rounded-lg bg-accent"
+                        layoutId="ask-user-selected"
+                        transition={springs.moderate}
+                      />
+                    ))}
+
                   <span
                     className={cn(
-                      "flex min-w-0 flex-1 gap-1",
-                      layout === "stacked" ? "flex-col" : "flex-wrap items-baseline",
+                      "min-w-0 flex-1 text-[13px] leading-snug",
+                      layout === "stacked" ? "flex flex-col gap-0.5" : "",
                     )}
                   >
-                    <span className="font-medium text-foreground text-sm">{option.title}</span>
-                    {option.description && (
-                      <span className="text-muted-foreground text-sm">{option.description}</span>
-                    )}
+                    <span
+                      className={cn("text-foreground", selected ? "font-semibold" : "font-medium")}
+                    >
+                      {option.title}
+                    </span>
+                    {option.description &&
+                      (layout === "stacked" ? (
+                        <span className="text-muted-foreground text-xs leading-snug">
+                          {option.description}
+                        </span>
+                      ) : (
+                        <span className="text-muted-foreground"> {option.description}</span>
+                      ))}
                   </span>
-                  {chipPosition === "right" && <NumberChip n={i + 1} />}
-                  {selected && <CheckIcon className="mt-0.5 size-4 shrink-0 text-foreground" />}
+
+                  <span className="relative inline-flex size-7 shrink-0 items-center justify-center">
+                    <span
+                      className={cn(
+                        "inline-flex size-5 items-center justify-center text-[11px] transition-opacity",
+                        isMulti
+                          ? cn(
+                              "rounded-md",
+                              selected
+                                ? "bg-foreground font-semibold text-background"
+                                : "border border-border text-muted-foreground",
+                            )
+                          : selected
+                            ? "font-semibold text-foreground"
+                            : "text-muted-foreground",
+                        showArrow && "opacity-0",
+                      )}
+                    >
+                      {i + 1}
+                    </span>
+                    <AnimatePresence>
+                      {showArrow && (
+                        <motion.span
+                          animate={{ opacity: 1, scale: 1 }}
+                          aria-hidden="true"
+                          className="absolute inset-0 inline-flex items-center justify-center rounded-md bg-foreground text-background"
+                          exit={{ opacity: 0, scale: 0.6, transition: { duration: 0.06 } }}
+                          initial={{ opacity: 0, scale: 0.6 }}
+                          transition={springs.fast}
+                        >
+                          <ArrowRightIcon className="size-3.5" />
+                        </motion.span>
+                      )}
+                    </AnimatePresence>
+                  </span>
                 </button>
               );
             })}
-          </div>
 
-          {current.allowOther && (
-            <Textarea
-              onChange={(e) => setOtherText(e.target.value)}
-              placeholder={current.otherPlaceholder ?? "Describe in your own words…"}
-              rows={2}
-              value={otherText}
-            />
-          )}
-
-          <div className="flex items-center justify-between gap-2 pt-1">
-            <span className="text-muted-foreground text-xs tabular-nums">
-              Question {index + 1} of {questions.length}
-            </span>
-            <div className="flex items-center gap-2">
-              {skippable && (
-                <Button onClick={handleSkip} size="sm" variant="ghost">
-                  {skipLabel}
-                </Button>
-              )}
-              {showConfirm && (
-                <Button disabled={!canProceed} onClick={handleNext} size="sm">
-                  {isLast ? "Finish" : "Next"}
-                </Button>
-              )}
-            </div>
+            {current.allowOther && (
+              <div
+                className={cn(
+                  "relative z-10 flex items-start gap-3 rounded-lg px-3 py-2",
+                  otherText.length > 0 && "bg-accent",
+                )}
+              >
+                <textarea
+                  aria-label={current.otherPlaceholder ?? "Describe in your own words"}
+                  className="min-h-7 flex-1 resize-none self-center bg-transparent text-[13px] text-foreground leading-snug outline-none [field-sizing:content] placeholder:text-muted-foreground"
+                  onChange={(e) => setOtherText(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" && !e.shiftKey && !isMulti && otherText.trim()) {
+                      e.preventDefault();
+                      handleNext();
+                    }
+                  }}
+                  placeholder={current.otherPlaceholder ?? "Describe in your own words…"}
+                  rows={1}
+                  value={otherText}
+                />
+                <span
+                  className={cn(
+                    "inline-flex size-5 shrink-0 items-center justify-center self-center text-[11px]",
+                    otherText.length > 0
+                      ? "font-semibold text-foreground"
+                      : "text-muted-foreground",
+                  )}
+                >
+                  {current.options.length + 1}
+                </span>
+              </div>
+            )}
           </div>
         </motion.div>
       </AnimatePresence>
+
+      {showFooter && (
+        <div className="flex items-center justify-between gap-2 px-4 pt-1 pb-3 sm:px-5">
+          <div>
+            {showBack && (
+              <Button data-icon="inline-start" onClick={handleBack} size="sm" variant="ghost">
+                <ArrowLeftIcon className="hidden sm:block" />
+                Back
+              </Button>
+            )}
+          </div>
+          <div className="flex items-center gap-2">
+            {showSkip && (
+              <Button data-icon="inline-end" onClick={handleSkip} size="sm" variant="ghost">
+                {skipLabel}
+                <ArrowRightIcon className="hidden sm:block" />
+              </Button>
+            )}
+            {showConfirm && (
+              <Button disabled={!canProceed} onClick={handleNext} size="sm">
+                {current.nextLabel ?? (isLast ? "Finish" : "Next")}
+              </Button>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

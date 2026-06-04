@@ -97,7 +97,7 @@ function ThinkingIndicator({
           }}
         />
       </motion.svg>
-      <span className="inline-grid overflow-hidden font-medium text-[13px]">
+      <span className="inline-grid overflow-hidden font-medium text-[13px] leading-[1.22]">
         <span aria-hidden className="invisible col-start-1 row-start-1">
           {longest}
         </span>
