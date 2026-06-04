@@ -50,7 +50,7 @@ export default function AskUserQuestionsMultiSelect() {
 
   if (answers) {
     return (
-      <div className="flex w-full max-w-md flex-col gap-1 rounded-xl border p-4 text-sm">
+      <div className="flex w-full max-w-[520px] flex-col gap-1 rounded-2xl border p-4 text-sm">
         <p className="font-medium text-foreground">Got it — thanks!</p>
         <p className="text-muted-foreground">We'll tailor the build to your selections.</p>
       </div>

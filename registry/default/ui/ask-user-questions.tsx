@@ -212,6 +212,13 @@ function AskUserQuestions({
       data-slot="ask-user-questions"
       ref={ref}
       {...props}
+      onKeyDown={(e) => {
+        props.onKeyDown?.(e);
+        if ((e.metaKey || e.ctrlKey) && e.key === "Enter" && showConfirm && canProceed) {
+          e.preventDefault();
+          handleNext();
+        }
+      }}
     >
       {/* Header — progress sits at the top, fixed across questions. */}
       <div className="flex items-center px-4 pt-4 pb-2 text-muted-foreground text-xs tabular-nums sm:px-5 sm:pt-5">
@@ -243,7 +250,7 @@ function AskUserQuestions({
                 <button
                   aria-checked={selected}
                   className={cn(
-                    "relative z-10 flex items-center gap-3 rounded-lg px-3 text-left outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[#6B97FF]",
+                    "relative z-10 flex items-center gap-3 rounded-full px-3 text-left outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[#6B97FF]",
                     layout === "stacked" ? "min-h-14 py-2" : "min-h-10 py-1.5",
                   )}
                   key={option.id}
@@ -255,7 +262,7 @@ function AskUserQuestions({
                   {hovered && !selected && (
                     <motion.span
                       aria-hidden="true"
-                      className="absolute inset-0 -z-10 rounded-lg bg-muted"
+                      className="absolute inset-0 -z-10 rounded-full bg-muted"
                       layoutId="ask-user-hover"
                       transition={springs.fast}
                     />
@@ -264,12 +271,12 @@ function AskUserQuestions({
                     (isMulti ? (
                       <span
                         aria-hidden="true"
-                        className="absolute inset-0 -z-10 rounded-lg bg-accent"
+                        className="absolute inset-0 -z-10 rounded-full bg-accent"
                       />
                     ) : (
                       <motion.span
                         aria-hidden="true"
-                        className="absolute inset-0 -z-10 rounded-lg bg-accent"
+                        className="absolute inset-0 -z-10 rounded-full bg-accent"
                         layoutId="ask-user-selected"
                         transition={springs.moderate}
                       />
@@ -302,7 +309,7 @@ function AskUserQuestions({
                         "inline-flex size-5 items-center justify-center text-[11px] transition-opacity",
                         isMulti
                           ? cn(
-                              "rounded-md",
+                              "rounded-full",
                               selected
                                 ? "bg-foreground font-semibold text-background"
                                 : "border border-border text-muted-foreground",
@@ -320,7 +327,7 @@ function AskUserQuestions({
                         <motion.span
                           animate={{ opacity: 1, scale: 1 }}
                           aria-hidden="true"
-                          className="absolute inset-0 inline-flex items-center justify-center rounded-md bg-foreground text-background"
+                          className="absolute inset-0 inline-flex items-center justify-center rounded-full bg-foreground text-background"
                           exit={{ opacity: 0, scale: 0.6, transition: { duration: 0.06 } }}
                           initial={{ opacity: 0, scale: 0.6 }}
                           transition={springs.fast}
@@ -337,7 +344,7 @@ function AskUserQuestions({
             {current.allowOther && (
               <div
                 className={cn(
-                  "relative z-10 flex items-start gap-3 rounded-lg px-3 py-2",
+                  "relative z-10 flex items-start gap-3 rounded-full px-3 py-2",
                   otherText.length > 0 && "bg-accent",
                 )}
               >
@@ -391,6 +398,11 @@ function AskUserQuestions({
             {showConfirm && (
               <Button disabled={!canProceed} onClick={handleNext} size="sm">
                 {current.nextLabel ?? (isLast ? "Finish" : "Next")}
+                {isMulti && (
+                  <kbd className="-mr-0.5 ml-0.5 inline-flex items-center gap-0.5 rounded-full bg-primary-foreground/15 px-1.5 py-px font-medium text-[10px] text-primary-foreground/90">
+                    ⌘↵
+                  </kbd>
+                )}
               </Button>
             )}
           </div>

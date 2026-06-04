@@ -170,13 +170,26 @@ function AccordionTrigger({
       attributes: true,
     });
 
-    updateState();
-    const animationFrameId = requestAnimationFrame(() => {
-      setCanAnimate(true);
-    });
+    // On initial `defaultValue`, Base UI applies the panel's `data-panel-open`
+    // after this effect runs, and that first attribute write can land in a gap
+    // the observer misses — leaving the panel collapsed until the user toggles
+    // it. Re-read the open state across the first few frames so we reliably
+    // catch it whenever Base UI writes it, then enable animation.
+    let frameId = 0;
+    let frames = 0;
+    const syncOpenState = () => {
+      updateState();
+      frames += 1;
+      if (frames < 5) {
+        frameId = requestAnimationFrame(syncOpenState);
+      } else {
+        setCanAnimate(true);
+      }
+    };
+    syncOpenState();
 
     return () => {
-      cancelAnimationFrame(animationFrameId);
+      cancelAnimationFrame(frameId);
       observer.disconnect();
     };
   }, [setCanAnimate, setIsOpen]);

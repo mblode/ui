@@ -85,7 +85,7 @@ function ThinkingStepsHeader({
       <AccordionTrigger
         chevron={false}
         className={cn(
-          "w-auto gap-1.5 [&>span:first-child]:flex-none [&[data-panel-open]_[data-chevron]]:rotate-90",
+          "w-auto items-center gap-1.5 py-1 [&>span:first-child]:flex-none [&[data-panel-open]_[data-chevron]]:rotate-90",
           className,
         )}
         {...props}
@@ -219,7 +219,7 @@ function ThinkingStepDetails({
         <div className="w-fit">
           <AccordionTrigger
             chevron={false}
-            className="w-auto gap-1.5 rounded-lg px-3 py-1 text-muted-foreground [&>span:first-child]:flex-none [&[data-panel-open]_[data-chevron]]:rotate-90"
+            className="w-auto items-center gap-1.5 rounded-full border border-transparent px-3 py-1 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground data-[panel-open]:border-border data-[panel-open]:bg-muted [&>span:first-child]:flex-none [&[data-panel-open]_[data-chevron]]:rotate-90"
           >
             {summary}
             <ChevronRightIcon
@@ -229,7 +229,7 @@ function ThinkingStepDetails({
           </AccordionTrigger>
         </div>
         <AccordionContent>
-          <div className="flex flex-col gap-0.5 pt-0.5">
+          <div className="flex flex-col gap-0.5 px-3 pt-0.5">
             {details?.map((item) => (
               <span className="text-[12px] text-muted-foreground leading-snug" key={item}>
                 {item}
