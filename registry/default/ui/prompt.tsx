@@ -1,8 +1,8 @@
 "use client";
 
 import { AlertDialog as AlertDialogPrimitive } from "@base-ui/react/alert-dialog";
-import { forwardRef, isValidElement } from "react";
-import type { ComponentPropsWithoutRef, ElementRef, HTMLAttributes } from "react";
+import { isValidElement } from "react";
+import type { ComponentProps, HTMLAttributes } from "react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/registry/default/ui/button";
@@ -25,44 +25,26 @@ const Trigger = ({
 
   return <AlertDialogPrimitive.Trigger {...props}>{children}</AlertDialogPrimitive.Trigger>;
 };
-Trigger.displayName = "Prompt.Trigger";
 
 const Portal = ({ ...props }: AlertDialogPrimitive.Portal.Props) => (
   <AlertDialogPrimitive.Portal {...props} />
 );
-Portal.displayName = "Prompt.Portal";
 
-const Overlay = forwardRef<
-  ElementRef<typeof AlertDialogPrimitive.Backdrop>,
-  ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Backdrop>
->(({ className, ...props }, ref) => (
+const Overlay = ({ className, ...props }: ComponentProps<typeof AlertDialogPrimitive.Backdrop>) => (
   <AlertDialogPrimitive.Backdrop
     className={cn(
       "data-closed:fade-out-0 data-open:fade-in-0 fixed inset-0 z-110 bg-overlay backdrop-blur-[10px] data-closed:animate-out data-open:animate-in data-closed:duration-300 data-open:duration-500 motion-reduce:transition-none",
       className,
     )}
-    ref={ref}
     {...props}
   />
-));
-Overlay.displayName = "Prompt.Overlay";
+);
 
-const Title = forwardRef<
-  ElementRef<typeof AlertDialogPrimitive.Title>,
-  ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Title>
->(({ className, ...props }, ref) => (
-  <AlertDialogPrimitive.Title
-    className={cn("font-semibold text-lg", className)}
-    ref={ref}
-    {...props}
-  />
-));
-Title.displayName = "Prompt.Title";
+const Title = ({ className, ...props }: ComponentProps<typeof AlertDialogPrimitive.Title>) => (
+  <AlertDialogPrimitive.Title className={cn("font-semibold text-lg", className)} {...props} />
+);
 
-const Content = forwardRef<
-  ElementRef<typeof AlertDialogPrimitive.Popup>,
-  ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Popup>
->(({ className, ...props }, ref) => (
+const Content = ({ className, ...props }: ComponentProps<typeof AlertDialogPrimitive.Popup>) => (
   <Portal>
     <Overlay />
     <AlertDialogPrimitive.Popup
@@ -70,46 +52,41 @@ const Content = forwardRef<
         "data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 fixed top-[50%] left-[50%] z-110 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 rounded-2xl border bg-background p-4 shadow-lg duration-200 data-closed:animate-out data-open:animate-in md:w-full",
         className,
       )}
-      ref={ref}
       {...props}
     />
   </Portal>
-));
-Content.displayName = "Prompt.Content";
+);
 
-const Description = forwardRef<
-  ElementRef<typeof AlertDialogPrimitive.Description>,
-  ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Description>
->(({ className, ...props }, ref) => (
-  <AlertDialogPrimitive.Description className={cn(className)} ref={ref} {...props} />
-));
-Description.displayName = "Prompt.Description";
+const Description = ({
+  className,
+  ...props
+}: ComponentProps<typeof AlertDialogPrimitive.Description>) => (
+  <AlertDialogPrimitive.Description className={cn(className)} {...props} />
+);
 
-const Action = forwardRef<
-  ElementRef<typeof AlertDialogPrimitive.Close>,
-  Omit<ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Close>, "render">
->(({ className, children, ...props }, ref) => (
+const Action = ({
+  className,
+  children,
+  ...props
+}: Omit<ComponentProps<typeof AlertDialogPrimitive.Close>, "render">) => (
   <AlertDialogPrimitive.Close
     className={cn(className)}
-    ref={ref}
     render={<Button variant="destructive">{children}</Button>}
     {...props}
   />
-));
-Action.displayName = "Prompt.Action";
+);
 
-const Cancel = forwardRef<
-  ElementRef<typeof AlertDialogPrimitive.Close>,
-  Omit<ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Close>, "render">
->(({ className, children, ...props }, ref) => (
+const Cancel = ({
+  className,
+  children,
+  ...props
+}: Omit<ComponentProps<typeof AlertDialogPrimitive.Close>, "render">) => (
   <AlertDialogPrimitive.Close
     className={cn(className)}
-    ref={ref}
     render={<Button variant="secondary">{children}</Button>}
     {...props}
   />
-));
-Cancel.displayName = "Prompt.Cancel";
+);
 
 /**
  * This component is based on the `div` element and supports all of its props
@@ -117,7 +94,6 @@ Cancel.displayName = "Prompt.Cancel";
 const Header = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => (
   <div className={cn("flex flex-col space-y-2 text-center", className)} {...props} />
 );
-Header.displayName = "Prompt.Header";
 
 /**
  * This component is based on the `div` element and supports all of its props
@@ -128,7 +104,6 @@ const Footer = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => (
     {...props}
   />
 );
-Footer.displayName = "Prompt.Footer";
 
 const Prompt = Object.assign(Root, {
   Action,

@@ -1,0 +1,80 @@
+---
+title: Ask User Questions
+description: A stepped questionnaire with single- or multi-select options, free-form answers, and a skip control.
+component: true
+---
+
+<ComponentPreview name="ask-user-questions-demo" description="A single-select question" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ui.blode.co/r/styles/default/ask-user-questions"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install motion
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="ask-user-questions" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { AskUserQuestions } from "@/components/ui/ask-user-questions";
+```
+
+```tsx
+<AskUserQuestions
+  questions={[
+    {
+      id: "framework",
+      title: "Which framework should we scaffold with?",
+      options: [
+        { id: "next", title: "Next.js", description: "App Router, RSC" },
+        { id: "vite", title: "Vite", description: "Fast dev server" },
+      ],
+    },
+  ]}
+  onComplete={(answers) => console.log(answers)}
+/>
+```
+
+## Examples
+
+### Multi-select
+
+Set `multiSelect` to allow more than one answer, and `allowOther` to reveal a free-form textarea.
+Multi-select questions advance with an explicit Next / Finish button.
+
+<ComponentPreview
+  name="ask-user-questions-multi-select"
+  description="A multi-select question with a free-form answer"
+/>

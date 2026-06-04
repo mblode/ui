@@ -9,7 +9,7 @@ import type * as React from "react";
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 
 import { useIsMobile } from "@/registry/default/hooks/use-mobile";
-import { cn } from "@/registry/default/lib/utils";
+import { cn } from "@/lib/utils";
 import { Button } from "@/registry/default/ui/button";
 import { Input } from "@/registry/default/ui/input";
 import { Separator } from "@/registry/default/ui/separator";

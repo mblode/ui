@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { twMerge } from "tailwind-merge";
 import { env } from "@/env.mjs";
 
-const WHITESPACE_REGEX = /\s+/;
+const WHITESPACE_REGEX = /\s+/u;
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -13,7 +13,7 @@ export function cn(...inputs: ClassValue[]) {
 export function humanize(name: string): string {
   return name
     .replaceAll("-", " ")
-    .replaceAll(/([A-Z])/g, " $1")
+    .replaceAll(/([A-Z])/gu, " $1")
     .trim()
     .split(WHITESPACE_REGEX)
     .map((word) => word[0].toUpperCase() + word.slice(1).toLowerCase())
@@ -42,7 +42,7 @@ export const fetcher = (...args: Parameters<typeof fetch>) =>
  *   capitalize('javaSCrIPT', true);    // -> 'Javascript'
  */
 export const capitalize = (str: string, lower = false) =>
-  (lower ? str.toLowerCase() : str).replaceAll(/(?:^|\s|["'([{])+\S/g, (match) =>
+  (lower ? str.toLowerCase() : str).replaceAll(/(?:^|\s|["'([{])+\S/gu, (match) =>
     match.toUpperCase(),
   );
 

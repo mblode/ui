@@ -29,18 +29,18 @@ const passwordRequirements = [
   {
     id: "lowercase",
     label: "One lowercase letter",
-    test: (val: string) => /[a-z]/.test(val),
+    test: (val: string) => /[a-z]/u.test(val),
   },
   {
     id: "uppercase",
     label: "One uppercase letter",
-    test: (val: string) => /[A-Z]/.test(val),
+    test: (val: string) => /[A-Z]/u.test(val),
   },
-  { id: "number", label: "One number", test: (val: string) => /\d/.test(val) },
+  { id: "number", label: "One number", test: (val: string) => /\d/u.test(val) },
   {
     id: "special",
     label: "One special character",
-    test: (val: string) => /[!@#$%^&*(),.?":{}|<>]/.test(val),
+    test: (val: string) => /[!@#$%^&*(),.?":{}|<>]/u.test(val),
   },
 ];
 
@@ -48,11 +48,11 @@ const formSchema = z.object({
   password: z
     .string()
     .min(8, "Password must be at least 8 characters")
-    .refine((val) => /[a-z]/.test(val), "Password must contain at least one lowercase letter")
-    .refine((val) => /[A-Z]/.test(val), "Password must contain at least one uppercase letter")
-    .refine((val) => /\d/.test(val), "Password must contain at least one number")
+    .refine((val) => /[a-z]/u.test(val), "Password must contain at least one lowercase letter")
+    .refine((val) => /[A-Z]/u.test(val), "Password must contain at least one uppercase letter")
+    .refine((val) => /\d/u.test(val), "Password must contain at least one number")
     .refine(
-      (val) => /[!@#$%^&*(),.?":{}|<>]/.test(val),
+      (val) => /[!@#$%^&*(),.?":{}|<>]/u.test(val),
       "Password must contain at least one special character",
     ),
 });

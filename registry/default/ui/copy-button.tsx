@@ -2,6 +2,7 @@
 
 import { CheckIcon, ClipboardIcon } from "blode-icons-react";
 import { AnimatePresence, motion } from "motion/react";
+import type * as React from "react";
 
 import { cn } from "@/lib/utils";
 import { useCopyToClipboard } from "@/registry/default/hooks/use-copy-to-clipboard";

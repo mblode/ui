@@ -958,4 +958,90 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     title: "Direction",
     type: "registry:ui",
   },
+  {
+    description:
+      "A square preview tile for an attached file — an image thumbnail or a file icon with name.",
+    files: [
+      {
+        path: "ui/file-thumbnail.tsx",
+        type: "registry:ui",
+      },
+    ],
+    name: "file-thumbnail",
+    title: "File Thumbnail",
+    type: "registry:ui",
+  },
+  {
+    dependencies: ["motion"],
+    description:
+      "A chat transcript entry for user and assistant messages, with attachments and a hover meta row.",
+    files: [
+      {
+        path: "ui/chat-message.tsx",
+        type: "registry:ui",
+      },
+    ],
+    name: "chat-message",
+    registryDependencies: ["file-thumbnail"],
+    title: "Chat Message",
+    type: "registry:ui",
+  },
+  {
+    dependencies: ["motion", "react-textarea-autosize"],
+    description:
+      "A chat composer with an auto-resizing textarea, action slots, a send button, and drag-and-drop attachments.",
+    files: [
+      {
+        path: "ui/input-message.tsx",
+        type: "registry:ui",
+      },
+    ],
+    name: "input-message",
+    registryDependencies: ["button", "file-thumbnail"],
+    title: "Input Message",
+    type: "registry:ui",
+  },
+  {
+    dependencies: ["motion"],
+    description:
+      "An animated status indicator with a morphing glyph and cycling text for thinking states.",
+    files: [
+      {
+        path: "ui/thinking-indicator.tsx",
+        type: "registry:ui",
+      },
+    ],
+    name: "thinking-indicator",
+    title: "Thinking Indicator",
+    type: "registry:ui",
+  },
+  {
+    dependencies: ["motion"],
+    description: "A collapsible chain-of-thought stepper with steps, sources, details, and images.",
+    files: [
+      {
+        path: "ui/thinking-steps.tsx",
+        type: "registry:ui",
+      },
+    ],
+    name: "thinking-steps",
+    registryDependencies: ["accordion", "badge"],
+    title: "Thinking Steps",
+    type: "registry:ui",
+  },
+  {
+    dependencies: ["motion"],
+    description:
+      "A stepped questionnaire with single- or multi-select options, free-form answers, and skip.",
+    files: [
+      {
+        path: "ui/ask-user-questions.tsx",
+        type: "registry:ui",
+      },
+    ],
+    name: "ask-user-questions",
+    registryDependencies: ["button", "badge", "textarea"],
+    title: "Ask User Questions",
+    type: "registry:ui",
+  },
 ];

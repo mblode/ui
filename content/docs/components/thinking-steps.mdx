@@ -1,0 +1,86 @@
+---
+title: Thinking Steps
+description: A collapsible chain-of-thought stepper with sequential animation, source badges, expandable details, and images.
+component: true
+---
+
+<ComponentPreview name="thinking-steps-demo" description="A chain-of-thought stepper" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ui.blode.co/r/styles/default/thinking-steps"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install motion
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="thinking-steps" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  ThinkingStep,
+  ThinkingSteps,
+  ThinkingStepsContent,
+  ThinkingStepsHeader,
+} from "@/components/ui/thinking-steps";
+```
+
+```tsx
+<ThinkingSteps>
+  <ThinkingStepsHeader>Thinking</ThinkingStepsHeader>
+  <ThinkingStepsContent>
+    <ThinkingStep icon={SearchIcon} label="Searching the web" />
+    <ThinkingStep label="Synthesizing an answer" status="active" isLast />
+  </ThinkingStepsContent>
+</ThinkingSteps>
+```
+
+## Composition
+
+Use the following composition to build a `ThinkingSteps` block:
+
+```text
+ThinkingSteps
+├── ThinkingStepsHeader
+└── ThinkingStepsContent
+    ├── ThinkingStep
+    ├── ThinkingStep
+    │   └── ThinkingStepSources
+    │       └── ThinkingStepSource
+    └── ThinkingStep
+        └── ThinkingStepDetails
+```
+
+The `status` prop on `ThinkingStep` (`complete`, `active`, or `pending`) drives the shimmer on the
+active step; `pending` steps render nothing. Pass any `blode-icons-react` icon to `icon`.

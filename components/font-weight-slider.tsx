@@ -15,6 +15,7 @@ export function FontWeightSlider() {
           Font Weight: <span>{weight}</span>
         </label>
         <input
+          aria-label="Font weight"
           className="w-full"
           id="font-weight-slider"
           max="900"

@@ -5,7 +5,7 @@ export const config = {
   matcher: ["/((?!_next|api|\\.well-known|r/|[\\w-]+\\.\\w+).*)"],
 };
 
-const MARKDOWN_MEDIA_TYPE = /(^|,\s*)text\/markdown(\s*;|\s*,|\s*$)/i;
+const MARKDOWN_MEDIA_TYPE = /(^|,\s*)text\/markdown(\s*;|\s*,|\s*$)/iu;
 
 function prefersMarkdown(accept: string | null): boolean {
   if (!accept) {
@@ -19,7 +19,7 @@ export default function proxy(request: NextRequest) {
 
   if (prefersMarkdown(accept)) {
     const url = request.nextUrl.clone();
-    const originalPath = url.pathname.replace(/\/$/, "") || "/";
+    const originalPath = url.pathname.replace(/\/$/u, "") || "/";
     url.pathname = `/api/markdown${originalPath === "/" ? "" : originalPath}`;
     const rewritten = NextResponse.rewrite(url);
     rewritten.headers.set("Vary", "Accept");

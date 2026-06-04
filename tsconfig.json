@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "target": "es5",
+    "target": "ES2022",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -22,6 +21,7 @@
     ],
     "paths": {
       "@/*": ["./*"],
+      "types/*": ["./types/*"],
       "content-collections": ["./.content-collections/generated"]
     }
   },

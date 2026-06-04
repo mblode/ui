@@ -46,6 +46,7 @@ export const CurrencyInput = ({
 
     <div className="w-full">
       <CurrencyInputField
+        aria-invalid={hasError || undefined}
         className={cn(
           "input flex h-[var(--field-height)] w-full rounded-[var(--field-radius)] border border-input bg-card px-[var(--field-padding-x)] py-[var(--field-padding-y)] font-normal font-sans text-base text-foreground leading-snug shadow-input placeholder:text-placeholder-foreground focus:border-ring focus:outline-hidden focus:ring-2 focus:ring-ring/15 focus:ring-offset-1 focus:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50",
           {

@@ -1,4 +1,5 @@
 import type { Node } from "unist";
+
 export interface UnistNode extends Node {
   attributes?: {
     name: string;

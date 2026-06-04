@@ -91,8 +91,8 @@ function Calendar({
           "relative isolate z-0 rounded-l-(--cell-radius) bg-muted after:absolute after:inset-y-0 after:right-0 after:w-4 after:bg-muted",
           defaultClassNames.range_start,
         ),
+        month_grid: "w-full border-collapse",
         root: cn("w-fit", defaultClassNames.root),
-        table: "w-full border-collapse",
         today: cn(
           "rounded-(--cell-radius) bg-muted text-foreground data-[selected=true]:rounded-none",
           defaultClassNames.today,
@@ -111,6 +111,8 @@ function Calendar({
         ...classNames,
       }}
       components={{
+        // react-day-picker requires render components passed via the `components` prop
+        /* oxlint-disable react/no-unstable-nested-components */
         Chevron: ({ className, orientation, ...props }) => {
           if (orientation === "left") {
             return <ChevronLeftIcon className={cn("cn-rtl-flip size-4", className)} {...props} />;
@@ -133,6 +135,7 @@ function Calendar({
             </div>
           </td>
         ),
+        /* oxlint-enable react/no-unstable-nested-components */
         ...components,
       }}
       formatters={{

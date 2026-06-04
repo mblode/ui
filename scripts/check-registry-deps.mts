@@ -9,12 +9,12 @@ import { STYLE_BASE_DEPENDENCIES, STYLE_BASE_REGISTRY_DEPENDENCIES } from "../re
 const CHECKED_TYPES = new Set(["registry:ui", "registry:lib", "registry:block", "registry:base"]);
 const IGNORED_PACKAGES = new Set(["next", "react", "react-dom"]);
 
-const NODE_PREFIX_RE = /^node:/;
-const LEADING_AT_RE = /^@/;
-const HTTP_URL_RE = /^https?:\/\//;
-const SCOPED_WITH_VERSION_RE = /^(@[^/]+\/[^/@]+)(?:@.*)?$/;
-const UNSCOPED_DECLARED_WITH_VERSION_RE = /^([^/@]+)(?:@.*)?$/;
-const UNSCOPED_REGISTRY_WITH_VERSION_RE = /^([^@]+)(?:@.*)?$/;
+const NODE_PREFIX_RE = /^node:/u;
+const LEADING_AT_RE = /^@/u;
+const HTTP_URL_RE = /^https?:\/\//u;
+const SCOPED_WITH_VERSION_RE = /^(@[^/]+\/[^/@]+)(?:@.*)?$/u;
+const UNSCOPED_DECLARED_WITH_VERSION_RE = /^([^/@]+)(?:@.*)?$/u;
+const UNSCOPED_REGISTRY_WITH_VERSION_RE = /^([^@]+)(?:@.*)?$/u;
 
 const NODE_BUILTINS = new Set(
   builtinModules.flatMap((mod) => [mod, mod.replace(NODE_PREFIX_RE, "")]),

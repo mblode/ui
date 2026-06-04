@@ -70,6 +70,8 @@ export default function FormTanstackComplex() {
       emailNotifications: false,
       plan: "basic",
     },
+    // onSubmit renders a JSX toast description, not a nested component
+    // oxlint-disable-next-line react/no-unstable-nested-components
     onSubmit: async ({ value }) => {
       toast("You submitted the following values:", {
         classNames: {

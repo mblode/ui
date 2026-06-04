@@ -39,7 +39,7 @@ function CommandDialog({
   children?: React.ReactNode;
   className?: string;
   showCloseButton?: boolean;
-} & Omit<React.ComponentProps<typeof Dialog>, "children">) {
+}) {
   return (
     <Dialog {...props}>
       <DialogHeader className="sr-only">

@@ -120,6 +120,11 @@ export const docsConfig: DocsConfig = {
           title: "Alert Dialog",
         },
         {
+          href: "/docs/components/ask-user-questions",
+          items: [],
+          title: "Ask User Questions",
+        },
+        {
           href: "/docs/components/aspect-ratio",
           items: [],
           title: "Aspect Ratio",
@@ -173,6 +178,11 @@ export const docsConfig: DocsConfig = {
           href: "/docs/components/carousel",
           items: [],
           title: "Carousel",
+        },
+        {
+          href: "/docs/components/chat-message",
+          items: [],
+          title: "Chat Message",
         },
         {
           href: "/docs/components/circular-progress",
@@ -273,6 +283,11 @@ export const docsConfig: DocsConfig = {
           href: "/docs/components/input-group",
           items: [],
           title: "Input Group",
+        },
+        {
+          href: "/docs/components/input-message",
+          items: [],
+          title: "Input Message",
         },
         {
           href: "/docs/components/input-otp",
@@ -428,6 +443,16 @@ export const docsConfig: DocsConfig = {
           href: "/docs/components/textarea",
           items: [],
           title: "Textarea",
+        },
+        {
+          href: "/docs/components/thinking-indicator",
+          items: [],
+          title: "Thinking Indicator",
+        },
+        {
+          href: "/docs/components/thinking-steps",
+          items: [],
+          title: "Thinking Steps",
         },
         {
           href: "/docs/components/toggle",

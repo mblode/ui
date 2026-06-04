@@ -28,7 +28,7 @@ const formSchema = z.object({
     .string()
     .min(3, "Username must be at least 3 characters.")
     .max(10, "Username must be at most 10 characters.")
-    .regex(/^[a-zA-Z0-9_]+$/, "Username can only contain letters, numbers, and underscores."),
+    .regex(/^[a-zA-Z0-9_]+$/u, "Username can only contain letters, numbers, and underscores."),
 });
 
 export default function FormTanstackInput() {
@@ -36,6 +36,8 @@ export default function FormTanstackInput() {
     defaultValues: {
       username: "",
     },
+    // onSubmit renders a JSX toast description, not a nested component
+    // oxlint-disable-next-line react/no-unstable-nested-components
     onSubmit: async ({ value }) => {
       toast("You submitted the following values:", {
         classNames: {

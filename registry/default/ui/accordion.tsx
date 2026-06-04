@@ -222,10 +222,16 @@ type AccordionContentProps = ComponentProps<typeof AccordionPrimitive.Panel> &
     transition?: Transition;
   };
 
+const DEFAULT_ACCORDION_TRANSITION: Transition = {
+  damping: 22,
+  stiffness: 150,
+  type: "spring",
+};
+
 function AccordionContent({
   className,
   children,
-  transition = { damping: 22, stiffness: 150, type: "spring" },
+  transition = DEFAULT_ACCORDION_TRANSITION,
   ...props
 }: AccordionContentProps) {
   const { isOpen, canAnimate } = useAccordionItem();

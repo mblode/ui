@@ -2665,25 +2665,6 @@ export const examples: Registry["items"] = [
     type: "registry:example",
   },
   {
-    categories: ["calendar", "date"],
-    description: "A Persian calendar.",
-    files: [
-      {
-        path: "examples/calendar-hijri.tsx",
-        type: "registry:example",
-      },
-    ],
-    meta: {
-      container:
-        "w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0",
-      iframeHeight: "600px",
-      mobile: "component",
-    },
-    name: "calendar-hijri",
-    registryDependencies: ["calendar"],
-    type: "registry:example",
-  },
-  {
     files: [
       {
         path: "examples/circular-progress-demo.tsx",
@@ -2737,6 +2718,105 @@ export const examples: Registry["items"] = [
     ],
     name: "prompt-demo",
     registryDependencies: ["prompt", "button"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/thinking-indicator-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "thinking-indicator-demo",
+    registryDependencies: ["thinking-indicator"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/chat-message-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "chat-message-demo",
+    registryDependencies: ["chat-message", "button"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/chat-message-with-attachments.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "chat-message-with-attachments",
+    registryDependencies: ["chat-message"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/input-message-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "input-message-demo",
+    registryDependencies: ["input-message"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/input-message-with-attachments.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "input-message-with-attachments",
+    registryDependencies: ["input-message", "button"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/input-message-with-slots.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "input-message-with-slots",
+    registryDependencies: ["input-message", "button"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/thinking-steps-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "thinking-steps-demo",
+    registryDependencies: ["thinking-steps"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/ask-user-questions-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "ask-user-questions-demo",
+    registryDependencies: ["ask-user-questions"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/ask-user-questions-multi-select.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "ask-user-questions-multi-select",
+    registryDependencies: ["ask-user-questions"],
     type: "registry:example",
   },
 ];

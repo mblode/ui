@@ -43,83 +43,83 @@ export type PhoneInputProps = Omit<
     fallbackCountry?: RPNInput.Country;
     onChange?: (value: RPNInput.Value | "") => void;
     onClear?: () => void;
+    ref?: React.Ref<React.ComponentRef<typeof RPNInput.default>>;
   };
 
-const PhoneInput = React.forwardRef<React.ComponentRef<typeof RPNInput.default>, PhoneInputProps>(
-  (
-    {
-      className,
-      clearClassName,
-      clearable,
-      defaultCountry,
-      fallbackCountry = "US",
-      onChange,
-      onClear,
-      placeholder = "Enter phone number",
-      ...props
+function PhoneInput({
+  className,
+  clearClassName,
+  clearable,
+  defaultCountry,
+  fallbackCountry = "US",
+  onChange,
+  onClear,
+  placeholder = "Enter phone number",
+  ref,
+  ...props
+}: PhoneInputProps) {
+  const hasValue = Boolean(props.value);
+
+  const handleChange = React.useCallback(
+    (value?: RPNInput.Value) => {
+      onChange?.(value ?? "");
     },
-    ref,
-  ) => {
-    const hasValue = Boolean(props.value);
+    [onChange],
+  );
 
-    const handleChange = React.useCallback(
-      (value?: RPNInput.Value) => {
-        onChange?.(value ?? "");
-      },
-      [onChange],
-    );
+  const handleClear = React.useCallback(() => {
+    onClear?.();
 
-    const handleClear = React.useCallback(() => {
-      onClear?.();
+    if (!onClear) {
+      onChange?.("");
+    }
+  }, [onClear, onChange]);
 
-      if (!onClear) {
-        onChange?.("");
-      }
-    }, [onClear, onChange]);
+  return (
+    <div className="relative">
+      <RPNInput.default
+        className="flex"
+        countrySelectComponent={CountrySelect}
+        defaultCountry={defaultCountry ?? fallbackCountry}
+        flagComponent={FlagComponent}
+        inputClassName={className}
+        inputComponent={InputComponent}
+        onChange={handleChange}
+        placeholder={placeholder}
+        ref={ref}
+        {...props}
+      />
 
-    return (
-      <div className="relative">
-        <RPNInput.default
-          className="flex"
-          countrySelectComponent={CountrySelect}
-          defaultCountry={defaultCountry ?? fallbackCountry}
-          flagComponent={FlagComponent}
-          inputClassName={className}
-          inputComponent={InputComponent}
-          onChange={handleChange}
-          placeholder={placeholder}
-          ref={ref}
-          {...props}
-        />
+      {clearable && hasValue ? (
+        <div className="absolute top-0 right-0 flex flex-row gap-1 pr-3">
+          <button
+            aria-label="clear input"
+            className={cn(
+              "flex h-[var(--field-height)] cursor-pointer items-center justify-center p-0! text-muted-foreground",
+              clearClassName,
+            )}
+            onClick={handleClear}
+            tabIndex={-1}
+            type="button"
+          >
+            <CircleXFilledIcon className="size-5 text-muted-foreground/50" />
+          </button>
+        </div>
+      ) : null}
+    </div>
+  );
+}
 
-        {clearable && hasValue ? (
-          <div className="absolute top-0 right-0 flex flex-row gap-1 pr-3">
-            <button
-              aria-label="clear input"
-              className={cn(
-                "flex h-[var(--field-height)] cursor-pointer items-center justify-center p-0! text-muted-foreground",
-                clearClassName,
-              )}
-              onClick={handleClear}
-              tabIndex={-1}
-              type="button"
-            >
-              <CircleXFilledIcon className="size-5 text-muted-foreground/50" />
-            </button>
-          </div>
-        ) : null}
-      </div>
-    );
-  },
-);
-PhoneInput.displayName = "PhoneInput";
-
-const InputComponent = React.forwardRef<HTMLInputElement, InputProps & { inputClassName?: string }>(
-  ({ className, inputClassName, ...props }, ref) => (
+function InputComponent({
+  className,
+  inputClassName,
+  ref,
+  ...props
+}: InputProps & { inputClassName?: string; ref?: React.Ref<HTMLInputElement> }) {
+  return (
     <Input className={cn("rounded-s-none!", className, inputClassName)} ref={ref} {...props} />
-  ),
-);
-InputComponent.displayName = "InputComponent";
+  );
+}
 
 function CountrySelect({ disabled, onChange, options, value }: CountrySelectProps) {
   const selectedCountryLabel =

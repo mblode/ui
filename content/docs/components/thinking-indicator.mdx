@@ -1,0 +1,65 @@
+---
+title: Thinking Indicator
+description: An animated status indicator with a morphing glyph and cycling text for thinking or loading states.
+component: true
+---
+
+<ComponentPreview
+  name="thinking-indicator-demo"
+  description="A thinking indicator with a morphing glyph and cycling text"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ui.blode.co/r/styles/default/thinking-indicator"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install motion
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="thinking-indicator" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { ThinkingIndicator } from "@/components/ui/thinking-indicator";
+```
+
+```tsx
+<ThinkingIndicator />
+```
+
+Pass your own labels and cadence:
+
+```tsx
+<ThinkingIndicator words={["Reading", "Reasoning", "Drafting"]} interval={3000} />
+```

@@ -1500,6 +1500,138 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
+    "file-thumbnail": {
+      name: "file-thumbnail",
+      description:
+        "A square preview tile for an attached file — an image thumbnail or a file icon with name.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/default/ui/file-thumbnail.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/ui/file-thumbnail.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "chat-message": {
+      name: "chat-message",
+      description:
+        "A chat transcript entry for user and assistant messages, with attachments and a hover meta row.",
+      type: "registry:ui",
+      registryDependencies: ["file-thumbnail"],
+      files: [
+        {
+          path: "registry/default/ui/chat-message.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/ui/chat-message.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "input-message": {
+      name: "input-message",
+      description:
+        "A chat composer with an auto-resizing textarea, action slots, a send button, and drag-and-drop attachments.",
+      type: "registry:ui",
+      registryDependencies: ["button", "file-thumbnail"],
+      files: [
+        {
+          path: "registry/default/ui/input-message.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/ui/input-message.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "thinking-indicator": {
+      name: "thinking-indicator",
+      description:
+        "An animated status indicator with a morphing glyph and cycling text for thinking states.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/default/ui/thinking-indicator.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/ui/thinking-indicator.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "thinking-steps": {
+      name: "thinking-steps",
+      description:
+        "A collapsible chain-of-thought stepper with steps, sources, details, and images.",
+      type: "registry:ui",
+      registryDependencies: ["accordion", "badge"],
+      files: [
+        {
+          path: "registry/default/ui/thinking-steps.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/ui/thinking-steps.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "ask-user-questions": {
+      name: "ask-user-questions",
+      description:
+        "A stepped questionnaire with single- or multi-select options, free-form answers, and skip.",
+      type: "registry:ui",
+      registryDependencies: ["button", "badge", "textarea"],
+      files: [
+        {
+          path: "registry/default/ui/ask-user-questions.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/ui/ask-user-questions.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
     utils: {
       name: "utils",
       description: "Utility functions including cn() for merging Tailwind CSS classes.",
@@ -6640,32 +6772,6 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
-    "calendar-hijri": {
-      name: "calendar-hijri",
-      description: "A Persian calendar.",
-      type: "registry:example",
-      registryDependencies: ["calendar"],
-      files: [
-        {
-          path: "registry/default/examples/calendar-hijri.tsx",
-          type: "registry:example",
-          target: "",
-        },
-      ],
-      categories: ["calendar", "date"],
-      component: React.lazy(() =>
-        import("@/registry/default/examples/calendar-hijri.tsx").then((mod) => ({
-          default: resolveRegistryComponent(mod as Record<string, unknown>),
-        })),
-      ),
-      source: "",
-      meta: {
-        container:
-          "w-full bg-surface min-h-svh flex px-4 py-12 items-start md:py-20 justify-center min-w-0",
-        iframeHeight: "600px",
-        mobile: "component",
-      },
-    },
     "circular-progress-demo": {
       name: "circular-progress-demo",
       description: "",
@@ -6765,6 +6871,195 @@ export const Index: Record<string, unknown> = {
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/prompt-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "thinking-indicator-demo": {
+      name: "thinking-indicator-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["thinking-indicator"],
+      files: [
+        {
+          path: "registry/default/examples/thinking-indicator-demo.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/thinking-indicator-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "chat-message-demo": {
+      name: "chat-message-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["chat-message", "button"],
+      files: [
+        {
+          path: "registry/default/examples/chat-message-demo.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/chat-message-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "chat-message-with-attachments": {
+      name: "chat-message-with-attachments",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["chat-message"],
+      files: [
+        {
+          path: "registry/default/examples/chat-message-with-attachments.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/chat-message-with-attachments.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "input-message-demo": {
+      name: "input-message-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["input-message"],
+      files: [
+        {
+          path: "registry/default/examples/input-message-demo.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/input-message-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "input-message-with-attachments": {
+      name: "input-message-with-attachments",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["input-message", "button"],
+      files: [
+        {
+          path: "registry/default/examples/input-message-with-attachments.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/input-message-with-attachments.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "input-message-with-slots": {
+      name: "input-message-with-slots",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["input-message", "button"],
+      files: [
+        {
+          path: "registry/default/examples/input-message-with-slots.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/input-message-with-slots.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "thinking-steps-demo": {
+      name: "thinking-steps-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["thinking-steps"],
+      files: [
+        {
+          path: "registry/default/examples/thinking-steps-demo.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/thinking-steps-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "ask-user-questions-demo": {
+      name: "ask-user-questions-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["ask-user-questions"],
+      files: [
+        {
+          path: "registry/default/examples/ask-user-questions-demo.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/ask-user-questions-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "ask-user-questions-multi-select": {
+      name: "ask-user-questions-multi-select",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["ask-user-questions"],
+      files: [
+        {
+          path: "registry/default/examples/ask-user-questions-multi-select.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/ask-user-questions-multi-select.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
         })),
       ),

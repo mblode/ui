@@ -11,7 +11,7 @@ import {
 } from "blode-icons-react";
 import { cva } from "class-variance-authority";
 import type { VariantProps } from "class-variance-authority";
-import * as React from "react";
+import type * as React from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -44,7 +44,7 @@ const kbdVariants = cva(
   },
 );
 
-interface KbdProps extends React.ComponentPropsWithoutRef<"kbd">, VariantProps<typeof kbdVariants> {
+interface KbdProps extends React.ComponentProps<"kbd">, VariantProps<typeof kbdVariants> {
   icon?: KbdIcon;
 }
 
@@ -61,29 +61,24 @@ const iconMap: Record<KbdIcon, React.ReactNode> = {
   up: <ArrowUpIcon className="size-3" />,
 };
 
-const Kbd = React.forwardRef<React.ElementRef<"kbd">, KbdProps>(
-  ({ className, variant, children, icon, ...props }, ref) => {
-    const content = icon ? iconMap[icon] : children;
+function Kbd({ className, variant, children, icon, ...props }: KbdProps) {
+  const content = icon ? iconMap[icon] : children;
 
-    return (
-      <kbd className={cn(kbdVariants({ variant }), className)} data-slot="kbd" ref={ref} {...props}>
-        {content}
-      </kbd>
-    );
-  },
-);
-Kbd.displayName = "Kbd";
+  return (
+    <kbd className={cn(kbdVariants({ variant }), className)} data-slot="kbd" {...props}>
+      {content}
+    </kbd>
+  );
+}
 
-const KbdGroup = React.forwardRef<React.ElementRef<"kbd">, React.ComponentPropsWithoutRef<"kbd">>(
-  ({ className, ...props }, ref) => (
+function KbdGroup({ className, ...props }: React.ComponentProps<"kbd">) {
+  return (
     <kbd
       className={cn("inline-flex items-center gap-1", className)}
       data-slot="kbd-group"
-      ref={ref}
       {...props}
     />
-  ),
-);
-KbdGroup.displayName = "KbdGroup";
+  );
+}
 
 export { Kbd, KbdGroup };

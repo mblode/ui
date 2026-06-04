@@ -10,7 +10,7 @@ export function useMetaColor() {
   const { resolvedTheme } = useTheme();
 
   const metaColor = useMemo(
-    () => (resolvedTheme !== "dark" ? META_THEME_COLORS.light : META_THEME_COLORS.dark),
+    () => (resolvedTheme === "dark" ? META_THEME_COLORS.dark : META_THEME_COLORS.light),
     [resolvedTheme],
   );
 

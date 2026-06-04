@@ -96,13 +96,13 @@ export const defaultContrastPairs: ContrastPair[] = [
 
 export const DEFAULT_CONTRAST_PAIRS = defaultContrastPairs;
 
-const RGB_FUNCTION_REGEX = /^rgba?\(\s*(.+)\s*\)$/i;
-const HEX_COLOR_REGEX = /^#([\da-f]{3}|[\da-f]{4}|[\da-f]{6}|[\da-f]{8})$/i;
-const OKLCH_FUNCTION_REGEX = /^oklch\(\s*(.+)\s*\)$/i;
-const COLOR_SRGB_FUNCTION_REGEX = /^color\(\s*srgb\s+(.+)\)$/i;
-const WHITESPACE_REGEX = /\s+/;
-const NUMBER_REGEX = /^[+-]?(?:\d+\.?\d*|\.\d+)(?:e[+-]?\d+)?$/i;
-const ANGLE_REGEX = /^([+-]?(?:\d+\.?\d*|\.\d+)(?:e[+-]?\d+)?)(deg|grad|rad|turn)?$/i;
+const RGB_FUNCTION_REGEX = /^rgba?\(\s*(.+)\s*\)$/iu;
+const HEX_COLOR_REGEX = /^#([\da-f]{3}|[\da-f]{4}|[\da-f]{6}|[\da-f]{8})$/iu;
+const OKLCH_FUNCTION_REGEX = /^oklch\(\s*(.+)\s*\)$/iu;
+const COLOR_SRGB_FUNCTION_REGEX = /^color\(\s*srgb\s+(.+)\)$/iu;
+const WHITESPACE_REGEX = /\s+/u;
+const NUMBER_REGEX = /^[+-]?(?:\d+\.?\d*|\.\d+)(?:e[+-]?\d+)?$/iu;
+const ANGLE_REGEX = /^([+-]?(?:\d+\.?\d*|\.\d+)(?:e[+-]?\d+)?)(deg|grad|rad|turn)?$/iu;
 
 function clampColorChannel(value: number): number {
   return Math.max(0, Math.min(255, value));

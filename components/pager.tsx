@@ -51,8 +51,8 @@ export function getPagerForDoc(doc: Doc) {
       doc.slug === `${link?.href}/index` ||
       doc.slug === `${link?.href}/`,
   );
-  const prev = activeIndex !== 0 ? flattenedLinks[activeIndex - 1] : null;
-  const next = activeIndex !== flattenedLinks.length - 1 ? flattenedLinks[activeIndex + 1] : null;
+  const prev = activeIndex === 0 ? null : flattenedLinks[activeIndex - 1];
+  const next = activeIndex === flattenedLinks.length - 1 ? null : flattenedLinks[activeIndex + 1];
   return {
     next,
     prev,

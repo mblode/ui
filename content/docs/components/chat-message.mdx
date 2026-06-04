@@ -1,0 +1,71 @@
+---
+title: Chat Message
+description: A chat transcript entry that styles user and assistant messages, with attachments and a hover-revealed meta row.
+component: true
+---
+
+<ComponentPreview name="chat-message-demo" description="A user and assistant message exchange" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ui.blode.co/r/styles/default/chat-message"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install motion
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="chat-message" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { ChatMessage } from "@/components/ui/chat-message";
+```
+
+```tsx
+<ChatMessage from="user" time="Wednesday 6:08 PM">
+  Can you summarize the Q3 report?
+</ChatMessage>
+<ChatMessage from="assistant">Revenue grew 14% quarter-over-quarter.</ChatMessage>
+```
+
+## Examples
+
+### With attachments
+
+Pass `File` objects to `files` to render attachment thumbnails above the message. Images show a
+preview; other files show an icon and name.
+
+<ComponentPreview
+  name="chat-message-with-attachments"
+  description="A message with file attachments"
+/>

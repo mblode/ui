@@ -941,6 +941,87 @@
       ]
     },
     {
+      "name": "file-thumbnail",
+      "type": "registry:ui",
+      "title": "File Thumbnail",
+      "description": "A square preview tile for an attached file — an image thumbnail or a file icon with name.",
+      "files": [
+        {
+          "path": "registry/default/ui/file-thumbnail.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "chat-message",
+      "type": "registry:ui",
+      "title": "Chat Message",
+      "description": "A chat transcript entry for user and assistant messages, with attachments and a hover meta row.",
+      "dependencies": ["motion"],
+      "registryDependencies": ["file-thumbnail"],
+      "files": [
+        {
+          "path": "registry/default/ui/chat-message.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input-message",
+      "type": "registry:ui",
+      "title": "Input Message",
+      "description": "A chat composer with an auto-resizing textarea, action slots, a send button, and drag-and-drop attachments.",
+      "dependencies": ["motion", "react-textarea-autosize"],
+      "registryDependencies": ["button", "file-thumbnail"],
+      "files": [
+        {
+          "path": "registry/default/ui/input-message.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "thinking-indicator",
+      "type": "registry:ui",
+      "title": "Thinking Indicator",
+      "description": "An animated status indicator with a morphing glyph and cycling text for thinking states.",
+      "dependencies": ["motion"],
+      "files": [
+        {
+          "path": "registry/default/ui/thinking-indicator.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "thinking-steps",
+      "type": "registry:ui",
+      "title": "Thinking Steps",
+      "description": "A collapsible chain-of-thought stepper with steps, sources, details, and images.",
+      "dependencies": ["motion"],
+      "registryDependencies": ["accordion", "badge"],
+      "files": [
+        {
+          "path": "registry/default/ui/thinking-steps.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "ask-user-questions",
+      "type": "registry:ui",
+      "title": "Ask User Questions",
+      "description": "A stepped questionnaire with single- or multi-select options, free-form answers, and skip.",
+      "dependencies": ["motion"],
+      "registryDependencies": ["button", "badge", "textarea"],
+      "files": [
+        {
+          "path": "registry/default/ui/ask-user-questions.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "utils",
       "type": "registry:lib",
       "title": "Utils",

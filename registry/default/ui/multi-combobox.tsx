@@ -34,6 +34,7 @@ export interface MultiComboboxProps {
   onInputChange?: (value: string) => void;
   options: MultiComboboxOption[];
   placeholder?: string;
+  ref?: React.Ref<MultiComboboxRef>;
   startOpen?: boolean;
   values?: MultiComboboxOption[];
 }
@@ -56,259 +57,253 @@ const getFilteredOptions = (
   );
 };
 
-const MultiCombobox = React.forwardRef<MultiComboboxRef, MultiComboboxProps>(
-  (
-    {
-      options,
-      values,
-      onChange,
-      onInputChange,
-      startOpen,
-      placeholder = "Filter",
-      create = false,
-      id,
-      inputClassName,
-      disabled = false,
-      maxDropdownHeight = 250,
-    },
-    ref,
-  ) => {
-    const [inputValue, setInputValue] = React.useState("");
-    const [selectedItems, setSelectedItems] = React.useState(values ?? []);
+function MultiCombobox({
+  options,
+  values,
+  onChange,
+  onInputChange,
+  startOpen,
+  placeholder = "Filter",
+  create = false,
+  id,
+  inputClassName,
+  disabled = false,
+  maxDropdownHeight = 250,
+  ref,
+}: MultiComboboxProps) {
+  const [inputValue, setInputValue] = React.useState("");
+  const [selectedItems, setSelectedItems] = React.useState(values ?? []);
 
-    React.useEffect(() => {
-      setSelectedItems(values ?? []);
-    }, [values]);
+  React.useEffect(() => {
+    setSelectedItems(values ?? []);
+  }, [values]);
 
-    const items = React.useMemo(
-      () => getFilteredOptions(options, selectedItems, inputValue),
-      [options, selectedItems, inputValue],
-    );
+  const items = React.useMemo(
+    () => getFilteredOptions(options, selectedItems, inputValue),
+    [options, selectedItems, inputValue],
+  );
 
-    const { getSelectedItemProps, getDropdownProps, removeSelectedItem, addSelectedItem } =
-      useMultipleSelection({
-        onStateChange(changes) {
-          const uniqueItems = uniqBy(changes.selectedItems ?? [], ({ id }) => id);
-
-          switch (changes.type) {
-            case useMultipleSelection.stateChangeTypes.SelectedItemKeyDownBackspace:
-            case useMultipleSelection.stateChangeTypes.SelectedItemKeyDownDelete:
-            case useMultipleSelection.stateChangeTypes.DropdownKeyDownBackspace:
-            case useMultipleSelection.stateChangeTypes.FunctionRemoveSelectedItem:
-            case useMultipleSelection.stateChangeTypes.FunctionAddSelectedItem: {
-              setSelectedItems(uniqueItems);
-              break;
-            }
-            default: {
-              break;
-            }
-          }
-
-          onChange?.({
-            ...changes,
-            selectedItems: uniqueItems,
-          });
-        },
-        selectedItems,
-      });
-
-    const {
-      isOpen,
-      getToggleButtonProps,
-      getMenuProps,
-      getInputProps,
-      highlightedIndex,
-      getItemProps,
-      setInputValue: comboboxSetInputValue,
-      openMenu,
-    } = useCombobox({
-      defaultHighlightedIndex: 0,
-      initialIsOpen: startOpen,
-      itemToString(item) {
-        return item?.label || "";
-      },
-      items,
-      labelId: id,
+  const { getSelectedItemProps, getDropdownProps, removeSelectedItem, addSelectedItem } =
+    useMultipleSelection({
       onStateChange(changes) {
+        const uniqueItems = uniqBy(changes.selectedItems ?? [], ({ id }) => id);
+
         switch (changes.type) {
-          case useCombobox.stateChangeTypes.InputKeyDownEnter:
-          case useCombobox.stateChangeTypes.ItemClick: {
-            if (changes.selectedItem) {
-              addSelectedItem(changes.selectedItem);
-            }
-            setInputValue("");
-            comboboxSetInputValue("");
-            break;
-          }
-          case useCombobox.stateChangeTypes.InputChange: {
-            const nextValue = changes.inputValue ?? "";
-            setInputValue(nextValue);
-            onInputChange?.(nextValue);
+          case useMultipleSelection.stateChangeTypes.SelectedItemKeyDownBackspace:
+          case useMultipleSelection.stateChangeTypes.SelectedItemKeyDownDelete:
+          case useMultipleSelection.stateChangeTypes.DropdownKeyDownBackspace:
+          case useMultipleSelection.stateChangeTypes.FunctionRemoveSelectedItem:
+          case useMultipleSelection.stateChangeTypes.FunctionAddSelectedItem: {
+            setSelectedItems(uniqueItems);
             break;
           }
           default: {
             break;
           }
         }
+
+        onChange?.({
+          ...changes,
+          selectedItems: uniqueItems,
+        });
       },
-      selectedItem: null,
+      selectedItems,
     });
 
-    const clearInput = React.useCallback(() => {
-      setInputValue("");
-      comboboxSetInputValue("");
-    }, [comboboxSetInputValue]);
-
-    React.useImperativeHandle(
-      ref,
-      () => ({
-        clearInput,
-      }),
-      [clearInput],
-    );
-
-    const handleCreate = () => {
-      const normalizedInput = inputValue.trim();
-      if (!normalizedInput) {
-        return;
+  const {
+    isOpen,
+    getToggleButtonProps,
+    getMenuProps,
+    getInputProps,
+    highlightedIndex,
+    getItemProps,
+    setInputValue: comboboxSetInputValue,
+    openMenu,
+  } = useCombobox({
+    defaultHighlightedIndex: 0,
+    initialIsOpen: startOpen,
+    itemToString(item) {
+      return item?.label || "";
+    },
+    items,
+    labelId: id,
+    onStateChange(changes) {
+      switch (changes.type) {
+        case useCombobox.stateChangeTypes.InputKeyDownEnter:
+        case useCombobox.stateChangeTypes.ItemClick: {
+          if (changes.selectedItem) {
+            addSelectedItem(changes.selectedItem);
+          }
+          setInputValue("");
+          comboboxSetInputValue("");
+          break;
+        }
+        case useCombobox.stateChangeTypes.InputChange: {
+          const nextValue = changes.inputValue ?? "";
+          setInputValue(nextValue);
+          onInputChange?.(nextValue);
+          break;
+        }
+        default: {
+          break;
+        }
       }
+    },
+    selectedItem: null,
+  });
 
-      addSelectedItem({
-        id: snakeCase(normalizedInput),
-        label: normalizedInput,
-      });
+  const clearInput = React.useCallback(() => {
+    setInputValue("");
+    comboboxSetInputValue("");
+  }, [comboboxSetInputValue]);
 
-      clearInput();
-    };
+  React.useImperativeHandle(
+    ref,
+    () => ({
+      clearInput,
+    }),
+    [clearInput],
+  );
 
-    const shouldCreate = create && inputValue.trim().length > 0;
+  const handleCreate = () => {
+    const normalizedInput = inputValue.trim();
+    if (!normalizedInput) {
+      return;
+    }
 
-    return (
-      <Popover defaultOpen={startOpen} open={isOpen}>
-        <PopoverAnchor asChild>
-          <div
-            className={cn(
-              "flex min-h-[var(--field-height)] grow appearance-none rounded-[var(--field-radius)] border border-input bg-card bg-clip-border text-base shadow-input focus-within:border-ring focus-within:outline-hidden hover:border-input-hover",
-              inputClassName,
-            )}
+    addSelectedItem({
+      id: snakeCase(normalizedInput),
+      label: normalizedInput,
+    });
+
+    clearInput();
+  };
+
+  const shouldCreate = create && inputValue.trim().length > 0;
+
+  return (
+    <Popover defaultOpen={startOpen} open={isOpen}>
+      <PopoverAnchor asChild>
+        <div
+          className={cn(
+            "flex min-h-[var(--field-height)] grow appearance-none rounded-[var(--field-radius)] border border-input bg-card bg-clip-border text-base shadow-input focus-within:border-ring focus-within:outline-hidden hover:border-input-hover",
+            inputClassName,
+          )}
+        >
+          <button
+            aria-label="toggle menu"
+            className="relative flex grow cursor-pointer bg-none px-3"
+            disabled={disabled}
+            type="button"
+            {...getToggleButtonProps()}
           >
-            <button
-              aria-label="toggle menu"
-              className="relative flex grow cursor-pointer bg-none px-3"
-              disabled={disabled}
-              type="button"
-              {...getToggleButtonProps()}
-            >
-              <span className="flex min-h-[var(--field-height)] grow flex-wrap items-center gap-2 bg-transparent py-1">
-                {selectedItems.map((selectedItem, index) => (
-                  <Badge
-                    key={`${selectedItem.id}-${index}`}
-                    {...getSelectedItemProps({
-                      index,
-                      selectedItem,
-                    })}
-                    variant={selectedItem.variant}
-                  >
-                    {selectedItem.label}
-                    <span
-                      aria-label={`Remove ${selectedItem.label ?? "item"}`}
-                      className="cursor-pointer pl-1"
-                      onClick={(event) => {
+            <span className="flex min-h-[var(--field-height)] grow flex-wrap items-center gap-2 bg-transparent py-1">
+              {selectedItems.map((selectedItem, index) => (
+                <Badge
+                  key={`${selectedItem.id}-${index}`}
+                  {...getSelectedItemProps({
+                    index,
+                    selectedItem,
+                  })}
+                  variant={selectedItem.variant}
+                >
+                  {selectedItem.label}
+                  <span
+                    aria-label={`Remove ${selectedItem.label ?? "item"}`}
+                    className="cursor-pointer pl-1"
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      removeSelectedItem(selectedItem);
+                    }}
+                    onKeyDown={(event) => {
+                      if (event.key === "Enter" || event.key === " ") {
+                        event.preventDefault();
                         event.stopPropagation();
                         removeSelectedItem(selectedItem);
-                      }}
-                      onKeyDown={(event) => {
-                        if (event.key === "Enter" || event.key === " ") {
-                          event.preventDefault();
-                          event.stopPropagation();
-                          removeSelectedItem(selectedItem);
-                        }
-                      }}
-                      role="button"
-                      tabIndex={0}
-                    >
-                      <CrossSmallIcon className="size-3.5" />
-                    </span>
-                  </Badge>
-                ))}
-                <input
-                  className="grow border-none bg-transparent outline-none placeholder:text-placeholder-foreground"
-                  data-testid="multi-combobox-input"
-                  disabled={disabled}
-                  placeholder={selectedItems.length === 0 ? placeholder : ""}
-                  {...getInputProps(
-                    getDropdownProps({
-                      id,
-                      onClick: (event) => {
-                        event.stopPropagation();
-                        if (!disabled) {
-                          openMenu();
-                        }
-                      },
-                      onFocus: () => {
-                        if (!disabled) {
-                          openMenu();
-                        }
-                      },
-                      preventKeyAction: isOpen,
-                    }),
-                  )}
-                />
-              </span>
-              <div className="flex h-full items-center">
-                <ChevronDownIcon className="size-4 opacity-50" color="currentColor" />
-              </div>
-            </button>
-          </div>
-        </PopoverAnchor>
-
-        <PopoverContent
-          align="start"
-          asChild
-          className="popover-content fade-in-80 relative z-110 w-(--anchor-width) max-w-(--available-width) translate-y-1 animate-in overflow-hidden rounded-xl border border-border bg-popover p-0 text-popover-foreground shadow-soft"
-          onOpenAutoFocus={(event) => event.preventDefault()}
-          sideOffset={0}
-        >
-          <div
-            className="w-full overflow-y-auto p-1"
-            style={{ maxHeight: maxDropdownHeight }}
-            {...getMenuProps({}, { suppressRefError: true })}
-          >
-            {shouldCreate ? (
-              <button
-                className="w-full cursor-pointer px-4 py-2 text-left"
-                onClick={handleCreate}
-                type="button"
-              >
-                Create {inputValue}
-              </button>
-            ) : null}
-
-            {isOpen &&
-              items.map((item, index) => (
-                <div
-                  className={cn("cursor-pointer rounded-lg px-4 py-2", {
-                    "bg-accent text-accent-foreground": highlightedIndex === index,
-                  })}
-                  key={`${item.id}-${index}`}
-                  {...getItemProps({ index, item })}
-                >
-                  {item.label}
-                </div>
+                      }
+                    }}
+                    role="button"
+                    tabIndex={0}
+                  >
+                    <CrossSmallIcon className="size-3.5" />
+                  </span>
+                </Badge>
               ))}
+              <input
+                className="grow border-none bg-transparent outline-none placeholder:text-placeholder-foreground"
+                data-testid="multi-combobox-input"
+                placeholder={selectedItems.length === 0 ? placeholder : ""}
+                {...getInputProps(
+                  getDropdownProps({
+                    disabled,
+                    id,
+                    onClick: (event) => {
+                      event.stopPropagation();
+                      if (!disabled) {
+                        openMenu();
+                      }
+                    },
+                    onFocus: () => {
+                      if (!disabled) {
+                        openMenu();
+                      }
+                    },
+                    preventKeyAction: isOpen,
+                  }),
+                )}
+              />
+            </span>
+            <div className="flex h-full items-center">
+              <ChevronDownIcon className="size-4 opacity-50" color="currentColor" />
+            </div>
+          </button>
+        </div>
+      </PopoverAnchor>
 
-            {items.length === 0 ? (
-              <div className="cursor-not-allowed px-4 py-3 text-center">
-                <div className="text-muted-foreground">No results</div>
+      <PopoverContent
+        align="start"
+        asChild
+        className="popover-content fade-in-80 relative z-110 w-(--anchor-width) max-w-(--available-width) translate-y-1 animate-in overflow-hidden rounded-xl border border-border bg-popover p-0 text-popover-foreground shadow-soft"
+        onOpenAutoFocus={(event) => event.preventDefault()}
+        sideOffset={0}
+      >
+        <div
+          className="w-full overflow-y-auto p-1"
+          style={{ maxHeight: maxDropdownHeight }}
+          {...getMenuProps({}, { suppressRefError: true })}
+        >
+          {shouldCreate ? (
+            <button
+              className="w-full cursor-pointer px-4 py-2 text-left"
+              onClick={handleCreate}
+              type="button"
+            >
+              Create {inputValue}
+            </button>
+          ) : null}
+
+          {isOpen &&
+            items.map((item, index) => (
+              <div
+                className={cn("cursor-pointer rounded-lg px-4 py-2", {
+                  "bg-accent text-accent-foreground": highlightedIndex === index,
+                })}
+                key={`${item.id}-${index}`}
+                {...getItemProps({ index, item })}
+              >
+                {item.label}
               </div>
-            ) : null}
-          </div>
-        </PopoverContent>
-      </Popover>
-    );
-  },
-);
+            ))}
 
-MultiCombobox.displayName = "MultiCombobox";
+          {items.length === 0 ? (
+            <div className="cursor-not-allowed px-4 py-3 text-center">
+              <div className="text-muted-foreground">No results</div>
+            </div>
+          ) : null}
+        </div>
+      </PopoverContent>
+    </Popover>
+  );
+}
 
 export { MultiCombobox };

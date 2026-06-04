@@ -50,6 +50,8 @@ function InputGroupAddon({
   ...props
 }: React.ComponentProps<"div"> & VariantProps<typeof inputGroupAddonVariants>) {
   return (
+    // Click-to-focus is a mouse-only affordance; the input stays directly keyboard-focusable.
+    // oxlint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
     <div
       className={cn(inputGroupAddonVariants({ align }), className)}
       data-align={align}

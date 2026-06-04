@@ -1,0 +1,79 @@
+---
+title: Input Message
+description: A chat composer with an auto-resizing textarea, action slots, a send button, and drag-and-drop attachments.
+component: true
+---
+
+<ComponentPreview name="input-message-demo" description="A chat message composer" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ui.blode.co/r/styles/default/input-message"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install motion react-textarea-autosize
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="input-message" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { InputMessage } from "@/components/ui/input-message";
+```
+
+```tsx
+const [value, setValue] = useState("");
+
+<InputMessage value={value} onValueChange={setValue} onSend={(text) => send(text)} />;
+```
+
+## Examples
+
+### With attachments
+
+Wire the `leftSlot` render function to `openFilePicker`, and control attachments with `files` /
+`onFilesChange`. Files can also be dropped directly onto the composer.
+
+<ComponentPreview
+  name="input-message-with-attachments"
+  description="A composer with an attach button and file previews"
+/>
+
+### With slots
+
+Both `leftSlot` and `rightSlot` accept arbitrary content rendered around the built-in send button.
+
+<ComponentPreview
+  name="input-message-with-slots"
+  description="A composer with left and right action slots"
+/>

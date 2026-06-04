@@ -94,8 +94,8 @@ function toGoogleFontFamilyParam(fontFamily: string): string {
 function getFontStylesheetId(fontFamily: string): string {
   return `theme-preview-font-${fontFamily
     .toLowerCase()
-    .replaceAll(/[^a-z0-9]+/g, "-")
-    .replaceAll(/^-+|-+$/g, "")}`;
+    .replaceAll(/[^a-z0-9]+/gu, "-")
+    .replaceAll(/^-+|-+$/gu, "")}`;
 }
 
 const LOCAL_FONTS = new Set<ThemeFontFamily>(["Glide"]);

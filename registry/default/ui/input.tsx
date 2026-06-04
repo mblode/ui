@@ -16,22 +16,20 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
   rightControl?: React.ReactNode | null;
 }
 
-const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  (
-    {
-      className,
-      clearClassName,
-      hasError,
-      clearable,
-      onClear,
-      leftAddon,
-      rightAddon,
-      leftControl,
-      rightControl,
-      ...props
-    },
-    ref,
-  ) => (
+function Input({
+  className,
+  clearClassName,
+  hasError,
+  clearable,
+  onClear,
+  leftAddon,
+  rightAddon,
+  leftControl,
+  rightControl,
+  ref,
+  ...props
+}: InputProps & { ref?: React.Ref<HTMLInputElement> }) {
+  return (
     <label
       className={cn("relative w-full", {
         "input-group": !!leftAddon || !!rightAddon,
@@ -47,6 +45,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
       <div className="w-full">
         <input
+          aria-invalid={hasError || undefined}
           className={cn(
             "input flex h-[var(--field-height)] w-full rounded-[var(--field-radius)] border border-input bg-card px-[var(--field-padding-x)] py-[var(--field-padding-y)] font-normal font-sans text-base text-foreground leading-snug shadow-input transition-colors placeholder:text-placeholder-foreground hover:border-input-hover focus:border-ring focus:outline-hidden focus:ring-2 focus:ring-ring/15 focus:ring-offset-1 focus:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50",
             {
@@ -94,8 +93,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
       {rightAddon && <span className="shrink-0 cursor-pointer">{rightAddon}</span>}
     </label>
-  ),
-);
-Input.displayName = "Input";
+  );
+}
 
 export { Input };

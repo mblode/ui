@@ -1,0 +1,16 @@
+{
+  "$schema": "https://ui.blode.co/schema/registry-item.json",
+  "name": "file-thumbnail",
+  "title": "File Thumbnail",
+  "author": "Matthew Blode",
+  "description": "A square preview tile for an attached file — an image thumbnail or a file icon with name.",
+  "files": [
+    {
+      "path": "ui/file-thumbnail.tsx",
+      "content": "\"use client\";\n\nimport { FileIcon } from \"blode-icons-react\";\nimport * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ninterface FileThumbnailProps extends Omit<React.ComponentProps<\"div\">, \"style\"> {\n  /** The file to preview. Images render a thumbnail; everything else shows a\n   *  file icon with the truncated filename. */\n  file: File;\n  /** Side length of the square tile in pixels. Defaults to 64. */\n  size?: number;\n}\n\n// ─── FileThumbnail ──────────────────────────────────────────────────────────\n// A square preview tile for an attached file. Images render via an object URL\n// (revoked on unmount); all other types fall back to a file icon + name. No\n// PDF rasterization — keeps the component dependency-free.\nfunction FileThumbnail({ file, size = 64, className, ...props }: FileThumbnailProps) {\n  const isImage = file.type.startsWith(\"image/\");\n  const [url, setUrl] = React.useState<string | null>(null);\n\n  React.useEffect(() => {\n    if (!isImage) {\n      return;\n    }\n    const objectUrl = URL.createObjectURL(file);\n    setUrl(objectUrl);\n    return () => URL.revokeObjectURL(objectUrl);\n  }, [file, isImage]);\n\n  return (\n    <div\n      className={cn(\n        \"relative flex shrink-0 flex-col items-center justify-center gap-1 overflow-hidden rounded-xl border border-border bg-card\",\n        className,\n      )}\n      data-slot=\"file-thumbnail\"\n      style={{ height: size, width: size }}\n      {...props}\n    >\n      {isImage && url ? (\n        // eslint-disable-next-line next/no-img-element -- object-URL blob preview, not a remote asset\n        <img alt={file.name} className=\"h-full w-full object-cover\" src={url} />\n      ) : (\n        <>\n          <FileIcon className=\"size-5 text-muted-foreground\" />\n          <span className=\"max-w-full truncate px-1.5 text-[10px] text-muted-foreground leading-none\">\n            {file.name}\n          </span>\n        </>\n      )}\n    </div>\n  );\n}\n\nexport { FileThumbnail };\nexport type { FileThumbnailProps };\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ],
+  "type": "registry:ui"
+}

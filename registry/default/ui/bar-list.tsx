@@ -23,6 +23,8 @@ interface BarListProps<
   valueFormatter?: (value: number) => React.ReactNode;
 }
 
+const EMPTY_BAR_LIST_DATA: never[] = [];
+
 function defaultValueFormatter(value: number): string {
   return value.toLocaleString();
 }
@@ -34,7 +36,7 @@ function defaultLabelFormatter(label: string): string {
 function BarList<T extends object = Record<string, never>>({
   className,
   color = "hsl(var(--chart-1))",
-  data = [],
+  data = EMPTY_BAR_LIST_DATA,
   labelFormatter = defaultLabelFormatter,
   showAnimation = false,
   sortOrder = "descending",

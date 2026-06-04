@@ -53,7 +53,7 @@ export async function GET(_request: Request, { params }: RouteParams) {
   }
 
   if (path === "docs" || path.startsWith("docs/")) {
-    const docSlug = path === "docs" ? "" : path.replace(/^docs\//, "");
+    const docSlug = path === "docs" ? "" : path.replace(/^docs\//u, "");
     const doc = allDocs.find((entry) => entry.slugAsParams === docSlug && entry.published);
     if (doc) {
       return markdownResponse(buildMarkdown(doc.title, doc.description, doc.body.raw));

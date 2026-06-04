@@ -25,7 +25,7 @@ const CONFIG = {
 
 // --- Frontmatter parser ---
 function parseFrontmatter(content) {
-  const match = content.match(/^---\n([\s\S]*?)\n---/);
+  const match = content.match(/^---\n([\s\S]*?)\n---/u);
   if (!match) {
     throw new Error("No YAML frontmatter found in SKILL.md");
   }
