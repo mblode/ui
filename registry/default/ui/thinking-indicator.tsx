@@ -25,7 +25,7 @@ function ShimmerText({ children, className }: { children: React.ReactNode; class
   return (
     <motion.span
       animate={{ backgroundPosition: ["0% 0", "100% 0"] }}
-      className={cn("bg-clip-text text-transparent leading-[1.22]", className)}
+      className={cn("bg-clip-text text-transparent leading-[1.22] py-1", className)}
       style={{ backgroundImage: SHIMMER_GRADIENT, backgroundSize: "300% 100%" }}
       transition={{ duration: 1.5, ease: "easeInOut", repeat: Number.POSITIVE_INFINITY }}
     >
