@@ -25,7 +25,7 @@ function ShimmerText({ children, className }: { children: React.ReactNode; class
   return (
     <motion.span
       animate={{ backgroundPosition: ["0% 0", "100% 0"] }}
-      className={cn("bg-clip-text text-transparent", className)}
+      className={cn("bg-clip-text text-transparent leading-[1.22]", className)}
       style={{ backgroundImage: SHIMMER_GRADIENT, backgroundSize: "300% 100%" }}
       transition={{ duration: 1.5, ease: "easeInOut", repeat: Number.POSITIVE_INFINITY }}
     >
@@ -97,7 +97,7 @@ function ThinkingIndicator({
           }}
         />
       </motion.svg>
-      <span className="inline-grid overflow-hidden font-medium text-[13px] leading-[1.22]">
+      <span className="inline-grid overflow-hidden font-medium text-[13px]">
         <span aria-hidden className="invisible col-start-1 row-start-1">
           {longest}
         </span>
