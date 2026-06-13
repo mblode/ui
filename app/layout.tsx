@@ -26,6 +26,18 @@ const glide = localFont({
   weight: "400 900",
 });
 
+const glideMono = localFont({
+  display: "swap",
+  src: [
+    {
+      path: "../public/glide-mono.woff2",
+      style: "normal",
+    },
+  ],
+  variable: "--font-glide-mono",
+  weight: "400",
+});
+
 import type { Metadata, Viewport } from "next";
 
 export const metadata: Metadata = {
@@ -63,6 +75,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         className={cn(
           "relative flex w-full flex-col justify-center overflow-x-hidden scroll-smooth bg-background font-sans antialiased [--header-height:calc(var(--spacing)*14)]",
           glide.variable,
+          glideMono.variable,
         )}
       >
         <JotaiProvider>
