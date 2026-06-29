@@ -19,7 +19,7 @@ export function FontWeightSlider() {
           className="w-full"
           id="font-weight-slider"
           max="900"
-          min="400"
+          min="100"
           onChange={(e) => setWeight(Number(e.target.value))}
           step="1"
           type="range"
