@@ -23,7 +23,7 @@ const glide = localFont({
     },
   ],
   variable: "--font-glide",
-  weight: "100 900",
+  weight: "100 950",
 });
 
 const glideMono = localFont({

@@ -18,7 +18,7 @@ export function FontWeightSlider() {
           aria-label="Font weight"
           className="w-full"
           id="font-weight-slider"
-          max="900"
+          max="950"
           min="100"
           onChange={(e) => setWeight(Number(e.target.value))}
           step="1"
