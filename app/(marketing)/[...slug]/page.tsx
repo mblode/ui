@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { Mdx } from "@/components/mdx-components";
 import { siteConfig } from "@/config/site";
 import { env } from "@/env.mjs";
-import { absoluteUrl } from "@/lib/utils";
+import { absoluteUrl, seoDescription } from "@/lib/utils";
 
 interface PageProps {
   params: Promise<{
@@ -37,10 +37,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   ogUrl.searchParams.set("title", page.title);
   ogUrl.searchParams.set("description", page.description || siteConfig.description);
 
+  const description = seoDescription(page.description || siteConfig.description);
+
   return {
-    description: page.description,
+    description,
     openGraph: {
-      description: page.description,
+      description,
       images: [
         {
           height: 630,
@@ -55,7 +57,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: page.title,
     twitter: {
       card: "summary_large_image",
-      description: page.description,
+      description,
       images: [ogUrl.toString()],
       title: page.title,
     },

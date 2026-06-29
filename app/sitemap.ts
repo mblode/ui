@@ -12,13 +12,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       url: `${protocol}://${domain}`,
     },
+    {
+      lastModified: new Date(),
+      url: `${protocol}://${domain}/theme-visualizer`,
+    },
     ...allPages.map((post) => ({
       lastModified: new Date(),
       url: `${protocol}://${domain}/${post.slugAsParams}`,
     })),
     ...allDocs.map((post) => ({
       lastModified: post.date,
-      url: `${protocol}://${domain}/docs/${post.slugAsParams}`,
+      url: `${protocol}://${domain}/docs${post.slugAsParams ? `/${post.slugAsParams}` : ""}`,
     })),
   ];
 }

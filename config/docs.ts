@@ -12,7 +12,7 @@ export const docsConfig: DocsConfig = {
       title: "Docs",
     },
     {
-      href: "/components",
+      href: "/docs/components",
       title: "Components",
     },
     {

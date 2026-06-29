@@ -5,9 +5,40 @@ import { twMerge } from "tailwind-merge";
 import { env } from "@/env.mjs";
 
 const WHITESPACE_REGEX = /\s+/u;
+const MULTISPACE_REGEX = /\s+/gu;
+const SENTENCE_END_REGEX = /[.!?]$/u;
+const META_DESCRIPTION_MIN = 120;
+const META_DESCRIPTION_MAX = 160;
+const META_DESCRIPTION_SUFFIX =
+  "Part of Blode UI — an open-source React and Tailwind CSS component registry for building accessible, modern Next.js and React interfaces.";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
+}
+
+/**
+ * Builds a 120-160 character meta description from a doc's short summary.
+ * Terse component summaries are padded with shared product context so every
+ * page ships a unique, well-sized description; the unique summary stays at the
+ * front, and longer text is trimmed on a word boundary.
+ */
+export function seoDescription(summary: string): string {
+  const base = summary.trim().replaceAll(MULTISPACE_REGEX, " ");
+  const sentence = SENTENCE_END_REGEX.test(base) ? base : `${base}.`;
+
+  let result = sentence;
+  if (result.length < META_DESCRIPTION_MIN) {
+    result = `${sentence} ${META_DESCRIPTION_SUFFIX}`;
+  }
+
+  if (result.length > META_DESCRIPTION_MAX) {
+    const cut = result.slice(0, META_DESCRIPTION_MAX - 1);
+    const lastSpace = cut.lastIndexOf(" ");
+    const end = lastSpace > META_DESCRIPTION_MIN ? lastSpace : META_DESCRIPTION_MAX - 1;
+    result = `${cut.slice(0, end).trimEnd()}…`;
+  }
+
+  return result;
 }
 
 export function humanize(name: string): string {
@@ -63,11 +94,13 @@ export function constructMetadata({
   title = "Blode UI - Modern React + Tailwind CSS components",
   description = "Blode UI is a curated collection of the best landing page components built using React + Tailwind CSS + Motion",
   image = absoluteUrl("/opengraph-image"),
+  url = "https://ui.blode.co",
   ...props
 }: {
   title?: string;
   description?: string;
   image?: string;
+  url?: string;
   [key: string]: Metadata[keyof Metadata];
 }): Metadata {
   return {
@@ -93,6 +126,7 @@ export function constructMetadata({
       ],
       title,
       type: "website",
+      url,
     },
     title,
     twitter: {

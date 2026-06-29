@@ -9,7 +9,7 @@ import { Mdx } from "@/components/mdx-components";
 import { getPagerForDoc } from "@/components/pager";
 import { TableOfContents } from "@/components/toc";
 import { getTableOfContents } from "@/lib/toc";
-import { absoluteUrl } from "@/lib/utils";
+import { absoluteUrl, seoDescription } from "@/lib/utils";
 
 interface DocPageProps {
   params: Promise<{
@@ -36,10 +36,15 @@ export async function generateMetadata({ params }: DocPageProps): Promise<Metada
     return {};
   }
 
+  const description = seoDescription(doc.description);
+  const title = doc.component
+    ? `${doc.title} — React Component | Blode UI`
+    : `${doc.title} | Blode UI`;
+
   return {
-    description: doc.description,
+    description,
     openGraph: {
-      description: doc.description,
+      description,
       images: [
         {
           height: 630,
@@ -51,11 +56,11 @@ export async function generateMetadata({ params }: DocPageProps): Promise<Metada
       type: "article",
       url: absoluteUrl(doc.slug),
     },
-    title: `${doc.title} | Blode UI`,
+    title,
     twitter: {
       card: "summary_large_image",
       creator: "@mblode",
-      description: doc.description,
+      description,
       images: [doc.image],
       title: doc.title,
     },
