@@ -1,5 +1,29 @@
 [
   {
+    "name": "blode",
+    "type": "registry:base",
+    "title": "Blode UI",
+    "description": "Blode UI design-system base built on Base UI.",
+    "dependencies": [
+      "@base-ui/react",
+      "tw-animate-css",
+      "class-variance-authority",
+      "blode-icons-react"
+    ],
+    "registryDependencies": ["utils"],
+    "config": {
+      "style": "base-blode",
+      "tailwind": {
+        "baseColor": "neutral",
+        "cssVariables": true
+      },
+      "iconLibrary": "blode-icons-react",
+      "registries": {
+        "@blode": "https://ui.blode.co/r/{name}.json"
+      }
+    }
+  },
+  {
     "name": "accordion",
     "type": "registry:ui",
     "title": "Accordion",
@@ -1014,6 +1038,72 @@
     "files": [
       {
         "path": "ui/ask-user-questions.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "bubble",
+    "type": "registry:ui",
+    "title": "Bubble",
+    "description": "A message surface for chat interfaces, with variants, alignment, reactions, and composable content.",
+    "dependencies": ["@base-ui/react"],
+    "files": [
+      {
+        "path": "ui/bubble.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "message",
+    "type": "registry:ui",
+    "title": "Message",
+    "description": "A row primitive for chat transcripts, pairing an avatar with content, header, and footer, aligned to the start or end.",
+    "files": [
+      {
+        "path": "ui/message.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "message-scroller",
+    "type": "registry:ui",
+    "title": "Message Scroller",
+    "description": "A chat scroll container that anchors turns, opens saved transcripts, follows streamed responses, loads history without jumping, and jumps to any message.",
+    "dependencies": ["@shadcn/react"],
+    "registryDependencies": ["button"],
+    "files": [
+      {
+        "path": "ui/message-scroller.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "attachment",
+    "type": "registry:ui",
+    "title": "Attachment",
+    "description": "A card for files and images with upload, processing, error, and done states, an optional full-card trigger, and a scrollable group.",
+    "dependencies": ["@base-ui/react"],
+    "registryDependencies": ["button"],
+    "files": [
+      {
+        "path": "ui/attachment.tsx",
+        "type": "registry:ui"
+      }
+    ]
+  },
+  {
+    "name": "marker",
+    "type": "registry:ui",
+    "title": "Marker",
+    "description": "A compact inline status line for activity feeds and transcripts, with optional icon, separator, and border variants.",
+    "dependencies": ["@base-ui/react"],
+    "files": [
+      {
+        "path": "ui/marker.tsx",
         "type": "registry:ui"
       }
     ]

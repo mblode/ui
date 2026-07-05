@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.blode.co/schema/registry-item.json",
+  "name": "blode",
+  "title": "Blode UI",
+  "author": "Matthew Blode",
+  "description": "Blode UI design-system base built on Base UI.",
+  "dependencies": [
+    "@base-ui/react",
+    "tw-animate-css",
+    "class-variance-authority",
+    "blode-icons-react"
+  ],
+  "registryDependencies": ["utils"],
+  "type": "registry:base",
+  "config": {
+    "style": "base-blode",
+    "tailwind": {
+      "baseColor": "neutral",
+      "cssVariables": true
+    },
+    "iconLibrary": "blode-icons-react",
+    "registries": {
+      "@blode": "https://ui.blode.co/r/{name}.json"
+    }
+  }
+}

@@ -1632,6 +1632,116 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
+    bubble: {
+      name: "bubble",
+      description:
+        "A message surface for chat interfaces, with variants, alignment, reactions, and composable content.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/default/ui/bubble.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/ui/bubble.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    message: {
+      name: "message",
+      description:
+        "A row primitive for chat transcripts, pairing an avatar with content, header, and footer, aligned to the start or end.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/default/ui/message.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/ui/message.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "message-scroller": {
+      name: "message-scroller",
+      description:
+        "A chat scroll container that anchors turns, opens saved transcripts, follows streamed responses, loads history without jumping, and jumps to any message.",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/default/ui/message-scroller.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/ui/message-scroller.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    attachment: {
+      name: "attachment",
+      description:
+        "A card for files and images with upload, processing, error, and done states, an optional full-card trigger, and a scrollable group.",
+      type: "registry:ui",
+      registryDependencies: ["button"],
+      files: [
+        {
+          path: "registry/default/ui/attachment.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/ui/attachment.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    marker: {
+      name: "marker",
+      description:
+        "A compact inline status line for activity feeds and transcripts, with optional icon, separator, and border variants.",
+      type: "registry:ui",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/default/ui/marker.tsx",
+          type: "registry:ui",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/ui/marker.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
     utils: {
       name: "utils",
       description: "Utility functions including cn() for merging Tailwind CSS classes.",
@@ -7060,6 +7170,707 @@ export const Index: Record<string, unknown> = {
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/ask-user-questions-multi-select.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "bubble-demo": {
+      name: "bubble-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["bubble"],
+      files: [
+        {
+          path: "registry/default/examples/bubble-demo.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/bubble-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "bubble-group-demo": {
+      name: "bubble-group-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["bubble"],
+      files: [
+        {
+          path: "registry/default/examples/bubble-group-demo.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/bubble-group-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "bubble-variants": {
+      name: "bubble-variants",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["bubble"],
+      files: [
+        {
+          path: "registry/default/examples/bubble-variants.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/bubble-variants.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "bubble-alignment": {
+      name: "bubble-alignment",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["bubble"],
+      files: [
+        {
+          path: "registry/default/examples/bubble-alignment.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/bubble-alignment.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "bubble-reactions": {
+      name: "bubble-reactions",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["bubble", "button", "sonner"],
+      files: [
+        {
+          path: "registry/default/examples/bubble-reactions.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/bubble-reactions.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "bubble-tooltip": {
+      name: "bubble-tooltip",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["bubble", "button", "tooltip"],
+      files: [
+        {
+          path: "registry/default/examples/bubble-tooltip.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/bubble-tooltip.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "bubble-popover": {
+      name: "bubble-popover",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["bubble", "button", "popover"],
+      files: [
+        {
+          path: "registry/default/examples/bubble-popover.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/bubble-popover.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "bubble-collapsible": {
+      name: "bubble-collapsible",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["bubble", "button", "collapsible"],
+      files: [
+        {
+          path: "registry/default/examples/bubble-collapsible.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/bubble-collapsible.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "bubble-link-button": {
+      name: "bubble-link-button",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["bubble", "button", "sonner"],
+      files: [
+        {
+          path: "registry/default/examples/bubble-link-button.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/bubble-link-button.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "message-demo": {
+      name: "message-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["message", "bubble", "avatar", "marker"],
+      files: [
+        {
+          path: "registry/default/examples/message-demo.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/message-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "message-avatar": {
+      name: "message-avatar",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["message", "bubble", "avatar"],
+      files: [
+        {
+          path: "registry/default/examples/message-avatar.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/message-avatar.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "message-group": {
+      name: "message-group",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["message", "bubble", "avatar"],
+      files: [
+        {
+          path: "registry/default/examples/message-group.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/message-group.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "message-header-footer": {
+      name: "message-header-footer",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["message", "bubble"],
+      files: [
+        {
+          path: "registry/default/examples/message-header-footer.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/message-header-footer.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "message-actions": {
+      name: "message-actions",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["message", "bubble", "button"],
+      files: [
+        {
+          path: "registry/default/examples/message-actions.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/message-actions.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "message-attachment": {
+      name: "message-attachment",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["message", "attachment", "bubble"],
+      files: [
+        {
+          path: "registry/default/examples/message-attachment.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/message-attachment.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "message-scroller-demo": {
+      name: "message-scroller-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["message-scroller", "message", "bubble", "button"],
+      files: [
+        {
+          path: "registry/default/examples/message-scroller-demo.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/message-scroller-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "message-scroller-group-chat": {
+      name: "message-scroller-group-chat",
+      description: "",
+      type: "registry:example",
+      registryDependencies: [
+        "message-scroller",
+        "message",
+        "bubble",
+        "marker",
+        "card",
+        "button",
+        "tooltip",
+      ],
+      files: [
+        {
+          path: "registry/default/examples/message-scroller-group-chat.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/message-scroller-group-chat.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "message-scroller-opening-position": {
+      name: "message-scroller-opening-position",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["message-scroller", "message", "bubble", "card", "tabs"],
+      files: [
+        {
+          path: "registry/default/examples/message-scroller-opening-position.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/message-scroller-opening-position.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "message-scroller-state": {
+      name: "message-scroller-state",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["message-scroller", "message", "bubble", "card"],
+      files: [
+        {
+          path: "registry/default/examples/message-scroller-state.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/message-scroller-state.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "attachment-demo": {
+      name: "attachment-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["attachment", "spinner"],
+      files: [
+        {
+          path: "registry/default/examples/attachment-demo.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/attachment-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "attachment-states": {
+      name: "attachment-states",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["attachment", "spinner"],
+      files: [
+        {
+          path: "registry/default/examples/attachment-states.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/attachment-states.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "attachment-sizes": {
+      name: "attachment-sizes",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["attachment"],
+      files: [
+        {
+          path: "registry/default/examples/attachment-sizes.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/attachment-sizes.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "attachment-image": {
+      name: "attachment-image",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["attachment"],
+      files: [
+        {
+          path: "registry/default/examples/attachment-image.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/attachment-image.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "attachment-group": {
+      name: "attachment-group",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["attachment"],
+      files: [
+        {
+          path: "registry/default/examples/attachment-group.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/attachment-group.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "attachment-trigger": {
+      name: "attachment-trigger",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["attachment", "dialog"],
+      files: [
+        {
+          path: "registry/default/examples/attachment-trigger.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/attachment-trigger.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "marker-demo": {
+      name: "marker-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["marker", "spinner"],
+      files: [
+        {
+          path: "registry/default/examples/marker-demo.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/marker-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "marker-variants": {
+      name: "marker-variants",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["marker"],
+      files: [
+        {
+          path: "registry/default/examples/marker-variants.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/marker-variants.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "marker-icon": {
+      name: "marker-icon",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["marker"],
+      files: [
+        {
+          path: "registry/default/examples/marker-icon.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/marker-icon.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "marker-separator": {
+      name: "marker-separator",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["marker"],
+      files: [
+        {
+          path: "registry/default/examples/marker-separator.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/marker-separator.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "marker-border": {
+      name: "marker-border",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["marker"],
+      files: [
+        {
+          path: "registry/default/examples/marker-border.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/marker-border.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "marker-status": {
+      name: "marker-status",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["marker", "spinner"],
+      files: [
+        {
+          path: "registry/default/examples/marker-status.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/marker-status.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "marker-link-button": {
+      name: "marker-link-button",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["marker", "sonner"],
+      files: [
+        {
+          path: "registry/default/examples/marker-link-button.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/marker-link-button.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "marker-shimmer": {
+      name: "marker-shimmer",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["marker"],
+      files: [
+        {
+          path: "registry/default/examples/marker-shimmer.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/marker-shimmer.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
         })),
       ),

@@ -1,0 +1,108 @@
+---
+title: Marker
+description: A compact inline status line for activity feeds and transcripts, with optional icon, separator, and border variants.
+component: true
+---
+
+<ComponentPreview
+  name="marker-demo"
+  description="A stack of markers showing branch, status, and separator states"
+/>
+
+<Callout className="mt-6">
+
+**Note:** Requires shadcn &ge; 4.12.0 for the `shimmer` utility (used by the streaming marker example).
+
+</Callout>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ui.blode.co/r/styles/default/marker"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="marker" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Marker, MarkerContent, MarkerIcon } from "@/components/ui/marker";
+```
+
+```tsx
+<Marker>
+  <MarkerIcon>
+    <GitBranchesIcon />
+  </MarkerIcon>
+  <MarkerContent>Switched to a new branch</MarkerContent>
+</Marker>
+```
+
+## Examples
+
+### Variants
+
+Use the `variant` prop to switch between `default`, `separator`, and `border` styles.
+
+<ComponentPreview name="marker-variants" description="Default, separator, and border markers" />
+
+### Icon
+
+Wrap an icon in `MarkerIcon` to lead the line with a glyph.
+
+<ComponentPreview name="marker-icon" description="Markers with leading icons" />
+
+### Separator
+
+The `separator` variant centers the content between two rules, useful for timeline dividers.
+
+<ComponentPreview name="marker-separator" description="Separator markers dividing a timeline" />
+
+### Border
+
+The `border` variant adds a bottom rule, useful for row boundaries in a feed.
+
+<ComponentPreview name="marker-border" description="Border markers separating feed rows" />
+
+### Status
+
+Add a `Spinner` inside `MarkerIcon` and `role="status"` to announce in-progress work.
+
+<ComponentPreview name="marker-status" description="Markers announcing in-progress activity" />
+
+### Link and button
+
+Use the `render` prop to render the marker as a link or button.
+
+<ComponentPreview name="marker-link-button" description="Markers rendered as a link and a button" />
+
+### Streaming
+
+Apply the `shimmer` utility to `MarkerContent` for a streaming, in-progress effect.
+
+<ComponentPreview name="marker-shimmer" description="Markers with a shimmering streaming effect" />

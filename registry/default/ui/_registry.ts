@@ -1044,4 +1044,75 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     title: "Ask User Questions",
     type: "registry:ui",
   },
+  {
+    dependencies: ["@base-ui/react"],
+    description:
+      "A message surface for chat interfaces, with variants, alignment, reactions, and composable content.",
+    files: [
+      {
+        path: "ui/bubble.tsx",
+        type: "registry:ui",
+      },
+    ],
+    name: "bubble",
+    title: "Bubble",
+    type: "registry:ui",
+  },
+  {
+    description:
+      "A row primitive for chat transcripts, pairing an avatar with content, header, and footer, aligned to the start or end.",
+    files: [
+      {
+        path: "ui/message.tsx",
+        type: "registry:ui",
+      },
+    ],
+    name: "message",
+    title: "Message",
+    type: "registry:ui",
+  },
+  {
+    dependencies: ["@shadcn/react"],
+    description:
+      "A chat scroll container that anchors turns, opens saved transcripts, follows streamed responses, loads history without jumping, and jumps to any message.",
+    files: [
+      {
+        path: "ui/message-scroller.tsx",
+        type: "registry:ui",
+      },
+    ],
+    name: "message-scroller",
+    registryDependencies: ["button"],
+    title: "Message Scroller",
+    type: "registry:ui",
+  },
+  {
+    dependencies: ["@base-ui/react"],
+    description:
+      "A card for files and images with upload, processing, error, and done states, an optional full-card trigger, and a scrollable group.",
+    files: [
+      {
+        path: "ui/attachment.tsx",
+        type: "registry:ui",
+      },
+    ],
+    name: "attachment",
+    registryDependencies: ["button"],
+    title: "Attachment",
+    type: "registry:ui",
+  },
+  {
+    dependencies: ["@base-ui/react"],
+    description:
+      "A compact inline status line for activity feeds and transcripts, with optional icon, separator, and border variants.",
+    files: [
+      {
+        path: "ui/marker.tsx",
+        type: "registry:ui",
+      },
+    ],
+    name: "marker",
+    title: "Marker",
+    type: "registry:ui",
+  },
 ];

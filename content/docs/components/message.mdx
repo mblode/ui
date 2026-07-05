@@ -1,0 +1,114 @@
+---
+title: Message
+description: A row primitive for chat transcripts, pairing an avatar with content, header, and footer, aligned to the start or end.
+component: true
+---
+
+<ComponentPreview name="message-demo" />
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ui.blode.co/r/styles/default/message"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="message" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  Message,
+  MessageAvatar,
+  MessageContent,
+  MessageFooter,
+  MessageGroup,
+  MessageHeader,
+} from "@/components/ui/message";
+```
+
+```tsx
+<Message align="end">
+  <MessageAvatar>
+    <Avatar>
+      <AvatarImage src="https://github.com/shadcn.png" alt="@me" />
+      <AvatarFallback>ME</AvatarFallback>
+    </Avatar>
+  </MessageAvatar>
+  <MessageContent>
+    <Bubble>
+      <BubbleContent>Deploying to prod real quick.</BubbleContent>
+    </Bubble>
+    <MessageFooter>Delivered</MessageFooter>
+  </MessageContent>
+</Message>
+```
+
+## Related
+
+`Message` and [`Bubble`](/docs/components/bubble) are the lower-level primitives
+for building a chat transcript. For a higher-level, animated transcript entry
+that styles user and assistant turns out of the box, see
+[Chat Message](/docs/components/chat-message).
+
+## Examples
+
+### Avatar
+
+Set `align` to `end` to reverse the row for the current user, and pass an
+`Avatar` inside `MessageAvatar`.
+
+<ComponentPreview name="message-avatar" />
+
+### Group
+
+Wrap consecutive messages from the same sender in `MessageGroup` to tighten the
+spacing between them.
+
+<ComponentPreview name="message-group" />
+
+### Header and footer
+
+Use `MessageHeader` for a sender name and `MessageFooter` for delivery status or
+timestamps.
+
+<ComponentPreview name="message-header-footer" />
+
+### Actions
+
+Place `Button` actions in the `MessageFooter` to copy, react to, or retry a
+message.
+
+<ComponentPreview name="message-actions" />
+
+### Attachment
+
+Render an `Attachment` alongside the `Bubble` inside `MessageContent` to share
+images and files.
+
+<ComponentPreview name="message-attachment" />

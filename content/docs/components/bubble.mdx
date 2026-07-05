@@ -1,0 +1,131 @@
+---
+title: Bubble
+description: A message surface for chat interfaces, with variants, alignment, reactions, and composable content.
+component: true
+---
+
+<ComponentPreview
+  name="bubble-demo"
+  description="A chat thread with grouped bubbles and reactions"
+/>
+
+Bubble is the lower-level message surface. If you want a higher-level animated
+transcript entry that styles user and assistant turns for you, see
+[Chat Message](/docs/components/chat-message).
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ui.blode.co/r/styles/default/bubble"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @base-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="bubble" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Bubble, BubbleContent, BubbleGroup, BubbleReactions } from "@/components/ui/bubble";
+```
+
+```tsx
+<Bubble align="end">
+  <BubbleContent>Hey there! what's up?</BubbleContent>
+</Bubble>
+```
+
+## Examples
+
+### Variants
+
+Use `variant` to change the emphasis of a bubble. The `ghost` variant is
+unframed and full width, which works well for assistant text.
+
+<ComponentPreview name="bubble-variants" description="The available bubble variants" />
+
+### Alignment
+
+Use `align="end"` for the current user's messages and `align="start"` (the
+default) for everyone else.
+
+<ComponentPreview name="bubble-alignment" description="Start and end aligned bubbles" />
+
+### Group
+
+Wrap consecutive messages from the same sender in a `BubbleGroup` to tighten the
+spacing between them.
+
+<ComponentPreview name="bubble-group-demo" description="Consecutive messages grouped together" />
+
+### Reactions
+
+Add a `BubbleReactions` element to overlay reactions on a bubble. Control the
+placement with `side` and `align`.
+
+<ComponentPreview name="bubble-reactions" description="Bubbles with overlaid reactions" />
+
+### Tooltip
+
+Reactions can hold interactive content, such as a tooltip trigger.
+
+<ComponentPreview name="bubble-tooltip" description="A reaction that reveals a tooltip" />
+
+### Popover
+
+Use a popover inside a reaction to surface extra detail, like an error message.
+
+<ComponentPreview name="bubble-popover" description="A reaction that opens a popover" />
+
+### Collapsible
+
+Collapse long messages behind a show more / show less toggle.
+
+<ComponentPreview name="bubble-collapsible" description="A long message that can be collapsed" />
+
+### Link buttons
+
+Render a bubble's content as a button to build quick-reply prompts.
+
+<ComponentPreview name="bubble-link-button" description="Bubbles rendered as quick-reply buttons" />
+
+## API Reference
+
+Bubble is composed of `BubbleGroup`, `Bubble`, `BubbleContent`, and
+`BubbleReactions`.
+
+- `Bubble` accepts `variant` (`default`, `secondary`, `muted`, `tinted`,
+  `outline`, `ghost`, `destructive`) and `align` (`start`, `end`).
+- `BubbleContent` accepts a `render` prop to change the underlying element (for
+  example a `button` or `a`).
+- `BubbleReactions` accepts `side` (`top`, `bottom`) and `align` (`start`,
+  `end`).

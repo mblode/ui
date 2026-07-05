@@ -1,0 +1,119 @@
+---
+title: Attachment
+description: A card for files and images with upload, processing, error, and done states, an optional full-card trigger, and a scrollable group.
+component: true
+---
+
+<ComponentPreview
+  name="attachment-demo"
+  description="Image thumbnails, an uploading file, and a done file"
+/>
+
+<Callout className="mt-6">
+  Requires shadcn ≥ 4.12.0 for the `shimmer` and `scroll-fade` utilities.
+</Callout>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ui.blode.co/r/styles/default/attachment"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="attachment" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  Attachment,
+  AttachmentAction,
+  AttachmentActions,
+  AttachmentContent,
+  AttachmentDescription,
+  AttachmentMedia,
+  AttachmentTitle,
+} from "@/components/ui/attachment";
+```
+
+```tsx
+<Attachment>
+  <AttachmentMedia>
+    <FileTextIcon />
+  </AttachmentMedia>
+  <AttachmentContent>
+    <AttachmentTitle>report.pdf</AttachmentTitle>
+    <AttachmentDescription>PDF · 2.4 MB</AttachmentDescription>
+  </AttachmentContent>
+  <AttachmentActions>
+    <AttachmentAction aria-label="Remove report.pdf">
+      <XIcon />
+    </AttachmentAction>
+  </AttachmentActions>
+</Attachment>
+```
+
+## Examples
+
+### States
+
+Set `state` to `idle`, `uploading`, `processing`, `error`, or `done` to reflect the upload lifecycle.
+
+<ComponentPreview
+  name="attachment-states"
+  description="Idle, uploading, processing, error, and done states"
+/>
+
+### Sizes
+
+Use the `size` prop to switch between `default`, `sm`, and `xs`.
+
+<ComponentPreview name="attachment-sizes" description="Default, small, and extra small sizes" />
+
+### Image
+
+Set `variant="image"` on `AttachmentMedia` to render an image preview.
+
+<ComponentPreview
+  name="attachment-image"
+  description="Vertical image attachments with a full-card link"
+/>
+
+### Group
+
+Wrap attachments in `AttachmentGroup` for a horizontally scrollable row.
+
+<ComponentPreview name="attachment-group" description="A scrollable row of file attachments" />
+
+### Trigger
+
+Use `AttachmentTrigger` to make the whole card open a dialog while actions stay clickable above it.
+
+<ComponentPreview
+  name="attachment-trigger"
+  description="A full-card trigger that opens a preview dialog"
+/>

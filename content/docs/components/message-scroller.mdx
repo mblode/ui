@@ -1,0 +1,221 @@
+---
+title: Message Scroller
+description: A chat scroll container that anchors turns, opens saved transcripts, follows streamed responses, loads history without jumping, and jumps to any message.
+component: true
+---
+
+<ComponentPreview
+  name="message-scroller-demo"
+  description="A streaming transcript that follows the live edge while you stay in control"
+/>
+
+<Callout className="mt-6">
+
+Requires shadcn ≥ 4.12.0 for the `scroll-fade` and `shimmer` utilities.
+
+</Callout>
+
+## About
+
+Streaming breaks the simple "append at the bottom and scroll" model. Messages
+arrive in chunks while you may still be reading, scrolling, or looking somewhere
+else. The challenge is preserving the reader's place while the conversation
+keeps changing. Get it wrong and the experience feels jumpy: people are pulled
+to the bottom, lose context, and have to find their way back.
+
+MessageScroller is a chat transcript scroller built for these behaviors.
+`MessageScrollerProvider` owns the scroll state and transcript-row behavior:
+opening position, streamed output, new-turn anchoring, prepended history,
+visibility, and scroll controls. `MessageScroller` is the styled frame that
+renders inside it.
+
+It is scoped to the scroll viewport. It does not own messages, AI state,
+transport, persistence, branching, or model state. Your product code stays
+focused on composing messages, markers, tools, attachments, and prompt inputs.
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://ui.blode.co/r/styles/default/message-scroller"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @shadcn/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="message-scroller" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Message } from "@/components/ui/message";
+import {
+  MessageScroller,
+  MessageScrollerButton,
+  MessageScrollerContent,
+  MessageScrollerItem,
+  MessageScrollerProvider,
+  MessageScrollerViewport,
+} from "@/components/ui/message-scroller";
+```
+
+```tsx
+<MessageScrollerProvider autoScroll>
+  <MessageScroller>
+    <MessageScrollerViewport>
+      <MessageScrollerContent>
+        {messages.map((message) => (
+          <MessageScrollerItem
+            key={message.id}
+            messageId={message.id}
+            scrollAnchor={message.role === "user"}
+          >
+            <Message />
+          </MessageScrollerItem>
+        ))}
+      </MessageScrollerContent>
+    </MessageScrollerViewport>
+    <MessageScrollerButton />
+  </MessageScroller>
+</MessageScrollerProvider>
+```
+
+`MessageScroller` fills its parent, so place it inside a height-constrained
+container.
+
+```tsx
+<div className="flex h-screen flex-col">
+  <MessageScrollerProvider>
+    <MessageScroller className="flex-1">{/* transcript */}</MessageScroller>
+  </MessageScrollerProvider>
+</div>
+```
+
+## Composition
+
+- **`MessageScrollerProvider`** — the headless root. Owns scroll state and the
+  behavior props for opening position, auto-scroll, anchoring, scroll commands,
+  and visibility tracking.
+- **`MessageScroller`** — the styled frame. Lays out the viewport, content, and
+  controls inside the provider.
+- **`MessageScrollerViewport`** — the scrollable element. Receives native scroll
+  events and preserves the visible row when older messages are prepended.
+- **`MessageScrollerContent`** — the transcript container. Holds the rows and
+  provides the live-region defaults for new messages.
+- **`MessageScrollerItem`** — the transcript row boundary. Wrap every direct
+  child of the content so the scroller can measure, anchor, preserve position,
+  track visibility, and jump to it.
+- **`MessageScrollerButton`** — the scroll control. Scrolls to the start or end
+  of the transcript and is inert until there is content in its direction.
+
+## Examples
+
+### Group Chat
+
+In a group chat, the turn boundary is often a marker like "Rocky joined the
+chat" rather than the user message. Because anchoring is role-independent, you
+can mark any row with `scrollAnchor`, including a marker.
+
+<ComponentPreview
+  name="message-scroller-group-chat"
+  description="A group chat where a join marker anchors the next turn"
+/>
+
+### Opening Position
+
+Reopening a saved thread at the absolute end often drops the reader in without
+enough context. `defaultScrollPosition="last-anchor"` shows the last meaningful
+turn instead, keyed on `scrollAnchor` rather than message role.
+
+<ComponentPreview
+  name="message-scroller-opening-position"
+  description="Choose where a saved transcript opens"
+/>
+
+### Scroll State
+
+Use `useMessageScrollerScrollable` when you need scroll state in JavaScript,
+such as a status indicator or a custom jump-to-latest control. It reports which
+edges the viewport can still scroll toward.
+
+<ComponentPreview
+  name="message-scroller-state"
+  description="Read scroll state in JavaScript with the state hook"
+/>
+
+## API Reference
+
+### useMessageScroller
+
+Imperative transcript controls.
+
+| Method            | Type                                       | Description                     |
+| ----------------- | ------------------------------------------ | ------------------------------- |
+| `scrollToMessage` | `(messageId: string, options?) => boolean` | Scroll to a mounted message id. |
+| `scrollToEnd`     | `(options?) => boolean`                    | Scroll to the latest message.   |
+| `scrollToStart`   | `(options?) => boolean`                    | Scroll to the top.              |
+
+All commands return `false` when the command could not be applied.
+`scrollToStart` and `scrollToEnd` return `false` only when the viewport is not
+mounted yet. `scrollToMessage` returns `false` when the target is not mounted
+and cannot be queued.
+
+Command options:
+
+| Option         | Type                                              | Default                 | Description                                          |
+| -------------- | ------------------------------------------------- | ----------------------- | ---------------------------------------------------- |
+| `align`        | `"start"` \| `"center"` \| `"end"` \| `"nearest"` | `"start"`               | How a message target aligns in the viewport.         |
+| `behavior`     | `ScrollBehavior`                                  | `"auto"`                | Native scroll behavior for the command.              |
+| `scrollMargin` | `number`                                          | provider `scrollMargin` | Margin applied to the aligned edge for this command. |
+
+### useMessageScrollerScrollable
+
+Which edges the viewport can scroll toward, for sibling UI that needs the values
+in JavaScript. Prefer the `data-scrollable` attribute for styling the scroller
+itself.
+
+| Value   | Type      | Description                                                                                            |
+| ------- | --------- | ------------------------------------------------------------------------------------------------------ |
+| `start` | `boolean` | Whether the viewport can scroll toward the start. Content is hidden above (`!start` means at the top). |
+| `end`   | `boolean` | Whether the viewport can scroll toward the end. Content is hidden below (`!end` means at the bottom).  |
+
+### useMessageScrollerVisibility
+
+Visibility state for outline, search, and active-turn UI. It subscribes
+separately from `useMessageScrollerScrollable`, so visibility work is only paid
+for when a consumer needs it.
+
+| Value               | Type             | Description                                                                                    |
+| ------------------- | ---------------- | ---------------------------------------------------------------------------------------------- |
+| `currentAnchorId`   | `string \| null` | The current anchored turn, based on the last `scrollAnchor` item at or above the reading line. |
+| `visibleMessageIds` | `string[]`       | Message ids intersecting the viewport, in document order.                                      |
+
+Filter `visibleMessageIds` in your app when you need a narrower outline, such as
+user messages, anchored turns, or search hits.

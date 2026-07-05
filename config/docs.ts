@@ -130,6 +130,11 @@ export const docsConfig: DocsConfig = {
           title: "Aspect Ratio",
         },
         {
+          href: "/docs/components/attachment",
+          items: [],
+          title: "Attachment",
+        },
+        {
           href: "/docs/components/autocomplete",
           items: [],
           title: "Autocomplete",
@@ -153,6 +158,11 @@ export const docsConfig: DocsConfig = {
           href: "/docs/components/breadcrumb",
           items: [],
           title: "Breadcrumb",
+        },
+        {
+          href: "/docs/components/bubble",
+          items: [],
+          title: "Bubble",
         },
         {
           href: "/docs/components/button",
@@ -315,9 +325,24 @@ export const docsConfig: DocsConfig = {
           title: "Label",
         },
         {
+          href: "/docs/components/marker",
+          items: [],
+          title: "Marker",
+        },
+        {
           href: "/docs/components/menubar",
           items: [],
           title: "Menubar",
+        },
+        {
+          href: "/docs/components/message",
+          items: [],
+          title: "Message",
+        },
+        {
+          href: "/docs/components/message-scroller",
+          items: [],
+          title: "Message Scroller",
         },
         {
           href: "/docs/components/native-select",
