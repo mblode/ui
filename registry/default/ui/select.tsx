@@ -91,7 +91,7 @@ function SelectContent({
       >
         <SelectPrimitive.Popup
           className={cn(
-            "data-open:fade-in-80 relative z-110 max-h-(--available-height) min-w-[8rem] origin-(--transform-origin) overflow-y-auto overflow-x-hidden rounded-xl border border-border bg-popover text-popover-foreground shadow-soft data-closed:animate-out data-open:animate-in",
+            "data-open:fade-in-80 scroll-fade relative z-110 max-h-(--available-height) min-w-[8rem] origin-(--transform-origin) overflow-y-auto overflow-x-hidden rounded-xl border border-border bg-popover text-popover-foreground shadow-soft data-closed:animate-out data-open:animate-in",
             position === "popper" && "translate-y-1",
             className,
           )}
