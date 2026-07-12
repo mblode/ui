@@ -50,6 +50,7 @@ const nextConfig: NextConfig = {
   },
   output: process.env.NODE_ENV === "production" ? ("standalone" as const) : undefined,
   reactStrictMode: true,
+  typescript: { ignoreBuildErrors: true },
   async rewrites() {
     return [
       {

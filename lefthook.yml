@@ -1,12 +1,7 @@
 pre-commit:
+  parallel: true
   jobs:
-    - run: npx ultracite fix
-      glob:
-        - "**/*.js"
-        - "**/*.jsx"
-        - "**/*.ts"
-        - "**/*.tsx"
-        - "**/*.json"
-        - "**/*.jsonc"
-        - "**/*.css"
+    - name: ultracite
+      glob: "*.{js,jsx,ts,tsx,json,jsonc,css}"
+      run: npx ultracite fix {staged_files}
       stage_fixed: true
