@@ -220,8 +220,10 @@
     @apply opacity-60 md:opacity-100;
   }
 
-  button,
-  [role="button"],
+  /* Tailwind v4's Preflight sets these to cursor: default. Restore the pointer,
+     but not when disabled — a disabled control should not look clickable. */
+  button:not(:disabled),
+  [role="button"]:not(:disabled),
   summary {
     cursor: pointer;
   }

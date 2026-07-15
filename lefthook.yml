@@ -2,6 +2,11 @@ pre-commit:
   parallel: true
   jobs:
     - name: ultracite
-      glob: "*.{js,jsx,ts,tsx,json,jsonc,css}"
+      glob: "*.{js,jsx,ts,tsx,json,jsonc}"
       run: npx ultracite fix {staged_files}
+      stage_fixed: true
+    # oxlint exits 1 when given only CSS, so CSS goes through the formatter alone
+    - name: oxfmt-css
+      glob: "*.css"
+      run: npx oxfmt {staged_files}
       stage_fixed: true
