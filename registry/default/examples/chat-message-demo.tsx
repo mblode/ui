@@ -10,24 +10,22 @@ import { ChatMessage } from "@/registry/default/ui/chat-message";
 // Icon-only action buttons for the hover-revealed meta row. Assistant replies
 // get copy + regenerate; user messages get copy + edit. Illustrative only —
 // the buttons carry no behaviour in this demo.
-function MessageActions({ from }: { from: "user" | "assistant" }) {
-  return (
-    <>
-      <Button aria-label="Copy message" size="icon-xs" variant="ghost">
-        <SquareBehindSquare1Icon />
+const MessageActions = ({ from }: { from: "user" | "assistant" }) => (
+  <>
+    <Button aria-label="Copy message" size="icon-xs" variant="ghost">
+      <SquareBehindSquare1Icon />
+    </Button>
+    {from === "user" ? (
+      <Button aria-label="Edit message" size="icon-xs" variant="ghost">
+        <PencilIcon />
       </Button>
-      {from === "user" ? (
-        <Button aria-label="Edit message" size="icon-xs" variant="ghost">
-          <PencilIcon />
-        </Button>
-      ) : (
-        <Button aria-label="Regenerate response" size="icon-xs" variant="ghost">
-          <ArrowRotateCounterClockwiseIcon />
-        </Button>
-      )}
-    </>
-  );
-}
+    ) : (
+      <Button aria-label="Regenerate response" size="icon-xs" variant="ghost">
+        <ArrowRotateCounterClockwiseIcon />
+      </Button>
+    )}
+  </>
+);
 
 export default function ChatMessageDemo() {
   return (

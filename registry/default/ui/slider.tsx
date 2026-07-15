@@ -17,7 +17,7 @@ type SliderProps = Omit<
   showOrigin?: boolean;
 };
 
-function Slider({
+const Slider = ({
   className,
   defaultValue,
   onValueChange,
@@ -27,11 +27,16 @@ function Slider({
   showOrigin,
   showValue,
   ...props
-}: SliderProps) {
-  const values = useMemo(
-    () => (Array.isArray(value) ? value : Array.isArray(defaultValue) ? defaultValue : [min, max]),
-    [value, defaultValue, min, max],
-  );
+}: SliderProps) => {
+  const values = useMemo(() => {
+    if (Array.isArray(value)) {
+      return value;
+    }
+    if (Array.isArray(defaultValue)) {
+      return defaultValue;
+    }
+    return [min, max];
+  }, [value, defaultValue, min, max]);
 
   return (
     <SliderPrimitive.Root
@@ -78,6 +83,6 @@ function Slider({
       </SliderPrimitive.Control>
     </SliderPrimitive.Root>
   );
-}
+};
 
 export { Slider };

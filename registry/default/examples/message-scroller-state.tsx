@@ -32,6 +32,30 @@ const messages = Array.from({ length: 12 }, (_, index) => ({
   text: string;
 }[];
 
+const StatusBar = () => {
+  const { start, end } = useMessageScrollerScrollable();
+  const states = [
+    { label: "At top", on: !start },
+    { label: "At bottom", on: !end },
+    { label: "Older above", on: start },
+    { label: "Newer below", on: end },
+  ];
+
+  return (
+    <div className="pointer-events-none absolute inset-x-3 top-3 z-10 flex flex-wrap gap-1.5">
+      {states.map((state) => (
+        <span
+          className="rounded-full border bg-background px-2 py-0.5 text-muted-foreground text-xs data-[on=true]:border-transparent data-[on=true]:bg-primary data-[on=true]:text-primary-foreground"
+          data-on={state.on}
+          key={state.label}
+        >
+          {state.label}
+        </span>
+      ))}
+    </div>
+  );
+};
+
 export default function MessageScrollerState() {
   return (
     <Card className="mx-auto h-112 w-full max-w-md gap-0">
@@ -67,29 +91,5 @@ export default function MessageScrollerState() {
         </MessageScrollerProvider>
       </CardContent>
     </Card>
-  );
-}
-
-function StatusBar() {
-  const { start, end } = useMessageScrollerScrollable();
-  const states = [
-    { label: "At top", on: !start },
-    { label: "At bottom", on: !end },
-    { label: "Older above", on: start },
-    { label: "Newer below", on: end },
-  ];
-
-  return (
-    <div className="pointer-events-none absolute inset-x-3 top-3 z-10 flex flex-wrap gap-1.5">
-      {states.map((state) => (
-        <span
-          className="rounded-full border bg-background px-2 py-0.5 text-muted-foreground text-xs data-[on=true]:border-transparent data-[on=true]:bg-primary data-[on=true]:text-primary-foreground"
-          data-on={state.on}
-          key={state.label}
-        >
-          {state.label}
-        </span>
-      ))}
-    </div>
   );
 }

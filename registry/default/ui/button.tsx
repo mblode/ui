@@ -61,7 +61,7 @@ const buttonVariants = cva(
   },
 );
 
-function Button({
+const Button = ({
   className,
   variant = "default",
   size = "default",
@@ -74,7 +74,7 @@ function Button({
   VariantProps<typeof buttonVariants> & {
     asChild?: boolean;
     loading?: boolean;
-  }) {
+  }) => {
   const isDisabled = disabled || loading;
   const useAsChild = asChild && !loading;
 
@@ -113,6 +113,6 @@ function Button({
       variant,
     },
   });
-}
+};
 
 export { Button, buttonVariants };

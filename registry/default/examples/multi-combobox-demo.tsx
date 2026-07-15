@@ -1,7 +1,7 @@
 "use client";
 
 import type { UseMultipleSelectionStateChange } from "downshift";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import type { ReactNode } from "react";
 import { useController, useForm } from "react-hook-form";
 import type { Control } from "react-hook-form";
@@ -67,7 +67,7 @@ interface MultiComboboxFieldProps {
   values?: MultiComboboxOption[] | undefined;
 }
 
-function MultiComboboxField({
+const MultiComboboxField = ({
   name,
   label,
   caption,
@@ -76,7 +76,7 @@ function MultiComboboxField({
   onInputChange,
   onChange,
   ...props
-}: MultiComboboxFieldProps) {
+}: MultiComboboxFieldProps) => {
   const [items, setItems] = useState<MultiComboboxOption[]>(options);
   const { field, fieldState } = useController({
     control,
@@ -112,9 +112,11 @@ function MultiComboboxField({
     [field, onChange],
   );
 
-  useEffect(() => {
+  const [prevOptions, setPrevOptions] = useState(options);
+  if (prevOptions !== options) {
+    setPrevOptions(options);
     setItems(options);
-  }, [options]);
+  }
 
   const values = useMemo(() => {
     const fieldValues = field.value ?? [];
@@ -155,7 +157,7 @@ function MultiComboboxField({
       ) : null}
     </div>
   );
-}
+};
 
 export default function MultiComboboxDemo() {
   const { control } = useForm<MultiComboboxFormValues>({

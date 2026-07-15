@@ -7,7 +7,6 @@ import { Label } from "@/registry/default/ui/label";
 
 export default function CurrencyInputDemo() {
   const [monthlyPrice, setMonthlyPrice] = useState<string | undefined>("29.00");
-  const [credit, setCredit] = useState<string | undefined>("100.00");
 
   return (
     <div className="grid w-full max-w-md gap-6">

@@ -3,7 +3,7 @@
 import { mergeProps } from "@base-ui/react/merge-props";
 import { useRender } from "@base-ui/react/use-render";
 import type * as React from "react";
-import { createContext, isValidElement, useContext, useId } from "react";
+import { createContext, isValidElement, useContext, useId, useMemo } from "react";
 import { Controller, FormProvider, useFormContext, useFormState } from "react-hook-form";
 import type { ControllerProps, FieldPath, FieldValues } from "react-hook-form";
 
@@ -26,11 +26,21 @@ const FormField = <
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 >({
   ...props
-}: ControllerProps<TFieldValues, TName>) => (
-  <FormFieldContext.Provider value={{ name: props.name }}>
-    <Controller {...props} />
-  </FormFieldContext.Provider>
-);
+}: ControllerProps<TFieldValues, TName>) => {
+  const value = useMemo(() => ({ name: props.name }), [props.name]);
+
+  return (
+    <FormFieldContext.Provider value={value}>
+      <Controller {...props} />
+    </FormFieldContext.Provider>
+  );
+};
+
+interface FormItemContextValue {
+  id: string;
+}
+
+const FormItemContext = createContext<FormItemContextValue>({} as FormItemContextValue);
 
 const useFormField = () => {
   const fieldContext = useContext(FormFieldContext);
@@ -55,23 +65,18 @@ const useFormField = () => {
   };
 };
 
-interface FormItemContextValue {
-  id: string;
-}
-
-const FormItemContext = createContext<FormItemContextValue>({} as FormItemContextValue);
-
-function FormItem({ className, ...props }: React.ComponentProps<"div">) {
+const FormItem = ({ className, ...props }: React.ComponentProps<"div">) => {
   const id = useId();
+  const value = useMemo(() => ({ id }), [id]);
 
   return (
-    <FormItemContext.Provider value={{ id }}>
+    <FormItemContext.Provider value={value}>
       <div className={cn("grid gap-2", className)} data-slot="form-item" {...props} />
     </FormItemContext.Provider>
   );
-}
+};
 
-function FormLabel({ className, ...props }: React.ComponentProps<typeof Label>) {
+const FormLabel = ({ className, ...props }: React.ComponentProps<typeof Label>) => {
   const { error, formItemId } = useFormField();
 
   return (
@@ -83,9 +88,9 @@ function FormLabel({ className, ...props }: React.ComponentProps<typeof Label>) 
       {...props}
     />
   );
-}
+};
 
-function FormControl({ children, ...props }: React.HTMLAttributes<HTMLElement>) {
+const FormControl = ({ children, ...props }: React.HTMLAttributes<HTMLElement>) => {
   const { error, formItemId, formDescriptionId, formMessageId } = useFormField();
   const hasValidChild = isValidElement(children);
 
@@ -112,9 +117,9 @@ function FormControl({ children, ...props }: React.HTMLAttributes<HTMLElement>) 
   }
 
   return rendered;
-}
+};
 
-function FormDescription({ className, ...props }: React.ComponentProps<"p">) {
+const FormDescription = ({ className, ...props }: React.ComponentProps<"p">) => {
   const { formDescriptionId } = useFormField();
 
   return (
@@ -125,9 +130,9 @@ function FormDescription({ className, ...props }: React.ComponentProps<"p">) {
       {...props}
     />
   );
-}
+};
 
-function FormMessage({ className, ...props }: React.ComponentProps<"p">) {
+const FormMessage = ({ className, ...props }: React.ComponentProps<"p">) => {
   const { error, formMessageId } = useFormField();
   const body = error ? String(error?.message ?? "") : props.children;
 
@@ -145,7 +150,7 @@ function FormMessage({ className, ...props }: React.ComponentProps<"p">) {
       {body}
     </p>
   );
-}
+};
 
 export {
   useFormField,

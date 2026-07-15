@@ -98,7 +98,7 @@ export const columns: ColumnDef<Payment>[] = [
   {
     accessorKey: "amount",
     cell: ({ row }) => {
-      const amount = Number.parseFloat(row.getValue("amount"));
+      const amount = Number(row.getValue("amount"));
 
       // Format the amount as a dollar amount.
       const formatted = new Intl.NumberFormat("en-US", {
@@ -141,7 +141,8 @@ export const columns: ColumnDef<Payment>[] = [
   },
 ];
 
-export function DataTableDemo() {
+// oxlint-disable-next-line react/react-compiler -- React Compiler skips this component because TanStack Table's useReactTable returns non-memoizable functions
+export const DataTableDemo = () => {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
@@ -260,4 +261,4 @@ export function DataTableDemo() {
       </div>
     </div>
   );
-}
+};

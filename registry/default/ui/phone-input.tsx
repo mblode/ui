@@ -46,82 +46,34 @@ export type PhoneInputProps = Omit<
     ref?: React.Ref<React.ComponentRef<typeof RPNInput.default>>;
   };
 
-function PhoneInput({
-  className,
-  clearClassName,
-  clearable,
-  defaultCountry,
-  fallbackCountry = "US",
-  onChange,
-  onClear,
-  placeholder = "Enter phone number",
-  ref,
-  ...props
-}: PhoneInputProps) {
-  const hasValue = Boolean(props.value);
+const PhoneNumberInput = RPNInput.default;
 
-  const handleChange = React.useCallback(
-    (value?: RPNInput.Value) => {
-      onChange?.(value ?? "");
-    },
-    [onChange],
-  );
-
-  const handleClear = React.useCallback(() => {
-    onClear?.();
-
-    if (!onClear) {
-      onChange?.("");
-    }
-  }, [onClear, onChange]);
+const FlagComponent = ({
+  country,
+  countryName,
+}: {
+  country?: RPNInput.Country;
+  countryName: string;
+}) => {
+  const Flag = country ? flags[country] : undefined;
 
   return (
-    <div className="relative">
-      <RPNInput.default
-        className="flex"
-        countrySelectComponent={CountrySelect}
-        defaultCountry={defaultCountry ?? fallbackCountry}
-        flagComponent={FlagComponent}
-        inputClassName={className}
-        inputComponent={InputComponent}
-        onChange={handleChange}
-        placeholder={placeholder}
-        ref={ref}
-        {...props}
-      />
-
-      {clearable && hasValue ? (
-        <div className="absolute top-0 right-0 flex flex-row gap-1 pr-3">
-          <button
-            aria-label="clear input"
-            className={cn(
-              "flex h-[var(--field-height)] cursor-pointer items-center justify-center p-0! text-muted-foreground",
-              clearClassName,
-            )}
-            onClick={handleClear}
-            tabIndex={-1}
-            type="button"
-          >
-            <CircleXFilledIcon className="size-5 text-muted-foreground/50" />
-          </button>
-        </div>
-      ) : null}
-    </div>
+    <span className="flex h-4 w-6 overflow-hidden rounded-xs bg-foreground/20 [&_svg]:size-full!">
+      {Flag ? <Flag title={countryName} /> : null}
+    </span>
   );
-}
+};
 
-function InputComponent({
+const InputComponent = ({
   className,
   inputClassName,
   ref,
   ...props
-}: InputProps & { inputClassName?: string; ref?: React.Ref<HTMLInputElement> }) {
-  return (
-    <Input className={cn("rounded-s-none!", className, inputClassName)} ref={ref} {...props} />
-  );
-}
+}: InputProps & { inputClassName?: string; ref?: React.Ref<HTMLInputElement> }) => (
+  <Input className={cn("rounded-s-none!", className, inputClassName)} ref={ref} {...props} />
+);
 
-function CountrySelect({ disabled, onChange, options, value }: CountrySelectProps) {
+const CountrySelect = ({ disabled, onChange, options, value }: CountrySelectProps) => {
   const selectedCountryLabel =
     options.find((option) => option.value === value)?.label ?? "Select country";
 
@@ -181,22 +133,70 @@ function CountrySelect({ disabled, onChange, options, value }: CountrySelectProp
       </PopoverContent>
     </Popover>
   );
-}
+};
 
-function FlagComponent({
-  country,
-  countryName,
-}: {
-  country?: RPNInput.Country;
-  countryName: string;
-}) {
-  const Flag = country ? flags[country] : undefined;
+const PhoneInput = ({
+  className,
+  clearClassName,
+  clearable,
+  defaultCountry,
+  fallbackCountry = "US",
+  onChange,
+  onClear,
+  placeholder = "Enter phone number",
+  ref,
+  ...props
+}: PhoneInputProps) => {
+  const hasValue = Boolean(props.value);
+
+  const handleChange = React.useCallback(
+    (value?: RPNInput.Value) => {
+      onChange?.(value ?? "");
+    },
+    [onChange],
+  );
+
+  const handleClear = React.useCallback(() => {
+    onClear?.();
+
+    if (!onClear) {
+      onChange?.("");
+    }
+  }, [onClear, onChange]);
 
   return (
-    <span className="flex h-4 w-6 overflow-hidden rounded-xs bg-foreground/20 [&_svg]:size-full!">
-      {Flag ? <Flag title={countryName} /> : null}
-    </span>
+    <div className="relative">
+      <PhoneNumberInput
+        className="flex"
+        countrySelectComponent={CountrySelect}
+        defaultCountry={defaultCountry ?? fallbackCountry}
+        flagComponent={FlagComponent}
+        inputClassName={className}
+        inputComponent={InputComponent}
+        onChange={handleChange}
+        placeholder={placeholder}
+        ref={ref}
+        {...props}
+      />
+
+      {clearable && hasValue ? (
+        <div className="absolute top-0 right-0 flex flex-row gap-1 pr-3">
+          <button
+            aria-label="clear input"
+            className={cn(
+              "flex h-[var(--field-height)] cursor-pointer items-center justify-center p-0! text-muted-foreground",
+              clearClassName,
+            )}
+            onClick={handleClear}
+            tabIndex={-1}
+            type="button"
+          >
+            <CircleXFilledIcon className="size-5 text-muted-foreground/50" />
+          </button>
+        </div>
+      ) : null}
+    </div>
   );
-}
+};
 
 export { PhoneInput };

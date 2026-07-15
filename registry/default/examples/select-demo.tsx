@@ -17,22 +17,20 @@ const items = [
   { label: "Pineapple", value: "pineapple" },
 ];
 
-export function SelectDemo() {
-  return (
-    <Select items={items}>
-      <SelectTrigger className="w-full max-w-48">
-        <SelectValue />
-      </SelectTrigger>
-      <SelectContent>
-        <SelectGroup>
-          <SelectLabel>Fruits</SelectLabel>
-          {items.map((item) => (
-            <SelectItem key={item.value} value={item.value}>
-              {item.label}
-            </SelectItem>
-          ))}
-        </SelectGroup>
-      </SelectContent>
-    </Select>
-  );
-}
+export const SelectDemo = () => (
+  <Select items={items}>
+    <SelectTrigger className="w-full max-w-48">
+      <SelectValue />
+    </SelectTrigger>
+    <SelectContent>
+      <SelectGroup>
+        <SelectLabel>Fruits</SelectLabel>
+        {items.map((item) => (
+          <SelectItem key={item.value} value={item.value}>
+            {item.label}
+          </SelectItem>
+        ))}
+      </SelectGroup>
+    </SelectContent>
+  </Select>
+);

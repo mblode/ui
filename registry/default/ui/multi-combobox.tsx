@@ -57,7 +57,7 @@ const getFilteredOptions = (
   );
 };
 
-function MultiCombobox({
+const MultiCombobox = ({
   options,
   values,
   onChange,
@@ -70,13 +70,15 @@ function MultiCombobox({
   disabled = false,
   maxDropdownHeight = 250,
   ref,
-}: MultiComboboxProps) {
+}: MultiComboboxProps) => {
   const [inputValue, setInputValue] = React.useState("");
   const [selectedItems, setSelectedItems] = React.useState(values ?? []);
+  const [prevValues, setPrevValues] = React.useState(values);
 
-  React.useEffect(() => {
+  if (values !== prevValues) {
+    setPrevValues(values);
     setSelectedItems(values ?? []);
-  }, [values]);
+  }
 
   const items = React.useMemo(
     () => getFilteredOptions(options, selectedItems, inputValue),
@@ -86,7 +88,7 @@ function MultiCombobox({
   const { getSelectedItemProps, getDropdownProps, removeSelectedItem, addSelectedItem } =
     useMultipleSelection({
       onStateChange(changes) {
-        const uniqueItems = uniqBy(changes.selectedItems ?? [], ({ id }) => id);
+        const uniqueItems = uniqBy(changes.selectedItems ?? [], ({ id: itemId }) => itemId);
 
         switch (changes.type) {
           case useMultipleSelection.stateChangeTypes.SelectedItemKeyDownBackspace:
@@ -208,25 +210,17 @@ function MultiCombobox({
                   variant={selectedItem.variant}
                 >
                   {selectedItem.label}
-                  <span
+                  <button
                     aria-label={`Remove ${selectedItem.label ?? "item"}`}
                     className="cursor-pointer pl-1"
                     onClick={(event) => {
                       event.stopPropagation();
                       removeSelectedItem(selectedItem);
                     }}
-                    onKeyDown={(event) => {
-                      if (event.key === "Enter" || event.key === " ") {
-                        event.preventDefault();
-                        event.stopPropagation();
-                        removeSelectedItem(selectedItem);
-                      }
-                    }}
-                    role="button"
-                    tabIndex={0}
+                    type="button"
                   >
                     <CrossSmallIcon className="size-3.5" />
-                  </span>
+                  </button>
                 </Badge>
               ))}
               <input
@@ -304,6 +298,6 @@ function MultiCombobox({
       </PopoverContent>
     </Popover>
   );
-}
+};
 
 export { MultiCombobox };

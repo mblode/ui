@@ -8,7 +8,7 @@ export default function InputOTPControlled() {
 
   return (
     <div className="space-y-2">
-      <InputOTP maxLength={6} onChange={(value) => setValue(value)} value={value}>
+      <InputOTP maxLength={6} onChange={(nextValue) => setValue(nextValue)} value={value}>
         <InputOTPGroup>
           <InputOTPSlot index={0} />
           <InputOTPSlot index={1} />

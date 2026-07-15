@@ -31,6 +31,23 @@ const formSchema = z.object({
   }),
 });
 
+const onSubmit = (data: z.infer<typeof formSchema>) => {
+  toast("You submitted the following values:", {
+    classNames: {
+      content: "flex flex-col gap-2",
+    },
+    description: (
+      <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
+        <code>{JSON.stringify(data, null, 2)}</code>
+      </pre>
+    ),
+    position: "bottom-right",
+    style: {
+      "--border-radius": "calc(var(--radius)  + 4px)",
+    } as React.CSSProperties,
+  });
+};
+
 export default function FormRhfSwitch() {
   const form = useForm<z.infer<typeof formSchema>>({
     defaultValues: {
@@ -38,23 +55,6 @@ export default function FormRhfSwitch() {
     },
     resolver: zodResolver(formSchema),
   });
-
-  function onSubmit(data: z.infer<typeof formSchema>) {
-    toast("You submitted the following values:", {
-      classNames: {
-        content: "flex flex-col gap-2",
-      },
-      description: (
-        <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
-          <code>{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-      position: "bottom-right",
-      style: {
-        "--border-radius": "calc(var(--radius)  + 4px)",
-      } as React.CSSProperties,
-    });
-  }
 
   return (
     <Card className="w-full sm:max-w-md">
@@ -84,7 +84,7 @@ export default function FormRhfSwitch() {
                     checked={field.value}
                     id="form-rhf-switch-twoFactor"
                     name={field.name}
-                    onCheckedChange={field.onChange}
+                    onCheckedChange={(checked) => field.onChange(checked)}
                   />
                 </Field>
               )}

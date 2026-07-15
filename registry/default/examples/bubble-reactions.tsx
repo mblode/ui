@@ -10,7 +10,7 @@ export default function BubbleReactionsExample() {
     <div className="flex w-full max-w-sm flex-col gap-12 py-12">
       <Bubble align="end" variant="muted">
         <BubbleContent>I don&apos;t need tests, I know my code works.</BubbleContent>
-        <BubbleReactions align="start" aria-label="Reactions: thumbs up, surprised" role="img">
+        <BubbleReactions align="start" aria-label="Reactions: thumbs up, surprised">
           <span>👍</span>
           <span>😮</span>
         </BubbleReactions>
@@ -19,7 +19,7 @@ export default function BubbleReactionsExample() {
         <BubbleContent>
           Bold. Fine I&apos;ll add some tests. I&apos;ll let you know when they&apos;re done.
         </BubbleContent>
-        <BubbleReactions aria-label="Reactions: eyes, rocket, and 2 more" role="img">
+        <BubbleReactions aria-label="Reactions: eyes, rocket, and 2 more">
           <span>👀</span>
           <span>🚀</span>
           <span>+2</span>
@@ -30,7 +30,6 @@ export default function BubbleReactionsExample() {
         <BubbleReactions
           align="start"
           aria-label="Reactions: party popper, clapping hands"
-          role="img"
           side="top"
         >
           <span>🎉</span>

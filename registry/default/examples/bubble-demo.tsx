@@ -14,7 +14,7 @@ export default function BubbleDemo() {
           <BubbleContent>
             I can group messages, switch sides, and keep the whole thread easy to scan.
           </BubbleContent>
-          <BubbleReactions aria-label="Reaction: thumbs up" role="img">
+          <BubbleReactions aria-label="Reaction: thumbs up">
             <span>👍</span>
           </BubbleReactions>
         </Bubble>
@@ -26,7 +26,7 @@ export default function BubbleDemo() {
         <BubbleContent>
           Yes. You are reading a demo that is demoing itself. Very meta. Very on-brand.
         </BubbleContent>
-        <BubbleReactions aria-label="Reactions: thumbs up, fire, eyes, and 2 more" role="img">
+        <BubbleReactions aria-label="Reactions: thumbs up, fire, eyes, and 2 more">
           <span>👍</span>
           <span>🔥</span>
           <span>👀</span>

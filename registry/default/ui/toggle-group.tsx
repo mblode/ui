@@ -4,7 +4,7 @@ import { Toggle as TogglePrimitive } from "@base-ui/react/toggle";
 import { ToggleGroup as ToggleGroupPrimitive } from "@base-ui/react/toggle-group";
 import type { VariantProps } from "class-variance-authority";
 import type * as React from "react";
-import { createContext, useContext } from "react";
+import { createContext, useContext, useMemo } from "react";
 
 import { cn } from "@/lib/utils";
 import { toggleVariants } from "@/registry/default/ui/toggle";
@@ -48,7 +48,7 @@ const normalizeToggleGroupValue = (
   return value === "" ? [] : [value];
 };
 
-function ToggleGroup({
+const ToggleGroup = ({
   className,
   defaultValue,
   multiple,
@@ -60,8 +60,9 @@ function ToggleGroup({
   value,
   children,
   ...props
-}: ToggleGroupProps) {
+}: ToggleGroupProps) => {
   const resolvedMultiple = type ? type === "multiple" : (multiple ?? false);
+  const contextValue = useMemo(() => ({ size, spacing, variant }), [size, spacing, variant]);
 
   return (
     <ToggleGroupPrimitive
@@ -91,20 +92,18 @@ function ToggleGroup({
       value={normalizeToggleGroupValue(value)}
       {...props}
     >
-      <ToggleGroupContext.Provider value={{ size, spacing, variant }}>
-        {children}
-      </ToggleGroupContext.Provider>
+      <ToggleGroupContext.Provider value={contextValue}>{children}</ToggleGroupContext.Provider>
     </ToggleGroupPrimitive>
   );
-}
+};
 
-function ToggleGroupItem({
+const ToggleGroupItem = ({
   className,
   children,
   variant,
   size,
   ...props
-}: React.ComponentProps<typeof TogglePrimitive> & VariantProps<typeof toggleVariants>) {
+}: React.ComponentProps<typeof TogglePrimitive> & VariantProps<typeof toggleVariants>) => {
   const context = useContext(ToggleGroupContext);
 
   return (
@@ -127,6 +126,6 @@ function ToggleGroupItem({
       {children}
     </TogglePrimitive>
   );
-}
+};
 
 export { ToggleGroup, ToggleGroupItem };

@@ -3,7 +3,7 @@
 import { formSchema } from "./form-next-demo-schema";
 import type { FormState } from "./form-next-demo-schema";
 
-export async function demoFormAction(_prevState: FormState, formData: FormData) {
+export const demoFormAction = (_prevState: FormState, formData: FormData) => {
   const values = {
     description: formData.get("description") as string,
     title: formData.get("title") as string,
@@ -30,4 +30,4 @@ export async function demoFormAction(_prevState: FormState, formData: FormData) 
       title: "",
     },
   };
-}
+};

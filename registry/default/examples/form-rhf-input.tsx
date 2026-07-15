@@ -31,6 +31,23 @@ const formSchema = z.object({
     .regex(/^[a-zA-Z0-9_]+$/u, "Username can only contain letters, numbers, and underscores."),
 });
 
+const onSubmit = (data: z.infer<typeof formSchema>) => {
+  toast("You submitted the following values:", {
+    classNames: {
+      content: "flex flex-col gap-2",
+    },
+    description: (
+      <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
+        <code>{JSON.stringify(data, null, 2)}</code>
+      </pre>
+    ),
+    position: "bottom-right",
+    style: {
+      "--border-radius": "calc(var(--radius)  + 4px)",
+    } as React.CSSProperties,
+  });
+};
+
 export default function FormRhfInput() {
   const form = useForm<z.infer<typeof formSchema>>({
     defaultValues: {
@@ -38,23 +55,6 @@ export default function FormRhfInput() {
     },
     resolver: zodResolver(formSchema),
   });
-
-  function onSubmit(data: z.infer<typeof formSchema>) {
-    toast("You submitted the following values:", {
-      classNames: {
-        content: "flex flex-col gap-2",
-      },
-      description: (
-        <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
-          <code>{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-      position: "bottom-right",
-      style: {
-        "--border-radius": "calc(var(--radius)  + 4px)",
-      } as React.CSSProperties,
-    });
-  }
 
   return (
     <Card className="w-full sm:max-w-md">

@@ -52,7 +52,7 @@ export default function AskUserQuestionsMultiSelect() {
     return (
       <div className="flex w-full max-w-[520px] flex-col gap-1 rounded-2xl border p-4 text-sm">
         <p className="font-medium text-foreground">Got it — thanks!</p>
-        <p className="text-muted-foreground">We'll tailor the build to your selections.</p>
+        <p className="text-muted-foreground">We&apos;ll tailor the build to your selections.</p>
       </div>
     );
   }

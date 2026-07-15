@@ -42,6 +42,12 @@ export default function FormNextDemo() {
     },
   });
   const [descriptionLength, setDescriptionLength] = useState(0);
+  const [prevDescription, setPrevDescription] = useState(formState.values.description);
+
+  if (prevDescription !== formState.values.description) {
+    setPrevDescription(formState.values.description);
+    setDescriptionLength(formState.values.description.length);
+  }
 
   useEffect(() => {
     if (formState.success) {
@@ -50,10 +56,6 @@ export default function FormNextDemo() {
       });
     }
   }, [formState.success]);
-
-  useEffect(() => {
-    setDescriptionLength(formState.values.description.length);
-  }, [formState.values.description]);
 
   return (
     <Card className="w-full max-w-md">

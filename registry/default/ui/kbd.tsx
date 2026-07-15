@@ -61,7 +61,7 @@ const iconMap: Record<KbdIcon, React.ReactNode> = {
   up: <ArrowUpIcon className="size-3" />,
 };
 
-function Kbd({ className, variant, children, icon, ...props }: KbdProps) {
+const Kbd = ({ className, variant, children, icon, ...props }: KbdProps) => {
   const content = icon ? iconMap[icon] : children;
 
   return (
@@ -69,16 +69,14 @@ function Kbd({ className, variant, children, icon, ...props }: KbdProps) {
       {content}
     </kbd>
   );
-}
+};
 
-function KbdGroup({ className, ...props }: React.ComponentProps<"kbd">) {
-  return (
-    <kbd
-      className={cn("inline-flex items-center gap-1", className)}
-      data-slot="kbd-group"
-      {...props}
-    />
-  );
-}
+const KbdGroup = ({ className, ...props }: React.ComponentProps<"kbd">) => (
+  <kbd
+    className={cn("inline-flex items-center gap-1", className)}
+    data-slot="kbd-group"
+    {...props}
+  />
+);
 
 export { Kbd, KbdGroup };

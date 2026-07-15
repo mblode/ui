@@ -25,15 +25,11 @@ interface BarListProps<
 
 const EMPTY_BAR_LIST_DATA: never[] = [];
 
-function defaultValueFormatter(value: number): string {
-  return value.toLocaleString();
-}
+const defaultValueFormatter = (value: number): string => value.toLocaleString();
 
-function defaultLabelFormatter(label: string): string {
-  return label;
-}
+const defaultLabelFormatter = (label: string): string => label;
 
-function BarList<T extends object = Record<string, never>>({
+const BarList = <T extends object = Record<string, never>>({
   className,
   color = "hsl(var(--chart-1))",
   data = EMPTY_BAR_LIST_DATA,
@@ -42,12 +38,12 @@ function BarList<T extends object = Record<string, never>>({
   sortOrder = "descending",
   valueFormatter = defaultValueFormatter,
   ...props
-}: BarListProps<T>) {
+}: BarListProps<T>) => {
   const sortedData = [...data].toSorted((a, b) =>
     sortOrder === "ascending" ? a.value - b.value : b.value - a.value,
   );
 
-  const maxValue = sortedData.reduce((currentMax, item) => Math.max(currentMax, item.value), 0);
+  const maxValue = Math.max(0, ...sortedData.map((item) => item.value));
 
   const widths = sortedData.map((item) => {
     if (item.value === 0 || maxValue === 0) {
@@ -135,7 +131,7 @@ function BarList<T extends object = Record<string, never>>({
       </div>
     </div>
   );
-}
+};
 
 export { BarList };
 export type { BarListProps };

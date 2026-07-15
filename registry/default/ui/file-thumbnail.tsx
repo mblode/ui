@@ -17,18 +17,16 @@ interface FileThumbnailProps extends Omit<React.ComponentProps<"div">, "style"> 
 // A square preview tile for an attached file. Images render via an object URL
 // (revoked on unmount); all other types fall back to a file icon + name. No
 // PDF rasterization — keeps the component dependency-free.
-function FileThumbnail({ file, size = 64, className, ...props }: FileThumbnailProps) {
+const FileThumbnail = ({ file, size = 64, className, ...props }: FileThumbnailProps) => {
   const isImage = file.type.startsWith("image/");
-  const [url, setUrl] = React.useState<string | null>(null);
+  const url = React.useMemo(() => (isImage ? URL.createObjectURL(file) : null), [file, isImage]);
 
   React.useEffect(() => {
-    if (!isImage) {
+    if (!url) {
       return;
     }
-    const objectUrl = URL.createObjectURL(file);
-    setUrl(objectUrl);
-    return () => URL.revokeObjectURL(objectUrl);
-  }, [file, isImage]);
+    return () => URL.revokeObjectURL(url);
+  }, [url]);
 
   return (
     <div
@@ -53,7 +51,7 @@ function FileThumbnail({ file, size = 64, className, ...props }: FileThumbnailPr
       )}
     </div>
   );
-}
+};
 
 export { FileThumbnail };
 export type { FileThumbnailProps };

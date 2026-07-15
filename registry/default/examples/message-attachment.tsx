@@ -1,6 +1,7 @@
 "use client";
 
 import { DownloadIcon, FileTextIcon } from "blode-icons-react";
+import Image from "next/image";
 
 import {
   Attachment,
@@ -21,9 +22,11 @@ export default function MessageAttachmentDemo() {
         <MessageContent>
           <Attachment orientation="vertical">
             <AttachmentMedia variant="image">
-              <img
+              <Image
                 alt="Workspace"
+                height={400}
                 src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=900&auto=format&fit=crop&q=80"
+                width={400}
               />
             </AttachmentMedia>
           </Attachment>

@@ -11,7 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "@/registry/default/ui/dropdown-menu";
 
-export function DropdownMenuCheckboxes() {
+export const DropdownMenuCheckboxes = () => {
   const [showStatusBar, setShowStatusBar] = useState(true);
   const [showActivityBar, setShowActivityBar] = useState(false);
   const [showPanel, setShowPanel] = useState(false);
@@ -47,4 +47,4 @@ export function DropdownMenuCheckboxes() {
       </DropdownMenuContent>
     </DropdownMenu>
   );
-}
+};

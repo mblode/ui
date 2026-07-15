@@ -1,4 +1,5 @@
 import { CodeIcon, XIcon } from "blode-icons-react";
+import Image from "next/image";
 
 import {
   Attachment,
@@ -14,22 +15,22 @@ import { Spinner } from "@/registry/default/ui/spinner";
 
 const images = [
   {
-    name: "workspace.png",
-    meta: "PNG · 820 KB",
-    src: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=900&auto=format&fit=crop&q=80",
     alt: "Workspace",
+    meta: "PNG · 820 KB",
+    name: "workspace.png",
+    src: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=900&auto=format&fit=crop&q=80",
   },
   {
-    name: "desk-reference.jpg",
-    meta: "JPG · 1.1 MB",
-    src: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=900&auto=format&fit=crop&q=80",
     alt: "Desk",
+    meta: "JPG · 1.1 MB",
+    name: "desk-reference.jpg",
+    src: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=900&auto=format&fit=crop&q=80",
   },
   {
-    name: "office-reference.jpg",
-    meta: "JPG · 940 KB",
-    src: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=900&auto=format&fit=crop&q=80",
     alt: "Office",
+    meta: "JPG · 940 KB",
+    name: "office-reference.jpg",
+    src: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=900&auto=format&fit=crop&q=80",
   },
 ];
 
@@ -40,7 +41,7 @@ export default function AttachmentDemo() {
         {images.map((image) => (
           <Attachment key={image.name} orientation="vertical">
             <AttachmentMedia variant="image">
-              <img alt={image.alt} src={image.src} />
+              <Image alt={image.alt} fill sizes="120px" src={image.src} />
             </AttachmentMedia>
             <AttachmentContent>
               <AttachmentTitle>{image.name}</AttachmentTitle>

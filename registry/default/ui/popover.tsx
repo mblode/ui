@@ -1,6 +1,7 @@
 "use client";
 
 import { Popover as PopoverPrimitive } from "@base-ui/react/popover";
+import { useRender } from "@base-ui/react/use-render";
 import * as React from "react";
 
 import { cn } from "@/lib/utils";
@@ -19,7 +20,7 @@ const PopoverContext = React.createContext<PopoverContextType | undefined>(undef
 
 const usePopoverContext = () => React.useContext(PopoverContext);
 
-function setRef<T>(ref: React.Ref<T> | undefined, value: T) {
+const setRef = <T,>(ref: React.Ref<T> | undefined, value: T) => {
   if (typeof ref === "function") {
     ref(value);
     return;
@@ -28,12 +29,16 @@ function setRef<T>(ref: React.Ref<T> | undefined, value: T) {
   if (ref && "current" in ref) {
     ref.current = value;
   }
-}
+};
 
-function Popover({ onOpenChange, ...props }: React.ComponentProps<typeof PopoverPrimitive.Root>) {
+const Popover = ({
+  onOpenChange,
+  ...props
+}: React.ComponentProps<typeof PopoverPrimitive.Root>) => {
   const [anchor, setAnchor] = React.useState<HTMLElement | null>(null);
   const onInteractOutsideRef = React.useRef<
     ((event: PopoverInteractOutsideEvent) => void) | undefined
+    // oxlint-disable-next-line unicorn/no-useless-undefined -- React 19's useRef requires an explicit initial value
   >(undefined);
 
   const handleOpenChange = React.useCallback<
@@ -55,28 +60,31 @@ function Popover({ onOpenChange, ...props }: React.ComponentProps<typeof Popover
     [onOpenChange],
   );
 
+  const contextValue = React.useMemo<PopoverContextType>(
+    () => ({
+      anchor,
+      setAnchor,
+      setOnInteractOutside: (handler) => {
+        onInteractOutsideRef.current = handler;
+      },
+    }),
+    [anchor],
+  );
+
   return (
-    <PopoverContext.Provider
-      value={{
-        anchor,
-        setAnchor,
-        setOnInteractOutside: (handler) => {
-          onInteractOutsideRef.current = handler;
-        },
-      }}
-    >
+    <PopoverContext.Provider value={contextValue}>
       <PopoverPrimitive.Root data-slot="popover" onOpenChange={handleOpenChange} {...props} />
     </PopoverContext.Provider>
   );
-}
+};
 
-function PopoverTrigger({
+const PopoverTrigger = ({
   asChild = false,
   children,
   ...props
 }: React.ComponentProps<typeof PopoverPrimitive.Trigger> & {
   asChild?: boolean;
-}) {
+}) => {
   const render =
     asChild && React.isValidElement(children) ? (children as React.ReactElement) : undefined;
 
@@ -85,7 +93,7 @@ function PopoverTrigger({
       {asChild ? null : children}
     </PopoverPrimitive.Trigger>
   );
-}
+};
 
 type PopoverContentProps = React.ComponentProps<typeof PopoverPrimitive.Popup> &
   Pick<
@@ -97,7 +105,7 @@ type PopoverContentProps = React.ComponentProps<typeof PopoverPrimitive.Popup> &
     onOpenAutoFocus?: (event: Event) => void;
   };
 
-function PopoverContent({
+const PopoverContent = ({
   asChild = false,
   children,
   className,
@@ -109,7 +117,7 @@ function PopoverContent({
   onInteractOutside,
   onOpenAutoFocus,
   ...props
-}: PopoverContentProps) {
+}: PopoverContentProps) => {
   const popoverContext = usePopoverContext();
 
   React.useEffect(() => {
@@ -157,16 +165,16 @@ function PopoverContent({
       </PopoverPrimitive.Positioner>
     </PopoverPrimitive.Portal>
   );
-}
+};
 
-function PopoverAnchor({
+const PopoverAnchor = ({
   asChild = false,
   children,
   ref,
   ...props
 }: React.ComponentProps<"div"> & {
   asChild?: boolean;
-}) {
+}) => {
   const popoverContext = usePopoverContext();
 
   const handleRef = React.useCallback(
@@ -177,51 +185,36 @@ function PopoverAnchor({
     [popoverContext, ref],
   );
 
-  if (asChild && React.isValidElement(children)) {
-    const child = children as React.ReactElement<{
-      ref?: React.Ref<HTMLElement>;
-      [key: string]: unknown;
-    }>;
+  const child =
+    asChild && React.isValidElement(children) ? (children as React.ReactElement) : undefined;
 
-    return React.cloneElement(child, {
-      ...props,
-      ref: (node: HTMLElement | null) => {
-        setRef(child.props.ref, node);
-        handleRef(node);
-      },
-    });
-  }
+  return useRender({
+    defaultTagName: "div",
+    props: child ? props : { "data-slot": "popover-anchor", ...props, children },
+    ref: handleRef,
+    render: child,
+  });
+};
 
-  return (
-    <div data-slot="popover-anchor" ref={handleRef} {...props}>
-      {children}
-    </div>
-  );
-}
+const PopoverHeader = ({ className, ...props }: React.ComponentProps<"div">) => (
+  <div
+    className={cn("flex flex-col gap-1 text-sm", className)}
+    data-slot="popover-header"
+    {...props}
+  />
+);
 
-function PopoverHeader({ className, ...props }: React.ComponentProps<"div">) {
-  return (
-    <div
-      className={cn("flex flex-col gap-1 text-sm", className)}
-      data-slot="popover-header"
-      {...props}
-    />
-  );
-}
+const PopoverTitle = ({ className, ...props }: React.ComponentProps<"h2">) => (
+  <div className={cn("font-medium", className)} data-slot="popover-title" {...props} />
+);
 
-function PopoverTitle({ className, ...props }: React.ComponentProps<"h2">) {
-  return <div className={cn("font-medium", className)} data-slot="popover-title" {...props} />;
-}
-
-function PopoverDescription({ className, ...props }: React.ComponentProps<"p">) {
-  return (
-    <p
-      className={cn("text-muted-foreground", className)}
-      data-slot="popover-description"
-      {...props}
-    />
-  );
-}
+const PopoverDescription = ({ className, ...props }: React.ComponentProps<"p">) => (
+  <p
+    className={cn("text-muted-foreground", className)}
+    data-slot="popover-description"
+    {...props}
+  />
+);
 
 export {
   Popover,

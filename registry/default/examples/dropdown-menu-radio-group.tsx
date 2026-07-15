@@ -12,7 +12,7 @@ import {
   DropdownMenuTrigger,
 } from "@/registry/default/ui/dropdown-menu";
 
-export function DropdownMenuRadioGroupDemo() {
+export const DropdownMenuRadioGroupDemo = () => {
   const [position, setPosition] = useState("bottom");
 
   return (
@@ -30,4 +30,4 @@ export function DropdownMenuRadioGroupDemo() {
       </DropdownMenuContent>
     </DropdownMenu>
   );
-}
+};

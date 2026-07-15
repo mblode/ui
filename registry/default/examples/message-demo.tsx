@@ -72,7 +72,7 @@ export default function MessageDemo() {
           </BubbleGroup>
         </MessageContent>
       </Message>
-      <Marker role="status">
+      <Marker render={<output />}>
         <MarkerContent className="shimmer">
           <span className="font-medium">Oliver</span> is typing...
         </MarkerContent>

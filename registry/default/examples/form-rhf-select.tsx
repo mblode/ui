@@ -51,6 +51,23 @@ const formSchema = z.object({
     }),
 });
 
+const onSubmit = (data: z.infer<typeof formSchema>) => {
+  toast("You submitted the following values:", {
+    classNames: {
+      content: "flex flex-col gap-2",
+    },
+    description: (
+      <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
+        <code>{JSON.stringify(data, null, 2)}</code>
+      </pre>
+    ),
+    position: "bottom-right",
+    style: {
+      "--border-radius": "calc(var(--radius)  + 4px)",
+    } as React.CSSProperties,
+  });
+};
+
 export default function FormRhfSelect() {
   const form = useForm<z.infer<typeof formSchema>>({
     defaultValues: {
@@ -58,23 +75,6 @@ export default function FormRhfSelect() {
     },
     resolver: zodResolver(formSchema),
   });
-
-  function onSubmit(data: z.infer<typeof formSchema>) {
-    toast("You submitted the following values:", {
-      classNames: {
-        content: "flex flex-col gap-2",
-      },
-      description: (
-        <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
-          <code>{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-      position: "bottom-right",
-      style: {
-        "--border-radius": "calc(var(--radius)  + 4px)",
-      } as React.CSSProperties,
-    });
-  }
 
   return (
     <Card className="w-full sm:max-w-lg">
@@ -97,7 +97,11 @@ export default function FormRhfSelect() {
                     </FieldDescription>
                     {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
                   </FieldContent>
-                  <Select name={field.name} onValueChange={field.onChange} value={field.value}>
+                  <Select
+                    name={field.name}
+                    onValueChange={(value) => field.onChange(value)}
+                    value={field.value}
+                  >
                     <SelectTrigger
                       aria-invalid={fieldState.invalid}
                       className="min-w-[120px]"

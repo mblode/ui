@@ -37,7 +37,7 @@ export default function FormTanstackSwitch() {
     },
     // onSubmit renders a JSX toast description, not a nested component
     // oxlint-disable-next-line react/no-unstable-nested-components
-    onSubmit: async ({ value }) => {
+    onSubmit: ({ value }) => {
       toast("You submitted the following values:", {
         classNames: {
           content: "flex flex-col gap-2",

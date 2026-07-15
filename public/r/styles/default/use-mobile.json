@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "hooks/use-mobile.ts",
-      "content": "import { useEffect, useState } from \"react\";\n\nconst MOBILE_BREAKPOINT = 768;\n\nexport function useIsMobile() {\n  const [isMobile, setIsMobile] = useState<boolean | undefined>();\n\n  useEffect(() => {\n    const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`);\n    const onChange = () => {\n      setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);\n    };\n    mql.addEventListener(\"change\", onChange);\n    setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);\n    return () => mql.removeEventListener(\"change\", onChange);\n  }, []);\n\n  return !!isMobile;\n}\n",
+      "content": "import { useSyncExternalStore } from \"react\";\n\nconst MOBILE_BREAKPOINT = 768;\n\nconst subscribe = (onStoreChange: () => void) => {\n  const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`);\n  mql.addEventListener(\"change\", onStoreChange);\n  return () => mql.removeEventListener(\"change\", onStoreChange);\n};\n\nexport const useIsMobile = () =>\n  useSyncExternalStore(\n    subscribe,\n    () => window.innerWidth < MOBILE_BREAKPOINT,\n    () => false,\n  );\n",
       "type": "registry:lib",
       "target": ""
     }

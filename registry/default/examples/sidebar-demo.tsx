@@ -192,7 +192,7 @@ const data = {
   },
 };
 
-function TeamSwitcher({
+const TeamSwitcher = ({
   teams,
 }: {
   teams: {
@@ -200,7 +200,7 @@ function TeamSwitcher({
     logo: ElementType;
     plan: string;
   }[];
-}) {
+}) => {
   const { isMobile } = useSidebar();
   const [activeTeam, setActiveTeam] = useState(teams[0]);
 
@@ -269,9 +269,9 @@ function TeamSwitcher({
       </SidebarMenu>
     </SidebarGroup>
   );
-}
+};
 
-function NavMain({
+const NavMain = ({
   items,
 }: {
   items: {
@@ -284,39 +284,37 @@ function NavMain({
       url: string;
     }[];
   }[];
-}) {
-  return (
-    <SidebarGroup>
-      <SidebarGroupLabel>Platform</SidebarGroupLabel>
-      <SidebarMenu>
-        {items.map((item) => (
-          <Collapsible className="group/collapsible" defaultOpen={item.isActive} key={item.title}>
-            <SidebarMenuItem>
-              <CollapsibleTrigger render={<SidebarMenuButton tooltip={item.title} />}>
-                {item.icon && <item.icon />}
-                <span>{item.title}</span>
-                <ChevronRightIcon className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
-              </CollapsibleTrigger>
-              <CollapsibleContent>
-                <SidebarMenuSub>
-                  {item.items?.map((subItem) => (
-                    <SidebarMenuSubItem key={subItem.title}>
-                      <SidebarMenuSubButton href={subItem.url}>
-                        <span>{subItem.title}</span>
-                      </SidebarMenuSubButton>
-                    </SidebarMenuSubItem>
-                  ))}
-                </SidebarMenuSub>
-              </CollapsibleContent>
-            </SidebarMenuItem>
-          </Collapsible>
-        ))}
-      </SidebarMenu>
-    </SidebarGroup>
-  );
-}
+}) => (
+  <SidebarGroup>
+    <SidebarGroupLabel>Platform</SidebarGroupLabel>
+    <SidebarMenu>
+      {items.map((item) => (
+        <Collapsible className="group/collapsible" defaultOpen={item.isActive} key={item.title}>
+          <SidebarMenuItem>
+            <CollapsibleTrigger render={<SidebarMenuButton tooltip={item.title} />}>
+              {item.icon && <item.icon />}
+              <span>{item.title}</span>
+              <ChevronRightIcon className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+            </CollapsibleTrigger>
+            <CollapsibleContent>
+              <SidebarMenuSub>
+                {item.items?.map((subItem) => (
+                  <SidebarMenuSubItem key={subItem.title}>
+                    <SidebarMenuSubButton href={subItem.url}>
+                      <span>{subItem.title}</span>
+                    </SidebarMenuSubButton>
+                  </SidebarMenuSubItem>
+                ))}
+              </SidebarMenuSub>
+            </CollapsibleContent>
+          </SidebarMenuItem>
+        </Collapsible>
+      ))}
+    </SidebarMenu>
+  </SidebarGroup>
+);
 
-function NavProjects({
+const NavProjects = ({
   projects,
 }: {
   projects: {
@@ -324,7 +322,7 @@ function NavProjects({
     url: string;
     icon: ElementType;
   }[];
-}) {
+}) => {
   const { isMobile } = useSidebar();
 
   return (
@@ -375,9 +373,9 @@ function NavProjects({
       </SidebarMenu>
     </SidebarGroup>
   );
-}
+};
 
-function NavUser({
+const NavUser = ({
   user,
 }: {
   user: {
@@ -385,7 +383,7 @@ function NavUser({
     email: string;
     avatar: string;
   };
-}) {
+}) => {
   const { isMobile } = useSidebar();
 
   return (
@@ -466,7 +464,7 @@ function NavUser({
       </SidebarMenu>
     </SidebarGroup>
   );
-}
+};
 
 export default function SidebarDemo({ ...props }: ComponentProps<typeof Sidebar>) {
   return (

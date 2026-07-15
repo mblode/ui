@@ -1,7 +1,7 @@
 "use client";
 
-import Autoplay from "embla-carousel-autoplay";
-import { useRef } from "react";
+import autoplay from "embla-carousel-autoplay";
+import { useMemo } from "react";
 import { Card, CardContent } from "@/registry/default/ui/card";
 import {
   Carousel,
@@ -12,14 +12,17 @@ import {
 } from "@/registry/default/ui/carousel";
 
 export default function CarouselPlugin() {
-  const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
+  const plugin = useMemo(() => autoplay({ delay: 2000, stopOnInteraction: true }), []);
+
+  const handleMouseEnter = () => plugin.stop();
+  const handleMouseLeave = () => plugin.reset();
 
   return (
     <Carousel
       className="w-full max-w-[10rem] sm:max-w-xs"
-      onMouseEnter={plugin.current.stop}
-      onMouseLeave={plugin.current.reset}
-      plugins={[plugin.current]}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      plugins={[plugin]}
     >
       <CarouselContent>
         {Array.from({ length: 5 }).map((_, index) => (

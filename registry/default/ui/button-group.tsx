@@ -23,24 +23,24 @@ const buttonGroupVariants = cva(
   },
 );
 
-function ButtonGroup({
+const ButtonGroup = ({
   className,
   orientation,
   ...props
-}: React.ComponentProps<"div"> & VariantProps<typeof buttonGroupVariants>) {
-  return (
-    <div
-      className={cn(buttonGroupVariants({ orientation }), className)}
-      data-orientation={orientation}
-      data-slot="button-group"
-      role="group"
-      {...props}
-    />
-  );
-}
+}: React.ComponentProps<"div"> & VariantProps<typeof buttonGroupVariants>) => (
+  /* oxlint-disable jsx-a11y/prefer-tag-over-role -- role="group" is the WAI-ARIA button group pattern; no native element conveys it */
+  <div
+    className={cn(buttonGroupVariants({ orientation }), className)}
+    data-orientation={orientation}
+    data-slot="button-group"
+    role="group"
+    {...props}
+  />
+  /* oxlint-enable jsx-a11y/prefer-tag-over-role */
+);
 
-function ButtonGroupText({ className, render, ...props }: useRender.ComponentProps<"div">) {
-  return useRender({
+const ButtonGroupText = ({ className, render, ...props }: useRender.ComponentProps<"div">) =>
+  useRender({
     defaultTagName: "div",
     props: mergeProps<"div">(
       {
@@ -56,24 +56,21 @@ function ButtonGroupText({ className, render, ...props }: useRender.ComponentPro
       slot: "button-group-text",
     },
   });
-}
 
-function ButtonGroupSeparator({
+const ButtonGroupSeparator = ({
   className,
   orientation = "vertical",
   ...props
-}: React.ComponentProps<typeof Separator>) {
-  return (
-    <Separator
-      className={cn(
-        "relative self-stretch bg-input data-horizontal:mx-px data-vertical:my-px data-vertical:h-auto data-horizontal:w-auto",
-        className,
-      )}
-      data-slot="button-group-separator"
-      orientation={orientation}
-      {...props}
-    />
-  );
-}
+}: React.ComponentProps<typeof Separator>) => (
+  <Separator
+    className={cn(
+      "relative self-stretch bg-input data-horizontal:mx-px data-vertical:my-px data-vertical:h-auto data-horizontal:w-auto",
+      className,
+    )}
+    data-slot="button-group-separator"
+    orientation={orientation}
+    {...props}
+  />
+);
 
 export { ButtonGroup, ButtonGroupSeparator, ButtonGroupText, buttonGroupVariants };

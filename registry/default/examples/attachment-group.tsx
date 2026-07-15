@@ -1,4 +1,5 @@
 import { CodeIcon, FileTextIcon, TableIcon, XIcon } from "blode-icons-react";
+import Image from "next/image";
 import type * as React from "react";
 
 import {
@@ -20,14 +21,14 @@ interface Item {
 }
 
 const items: Item[] = [
-  { name: "briefing-notes.pdf", meta: "PDF · 1.4 MB", icon: FileTextIcon },
+  { icon: FileTextIcon, meta: "PDF · 1.4 MB", name: "briefing-notes.pdf" },
   {
-    name: "workspace.png",
     meta: "PNG · 820 KB",
+    name: "workspace.png",
     src: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=900&auto=format&fit=crop&q=80",
   },
-  { name: "customers.csv", meta: "CSV · 18 KB", icon: TableIcon },
-  { name: "renderer.tsx", meta: "TSX · 12 KB", icon: CodeIcon },
+  { icon: TableIcon, meta: "CSV · 18 KB", name: "customers.csv" },
+  { icon: CodeIcon, meta: "TSX · 12 KB", name: "renderer.tsx" },
 ];
 
 export default function AttachmentGroupDemo() {
@@ -41,9 +42,10 @@ export default function AttachmentGroupDemo() {
             <Attachment className="w-64" key={item.name}>
               {item.src ? (
                 <AttachmentMedia variant="image">
-                  <img alt={item.name} src={item.src} />
+                  <Image alt={item.name} fill sizes="40px" src={item.src} />
                 </AttachmentMedia>
-              ) : Icon ? (
+              ) : null}
+              {!item.src && Icon ? (
                 <AttachmentMedia>
                   <Icon />
                 </AttachmentMedia>

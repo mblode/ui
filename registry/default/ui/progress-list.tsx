@@ -7,15 +7,9 @@ import type * as React from "react";
 
 import { cn } from "@/lib/utils";
 
-function ProgressList({ className, ...props }: React.ComponentProps<"div">) {
-  return (
-    <div
-      className={cn("flex flex-col space-y-1", className)}
-      data-slot="progress-list"
-      {...props}
-    />
-  );
-}
+const ProgressList = ({ className, ...props }: React.ComponentProps<"div">) => (
+  <div className={cn("flex flex-col space-y-1", className)} data-slot="progress-list" {...props} />
+);
 
 type ProgressItemState = "completed" | "current" | "pending";
 
@@ -25,7 +19,7 @@ interface ProgressItemProps extends Omit<React.ComponentProps<"div">, "title"> {
   title: React.ReactNode;
 }
 
-function ProgressItem({ className, completed, state, title, ...props }: ProgressItemProps) {
+const ProgressItem = ({ className, completed, state, title, ...props }: ProgressItemProps) => {
   const resolvedState = state ?? (completed ? "completed" : "pending");
 
   return (
@@ -57,7 +51,7 @@ function ProgressItem({ className, completed, state, title, ...props }: Progress
       </div>
     </div>
   );
-}
+};
 
 export { ProgressList, ProgressItem };
 export type { ProgressItemProps, ProgressItemState };

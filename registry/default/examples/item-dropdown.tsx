@@ -36,34 +36,32 @@ const people = [
   },
 ];
 
-export function ItemDropdown() {
-  return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline">
-          Select <ChevronDownIcon />
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-48">
-        <DropdownMenuGroup>
-          {people.map((person) => (
-            <DropdownMenuItem key={person.username}>
-              <Item className="w-full p-2" size="sm">
-                <ItemMedia>
-                  <Avatar className="size-[--spacing(6.5)]">
-                    <AvatarImage className="grayscale" src={person.avatar} />
-                    <AvatarFallback>{person.username.charAt(0)}</AvatarFallback>
-                  </Avatar>
-                </ItemMedia>
-                <ItemContent className="gap-0">
-                  <ItemTitle>{person.username}</ItemTitle>
-                  <ItemDescription className="leading-none">{person.email}</ItemDescription>
-                </ItemContent>
-              </Item>
-            </DropdownMenuItem>
-          ))}
-        </DropdownMenuGroup>
-      </DropdownMenuContent>
-    </DropdownMenu>
-  );
-}
+export const ItemDropdown = () => (
+  <DropdownMenu>
+    <DropdownMenuTrigger asChild>
+      <Button variant="outline">
+        Select <ChevronDownIcon />
+      </Button>
+    </DropdownMenuTrigger>
+    <DropdownMenuContent align="end" className="w-48">
+      <DropdownMenuGroup>
+        {people.map((person) => (
+          <DropdownMenuItem key={person.username}>
+            <Item className="w-full p-2" size="sm">
+              <ItemMedia>
+                <Avatar className="size-[--spacing(6.5)]">
+                  <AvatarImage className="grayscale" src={person.avatar} />
+                  <AvatarFallback>{person.username.charAt(0)}</AvatarFallback>
+                </Avatar>
+              </ItemMedia>
+              <ItemContent className="gap-0">
+                <ItemTitle>{person.username}</ItemTitle>
+                <ItemDescription className="leading-none">{person.email}</ItemDescription>
+              </ItemContent>
+            </Item>
+          </DropdownMenuItem>
+        ))}
+      </DropdownMenuGroup>
+    </DropdownMenuContent>
+  </DropdownMenu>
+);

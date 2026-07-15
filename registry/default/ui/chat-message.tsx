@@ -27,7 +27,7 @@ interface ChatMessageProps extends Omit<HTMLMotionProps<"div">, "children"> {
 // A single transcript entry with baked-in entrance + layout motion. Pairs with
 // InputMessage's onSend: render one per sent/received message. `layout="position"`
 // lets earlier messages slide up smoothly when a new one is appended.
-function ChatMessage({
+const ChatMessage = ({
   from,
   files,
   thumbnailSize = 64,
@@ -37,7 +37,7 @@ function ChatMessage({
   className,
   ref,
   ...props
-}: ChatMessageProps) {
+}: ChatMessageProps) => {
   const isUser = from === "user";
   // Timestamps are a user-message affordance; assistant replies show actions only.
   const showTime = isUser && time !== undefined && time !== null;
@@ -101,7 +101,7 @@ function ChatMessage({
       )}
     </motion.div>
   );
-}
+};
 
 export { ChatMessage };
 export type { ChatMessageProps };

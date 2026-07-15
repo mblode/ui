@@ -20,14 +20,14 @@ import {
   CommandShortcut,
 } from "@/registry/default/ui/command";
 
-export function CommandDialogDemo() {
+export const CommandDialogDemo = () => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if (e.key === "j" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
-        setOpen((open) => !open);
+        setOpen((prevOpen) => !prevOpen);
       }
     };
 
@@ -83,4 +83,4 @@ export function CommandDialogDemo() {
       </CommandDialog>
     </>
   );
-}
+};

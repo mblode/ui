@@ -6,15 +6,13 @@ import type * as React from "react";
 
 import { cn } from "@/lib/utils";
 
-function BubbleGroup({ className, ...props }: React.ComponentProps<"div">) {
-  return (
-    <div
-      className={cn("flex min-w-0 flex-col gap-2", className)}
-      data-slot="bubble-group"
-      {...props}
-    />
-  );
-}
+const BubbleGroup = ({ className, ...props }: React.ComponentProps<"div">) => (
+  <div
+    className={cn("flex min-w-0 flex-col gap-2", className)}
+    data-slot="bubble-group"
+    {...props}
+  />
+);
 
 const bubbleVariants = cva(
   "group/bubble relative flex w-fit min-w-0 max-w-[80%] flex-col gap-1 group-data-[align=end]/message:self-end data-[align=end]:self-end data-[variant=ghost]:max-w-full",
@@ -43,7 +41,7 @@ const bubbleVariants = cva(
   },
 );
 
-function Bubble({
+const Bubble = ({
   variant = "default",
   align = "start",
   className,
@@ -51,20 +49,18 @@ function Bubble({
 }: React.ComponentProps<"div"> &
   VariantProps<typeof bubbleVariants> & {
     align?: "start" | "end";
-  }) {
-  return (
-    <div
-      className={cn(bubbleVariants({ variant }), className)}
-      data-align={align}
-      data-slot="bubble"
-      data-variant={variant}
-      {...props}
-    />
-  );
-}
+  }) => (
+  <div
+    className={cn(bubbleVariants({ variant }), className)}
+    data-align={align}
+    data-slot="bubble"
+    data-variant={variant}
+    {...props}
+  />
+);
 
-function BubbleContent({ className, render, ...props }: useRender.ComponentProps<"div">) {
-  return useRender({
+const BubbleContent = ({ className, render, ...props }: useRender.ComponentProps<"div">) =>
+  useRender({
     defaultTagName: "div",
     props: mergeProps<"div">(
       {
@@ -80,7 +76,6 @@ function BubbleContent({ className, render, ...props }: useRender.ComponentProps
       slot: "bubble-content",
     },
   });
-}
 
 const bubbleReactionsVariants = cva(
   "absolute z-10 flex w-fit shrink-0 items-center justify-center gap-1 rounded-full bg-muted px-1.5 py-0.5 text-sm ring-3 ring-card has-[button]:p-0",
@@ -102,7 +97,7 @@ const bubbleReactionsVariants = cva(
   },
 );
 
-function BubbleReactions({
+const BubbleReactions = ({
   side = "bottom",
   align = "end",
   className,
@@ -110,16 +105,14 @@ function BubbleReactions({
 }: React.ComponentProps<"div"> & {
   align?: "start" | "end";
   side?: "top" | "bottom";
-}) {
-  return (
-    <div
-      className={cn(bubbleReactionsVariants({ align, side }), className)}
-      data-align={align}
-      data-side={side}
-      data-slot="bubble-reactions"
-      {...props}
-    />
-  );
-}
+}) => (
+  <div
+    className={cn(bubbleReactionsVariants({ align, side }), className)}
+    data-align={align}
+    data-side={side}
+    data-slot="bubble-reactions"
+    {...props}
+  />
+);
 
 export { BubbleGroup, Bubble, BubbleContent, BubbleReactions };

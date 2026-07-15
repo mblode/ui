@@ -30,7 +30,10 @@ export default function EmptyInputGroup() {
           </InputGroupAddon>
         </InputGroup>
         <EmptyDescription>
-          Need help? <a href="#">Contact support</a>
+          Need help?{" "}
+          <button className="underline underline-offset-4 hover:text-foreground" type="button">
+            Contact support
+          </button>
         </EmptyDescription>
       </EmptyContent>
     </Empty>

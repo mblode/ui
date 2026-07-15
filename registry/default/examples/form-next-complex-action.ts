@@ -1,11 +1,12 @@
 "use server";
 
+import { setTimeout } from "node:timers/promises";
 import { formSchema } from "./form-next-complex-schema";
 import type { FormState } from "./form-next-complex-schema";
 
-export async function complexFormAction(_prevState: FormState, formData: FormData) {
+export const complexFormAction = async (_prevState: FormState, formData: FormData) => {
   // Sleep for 1 second
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  await setTimeout(1000);
 
   const values = {
     addons: formData.getAll("addons") as string[],
@@ -32,4 +33,4 @@ export async function complexFormAction(_prevState: FormState, formData: FormDat
     success: true,
     values,
   };
-}
+};

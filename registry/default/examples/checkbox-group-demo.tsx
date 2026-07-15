@@ -5,7 +5,7 @@ import { useId } from "react";
 import { Checkbox } from "@/registry/default/ui/checkbox";
 import { CheckboxGroup, CheckboxGroupLabel } from "@/registry/default/ui/checkbox-group";
 
-export function CheckboxGroupDemo() {
+export const CheckboxGroupDemo = () => {
   const id = useId();
   const fujiId = `${id}-fuji`;
   const galaId = `${id}-gala`;
@@ -31,4 +31,4 @@ export function CheckboxGroupDemo() {
       </div>
     </CheckboxGroup>
   );
-}
+};

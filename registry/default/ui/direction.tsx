@@ -3,7 +3,7 @@
 import { DirectionProvider as BaseDirectionProvider } from "@base-ui/react/direction-provider";
 import type * as React from "react";
 
-function DirectionProvider({
+const DirectionProvider = ({
   dir,
   direction,
   children,
@@ -11,13 +11,11 @@ function DirectionProvider({
 }: React.ComponentProps<typeof BaseDirectionProvider> & {
   dir?: React.ComponentProps<typeof BaseDirectionProvider>["direction"];
   direction?: React.ComponentProps<typeof BaseDirectionProvider>["direction"];
-}) {
-  return (
-    <BaseDirectionProvider direction={direction ?? dir} {...props}>
-      {children}
-    </BaseDirectionProvider>
-  );
-}
+}) => (
+  <BaseDirectionProvider direction={direction ?? dir} {...props}>
+    {children}
+  </BaseDirectionProvider>
+);
 
 export { DirectionProvider };
 // biome-ignore lint/performance/noBarrelFile: intentional re-export of useDirection

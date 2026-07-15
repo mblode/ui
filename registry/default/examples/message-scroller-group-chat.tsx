@@ -47,42 +47,79 @@ type GroupChatItem =
 const initialItems = [
   {
     id: "group-1",
-    type: "message",
-    sender: "Grace",
     role: "participant",
+    sender: "Grace",
     text: "@mary, the astrophage line keeps matching Venus energy output. Can you check my math?",
+    type: "message",
   },
   {
     id: "group-2",
-    type: "message",
-    sender: "Mary (Agent)",
     role: "assistant",
+    sender: "Mary (Agent)",
     text: "Yes. Confirmed. The curve points to a microorganism harvesting stellar energy and breeding near carbon dioxide. If @rocky agrees, this is the clue we need.",
+    type: "message",
   },
   {
     id: "group-3",
-    type: "message",
-    sender: "Grace",
     role: "participant",
-    text: "ping @rocky",
     scrollAnchor: true,
+    sender: "Grace",
+    text: "ping @rocky",
+    type: "message",
   },
 ] satisfies GroupChatItem[];
 
 const rockyMarker = {
   id: "group-4",
-  type: "event",
-  text: "Rocky has joined the chat",
   scrollAnchor: true,
+  text: "Rocky has joined the chat",
+  type: "event",
 } satisfies GroupChatItem;
 
 const rockyMessage = {
   id: "group-5",
-  type: "message",
-  sender: "Rocky",
   role: "participant",
+  sender: "Rocky",
   text: "Amaze. Astrophage eats light, makes heat, goes to carbon dioxide. Rocky has fuel model. Grace is smart.",
+  type: "message",
 } satisfies GroupChatItem;
+
+const GroupChatMessage = ({ item }: { item: Extract<GroupChatItem, { type: "message" }> }) => {
+  const isCurrentUser = item.sender === currentUser;
+  let variant: "muted" | "ghost" | "tinted" = "tinted";
+  if (isCurrentUser) {
+    variant = "muted";
+  } else if (item.role === "assistant") {
+    variant = "ghost";
+  }
+
+  return (
+    <MessageScrollerItem messageId={item.id} scrollAnchor={item.scrollAnchor}>
+      <Message align={isCurrentUser ? "end" : "start"}>
+        <MessageContent>
+          {!isCurrentUser && <MessageHeader>{item.sender}</MessageHeader>}
+          <Bubble variant={variant}>
+            <BubbleContent>{item.text}</BubbleContent>
+          </Bubble>
+        </MessageContent>
+      </Message>
+    </MessageScrollerItem>
+  );
+};
+
+const GroupChatMarker = ({
+  item,
+  scrollAnchor = false,
+}: {
+  item: Extract<GroupChatItem, { type: "event" }>;
+  scrollAnchor?: boolean;
+}) => (
+  <MessageScrollerItem scrollAnchor={scrollAnchor}>
+    <Marker variant="separator">
+      <MarkerContent>{item.text}</MarkerContent>
+    </Marker>
+  </MessageScrollerItem>
+);
 
 export default function MessageScrollerGroupChat() {
   const [demoKey, setDemoKey] = React.useState(0);
@@ -170,44 +207,5 @@ export default function MessageScrollerGroupChat() {
         When a user joins, a marker is created. scrollAnchor on the marker marks it as the next turn
       </div>
     </div>
-  );
-}
-
-function GroupChatMessage({ item }: { item: Extract<GroupChatItem, { type: "message" }> }) {
-  const isCurrentUser = item.sender === currentUser;
-  let variant: "muted" | "ghost" | "tinted" = "tinted";
-  if (isCurrentUser) {
-    variant = "muted";
-  } else if (item.role === "assistant") {
-    variant = "ghost";
-  }
-
-  return (
-    <MessageScrollerItem messageId={item.id} scrollAnchor={item.scrollAnchor}>
-      <Message align={isCurrentUser ? "end" : "start"}>
-        <MessageContent>
-          {!isCurrentUser && <MessageHeader>{item.sender}</MessageHeader>}
-          <Bubble variant={variant}>
-            <BubbleContent>{item.text}</BubbleContent>
-          </Bubble>
-        </MessageContent>
-      </Message>
-    </MessageScrollerItem>
-  );
-}
-
-function GroupChatMarker({
-  item,
-  scrollAnchor = false,
-}: {
-  item: Extract<GroupChatItem, { type: "event" }>;
-  scrollAnchor?: boolean;
-}) {
-  return (
-    <MessageScrollerItem scrollAnchor={scrollAnchor}>
-      <Marker variant="separator">
-        <MarkerContent>{item.text}</MarkerContent>
-      </Marker>
-    </MessageScrollerItem>
   );
 }

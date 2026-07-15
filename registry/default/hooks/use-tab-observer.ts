@@ -4,7 +4,7 @@ interface TabObserverOptions {
   onActiveTabChange?: (index: number, element: HTMLElement) => void;
 }
 
-export function useTabObserver({ onActiveTabChange }: TabObserverOptions = {}) {
+export const useTabObserver = ({ onActiveTabChange }: TabObserverOptions = {}) => {
   const listRef = React.useRef<HTMLDivElement>(null);
   const onActiveTabChangeRef = React.useRef(onActiveTabChange);
 
@@ -66,4 +66,4 @@ export function useTabObserver({ onActiveTabChange }: TabObserverOptions = {}) {
   }, [handleUpdate]);
 
   return { listRef };
-}
+};

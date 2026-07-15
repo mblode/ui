@@ -7,7 +7,7 @@ import { Button } from "@/registry/default/ui/button";
 import { Calendar } from "@/registry/default/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/registry/default/ui/popover";
 
-export function DatePickerDemo() {
+export const DatePickerDemo = () => {
   const [date, setDate] = useState<Date>();
 
   return (
@@ -30,4 +30,4 @@ export function DatePickerDemo() {
       </PopoverContent>
     </Popover>
   );
-}
+};

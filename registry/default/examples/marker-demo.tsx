@@ -12,7 +12,7 @@ export default function MarkerDemo() {
         </MarkerIcon>
         <MarkerContent>Switched to a new branch</MarkerContent>
       </Marker>
-      <Marker role="status">
+      <Marker render={<output />}>
         <MarkerIcon>
           <Spinner />
         </MarkerIcon>

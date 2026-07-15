@@ -10,27 +10,21 @@ interface CircularProgressProps extends React.ComponentProps<"div"> {
   value: number;
 }
 
-function CircularProgress({
+const CircularProgress = ({
   value,
   strokeWidth = 4,
   className,
   hideText,
   ...props
-}: CircularProgressProps) {
+}: CircularProgressProps) => {
   const percentage = Math.min(Math.max(value, 0), 100);
   const radius = 16;
   const circumference = 2 * Math.PI * radius;
   const strokeDashoffset = circumference - (percentage / 100) * circumference;
 
   return (
-    <div
-      aria-valuemax={100}
-      aria-valuemin={0}
-      aria-valuenow={percentage}
-      className={cn("relative", className)}
-      role="progressbar"
-      {...props}
-    >
+    <div className={cn("relative", className)} {...props}>
+      <progress aria-label="Circular progress" className="sr-only" max={100} value={percentage} />
       <svg className="size-full -rotate-90" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
         <title>Circular progress</title>
         <circle
@@ -66,6 +60,6 @@ function CircularProgress({
       )}
     </div>
   );
-}
+};
 
 export { CircularProgress };

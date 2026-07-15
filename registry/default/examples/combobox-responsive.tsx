@@ -43,6 +43,35 @@ const statuses: Status[] = [
   },
 ];
 
+const StatusList = ({
+  setOpen,
+  setSelectedStatus,
+}: {
+  setOpen: (open: boolean) => void;
+  setSelectedStatus: (status: Status | null) => void;
+}) => (
+  <Command>
+    <CommandInput placeholder="Filter status..." />
+    <CommandList>
+      <CommandEmpty>No results found.</CommandEmpty>
+      <CommandGroup>
+        {statuses.map((status) => (
+          <CommandItem
+            key={status.value}
+            onSelect={(value) => {
+              setSelectedStatus(statuses.find((priority) => priority.value === value) || null);
+              setOpen(false);
+            }}
+            value={status.value}
+          >
+            {status.label}
+          </CommandItem>
+        ))}
+      </CommandGroup>
+    </CommandList>
+  </Command>
+);
+
 export default function ComboBoxResponsive() {
   const [open, setOpen] = useState(false);
   const isDesktop = useMediaQuery("(min-width: 768px)");
@@ -76,36 +105,5 @@ export default function ComboBoxResponsive() {
         </div>
       </DrawerContent>
     </Drawer>
-  );
-}
-
-function StatusList({
-  setOpen,
-  setSelectedStatus,
-}: {
-  setOpen: (open: boolean) => void;
-  setSelectedStatus: (status: Status | null) => void;
-}) {
-  return (
-    <Command>
-      <CommandInput placeholder="Filter status..." />
-      <CommandList>
-        <CommandEmpty>No results found.</CommandEmpty>
-        <CommandGroup>
-          {statuses.map((status) => (
-            <CommandItem
-              key={status.value}
-              onSelect={(value) => {
-                setSelectedStatus(statuses.find((priority) => priority.value === value) || null);
-                setOpen(false);
-              }}
-              value={status.value}
-            >
-              {status.label}
-            </CommandItem>
-          ))}
-        </CommandGroup>
-      </CommandList>
-    </Command>
   );
 }

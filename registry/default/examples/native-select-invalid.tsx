@@ -1,12 +1,10 @@
 import { NativeSelect, NativeSelectOption } from "@/registry/default/ui/native-select";
 
-export function NativeSelectInvalid() {
-  return (
-    <NativeSelect aria-invalid="true">
-      <NativeSelectOption value="">Error state</NativeSelectOption>
-      <NativeSelectOption value="apple">Apple</NativeSelectOption>
-      <NativeSelectOption value="banana">Banana</NativeSelectOption>
-      <NativeSelectOption value="blueberry">Blueberry</NativeSelectOption>
-    </NativeSelect>
-  );
-}
+export const NativeSelectInvalid = () => (
+  <NativeSelect aria-invalid="true">
+    <NativeSelectOption value="">Error state</NativeSelectOption>
+    <NativeSelectOption value="apple">Apple</NativeSelectOption>
+    <NativeSelectOption value="banana">Banana</NativeSelectOption>
+    <NativeSelectOption value="blueberry">Blueberry</NativeSelectOption>
+  </NativeSelect>
+);

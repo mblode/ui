@@ -58,12 +58,12 @@ const data = [
   },
 ];
 
-export function DrawerDemo() {
+export const DrawerDemo = () => {
   const [goal, setGoal] = useState(350);
 
-  function onClick(adjustment: number) {
+  const onClick = (adjustment: number) => {
     setGoal(Math.max(200, Math.min(400, goal + adjustment)));
-  }
+  };
 
   return (
     <Drawer>
@@ -128,4 +128,4 @@ export function DrawerDemo() {
       </DrawerContent>
     </Drawer>
   );
-}
+};

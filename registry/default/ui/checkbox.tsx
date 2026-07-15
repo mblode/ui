@@ -20,7 +20,7 @@ export interface CheckboxProps extends Omit<
   onCheckedChange?: (checked: CheckedState) => void;
 }
 
-function Checkbox({
+const Checkbox = ({
   checked,
   className,
   defaultChecked,
@@ -28,7 +28,7 @@ function Checkbox({
   indeterminate,
   onCheckedChange,
   ...props
-}: CheckboxProps) {
+}: CheckboxProps) => {
   const resolvedIndeterminate =
     indeterminate ?? (checked === "indeterminate" || defaultChecked === "indeterminate");
 
@@ -44,14 +44,15 @@ function Checkbox({
       defaultChecked={defaultChecked === "indeterminate" ? false : defaultChecked}
       indeterminate={resolvedIndeterminate}
       onCheckedChange={(nextChecked) => onCheckedChange?.(nextChecked)}
-      render={(renderProps, state) => (
-        <span
-          {...renderProps}
-          data-state={
-            state.indeterminate ? "indeterminate" : state.checked ? "checked" : "unchecked"
-          }
-        />
-      )}
+      render={(renderProps, state) => {
+        let dataState: "indeterminate" | "checked" | "unchecked" = "unchecked";
+        if (state.indeterminate) {
+          dataState = "indeterminate";
+        } else if (state.checked) {
+          dataState = "checked";
+        }
+        return <span {...renderProps} data-state={dataState} />;
+      }}
       {...props}
     >
       <CheckboxPrimitive.Indicator
@@ -84,6 +85,6 @@ function Checkbox({
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>
   );
-}
+};
 
 export { Checkbox };

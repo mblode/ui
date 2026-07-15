@@ -61,11 +61,11 @@ interface AskUserQuestionsProps extends Omit<React.ComponentProps<"div">, "onCha
   skipLabel?: string;
 }
 
-function useControllable<T>(
+const useControllable = <T,>(
   controlled: T | undefined,
   defaultValue: T,
   onChange?: (value: T) => void,
-): [T, (value: T) => void] {
+): [T, (value: T) => void] => {
   const [uncontrolled, setUncontrolled] = React.useState(defaultValue);
   const isControlled = controlled !== undefined;
   const value = isControlled ? (controlled as T) : uncontrolled;
@@ -79,7 +79,224 @@ function useControllable<T>(
     [isControlled, onChange],
   );
   return [value, setValue];
+};
+
+const getChipClassName = (isMulti: boolean, selected: boolean) => {
+  if (isMulti) {
+    return cn(
+      "rounded-full",
+      selected
+        ? "bg-foreground font-semibold text-background"
+        : "border border-border text-muted-foreground",
+    );
+  }
+  return selected ? "font-semibold text-foreground" : "text-muted-foreground";
+};
+
+interface AskUserOptionButtonProps {
+  option: AskUserOption;
+  index: number;
+  selected: boolean;
+  hovered: boolean;
+  isMulti: boolean;
+  layout: "inline" | "stacked";
+  onSelect: () => void;
+  onHover: () => void;
 }
+
+const AskUserOptionButton = ({
+  option,
+  index,
+  selected,
+  hovered,
+  isMulti,
+  layout,
+  onSelect,
+  onHover,
+}: AskUserOptionButtonProps) => {
+  const showArrow = !isMulti && hovered;
+  return (
+    <button
+      aria-checked={selected}
+      className={cn(
+        "relative z-10 flex items-center gap-3 rounded-full px-3 text-left outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[#6B97FF]",
+        layout === "stacked" ? "min-h-14 py-2" : "min-h-10 py-1.5",
+      )}
+      onClick={onSelect}
+      onMouseEnter={onHover}
+      role={isMulti ? "checkbox" : "radio"}
+      type="button"
+    >
+      {hovered && !selected && (
+        <motion.span
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 rounded-full bg-muted"
+          layoutId="ask-user-hover"
+          transition={springs.fast}
+        />
+      )}
+      {selected &&
+        (isMulti ? (
+          <span aria-hidden="true" className="absolute inset-0 -z-10 rounded-full bg-accent" />
+        ) : (
+          <motion.span
+            aria-hidden="true"
+            className="absolute inset-0 -z-10 rounded-full bg-accent"
+            layoutId="ask-user-selected"
+            transition={springs.moderate}
+          />
+        ))}
+
+      <span
+        className={cn(
+          "min-w-0 flex-1 text-[13px] leading-snug",
+          layout === "stacked" ? "flex flex-col gap-0.5" : "",
+        )}
+      >
+        <span className={cn("text-foreground", selected ? "font-semibold" : "font-medium")}>
+          {option.title}
+        </span>
+        {option.description &&
+          (layout === "stacked" ? (
+            <span className="text-muted-foreground text-xs leading-snug">{option.description}</span>
+          ) : (
+            <span className="text-muted-foreground"> {option.description}</span>
+          ))}
+      </span>
+
+      <span className="relative inline-flex size-7 shrink-0 items-center justify-center">
+        <span
+          className={cn(
+            "inline-flex size-5 items-center justify-center text-[11px] transition-opacity",
+            getChipClassName(isMulti, selected),
+            showArrow && "opacity-0",
+          )}
+        >
+          {index + 1}
+        </span>
+        <AnimatePresence>
+          {showArrow && (
+            <motion.span
+              animate={{ opacity: 1, scale: 1 }}
+              aria-hidden="true"
+              className="absolute inset-0 inline-flex items-center justify-center rounded-full bg-foreground text-background"
+              exit={{ opacity: 0, scale: 0.6, transition: { duration: 0.06 } }}
+              initial={{ opacity: 0, scale: 0.6 }}
+              transition={springs.fast}
+            >
+              <ArrowRightIcon className="size-3.5" />
+            </motion.span>
+          )}
+        </AnimatePresence>
+      </span>
+    </button>
+  );
+};
+
+interface AskUserOtherInputProps {
+  placeholder?: string;
+  optionCount: number;
+  otherText: string;
+  isMulti: boolean;
+  onChangeText: (text: string) => void;
+  onSubmit: () => void;
+}
+
+const AskUserOtherInput = ({
+  placeholder,
+  optionCount,
+  otherText,
+  isMulti,
+  onChangeText,
+  onSubmit,
+}: AskUserOtherInputProps) => (
+  <div
+    className={cn(
+      "relative z-10 flex items-start gap-3 rounded-full px-3 py-2",
+      otherText.length > 0 && "bg-accent",
+    )}
+  >
+    <textarea
+      aria-label={placeholder ?? "Describe in your own words"}
+      className="min-h-7 flex-1 resize-none self-center bg-transparent text-[13px] text-foreground leading-snug outline-none [field-sizing:content] placeholder:text-muted-foreground"
+      onChange={(e) => onChangeText(e.target.value)}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" && !e.shiftKey && !isMulti && otherText.trim()) {
+          e.preventDefault();
+          onSubmit();
+        }
+      }}
+      placeholder={placeholder ?? "Describe in your own words…"}
+      rows={1}
+      value={otherText}
+    />
+    <span
+      className={cn(
+        "inline-flex size-5 shrink-0 items-center justify-center self-center text-[11px]",
+        otherText.length > 0 ? "font-semibold text-foreground" : "text-muted-foreground",
+      )}
+    >
+      {optionCount + 1}
+    </span>
+  </div>
+);
+
+interface AskUserFooterProps {
+  showBack: boolean;
+  showSkip: boolean;
+  showConfirm: boolean;
+  skipLabel: string;
+  nextLabel?: string;
+  isLast: boolean;
+  isMulti: boolean;
+  canProceed: boolean;
+  onBack: () => void;
+  onSkip: () => void;
+  onNext: () => void;
+}
+
+const AskUserFooter = ({
+  showBack,
+  showSkip,
+  showConfirm,
+  skipLabel,
+  nextLabel,
+  isLast,
+  isMulti,
+  canProceed,
+  onBack,
+  onSkip,
+  onNext,
+}: AskUserFooterProps) => (
+  <div className="flex items-center justify-between gap-2 px-4 pt-1 pb-3 sm:px-5">
+    <div>
+      {showBack && (
+        <Button data-icon="inline-start" onClick={onBack} size="sm" variant="ghost">
+          <ArrowLeftIcon className="hidden sm:block" />
+          Back
+        </Button>
+      )}
+    </div>
+    <div className="flex items-center gap-2">
+      {showSkip && (
+        <Button data-icon="inline-end" onClick={onSkip} size="sm" variant="ghost">
+          {skipLabel}
+          <ArrowRightIcon className="hidden sm:block" />
+        </Button>
+      )}
+      {showConfirm && (
+        <Button disabled={!canProceed} onClick={onNext} size="sm">
+          {nextLabel ?? (isLast ? "Finish" : "Next")}
+          {isMulti && (
+            <kbd className="-mr-0.5 ml-0.5 inline-flex items-center gap-0.5 rounded-full bg-primary-foreground/15 px-1.5 py-px font-medium text-[10px] text-primary-foreground/90">
+              ⌘↵
+            </kbd>
+          )}
+        </Button>
+      )}
+    </div>
+  </div>
+);
 
 // ─── AskUserQuestions ───────────────────────────────────────────────────────
 // A stepped questionnaire rendered as a single card: single- or multi-select
@@ -87,7 +304,7 @@ function useControllable<T>(
 // background slides between options on hover and selection. Single-select
 // questions advance on click (an arrow overlays the number chip); multi-select
 // (or "other"-enabled) questions advance via the footer Next / Finish button.
-function AskUserQuestions({
+const AskUserQuestions = ({
   questions,
   currentIndex,
   defaultCurrentIndex = 0,
@@ -101,7 +318,7 @@ function AskUserQuestions({
   className,
   ref,
   ...props
-}: AskUserQuestionsProps) {
+}: AskUserQuestionsProps) => {
   const [index, setIndex] = useControllable(
     currentIndex,
     defaultCurrentIndex,
@@ -116,9 +333,13 @@ function AskUserQuestions({
 
   const current = questions[index];
 
-  const currentAnswer: AskUserAnswer = current
-    ? (answersMap[current.id] ?? { questionId: current.id, selectedIds: [] })
-    : { questionId: "", selectedIds: [] };
+  const currentAnswer: AskUserAnswer = React.useMemo(
+    () =>
+      current
+        ? (answersMap[current.id] ?? { questionId: current.id, selectedIds: [] })
+        : { questionId: "", selectedIds: [] },
+    [current, answersMap],
+  );
 
   const commit = React.useCallback(
     (answer: AskUserAnswer): AnswersMap => {
@@ -140,6 +361,37 @@ function AskUserQuestions({
     },
     [index, questions.length, onComplete, setIndex],
   );
+
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  React.useImperativeHandle(ref, () => containerRef.current as HTMLDivElement);
+
+  // The Cmd/Ctrl+Enter submit shortcut is attached as a native listener rather
+  // than a JSX handler so the container stays a non-interactive grouping element.
+  const handleShortcut = React.useCallback(
+    (e: KeyboardEvent) => {
+      if (!current) {
+        return;
+      }
+      const showConfirm = Boolean(current.multiSelect || current.allowOther);
+      const otherText = currentAnswer.otherText ?? "";
+      const canProceed = currentAnswer.selectedIds.length > 0 || otherText.trim().length > 0;
+      if ((e.metaKey || e.ctrlKey) && e.key === "Enter" && showConfirm && canProceed) {
+        e.preventDefault();
+        goNext(commit({ ...currentAnswer, skipped: false }));
+      }
+    },
+    [current, currentAnswer, commit, goNext],
+  );
+
+  React.useEffect(() => {
+    const node = containerRef.current;
+    if (!node) {
+      return;
+    }
+    const listener = (e: KeyboardEvent) => handleShortcut(e);
+    node.addEventListener("keydown", listener);
+    return () => node.removeEventListener("keydown", listener);
+  }, [handleShortcut]);
 
   if (!current) {
     return null;
@@ -210,15 +462,8 @@ function AskUserQuestions({
         className,
       )}
       data-slot="ask-user-questions"
-      ref={ref}
+      ref={containerRef}
       {...props}
-      onKeyDown={(e) => {
-        props.onKeyDown?.(e);
-        if ((e.metaKey || e.ctrlKey) && e.key === "Enter" && showConfirm && canProceed) {
-          e.preventDefault();
-          handleNext();
-        }
-      }}
     >
       {/* Header — progress sits at the top, fixed across questions. */}
       <div className="flex items-center px-4 pt-4 pb-2 text-muted-foreground text-xs tabular-nums sm:px-5 sm:pt-5">
@@ -242,175 +487,52 @@ function AskUserQuestions({
             onMouseLeave={() => setHoverIndex(null)}
             role={isMulti ? "group" : "radiogroup"}
           >
-            {current.options.map((option, i) => {
-              const selected = currentAnswer.selectedIds.includes(option.id);
-              const hovered = hoverIndex === i;
-              const showArrow = !isMulti && hovered;
-              return (
-                <button
-                  aria-checked={selected}
-                  className={cn(
-                    "relative z-10 flex items-center gap-3 rounded-full px-3 text-left outline-none transition-colors focus-visible:ring-2 focus-visible:ring-[#6B97FF]",
-                    layout === "stacked" ? "min-h-14 py-2" : "min-h-10 py-1.5",
-                  )}
-                  key={option.id}
-                  onClick={() => selectOption(option.id)}
-                  onMouseEnter={() => setHoverIndex(i)}
-                  role={isMulti ? "checkbox" : "radio"}
-                  type="button"
-                >
-                  {hovered && !selected && (
-                    <motion.span
-                      aria-hidden="true"
-                      className="absolute inset-0 -z-10 rounded-full bg-muted"
-                      layoutId="ask-user-hover"
-                      transition={springs.fast}
-                    />
-                  )}
-                  {selected &&
-                    (isMulti ? (
-                      <span
-                        aria-hidden="true"
-                        className="absolute inset-0 -z-10 rounded-full bg-accent"
-                      />
-                    ) : (
-                      <motion.span
-                        aria-hidden="true"
-                        className="absolute inset-0 -z-10 rounded-full bg-accent"
-                        layoutId="ask-user-selected"
-                        transition={springs.moderate}
-                      />
-                    ))}
-
-                  <span
-                    className={cn(
-                      "min-w-0 flex-1 text-[13px] leading-snug",
-                      layout === "stacked" ? "flex flex-col gap-0.5" : "",
-                    )}
-                  >
-                    <span
-                      className={cn("text-foreground", selected ? "font-semibold" : "font-medium")}
-                    >
-                      {option.title}
-                    </span>
-                    {option.description &&
-                      (layout === "stacked" ? (
-                        <span className="text-muted-foreground text-xs leading-snug">
-                          {option.description}
-                        </span>
-                      ) : (
-                        <span className="text-muted-foreground"> {option.description}</span>
-                      ))}
-                  </span>
-
-                  <span className="relative inline-flex size-7 shrink-0 items-center justify-center">
-                    <span
-                      className={cn(
-                        "inline-flex size-5 items-center justify-center text-[11px] transition-opacity",
-                        isMulti
-                          ? cn(
-                              "rounded-full",
-                              selected
-                                ? "bg-foreground font-semibold text-background"
-                                : "border border-border text-muted-foreground",
-                            )
-                          : selected
-                            ? "font-semibold text-foreground"
-                            : "text-muted-foreground",
-                        showArrow && "opacity-0",
-                      )}
-                    >
-                      {i + 1}
-                    </span>
-                    <AnimatePresence>
-                      {showArrow && (
-                        <motion.span
-                          animate={{ opacity: 1, scale: 1 }}
-                          aria-hidden="true"
-                          className="absolute inset-0 inline-flex items-center justify-center rounded-full bg-foreground text-background"
-                          exit={{ opacity: 0, scale: 0.6, transition: { duration: 0.06 } }}
-                          initial={{ opacity: 0, scale: 0.6 }}
-                          transition={springs.fast}
-                        >
-                          <ArrowRightIcon className="size-3.5" />
-                        </motion.span>
-                      )}
-                    </AnimatePresence>
-                  </span>
-                </button>
-              );
-            })}
+            {current.options.map((option, i) => (
+              <AskUserOptionButton
+                hovered={hoverIndex === i}
+                index={i}
+                isMulti={isMulti}
+                key={option.id}
+                layout={layout}
+                onHover={() => setHoverIndex(i)}
+                onSelect={() => selectOption(option.id)}
+                option={option}
+                selected={currentAnswer.selectedIds.includes(option.id)}
+              />
+            ))}
 
             {current.allowOther && (
-              <div
-                className={cn(
-                  "relative z-10 flex items-start gap-3 rounded-full px-3 py-2",
-                  otherText.length > 0 && "bg-accent",
-                )}
-              >
-                <textarea
-                  aria-label={current.otherPlaceholder ?? "Describe in your own words"}
-                  className="min-h-7 flex-1 resize-none self-center bg-transparent text-[13px] text-foreground leading-snug outline-none [field-sizing:content] placeholder:text-muted-foreground"
-                  onChange={(e) => setOtherText(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter" && !e.shiftKey && !isMulti && otherText.trim()) {
-                      e.preventDefault();
-                      handleNext();
-                    }
-                  }}
-                  placeholder={current.otherPlaceholder ?? "Describe in your own words…"}
-                  rows={1}
-                  value={otherText}
-                />
-                <span
-                  className={cn(
-                    "inline-flex size-5 shrink-0 items-center justify-center self-center text-[11px]",
-                    otherText.length > 0
-                      ? "font-semibold text-foreground"
-                      : "text-muted-foreground",
-                  )}
-                >
-                  {current.options.length + 1}
-                </span>
-              </div>
+              <AskUserOtherInput
+                isMulti={isMulti}
+                onChangeText={setOtherText}
+                onSubmit={handleNext}
+                optionCount={current.options.length}
+                otherText={otherText}
+                placeholder={current.otherPlaceholder}
+              />
             )}
           </div>
         </motion.div>
       </AnimatePresence>
 
       {showFooter && (
-        <div className="flex items-center justify-between gap-2 px-4 pt-1 pb-3 sm:px-5">
-          <div>
-            {showBack && (
-              <Button data-icon="inline-start" onClick={handleBack} size="sm" variant="ghost">
-                <ArrowLeftIcon className="hidden sm:block" />
-                Back
-              </Button>
-            )}
-          </div>
-          <div className="flex items-center gap-2">
-            {showSkip && (
-              <Button data-icon="inline-end" onClick={handleSkip} size="sm" variant="ghost">
-                {skipLabel}
-                <ArrowRightIcon className="hidden sm:block" />
-              </Button>
-            )}
-            {showConfirm && (
-              <Button disabled={!canProceed} onClick={handleNext} size="sm">
-                {current.nextLabel ?? (isLast ? "Finish" : "Next")}
-                {isMulti && (
-                  <kbd className="-mr-0.5 ml-0.5 inline-flex items-center gap-0.5 rounded-full bg-primary-foreground/15 px-1.5 py-px font-medium text-[10px] text-primary-foreground/90">
-                    ⌘↵
-                  </kbd>
-                )}
-              </Button>
-            )}
-          </div>
-        </div>
+        <AskUserFooter
+          canProceed={canProceed}
+          isLast={isLast}
+          isMulti={isMulti}
+          nextLabel={current.nextLabel}
+          onBack={handleBack}
+          onNext={handleNext}
+          onSkip={handleSkip}
+          showBack={showBack}
+          showConfirm={showConfirm}
+          showSkip={showSkip}
+          skipLabel={skipLabel}
+        />
       )}
     </div>
   );
-}
+};
 
 export { AskUserQuestions };
 export type { AskUserQuestionsProps, AskUserQuestion, AskUserOption, AskUserAnswer };

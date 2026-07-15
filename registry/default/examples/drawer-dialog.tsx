@@ -26,7 +26,21 @@ import {
 import { Input } from "@/registry/default/ui/input";
 import { Label } from "@/registry/default/ui/label";
 
-export function DrawerDialogDemo() {
+const ProfileForm = ({ className }: React.ComponentProps<"form">) => (
+  <form className={cn("grid items-start gap-6", className)}>
+    <div className="grid gap-3">
+      <Label htmlFor="email">Email</Label>
+      <Input defaultValue="shadcn@example.com" id="email" type="email" />
+    </div>
+    <div className="grid gap-3">
+      <Label htmlFor="username">Username</Label>
+      <Input defaultValue="@shadcn" id="username" />
+    </div>
+    <Button type="submit">Save changes</Button>
+  </form>
+);
+
+export const DrawerDialogDemo = () => {
   const [open, setOpen] = useState(false);
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
@@ -68,20 +82,4 @@ export function DrawerDialogDemo() {
       </DrawerContent>
     </Drawer>
   );
-}
-
-function ProfileForm({ className }: React.ComponentProps<"form">) {
-  return (
-    <form className={cn("grid items-start gap-6", className)}>
-      <div className="grid gap-3">
-        <Label htmlFor="email">Email</Label>
-        <Input defaultValue="shadcn@example.com" id="email" type="email" />
-      </div>
-      <div className="grid gap-3">
-        <Label htmlFor="username">Username</Label>
-        <Input defaultValue="@shadcn" id="username" />
-      </div>
-      <Button type="submit">Save changes</Button>
-    </form>
-  );
-}
+};

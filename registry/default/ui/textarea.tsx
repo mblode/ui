@@ -19,7 +19,7 @@ export interface TextareaProps extends Omit<
   rightControl?: React.ReactNode | null;
 }
 
-function Textarea({
+const Textarea = ({
   className,
   rows = 2,
   onClear,
@@ -32,71 +32,69 @@ function Textarea({
   rightControl,
   ref,
   ...props
-}: TextareaProps & { ref?: React.Ref<HTMLTextAreaElement> }) {
-  return (
-    <label
-      className={cn("relative w-full", {
-        "input-group": !!leftAddon || !!rightAddon,
-      })}
-    >
-      {leftAddon && <span className="shrink-0 cursor-pointer">{leftAddon}</span>}
+}: TextareaProps & { ref?: React.Ref<HTMLTextAreaElement> }) => (
+  <label
+    className={cn("relative w-full", {
+      "input-group": !!leftAddon || !!rightAddon,
+    })}
+  >
+    {leftAddon && <span className="shrink-0 cursor-pointer">{leftAddon}</span>}
 
-      {leftControl && (
-        <div className="absolute top-0 left-0 flex h-full flex-row place-items-center items-center justify-center">
-          {leftControl}
-        </div>
+    {leftControl && (
+      <div className="absolute top-0 left-0 flex h-full flex-row place-items-center items-center justify-center">
+        {leftControl}
+      </div>
+    )}
+
+    <textarea
+      aria-invalid={hasError || undefined}
+      className={cn(
+        "field-sizing-content flex min-h-[var(--textarea-min-height)] w-full rounded-[var(--field-radius)] border border-input bg-card px-[var(--field-padding-x)] py-[var(--field-padding-y)] font-normal font-sans text-base text-foreground leading-snug shadow-input transition-colors placeholder:text-placeholder-foreground hover:border-input-hover focus:border-ring focus:outline-hidden focus:ring-2 focus:ring-ring/15 focus:ring-offset-1 focus:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50",
+        {
+          "border-destructive-foreground": hasError,
+          "hover:border-input! focus:border-input!": props.readOnly,
+          "pr-12": clearable && !!props.value && rightControl,
+          "pr-9": clearable && !!props.value,
+        },
+        className,
       )}
+      ref={ref}
+      rows={rows}
+      {...props}
+    />
 
-      <textarea
-        aria-invalid={hasError || undefined}
-        className={cn(
-          "field-sizing-content flex min-h-[var(--textarea-min-height)] w-full rounded-[var(--field-radius)] border border-input bg-card px-[var(--field-padding-x)] py-[var(--field-padding-y)] font-normal font-sans text-base text-foreground leading-snug shadow-input transition-colors placeholder:text-placeholder-foreground hover:border-input-hover focus:border-ring focus:outline-hidden focus:ring-2 focus:ring-ring/15 focus:ring-offset-1 focus:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50",
-          {
-            "border-destructive-foreground": hasError,
-            "hover:border-input! focus:border-input!": props.readOnly,
-            "pr-12": clearable && !!props.value && rightControl,
-            "pr-9": clearable && !!props.value,
-          },
-          className,
-        )}
-        ref={ref}
-        rows={rows}
-        {...props}
-      />
-
-      {clearable && !!props.value && (
-        <div className="absolute top-0 right-0 h-full">
-          <button
-            aria-label="clear input"
-            className={cn(
-              "flex h-full w-10 cursor-pointer items-center justify-center p-0! text-muted-foreground",
-              clearClassName,
-            )}
-            onClick={() => onClear?.()}
-            tabIndex={-1}
-            type="button"
-          >
-            <CircleXFilledIcon className="size-4 text-muted-foreground/50" />
-          </button>
-        </div>
-      )}
-
-      {rightControl && (
-        <div
+    {clearable && !!props.value && (
+      <div className="absolute top-0 right-0 h-full">
+        <button
+          aria-label="clear input"
           className={cn(
-            "absolute top-0 right-0 flex h-full flex-row place-items-center items-center justify-center",
-            {
-              "right-9": clearable && !!props.value,
-            },
+            "flex h-full w-10 cursor-pointer items-center justify-center p-0! text-muted-foreground",
+            clearClassName,
           )}
+          onClick={() => onClear?.()}
+          tabIndex={-1}
+          type="button"
         >
-          {rightControl}
-        </div>
-      )}
+          <CircleXFilledIcon className="size-4 text-muted-foreground/50" />
+        </button>
+      </div>
+    )}
 
-      {rightAddon && <span className="shrink-0 cursor-pointer">{rightAddon}</span>}
-    </label>
-  );
-}
+    {rightControl && (
+      <div
+        className={cn(
+          "absolute top-0 right-0 flex h-full flex-row place-items-center items-center justify-center",
+          {
+            "right-9": clearable && !!props.value,
+          },
+        )}
+      >
+        {rightControl}
+      </div>
+    )}
+
+    {rightAddon && <span className="shrink-0 cursor-pointer">{rightAddon}</span>}
+  </label>
+);
 
 export { Textarea };

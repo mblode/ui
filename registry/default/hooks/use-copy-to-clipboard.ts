@@ -2,16 +2,16 @@
 
 import { useState } from "react";
 
-export function useCopyToClipboard({
+export const useCopyToClipboard = ({
   timeout = 2000,
   onCopy,
 }: {
   timeout?: number;
   onCopy?: () => void;
-} = {}) {
+} = {}) => {
   const [isCopied, setIsCopied] = useState(false);
 
-  const copyToClipboard = (value: string) => {
+  const copyToClipboard = async (value: string) => {
     if (typeof window === "undefined" || !navigator.clipboard.writeText) {
       return;
     }
@@ -20,7 +20,8 @@ export function useCopyToClipboard({
       return;
     }
 
-    navigator.clipboard.writeText(value).then(() => {
+    try {
+      await navigator.clipboard.writeText(value);
       setIsCopied(true);
 
       if (onCopy) {
@@ -32,8 +33,10 @@ export function useCopyToClipboard({
           setIsCopied(false);
         }, timeout);
       }
-    }, console.error);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return { copyToClipboard, isCopied };
-}
+};

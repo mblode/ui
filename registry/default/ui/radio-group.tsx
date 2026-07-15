@@ -20,40 +20,36 @@ type RadioGroupItemProps = Omit<React.ComponentProps<typeof RadioPrimitive.Root>
   value: string;
 };
 
-function RadioGroup({ className, onValueChange, ...props }: RadioGroupProps) {
-  return (
-    <RadioGroupPrimitive
-      className={cn("grid w-full gap-2", className)}
-      data-slot="radio-group"
-      onValueChange={(nextValue) =>
-        onValueChange?.(typeof nextValue === "string" ? nextValue : String(nextValue ?? ""))
-      }
-      {...props}
-    />
-  );
-}
+const RadioGroup = ({ className, onValueChange, ...props }: RadioGroupProps) => (
+  <RadioGroupPrimitive
+    className={cn("grid w-full gap-2", className)}
+    data-slot="radio-group"
+    onValueChange={(nextValue) =>
+      onValueChange?.(typeof nextValue === "string" ? nextValue : String(nextValue ?? ""))
+    }
+    {...props}
+  />
+);
 
-function RadioGroupItem({ className, ...props }: RadioGroupItemProps) {
-  return (
-    <RadioPrimitive.Root
-      className={cn(
-        "relative inline-flex aspect-square size-5 shrink-0 cursor-pointer items-center justify-center rounded-full border border-input bg-card align-middle text-primary-foreground shadow-input ring-offset-background hover:border-input-hover",
-        "data-checked:border-primary data-checked:bg-primary",
-        "focus:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-        "data-disabled:cursor-not-allowed data-disabled:opacity-50",
-        className,
-      )}
-      data-slot="radio-group-item"
-      {...props}
+const RadioGroupItem = ({ className, ...props }: RadioGroupItemProps) => (
+  <RadioPrimitive.Root
+    className={cn(
+      "relative inline-flex aspect-square size-5 shrink-0 cursor-pointer items-center justify-center rounded-full border border-input bg-card align-middle text-primary-foreground shadow-input ring-offset-background hover:border-input-hover",
+      "data-checked:border-primary data-checked:bg-primary",
+      "focus:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+      "data-disabled:cursor-not-allowed data-disabled:opacity-50",
+      className,
+    )}
+    data-slot="radio-group-item"
+    {...props}
+  >
+    <RadioPrimitive.Indicator
+      className="pointer-events-none flex items-center justify-center text-current"
+      data-slot="radio-group-indicator"
     >
-      <RadioPrimitive.Indicator
-        className="pointer-events-none flex items-center justify-center text-current"
-        data-slot="radio-group-indicator"
-      >
-        <CirclePlaceholderOnIcon className="size-2.5 fill-current text-primary-foreground" />
-      </RadioPrimitive.Indicator>
-    </RadioPrimitive.Root>
-  );
-}
+      <CirclePlaceholderOnIcon className="size-2.5 fill-current text-primary-foreground" />
+    </RadioPrimitive.Indicator>
+  </RadioPrimitive.Root>
+);
 
 export { RadioGroup, RadioGroupItem };

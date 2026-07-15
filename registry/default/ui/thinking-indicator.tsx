@@ -21,22 +21,26 @@ const circleB =
 const SHIMMER_GRADIENT =
   "linear-gradient(90deg, var(--muted-foreground) 0%, var(--muted-foreground) 35%, var(--foreground) 50%, var(--muted-foreground) 65%, var(--muted-foreground) 100%)";
 
-function ShimmerText({ children, className }: { children: React.ReactNode; className?: string }) {
-  return (
-    <motion.span
-      animate={{ backgroundPosition: ["0% 0", "100% 0"] }}
-      className={cn("bg-clip-text text-transparent leading-[1.22] py-1", className)}
-      style={{ backgroundImage: SHIMMER_GRADIENT, backgroundSize: "300% 100%" }}
-      transition={{ duration: 1.5, ease: "easeInOut", repeat: Number.POSITIVE_INFINITY }}
-    >
-      {children}
-    </motion.span>
-  );
-}
+const ShimmerText = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => (
+  <motion.span
+    animate={{ backgroundPosition: ["0% 0", "100% 0"] }}
+    className={cn("bg-clip-text text-transparent leading-[1.22] py-1", className)}
+    style={{ backgroundImage: SHIMMER_GRADIENT, backgroundSize: "300% 100%" }}
+    transition={{ duration: 1.5, ease: "easeInOut", repeat: Number.POSITIVE_INFINITY }}
+  >
+    {children}
+  </motion.span>
+);
 
 const DEFAULT_WORDS = ["Thinking", "Moonwalking", "Planning", "Refining"];
 
-interface ThinkingIndicatorProps extends React.ComponentProps<"div"> {
+interface ThinkingIndicatorProps extends React.ComponentProps<"output"> {
   /** Labels cycled through while thinking. Defaults to a small built-in set. */
   words?: string[];
   /** Milliseconds each label is shown before swapping. Defaults to 4000. */
@@ -46,13 +50,13 @@ interface ThinkingIndicatorProps extends React.ComponentProps<"div"> {
 // ─── ThinkingIndicator ──────────────────────────────────────────────────────
 // An animated status row: a morphing SVG glyph paired with shimmering, cycling
 // text. Drop it into a transcript while an assistant response is streaming.
-function ThinkingIndicator({
+const ThinkingIndicator = ({
   className,
   words = DEFAULT_WORDS,
   interval = 4000,
   ref,
   ...props
-}: ThinkingIndicatorProps) {
+}: ThinkingIndicatorProps) => {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -63,14 +67,18 @@ function ThinkingIndicator({
   }, [words.length, interval]);
 
   // Reserve width for the longest label so the row never reflows mid-cycle.
-  const longest = words.reduce((a, b) => (a.length >= b.length ? a : b));
+  let longest = words[0] ?? "";
+  for (const word of words) {
+    if (word.length > longest.length) {
+      longest = word;
+    }
+  }
 
   return (
-    <div
+    <output
       className={cn("flex items-center gap-2 px-3 py-2", className)}
       data-slot="thinking-indicator"
       ref={ref}
-      role="status"
       {...props}
     >
       <motion.svg
@@ -121,9 +129,9 @@ function ThinkingIndicator({
           </motion.span>
         </AnimatePresence>
       </span>
-    </div>
+    </output>
   );
-}
+};
 
 export { ThinkingIndicator };
 export type { ThinkingIndicatorProps };

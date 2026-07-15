@@ -17,18 +17,22 @@ import { Badge } from "@/registry/default/ui/badge";
 const SHIMMER_GRADIENT =
   "linear-gradient(90deg, var(--muted-foreground) 0%, var(--muted-foreground) 35%, var(--foreground) 50%, var(--muted-foreground) 65%, var(--muted-foreground) 100%)";
 
-function ShimmerText({ children, className }: { children: React.ReactNode; className?: string }) {
-  return (
-    <motion.span
-      animate={{ backgroundPosition: ["0% 0", "100% 0"] }}
-      className={cn("bg-clip-text text-transparent", className)}
-      style={{ backgroundImage: SHIMMER_GRADIENT, backgroundSize: "300% 100%" }}
-      transition={{ duration: 1.5, ease: "easeInOut", repeat: Number.POSITIVE_INFINITY }}
-    >
-      {children}
-    </motion.span>
-  );
-}
+const ShimmerText = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => (
+  <motion.span
+    animate={{ backgroundPosition: ["0% 0", "100% 0"] }}
+    className={cn("bg-clip-text text-transparent", className)}
+    style={{ backgroundImage: SHIMMER_GRADIENT, backgroundSize: "300% 100%" }}
+    transition={{ duration: 1.5, ease: "easeInOut", repeat: Number.POSITIVE_INFINITY }}
+  >
+    {children}
+  </motion.span>
+);
 
 // ─── ThinkingSteps (root) ───────────────────────────────────────────────────
 
@@ -42,7 +46,7 @@ interface ThinkingStepsProps extends Omit<
   children: React.ReactNode;
 }
 
-function ThinkingSteps({
+const ThinkingSteps = ({
   defaultOpen = true,
   open,
   onOpenChange,
@@ -50,7 +54,7 @@ function ThinkingSteps({
   className,
   ref,
   ...props
-}: ThinkingStepsProps) {
+}: ThinkingStepsProps) => {
   const controlled = open !== undefined;
 
   return (
@@ -71,46 +75,42 @@ function ThinkingSteps({
       <AccordionItem value="thinking">{children}</AccordionItem>
     </Accordion>
   );
-}
+};
 
 // ─── ThinkingStepsHeader ────────────────────────────────────────────────────
 
-function ThinkingStepsHeader({
+const ThinkingStepsHeader = ({
   children = "Thinking",
   className,
   ...props
-}: React.ComponentProps<typeof AccordionTrigger>) {
-  return (
-    <div className="w-fit">
-      <AccordionTrigger
-        chevron={false}
-        className={cn(
-          "w-auto items-center gap-1.5 py-1 [&>span:first-child]:flex-none [&[data-panel-open]_[data-chevron]]:rotate-90",
-          className,
-        )}
-        {...props}
-      >
-        {children}
-        <ChevronRightIcon
-          className="size-3.5 shrink-0 text-muted-foreground transition-transform duration-200"
-          data-chevron
-        />
-      </AccordionTrigger>
-    </div>
-  );
-}
+}: React.ComponentProps<typeof AccordionTrigger>) => (
+  <div className="w-fit">
+    <AccordionTrigger
+      chevron={false}
+      className={cn(
+        "w-auto items-center gap-1.5 py-1 [&>span:first-child]:flex-none [&[data-panel-open]_[data-chevron]]:rotate-90",
+        className,
+      )}
+      {...props}
+    >
+      {children}
+      <ChevronRightIcon
+        className="size-3.5 shrink-0 text-muted-foreground transition-transform duration-200"
+        data-chevron
+      />
+    </AccordionTrigger>
+  </div>
+);
 
 // ─── ThinkingStepsContent ───────────────────────────────────────────────────
 
-function ThinkingStepsContent({ children, className, ...props }: React.ComponentProps<"div">) {
-  return (
-    <AccordionContent>
-      <div className={cn("flex flex-col", className)} {...props}>
-        {children}
-      </div>
-    </AccordionContent>
-  );
-}
+const ThinkingStepsContent = ({ children, className, ...props }: React.ComponentProps<"div">) => (
+  <AccordionContent>
+    <div className={cn("flex flex-col", className)} {...props}>
+      {children}
+    </div>
+  </AccordionContent>
+);
 
 // ─── ThinkingStep ───────────────────────────────────────────────────────────
 
@@ -129,7 +129,7 @@ interface ThinkingStepProps {
   className?: string;
 }
 
-function ThinkingStep({
+const ThinkingStep = ({
   icon: Icon = DotFilledIcon,
   showIcon = true,
   label,
@@ -138,7 +138,7 @@ function ThinkingStep({
   isLast = false,
   children,
   className,
-}: ThinkingStepProps) {
+}: ThinkingStepProps) => {
   if (status === "pending") {
     return null;
   }
@@ -189,7 +189,7 @@ function ThinkingStep({
       </motion.div>
     </motion.div>
   );
-}
+};
 
 // ─── ThinkingStepDetails (nested accordion) ─────────────────────────────────
 
@@ -201,57 +201,53 @@ interface ThinkingStepDetailsProps {
   className?: string;
 }
 
-function ThinkingStepDetails({
+const ThinkingStepDetails = ({
   summary,
   details,
   defaultOpen = false,
   children,
   className,
-}: ThinkingStepDetailsProps) {
-  return (
-    <Accordion
-      className={cn("-ml-3 mt-1", className)}
-      collapsible
-      defaultValue={defaultOpen ? "details" : ""}
-      type="single"
-    >
-      <AccordionItem value="details">
-        <div className="w-fit">
-          <AccordionTrigger
-            chevron={false}
-            className="w-auto items-center gap-1.5 rounded-full border border-transparent px-3 py-1 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground data-[panel-open]:border-border data-[panel-open]:bg-muted [&>span:first-child]:flex-none [&[data-panel-open]_[data-chevron]]:rotate-90"
-          >
-            {summary}
-            <ChevronRightIcon
-              className="size-3.5 shrink-0 transition-transform duration-200"
-              data-chevron
-            />
-          </AccordionTrigger>
+}: ThinkingStepDetailsProps) => (
+  <Accordion
+    className={cn("-ml-3 mt-1", className)}
+    collapsible
+    defaultValue={defaultOpen ? "details" : ""}
+    type="single"
+  >
+    <AccordionItem value="details">
+      <div className="w-fit">
+        <AccordionTrigger
+          chevron={false}
+          className="w-auto items-center gap-1.5 rounded-full border border-transparent px-3 py-1 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground data-[panel-open]:border-border data-[panel-open]:bg-muted [&>span:first-child]:flex-none [&[data-panel-open]_[data-chevron]]:rotate-90"
+        >
+          {summary}
+          <ChevronRightIcon
+            className="size-3.5 shrink-0 transition-transform duration-200"
+            data-chevron
+          />
+        </AccordionTrigger>
+      </div>
+      <AccordionContent>
+        <div className="flex flex-col gap-0.5 px-3 pt-0.5">
+          {details?.map((item) => (
+            <span className="text-[12px] text-muted-foreground leading-snug" key={item}>
+              {item}
+            </span>
+          ))}
+          {children}
         </div>
-        <AccordionContent>
-          <div className="flex flex-col gap-0.5 px-3 pt-0.5">
-            {details?.map((item) => (
-              <span className="text-[12px] text-muted-foreground leading-snug" key={item}>
-                {item}
-              </span>
-            ))}
-            {children}
-          </div>
-        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
-  );
-}
+      </AccordionContent>
+    </AccordionItem>
+  </Accordion>
+);
 
 // ─── ThinkingStepSources ────────────────────────────────────────────────────
 
-function ThinkingStepSources({ children, className, ...props }: React.ComponentProps<"div">) {
-  return (
-    <div className={cn("mt-1 flex flex-wrap gap-1.5", className)} {...props}>
-      {children}
-    </div>
-  );
-}
+const ThinkingStepSources = ({ children, className, ...props }: React.ComponentProps<"div">) => (
+  <div className={cn("mt-1 flex flex-wrap gap-1.5", className)} {...props}>
+    {children}
+  </div>
+);
 
 // ─── ThinkingStepSource ─────────────────────────────────────────────────────
 
@@ -272,30 +268,28 @@ interface ThinkingStepSourceProps {
   className?: string;
 }
 
-function ThinkingStepSource({
+const ThinkingStepSource = ({
   color = "gray",
   delay = 0,
   children,
   className,
-}: ThinkingStepSourceProps) {
-  return (
-    <motion.span
-      animate={{ filter: "blur(0px)", opacity: 1, scale: 1 }}
-      initial={{ filter: "blur(4px)", opacity: 0, scale: 0.85 }}
-      transition={{
-        bounce: 0.15,
-        delay,
-        duration: 0.16,
-        filter: { delay, duration: 0.12 },
-        type: "spring",
-      }}
-    >
-      <Badge className={className} variant={SOURCE_VARIANT[color]}>
-        {children}
-      </Badge>
-    </motion.span>
-  );
-}
+}: ThinkingStepSourceProps) => (
+  <motion.span
+    animate={{ filter: "blur(0px)", opacity: 1, scale: 1 }}
+    initial={{ filter: "blur(4px)", opacity: 0, scale: 0.85 }}
+    transition={{
+      bounce: 0.15,
+      delay,
+      duration: 0.16,
+      filter: { delay, duration: 0.12 },
+      type: "spring",
+    }}
+  >
+    <Badge className={className} variant={SOURCE_VARIANT[color]}>
+      {children}
+    </Badge>
+  </motion.span>
+);
 
 // ─── ThinkingStepImage ──────────────────────────────────────────────────────
 
@@ -307,29 +301,27 @@ interface ThinkingStepImageProps {
   className?: string;
 }
 
-function ThinkingStepImage({
+const ThinkingStepImage = ({
   src,
   alt = "",
   caption,
   delay = 0,
   className,
-}: ThinkingStepImageProps) {
-  return (
-    <motion.div
-      animate={{ filter: "blur(0px)", opacity: 1 }}
-      className={cn("mt-1.5", className)}
-      initial={{ filter: "blur(4px)", opacity: 0 }}
-      transition={{
-        filter: { delay, duration: 0.15 },
-        opacity: { delay, duration: 0.2, ease: "easeOut" },
-      }}
-    >
-      {/* eslint-disable-next-line next/no-img-element -- caller-supplied source, may be a data/blob URL */}
-      <img alt={alt} className="w-full max-w-[200px] rounded-xl object-cover" src={src} />
-      {caption && <span className="mt-1 block text-[11px] text-muted-foreground">{caption}</span>}
-    </motion.div>
-  );
-}
+}: ThinkingStepImageProps) => (
+  <motion.div
+    animate={{ filter: "blur(0px)", opacity: 1 }}
+    className={cn("mt-1.5", className)}
+    initial={{ filter: "blur(4px)", opacity: 0 }}
+    transition={{
+      filter: { delay, duration: 0.15 },
+      opacity: { delay, duration: 0.2, ease: "easeOut" },
+    }}
+  >
+    {/* eslint-disable-next-line next/no-img-element -- caller-supplied source, may be a data/blob URL */}
+    <img alt={alt} className="w-full max-w-[200px] rounded-xl object-cover" src={src} />
+    {caption && <span className="mt-1 block text-[11px] text-muted-foreground">{caption}</span>}
+  </motion.div>
+);
 
 export {
   ThinkingSteps,

@@ -5,17 +5,17 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
-function HoverCard({ ...props }: React.ComponentProps<typeof HoverCardPrimitive.Root>) {
-  return <HoverCardPrimitive.Root data-slot="hover-card" {...props} />;
-}
+const HoverCard = ({ ...props }: React.ComponentProps<typeof HoverCardPrimitive.Root>) => (
+  <HoverCardPrimitive.Root data-slot="hover-card" {...props} />
+);
 
-function HoverCardTrigger({
+const HoverCardTrigger = ({
   asChild = false,
   children,
   ...props
 }: React.ComponentProps<typeof HoverCardPrimitive.Trigger> & {
   asChild?: boolean;
-}) {
+}) => {
   const render =
     asChild && React.isValidElement(children) ? (children as React.ReactElement) : undefined;
 
@@ -24,9 +24,9 @@ function HoverCardTrigger({
       {asChild ? null : children}
     </HoverCardPrimitive.Trigger>
   );
-}
+};
 
-function HoverCardContent({
+const HoverCardContent = ({
   asChild = false,
   children,
   className,
@@ -41,7 +41,7 @@ function HoverCardContent({
     "align" | "alignOffset" | "side" | "sideOffset"
   > & {
     asChild?: boolean;
-  }) {
+  }) => {
   const render =
     asChild && React.isValidElement(children) ? (children as React.ReactElement) : undefined;
 
@@ -68,6 +68,6 @@ function HoverCardContent({
       </HoverCardPrimitive.Positioner>
     </HoverCardPrimitive.Portal>
   );
-}
+};
 
 export { HoverCard, HoverCardTrigger, HoverCardContent };

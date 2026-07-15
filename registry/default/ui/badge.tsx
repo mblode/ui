@@ -34,14 +34,14 @@ const badgeVariants = cva(
 type BadgeProps = React.ComponentProps<"span"> &
   VariantProps<typeof badgeVariants> & { asChild?: boolean };
 
-function Badge({
+const Badge = ({
   className,
   variant = "default",
   asChild = false,
   children,
   ...props
-}: BadgeProps) {
-  return useRender({
+}: BadgeProps) =>
+  useRender({
     defaultTagName: "span",
     props: mergeProps<"span">(
       {
@@ -55,7 +55,6 @@ function Badge({
       variant,
     },
   });
-}
 
 export { Badge, badgeVariants };
 export type { BadgeProps };

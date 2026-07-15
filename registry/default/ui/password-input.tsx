@@ -15,7 +15,7 @@ export interface PasswordInputProps extends Omit<InputProps, "type"> {
   showPassword?: boolean;
 }
 
-export function PasswordInput({
+export const PasswordInput = ({
   className,
   defaultShowPassword = false,
   disabled,
@@ -23,7 +23,7 @@ export function PasswordInput({
   ref,
   showPassword: showPasswordProp,
   ...props
-}: PasswordInputProps) {
+}: PasswordInputProps) => {
   const [internalShowPassword, setInternalShowPassword] = useState(defaultShowPassword);
   const isVisible = showPasswordProp ?? internalShowPassword;
 
@@ -52,4 +52,4 @@ export function PasswordInput({
       type={isVisible ? "text" : "password"}
     />
   );
-}
+};

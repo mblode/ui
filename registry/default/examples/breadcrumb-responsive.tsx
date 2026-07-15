@@ -65,7 +65,7 @@ export default function BreadcrumbResponsive() {
                   <DropdownMenuContent align="start">
                     {items.slice(1, -2).map((item, index) => (
                       <DropdownMenuItem key={index}>
-                        <Link href={item.href ? item.href : "#"}>{item.label}</Link>
+                        <Link href={item.href || "#"}>{item.label}</Link>
                       </DropdownMenuItem>
                     ))}
                   </DropdownMenuContent>
@@ -82,11 +82,7 @@ export default function BreadcrumbResponsive() {
                     </DrawerHeader>
                     <div className="grid gap-1 px-4">
                       {items.slice(1, -2).map((item, index) => (
-                        <Link
-                          className="py-1 text-sm"
-                          href={item.href ? item.href : "#"}
-                          key={index}
-                        >
+                        <Link className="py-1 text-sm" href={item.href || "#"} key={index}>
                           {item.label}
                         </Link>
                       ))}

@@ -13,7 +13,7 @@ export default function BubbleVariants() {
         <BubbleContent>
           This one is muted. It uses a lower emphasis color for the chat bubble.
         </BubbleContent>
-        <BubbleReactions aria-label="Reaction: thumbs up" role="img">
+        <BubbleReactions aria-label="Reaction: thumbs up">
           <span>👍</span>
         </BubbleReactions>
       </Bubble>
@@ -27,7 +27,7 @@ export default function BubbleVariants() {
       </Bubble>
       <Bubble align="end" variant="destructive">
         <BubbleContent>Or a destructive variant with a reaction.</BubbleContent>
-        <BubbleReactions aria-label="Reaction: fire" role="img">
+        <BubbleReactions aria-label="Reaction: fire">
           <span>🔥</span>
         </BubbleReactions>
       </Bubble>

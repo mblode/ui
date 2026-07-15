@@ -99,8 +99,8 @@ export default function AskUserQuestionsDemo() {
   if (answers) {
     return (
       <div className="flex w-full max-w-[520px] flex-col gap-1 rounded-2xl border p-4 text-sm">
-        <p className="font-medium text-foreground">Thanks — that's everything!</p>
-        <p className="text-muted-foreground">We'll tailor your setup to those answers.</p>
+        <p className="font-medium text-foreground">Thanks — that&apos;s everything!</p>
+        <p className="text-muted-foreground">We&apos;ll tailor your setup to those answers.</p>
       </div>
     );
   }

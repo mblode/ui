@@ -62,7 +62,7 @@ const tags: Tag[] = [
   { id: "c-tooltip", value: "component: tooltip" },
 ];
 
-export function AutocompleteDemo() {
+export const AutocompleteDemo = () => {
   const id = useId();
 
   return (
@@ -90,4 +90,4 @@ export function AutocompleteDemo() {
       </Autocomplete>
     </div>
   );
-}
+};

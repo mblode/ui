@@ -9,6 +9,7 @@ import {
   useContext,
   useEffect,
   useImperativeHandle,
+  useMemo,
   useRef,
   useState,
 } from "react";
@@ -58,14 +59,14 @@ const normalizeAccordionValue = (value: AccordionValue | undefined): string[] | 
   return value === "" ? [] : [value];
 };
 
-function Accordion({
+const Accordion = ({
   type = "single",
   collapsible = false,
   value,
   defaultValue,
   onValueChange,
   ...props
-}: AccordionProps) {
+}: AccordionProps) => {
   const multiple = type === "multiple";
 
   const handleValueChange = useCallback(
@@ -81,7 +82,7 @@ function Accordion({
         return;
       }
 
-      const firstValue = nextStringValues[0];
+      const [firstValue] = nextStringValues;
       if (firstValue !== undefined) {
         onValueChange(firstValue);
         return;
@@ -104,18 +105,23 @@ function Accordion({
       {...props}
     />
   );
-}
+};
 
-function AccordionItem({
+const AccordionItem = ({
   className,
   children,
   ...props
-}: ComponentProps<typeof AccordionPrimitive.Item>) {
+}: ComponentProps<typeof AccordionPrimitive.Item>) => {
   const [isOpen, setIsOpen] = useState(false);
   const [canAnimate, setCanAnimate] = useState(false);
 
+  const contextValue = useMemo(
+    () => ({ canAnimate, isOpen, setCanAnimate, setIsOpen }),
+    [canAnimate, isOpen],
+  );
+
   return (
-    <AccordionItemContext.Provider value={{ canAnimate, isOpen, setCanAnimate, setIsOpen }}>
+    <AccordionItemContext.Provider value={contextValue}>
       <AccordionPrimitive.Item
         className={cn("border-b last:border-b-0", className)}
         data-slot="accordion-item"
@@ -125,19 +131,19 @@ function AccordionItem({
       </AccordionPrimitive.Item>
     </AccordionItemContext.Provider>
   );
-}
+};
 
 type AccordionTriggerProps = ComponentProps<typeof AccordionPrimitive.Trigger> & {
   chevron?: boolean;
 };
 
-function AccordionTrigger({
+const AccordionTrigger = ({
   ref,
   className,
   children,
   chevron = true,
   ...props
-}: AccordionTriggerProps) {
+}: AccordionTriggerProps) => {
   const triggerRef = useRef<HTMLButtonElement | null>(null);
   useImperativeHandle(ref, () => triggerRef.current as HTMLButtonElement);
   const { isOpen, setIsOpen, canAnimate, setCanAnimate } = useAccordionItem();
@@ -207,17 +213,20 @@ function AccordionTrigger({
       >
         {children}
         {chevron ? (
-          <div className="relative flex h-[12px] w-[12px] shrink-0 items-center justify-center">
+          // Odd box and bar sizes (11px / 1px) keep each bar's centred offset a
+          // whole number — (11 / 2) - (1 / 2) = 5px. At even sizes the 1.5px bar
+          // landed on 5.25px, straddling two pixels and rendering soft.
+          <div className="relative flex h-[11px] w-[11px] shrink-0 items-center justify-center">
             <motion.div
               animate={{ rotate: isOpen ? 180 : 0 }}
-              className="absolute top-1/2 left-1/2 h-[1.5px] w-[12px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-foreground"
+              className="absolute top-1/2 left-1/2 h-px w-[11px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-foreground"
               transition={
                 canAnimate ? { duration: 0.3, ease: [0.645, 0.045, 0.355, 1] } : { duration: 0 }
               }
             />
             <motion.div
-              animate={{ rotateZ: isOpen ? 80 : 0, scale: isOpen ? 0 : 1 }}
-              className="absolute top-1/2 left-1/2 h-[12px] w-[1.5px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-foreground"
+              animate={{ rotateZ: isOpen ? 90 : 0, scale: isOpen ? 0 : 1 }}
+              className="absolute top-1/2 left-1/2 h-[11px] w-px -translate-x-1/2 -translate-y-1/2 rounded-full bg-foreground"
               style={{ transformOrigin: "center" }}
               transition={
                 canAnimate ? { duration: 0.3, ease: [0.645, 0.045, 0.355, 1] } : { duration: 0 }
@@ -228,7 +237,7 @@ function AccordionTrigger({
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
   );
-}
+};
 
 type AccordionContentProps = ComponentProps<typeof AccordionPrimitive.Panel> &
   HTMLMotionProps<"div"> & {
@@ -241,12 +250,12 @@ const DEFAULT_ACCORDION_TRANSITION: Transition = {
   type: "spring",
 };
 
-function AccordionContent({
+const AccordionContent = ({
   className,
   children,
   transition = DEFAULT_ACCORDION_TRANSITION,
   ...props
-}: AccordionContentProps) {
+}: AccordionContentProps) => {
   const { isOpen, canAnimate } = useAccordionItem();
 
   return (
@@ -273,6 +282,6 @@ function AccordionContent({
       </AnimatePresence>
     </AccordionPrimitive.Panel>
   );
-}
+};
 
 export { Accordion, AccordionItem, AccordionTrigger, AccordionContent };

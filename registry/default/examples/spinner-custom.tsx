@@ -2,21 +2,14 @@ import { LoaderIcon } from "blode-icons-react";
 
 import { cn } from "@/lib/utils";
 
-function Spinner({ className, ...props }: React.ComponentProps<"svg">) {
-  return (
-    <LoaderIcon
-      aria-label="Loading"
-      className={cn("size-4 animate-spin", className)}
-      role="status"
-      {...props}
-    />
-  );
-}
+const Spinner = ({ className, ...props }: React.ComponentProps<"svg">) => (
+  <output aria-label="Loading">
+    <LoaderIcon className={cn("size-4 animate-spin", className)} {...props} />
+  </output>
+);
 
-export function SpinnerCustom() {
-  return (
-    <div className="flex items-center gap-4">
-      <Spinner />
-    </div>
-  );
-}
+export const SpinnerCustom = () => (
+  <div className="flex items-center gap-4">
+    <Spinner />
+  </div>
+);

@@ -68,34 +68,37 @@ interface FilePreviewTileProps {
   size: number;
 }
 
-function FilePreviewTile({ file, onRemove, size }: FilePreviewTileProps) {
-  return (
-    <motion.div
-      animate={{ opacity: 1, scale: 1 }}
-      className="group/tile relative shrink-0 cursor-default"
-      exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.06 } }}
-      initial={{ opacity: 0, scale: 0.9 }}
-      layout
-      transition={{ bounce: 0, duration: 0.08, type: "spring" }}
+const FilePreviewTile = ({ file, onRemove, size }: FilePreviewTileProps) => (
+  <motion.div
+    animate={{ opacity: 1, scale: 1 }}
+    className="group/tile relative shrink-0 cursor-default"
+    exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.06 } }}
+    initial={{ opacity: 0, scale: 0.9 }}
+    layout
+    transition={{ bounce: 0, duration: 0.08, type: "spring" }}
+  >
+    <FileThumbnail file={file} size={size} />
+    <button
+      aria-label={`Remove ${file.name}`}
+      className="absolute top-1 right-1 flex size-5 items-center justify-center rounded-full bg-primary text-primary-foreground opacity-0 outline-none transition-opacity duration-100 focus-visible:opacity-100 focus-visible:ring-2 focus-visible:ring-ring/50 group-hover/tile:opacity-100"
+      onClick={(e) => {
+        e.stopPropagation();
+        onRemove();
+      }}
+      type="button"
     >
-      <FileThumbnail file={file} size={size} />
-      <button
-        aria-label={`Remove ${file.name}`}
-        className="absolute top-1 right-1 flex size-5 items-center justify-center rounded-full bg-primary text-primary-foreground opacity-0 outline-none transition-opacity duration-100 focus-visible:opacity-100 focus-visible:ring-2 focus-visible:ring-ring/50 group-hover/tile:opacity-100"
-        onClick={(e) => {
-          e.stopPropagation();
-          onRemove();
-        }}
-        type="button"
-      >
-        <CrossSmallIcon className="size-3" />
-      </button>
-    </motion.div>
-  );
-}
+      <CrossSmallIcon className="size-3" />
+    </button>
+  </motion.div>
+);
+
+const renderSlot = (slot: InputMessageSlot, ctx: InputMessageSlotContext) =>
+  typeof slot === "function" ? slot(ctx) : slot;
+
+const allowsMultipleFiles = (maxFiles?: number) => maxFiles === undefined || maxFiles > 1;
 
 // ─── InputMessage ───────────────────────────────────────────────────────────
-function InputMessage({
+const InputMessage = ({
   value,
   onValueChange,
   onSend,
@@ -116,9 +119,9 @@ function InputMessage({
   className,
   ref,
   ...props
-}: InputMessageProps) {
+}: InputMessageProps) => {
   const textareaRef = React.useRef<HTMLTextAreaElement>(null);
-  const fileInputRef = React.useRef<HTMLInputElement>(null);
+  const fileInputId = React.useId();
   const [dragOver, setDragOver] = React.useState(false);
 
   const filesArr = React.useMemo(() => files ?? [], [files]);
@@ -230,7 +233,8 @@ function InputMessage({
 
   const openFilePicker = React.useCallback(
     (overrideAccept?: string) => {
-      const el = fileInputRef.current;
+      const selector = `#${CSS.escape(fileInputId)}`;
+      const el = document.querySelector<HTMLInputElement>(selector);
       if (!el) {
         return;
       }
@@ -238,15 +242,16 @@ function InputMessage({
         el.accept = overrideAccept;
         el.click();
         queueMicrotask(() => {
-          if (fileInputRef.current) {
-            fileInputRef.current.accept = accept;
+          const current = document.querySelector<HTMLInputElement>(selector);
+          if (current) {
+            current.accept = accept;
           }
         });
         return;
       }
       el.click();
     },
-    [accept],
+    [accept, fileInputId],
   );
 
   // ── Slot rendering ────────────────────────────────────────────────────────
@@ -254,8 +259,8 @@ function InputMessage({
     () => ({ files: filesArr, openFilePicker }),
     [openFilePicker, filesArr],
   );
-  const leftContent = typeof leftSlot === "function" ? leftSlot(slotCtx) : leftSlot;
-  const rightContent = typeof rightSlot === "function" ? rightSlot(slotCtx) : rightSlot;
+  const leftContent = renderSlot(leftSlot, slotCtx);
+  const rightContent = renderSlot(rightSlot, slotCtx);
 
   // ── Drag-and-drop ─────────────────────────────────────────────────────────
   const handleDragOver = React.useCallback(
@@ -263,7 +268,7 @@ function InputMessage({
       if (!supportsFiles || disabled) {
         return;
       }
-      if (!Array.from(e.dataTransfer.types).includes("Files")) {
+      if (![...e.dataTransfer.types].includes("Files")) {
         return;
       }
       e.preventDefault();
@@ -289,7 +294,7 @@ function InputMessage({
       if (!supportsFiles || disabled) {
         return;
       }
-      addFiles(Array.from(e.dataTransfer.files));
+      addFiles([...e.dataTransfer.files]);
     },
     [supportsFiles, disabled, addFiles],
   );
@@ -299,7 +304,7 @@ function InputMessage({
       if (!e.target.files) {
         return;
       }
-      addFiles(Array.from(e.target.files));
+      addFiles([...e.target.files]);
       e.target.value = "";
     },
     [addFiles],
@@ -320,6 +325,7 @@ function InputMessage({
       onDrop={handleDrop}
       onMouseDown={handleContainerMouseDown}
       ref={ref}
+      role="presentation"
       {...props}
     >
       {supportsFiles && (
@@ -327,9 +333,9 @@ function InputMessage({
           accept={accept}
           aria-hidden="true"
           className="hidden"
-          multiple={maxFiles === undefined || maxFiles > 1}
+          id={fileInputId}
+          multiple={allowsMultipleFiles(maxFiles)}
           onChange={handleFileInputChange}
-          ref={fileInputRef}
           tabIndex={-1}
           type="file"
         />
@@ -392,7 +398,7 @@ function InputMessage({
       </div>
     </div>
   );
-}
+};
 
 export { InputMessage };
 export type { InputMessageProps, InputMessageSlotContext };

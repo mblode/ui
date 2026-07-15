@@ -9,33 +9,31 @@ import {
   ItemTitle,
 } from "@/registry/default/ui/item";
 
-export function ItemDemo() {
-  return (
-    <div className="flex w-full max-w-md flex-col gap-6">
-      <Item variant="outline">
+export const ItemDemo = () => (
+  <div className="flex w-full max-w-md flex-col gap-6">
+    <Item variant="outline">
+      <ItemContent>
+        <ItemTitle>Basic Item</ItemTitle>
+        <ItemDescription>A simple item with title and description.</ItemDescription>
+      </ItemContent>
+      <ItemActions>
+        <Button size="sm" variant="outline">
+          Action
+        </Button>
+      </ItemActions>
+    </Item>
+    <Item asChild size="sm" variant="outline">
+      <a href="#profile">
+        <ItemMedia>
+          <BadgeCheckIcon className="size-5" />
+        </ItemMedia>
         <ItemContent>
-          <ItemTitle>Basic Item</ItemTitle>
-          <ItemDescription>A simple item with title and description.</ItemDescription>
+          <ItemTitle>Your profile has been verified.</ItemTitle>
         </ItemContent>
         <ItemActions>
-          <Button size="sm" variant="outline">
-            Action
-          </Button>
+          <ChevronRightIcon className="size-4" />
         </ItemActions>
-      </Item>
-      <Item asChild size="sm" variant="outline">
-        <a href="#">
-          <ItemMedia>
-            <BadgeCheckIcon className="size-5" />
-          </ItemMedia>
-          <ItemContent>
-            <ItemTitle>Your profile has been verified.</ItemTitle>
-          </ItemContent>
-          <ItemActions>
-            <ChevronRightIcon className="size-4" />
-          </ItemActions>
-        </a>
-      </Item>
-    </div>
-  );
-}
+      </a>
+    </Item>
+  </div>
+);

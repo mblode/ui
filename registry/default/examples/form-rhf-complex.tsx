@@ -69,6 +69,23 @@ const formSchema = z.object({
   plan: z.enum(["basic", "pro"]),
 });
 
+const onSubmit = (data: z.infer<typeof formSchema>) => {
+  toast("You submitted the following values:", {
+    classNames: {
+      content: "flex flex-col gap-2",
+    },
+    description: (
+      <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
+        <code>{JSON.stringify(data, null, 2)}</code>
+      </pre>
+    ),
+    position: "bottom-right",
+    style: {
+      "--border-radius": "calc(var(--radius)  + 4px)",
+    } as React.CSSProperties,
+  });
+};
+
 export default function FormRhfComplex() {
   const form = useForm<z.infer<typeof formSchema>>({
     defaultValues: {
@@ -79,23 +96,6 @@ export default function FormRhfComplex() {
     },
     resolver: zodResolver(formSchema),
   });
-
-  function onSubmit(data: z.infer<typeof formSchema>) {
-    toast("You submitted the following values:", {
-      classNames: {
-        content: "flex flex-col gap-2",
-      },
-      description: (
-        <pre className="mt-2 w-[320px] overflow-x-auto rounded-md bg-code p-4 text-code-foreground">
-          <code>{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-      position: "bottom-right",
-      style: {
-        "--border-radius": "calc(var(--radius)  + 4px)",
-      } as React.CSSProperties,
-    });
-  }
 
   return (
     <Card className="w-full max-w-sm">
@@ -118,7 +118,7 @@ export default function FormRhfComplex() {
                     <RadioGroup
                       aria-invalid={isInvalid}
                       name={field.name}
-                      onValueChange={field.onChange}
+                      onValueChange={(value) => field.onChange(value)}
                       value={field.value}
                     >
                       <FieldLabel htmlFor="form-rhf-complex-basic">
@@ -152,7 +152,11 @@ export default function FormRhfComplex() {
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
                   <FieldLabel htmlFor="form-rhf-complex-billingPeriod">Billing Period</FieldLabel>
-                  <Select name={field.name} onValueChange={field.onChange} value={field.value}>
+                  <Select
+                    name={field.name}
+                    onValueChange={(value) => field.onChange(value)}
+                    value={field.value}
+                  >
                     <SelectTrigger
                       aria-invalid={fieldState.invalid}
                       id="form-rhf-complex-billingPeriod"
@@ -231,7 +235,7 @@ export default function FormRhfComplex() {
                     checked={field.value}
                     id="form-rhf-complex-emailNotifications"
                     name={field.name}
-                    onCheckedChange={field.onChange}
+                    onCheckedChange={(checked) => field.onChange(checked)}
                   />
                   {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
                 </Field>

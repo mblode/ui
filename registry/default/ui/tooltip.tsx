@@ -5,25 +5,23 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
-function TooltipProvider({
+const TooltipProvider = ({
   delayDuration,
   delay = delayDuration ?? 0,
   ...props
 }: React.ComponentProps<typeof TooltipPrimitive.Provider> & {
   delayDuration?: number;
-}) {
-  return <TooltipPrimitive.Provider data-slot="tooltip-provider" delay={delay} {...props} />;
-}
+}) => <TooltipPrimitive.Provider data-slot="tooltip-provider" delay={delay} {...props} />;
 
 const Tooltip = TooltipPrimitive.Root;
 
-function TooltipTrigger({
+const TooltipTrigger = ({
   asChild = false,
   children,
   ...props
 }: React.ComponentProps<typeof TooltipPrimitive.Trigger> & {
   asChild?: boolean;
-}) {
+}) => {
   const render =
     asChild && React.isValidElement(children) ? (children as React.ReactElement) : undefined;
 
@@ -32,7 +30,7 @@ function TooltipTrigger({
       {asChild ? null : children}
     </TooltipPrimitive.Trigger>
   );
-}
+};
 
 type TooltipContentProps = React.ComponentProps<typeof TooltipPrimitive.Popup> &
   Pick<
@@ -42,7 +40,7 @@ type TooltipContentProps = React.ComponentProps<typeof TooltipPrimitive.Popup> &
     asChild?: boolean;
   };
 
-function TooltipContent({
+const TooltipContent = ({
   asChild = false,
   className,
   side = "top",
@@ -51,7 +49,7 @@ function TooltipContent({
   alignOffset = 0,
   children,
   ...props
-}: TooltipContentProps) {
+}: TooltipContentProps) => {
   const render =
     asChild && React.isValidElement(children) ? (children as React.ReactElement) : undefined;
 
@@ -79,6 +77,6 @@ function TooltipContent({
       </TooltipPrimitive.Positioner>
     </TooltipPrimitive.Portal>
   );
-}
+};
 
 export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider };

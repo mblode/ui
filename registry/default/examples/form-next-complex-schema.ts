@@ -1,5 +1,23 @@
 import { z } from "zod";
 
+export const addons = [
+  {
+    description: "Advanced analytics and reporting",
+    id: "analytics",
+    title: "Analytics",
+  },
+  {
+    description: "Automated daily backups",
+    id: "backup",
+    title: "Backup",
+  },
+  {
+    description: "24/7 premium customer support",
+    id: "support",
+    title: "Priority Support",
+  },
+] as const;
+
 export const formSchema = z.object({
   addons: z
     .array(z.string())
@@ -18,21 +36,3 @@ export interface FormState {
   success: boolean;
   values: z.infer<typeof formSchema>;
 }
-
-export const addons = [
-  {
-    description: "Advanced analytics and reporting",
-    id: "analytics",
-    title: "Analytics",
-  },
-  {
-    description: "Automated daily backups",
-    id: "backup",
-    title: "Backup",
-  },
-  {
-    description: "24/7 premium customer support",
-    id: "support",
-    title: "Priority Support",
-  },
-] as const;

@@ -7,8 +7,6 @@ const data = [
   { name: "Referral", value: 19 },
 ];
 
-export function BarListDemo() {
-  return (
-    <BarList className="w-full max-w-md" data={data} valueFormatter={(value) => `${value}%`} />
-  );
-}
+export const BarListDemo = () => (
+  <BarList className="w-full max-w-md" data={data} valueFormatter={(value) => `${value}%`} />
+);
