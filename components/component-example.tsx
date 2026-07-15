@@ -31,11 +31,13 @@ export function ComponentExample({
   src: _,
   ...props
 }: ComponentExampleProps) {
+  // oxlint-disable-next-line react/no-react-children -- MDX hands us <Example> then <Code> as positional children; reading them by position is the contract, and there is no non-Children way to introspect them
   const [Example, Code, ...Children] = React.Children.toArray(children) as React.ReactElement[];
 
   const codeString = React.useMemo(() => {
     const codeElement = Code as React.ReactElement<CodeBlockProps>;
     if (codeElement?.props["data-rehype-pretty-code-fragment"] !== undefined) {
+      // oxlint-disable-next-line react/no-react-children -- same positional contract: the copy button is the second child of the rehype fragment
       const [, Button] = React.Children.toArray(
         codeElement.props.children,
       ) as React.ReactElement<CopyButtonDataProps>[];

@@ -12,6 +12,7 @@ const relaxed = {
   "import/first": "off",
   "import/no-named-as-default": "off",
   "jsdoc/check-tag-names": "off",
+  "no-await-in-loop": "off",
   "no-empty-function": "off",
   "no-inline-comments": "off",
   "no-negated-condition": "off",

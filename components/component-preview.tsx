@@ -53,6 +53,7 @@ export function ComponentPreview({
 
   const index = styles.findIndex((style) => style.name === effectiveStyle);
 
+  // oxlint-disable-next-line react/no-react-children -- children are one <Code> block per style, selected by index
   const Codes = React.Children.toArray(children) as React.ReactElement[];
   const Code = Codes[index];
 
@@ -108,6 +109,7 @@ export function ComponentPreview({
           width={1440}
         />
         <div className="absolute inset-0 hidden w-[1600px] bg-background md:block">
+          {/* oxlint-disable-next-line react/iframe-missing-sandbox -- frames our own /view route, not third-party content. A real sandbox is not possible here: the demo needs allow-scripts to hydrate and allow-same-origin to reach localStorage for the theme, and that pair lets the frame drop its own sandbox anyway. */}
           <iframe
             className="size-full"
             src={`/view/styles/${effectiveStyle}/${name}`}

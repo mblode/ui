@@ -96,13 +96,14 @@ export const defaultContrastPairs: ContrastPair[] = [
 
 export const DEFAULT_CONTRAST_PAIRS = defaultContrastPairs;
 
-const RGB_FUNCTION_REGEX = /^rgba?\(\s*(.+)\s*\)$/iu;
-const HEX_COLOR_REGEX = /^#([\da-f]{3}|[\da-f]{4}|[\da-f]{6}|[\da-f]{8})$/iu;
-const OKLCH_FUNCTION_REGEX = /^oklch\(\s*(.+)\s*\)$/iu;
-const COLOR_SRGB_FUNCTION_REGEX = /^color\(\s*srgb\s+(.+)\)$/iu;
+const RGB_FUNCTION_REGEX = /^rgba?\(\s*(?<args>.+)\s*\)$/iu;
+const HEX_COLOR_REGEX = /^#(?<hex>[\da-f]{3}|[\da-f]{4}|[\da-f]{6}|[\da-f]{8})$/iu;
+const OKLCH_FUNCTION_REGEX = /^oklch\(\s*(?<args>.+)\s*\)$/iu;
+const COLOR_SRGB_FUNCTION_REGEX = /^color\(\s*srgb\s+(?<args>.+)\)$/iu;
 const WHITESPACE_REGEX = /\s+/u;
 const NUMBER_REGEX = /^[+-]?(?:\d+\.?\d*|\.\d+)(?:e[+-]?\d+)?$/iu;
-const ANGLE_REGEX = /^([+-]?(?:\d+\.?\d*|\.\d+)(?:e[+-]?\d+)?)(deg|grad|rad|turn)?$/iu;
+const ANGLE_REGEX =
+  /^(?<amount>[+-]?(?:\d+\.?\d*|\.\d+)(?:e[+-]?\d+)?)(?<unit>deg|grad|rad|turn)?$/iu;
 
 function clampColorChannel(value: number): number {
   return Math.max(0, Math.min(255, value));
@@ -118,7 +119,7 @@ function parseNumberToken(token: string): number | null {
     return null;
   }
 
-  const parsed = Number.parseFloat(value);
+  const parsed = Number(value);
   if (!Number.isFinite(parsed)) {
     return null;
   }
@@ -241,7 +242,7 @@ function parseHueAngle(token: string): number | null {
 
 function srgbEncode(linear: number): number {
   const bounded = clampUnitInterval(linear);
-  if (bounded <= 0.003_130_8) {
+  if (bounded <= 0.0031308) {
     return 12.92 * bounded;
   }
   return 1.055 * bounded ** (1 / 2.4) - 0.055;
@@ -374,18 +375,17 @@ function parseOklchColor(input: string): RgbColor | null {
   const b = chroma * Math.sin(hueRadians);
 
   // OKLCH -> OKLab -> linear sRGB conversion.
-  const lComponent = lightness + 0.396_337_777_4 * a + 0.215_803_757_3 * b;
-  const mComponent = lightness - 0.105_561_345_8 * a - 0.063_854_172_8 * b;
-  const sComponent = lightness - 0.089_484_177_5 * a - 1.291_485_548 * b;
+  const lComponent = lightness + 0.3963377774 * a + 0.2158037573 * b;
+  const mComponent = lightness - 0.1055613458 * a - 0.0638541728 * b;
+  const sComponent = lightness - 0.0894841775 * a - 1.291485548 * b;
 
   const lLinear = lComponent ** 3;
   const mLinear = mComponent ** 3;
   const sLinear = sComponent ** 3;
 
-  const rLinear = 4.076_741_662_1 * lLinear - 3.307_711_591_3 * mLinear + 0.230_969_929_2 * sLinear;
-  const gLinear =
-    -1.268_438_004_6 * lLinear + 2.609_757_401_1 * mLinear - 0.341_319_396_5 * sLinear;
-  const bLinear = -0.004_196_086_3 * lLinear - 0.703_418_614_7 * mLinear + 1.707_614_701 * sLinear;
+  const rLinear = 4.0767416621 * lLinear - 3.3077115913 * mLinear + 0.2309699292 * sLinear;
+  const gLinear = -1.2684380046 * lLinear + 2.6097574011 * mLinear - 0.3413193965 * sLinear;
+  const bLinear = -0.0041960863 * lLinear - 0.7034186147 * mLinear + 1.707614701 * sLinear;
 
   return {
     r: clampColorChannel(srgbEncode(rLinear) * 255),
@@ -411,7 +411,7 @@ export function parseRgbColor(input: string): RgbColor | null {
 export function relativeLuminance(rgb: RgbColor): number {
   const toLinear = (channel: number) => {
     const normalized = channel / 255;
-    if (normalized <= 0.039_28) {
+    if (normalized <= 0.03928) {
       return normalized / 12.92;
     }
     return ((normalized + 0.055) / 1.055) ** 2.4;

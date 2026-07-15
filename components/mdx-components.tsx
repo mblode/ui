@@ -62,11 +62,13 @@ const components = {
       {...props}
     />
   ),
-  Step: ({ className, ...props }: React.ComponentProps<"h3">) => (
+  Step: ({ className, children, ...props }: React.ComponentProps<"h3">) => (
     <h3
       className={cn("mt-8 scroll-m-32 font-heading font-medium text-lg tracking-tight", className)}
       {...props}
-    />
+    >
+      {children}
+    </h3>
   ),
   Steps: ({ className, ...props }: React.ComponentProps<"div">) => (
     <div
@@ -89,8 +91,10 @@ const components = {
   TabsTrigger: ({ className, ...props }: React.ComponentProps<typeof TabsTrigger>) => (
     <TabsTrigger className={cn(className)} {...props} />
   ),
-  a: ({ className, ...props }: React.HTMLAttributes<HTMLAnchorElement>) => (
-    <a className={cn("font-medium underline underline-offset-4", className)} {...props} />
+  a: ({ className, children, ...props }: React.HTMLAttributes<HTMLAnchorElement>) => (
+    <a className={cn("font-medium underline underline-offset-4", className)} {...props}>
+      {children}
+    </a>
   ),
   blockquote: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <blockquote className={cn("mt-6 border-l-2 pl-6 italic", className)} {...props} />
@@ -122,50 +126,62 @@ const components = {
   figure: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <figure className={cn(className)} {...props} />
   ),
-  h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
+  h1: ({ className, children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h1
       className={cn("mt-2 scroll-m-28 font-bold font-heading text-3xl tracking-tight", className)}
       {...props}
-    />
+    >
+      {children}
+    </h1>
   ),
-  h2: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
+  h2: ({ className, children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h2
       className={cn(
         "[&+.steps]:!mt-0 [&+.steps>h3]:!mt-4 [&+h3]:!mt-6 [&+p]:!mt-4 mt-10 scroll-m-28 font-heading font-medium text-xl tracking-tight first:mt-0 lg:mt-12",
         className,
       )}
       {...props}
-    />
+    >
+      {children}
+    </h2>
   ),
-  h3: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
+  h3: ({ className, children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h3
       className={cn(
         "[&+p]:!mt-4 mt-12 scroll-m-28 font-heading font-medium text-lg tracking-tight",
         className,
       )}
       {...props}
-    />
+    >
+      {children}
+    </h3>
   ),
-  h4: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
+  h4: ({ className, children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h4
       className={cn(
         "mt-8 scroll-m-28 font-heading font-medium text-base tracking-tight",
         className,
       )}
       {...props}
-    />
+    >
+      {children}
+    </h4>
   ),
-  h5: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
+  h5: ({ className, children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h5
       className={cn("mt-8 scroll-m-28 font-medium text-base tracking-tight", className)}
       {...props}
-    />
+    >
+      {children}
+    </h5>
   ),
-  h6: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
+  h6: ({ className, children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h6
       className={cn("mt-8 scroll-m-28 font-medium text-base tracking-tight", className)}
       {...props}
-    />
+    >
+      {children}
+    </h6>
   ),
   hr: ({ ...props }: React.HTMLAttributes<HTMLHRElement>) => (
     <hr className="my-4 md:my-8" {...props} />
@@ -294,6 +310,7 @@ export function Mdx({ code }: MdxProps) {
 
   return (
     <div className="mdx">
+      {/* oxlint-disable-next-line react/react-compiler -- useMDXComponent compiles the MDX source into a component at runtime; that is the library's API, and it memoises on `code` itself */}
       <Component components={components} />
     </div>
   );

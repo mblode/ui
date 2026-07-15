@@ -12,9 +12,9 @@ const IGNORED_PACKAGES = new Set(["next", "react", "react-dom"]);
 const NODE_PREFIX_RE = /^node:/u;
 const LEADING_AT_RE = /^@/u;
 const HTTP_URL_RE = /^https?:\/\//u;
-const SCOPED_WITH_VERSION_RE = /^(@[^/]+\/[^/@]+)(?:@.*)?$/u;
-const UNSCOPED_DECLARED_WITH_VERSION_RE = /^([^/@]+)(?:@.*)?$/u;
-const UNSCOPED_REGISTRY_WITH_VERSION_RE = /^([^@]+)(?:@.*)?$/u;
+const SCOPED_WITH_VERSION_RE = /^(?<name>@[^/]+\/[^/@]+)(?:@.*)?$/u;
+const UNSCOPED_DECLARED_WITH_VERSION_RE = /^(?<name>[^/@]+)(?:@.*)?$/u;
+const UNSCOPED_REGISTRY_WITH_VERSION_RE = /^(?<name>[^@]+)(?:@.*)?$/u;
 
 const NODE_BUILTINS = new Set(
   builtinModules.flatMap((mod) => [mod, mod.replace(NODE_PREFIX_RE, "")]),

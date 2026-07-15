@@ -44,7 +44,7 @@ export function seoDescription(summary: string): string {
 export function humanize(name: string): string {
   return name
     .replaceAll("-", " ")
-    .replaceAll(/([A-Z])/gu, " $1")
+    .replaceAll(/(?<upper>[A-Z])/gu, " $<upper>")
     .trim()
     .split(WHITESPACE_REGEX)
     .map((word) => word[0].toUpperCase() + word.slice(1).toLowerCase())

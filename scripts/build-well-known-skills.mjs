@@ -7,11 +7,11 @@
 import { execSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import { copyFileSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
-import { dirname, join, resolve } from "node:path";
+import path from "node:path";
 
 const __dirname = import.meta.dirname;
-const APP_ROOT = join(__dirname, "..");
-const OUTPUT_DIR = join(APP_ROOT, "public", ".well-known", "agent-skills");
+const APP_ROOT = path.join(__dirname, "..");
+const OUTPUT_DIR = path.join(APP_ROOT, "public", ".well-known", "agent-skills");
 
 // --- Configuration ---
 const CONFIG = {
@@ -25,7 +25,7 @@ const CONFIG = {
 
 // --- Frontmatter parser ---
 function parseFrontmatter(content) {
-  const match = content.match(/^---\n([\s\S]*?)\n---/u);
+  const match = content.match(/^---\n(?<frontmatter>[\s\S]*?)\n---/u);
   if (!match) {
     throw new Error("No YAML frontmatter found in SKILL.md");
   }
@@ -70,8 +70,8 @@ function main() {
   const skills = [];
 
   for (const skill of CONFIG.skills) {
-    const sourceDir = resolve(__dirname, skill.sourceDir);
-    const skillMdPath = join(sourceDir, "SKILL.md");
+    const sourceDir = path.resolve(__dirname, skill.sourceDir);
+    const skillMdPath = path.join(sourceDir, "SKILL.md");
 
     if (!existsSync(skillMdPath)) {
       console.error(`ERROR: SKILL.md not found at ${skillMdPath}`);
@@ -82,9 +82,9 @@ function main() {
     const { name, description } = parseFrontmatter(content);
 
     if (skill.type === "skill-md") {
-      const skillDir = join(OUTPUT_DIR, name);
+      const skillDir = path.join(OUTPUT_DIR, name);
       mkdirSync(skillDir, { recursive: true });
-      const destPath = join(skillDir, "SKILL.md");
+      const destPath = path.join(skillDir, "SKILL.md");
       copyFileSync(skillMdPath, destPath);
 
       const digest = sha256(destPath);
@@ -99,9 +99,9 @@ function main() {
       console.log(`  ${name} (skill-md) -> ${name}/SKILL.md [${digest.slice(0, 20)}...]`);
     } else if (skill.type === "archive") {
       const archiveName = `${name}.tar.gz`;
-      const archivePath = join(OUTPUT_DIR, archiveName);
+      const archivePath = path.join(OUTPUT_DIR, archiveName);
 
-      execSync(`tar czf "${archivePath}" -C "${dirname(sourceDir)}" "${name}"`, {
+      execSync(`tar czf "${archivePath}" -C "${path.dirname(sourceDir)}" "${name}"`, {
         stdio: "pipe",
       });
 
@@ -126,7 +126,7 @@ function main() {
     skills,
   };
 
-  writeFileSync(join(OUTPUT_DIR, "index.json"), JSON.stringify(index, null, 2) + "\n");
+  writeFileSync(path.join(OUTPUT_DIR, "index.json"), JSON.stringify(index, null, 2) + "\n");
 
   const elapsed = ((performance.now() - t0) / 1000).toFixed(1);
   console.log(

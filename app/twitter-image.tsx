@@ -1,8 +1,10 @@
-import { createOgImage, ogImageAlt, ogImageContentType, ogImageSize } from "./og/image";
+import { createOgImage } from "./og/image";
 
-export const alt = ogImageAlt;
-export const size = ogImageSize;
-export const contentType = ogImageContentType;
+export {
+  ogImageAlt as alt,
+  ogImageSize as size,
+  ogImageContentType as contentType,
+} from "./og/image";
 
 export default function Image() {
   return createOgImage();

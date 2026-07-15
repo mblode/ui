@@ -13,7 +13,7 @@ import { z } from "zod";
 import { rehypeComponent } from "./lib/rehype-component";
 import { rehypeNpmCommand } from "./lib/rehype-npm-command";
 
-const EVENT_META_REGEX = /event="([^"]*)"/u;
+const EVENT_META_REGEX = /event="(?<event>[^"]*)"/u;
 const INDEX_PATH_SUFFIX_REGEX = /(?:^|\/)index$/u;
 const WINDOWS_PATH_SEPARATOR_REGEX = /\\/gu;
 

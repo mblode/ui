@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/registry/default/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/registry/default/ui/popover";
 
-const EXTERNAL_HREF_PATTERN = /^(https?:)?\/\//u;
+const EXTERNAL_HREF_PATTERN = /^(?:https?:)?\/\//u;
 
 function isExternalHref(href: string) {
   return EXTERNAL_HREF_PATTERN.test(href);

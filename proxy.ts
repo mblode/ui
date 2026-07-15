@@ -5,7 +5,7 @@ export const config = {
   matcher: ["/((?!_next|api|\\.well-known|r/|[\\w-]+\\.\\w+).*)"],
 };
 
-const MARKDOWN_MEDIA_TYPE = /(^|,\s*)text\/markdown(\s*;|\s*,|\s*$)/iu;
+const MARKDOWN_MEDIA_TYPE = /(?:^|,\s*)text\/markdown(?:\s*;|\s*,|\s*$)/iu;
 
 function prefersMarkdown(accept: string | null): boolean {
   if (!accept) {

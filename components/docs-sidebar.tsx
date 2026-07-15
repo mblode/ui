@@ -17,7 +17,7 @@ import type { SidebarNavItem } from "@/types";
 
 const MENU_BUTTON_CLASS =
   "data-[active=true]:bg-accent data-[active=true]:border-accent 3xl:fixed:w-full 3xl:fixed:max-w-48 relative h-[30px] w-fit overflow-visible border border-transparent text-[0.8rem] font-medium after:absolute after:inset-x-0 after:-inset-y-1 after:z-0 after:rounded-md";
-const EXTERNAL_HREF_PATTERN = /^(https?:)?\/\//u;
+const EXTERNAL_HREF_PATTERN = /^(?:https?:)?\/\//u;
 
 function stripTrailingSlash(path: string) {
   if (path.length > 1 && path.endsWith("/")) {

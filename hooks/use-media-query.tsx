@@ -1,19 +1,22 @@
 import React from "react";
 
+// useSyncExternalStore is the intended primitive for reading an external
+// browser store: it subscribes without mirroring `matches` into state, so there
+// is no setState-in-effect and no extra render on mount. getServerSnapshot
+// returns false so SSR and hydration agree.
 export function useMediaQuery(query: string) {
-  const [value, setValue] = React.useState(false);
+  const subscribe = React.useCallback(
+    (onStoreChange: () => void) => {
+      const result = matchMedia(query);
+      result.addEventListener("change", onStoreChange);
+      return () => result.removeEventListener("change", onStoreChange);
+    },
+    [query],
+  );
 
-  React.useEffect(() => {
-    function onChange(event: MediaQueryListEvent) {
-      setValue(event.matches);
-    }
-
-    const result = matchMedia(query);
-    result.addEventListener("change", onChange);
-    setValue(result.matches);
-
-    return () => result.removeEventListener("change", onChange);
-  }, [query]);
-
-  return value;
+  return React.useSyncExternalStore(
+    subscribe,
+    () => matchMedia(query).matches,
+    () => false,
+  );
 }
