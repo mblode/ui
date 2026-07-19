@@ -61,7 +61,7 @@ const DropdownMenuContent = ({
     >
       <DropdownMenuPrimitive.Popup
         className={cn(
-          "data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[side=inline-start]:slide-in-from-right-2 data-[side=inline-end]:slide-in-from-left-2 cn-menu-target z-50 w-(--anchor-width) min-w-32 origin-(--transform-origin) overflow-hidden rounded-lg bg-popover text-popover-foreground shadow-popover outline-none ring-1 ring-foreground/10 duration-100 data-closed:animate-out data-open:animate-in",
+          "data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[side=inline-start]:slide-in-from-right-2 data-[side=inline-end]:slide-in-from-left-2 cn-menu-target z-50 w-(--anchor-width) min-w-32 origin-(--transform-origin) overflow-hidden rounded-lg bg-popover text-popover-foreground shadow-soft outline-none ring-1 ring-foreground/10 duration-100 data-closed:animate-out data-open:animate-in",
           className,
         )}
         data-slot="dropdown-menu-content"
@@ -280,7 +280,7 @@ const DropdownMenuSubContent = ({
     align={align}
     alignOffset={alignOffset}
     className={cn(
-      "data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 w-auto min-w-[96px] rounded-md bg-popover text-popover-foreground shadow-popover ring-1 ring-foreground/10 duration-100 data-closed:animate-out data-open:animate-in",
+      "data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 w-auto min-w-[96px] rounded-md bg-popover text-popover-foreground shadow-soft ring-1 ring-foreground/10 duration-100 data-closed:animate-out data-open:animate-in",
       className,
     )}
     data-slot="dropdown-menu-sub-content"
