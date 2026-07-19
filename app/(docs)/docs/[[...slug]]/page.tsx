@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: DocPageProps): Promise<Metada
 
   const description = seoDescription(doc.description);
   const title = doc.component
-    ? `${doc.title} - React Component | Blode UI`
+    ? `${doc.title} | React Component | Blode UI`
     : `${doc.title} | Blode UI`;
 
   return {
