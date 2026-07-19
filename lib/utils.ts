@@ -7,10 +7,11 @@ import { env } from "@/env.mjs";
 const WHITESPACE_REGEX = /\s+/u;
 const MULTISPACE_REGEX = /\s+/gu;
 const SENTENCE_END_REGEX = /[.!?]$/u;
+const EM_DASH_REGEX = /\s*—\s*/gu;
 const META_DESCRIPTION_MIN = 120;
 const META_DESCRIPTION_MAX = 160;
 const META_DESCRIPTION_SUFFIX =
-  "Part of Blode UI — an open-source React and Tailwind CSS component registry for building accessible, modern Next.js and React interfaces.";
+  "Part of Blode UI - an open-source React and Tailwind CSS component registry for building accessible, modern Next.js and React interfaces.";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -23,7 +24,7 @@ export function cn(...inputs: ClassValue[]) {
  * front, and longer text is trimmed on a word boundary.
  */
 export function seoDescription(summary: string): string {
-  const base = summary.trim().replaceAll(MULTISPACE_REGEX, " ");
+  const base = summary.trim().replaceAll(MULTISPACE_REGEX, " ").replaceAll(EM_DASH_REGEX, " - ");
   const sentence = SENTENCE_END_REGEX.test(base) ? base : `${base}.`;
 
   let result = sentence;

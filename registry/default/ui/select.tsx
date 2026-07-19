@@ -113,7 +113,7 @@ const SelectContent = ({
       >
         <SelectPrimitive.Popup
           className={cn(
-            "data-open:fade-in-80 scroll-fade relative z-110 max-h-(--available-height) min-w-[8rem] origin-(--transform-origin) overflow-y-auto overflow-x-hidden rounded-xl border border-border bg-popover text-popover-foreground shadow-soft data-closed:animate-out data-open:animate-in",
+            "data-open:fade-in-80 relative z-110 min-w-[8rem] origin-(--transform-origin) overflow-hidden rounded-xl border border-border bg-popover text-popover-foreground shadow-soft data-closed:animate-out data-open:animate-in",
             position === "popper" && "translate-y-1",
             className,
           )}
@@ -123,7 +123,7 @@ const SelectContent = ({
           <SelectScrollUpButton />
           <SelectPrimitive.List
             className={cn(
-              "p-1",
+              "scroll-fade max-h-(--available-height) overflow-x-hidden overflow-y-auto p-1",
               position === "popper" &&
                 "h-(--anchor-height) w-full min-w-(--anchor-width) scroll-my-1",
             )}
