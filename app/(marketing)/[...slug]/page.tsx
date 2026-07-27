@@ -2,8 +2,7 @@ import { allPages } from "content-collections";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Mdx } from "@/components/mdx-components";
-import { siteConfig } from "@/config/site";
-import { env } from "@/env.mjs";
+import { siteConfig, siteUrl } from "@/config/site";
 import { absoluteUrl, seoDescription } from "@/lib/utils";
 
 interface PageProps {
@@ -31,15 +30,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return {};
   }
 
-  const url = env.NEXT_PUBLIC_APP_URL;
-
-  const ogUrl = new URL(`${url}/og`);
+  const ogUrl = new URL(`${siteUrl}/og`);
   ogUrl.searchParams.set("title", page.title);
   ogUrl.searchParams.set("description", page.description || siteConfig.description);
 
   const description = seoDescription(page.description || siteConfig.description);
 
   return {
+    alternates: {
+      canonical: absoluteUrl(page.slug),
+    },
     description,
     openGraph: {
       description,

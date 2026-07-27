@@ -1,7 +1,7 @@
 ---
 version: alpha
 name: Blode UI
-description: Neutral-first design system for the Blode UI registry. Built around Glide typography, soft radii, restrained depth, and source-first shadcn/Base UI components. Colour values mirror the deployed ui.blode.co theme.
+description: Neutral-first design system for the Blode UI registry. Built around Glide typography, soft radii, restrained depth, and source-first shadcn/Base UI components. Colour values mirror the deployed blode.co/ui theme.
 colors:
   background: "#FFFFFF"
   foreground: "#0A0A0A"
@@ -239,7 +239,7 @@ Blode UI is an opinionated shadcn/ui component registry built by Matthew Blode, 
 - Familiar shadcn patterns are the baseline. Blode-specific identity comes from better typography, calmer surfaces, softer geometry, and tighter spacing judgment.
 - Neutral-first, crisp, slightly editorial, and restrained. Default to clarity, legibility, and calm contrast over visual novelty.
 
-The tokens above are the canonical shape. The **runtime source of truth is `styles/globals.css`**, which declares these same tokens as CSS custom properties in `oklch()` for Tailwind v4; the hex values in the frontmatter are the sRGB equivalents that ship on `ui.blode.co`.
+The tokens above are the canonical shape. The **runtime source of truth is `styles/globals.css`**, which declares these same tokens as CSS custom properties in `oklch()` for Tailwind v4; the hex values in the frontmatter are the sRGB equivalents that ship on `blode.co/ui`.
 
 ## Colors
 
@@ -385,7 +385,7 @@ Documentation is part of the design system, not a separate skin.
 
 ### Icons
 
-Use [`blode-icons-react`](https://icons.blode.co) — a drop-in replacement for `lucide-react` with the same names and props.
+Use [`blode-icons-react`](https://blode.co/icons) — a drop-in replacement for `lucide-react` with the same names and props.
 
 ```tsx
 import { SearchIcon } from "blode-icons-react";

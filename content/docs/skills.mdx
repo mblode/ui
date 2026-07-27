@@ -3,7 +3,7 @@ title: Skills
 description: Give your AI assistant deep knowledge of the Blode UI registry, install flow, visual system, and component conventions.
 ---
 
-Skills give AI assistants like Claude Code project-aware context about Blode UI. When installed, your assistant knows how to install from the `@blode` registry, follow the canonical `ui.blode.co` setup flow, and generate code that matches Blode UI conventions and visual direction.
+Skills give AI assistants like Claude Code project-aware context about Blode UI. When installed, your assistant knows how to install from the `@blode` registry, follow the canonical `blode.co/ui` setup flow, and generate code that matches Blode UI conventions and visual direction.
 
 For example, you can ask your AI assistant to:
 
@@ -14,7 +14,7 @@ For example, you can ask your AI assistant to:
 - _"Show me the right `@blode` command for this component."_
 - _"Help me update a Blode component without overwriting my local edits."_
 
-The skill keeps your assistant anchored in the Blode UI defaults: the `@blode` namespace, the hosted registry at [ui.blode.co](https://ui.blode.co), and the product's design and composition patterns.
+The skill keeps your assistant anchored in the Blode UI defaults: the `@blode` namespace, the hosted registry at [blode.co/ui](https://blode.co/ui), and the product's design and composition patterns.
 
 This repository ships one public skill: `blode-ui`.
 
@@ -37,7 +37,7 @@ The skill preserves the Blode UI framing:
 - an opinionated shadcn/ui registry
 - built by Matthew Blode
 - focused on good taste, care, and craft
-- hosted at [ui.blode.co](https://ui.blode.co)
+- hosted at [blode.co/ui](https://blode.co/ui)
 
 ### Design System
 
@@ -54,7 +54,7 @@ The skill teaches the canonical setup flow:
 
 ```bash
 npx shadcn@latest init
-npx shadcn@latest registry add @blode=https://ui.blode.co/r/{name}.json
+npx shadcn@latest registry add @blode=https://blode.co/ui/r/{name}.json
 npx shadcn@latest add @blode/button
 ```
 
@@ -87,7 +87,7 @@ When working inside the Blode UI repo itself, the skill also carries the repo de
 
 ## How It Works
 
-1. The skill activates when your task is clearly about Blode UI, `@blode`, or `ui.blode.co`.
+1. The skill activates when your task is clearly about Blode UI, `@blode`, or `blode.co/ui`.
 2. It loads only the focused references needed for the task, such as install flow, design-system guidance, registry workflows, or repo conventions.
 3. It applies the Blode defaults before generating commands, examples, or code.
 4. It uses the bundled rules to keep examples aligned with the registry's composition and styling patterns.

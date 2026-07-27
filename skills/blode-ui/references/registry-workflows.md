@@ -32,7 +32,7 @@ The same `add` flow applies to non-component registry payloads such as `registry
 
 - Inspect `content/docs/components/*.mdx` before inventing examples.
 - Inspect `registry/default/ui/` and `registry/default/examples/` before proposing new composition patterns.
-- Treat direct URL installs like `https://ui.blode.co/r/styles/default/<name>` as low-level references, not the default onboarding path.
+- Treat direct URL installs like `https://blode.co/ui/r/styles/default/<name>` as low-level references, not the default onboarding path.
 
 ## Fallback To Generic shadcn Mechanics
 

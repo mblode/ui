@@ -10,6 +10,7 @@ import { createHighlighter } from "shiki";
 import { visit } from "unist-util-visit";
 import { z } from "zod";
 
+import { siteUrl } from "./config/site";
 import { rehypeComponent } from "./lib/rehype-component";
 import { rehypeNpmCommand } from "./lib/rehype-npm-command";
 
@@ -207,7 +208,7 @@ const documents = defineCollection({
         code: body,
         raw: document.content,
       },
-      image: `${process.env.NEXT_PUBLIC_APP_URL}/og?title=${encodeURI(
+      image: `${siteUrl}/og?title=${encodeURI(
         document.title,
       )}&description=${encodeURI(document.description)}`,
       slug: slugAsParams ? `/docs/${slugAsParams}` : "/docs",

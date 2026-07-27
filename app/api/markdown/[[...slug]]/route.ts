@@ -1,5 +1,5 @@
 import { allDocs, allPages } from "content-collections";
-import { siteConfig } from "@/config/site";
+import { siteConfig, siteUrl } from "@/config/site";
 
 interface RouteParams {
   params: Promise<{
@@ -13,16 +13,16 @@ ${siteConfig.description}
 
 ## Sections
 
-- [Documentation](/docs)
-- [Components](/docs/components)
-- [Installation](/docs/installation)
+- [Documentation](${siteUrl}/docs)
+- [Components](${siteUrl}/docs/components)
+- [Installation](${siteUrl}/docs/installation)
 
 ## Machine-readable resources
 
-- Registry manifest: [/r/index.json](/r/index.json)
-- API catalog: [/.well-known/api-catalog](/.well-known/api-catalog)
-- Agent skills: [/.well-known/agent-skills/index.json](/.well-known/agent-skills/index.json)
-- Sitemap: [/sitemap.xml](/sitemap.xml)
+- Registry manifest: [${siteUrl}/r/index.json](${siteUrl}/r/index.json)
+- API catalog: [${siteUrl}/.well-known/api-catalog](${siteUrl}/.well-known/api-catalog)
+- Agent skills: [${siteUrl}/.well-known/agent-skills/index.json](${siteUrl}/.well-known/agent-skills/index.json)
+- Sitemap: [${siteUrl}/sitemap.xml](${siteUrl}/sitemap.xml)
 `;
 
 function buildMarkdown(title: string, description: string | undefined, body: string) {

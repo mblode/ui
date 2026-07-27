@@ -4,14 +4,14 @@
     {
       "id": 1,
       "prompt": "I want to install Blode UI in a fresh Next.js app and add the button component. Show me the commands and explain the flow briefly.",
-      "expected_output": "Uses the canonical Blode namespace flow and describes Blode UI as a third-party shadcn registry hosted at ui.blode.co.",
+      "expected_output": "Uses the canonical Blode namespace flow and describes Blode UI as a third-party shadcn registry hosted at blode.co/ui.",
       "files": [],
       "expectations": [
         "Starts with `npx shadcn@latest init`",
-        "Includes `npx shadcn@latest registry add @blode=https://ui.blode.co/r/{name}.json`",
+        "Includes `npx shadcn@latest registry add @blode=https://blode.co/ui/r/{name}.json`",
         "Uses `npx shadcn@latest add @blode/button` instead of `@shadcn/button`",
-        "Mentions that Blode UI is a third-party shadcn registry hosted at `ui.blode.co`",
-        "Does not teach raw `https://ui.blode.co/r/...` URLs as the default quick start"
+        "Mentions that Blode UI is a third-party shadcn registry hosted at `blode.co/ui`",
+        "Does not teach raw `https://blode.co/ui/r/...` URLs as the default quick start"
       ]
     },
     {

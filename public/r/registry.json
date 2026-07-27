@@ -1,6 +1,6 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
-  "homepage": "https://ui.blode.co",
+  "homepage": "https://blode.co/ui",
   "items": [
     {
       "name": "blode",
@@ -22,7 +22,7 @@
         },
         "iconLibrary": "blode-icons-react",
         "registries": {
-          "@blode": "https://ui.blode.co/r/{name}.json"
+          "@blode": "https://blode.co/ui/r/{name}.json"
         }
       }
     },

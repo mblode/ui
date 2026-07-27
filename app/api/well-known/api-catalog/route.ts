@@ -1,33 +1,33 @@
-const ORIGIN = "https://ui.blode.co";
+import { siteUrl } from "@/config/site";
 
 const API_CATALOG = {
   linkset: [
     {
-      anchor: `${ORIGIN}/r`,
+      anchor: `${siteUrl}/r`,
       "service-desc": [
         {
-          href: `${ORIGIN}/r/index.json`,
+          href: `${siteUrl}/r/index.json`,
           type: "application/json",
         },
       ],
       "service-doc": [
         {
-          href: `${ORIGIN}/docs/installation`,
+          href: `${siteUrl}/docs/installation`,
           type: "text/html",
         },
       ],
       "service-meta": [
         {
-          href: `${ORIGIN}/registry.json`,
+          href: `${siteUrl}/registry.json`,
           type: "application/json",
         },
       ],
     },
     {
-      anchor: `${ORIGIN}/.well-known/agent-skills`,
+      anchor: `${siteUrl}/.well-known/agent-skills`,
       describedby: [
         {
-          href: `${ORIGIN}/.well-known/agent-skills/index.json`,
+          href: `${siteUrl}/.well-known/agent-skills/index.json`,
           type: "application/json",
         },
       ],

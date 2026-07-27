@@ -314,7 +314,7 @@ async function buildStyles(registry: Registry): Promise<void> {
           : undefined;
 
       const payload = registryItemSchema.safeParse({
-        $schema: "https://ui.blode.co/schema/registry-item.json",
+        $schema: "https://blode.co/ui/schema/registry-item.json",
         author: "Matthew Blode",
         ...item,
         files,

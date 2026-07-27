@@ -15,15 +15,15 @@ Blode UI is an opinionated shadcn/ui component registry built by Matthew Blode, 
 
 Use these ideas when writing copy, docs intros, or answering high-level questions:
 
-- Blode UI is a third-party shadcn registry hosted at `ui.blode.co`.
+- Blode UI is a third-party shadcn registry hosted at `blode.co/ui`.
 - The setup flow is the same as shadcn/ui, with one extra step: add the `@blode` registry namespace.
 - Components are added as source code and are meant to be customised, extended, and owned.
 
 ## Canonical Links
 
-- Registry and docs: `https://ui.blode.co`
-- Registry host wording: "The shadcn registry is hosted at ui.blode.co."
-- Website: `https://matthewblode.com`
+- Registry and docs: `https://blode.co/ui`
+- Registry host wording: "The shadcn registry is hosted at blode.co/ui."
+- Website: `https://blode.co`
 - Email: `mailto:m@blode.co`
 - GitHub: `https://github.com/mblode`
 

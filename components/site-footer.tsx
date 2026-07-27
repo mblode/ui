@@ -1,4 +1,4 @@
-import { siteConfig } from "@/config/site";
+import { asset, siteConfig } from "@/config/site";
 
 export const SiteFooter = () => (
   <footer className="flex flex-col items-center justify-center gap-2 pt-16 pb-8 text-muted-foreground text-sm">
@@ -16,7 +16,7 @@ export const SiteFooter = () => (
           className="rounded-full"
           height={20}
           loading="lazy"
-          src="/avatar-sm.png"
+          src={asset("/avatar-sm.png")}
           width={20}
         />
         Matthew Blode

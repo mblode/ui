@@ -4,6 +4,7 @@ import { formatDistanceToNow } from "date-fns";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
+import { asset } from "@/config/site";
 import { Badge } from "@/registry/default/ui/badge";
 
 interface CommitItem {
@@ -24,7 +25,7 @@ export default function CommitList({ repo, owner }: { repo: string; owner: strin
     const loadCommits = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/repo/commits`, {
+        const response = await fetch(asset("/api/repo/commits"), {
           body: JSON.stringify({ owner, repo }),
           headers: {
             "Content-Type": "application/json",

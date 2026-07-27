@@ -1,10 +1,16 @@
 import packageJson from "../package.json" with { type: "json" };
 
+export const basePath = "/ui";
+
+export const asset = (path: string) => `${basePath}${path}`;
+
+export const siteUrl = `https://blode.co${basePath}`;
+
 export const siteConfig = {
   description: "Beautifully designed landing page components built with React & Tailwind CSS.",
   keywords: ["React", "Tailwind CSS", "Motion", "Landing Page", "Components", "Next.js"],
   links: {
-    author: "https://matthewblode.com",
+    author: "https://blode.co",
     github: "https://github.com/mblode/blode-ui",
   },
   name: "Blode UI",
@@ -22,8 +28,8 @@ export const siteConfig = {
       label: "Theme Visualiser",
     },
   ],
-  ogImage: "https://ui.blode.co/opengraph-image",
-  url: "https://ui.blode.co",
+  ogImage: `${siteUrl}/opengraph-image`,
+  url: siteUrl,
   version: packageJson.version,
 };
 

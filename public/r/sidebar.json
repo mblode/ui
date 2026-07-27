@@ -1,5 +1,5 @@
 {
-  "$schema": "https://ui.blode.co/schema/registry-item.json",
+  "$schema": "https://blode.co/ui/schema/registry-item.json",
   "name": "sidebar",
   "title": "Sidebar",
   "author": "Matthew Blode",

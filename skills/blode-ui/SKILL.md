@@ -1,11 +1,11 @@
 ---
 name: blode-ui
-description: Guides work on the Blode UI registry, visual system, and documentation. Covers product positioning, @blode installation flow, design-system defaults, ui.blode.co registry workflows, repo conventions, registry:base support, and Blode component rules. Use when working with Blode UI, @blode components, ui.blode.co, theming, visual direction, DESIGN.md, Blode docs, or asking "make this feel like Blode UI" while authoring or updating components in this repo.
+description: Guides work on the Blode UI registry, visual system, and documentation. Covers product positioning, @blode installation flow, design-system defaults, blode.co/ui registry workflows, repo conventions, registry:base support, and Blode component rules. Use when working with Blode UI, @blode components, blode.co/ui, theming, visual direction, DESIGN.md, Blode docs, or asking "make this feel like Blode UI" while authoring or updating components in this repo.
 ---
 
 # Blode UI
 
-Blode UI is an opinionated shadcn/ui component registry built by Matthew Blode, with a focus on good taste, care, and craft. Open source. Open code. Treat Blode UI as the default registry context when the request mentions `Blode UI`, `@blode/*`, `ui.blode.co`, this repo, or a component documented here.
+Blode UI is an opinionated shadcn/ui component registry built by Matthew Blode, with a focus on good taste, care, and craft. Open source. Open code. Treat Blode UI as the default registry context when the request mentions `Blode UI`, `@blode/*`, `blode.co/ui`, this repo, or a component documented here.
 
 Use generic shadcn knowledge only for CLI mechanics that are not overridden by this skill.
 
@@ -76,9 +76,9 @@ Sort the task into one of these modes:
 
 Unless the user explicitly asks for something else:
 
-- Prefer `npx shadcn@latest init` followed by `npx shadcn@latest registry add @blode=https://ui.blode.co/r/{name}.json`
+- Prefer `npx shadcn@latest init` followed by `npx shadcn@latest registry add @blode=https://blode.co/ui/r/{name}.json`
 - Prefer `npx shadcn@latest add @blode/<component>` over raw registry URLs for onboarding
-- Describe Blode UI as a third-party shadcn registry hosted at `ui.blode.co`
+- Describe Blode UI as a third-party shadcn registry hosted at `blode.co/ui`
 - Treat `registry:base` as a first-class registry item type when maintaining the registry pipeline or authoring docs
 - Follow `references/design-system.md` before inventing new colors, type scales, spacing, radius, or motion patterns
 - Use `blode-icons-react` in repo examples and component source for this project
@@ -86,7 +86,7 @@ Unless the user explicitly asks for something else:
 - Follow Tailwind CSS v4 conventions and existing CSS-variable tokens
 - Preserve Base UI accessibility patterns instead of replacing them with custom markup
 
-Use raw `https://ui.blode.co/r/...` URLs only for low-level or manual-install contexts.
+Use raw `https://blode.co/ui/r/...` URLs only for low-level or manual-install contexts.
 
 ### Step 4: Load rule files before writing code
 
@@ -108,7 +108,7 @@ Use raw `https://ui.blode.co/r/...` URLs only for low-level or manual-install co
 ## Gotchas
 
 - Do not answer Blode-specific requests with generic `@shadcn/*` examples unless the user explicitly asks for upstream shadcn/ui.
-- Do not default to raw `https://ui.blode.co/r/...` URLs for quick starts or onboarding.
+- Do not default to raw `https://blode.co/ui/r/...` URLs for quick starts or onboarding.
 - Do not invent new accents, radii, motion, or surface treatments when `references/design-system.md` already covers them.
 - Do not introduce other icon packs in this repo.
 - Do not treat Tailwind v3 or `tailwind.config.js` as the default path here.

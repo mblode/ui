@@ -9,6 +9,8 @@ import { createHash } from "node:crypto";
 import { copyFileSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
+import { basePath } from "../config/site.ts";
+
 const __dirname = import.meta.dirname;
 const APP_ROOT = path.join(__dirname, "..");
 const OUTPUT_DIR = path.join(APP_ROOT, "public", ".well-known", "agent-skills");
@@ -93,7 +95,7 @@ function main() {
         digest,
         name,
         type: "skill-md",
-        url: `/.well-known/agent-skills/${name}/SKILL.md`,
+        url: `${basePath}/.well-known/agent-skills/${name}/SKILL.md`,
       });
 
       console.log(`  ${name} (skill-md) -> ${name}/SKILL.md [${digest.slice(0, 20)}...]`);
@@ -111,7 +113,7 @@ function main() {
         digest,
         name,
         type: "archive",
-        url: `/.well-known/agent-skills/${archiveName}`,
+        url: `${basePath}/.well-known/agent-skills/${archiveName}`,
       });
 
       console.log(`  ${name} (archive) -> ${archiveName} [${digest.slice(0, 20)}...]`);

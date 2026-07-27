@@ -1,3 +1,5 @@
+import { siteUrl } from "@/config/site";
+
 const ROBOTS_TXT = `User-agent: *
 Allow: /
 Disallow: /api/
@@ -6,7 +8,7 @@ Disallow: /public/
 
 Content-Signal: search=yes, ai-input=yes, ai-train=no
 
-Sitemap: https://ui.blode.co/sitemap.xml
+Sitemap: ${siteUrl}/sitemap.xml
 `;
 
 export function GET() {

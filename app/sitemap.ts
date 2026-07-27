@@ -1,28 +1,25 @@
 import { allDocs, allPages } from "content-collections";
 import type { MetadataRoute } from "next";
-import { headers } from "next/headers";
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const headersList = await headers();
-  const domain = headersList.get("host") as string;
-  const protocol = "https";
+import { siteUrl } from "@/config/site";
 
+export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       lastModified: new Date(),
-      url: `${protocol}://${domain}`,
+      url: siteUrl,
     },
     {
       lastModified: new Date(),
-      url: `${protocol}://${domain}/theme-visualizer`,
+      url: `${siteUrl}/theme-visualizer`,
     },
     ...allPages.map((post) => ({
       lastModified: new Date(),
-      url: `${protocol}://${domain}/${post.slugAsParams}`,
+      url: `${siteUrl}/${post.slugAsParams}`,
     })),
     ...allDocs.map((post) => ({
       lastModified: post.date,
-      url: `${protocol}://${domain}/docs${post.slugAsParams ? `/${post.slugAsParams}` : ""}`,
+      url: `${siteUrl}/docs${post.slugAsParams ? `/${post.slugAsParams}` : ""}`,
     })),
   ];
 }

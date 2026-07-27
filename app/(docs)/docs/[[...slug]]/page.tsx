@@ -42,6 +42,9 @@ export async function generateMetadata({ params }: DocPageProps): Promise<Metada
     : `${doc.title} | Blode UI`;
 
   return {
+    alternates: {
+      canonical: absoluteUrl(doc.slug),
+    },
     description,
     openGraph: {
       description,

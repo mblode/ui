@@ -1,15 +1,19 @@
 import { withContentCollections } from "@content-collections/next";
 import type { NextConfig } from "next";
 
+import { basePath } from "./config/site";
+
 const AGENT_DISCOVERY_LINKS = [
-  '</.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json"',
-  '</.well-known/agent-skills/index.json>; rel="describedby"; type="application/json"',
-  '</docs>; rel="service-doc"; type="text/html"',
-  '</r/index.json>; rel="service-desc"; type="application/json"',
-  '</sitemap.xml>; rel="sitemap"; type="application/xml"',
+  `<${basePath}/.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json"`,
+  `<${basePath}/.well-known/agent-skills/index.json>; rel="describedby"; type="application/json"`,
+  `<${basePath}/docs>; rel="service-doc"; type="text/html"`,
+  `<${basePath}/r/index.json>; rel="service-desc"; type="application/json"`,
+  `<${basePath}/sitemap.xml>; rel="sitemap"; type="application/xml"`,
 ].join(", ");
 
 const nextConfig: NextConfig = {
+  assetPrefix: basePath,
+  basePath,
   devIndicators: false,
   experimental: {
     optimizeCss: true,
@@ -61,6 +65,20 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      {
+        basePath: false,
+        destination: `https://blode.co${basePath}`,
+        has: [{ type: "host" as const, value: "ui.blode.co" }],
+        permanent: true,
+        source: "/",
+      },
+      {
+        basePath: false,
+        destination: `https://blode.co${basePath}/:path*`,
+        has: [{ type: "host" as const, value: "ui.blode.co" }],
+        permanent: true,
+        source: "/:path*",
+      },
       {
         destination: "/docs/font",
         permanent: true,

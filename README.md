@@ -7,13 +7,13 @@ Initialize shadcn, add the Blode UI registry to your project, then install any c
 
 ```bash
 npx shadcn@latest init
-npx shadcn@latest registry add @blode=https://ui.blode.co/r/{name}.json
+npx shadcn@latest registry add @blode=https://blode.co/ui/r/{name}.json
 npx shadcn@latest add @blode/button
 ```
 
 ## Documentation
 
-[ui.blode.co/docs](https://ui.blode.co/docs)
+[blode.co/ui/docs](https://blode.co/ui/docs)
 
 ## AI Skills
 
@@ -27,4 +27,4 @@ npx shadcn@latest add @blode/button
 
 ---
 
-Crafted by [<img src="https://matthewblode.com/avatar-circle.png" width="20" align="top" />](https://matthewblode.com) [Matthew Blode](https://matthewblode.com)
+Crafted by [<img src="https://blode.co/avatar-circle.png" width="20" align="top" />](https://blode.co) [Matthew Blode](https://blode.co)

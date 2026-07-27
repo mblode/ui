@@ -1,5 +1,7 @@
 import type { MetadataRoute } from "next";
 
+import { asset, basePath } from "@/config/site";
+
 export default function manifest(): MetadataRoute.Manifest {
   return {
     background_color: "#ffffff",
@@ -9,24 +11,24 @@ export default function manifest(): MetadataRoute.Manifest {
     icons: [
       {
         sizes: "any",
-        src: "/favicon.ico",
+        src: asset("/favicon.ico"),
         type: "image/x-icon",
       },
       {
         purpose: "maskable",
         sizes: "192x192",
-        src: "/android-chrome-192x192.png",
+        src: asset("/android-chrome-192x192.png"),
         type: "image/png",
       },
       {
         sizes: "256x256",
-        src: "/android-chrome-256x256.png",
+        src: asset("/android-chrome-256x256.png"),
         type: "image/png",
       },
     ],
     name: "Blode UI",
     short_name: "Blode UI",
-    start_url: "/",
+    start_url: basePath,
     theme_color: "#ffffff",
   };
 }

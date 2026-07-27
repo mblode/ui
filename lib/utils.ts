@@ -2,7 +2,7 @@ import clsx from "clsx";
 import type { ClassValue } from "clsx";
 import type { Metadata } from "next";
 import { twMerge } from "tailwind-merge";
-import { env } from "@/env.mjs";
+import { asset, siteUrl } from "@/config/site";
 
 const WHITESPACE_REGEX = /\s+/u;
 const MULTISPACE_REGEX = /\s+/gu;
@@ -88,14 +88,14 @@ export function formatDate(input: string | number): string {
 }
 
 export function absoluteUrl(path: string) {
-  return `${env.NEXT_PUBLIC_APP_URL}${path}`;
+  return `${siteUrl}${path}`;
 }
 
 export function constructMetadata({
   title = "Blode UI - Modern React + Tailwind CSS components",
   description = "Blode UI is a curated collection of the best landing page components built using React + Tailwind CSS + Motion",
   image = absoluteUrl("/opengraph-image"),
-  url = "https://ui.blode.co",
+  url = siteUrl,
   ...props
 }: {
   title?: string;
@@ -105,6 +105,9 @@ export function constructMetadata({
   [key: string]: Metadata[keyof Metadata];
 }): Metadata {
   return {
+    alternates: {
+      canonical: url,
+    },
     authors: [
       {
         name: "dillionverma",
@@ -113,9 +116,9 @@ export function constructMetadata({
     ],
     creator: "dillionverma",
     description,
-    icons: "/favicon.ico",
+    icons: asset("/favicon.ico"),
     keywords: ["React", "Tailwind CSS", "Motion", "Landing Page", "Components", "Next.js"],
-    metadataBase: new URL("https://ui.blode.co"),
+    metadataBase: new URL(siteUrl),
     openGraph: {
       description,
       images: [

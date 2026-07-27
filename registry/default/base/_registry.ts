@@ -5,7 +5,7 @@ export const base: Registry["items"] = [
     config: {
       iconLibrary: "blode-icons-react",
       registries: {
-        "@blode": "https://ui.blode.co/r/{name}.json",
+        "@blode": "https://blode.co/ui/r/{name}.json",
       },
       style: "base-blode",
       tailwind: {
