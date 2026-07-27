@@ -65,8 +65,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <link href="https://us.i.posthog.com" rel="preconnect" />
-        <link href="https://us-assets.i.posthog.com" rel="dns-prefetch" />
+        <link href="https://r.blode.co" rel="preconnect" />
         <Script id="theme-init" strategy="beforeInteractive">
           {`(function(){try{var d=document.documentElement;d.classList.add('no-transition');var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){d.classList.add('dark')}requestAnimationFrame(function(){requestAnimationFrame(function(){d.classList.remove('no-transition')})})}catch(e){}})()`}
         </Script>
