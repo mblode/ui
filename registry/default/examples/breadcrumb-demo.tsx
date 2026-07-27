@@ -22,7 +22,7 @@ export const BreadcrumbDemo = () => (
     <BreadcrumbList>
       <BreadcrumbItem>
         <BreadcrumbLink asChild>
-          <Link href="/">Home</Link>
+          <Link href="#">Home</Link>
         </BreadcrumbLink>
       </BreadcrumbItem>
       <BreadcrumbSeparator />
@@ -46,7 +46,7 @@ export const BreadcrumbDemo = () => (
       <BreadcrumbSeparator />
       <BreadcrumbItem>
         <BreadcrumbLink asChild>
-          <Link href="/components">Components</Link>
+          <Link href="#">Components</Link>
         </BreadcrumbLink>
       </BreadcrumbItem>
       <BreadcrumbSeparator />

@@ -1,7 +1,25 @@
+import Link from "next/link";
+
 import { asset, siteConfig } from "@/config/site";
 
 export const SiteFooter = () => (
   <footer className="flex flex-col items-center justify-center gap-2 pt-16 pb-8 text-muted-foreground text-sm">
+    {/*
+      These three pages exist in `content/pages` and are listed in the sitemap
+      but had no link anywhere on the site, so the 28 Jul crawl reported them as
+      orphans. next/link, not a raw anchor: only Link prefixes the /ui basePath.
+    */}
+    <div className="flex items-center gap-4">
+      <Link className="transition-colors hover:text-foreground" href="/home">
+        Previews
+      </Link>
+      <Link className="transition-colors hover:text-foreground" href="/privacy">
+        Privacy
+      </Link>
+      <Link className="transition-colors hover:text-foreground" href="/terms">
+        Terms
+      </Link>
+    </div>
     <div className="flex items-center gap-1">
       Crafted by
       <a

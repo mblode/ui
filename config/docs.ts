@@ -365,6 +365,11 @@ export const docsConfig: DocsConfig = {
           title: "Number Field",
         },
         {
+          href: "/docs/components/password-input",
+          items: [],
+          title: "Password Input",
+        },
+        {
           href: "/docs/components/popover",
           items: [],
           title: "Popover",
