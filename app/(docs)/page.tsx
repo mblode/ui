@@ -1,5 +1,15 @@
+import type { Metadata } from "next";
 import { ShowcaseGrid } from "@/components/sections/showcase-grid";
 import ShowcaseHero from "@/components/sections/showcase-hero";
+import { siteUrl } from "@/config/site";
+import { constructMetadata } from "@/lib/utils";
+
+export const metadata: Metadata = constructMetadata({
+  description:
+    "An open source registry of accessible React components built with Tailwind CSS v4 and Base UI. Copy the source, own the code.",
+  title: "Blode UI: React and Tailwind CSS component registry",
+  url: siteUrl,
+});
 
 export default function Home() {
   return (

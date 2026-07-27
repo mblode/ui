@@ -1,5 +1,5 @@
 export const TypographyH1 = () => (
-  <h1 className="scroll-m-20 text-balance text-center font-extrabold text-4xl tracking-tight">
+  <h2 className="scroll-m-20 text-balance text-center font-extrabold text-4xl tracking-tight">
     Taxing Laughter: The Joke Tax Chronicles
-  </h1>
+  </h2>
 );

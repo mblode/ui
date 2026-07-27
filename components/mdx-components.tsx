@@ -91,11 +91,24 @@ const components = {
   TabsTrigger: ({ className, ...props }: React.ComponentProps<typeof TabsTrigger>) => (
     <TabsTrigger className={cn(className)} {...props} />
   ),
-  a: ({ className, children, ...props }: React.HTMLAttributes<HTMLAnchorElement>) => (
-    <a className={cn("font-medium underline underline-offset-4", className)} {...props}>
-      {children}
-    </a>
-  ),
+  a: ({ className, children, href, ...props }: React.ComponentProps<"a">) => {
+    const linkClassName = cn("font-medium underline underline-offset-4", className);
+
+    // Root-relative hrefs need the basePath, which next/link applies for us.
+    if (href?.startsWith("/") && !href.startsWith("//")) {
+      return (
+        <Link className={linkClassName} href={href} {...props}>
+          {children}
+        </Link>
+      );
+    }
+
+    return (
+      <a className={linkClassName} href={href} {...props}>
+        {children}
+      </a>
+    );
+  },
   blockquote: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <blockquote className={cn("mt-6 border-l-2 pl-6 italic", className)} {...props} />
   ),

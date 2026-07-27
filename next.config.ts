@@ -85,6 +85,11 @@ const nextConfig: NextConfig = {
         source: "/docs/typography",
       },
       {
+        destination: "/docs/components",
+        permanent: true,
+        source: "/components",
+      },
+      {
         destination: "/docs/components/:path*",
         permanent: true,
         source: "/components/:path*",

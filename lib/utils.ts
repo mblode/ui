@@ -95,7 +95,7 @@ export function constructMetadata({
   title = "Blode UI - Modern React + Tailwind CSS components",
   description = "Blode UI is a curated collection of the best landing page components built using React + Tailwind CSS + Motion",
   image = absoluteUrl("/opengraph-image"),
-  url = siteUrl,
+  url,
   ...props
 }: {
   title?: string;
@@ -106,7 +106,7 @@ export function constructMetadata({
 }): Metadata {
   return {
     alternates: {
-      canonical: url,
+      canonical: url ?? siteUrl,
     },
     authors: [
       {
@@ -130,7 +130,9 @@ export function constructMetadata({
       ],
       title,
       type: "website",
-      url,
+      // Only set when a caller supplies its own route, so inheriting pages
+      // don't all report the site root as their og:url.
+      ...(url && { url }),
     },
     title,
     twitter: {
