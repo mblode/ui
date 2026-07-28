@@ -35,7 +35,18 @@ function buildMarkdown(title: string, description: string | undefined, body: str
 function markdownResponse(markdown: string, status = 200) {
   return new Response(markdown, {
     headers: {
+      // `cache-control` stays revalidate-always so a browser never shows stale
+      // docs. `cdn-cache-control` is what the edge reads, and it is the header
+      // that matters here: this is a dynamic route, so without it every
+      // `Accept: text/markdown` request missed the CDN and woke the origin.
+      // robots.txt invites the AI crawlers that use this path, so those misses
+      // are real traffic paying a cold start.
+      //
+      // Safe to cache for an hour: the body comes from content-collections,
+      // which is build-time data, so it cannot change until the next deploy
+      // (and a deploy purges the edge cache).
       "cache-control": "public, max-age=0, must-revalidate",
+      "cdn-cache-control": "public, s-maxage=3600, stale-while-revalidate=60",
       "content-type": "text/markdown; charset=utf-8",
       vary: "Accept",
       "x-markdown-tokens": String(markdown.length),
