@@ -22,7 +22,10 @@ export default function MessageGroupDemo() {
         <Message>
           <MessageAvatar>
             <Avatar>
-              <AvatarImage alt="@avatar" src="https://github.com/evilrabbit.png" />
+              <AvatarImage
+                alt="@avatar"
+                src="https://avatars.githubusercontent.com/u/6880091?v=4"
+              />
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
           </MessageAvatar>

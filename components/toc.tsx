@@ -46,7 +46,9 @@ function useActiveItem(itemIds: string[]) {
     );
 
     for (const id of itemIds ?? []) {
-      const element = document.querySelector(`#${id}`);
+      // Escape the id: heading ids can start with a digit, which is not a
+      // valid CSS selector and makes querySelector throw.
+      const element = document.querySelector(`#${CSS.escape(id)}`);
       if (element) {
         observer.observe(element);
       }
@@ -54,7 +56,7 @@ function useActiveItem(itemIds: string[]) {
 
     return () => {
       for (const id of itemIds ?? []) {
-        const element = document.querySelector(`#${id}`);
+        const element = document.querySelector(`#${CSS.escape(id)}`);
         if (element) {
           observer.unobserve(element);
         }

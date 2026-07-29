@@ -14,7 +14,7 @@ export default function MessageDemo() {
       <Message align="end">
         <MessageAvatar>
           <Avatar>
-            <AvatarImage alt="@me" src="https://github.com/shadcn.png" />
+            <AvatarImage alt="@me" src="https://avatars.githubusercontent.com/u/124599?v=4" />
             <AvatarFallback>ME</AvatarFallback>
           </Avatar>
         </MessageAvatar>
@@ -27,7 +27,7 @@ export default function MessageDemo() {
       <Message>
         <MessageAvatar>
           <Avatar>
-            <AvatarImage alt="@rabbit" src="https://github.com/evilrabbit.png" />
+            <AvatarImage alt="@rabbit" src="https://avatars.githubusercontent.com/u/6880091?v=4" />
             <AvatarFallback>R</AvatarFallback>
           </Avatar>
         </MessageAvatar>
@@ -40,7 +40,7 @@ export default function MessageDemo() {
       <Message align="end">
         <MessageAvatar>
           <Avatar>
-            <AvatarImage alt="@me" src="https://github.com/shadcn.png" />
+            <AvatarImage alt="@me" src="https://avatars.githubusercontent.com/u/124599?v=4" />
             <AvatarFallback>ME</AvatarFallback>
           </Avatar>
         </MessageAvatar>
@@ -54,7 +54,7 @@ export default function MessageDemo() {
       <Message>
         <MessageAvatar>
           <Avatar>
-            <AvatarImage alt="@rabbit" src="https://github.com/evilrabbit.png" />
+            <AvatarImage alt="@rabbit" src="https://avatars.githubusercontent.com/u/6880091?v=4" />
             <AvatarFallback>R</AvatarFallback>
           </Avatar>
         </MessageAvatar>

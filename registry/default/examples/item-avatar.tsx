@@ -15,7 +15,7 @@ export const ItemAvatar = () => (
     <Item variant="outline">
       <ItemMedia>
         <Avatar className="size-10">
-          <AvatarImage src="https://github.com/evilrabbit.png" />
+          <AvatarImage src="https://avatars.githubusercontent.com/u/6880091?v=4" />
           <AvatarFallback>ER</AvatarFallback>
         </Avatar>
       </ItemMedia>
@@ -33,15 +33,21 @@ export const ItemAvatar = () => (
       <ItemMedia>
         <div className="flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:ring-background *:data-[slot=avatar]:grayscale">
           <Avatar className="hidden sm:flex">
-            <AvatarImage alt="@shadcn" src="https://github.com/shadcn.png" />
+            <AvatarImage alt="@shadcn" src="https://avatars.githubusercontent.com/u/124599?v=4" />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
           <Avatar className="hidden sm:flex">
-            <AvatarImage alt="@maxleiter" src="https://github.com/maxleiter.png" />
+            <AvatarImage
+              alt="@maxleiter"
+              src="https://avatars.githubusercontent.com/u/8675906?v=4"
+            />
             <AvatarFallback>LR</AvatarFallback>
           </Avatar>
           <Avatar>
-            <AvatarImage alt="@evilrabbit" src="https://github.com/evilrabbit.png" />
+            <AvatarImage
+              alt="@evilrabbit"
+              src="https://avatars.githubusercontent.com/u/6880091?v=4"
+            />
             <AvatarFallback>ER</AvatarFallback>
           </Avatar>
         </div>

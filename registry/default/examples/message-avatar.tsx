@@ -8,7 +8,7 @@ export default function MessageAvatarDemo() {
       <Message>
         <MessageAvatar>
           <Avatar>
-            <AvatarImage alt="@avatar" src="https://github.com/evilrabbit.png" />
+            <AvatarImage alt="@avatar" src="https://avatars.githubusercontent.com/u/6880091?v=4" />
             <AvatarFallback>R</AvatarFallback>
           </Avatar>
         </MessageAvatar>
@@ -21,7 +21,7 @@ export default function MessageAvatarDemo() {
       <Message align="end">
         <MessageAvatar>
           <Avatar>
-            <AvatarImage alt="@avatar" src="https://github.com/shadcn.png" />
+            <AvatarImage alt="@avatar" src="https://avatars.githubusercontent.com/u/124599?v=4" />
             <AvatarFallback>R</AvatarFallback>
           </Avatar>
         </MessageAvatar>
@@ -34,7 +34,7 @@ export default function MessageAvatarDemo() {
       <Message>
         <MessageAvatar>
           <Avatar>
-            <AvatarImage alt="@avatar" src="https://github.com/evilrabbit.png" />
+            <AvatarImage alt="@avatar" src="https://avatars.githubusercontent.com/u/6880091?v=4" />
             <AvatarFallback>R</AvatarFallback>
           </Avatar>
         </MessageAvatar>

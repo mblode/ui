@@ -17,15 +17,21 @@ export default function EmptyAvatarGroup() {
         <EmptyMedia>
           <div className="flex -space-x-2 *:data-[slot=avatar]:size-12 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:ring-background *:data-[slot=avatar]:grayscale">
             <Avatar>
-              <AvatarImage alt="@shadcn" src="https://github.com/shadcn.png" />
+              <AvatarImage alt="@shadcn" src="https://avatars.githubusercontent.com/u/124599?v=4" />
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
             <Avatar>
-              <AvatarImage alt="@maxleiter" src="https://github.com/maxleiter.png" />
+              <AvatarImage
+                alt="@maxleiter"
+                src="https://avatars.githubusercontent.com/u/8675906?v=4"
+              />
               <AvatarFallback>LR</AvatarFallback>
             </Avatar>
             <Avatar>
-              <AvatarImage alt="@evilrabbit" src="https://github.com/evilrabbit.png" />
+              <AvatarImage
+                alt="@evilrabbit"
+                src="https://avatars.githubusercontent.com/u/6880091?v=4"
+              />
               <AvatarFallback>ER</AvatarFallback>
             </Avatar>
           </div>

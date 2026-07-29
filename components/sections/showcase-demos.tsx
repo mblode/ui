@@ -113,7 +113,7 @@ function AlertShowcase() {
 function AvatarShowcase() {
   return (
     <Avatar className="size-12">
-      <AvatarImage alt="@shadcn" src="https://github.com/shadcn.png" />
+      <AvatarImage alt="@shadcn" src="https://avatars.githubusercontent.com/u/124599?v=4" />
       <AvatarFallback>CN</AvatarFallback>
     </Avatar>
   );
