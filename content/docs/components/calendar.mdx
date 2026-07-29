@@ -1,6 +1,6 @@
 ---
 title: Calendar
-description: A date field component that allows users to enter and edit date.
+description: A month grid for picking a single date, several dates, or a range, built on React DayPicker and styled with the Button component.
 component: true
 links:
   doc: https://react-day-picker.js.org
@@ -14,7 +14,22 @@ links:
 
 ## About
 
-The `Calendar` component is built on top of [React DayPicker](https://react-day-picker.js.org).
+The `Calendar` component is built on top of
+[React DayPicker](https://react-day-picker.js.org). DayPicker does the date
+work: building the month grid, tracking selection, keyboard navigation, and
+locales. This component is the styling layer over it, so the calendar matches
+everything else in the registry rather than looking like a plugin dropped into
+the page.
+
+Each day is a `Button` in the `ghost` variant, which is why hover, focus rings,
+and disabled states behave the same here as they do anywhere else. Sizing runs
+off two CSS variables on the root, `--cell-size` and `--cell-radius`, so you can
+grow the whole grid or square off the cells with a class rather than by editing
+the component. Set `captionLayout` to `dropdown` to swap the month label for
+month and year selects, `buttonVariant` to restyle the previous and next arrows,
+and `showOutsideDays` to show or hide the days that spill in from neighbouring
+months. Right-to-left is handled: the navigation chevrons flip when the calendar
+renders inside an `rtl` direction.
 
 ## Installation
 
@@ -39,7 +54,7 @@ npx shadcn@latest add "https://blode.co/ui/r/styles/default/calendar"
 <Step>Install the following dependencies:</Step>
 
 ```bash
-npm install react-day-picker@8.10.1 date-fns
+npm install react-day-picker date-fns
 ```
 
 <Step>Add the `Button` component to your project.</Step>
@@ -70,11 +85,26 @@ const [date, setDate] = React.useState<Date | undefined>(new Date());
 return <Calendar mode="single" selected={date} onSelect={setDate} className="rounded-md border" />;
 ```
 
-See the [React DayPicker](https://react-day-picker.js.org) documentation for more information.
+`mode` decides what a click does. `single` holds one date, `multiple` collects an
+array, and `range` records a start and an end and fills the days between them.
+The type of `selected` follows the mode, so a range calendar hands `onSelect` a
+`{ from, to }` object rather than a `Date`. Pass `disabled` to block dates that
+cannot be chosen, such as days in the past or ones already booked, and
+`defaultMonth` to open on a month other than the current one.
+
+The calendar renders as a block with no border of its own, which is why the
+example adds `rounded-md border`. Drop that when the calendar sits inside a
+`Popover` or a `Card` that already has an edge.
+
+See the [React DayPicker](https://react-day-picker.js.org) documentation for the
+full prop list, including locales, week numbers, and custom day rendering.
 
 ## Date Picker
 
-You can use the `<Calendar>` component to build a date picker. See the [Date Picker](/docs/components/date-picker) page for more information.
+A calendar on its own is a big block of UI. To collapse it into a field that
+opens on click, put it inside a `Popover` and render the selected date on the
+trigger. See the [Date Picker](/docs/components/date-picker) page for the
+composed version.
 
 ## Changelog
 
