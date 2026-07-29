@@ -2723,6 +2723,17 @@ export const examples: Registry["items"] = [
   {
     files: [
       {
+        path: "examples/prompt-confirm.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "prompt-confirm",
+    registryDependencies: ["prompt", "button", "input", "@blode/use-copy-to-clipboard"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
         path: "examples/thinking-indicator-demo.tsx",
         type: "registry:example",
       },

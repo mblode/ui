@@ -6987,6 +6987,27 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
+    "prompt-confirm": {
+      name: "prompt-confirm",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["prompt", "button", "input", "@blode/use-copy-to-clipboard"],
+      files: [
+        {
+          path: "registry/default/examples/prompt-confirm.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/prompt-confirm.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
     "thinking-indicator-demo": {
       name: "thinking-indicator-demo",
       description: "",
