@@ -33,7 +33,7 @@ function getShowcaseItems(): ShowcaseItem[] {
   const componentsGroup = docsConfig.sidebarNav.find((group) => group.title === "Components");
 
   return (componentsGroup?.items ?? [])
-    .toSorted((a, b) => a.title.localeCompare(b.title, undefined, { sensitivity: "base" }))
+    .toSorted((a, b) => a.title.localeCompare(b.title, "en", { sensitivity: "base" }))
     .flatMap((item) => {
       const slug = item.href?.split("/").pop();
 

@@ -87,16 +87,6 @@ export function DocsCopyPage({ page, url }: { page: string; url: string }) {
     setTimeout(() => setIsCopied(false), 2000);
   }, []);
 
-  const trigger = (
-    <Button
-      className="peer -ml-0.5 size-8 shadow-none md:size-7 md:text-[0.8rem]"
-      size="sm"
-      variant="secondary"
-    >
-      <ChevronDownIcon className="rotate-180 sm:rotate-0" />
-    </Button>
-  );
-
   return (
     <Popover>
       <div className="group/buttons relative flex rounded-lg bg-secondary *:[[data-slot=button]]:focus-visible:relative *:[[data-slot=button]]:focus-visible:z-10">
@@ -112,7 +102,13 @@ export function DocsCopyPage({ page, url }: { page: string; url: string }) {
         </Button>
         <DropdownMenu>
           <DropdownMenuTrigger asChild className="hidden sm:flex">
-            {trigger}
+            <Button
+              className="peer -ml-0.5 size-8 shadow-none md:size-7 md:text-[0.8rem]"
+              size="sm"
+              variant="secondary"
+            >
+              <ChevronDownIcon className="rotate-180 sm:rotate-0" />
+            </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="animate-none! rounded-lg shadow-none">
             {Object.entries(menuItems).map(([key, value]) => (
@@ -127,7 +123,13 @@ export function DocsCopyPage({ page, url }: { page: string; url: string }) {
           orientation="vertical"
         />
         <PopoverTrigger asChild className="flex sm:hidden">
-          {trigger}
+          <Button
+            className="peer -ml-0.5 size-8 shadow-none md:size-7 md:text-[0.8rem]"
+            size="sm"
+            variant="secondary"
+          >
+            <ChevronDownIcon className="rotate-180 sm:rotate-0" />
+          </Button>
         </PopoverTrigger>
         <PopoverContent
           align="start"

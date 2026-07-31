@@ -75,7 +75,7 @@ export function DocsSidebar({
               <SidebarMenu className={index === 0 ? undefined : "gap-0.5"}>
                 {(group.title === "Components"
                   ? [...(group.items ?? [])].toSorted((a, b) =>
-                      a.title.localeCompare(b.title, undefined, {
+                      a.title.localeCompare(b.title, "en", {
                         sensitivity: "base",
                       }),
                     )

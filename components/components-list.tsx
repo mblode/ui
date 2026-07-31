@@ -9,7 +9,7 @@ const componentItems = docsConfig.sidebarNav
       typeof item.href === "string" && item.href.startsWith("/docs/components/"),
   )
   .toSorted((a, b) =>
-    a.title.localeCompare(b.title, undefined, {
+    a.title.localeCompare(b.title, "en", {
       sensitivity: "base",
     }),
   );
