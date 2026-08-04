@@ -70,7 +70,6 @@ const nextConfig: NextConfig = {
   // build compiled all 115 pages and then died in Vercel's onBuildComplete.
   partialPrefetching: true,
   reactStrictMode: true,
-  typescript: { ignoreBuildErrors: true },
   async rewrites() {
     return [
       {
