@@ -63,7 +63,11 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  output: process.env.NODE_ENV === "production" ? ("standalone" as const) : undefined,
+  // No `output: "standalone"`. It is for self-hosting, and this only deploys to
+  // Vercel, which builds its own output and needs the file traces that
+  // standalone mode writes into `.next/standalone` instead. Under 16.3 that
+  // stopped producing `.next/next-server.js.nft.json`, so every production
+  // build compiled all 115 pages and then died in Vercel's onBuildComplete.
   partialPrefetching: true,
   reactStrictMode: true,
   typescript: { ignoreBuildErrors: true },
