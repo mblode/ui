@@ -1,3 +1,4 @@
+import { execFileSync } from "node:child_process";
 import { existsSync, promises as fs } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
@@ -20,6 +21,7 @@ interface NormalizedRegistryFile {
 }
 
 const REGISTRY_PATH = path.join(process.cwd(), "public/r");
+const REGISTRY_SOURCE_PATH = path.join(process.cwd(), "__registry__");
 
 const REGISTRY_INDEX_WHITELIST = new Set<z.infer<typeof registryItemTypeSchema>>([
   "registry:ui",
@@ -240,8 +242,8 @@ export const Index: Record<string, unknown> = {
   await fs.writeFile(path.join(REGISTRY_PATH, "index.json"), registryJson, "utf-8");
 
   // Write style index.
-  rimraf.sync(path.join(process.cwd(), "__registry__/index.tsx"));
-  await fs.writeFile(path.join(process.cwd(), "__registry__/index.tsx"), index);
+  rimraf.sync(path.join(REGISTRY_SOURCE_PATH, "index.tsx"));
+  await fs.writeFile(path.join(REGISTRY_SOURCE_PATH, "index.tsx"), index);
 }
 
 // ----------------------------------------------------------------------------
@@ -435,6 +437,17 @@ try {
   await buildStylesIndex();
   await buildRegistryJson(result.data);
   await buildFlatFiles(result.data);
+
+  // Everything above writes JSON.stringify(_, null, 2) and ts-morph output,
+  // neither of which matches oxfmt: short arrays get expanded and object keys
+  // quoted, so a plain rebuild left all ~175 generated files dirty with a
+  // diff that was byte-identical once parsed. Formatting the output here
+  // means what this script writes is already what the formatter wants, so a
+  // rebuild leaves a clean tree wherever it runs — not just on commit.
+  execFileSync("npx", ["oxfmt", REGISTRY_PATH, REGISTRY_SOURCE_PATH], {
+    stdio: "inherit",
+  });
+  console.log("💅 Formatted generated output");
 
   const elapsed = ((Date.now() - start) / 1000).toFixed(2);
   console.log(`✅ Done in ${elapsed}s!`);

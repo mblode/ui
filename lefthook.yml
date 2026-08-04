@@ -29,10 +29,9 @@ pre-commit:
     # the stale pre-edit source to anyone installing from the registry, which
     # is how the calendar locale fallback sat unpublished. Rebuild and stage
     # the output whenever a registry source file is staged. build-registry
-    # writes unformatted JSON, so oxfmt runs over the output too; otherwise the
-    # next `npm run format` reports the whole registry as dirty. stage_fixed
+    # formats its own output, so nothing has to run oxfmt here. stage_fixed
     # only restages files from {staged_files}, and these are generated
     # elsewhere, so they need an explicit git add.
     - name: registry
       glob: "registry/**/*"
-      run: npm run build:registry && npx oxfmt --write public/r __registry__ && git add public/r __registry__
+      run: npm run build:registry && git add public/r __registry__
