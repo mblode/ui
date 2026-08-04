@@ -1,16 +1,38 @@
 pre-commit:
-  parallel: true
   jobs:
-    # oxfmt and oxlint are split rather than run together via `ultracite fix`:
-    # oxlint exits 1 when the staged set contains no lintable JS/TS, which
-    # blocked every commit that touched only package.json, a lockfile, or CSS.
-    # lefthook skips a job whose glob matches nothing, so each tool now runs
-    # only when it actually has files to work on.
-    - name: oxfmt
-      glob: "*.{js,jsx,mjs,cjs,ts,tsx,mts,cts,json,jsonc,css}"
-      run: npx oxfmt --write {staged_files}
-      stage_fixed: true
-    - name: oxlint
-      glob: "*.{js,jsx,mjs,cjs,ts,tsx,mts,cts}"
-      run: npx oxlint --fix {staged_files}
-      stage_fixed: true
+    # Grouped so the formatters finish before the registry rebuild: the build
+    # embeds each component's source text verbatim into public/r/*.json, so
+    # regenerating before oxfmt has rewritten the staged sources would bake in
+    # the unformatted copy and leave the registry dirty again on the next
+    # commit. Top-level jobs run sequentially, the group runs in parallel.
+    - name: format
+      group:
+        parallel: true
+        jobs:
+          # oxfmt and oxlint are split rather than run together via
+          # `ultracite fix`: oxlint exits 1 when the staged set contains no
+          # lintable JS/TS, which blocked every commit that touched only
+          # package.json, a lockfile, or CSS. lefthook skips a job whose glob
+          # matches nothing, so each tool now runs only when it actually has
+          # files to work on.
+          - name: oxfmt
+            glob: "*.{js,jsx,mjs,cjs,ts,tsx,mts,cts,json,jsonc,css}"
+            run: npx oxfmt --write {staged_files}
+            stage_fixed: true
+          - name: oxlint
+            glob: "*.{js,jsx,mjs,cjs,ts,tsx,mts,cts}"
+            run: npx oxlint --fix {staged_files}
+            stage_fixed: true
+
+    # public/r and __registry__ are generated from registry/, and nothing kept
+    # them in sync — editing a component without rerunning the build shipped
+    # the stale pre-edit source to anyone installing from the registry, which
+    # is how the calendar locale fallback sat unpublished. Rebuild and stage
+    # the output whenever a registry source file is staged. build-registry
+    # writes unformatted JSON, so oxfmt runs over the output too; otherwise the
+    # next `npm run format` reports the whole registry as dirty. stage_fixed
+    # only restages files from {staged_files}, and these are generated
+    # elsewhere, so they need an explicit git add.
+    - name: registry
+      glob: "registry/**/*"
+      run: npm run build:registry && npx oxfmt --write public/r __registry__ && git add public/r __registry__
