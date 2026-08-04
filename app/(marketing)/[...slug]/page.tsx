@@ -1,6 +1,7 @@
 import { allPages } from "content-collections";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import { Mdx } from "@/components/mdx-components";
 import { siteConfig, siteUrl } from "@/config/site";
 import { absoluteUrl, seoDescription } from "@/lib/utils";
@@ -71,7 +72,9 @@ export async function generateStaticParams(): Promise<Awaited<PageProps["params"
   }));
 }
 
-export default async function PagePage({ params }: PageProps) {
+// A page is nothing but its slug, so the body reads the promise behind a
+// boundary and the article frame around it still prerenders.
+async function PageContent({ params }: PageProps) {
   const page = await getPageFromParams(params);
 
   if (!page) {
@@ -79,13 +82,23 @@ export default async function PagePage({ params }: PageProps) {
   }
 
   return (
-    <article className="container max-w-3xl py-6 lg:py-12">
+    <>
       <div className="space-y-4">
         <h1 className="inline-block font-heading text-4xl lg:text-5xl">{page.title}</h1>
         {page.description && <p className="text-muted-foreground text-xl">{page.description}</p>}
       </div>
       <hr className="my-4" />
       <Mdx code={page.body.code} />
+    </>
+  );
+}
+
+export default function PagePage({ params }: PageProps) {
+  return (
+    <article className="container max-w-3xl py-6 lg:py-12">
+      <Suspense fallback={<div className="h-96 w-full animate-pulse rounded-md bg-muted/50" />}>
+        <PageContent params={params} />
+      </Suspense>
     </article>
   );
 }

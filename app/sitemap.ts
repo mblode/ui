@@ -3,18 +3,21 @@ import type { MetadataRoute } from "next";
 
 import { siteUrl } from "@/config/site";
 
+// Stamped in next.config at build time. Prerendering can't read the clock.
+const buildTime = process.env.BUILD_TIME;
+
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      lastModified: new Date(),
+      lastModified: buildTime,
       url: siteUrl,
     },
     {
-      lastModified: new Date(),
+      lastModified: buildTime,
       url: `${siteUrl}/theme-visualizer`,
     },
     ...allPages.map((post) => ({
-      lastModified: new Date(),
+      lastModified: buildTime,
       url: `${siteUrl}/${post.slugAsParams}`,
     })),
     ...allDocs.map((post) => ({

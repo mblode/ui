@@ -14,9 +14,20 @@ const AGENT_DISCOVERY_LINKS = [
 const nextConfig: NextConfig = {
   assetPrefix: basePath,
   basePath,
+  cacheComponents: true,
   devIndicators: false,
+  // next.config runs in Node at build time, outside any prerender, so it can
+  // read the clock. The sitemap can't: Cache Components prerenders it, and
+  // calling `new Date()` there would make the whole route render on demand.
+  env: { BUILD_TIME: new Date().toISOString() },
   experimental: {
+    // Bailing out of a prerender throws, so anything logged after the abort is
+    // noise from a render that was already discarded. Drop it.
+    hideLogsAfterAbort: true,
     optimizeCss: true,
+    // Hold a navigation or Server Action pending through a connectivity drop
+    // and retry on reconnect, instead of throwing.
+    useOffline: true,
   },
   async headers() {
     return [
@@ -53,6 +64,7 @@ const nextConfig: NextConfig = {
     ],
   },
   output: process.env.NODE_ENV === "production" ? ("standalone" as const) : undefined,
+  partialPrefetching: true,
   reactStrictMode: true,
   typescript: { ignoreBuildErrors: true },
   async rewrites() {
