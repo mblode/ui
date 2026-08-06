@@ -428,7 +428,8 @@ Overlays use `overlay` as a tinted scrim with a 10px blur. Dialogs feel solid an
 Motion confirms a state change and nothing else.
 
 - Hover and press stay between `100ms` and `150ms` and feel immediate.
-- Dialogs and sheets open around `500ms` and close around `300ms`. Closing is faster than opening because a dismissal should never feel like waiting.
+- Dialogs open and close at `200ms`. They travel almost no distance, so anything slower reads as lag, and the overlay must share the panel's timing or the scrim is still darkening after the dialog has landed.
+- Sheets and drawers open at `500ms` and close at `300ms`. They earn the longer duration by sliding the full width or height of the viewport, and closing is faster because a dismissal should never feel like waiting.
 - Components honour `motion-reduce`. Keep the base experience complete without animation.
 
 No parallax, no scroll-triggered reveals, no decorative pulsing, no bounce.

@@ -38,7 +38,7 @@ const InputOTPSlot = ({
   return (
     <div
       className={cn(
-        "group/slot relative flex h-[var(--field-height)] w-10 items-center justify-center border-input border-y border-r text-2xl shadow-input transition-all first:rounded-l-lg first:border-l last:rounded-r-lg hover:bg-background",
+        "group/slot relative flex h-[var(--field-height)] w-10 items-center justify-center border-input border-y border-r text-2xl shadow-input transition-[color,background-color,border-color,box-shadow] first:rounded-l-lg first:border-l last:rounded-r-lg hover:bg-background",
         className,
       )}
       data-active={isActive}

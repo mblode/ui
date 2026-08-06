@@ -18,7 +18,7 @@ const Progress = ({
   >
     <ProgressPrimitive.Track className="h-full w-full">
       <ProgressPrimitive.Indicator
-        className="h-full w-full flex-1 bg-primary transition-all"
+        className="h-full w-full flex-1 bg-primary transition-[transform,width]"
         data-slot="progress-indicator"
       />
     </ProgressPrimitive.Track>

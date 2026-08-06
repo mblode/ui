@@ -31,17 +31,17 @@ const ProgressItem = ({ className, completed, state, title, ...props }: Progress
     >
       <div className="shrink-0" data-slot="progress-item-icon">
         {resolvedState === "completed" ? (
-          <CheckFilledIcon className="size-4 shrink-0 transition-all" />
+          <CheckFilledIcon className="size-4 shrink-0 transition-[color,opacity]" />
         ) : null}
         {resolvedState === "current" ? (
-          <CirclePlaceholderDashedIcon className="size-4 shrink-0 animate-spin text-primary transition-all [animation-duration:2s]" />
+          <CirclePlaceholderDashedIcon className="size-4 shrink-0 animate-spin text-primary transition-[color,opacity] [animation-duration:2s]" />
         ) : null}
         {resolvedState === "pending" ? (
-          <CirclePlaceholderOnIcon className="size-4 shrink-0 opacity-55 transition-all" />
+          <CirclePlaceholderOnIcon className="size-4 shrink-0 opacity-55 transition-[color,opacity]" />
         ) : null}
       </div>
       <div
-        className={cn("flex-1 text-left text-sm transition-all", {
+        className={cn("flex-1 text-left text-sm transition-[color,opacity]", {
           "opacity-50": resolvedState === "pending",
           "text-primary opacity-100": resolvedState === "current",
         })}

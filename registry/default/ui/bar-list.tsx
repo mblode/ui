@@ -73,17 +73,21 @@ const BarList = <T extends object = Record<string, never>>({
               key={item.key ?? item.name}
             >
               <div
-                className={cn("relative flex items-center rounded-sm transition-all", rowHeight, {
-                  "duration-500": showAnimation,
-                  "mb-0": index === sortedData.length - 1,
-                })}
+                className={cn(
+                  "relative flex items-center rounded-sm transition-[background-color,opacity]",
+                  rowHeight,
+                  {
+                    "duration-500": showAnimation,
+                    "mb-0": index === sortedData.length - 1,
+                  },
+                )}
                 style={{
                   transition: showAnimation ? "all 1s" : undefined,
                   width: `${widths[index]}%`,
                 }}
               >
                 <div
-                  className="absolute inset-0 rounded-sm opacity-30 transition-all"
+                  className="absolute inset-0 rounded-sm opacity-30 transition-[width,opacity]"
                   style={{ background: item.color ?? color }}
                 />
               </div>

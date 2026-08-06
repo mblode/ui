@@ -75,7 +75,7 @@ const NavigationMenuItem = ({
 );
 
 const navigationMenuTriggerStyle = cva(
-  "group/navigation-menu-trigger inline-flex h-9 w-max items-center justify-center rounded-lg bg-background px-2.5 py-1.5 font-medium text-sm outline-none transition-all hover:bg-muted focus:bg-muted focus-visible:outline-1 focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 data-open:bg-muted/50 data-popup-open:bg-muted/50 data-open:focus:bg-muted data-open:hover:bg-muted data-popup-open:hover:bg-muted",
+  "group/navigation-menu-trigger inline-flex h-9 w-max items-center justify-center rounded-lg bg-background px-2.5 py-1.5 font-medium text-sm outline-none transition-[color,background-color,border-color,box-shadow] hover:bg-muted focus:bg-muted focus-visible:outline-1 focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 data-open:bg-muted/50 data-popup-open:bg-muted/50 data-open:focus:bg-muted data-open:hover:bg-muted data-popup-open:hover:bg-muted",
 );
 
 const NavigationMenuTrigger = ({
@@ -110,7 +110,7 @@ const NavigationMenuContent = ({ className, ...props }: NavigationMenuPrimitive.
 const NavigationMenuLink = ({ className, ...props }: NavigationMenuPrimitive.Link.Props) => (
   <NavigationMenuPrimitive.Link
     className={cn(
-      "flex items-center gap-2 in-data-[slot=navigation-menu-content]:rounded-md rounded-lg p-2 text-sm outline-none transition-all hover:bg-muted focus:bg-muted focus-visible:outline-1 focus-visible:ring-3 focus-visible:ring-ring/50 data-active:bg-muted/50 data-active:focus:bg-muted data-active:hover:bg-muted [&_svg:not([class*='size-'])]:size-4",
+      "flex items-center gap-2 in-data-[slot=navigation-menu-content]:rounded-md rounded-lg p-2 text-sm outline-none transition-[color,background-color,border-color,box-shadow] hover:bg-muted focus:bg-muted focus-visible:outline-1 focus-visible:ring-3 focus-visible:ring-ring/50 data-active:bg-muted/50 data-active:focus:bg-muted data-active:hover:bg-muted [&_svg:not([class*='size-'])]:size-4",
       className,
     )}
     data-slot="navigation-menu-link"
