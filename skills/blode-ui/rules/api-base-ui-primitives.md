@@ -6,7 +6,7 @@ tags: base-ui, primitives, api
 
 ## Use Base UI Primitive APIs
 
-Blode UI wraps Base UI primitives. Use the Base UI API — not Radix patterns like `asChild` or `type`.
+Blode UI wraps Base UI primitives. Use the Base UI API, not Radix patterns like `asChild` or `type`.
 
 **Incorrect (using Radix-style API):**
 
@@ -32,6 +32,6 @@ Blode UI wraps Base UI primitives. Use the Base UI API — not Radix patterns li
 
 Before writing or editing examples:
 
-- Use `render` for composition — never `asChild`
+- Use `render` for composition, never `asChild`
 - Add `nativeButton={false}` for non-button renders when the component expects it
 - Check whether value props are strings, arrays, or item objects before copying an example across components

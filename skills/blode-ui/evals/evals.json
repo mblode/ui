@@ -4,14 +4,30 @@
     {
       "id": 1,
       "prompt": "I want to install Blode UI in a fresh Next.js app and add the button component. Show me the commands and explain the flow briefly.",
-      "expected_output": "Uses the canonical Blode namespace flow and describes Blode UI as a third-party shadcn registry hosted at blode.co/ui.",
+      "expected_output": "Uses the canonical Blode namespace flow, installs the design system before the component, and describes Blode UI as a third-party shadcn registry hosted at blode.co/ui.",
       "files": [],
       "expectations": [
         "Starts with `npx shadcn@latest init`",
         "Includes `npx shadcn@latest registry add @blode=https://blode.co/ui/r/{name}.json`",
+        "Includes `npx shadcn@latest add @blode/ui` before adding the button",
+        "Explains that skipping `@blode/ui` leaves components unstyled because the `--field-*` tokens are missing",
         "Uses `npx shadcn@latest add @blode/button` instead of `@shadcn/button`",
         "Mentions that Blode UI is a third-party shadcn registry hosted at `blode.co/ui`",
         "Does not teach raw `https://blode.co/ui/r/...` URLs as the default quick start"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "I want @blode listed in the shadcn registry directory so people can run `npx shadcn add @blode/button` without registering the namespace first. What do I need to check and how do I submit it?",
+      "expected_output": "Names the directory requirements, checks the registry against them, and gives the submission path into shadcn-ui/ui.",
+      "files": [],
+      "expectations": [
+        "States that listing removes the `registry add` step because the CLI resolves the namespace from the index",
+        "Mentions the flat-registry requirement: `/registry.json` and `/{name}.json` at the registry root",
+        "Mentions that `files` entries in `registry.json` must not carry a `content` property",
+        "Says the registry `name` must be a bare token matching the namespace (`blode`, not `blode/ui`)",
+        "Describes submitting a PR to `shadcn-ui/ui` that adds an entry to `apps/v4/registry/directory.json`",
+        "Does not claim the short `add @blode/button` form works before the listing is merged"
       ]
     },
     {
