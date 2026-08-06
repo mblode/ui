@@ -259,6 +259,10 @@ components:
 
 Blode UI is an opinionated shadcn/ui component registry built by Matthew Blode, with a focus on good taste, care, and craft. Open source. Open code.
 
+**The thesis: quiet, near-monochrome surfaces with unusually round fields, where typography and space do the work that colour and borders do elsewhere.** If a screen built with Blode is memorable, it should be for how little is competing for attention.
+
+Installing this registry does not make an interface good. A design system is an ingredient, not proof of quality: it guarantees the parts agree with each other, not that they were composed into something worth using. Judge the result, not the token coverage.
+
 Source code is part of the product. An interface built with Blode should look resolved and still read as inspectable, forkable, and easy to own. Familiar shadcn patterns are the baseline. Blode's identity comes from better typography, calmer surfaces, softer geometry, and tighter spacing judgment, never from a signature colour or a decorative layer.
 
 The tokens in the frontmatter are the canonical shape. The runtime source of truth is `styles/globals.css`, which declares the same tokens as CSS custom properties in `oklch()` for Tailwind v4. Consumers receive them by installing `@blode/ui`. The hex values above are the sRGB equivalents that ship on `blode.co/ui`, and every component figure below was read from `registry/default/ui/`.
@@ -299,6 +303,7 @@ The page is one continuous canvas by default. A surface, border, or shadow has t
 - A border that only separates two paragraphs should be space instead.
 - `surface` is for quiet utility grouping. `card` is for a real container. `muted` is for a rail or an inactive track.
 - One dominant action per cluster. If two buttons both read as primary, one of them is secondary.
+- Prune before styling. Delete the extra icon, the redundant separator, the third filter nobody uses, then style what survives. Styling a crowded screen makes it a well-styled crowded screen.
 
 Restraint is not sterility. Precise hierarchy, excellent typography, and deliberate contrast are the point. Black, white, hairlines, and empty margins alone are not a design.
 
@@ -392,6 +397,16 @@ Layout follows an 8px rhythm with 4px micro-adjustments. Structure comes from sp
 Give every gap one owner. A flow, stack, or grid sets the gap and its children do not add competing margins. Within a group use 8px to 16px, between groups 24px to 32px, and at a section turn 48px. These express relationships, not one universal stack rule.
 
 Judge the whole transition rather than the token. A large gap next to an underfilled row compounds emptiness even when the value is correct. Rebalance the layout instead of tuning one margin.
+
+## Composition
+
+Rhythm covers the gaps between things. This covers their arrangement.
+
+- **Compose a layout, not a stack of cards.** The most common failure in a system this neutral is reaching for a card every time two things need separating. Sections separated by space read calmer and scan faster than sections separated by boxes.
+- **One focal object per screen region.** Give it the width, weight, or contrast the others do not get. If everything is the same size, the reader has to do the ranking that the layout should have done.
+- **Density is a decision, not a default.** Dashboards and tables earn tight spacing. Reading surfaces, empty states, and onboarding earn air. Do not apply one density everywhere and call it consistency.
+- **Align to something.** Every element sits on a shared edge, baseline, or grid line. An element that lines up with nothing is the fastest way to make a careful system look careless.
+- **Let the page end.** Close on the action or the resolution, not on a ledger, a caveat, or whitespace that reads as a loading failure.
 
 ## Shape
 
@@ -552,6 +567,19 @@ These are the defaults that creep in when a screen is assembled rather than desi
 - Mixed icon packs, mixed sans families, or mixed corner philosophies in one view.
 - Dark mode designed as a separate visual language.
 - Colour as the only signal for state.
+
+## Before you ship
+
+The exit gate. If any answer is no, the screen is not finished.
+
+- Squint until the text blurs. Does one thing still dominate, and is the reading path obvious?
+- Can any surface, border, icon, label, or divider be deleted without losing meaning or affordance?
+- Does every colour that is not neutral carry meaning, with a non-colour cue beside it?
+- Do hover, focus, pressed, disabled, loading, empty, and error all exist where the control can reach them?
+- Do controls hold their dimensions when the label, count, or loading text changes?
+- Do light and dark have equivalent hierarchy, or has one been checked and the other assumed?
+- Does it still work at 320px and at 2000px without a horizontal scrollbar?
+- Would this look at home beside Linear, Zed, or Mintlify rather than beside a template?
 
 ## Tooling
 
