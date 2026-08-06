@@ -14,7 +14,7 @@ const NativeSelect = ({
   >
     <select
       className={cn(
-        "input flex h-[var(--field-height)] w-full min-w-0 appearance-none rounded-[var(--field-radius)] border border-input bg-card px-[var(--field-padding-x)] py-[var(--field-padding-y)] pr-10 font-normal font-sans text-base text-foreground leading-snug shadow-input transition-colors placeholder:text-placeholder-foreground hover:border-input-hover focus:border-ring focus:outline-hidden focus:ring-2 focus:ring-ring/15 focus:ring-offset-1 focus:ring-offset-background disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive-foreground aria-invalid:ring-destructive/20 data-[size=sm]:h-[var(--field-height-sm)] data-[size=sm]:py-[calc(var(--field-padding-y)-2px)] data-[size=sm]:text-sm dark:aria-invalid:ring-destructive/40",
+        "input flex h-[var(--field-height)] w-full min-w-0 appearance-none rounded-[var(--field-radius)] border border-input bg-card px-[var(--field-padding-x)] py-[var(--field-padding-y)] pr-10 font-normal font-sans text-base text-foreground leading-snug shadow-input transition-colors placeholder:text-placeholder-foreground hover:border-input-hover focus:border-ring focus:outline-hidden focus:ring-2 focus:ring-ring/15 focus:ring-offset-1 focus:ring-offset-background disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive-foreground aria-invalid:ring-destructive/20 data-[size=sm]:h-[var(--field-height-sm)] data-[size=sm]:py-[calc(var(--field-padding-y)-2px)] sm:data-[size=sm]:text-sm dark:aria-invalid:ring-destructive/40",
         className,
       )}
       data-size={size}

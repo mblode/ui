@@ -36,14 +36,13 @@ export const PasswordInput = ({
       rightControl={
         <button
           aria-label={isVisible ? "Hide password" : "Show password"}
-          className="flex h-[var(--field-height)] cursor-pointer items-center justify-center px-3 text-muted-foreground/70 hover:text-foreground disabled:pointer-events-none disabled:opacity-50"
+          className="flex h-[var(--field-height)] cursor-pointer items-center justify-center rounded-[min(var(--radius-md),12px)] px-3 text-muted-foreground/70 outline-none hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring/50 focus-visible:ring-offset-1 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50"
           disabled={disabled}
           onClick={() => {
             const next = !isVisible;
             setInternalShowPassword(next);
             onShowPasswordChange?.(next);
           }}
-          tabIndex={-1}
           type="button"
         >
           {isVisible ? <EyeSlashIcon className="size-5" /> : <EyeOpenIcon className="size-5" />}

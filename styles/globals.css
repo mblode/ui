@@ -200,6 +200,21 @@
   transition-duration: 0s !important;
 }
 
+/* Only 6 of the 26 components that move had `motion-reduce:` variants, so the
+   guarantee has to live here rather than per component. Spinner animates with
+   SVG SMIL rather than CSS, so essential loading motion survives this reset;
+   what stops is decorative movement (enter/exit slides, zooms, skeleton pulse). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
