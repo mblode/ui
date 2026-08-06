@@ -74,7 +74,7 @@ Teach your coding agent the registry, the install flow, and the visual defaults:
 npx skills add mblode/blode-ui
 ```
 
-- **[blode-ui](./skills/blode-ui/SKILL.md)**: install flow, design-system defaults, registry and publishing workflows, and Blode component rules.
+- **[blode-ui](./skills/blode-ui/SKILL.md)**: install flow, registry commands, design-system defaults, and Blode component rules.
 
 Full documentation lives at [blode.co/ui/docs](https://blode.co/ui/docs).
 

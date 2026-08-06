@@ -49,6 +49,29 @@ npm run dev
 - `registry:base` items can ship without source files.
 - Content-collections must be built before the Next.js build — `npm run build` handles the ordering automatically.
 - Dark mode uses a custom variant: `@custom-variant dark (&:where(.dark, .dark *))` — not Tailwind's built-in dark mode.
+- A `200` from `blode.co/ui/...` does not mean the path exists. Unmatched routes fall through to the docs site's HTML catch-all, so soft 404s look like successes. Check `content-type` is `application/json`.
+
+## Authoring the `@blode/ui` design-system item
+
+`registry/default/base/_registry.ts` is what consumers install to get Blode's tokens. It breaks in ways that fail silently in someone else's project, so treat these as hard rules.
+
+- **Never set `config.style`.** The CLI interpolates it into the hardcoded `@shadcn` template `https://ui.shadcn.com/r/styles/{style}/{name}.json`, so a Blode-specific name 404s on `init` against a registry we don't control. Reproduced on shadcn 4.13.0.
+- **`cssVars` keys are unprefixed** — `"field-height": "48px"`, not `"--field-height"`. The CLI adds the `--`.
+- **`cssVars.theme` → `@theme inline`** for scalars (the `--field-*` metrics, the `--shadow-*` scale). **`cssVars.light`/`dark` → `:root`/`.dark`** for colors.
+- **Color values must be literal** (`oklch(0.98 0 0)`), never `var(--foreground)` indirection. The CLI only generates the matching `@theme inline` `--color-*` entry for values it can parse as a color, so indirection silently kills the utility class.
+- **Don't ship `--radius-2xl/3xl/4xl`.** shadcn writes its own scale (`calc(var(--radius) * 1.8 / 2.2 / 2.6)`), which already lands on Blode's intended 18/22/26px.
+- The registry `name` in `registry/index.ts` must stay a bare token matching the `@blode` namespace. shadcn's directory pairs the two (`7ovr` → `@7ovr`); a slashed value doesn't resolve.
+- Verify a change to this item by `shadcn add`-ing it into a scratch project and grepping the resulting CSS, not by reading the emitted JSON.
+
+## Registry directory
+
+`@blode` is not yet listed in shadcn's directory (the PR to `shadcn-ui/ui` is open, unmerged), so `shadcn add @blode/button` cannot resolve on its own and all install docs must keep the `registry add` step. Confirm current state before changing them:
+
+```bash
+curl -s https://ui.shadcn.com/r/registries.json | grep -c blode
+```
+
+Requirements if review comes back: open source, valid schema, flat registry (`/registry.json` and `/{name}.json` at the registry root), and no `content` inlined in `registry.json`'s `files` arrays. The legacy `/r/styles/default/` mirror is the most likely objection; 77 component docs still point at it, and every one has a working flat equivalent.
 
 <!-- BEGIN:nextjs-agent-rules -->
 

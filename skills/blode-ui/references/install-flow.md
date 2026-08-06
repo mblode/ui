@@ -4,6 +4,8 @@
 
 Blode UI is a third-party shadcn registry hosted at `blode.co/ui`. The setup flow is the same as shadcn/ui with two extra steps: add the registry namespace, then add the design system.
 
+`@blode` is not in shadcn's registry directory, so the CLI cannot resolve the namespace by itself. Every flow below establishes it first, either with `registry add` or by pointing `init` at the design system's URL. A bare `npx shadcn@latest add @blode/button` fails with an unknown-registry error, so never open a quick start with it.
+
 ## Quick Start
 
 For a project that has not been initialised with shadcn yet, point `init` at the design system directly. It self-registers the `@blode` namespace from the item's own `config.registries`, sets `blode-icons-react` as the icon library, and writes Blode's tokens into the stylesheet:
@@ -43,7 +45,7 @@ npx shadcn@latest registry add @blode=https://blode.co/ui/r/{name}.json
 npx shadcn@latest add @blode/ui
 ```
 
-`@blode/ui` is a `registry:base` item carrying Blode's design tokens as `cssVars`: the `--field-*` metrics, the `--shadow-*` scale, and the `--surface` / `--code` / `--overlay` / `--input-hover` / `--placeholder-foreground` colors.
+`@blode/ui` is the design system, not a component. Nothing lands in `components/ui/`; it writes tokens into your stylesheet: the `--field-*` metrics, the `--shadow-*` scale, and the `--surface`, `--code`, `--overlay`, `--input-hover`, and `--placeholder-foreground` colors.
 
 **Never skip this step.** Blode component variants compile to `rounded-[var(--field-radius)]`, `h-[var(--field-height-sm)]`, `px-[var(--field-padding-x)]`. An undefined custom property resolves to nothing, so without the base every control renders with square corners and the wrong height and padding, which reads as a component bug rather than a missing install step.
 

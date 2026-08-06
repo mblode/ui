@@ -17,20 +17,6 @@
       ]
     },
     {
-      "id": 6,
-      "prompt": "I want @blode listed in the shadcn registry directory so people can run `npx shadcn add @blode/button` without registering the namespace first. What do I need to check and how do I submit it?",
-      "expected_output": "Names the directory requirements, checks the registry against them, and gives the submission path into shadcn-ui/ui.",
-      "files": [],
-      "expectations": [
-        "States that listing removes the `registry add` step because the CLI resolves the namespace from the index",
-        "Mentions the flat-registry requirement: `/registry.json` and `/{name}.json` at the registry root",
-        "Mentions that `files` entries in `registry.json` must not carry a `content` property",
-        "Says the registry `name` must be a bare token matching the namespace (`blode`, not `blode/ui`)",
-        "Describes submitting a PR to `shadcn-ui/ui` that adds an entry to `apps/v4/registry/directory.json`",
-        "Does not claim the short `add @blode/button` form works before the listing is merged"
-      ]
-    },
-    {
       "id": 2,
       "prompt": "Build a Blode UI settings form for notification preferences with email, timezone, and digest frequency. Include validation and make it feel consistent with the registry.",
       "expected_output": "Uses Blode field components, semantic spacing, and validation states instead of ad hoc markup.",
@@ -58,15 +44,15 @@
     },
     {
       "id": 4,
-      "prompt": "I'm adding a new component to the Blode UI registry in this repo. What conventions and follow-up steps do I need to respect?",
-      "expected_output": "Points to the registry source paths, React and Tailwind conventions, icon library, and registry build step.",
+      "prompt": "I customised the Blode button in my project and now there is a newer version in the registry. How do I pull in the update without losing my changes?",
+      "expected_output": "Warns that add overwrites, and routes through --diff/--dry-run before any re-add.",
       "files": [],
       "expectations": [
-        "Mentions `registry/default/ui/`, `registry/default/examples/`, or `registry/index.ts` as relevant repo paths",
-        "Mentions `npm run build:registry` after changing registry items",
-        "Mentions React 19 ref-as-prop and not using `React.forwardRef`",
-        "Mentions Tailwind v4 conventions and CSS-variable-based styling",
-        "Mentions `blode-icons-react` for repo examples and docs"
+        "States that `npx shadcn@latest add` overwrites local edits rather than merging",
+        "Uses `--diff` to inspect what changed upstream before re-adding",
+        "Uses `--dry-run` to preview what would be written",
+        "Recommends porting the upstream change in by hand when it touches modified code",
+        "Does not suggest plain `add @blode/button` as the fix"
       ]
     },
     {

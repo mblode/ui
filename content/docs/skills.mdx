@@ -30,15 +30,6 @@ Learn more about skills at [skills.sh](https://www.skills.sh).
 
 ## What's Included
 
-### Product Positioning
-
-The skill preserves the Blode UI framing:
-
-- an opinionated shadcn/ui registry
-- built by Matthew Blode
-- focused on good taste, care, and craft
-- hosted at [blode.co/ui](https://blode.co/ui)
-
 ### Design System
 
 The skill carries the Blode UI visual defaults so agents do not invent a generic style when writing UI:
@@ -65,11 +56,7 @@ It prefers the namespace flow for quick starts and only falls back to raw regist
 
 The skill helps your assistant search, view, add, and update Blode registry items with the right commands and safer update workflows such as `--dry-run` and `--diff`.
 
-It also understands that registries can ship more than components, including design-system payloads via `registry:base`.
-
-### Publishing
-
-The skill covers listing the `@blode` namespace in shadcn's registry directory: the flat-registry and schema requirements, how to check the published registry against them, and the submission path into `shadcn-ui/ui`.
+It knows `add` overwrites a component you have customised rather than merging, so it reaches for `--diff` before re-adding one.
 
 ### Component Rules
 
@@ -81,19 +68,10 @@ The skill includes Blode-specific rules for:
 - Base UI versus Radix API differences
 - `blode-icons-react` conventions
 
-### Repo Conventions
-
-When working inside the Blode UI repo itself, the skill also carries the repo defaults:
-
-- React 19 ref-as-prop patterns
-- Tailwind CSS v4
-- `blode-icons-react`
-- registry source layout, build commands, and supported item types
-
 ## How It Works
 
 1. The skill activates when your task is clearly about Blode UI, `@blode`, or `blode.co/ui`.
-2. It loads only the focused references needed for the task, such as install flow, design-system guidance, registry workflows, or repo conventions.
+2. It loads only the focused references needed for the task: install flow, registry workflows, or design-system guidance.
 3. It applies the Blode defaults before generating commands, examples, or code.
 4. It uses the bundled rules to keep examples aligned with the registry's composition and styling patterns.
 
@@ -105,7 +83,7 @@ Install this skill if you want your AI assistant to be better at:
 - adding and updating `@blode` components
 - shaping UI so it feels visually consistent with Blode UI
 - writing Blode-consistent examples and forms
-- working in this repo without drifting back to generic shadcn answers
+- diagnosing a Blode component that installed but rendered unstyled
 
 ## Learn More
 

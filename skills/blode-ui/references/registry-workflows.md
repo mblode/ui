@@ -1,8 +1,8 @@
 # Registry Workflows
 
-## Core Commands
+Commands for finding, adding, and updating `@blode` items in your project. These assume the `@blode` namespace is already registered; `references/install-flow.md` covers setting it up.
 
-Use `npx shadcn@latest` for all examples in this repo.
+## Core Commands
 
 ```bash
 # Search the Blode registry.
@@ -19,36 +19,27 @@ npx shadcn@latest add @blode/button --dry-run
 npx shadcn@latest add @blode/button --diff button.tsx
 ```
 
-The same `add` flow applies to non-component registry payloads such as `registry:base` items. `@blode/ui` is the design system and is installed the same way:
-
-```bash
-npx shadcn@latest add @blode/ui
-```
+`@blode/ui` is the design system and installs the same way. It is not a component, so nothing lands in `components/ui/`; it writes tokens into your stylesheet.
 
 ## Default Workflow
 
-1. Check whether the component already exists locally.
-2. Confirm `@blode/ui` is installed by grepping the project's CSS for `--field-radius`. If it is missing, add it first.
-3. Search or view the registry item if the user is deciding what to add.
-4. Use `add` with the `@blode` namespace.
-5. For updates, prefer `--dry-run` and `--diff` before overwriting local edits.
+1. Check whether the component already exists in your project.
+2. Confirm `@blode/ui` is installed by grepping your CSS for `--field-radius`. If it is missing, add it first, or the component renders unstyled.
+3. Search or view the registry item if you are still deciding what to add.
+4. `add` with the `@blode` namespace.
+5. Reach for `--dry-run` and `--diff` before re-adding a component you have edited locally.
 
-## Design-System Item Shape
+## Updating A Component You Have Customised
 
-`@blode/ui` is `type: "registry:base"` and ships its tokens as `cssVars`, following shadcn's conventions:
+Blode components are source you own, so `add` overwrites rather than merges:
 
-- Keys are **unprefixed**: `"field-height": "48px"`, not `"--field-height"`. The CLI adds the `--`.
-- `cssVars.theme` → `@theme inline`. Use it for scalars: the `--field-*` metrics and the `--shadow-*` scale.
-- `cssVars.light` / `cssVars.dark` → `:root` / `.dark`. Use them for colors, and give **literal** values (`oklch(0.98 0 0)`), not `var(--surface)` indirection. The CLI only generates the matching `@theme inline` `--color-*` entry for values it can recognise as a color; an indirect value silently loses its utility class.
-- Do not ship `--radius-2xl` / `3xl` / `4xl`. shadcn's CLI already writes its own scale (`calc(var(--radius) * 1.8 / 2.2 / 2.6)`), which matches Blode's intended 18/22/26px.
-- Do not set `config.style` to a Blode-specific name. It is interpolated into the hardcoded `@shadcn` template `https://ui.shadcn.com/r/styles/{style}/{name}.json` and will 404 on init.
+```bash
+npx shadcn@latest add @blode/button --diff button.tsx   # what upstream changed
+npx shadcn@latest add @blode/button --dry-run           # what would be written
+```
 
-## When Working Inside This Repo
-
-- Inspect `content/docs/components/*.mdx` before inventing examples.
-- Inspect `registry/default/ui/` and `registry/default/examples/` before proposing new composition patterns.
-- Treat direct URL installs like `https://blode.co/ui/r/styles/default/<name>` as low-level references, not the default onboarding path.
+When the diff touches code you have modified, port the upstream change in by hand instead of re-adding. An unpreviewed `add` silently discards local edits.
 
 ## Fallback To Generic shadcn Mechanics
 
-If the user asks about generic CLI behaviour, `components.json`, or non-Blode registries, use upstream shadcn knowledge as supporting context. Do not let that override Blode-specific defaults.
+For generic CLI behaviour, `components.json`, or non-Blode registries, use upstream shadcn knowledge as supporting context, without letting it override the Blode defaults in `SKILL.md`.

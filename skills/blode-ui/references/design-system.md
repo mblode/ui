@@ -1,6 +1,6 @@
 # Design System
 
-Blode UI visual defaults extracted from the repo's `DESIGN.md`. Load this for theming, visual direction, or component feel.
+Blode UI's visual defaults. Load this when styling a screen so the result sits alongside Blode components rather than fighting them.
 
 ## Overview
 
@@ -56,7 +56,7 @@ Blode UI visual defaults extracted from the repo's `DESIGN.md`. Load this for th
 - Cards: white or soft neutral surfaces with gentle ring definition
 - Tabs and segmented controls: muted rails with a crisp active indicator
 - Overlays: stable shells, restrained shadow, clear edge definition
-- Use `blode-icons-react` for Blode docs, examples, and repo work
+- Use `blode-icons-react` for icons in any UI built with Blode components
 
 ## Gotchas
 
