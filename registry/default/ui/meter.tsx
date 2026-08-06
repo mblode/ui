@@ -23,7 +23,7 @@ const MeterLabel = ({ className, ...props }: React.ComponentProps<typeof MeterPr
 
 const MeterValue = ({ className, ...props }: React.ComponentProps<typeof MeterPrimitive.Value>) => (
   <MeterPrimitive.Value
-    className={cn("text-muted-foreground text-sm tabular-nums", className)}
+    className={cn("text-muted-foreground text-sm tabular-figures", className)}
     data-slot="meter-value"
     {...props}
   />

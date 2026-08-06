@@ -103,9 +103,9 @@ typography:
     fontWeight: 500
     lineHeight: 1.2
   code-sm:
-    fontFamily: "Geist Mono"
+    fontFamily: "Glide Mono"
     fontSize: 12px
-    fontWeight: 500
+    fontWeight: 400
     lineHeight: 1.4
 rounded:
   sm: 6px
@@ -355,16 +355,30 @@ Add it to both `:root` and `.dark` in `styles/globals.css`, bridge it in `@theme
 
 ## Typography
 
-Typography is the main source of personality in Blode. **Glide** is the default sans across docs, marketing, and components, shipped as a variable font in roman and italic across weights 400 to 900. Apply it through `font-sans`, mapped by `--font-sans: var(--font-glide)`.
+Typography is the main source of personality in Blode. **Glide** is the default sans across docs, marketing, and components, shipped as a variable font in roman and italic with a single `wght` axis spanning 100 to 950. Apply it through `font-sans`, mapped by `--font-sans: var(--font-glide)`.
 
 - Headlines are compact and slightly tight-tracked. Hero moments may reach `display-xl`. Most headings live between `headline-lg` and `headline-sm`.
 - Body copy sits at `body-md` or `body-sm` with relaxed line height. Keep prose near 60 to 68 characters per line and rewrite before shrinking type.
 - Labels, buttons, and tabs use medium weight at 14px. They should read precise, not loud.
-- Monospace is for code, commands, paths, and token-like values only. Set the identifier in mono, never the sentence around it.
+- Monospace is Glide Mono, a static 400-weight face. It is for code, commands, paths, and token-like values only. Set the identifier in mono, never the sentence around it.
 - Peers share a role. Never resize one value because its string is longer.
-- Use tabular numerals wherever figures align in a column.
+- Use `tabular-figures` wherever figures align in a column, not `tabular-nums`. See below.
 
-Emphasis is scarce. If everything is medium weight, nothing is emphasised.
+Use 400 regular, 500 medium, 600 semibold, and 700 bold. The rest of the axis exists but carries no assigned role. Emphasis is scarce: if everything is medium weight, nothing is emphasised.
+
+Glide Mono is static at 400. Asking it for 500 or heavier renders 400, because `font-synthesis-weight: none` is set globally to prevent faux bold. Never pair `font-mono` with `font-medium`; the class is inert.
+
+### Aligned figures
+
+Glide Sans has **proportional** figures. Digit `1` is 353 units wide against `0` at 620, and the font ships no OpenType features at all, so `font-variant-numeric: tabular-nums` does nothing on the sans. A counter, timer, price, or numeric column set in Glide Sans will visibly jitter as its digits change.
+
+Use the `tabular-figures` utility instead. It borrows Glide Mono, whose digits are uniformly 600 units, which is the only mechanism these two fonts offer:
+
+```tsx
+<span className="tabular-figures">{elapsed}</span>
+```
+
+Reach for it on timestamps, counters, badge counts, meter readouts, and any table column of numbers.
 
 ## Layout and rhythm
 

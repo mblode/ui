@@ -262,6 +262,15 @@
   }
 }
 
+@utility tabular-figures {
+  /* Glide's figures are proportional (digit "1" is 353 units against "0" at 620)
+     and the font ships no `tnum` feature, so `font-variant-numeric: tabular-nums`
+     is a no-op on the sans. Glide Mono is genuinely monospaced at 600 per digit,
+     so aligned columns, timers, and counters have to borrow it. */
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
 @utility border-grid {
   @apply border-border/50 dark:border-border;
 }
@@ -291,7 +300,7 @@
 
   &:before {
     content: counter(step);
-    @apply border-background bg-muted mr-2 inline-flex size-6 items-center justify-center rounded-full text-center -indent-px font-mono text-sm font-medium md:absolute md:mt-[-4px] md:ml-[-50px] md:size-9 md:border-4;
+    @apply border-background bg-muted mr-2 inline-flex size-6 items-center justify-center rounded-full text-center -indent-px font-mono text-sm md:absolute md:mt-[-4px] md:ml-[-50px] md:size-9 md:border-4;
   }
 }
 

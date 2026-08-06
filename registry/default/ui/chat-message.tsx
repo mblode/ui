@@ -93,7 +93,7 @@ const ChatMessage = ({
             "group-focus-within:pointer-events-auto group-focus-within:opacity-100",
           )}
         >
-          {showTime && <span className="tabular-nums">{time}</span>}
+          {showTime && <span className="tabular-figures">{time}</span>}
           {actions !== undefined && actions !== null && (
             <span className="flex items-center gap-0.5">{actions}</span>
           )}

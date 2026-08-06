@@ -466,7 +466,7 @@ const AskUserQuestions = ({
       {...props}
     >
       {/* Header — progress sits at the top, fixed across questions. */}
-      <div className="flex items-center px-4 pt-4 pb-2 text-muted-foreground text-xs tabular-nums sm:px-5 sm:pt-5">
+      <div className="flex items-center px-4 pt-4 pb-2 text-muted-foreground text-xs tabular-figures sm:px-5 sm:pt-5">
         Question {index + 1} of {questions.length}
       </div>
 

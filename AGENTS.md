@@ -62,6 +62,11 @@ npm run dev
 - **Don't ship `--radius-2xl/3xl/4xl`.** shadcn writes its own scale (`calc(var(--radius) * 1.8 / 2.2 / 2.6)`), which already lands on Blode's intended 18/22/26px.
 - The registry `name` in `registry/index.ts` must stay a bare token matching the `@blode` namespace. shadcn's directory pairs the two (`7ovr` → `@7ovr`); a slashed value doesn't resolve.
 - Verify a change to this item by `shadcn add`-ing it into a scratch project and grepping the resulting CSS, not by reading the emitted JSON.
+- **`npm run build:registry` does not fail on a broken `_registry.ts`.** It prints `Done` and leaves stale or partial JSON in `public/r/`. A misplaced brace once nested `cssVars` inside a `css` media query, and `tsc`/`ultracite` both passed because `css` is typed as a recursive record. After editing this file, confirm the emitted shape:
+  ```bash
+  node -e "const j=require('./public/r/ui.json');console.log(Object.keys(j), Object.keys(j.cssVars||{}))"
+  ```
+  `cssVars` must list `theme`, `light`, `dark` at the top level.
 
 ## Registry directory
 
