@@ -2,6 +2,22 @@
 
 Read this when listing `@blode` in shadcn's registry directory, or when checking whether a registry change would break the listing.
 
+## Check The State Before Acting
+
+A submission is already in flight, so establish where it stands before doing anything:
+
+```bash
+curl -s https://ui.shadcn.com/r/registries.json | node -e "
+let d='';process.stdin.on('data',c=>d+=c).on('end',()=>{
+const hit=JSON.parse(d).filter(r=>/blode/i.test(r.name));
+console.log(hit.length ? hit : 'not listed');})"
+```
+
+- **Not listed.** The PR to `shadcn-ui/ui` is open and awaiting review. Do not open a second one. Keep the install docs on the `registry add` and `init <base-url>` flows, since `shadcn add @blode/button` cannot resolve until the entry merges.
+- **Listed.** The entry merged. The namespace resolves on its own, so the install docs can drop the `registry add` step.
+
+Verify rather than assume; this file cannot know which state is current.
+
 ## Why It Matters
 
 The directory is shadcn's index of registries the CLI resolves automatically, published at `https://ui.shadcn.com/r/registries.json`. Once `@blode` is listed, `shadcn add` and `shadcn search` look the namespace up themselves, so the setup step disappears:
@@ -66,6 +82,12 @@ console.log(JSON.parse(d).filter(r=>/blode/i.test(r.name)));})"
 3. Open a PR against `https://github.com/shadcn-ui/ui`; the shadcn team reviews it.
 
 Keep the `description` in the entry consistent with `references/product-positioning.md`; it is public-facing copy in someone else's repo and is awkward to correct later.
+
+## Likely Review Flag
+
+The registry publishes both shapes: flat items at `/ui/r/button.json` and a legacy mirror at `/ui/r/styles/default/button.json`. The flat set satisfies the requirement, but the nested mirror is the most plausible thing a reviewer objects to, and 77 component doc pages still point their manual-install command at the nested path.
+
+If review asks for it, the fix is to stop emitting `styles/default/` from `scripts/build-registry.mts` and repoint those pages at `https://blode.co/ui/r/<name>.json`, which already serves every one of them. Do not do this pre-emptively: it churns 77 files and breaks any URL somebody already copied.
 
 ## Gotchas
 
