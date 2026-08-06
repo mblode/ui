@@ -12,13 +12,17 @@
   --font-mono:
     var(--font-glide-mono), ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
     "Liberation Mono", "Courier New", monospace;
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
+  /* shadcn's own scale, which its CLI writes into every consumer's stylesheet.
+     At the default --radius of 0.625rem these are identical to the offsets
+     Blode used to carry (6/8/10/14/18/22/26px); expressing them the same way
+     keeps the docs site and an installed project in step if --radius changes. */
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
-  --radius-3xl: calc(var(--radius) + 12px);
-  --radius-4xl: calc(var(--radius) + 16px);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
   --shadow-soft: 0 15px 50px 0 rgba(27, 32, 50, 0.1);
   --shadow-input: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-popover:
@@ -86,6 +90,8 @@
   --color-selection: var(--selection);
   --color-selection-foreground: var(--selection-foreground);
   --color-overlay: var(--overlay);
+  --color-input-hover: var(--input-hover);
+  --color-placeholder-foreground: var(--placeholder-foreground);
 }
 
 :root {
@@ -115,6 +121,8 @@
   --destructive-foreground: oklch(0.97 0.01 17);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
+  --input-hover: oklch(0.87 0 0);
+  --placeholder-foreground: var(--muted-foreground);
   --ring: oklch(0.708 0 0);
   --chart-1: var(--color-blue-300);
   --chart-2: var(--color-blue-500);
@@ -159,6 +167,8 @@
   --destructive-foreground: oklch(0.58 0.22 27);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
+  --input-hover: oklch(1 0 0 / 25%);
+  --placeholder-foreground: var(--muted-foreground);
   --ring: oklch(0.556 0 0);
   --chart-1: var(--color-blue-300);
   --chart-2: var(--color-blue-500);

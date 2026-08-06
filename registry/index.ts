@@ -20,5 +20,8 @@ export const registry = {
     // Internal use only.
     ...examples,
   ],
-  name: "blode/ui",
+  // Bare, single-token, and matching the `@blode` namespace. shadcn's registry
+  // directory expects the two to line up (`7ovr` -> `@7ovr`); a slash here does
+  // not resolve to a namespace.
+  name: "blode",
 } satisfies z.infer<typeof registrySchema>;
