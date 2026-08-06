@@ -94,6 +94,13 @@ const nextConfig: NextConfig = {
         source: "/:path*",
         statusCode: 301,
       },
+      // `/design` returned a 200 of the docs HTML catch-all, which reads as a
+      // working page to a crawler and to anyone guessing the URL.
+      {
+        destination: "/design.md",
+        permanent: true,
+        source: "/design",
+      },
       {
         destination: "/docs/font",
         permanent: true,

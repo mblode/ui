@@ -30,6 +30,7 @@ npm run dev
 - `content/docs/` — MDX documentation pages
 - `scripts/build-registry.mts` — Builds JSON registry into `public/r/` using ts-morph
 - `styles/globals.css` — Tailwind v4 global styles and design tokens
+- `DESIGN.md` — the design direction document, published at `blode.co/ui/design.md` by `scripts/build-design-md.mjs`. Edit the root file; `public/design.md` is generated.
 
 ## Key Conventions
 
