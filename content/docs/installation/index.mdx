@@ -9,6 +9,17 @@ description: How to install dependencies and structure your app.
 
 </Callout>
 
+## Fastest path
+
+Point `init` straight at the design system. It registers the `@blode` namespace for you, sets `blode-icons-react` as the icon library, and writes Blode's tokens into your CSS in one step:
+
+```bash
+npx shadcn@latest init https://blode.co/ui/r/ui.json
+npx shadcn@latest add @blode/button
+```
+
+Use the steps below instead if you already have a shadcn project.
+
 <Steps>
 
 ### Create or initialise a project
@@ -22,6 +33,14 @@ npx shadcn@latest init
 ```bash
 npx shadcn@latest registry add @blode=https://blode.co/ui/r/{name}.json
 ```
+
+### Add the design system
+
+```bash
+npx shadcn@latest add @blode/ui
+```
+
+This writes Blode's design tokens into your CSS. Skip it and components still install, but they render unstyled: the variants compile to `rounded-[var(--field-radius)]` and `h-[var(--field-height)]`, and an undefined custom property resolves to nothing.
 
 ### Add a component
 

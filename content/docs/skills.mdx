@@ -55,6 +55,7 @@ The skill teaches the canonical setup flow:
 ```bash
 npx shadcn@latest init
 npx shadcn@latest registry add @blode=https://blode.co/ui/r/{name}.json
+npx shadcn@latest add @blode/ui
 npx shadcn@latest add @blode/button
 ```
 
@@ -65,6 +66,10 @@ It prefers the namespace flow for quick starts and only falls back to raw regist
 The skill helps your assistant search, view, add, and update Blode registry items with the right commands and safer update workflows such as `--dry-run` and `--diff`.
 
 It also understands that registries can ship more than components, including design-system payloads via `registry:base`.
+
+### Publishing
+
+The skill covers listing the `@blode` namespace in shadcn's registry directory: the flat-registry and schema requirements, how to check the published registry against them, and the submission path into `shadcn-ui/ui`.
 
 ### Component Rules
 
