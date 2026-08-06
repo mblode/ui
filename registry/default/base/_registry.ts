@@ -58,8 +58,12 @@ export const base: Registry["items"] = [
         "input-hover": "oklch(1 0 0 / 25%)",
         overlay: "oklch(0.326 0.03 258.3 / 0.7)",
         "placeholder-foreground": "oklch(0.708 0 0)",
+        success: "oklch(0.723 0.219 149.579)",
+        "success-foreground": "oklch(1 0 0)",
         surface: "oklch(0.2 0 0)",
         "surface-foreground": "oklch(0.708 0 0)",
+        warning: "oklch(0.795 0.184 86.047)",
+        "warning-foreground": "oklch(0.286 0.066 53.813)",
       },
       light: {
         code: "oklch(0.98 0 0)",
@@ -67,8 +71,12 @@ export const base: Registry["items"] = [
         "input-hover": "oklch(0.87 0 0)",
         overlay: "oklch(0.832 0.015 251.2 / 0.7)",
         "placeholder-foreground": "oklch(0.556 0 0)",
+        success: "oklch(0.527 0.154 150.069)",
+        "success-foreground": "oklch(1 0 0)",
         surface: "oklch(0.98 0 0)",
         "surface-foreground": "oklch(0.145 0 0)",
+        warning: "oklch(0.681 0.162 75.834)",
+        "warning-foreground": "oklch(0.286 0.066 53.813)",
       },
       theme: {
         "field-height": "48px",
@@ -76,6 +84,15 @@ export const base: Registry["items"] = [
         "field-padding-x": "1rem",
         "field-padding-y": "12px",
         "field-radius": "var(--radius-2xl)",
+        // Blode's linear offsets override the multiplicative scale shadcn's CLI
+        // writes at init. Identical at the default --radius; at --radius:16px
+        // shadcn gives 4xl 41.6px against Blode's 32px.
+        "radius-2xl": "calc(var(--radius) + 8px)",
+        "radius-3xl": "calc(var(--radius) + 12px)",
+        "radius-4xl": "calc(var(--radius) + 16px)",
+        "radius-md": "calc(var(--radius) - 2px)",
+        "radius-sm": "calc(var(--radius) - 4px)",
+        "radius-xl": "calc(var(--radius) + 4px)",
         "shadow-input": "0 1px 2px 0 rgb(0 0 0 / 0.05)",
         "shadow-lg":
           "0 0 0 1px rgba(51, 51, 51, 0.04), 0 1px 1px 0.5px rgba(51, 51, 51, 0.04), 0 3px 3px -1.5px rgba(51, 51, 51, 0.02), 0 6px 6px -3px rgba(51, 51, 51, 0.04), 0 12px 12px -6px rgba(51, 51, 51, 0.04), 0 24px 24px -12px rgba(51, 51, 51, 0.04), 0 48px 48px -24px rgba(51, 51, 51, 0.04), 0 96px 96px -32px rgba(51, 51, 51, 0.06), inset 0 -1px 1px -0.5px rgba(51, 51, 51, 0.06)",

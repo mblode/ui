@@ -36,7 +36,7 @@ const buttonVariants = cva(
         default:
           "bg-primary text-primary-foreground hover:bg-primary/90 active:bg-primary/95 aria-pressed:bg-primary/95",
         destructive:
-          "bg-red-600 text-white hover:bg-red-700 focus-visible:border-red-600 focus-visible:ring-red-500/30 active:bg-red-800 aria-pressed:bg-red-800 dark:bg-red-500 dark:aria-pressed:bg-red-300 dark:active:bg-red-300 dark:hover:bg-red-400",
+          "bg-destructive text-destructive-foreground hover:bg-destructive/90 focus-visible:border-destructive focus-visible:ring-destructive/30 active:bg-destructive/80 aria-pressed:bg-destructive/80",
         destructiveSecondary:
           "border-red-200 text-red-700 hover:bg-red-50 active:bg-red-100 aria-pressed:bg-red-100 dark:border-red-800 dark:text-red-300 dark:aria-pressed:bg-red-950 dark:active:bg-red-950 dark:hover:bg-red-950/60",
         ghost:
@@ -49,11 +49,11 @@ const buttonVariants = cva(
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/85 active:bg-secondary/75 aria-expanded:bg-secondary aria-pressed:bg-secondary/75",
         success:
-          "bg-green-600 text-white hover:bg-green-700 focus-visible:border-green-600 focus-visible:ring-green-500/30 active:bg-green-800 aria-pressed:bg-green-800 dark:bg-green-500 dark:aria-pressed:bg-green-300 dark:active:bg-green-300 dark:hover:bg-green-400",
+          "bg-success text-success-foreground hover:bg-success/90 focus-visible:border-success focus-visible:ring-success/30 active:bg-success/80 aria-pressed:bg-success/80",
         successSecondary:
           "border-green-200 text-green-700 hover:bg-green-50 active:bg-green-100 aria-pressed:bg-green-100 dark:border-green-800 dark:text-green-300 dark:aria-pressed:bg-green-950 dark:active:bg-green-950 dark:hover:bg-green-950/60",
         warning:
-          "bg-yellow-600 text-white hover:bg-yellow-700 focus-visible:border-yellow-600 focus-visible:ring-yellow-500/30 active:bg-yellow-800 aria-pressed:bg-yellow-800 dark:bg-yellow-500 dark:text-yellow-950 dark:aria-pressed:bg-yellow-300 dark:active:bg-yellow-300 dark:hover:bg-yellow-400",
+          "bg-warning text-warning-foreground hover:bg-warning/90 focus-visible:border-warning focus-visible:ring-warning/30 active:bg-warning/80 aria-pressed:bg-warning/80",
         warningSecondary:
           "border-yellow-200 text-yellow-700 hover:bg-yellow-50 active:bg-yellow-100 aria-pressed:bg-yellow-100 dark:border-yellow-800 dark:text-yellow-300 dark:aria-pressed:bg-yellow-950 dark:active:bg-yellow-950 dark:hover:bg-yellow-950/60",
       },

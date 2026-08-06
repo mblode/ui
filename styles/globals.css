@@ -12,17 +12,19 @@
   --font-mono:
     var(--font-glide-mono), ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
     "Liberation Mono", "Courier New", monospace;
-  /* shadcn's own scale, which its CLI writes into every consumer's stylesheet.
-     At the default --radius of 0.625rem these are identical to the offsets
-     Blode used to carry (6/8/10/14/18/22/26px); expressing them the same way
-     keeps the docs site and an installed project in step if --radius changes. */
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
+  /* Linear offsets, deliberately not shadcn's multiplicative scale. Both land on
+     6/8/10/14/18/22/26px at the default --radius, but they diverge the moment a
+     consumer changes it: shadcn's ratios hold, so --radius:16px inflates 4xl to
+     41.6px, while these hold a constant 20px spread and 4xl stays at 32px. A
+     restrained system should not let large surfaces balloon because fields got
+     rounder. Shipped through @blode/ui so installed projects inherit it. */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
   --shadow-soft: 0 15px 50px 0 rgba(27, 32, 50, 0.1);
   --shadow-input: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-popover:
@@ -91,6 +93,10 @@
   --color-selection-foreground: var(--selection-foreground);
   --color-overlay: var(--overlay);
   --color-input-hover: var(--input-hover);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
   --color-placeholder-foreground: var(--placeholder-foreground);
 }
 
@@ -119,6 +125,13 @@
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(1 0 0);
+  /* green-700 not green-600: white on green-600 is 3.22:1 and fails AA. */
+  --success: oklch(0.527 0.154 150.069);
+  --success-foreground: oklch(1 0 0);
+  /* Yellow cannot carry white text at any usable saturation (2.94:1), so light
+     mode takes the dark ink that dark mode already used. */
+  --warning: oklch(0.681 0.162 75.834);
+  --warning-foreground: oklch(0.286 0.066 53.813);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
   --input-hover: oklch(0.87 0 0);
@@ -165,6 +178,10 @@
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.704 0.191 22.216);
   --destructive-foreground: oklch(0.58 0.22 27);
+  --success: oklch(0.723 0.219 149.579);
+  --success-foreground: oklch(1 0 0);
+  --warning: oklch(0.795 0.184 86.047);
+  --warning-foreground: oklch(0.286 0.066 53.813);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
   --input-hover: oklch(1 0 0 / 25%);

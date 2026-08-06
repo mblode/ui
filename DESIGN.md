@@ -19,6 +19,10 @@ colors:
   accent-foreground: "#171717"
   destructive: "#E7000B"
   destructive-foreground: "#FFFFFF"
+  success: "#008236"
+  success-foreground: "#FFFFFF"
+  warning: "#D08700"
+  warning-foreground: "#432004"
   border: "#E5E5E5"
   input: "#E5E5E5"
   input-hover: "#D4D4D4"
@@ -219,6 +223,20 @@ components:
     typography: "{typography.body-sm}"
     rounded: "{rounded.md}"
     padding: "{spacing.sm}"
+  button-success:
+    backgroundColor: "{colors.success}"
+    textColor: "{colors.success-foreground}"
+    typography: "{typography.label-md}"
+    rounded: "{rounded.lg}"
+    height: "{spacing.field-height-sm}"
+    padding: "{spacing.md}"
+  button-warning:
+    backgroundColor: "{colors.warning}"
+    textColor: "{colors.warning-foreground}"
+    typography: "{typography.label-md}"
+    rounded: "{rounded.lg}"
+    height: "{spacing.field-height-sm}"
+    padding: "{spacing.md}"
   badge-secondary:
     backgroundColor: "{colors.secondary}"
     textColor: "{colors.secondary-foreground}"
@@ -333,11 +351,15 @@ The palette is built on neutral contrast, not brand chroma. Hierarchy comes from
 - **`chart-1` through `chart-5`:** Tailwind's blue ramp, #8EC5FF to #193CB8. Use sequentially. Never repurpose as brand accents. These are the only tokens with no component of their own, which is deliberate.
 - **`sidebar` family:** Mirrors the main neutrals so the sidebar reads as part of the page rather than separate chrome.
 
-### Where components use raw palette colours
+### The semantic set
 
-Semantic button and badge variants are the one documented exception to "always use a token". `Button`'s `destructive`, `success`, and `warning` variants compile to `bg-red-600`, `bg-green-600`, and `bg-yellow-600` with `text-white`, plus lighter dark-mode counterparts. Only red has a matching token: `red-600` and `--destructive` are the same colour, `oklch(0.577 0.245 27.325)`. Green and yellow have no token at all.
+Blode ships three semantic colours where shadcn ships one. `--destructive`, `--success`, and `--warning` each have a `-foreground` pair and each flips in dark mode. Solid `Button` and `Badge` variants use them, so a consumer can retheme every success state by changing one token.
 
-Use the built-in variant rather than recreating one. If you need a fourth semantic colour, add a real token instead of extending the raw-palette pattern.
+This is a deliberate divergence. shadcn has no success or warning role, so its variants reach for the raw Tailwind ramp, and Blode's did too until these tokens existed. Raw palette values cannot be rethemed, do not respond to a brand change, and quietly contradict the rule two paragraphs up.
+
+Two of the six values are set by contrast rather than taste. `--success` is green-700, not the green-600 the variant used before, because white on green-600 is 3.22:1 and fails AA. `--warning-foreground` is a near-black ink in **both** themes, because yellow cannot carry white text at any usable saturation: white on yellow-600 measured 2.94:1, while the dark ink reaches 4.94:1.
+
+The `*Secondary` variants still use the raw ramp for their 50/100/950 tints. Those are wash tints rather than semantic fills, and tokenising six more steps per colour would cost more than it returns. If you need a fourth semantic colour, add a real token; do not extend the raw-palette pattern.
 
 ### Adding a colour
 
@@ -412,7 +434,8 @@ Rhythm covers the gaps between things. This covers their arrangement.
 
 The shape language is soft, disciplined, and consistent. Warmth without cuteness.
 
-- Base radius `10px`, exposed as `--radius`. The scale is `calc(var(--radius) * 0.6 / 0.8 / 1 / 1.4 / 1.8 / 2.2 / 2.6)`, which is shadcn's own formula and lands on 6, 8, 10, 14, 18, 22, and 26px.
+- Base radius `10px`, exposed as `--radius`. The scale is linear: `calc(var(--radius) - 4px / - 2px / +0 / + 4px / + 8px / + 12px / + 16px)`, landing on 6, 8, 10, 14, 18, 22, and 26px.
+- The linear offset is deliberate, and diverges from shadcn's multiplicative scale. Both agree at the default radius; they separate as soon as a consumer changes it. At `--radius: 16px` shadcn's ratios inflate `4xl` to 41.6px while Blode holds it at 32px. A restrained system should not let large surfaces balloon because fields got rounder, so `@blode/ui` ships this scale and overrides what the CLI wrote at init.
 - Buttons, dialogs, alerts, and the tabs rail use `10px`.
 - Menus, popovers, tabs triggers, and sidebar items use `8px`.
 - Cards use `14px`.

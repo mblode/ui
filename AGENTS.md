@@ -59,7 +59,7 @@ npm run dev
 - **`cssVars` keys are unprefixed** — `"field-height": "48px"`, not `"--field-height"`. The CLI adds the `--`.
 - **`cssVars.theme` → `@theme inline`** for scalars (the `--field-*` metrics, the `--shadow-*` scale). **`cssVars.light`/`dark` → `:root`/`.dark`** for colors.
 - **Color values must be literal** (`oklch(0.98 0 0)`), never `var(--foreground)` indirection. The CLI only generates the matching `@theme inline` `--color-*` entry for values it can parse as a color, so indirection silently kills the utility class.
-- **Don't ship `--radius-2xl/3xl/4xl`.** shadcn writes its own scale (`calc(var(--radius) * 1.8 / 2.2 / 2.6)`), which already lands on Blode's intended 18/22/26px.
+- **Do ship the `--radius-*` scale.** Blode uses linear offsets (`calc(var(--radius) + 8px)`), not shadcn's multiplicative scale. They agree at the default radius and diverge above it, so the override has to reach consumers or their geometry drifts from the docs site.
 - The registry `name` in `registry/index.ts` must stay a bare token matching the `@blode` namespace. shadcn's directory pairs the two (`7ovr` → `@7ovr`); a slashed value doesn't resolve.
 - Verify a change to this item by `shadcn add`-ing it into a scratch project and grepping the resulting CSS, not by reading the emitted JSON.
 - **`npm run build:registry` does not fail on a broken `_registry.ts`.** It prints `Done` and leaves stale or partial JSON in `public/r/`. A misplaced brace once nested `cssVars` inside a `css` media query, and `tsc`/`ultracite` both passed because `css` is typed as a recursive record. After editing this file, confirm the emitted shape:
