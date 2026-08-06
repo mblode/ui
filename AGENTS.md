@@ -68,6 +68,27 @@ npm run dev
   ```
   `cssVars` must list `theme`, `light`, `dark` at the top level.
 
+## Design-system rules that fail silently
+
+Verified this session with fontTools and measured contrast; do not undo them without re-measuring.
+
+- **Dark-mode semantic fills carry a near-black ink, never white.** `--destructive`, `--success`, and `--warning` all brighten in dark mode, where white scores 2.89, 2.22, and 2.10 against a 4.5 floor. The 950-weight inks give 5.60, 6.74, 7.60. Light mode is the reverse except for warning, which is near-black in both because yellow carries white at no usable saturation.
+- **`tabular-nums` does nothing on Glide Sans.** It ships zero OpenType features and proportional figures (digit `1` is 353 units against `0` at 620), so counters and columns jitter. Use the `tabular-figures` utility, which borrows the genuinely monospaced Glide Mono.
+- **Glide Mono is static 400.** With `font-synthesis-weight: none` set globally, `font-mono font-medium` silently renders 400. The class is inert, not subtle.
+- **Reduced motion is handled once, globally**, in `styles/globals.css` and shipped via `@blode/ui`. Do not add per-component `motion-reduce:` variants; only 6 of 26 moving components ever had them, which is why it moved to the stylesheet.
+- **No `transition-all`.** List the properties. Upstream shadcn uses it in eight components; Blode deliberately does not.
+- **No raw Tailwind palette colours in components.** Every semantic fill and neutral resolves to a token. Only the `*Secondary` wash tints (50/100/950) still use the ramp, deliberately.
+- **Paired elements share timing.** A dialog's overlay and panel both run 200ms; sheet and drawer both run 500 open / 300 close. A tooltip's arrow shares the popup's surface token, or the two desync in dark mode.
+
+## Deliberate divergences from shadcn
+
+Do not "fix" these back toward upstream.
+
+- **Linear radius scale.** `calc(var(--radius) + 8px)`, not shadcn's `* 1.8`. Identical at the default radius; at `--radius: 16px` shadcn inflates `4xl` to 41.6px where Blode holds 32px. Shipped via `@blode/ui` so it overrides what the CLI writes at init.
+- **A three-colour semantic set.** shadcn has only `--destructive`; Blode adds `--success` and `--warning` with foreground pairs in both themes.
+- **Explicit transition property lists**, where upstream ships `transition-all`.
+- **A global reduced-motion guarantee**, which upstream has none of.
+
 ## Registry directory
 
 `@blode` is not yet listed in shadcn's directory (the PR to `shadcn-ui/ui` is open, unmerged), so `shadcn add @blode/button` cannot resolve on its own and all install docs must keep the `registry add` step. Confirm current state before changing them:

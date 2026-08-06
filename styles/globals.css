@@ -176,10 +176,13 @@
   --muted-foreground: oklch(0.708 0 0);
   --accent: oklch(0.371 0 0);
   --accent-foreground: oklch(0.985 0 0);
+  /* Dark-mode semantic fills are bright, so every one carries a near-black ink.
+     White fails on all three: 2.89 on destructive, 2.22 on success, 2.10 on
+     warning. The 950 inks give 5.60, 6.74 and 7.60. */
   --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.58 0.22 27);
+  --destructive-foreground: oklch(0.258 0.092 26.042);
   --success: oklch(0.723 0.219 149.579);
-  --success-foreground: oklch(1 0 0);
+  --success-foreground: oklch(0.266 0.065 152.934);
   --warning: oklch(0.795 0.184 86.047);
   --warning-foreground: oklch(0.286 0.066 53.813);
   --border: oklch(1 0 0 / 10%);

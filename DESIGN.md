@@ -357,7 +357,9 @@ Blode ships three semantic colours where shadcn ships one. `--destructive`, `--s
 
 This is a deliberate divergence. shadcn has no success or warning role, so its variants reach for the raw Tailwind ramp, and Blode's did too until these tokens existed. Raw palette values cannot be rethemed, do not respond to a brand change, and quietly contradict the rule two paragraphs up.
 
-Two of the six values are set by contrast rather than taste. `--success` is green-700, not the green-600 the variant used before, because white on green-600 is 3.22:1 and fails AA. `--warning-foreground` is a near-black ink in **both** themes, because yellow cannot carry white text at any usable saturation: white on yellow-600 measured 2.94:1, while the dark ink reaches 4.94:1.
+**Dark-mode semantic fills always carry a near-black ink.** All three brighten in dark mode to stay visible against a dark canvas, and at that lightness white text fails on every one: 2.89:1 on destructive, 2.22:1 on success, 2.10:1 on warning. The 950-weight inks give 5.60, 6.74, and 7.60. This is the single rule to remember when adding a fourth semantic colour.
+
+Two of the light-mode values are set by contrast rather than taste. `--success` is green-700, not the green-600 the variant used before, because white on green-600 is 3.22:1 and fails AA. `--warning-foreground` is the one that is near-black in **light** mode too, because yellow cannot carry white text at any usable saturation: white on yellow-600 measured 2.94:1, while the dark ink reaches 4.94:1.
 
 The `*Secondary` variants still use the raw ramp for their 50/100/950 tints. Those are wash tints rather than semantic fills, and tokenising six more steps per colour would cost more than it returns. If you need a fourth semantic colour, add a real token; do not extend the raw-palette pattern.
 
