@@ -14,7 +14,7 @@ Every component rendered, with its source beside it.
 
 <p>
 <a href="https://blode.co/ui">
-<img alt="View demo" src=".github/assets/demo.svg" width="200" />
+<img alt="Browse components" src=".github/assets/demo.svg" width="200" />
 </a>
 </p>
 
