@@ -10,11 +10,6 @@ export default function manifest(): MetadataRoute.Manifest {
     display: "standalone",
     icons: [
       {
-        sizes: "any",
-        src: asset("/icon.svg"),
-        type: "image/svg+xml",
-      },
-      {
         purpose: "maskable",
         sizes: "192x192",
         src: asset("/web-app-manifest-192x192.png"),
@@ -28,7 +23,7 @@ export default function manifest(): MetadataRoute.Manifest {
       },
     ],
     name: "Blode UI",
-    short_name: "Blode UI",
+    short_name: "UI",
     start_url: basePath,
     theme_color: "#ffffff",
   };
