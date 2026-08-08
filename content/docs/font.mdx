@@ -5,7 +5,7 @@ description: Install and use the Glide font system used throughout Blode UI.
 
 ## Font family
 
-The default font family in Blode UI is "Glide", a variable font that supports weights from 400 (regular) to 900 (black) in both roman and italic styles. This versatile font is applied using Tailwind's `font-sans` utility class. The system also ships with "Glide Mono", a monospace companion applied with `font-mono`.
+The default font family in Blode UI is "Glide", a variable font that supports weights from 100 (thin) to 950 (black) in both roman and italic styles. This versatile font is applied using Tailwind's `font-sans` utility class. The system also ships with "Glide Mono", a monospace companion applied with `font-mono`.
 
 ```tsx
 <p className="font-sans">This text uses the Glide font</p>
@@ -34,7 +34,7 @@ const glide = localFont({
     { path: "../public/glide-variable-italic.woff2", style: "italic" },
   ],
   variable: "--font-glide",
-  weight: "400 900",
+  weight: "100 950",
   display: "swap",
 });
 
@@ -67,7 +67,7 @@ In your global CSS file, map `--font-glide` to Tailwind's `--font-sans` and `--f
 
 ### Use it
 
-Glide is now your default sans-serif font, and Glide Mono is your monospace font. Use `font-sans` with any weight from 400 to 900, and `font-mono` for code:
+Glide is now your default sans-serif font, and Glide Mono is your monospace font. Use `font-sans` with any weight from 100 to 950, and `font-mono` for code:
 
 ```tsx
 <p className="font-sans font-medium">Medium text with Glide</p>
@@ -178,6 +178,6 @@ Glide is loaded as a variable font using Next.js's `localFont` utility, with Gli
 
 - Loading the fonts locally rather than from an external CDN
 - Utilizing the variable font format to reduce file size
-- Enabling the full range of weights (400-900) in two files (regular and italic), plus a single Glide Mono file
+- Enabling the full range of weights (100-950) in two files (regular and italic), plus a single Glide Mono file
 
 The fonts are applied site-wide via CSS variables (`font-sans` and `font-mono`), making them consistent across all components and pages.
