@@ -2,7 +2,7 @@ import clsx from "clsx";
 import type { ClassValue } from "clsx";
 import type { Metadata } from "next";
 import { twMerge } from "tailwind-merge";
-import { asset, siteUrl } from "@/config/site";
+import { siteUrl } from "@/config/site";
 
 const WHITESPACE_REGEX = /\s+/u;
 const MULTISPACE_REGEX = /\s+/gu;
@@ -116,7 +116,6 @@ export function constructMetadata({
     ],
     creator: "dillionverma",
     description,
-    icons: asset("/favicon.ico"),
     keywords: ["React", "Tailwind CSS", "Motion", "Landing Page", "Components", "Next.js"],
     metadataBase: new URL(siteUrl),
     openGraph: {

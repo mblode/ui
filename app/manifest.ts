@@ -11,18 +11,19 @@ export default function manifest(): MetadataRoute.Manifest {
     icons: [
       {
         sizes: "any",
-        src: asset("/favicon.ico"),
-        type: "image/x-icon",
+        src: asset("/icon.svg"),
+        type: "image/svg+xml",
       },
       {
         purpose: "maskable",
         sizes: "192x192",
-        src: asset("/android-chrome-192x192.png"),
+        src: asset("/web-app-manifest-192x192.png"),
         type: "image/png",
       },
       {
-        sizes: "256x256",
-        src: asset("/android-chrome-256x256.png"),
+        purpose: "maskable",
+        sizes: "512x512",
+        src: asset("/web-app-manifest-512x512.png"),
         type: "image/png",
       },
     ],
