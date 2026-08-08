@@ -1,277 +1,275 @@
 <!-- Generated from DESIGN.md by scripts/build-design-md.mjs. Edit the source, not this file. -->
-
 ---
-
 version: alpha
 name: Blode UI
 description: Neutral-first design system for the Blode UI registry. Built around Glide typography, soft radii, restrained depth, and source-first shadcn/Base UI components. Colour values mirror the deployed blode.co/ui theme.
 colors:
-background: "#FFFFFF"
-foreground: "#0A0A0A"
-card: "#FFFFFF"
-card-foreground: "#0A0A0A"
-popover: "#FFFFFF"
-popover-foreground: "#0A0A0A"
-primary: "#171717"
-primary-foreground: "#FAFAFA"
-secondary: "#F5F5F5"
-secondary-foreground: "#171717"
-muted: "#F5F5F5"
-muted-foreground: "#737373"
-accent: "#F5F5F5"
-accent-foreground: "#171717"
-destructive: "#E7000B"
-destructive-foreground: "#FFFFFF"
-success: "#008236"
-success-foreground: "#FFFFFF"
-warning: "#D08700"
-warning-foreground: "#432004"
-border: "#E5E5E5"
-input: "#E5E5E5"
-input-hover: "#D4D4D4"
-placeholder-foreground: "#737373"
-ring: "#A1A1A1"
-chart-1: "#8EC5FF"
-chart-2: "#2B7FFF"
-chart-3: "#155DFC"
-chart-4: "#1447E6"
-chart-5: "#193CB8"
-sidebar: "#FAFAFA"
-sidebar-foreground: "#0A0A0A"
-sidebar-primary: "#171717"
-sidebar-primary-foreground: "#FAFAFA"
-sidebar-accent: "#F5F5F5"
-sidebar-accent-foreground: "#171717"
-sidebar-border: "#E5E5E5"
-sidebar-ring: "#A1A1A1"
-surface: "#F8F8F8"
-surface-foreground: "#0A0A0A"
-code: "#F8F8F8"
-code-foreground: "#0A0A0A"
-code-highlight: "#F2F2F2"
-code-number: "#747474"
-selection: "#0A0A0A"
-selection-foreground: "#FFFFFF"
-overlay: "#C1C9D2B3"
+  background: "#FFFFFF"
+  foreground: "#121212"
+  card: "#FFFFFF"
+  card-foreground: "#121212"
+  popover: "#FFFFFF"
+  popover-foreground: "#121212"
+  primary: "#3452EA"
+  primary-foreground: "#FFFFFF"
+  secondary: "#F2F2F2"
+  secondary-foreground: "#121212"
+  muted: "#F2F2F2"
+  muted-foreground: "#696969"
+  accent: "#F2F2F2"
+  accent-foreground: "#121212"
+  destructive: "#E7000B"
+  destructive-foreground: "#FFFFFF"
+  success: "#008236"
+  success-foreground: "#FFFFFF"
+  warning: "#D08700"
+  warning-foreground: "#432004"
+  border: "#ECECEC"
+  input: "#ECECEC"
+  input-hover: "#E2E2E2"
+  placeholder-foreground: "#696969"
+  ring: "#3452EA"
+  chart-1: "#8EC5FF"
+  chart-2: "#2B7FFF"
+  chart-3: "#155DFC"
+  chart-4: "#1447E6"
+  chart-5: "#193CB8"
+  sidebar: "#FAFAFA"
+  sidebar-foreground: "#121212"
+  sidebar-primary: "#3452EA"
+  sidebar-primary-foreground: "#FFFFFF"
+  sidebar-accent: "#F2F2F2"
+  sidebar-accent-foreground: "#121212"
+  sidebar-border: "#ECECEC"
+  sidebar-ring: "#3452EA"
+  surface: "#F2F2F2"
+  surface-foreground: "#121212"
+  code: "#F2F2F2"
+  code-foreground: "#121212"
+  code-highlight: "#E8E8E8"
+  code-number: "#696969"
+  selection: "#121212"
+  selection-foreground: "#FFFFFF"
+  overlay: "#C1C9D2B3"
 typography:
-display-xl:
-fontFamily: Glide
-fontSize: 72px
-fontWeight: 600
-lineHeight: 1
-letterSpacing: -0.04em
-headline-lg:
-fontFamily: Glide
-fontSize: 48px
-fontWeight: 700
-lineHeight: 1.1
-letterSpacing: -0.03em
-headline-md:
-fontFamily: Glide
-fontSize: 30px
-fontWeight: 600
-lineHeight: 1.15
-letterSpacing: -0.02em
-headline-sm:
-fontFamily: Glide
-fontSize: 24px
-fontWeight: 600
-lineHeight: 1.2
-letterSpacing: -0.02em
-title-md:
-fontFamily: Glide
-fontSize: 18px
-fontWeight: 500
-lineHeight: 1.4
-letterSpacing: -0.01em
-body-lg:
-fontFamily: Glide
-fontSize: 18px
-fontWeight: 400
-lineHeight: 1.6
-body-md:
-fontFamily: Glide
-fontSize: 16px
-fontWeight: 400
-lineHeight: 1.6
-body-sm:
-fontFamily: Glide
-fontSize: 14px
-fontWeight: 400
-lineHeight: 1.5
-label-md:
-fontFamily: Glide
-fontSize: 14px
-fontWeight: 500
-lineHeight: 1.2
-label-sm:
-fontFamily: Glide
-fontSize: 12px
-fontWeight: 500
-lineHeight: 1.2
-code-sm:
-fontFamily: "Glide Mono"
-fontSize: 12px
-fontWeight: 400
-lineHeight: 1.4
+  display-xl:
+    fontFamily: Glide
+    fontSize: 72px
+    fontWeight: 600
+    lineHeight: 1
+    letterSpacing: -0.04em
+  headline-lg:
+    fontFamily: Glide
+    fontSize: 48px
+    fontWeight: 700
+    lineHeight: 1.1
+    letterSpacing: -0.03em
+  headline-md:
+    fontFamily: Glide
+    fontSize: 30px
+    fontWeight: 600
+    lineHeight: 1.15
+    letterSpacing: -0.02em
+  headline-sm:
+    fontFamily: Glide
+    fontSize: 24px
+    fontWeight: 600
+    lineHeight: 1.2
+    letterSpacing: -0.02em
+  title-md:
+    fontFamily: Glide
+    fontSize: 18px
+    fontWeight: 500
+    lineHeight: 1.4
+    letterSpacing: -0.01em
+  body-lg:
+    fontFamily: Glide
+    fontSize: 18px
+    fontWeight: 400
+    lineHeight: 1.6
+  body-md:
+    fontFamily: Glide
+    fontSize: 16px
+    fontWeight: 400
+    lineHeight: 1.6
+  body-sm:
+    fontFamily: Glide
+    fontSize: 14px
+    fontWeight: 400
+    lineHeight: 1.5
+  label-md:
+    fontFamily: Glide
+    fontSize: 14px
+    fontWeight: 500
+    lineHeight: 1.2
+  label-sm:
+    fontFamily: Glide
+    fontSize: 12px
+    fontWeight: 500
+    lineHeight: 1.2
+  code-sm:
+    fontFamily: "Glide Mono"
+    fontSize: 12px
+    fontWeight: 400
+    lineHeight: 1.4
 rounded:
-sm: 6px
-md: 8px
-lg: 10px
-xl: 14px
-2xl: 18px
-3xl: 22px
-4xl: 26px
-field: 18px
-full: 9999px
+  sm: 6px
+  md: 8px
+  lg: 10px
+  xl: 14px
+  2xl: 18px
+  3xl: 22px
+  4xl: 26px
+  field: 18px
+  full: 9999px
 spacing:
-xs: 4px
-sm: 8px
-md: 12px
-lg: 16px
-xl: 24px
-2xl: 32px
-3xl: 48px
-container-padding: 16px
-container-padding-lg: 32px
-header-height: 64px
-field-height: 48px
-field-height-sm: 40px
-field-padding-x: 16px
-field-padding-y: 12px
-textarea-min-height: 70px
-code-padding: 16px
+  xs: 4px
+  sm: 8px
+  md: 12px
+  lg: 16px
+  xl: 24px
+  2xl: 32px
+  3xl: 48px
+  container-padding: 16px
+  container-padding-lg: 32px
+  header-height: 64px
+  field-height: 48px
+  field-height-sm: 40px
+  field-padding-x: 16px
+  field-padding-y: 12px
+  textarea-min-height: 70px
+  code-padding: 16px
 components:
-page-surface:
-backgroundColor: "{colors.background}"
-textColor: "{colors.foreground}"
-padding: "{spacing.container-padding}"
-button-primary:
-backgroundColor: "{colors.primary}"
-textColor: "{colors.primary-foreground}"
-typography: "{typography.label-md}"
-rounded: "{rounded.lg}"
-height: "{spacing.field-height-sm}"
-padding: "{spacing.md}"
-button-secondary:
-backgroundColor: "{colors.secondary}"
-textColor: "{colors.secondary-foreground}"
-typography: "{typography.label-md}"
-rounded: "{rounded.lg}"
-height: "{spacing.field-height-sm}"
-padding: "{spacing.md}"
-button-ghost:
-backgroundColor: "{colors.background}"
-textColor: "{colors.foreground}"
-typography: "{typography.label-md}"
-rounded: "{rounded.lg}"
-height: "{spacing.field-height-sm}"
-padding: "{spacing.md}"
-button-destructive:
-backgroundColor: "{colors.destructive}"
-textColor: "{colors.destructive-foreground}"
-typography: "{typography.label-md}"
-rounded: "{rounded.lg}"
-height: "{spacing.field-height-sm}"
-padding: "{spacing.md}"
-input-field:
-backgroundColor: "{colors.card}"
-textColor: "{colors.foreground}"
-typography: "{typography.body-md}"
-rounded: "{rounded.field}"
-height: "{spacing.field-height}"
-padding: "{spacing.field-padding-x}"
-input-placeholder:
-backgroundColor: "{colors.card}"
-textColor: "{colors.placeholder-foreground}"
-typography: "{typography.body-md}"
-rounded: "{rounded.field}"
-height: "{spacing.field-height}"
-card-default:
-backgroundColor: "{colors.card}"
-textColor: "{colors.card-foreground}"
-rounded: "{rounded.xl}"
-padding: "{spacing.lg}"
-popover-surface:
-backgroundColor: "{colors.popover}"
-textColor: "{colors.popover-foreground}"
-rounded: "{rounded.md}"
-padding: "{spacing.lg}"
-dialog-surface:
-backgroundColor: "{colors.background}"
-textColor: "{colors.foreground}"
-rounded: "{rounded.lg}"
-padding: "{spacing.xl}"
-tabs-list:
-backgroundColor: "{colors.muted}"
-rounded: "{rounded.lg}"
-padding: 3px
-tabs-indicator-active:
-backgroundColor: "{colors.background}"
-textColor: "{colors.foreground}"
-typography: "{typography.label-md}"
-rounded: "{rounded.md}"
-sidebar-surface:
-backgroundColor: "{colors.sidebar}"
-textColor: "{colors.sidebar-foreground}"
-menu-item-focus:
-backgroundColor: "{colors.accent}"
-textColor: "{colors.accent-foreground}"
-typography: "{typography.body-sm}"
-rounded: "{rounded.md}"
-padding: 6px
-sidebar-item-hover:
-backgroundColor: "{colors.sidebar-accent}"
-textColor: "{colors.sidebar-accent-foreground}"
-typography: "{typography.body-sm}"
-rounded: "{rounded.md}"
-padding: "{spacing.sm}"
-button-success:
-backgroundColor: "{colors.success}"
-textColor: "{colors.success-foreground}"
-typography: "{typography.label-md}"
-rounded: "{rounded.lg}"
-height: "{spacing.field-height-sm}"
-padding: "{spacing.md}"
-button-warning:
-backgroundColor: "{colors.warning}"
-textColor: "{colors.warning-foreground}"
-typography: "{typography.label-md}"
-rounded: "{rounded.lg}"
-height: "{spacing.field-height-sm}"
-padding: "{spacing.md}"
-badge-secondary:
-backgroundColor: "{colors.secondary}"
-textColor: "{colors.secondary-foreground}"
-typography: "{typography.label-sm}"
-rounded: "{rounded.full}"
-padding: "{spacing.sm}"
-text-muted:
-textColor: "{colors.muted-foreground}"
-typography: "{typography.body-sm}"
-code-block:
-backgroundColor: "{colors.code}"
-textColor: "{colors.code-foreground}"
-typography: "{typography.code-sm}"
-rounded: "{rounded.xl}"
-padding: "{spacing.code-padding}"
-code-line-highlight:
-backgroundColor: "{colors.code-highlight}"
-textColor: "{colors.code-foreground}"
-typography: "{typography.code-sm}"
-rounded: "{rounded.md}"
-padding: "{spacing.xs}"
-code-line-number:
-textColor: "{colors.code-number}"
-typography: "{typography.code-sm}"
-alert-destructive:
-backgroundColor: "{colors.card}"
-textColor: "{colors.destructive}"
-rounded: "{rounded.lg}"
-padding: "{spacing.lg}"
-selection-highlight:
-backgroundColor: "{colors.selection}"
-textColor: "{colors.selection-foreground}"
+  page-surface:
+    backgroundColor: "{colors.background}"
+    textColor: "{colors.foreground}"
+    padding: "{spacing.container-padding}"
+  button-primary:
+    backgroundColor: "{colors.primary}"
+    textColor: "{colors.primary-foreground}"
+    typography: "{typography.label-md}"
+    rounded: "{rounded.lg}"
+    height: "{spacing.field-height-sm}"
+    padding: "{spacing.md}"
+  button-secondary:
+    backgroundColor: "{colors.secondary}"
+    textColor: "{colors.secondary-foreground}"
+    typography: "{typography.label-md}"
+    rounded: "{rounded.lg}"
+    height: "{spacing.field-height-sm}"
+    padding: "{spacing.md}"
+  button-ghost:
+    backgroundColor: "{colors.background}"
+    textColor: "{colors.foreground}"
+    typography: "{typography.label-md}"
+    rounded: "{rounded.lg}"
+    height: "{spacing.field-height-sm}"
+    padding: "{spacing.md}"
+  button-destructive:
+    backgroundColor: "{colors.destructive}"
+    textColor: "{colors.destructive-foreground}"
+    typography: "{typography.label-md}"
+    rounded: "{rounded.lg}"
+    height: "{spacing.field-height-sm}"
+    padding: "{spacing.md}"
+  input-field:
+    backgroundColor: "{colors.card}"
+    textColor: "{colors.foreground}"
+    typography: "{typography.body-md}"
+    rounded: "{rounded.field}"
+    height: "{spacing.field-height}"
+    padding: "{spacing.field-padding-x}"
+  input-placeholder:
+    backgroundColor: "{colors.card}"
+    textColor: "{colors.placeholder-foreground}"
+    typography: "{typography.body-md}"
+    rounded: "{rounded.field}"
+    height: "{spacing.field-height}"
+  card-default:
+    backgroundColor: "{colors.card}"
+    textColor: "{colors.card-foreground}"
+    rounded: "{rounded.xl}"
+    padding: "{spacing.lg}"
+  popover-surface:
+    backgroundColor: "{colors.popover}"
+    textColor: "{colors.popover-foreground}"
+    rounded: "{rounded.md}"
+    padding: "{spacing.lg}"
+  dialog-surface:
+    backgroundColor: "{colors.background}"
+    textColor: "{colors.foreground}"
+    rounded: "{rounded.lg}"
+    padding: "{spacing.xl}"
+  tabs-list:
+    backgroundColor: "{colors.muted}"
+    rounded: "{rounded.lg}"
+    padding: 3px
+  tabs-indicator-active:
+    backgroundColor: "{colors.background}"
+    textColor: "{colors.foreground}"
+    typography: "{typography.label-md}"
+    rounded: "{rounded.md}"
+  sidebar-surface:
+    backgroundColor: "{colors.sidebar}"
+    textColor: "{colors.sidebar-foreground}"
+  menu-item-focus:
+    backgroundColor: "{colors.accent}"
+    textColor: "{colors.accent-foreground}"
+    typography: "{typography.body-sm}"
+    rounded: "{rounded.md}"
+    padding: 6px
+  sidebar-item-hover:
+    backgroundColor: "{colors.sidebar-accent}"
+    textColor: "{colors.sidebar-accent-foreground}"
+    typography: "{typography.body-sm}"
+    rounded: "{rounded.md}"
+    padding: "{spacing.sm}"
+  button-success:
+    backgroundColor: "{colors.success}"
+    textColor: "{colors.success-foreground}"
+    typography: "{typography.label-md}"
+    rounded: "{rounded.lg}"
+    height: "{spacing.field-height-sm}"
+    padding: "{spacing.md}"
+  button-warning:
+    backgroundColor: "{colors.warning}"
+    textColor: "{colors.warning-foreground}"
+    typography: "{typography.label-md}"
+    rounded: "{rounded.lg}"
+    height: "{spacing.field-height-sm}"
+    padding: "{spacing.md}"
+  badge-secondary:
+    backgroundColor: "{colors.secondary}"
+    textColor: "{colors.secondary-foreground}"
+    typography: "{typography.label-sm}"
+    rounded: "{rounded.full}"
+    padding: "{spacing.sm}"
+  text-muted:
+    textColor: "{colors.muted-foreground}"
+    typography: "{typography.body-sm}"
+  code-block:
+    backgroundColor: "{colors.code}"
+    textColor: "{colors.code-foreground}"
+    typography: "{typography.code-sm}"
+    rounded: "{rounded.xl}"
+    padding: "{spacing.code-padding}"
+  code-line-highlight:
+    backgroundColor: "{colors.code-highlight}"
+    textColor: "{colors.code-foreground}"
+    typography: "{typography.code-sm}"
+    rounded: "{rounded.md}"
+    padding: "{spacing.xs}"
+  code-line-number:
+    textColor: "{colors.code-number}"
+    typography: "{typography.code-sm}"
+  alert-destructive:
+    backgroundColor: "{colors.card}"
+    textColor: "{colors.destructive}"
+    rounded: "{rounded.lg}"
+    padding: "{spacing.lg}"
+  selection-highlight:
+    backgroundColor: "{colors.selection}"
+    textColor: "{colors.selection-foreground}"
 ---
 
 # Blode UI
