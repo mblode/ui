@@ -38,9 +38,8 @@ export async function generateMetadata({ params }: DocPageProps): Promise<Metada
   }
 
   const description = seoDescription(doc.description);
-  const title = doc.component
-    ? `${doc.title} | React Component | Blode UI`
-    : `${doc.title} | Blode UI`;
+  // The root layout's title template appends the brand.
+  const title = doc.component ? `${doc.title} | React Component` : doc.title;
 
   return {
     alternates: {
@@ -56,6 +55,7 @@ export async function generateMetadata({ params }: DocPageProps): Promise<Metada
           width: 1200,
         },
       ],
+      siteName: "Matthew Blode",
       title: doc.title,
       type: "article",
       url: absoluteUrl(doc.slug),
@@ -63,7 +63,7 @@ export async function generateMetadata({ params }: DocPageProps): Promise<Metada
     title,
     twitter: {
       card: "summary_large_image",
-      creator: "@mblode",
+      creator: "@mattblode",
       description,
       images: [doc.image],
       title: doc.title,

@@ -6,12 +6,17 @@ import { siteUrl } from "@/config/site";
 import { constructMetadata } from "@/lib/utils";
 import { zoneRootJsonLd } from "@/lib/zone-schema";
 
-export const metadata: Metadata = constructMetadata({
-  description:
-    "An open source registry of accessible React components built with Tailwind CSS v4 and Base UI. Copy the source, own the code.",
-  title: "Blode UI: React and Tailwind CSS component registry",
-  url: siteUrl,
-});
+const title = "Blode UI: React and Tailwind CSS component registry";
+
+export const metadata: Metadata = {
+  ...constructMetadata({
+    description:
+      "An open source registry of accessible React components built with Tailwind CSS v4 and Base UI. Copy the source, own the code.",
+    title,
+    url: siteUrl,
+  }),
+  title: { absolute: title },
+};
 
 export default function Home() {
   return (

@@ -48,6 +48,12 @@ export const metadata: Metadata = {
     image: absoluteUrl("/opengraph-image"),
     title: "Blode UI",
   }),
+  // Pages supply the leaf half of their title; ones that already carry the
+  // brand opt out with `title.absolute`.
+  title: {
+    default: "Blode UI",
+    template: "%s | Blode UI",
+  },
   verification: {
     google: "mFwyBIbXTaKK4uF_NA0MzVWFyY40hPgBjFObg3rje04",
   },

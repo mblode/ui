@@ -7,8 +7,8 @@ export const asset = (path: string) => `${basePath}${path}`;
 export const siteUrl = `https://blode.co${basePath}`;
 
 export const siteConfig = {
-  description: "Beautifully designed landing page components built with React & Tailwind CSS.",
-  keywords: ["React", "Tailwind CSS", "Motion", "Landing Page", "Components", "Next.js"],
+  description:
+    "An open source registry of accessible React components built with Tailwind CSS v4 and Base UI. Copy the source, own the code.",
   links: {
     author: "https://blode.co",
     github: "https://github.com/mblode/blode-ui",

@@ -36,7 +36,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   ogUrl.searchParams.set("description", page.description || siteConfig.description);
 
   const description = seoDescription(page.description || siteConfig.description);
-  const title = `${page.title} | ${siteConfig.name}`;
 
   return {
     alternates: {
@@ -52,13 +51,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
           width: 1200,
         },
       ],
+      siteName: "Matthew Blode",
       title: page.title,
       type: "article",
       url: absoluteUrl(page.slug),
     },
-    title,
+    // The root layout's title template appends the brand.
+    title: page.title,
     twitter: {
       card: "summary_large_image",
+      creator: "@mattblode",
       description,
       images: [ogUrl.toString()],
       title: page.title,

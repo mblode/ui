@@ -92,8 +92,8 @@ export function absoluteUrl(path: string) {
 }
 
 export function constructMetadata({
-  title = "Blode UI - Modern React + Tailwind CSS components",
-  description = "Blode UI is a curated collection of the best landing page components built using React + Tailwind CSS + Motion",
+  title = "Blode UI: React and Tailwind CSS component registry",
+  description = "An open source registry of accessible React components built with Tailwind CSS v4 and Base UI. Copy the source, own the code.",
   image = absoluteUrl("/opengraph-image"),
   url,
   ...props
@@ -110,13 +110,13 @@ export function constructMetadata({
     },
     authors: [
       {
-        name: "dillionverma",
-        url: "https://twitter.com/dillionverma",
+        name: "Matthew Blode",
+        url: "https://blode.co",
       },
     ],
-    creator: "dillionverma",
+    creator: "Matthew Blode",
     description,
-    keywords: ["React", "Tailwind CSS", "Motion", "Landing Page", "Components", "Next.js"],
+    keywords: ["React", "Tailwind CSS", "Base UI", "Component Registry", "Components", "Next.js"],
     metadataBase: new URL(siteUrl),
     openGraph: {
       description,
@@ -127,6 +127,9 @@ export function constructMetadata({
           width: 1200,
         },
       ],
+      // Every zone is a path on blode.co, so the site is the person, not the
+      // product. The product name already ships in og:title.
+      siteName: "Matthew Blode",
       title,
       type: "website",
       // Only set when a caller supplies its own route, so inheriting pages
@@ -136,7 +139,7 @@ export function constructMetadata({
     title,
     twitter: {
       card: "summary_large_image",
-      creator: "@dillionverma",
+      creator: "@mattblode",
       description,
       images: [image],
       title,
