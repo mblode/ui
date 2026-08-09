@@ -36,6 +36,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   ogUrl.searchParams.set("description", page.description || siteConfig.description);
 
   const description = seoDescription(page.description || siteConfig.description);
+  // Title templates never reach og:title or twitter:title, and og:site_name is
+  // the person, not the product — so a card title has to name the product itself.
+  const cardTitle = `${page.title} | ${siteConfig.name}`;
 
   return {
     alternates: {
@@ -52,7 +55,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         },
       ],
       siteName: "Matthew Blode",
-      title: page.title,
+      title: cardTitle,
       type: "article",
       url: absoluteUrl(page.slug),
     },
@@ -63,7 +66,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       creator: "@mattblode",
       description,
       images: [ogUrl.toString()],
-      title: page.title,
+      title: cardTitle,
     },
   };
 }

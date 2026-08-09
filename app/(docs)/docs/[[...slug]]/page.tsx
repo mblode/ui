@@ -40,6 +40,9 @@ export async function generateMetadata({ params }: DocPageProps): Promise<Metada
   const description = seoDescription(doc.description);
   // The root layout's title template appends the brand.
   const title = doc.component ? `${doc.title} | React Component` : doc.title;
+  // Title templates never reach og:title or twitter:title, and og:site_name is
+  // the person, not the product — so a card title has to name the product itself.
+  const cardTitle = `${doc.title} | Blode UI`;
 
   return {
     alternates: {
@@ -56,7 +59,7 @@ export async function generateMetadata({ params }: DocPageProps): Promise<Metada
         },
       ],
       siteName: "Matthew Blode",
-      title: doc.title,
+      title: cardTitle,
       type: "article",
       url: absoluteUrl(doc.slug),
     },
@@ -66,7 +69,7 @@ export async function generateMetadata({ params }: DocPageProps): Promise<Metada
       creator: "@mattblode",
       description,
       images: [doc.image],
-      title: doc.title,
+      title: cardTitle,
     },
   };
 }
