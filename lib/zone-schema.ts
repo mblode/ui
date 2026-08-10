@@ -49,7 +49,10 @@ export const zoneRootJsonLd = {
       "@id": breadcrumbId,
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", item: `${host}/`, name: "Home", position: 1 },
+        // Named for the person, not "Home", and matching the visible trail in
+        // `components/zone-breadcrumb.tsx` exactly — Google treats a mismatch
+        // between the two as a markup error.
+        { "@type": "ListItem", item: `${host}/`, name: "Matthew Blode", position: 1 },
         {
           "@type": "ListItem",
           item: `${host}/projects`,

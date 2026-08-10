@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/json-ld";
 import { ShowcaseGrid } from "@/components/sections/showcase-grid";
 import ShowcaseHero from "@/components/sections/showcase-hero";
+import { ZoneBreadcrumb } from "@/components/zone-breadcrumb";
 import { siteUrl } from "@/config/site";
 import { constructMetadata } from "@/lib/utils";
 import { zoneRootJsonLd } from "@/lib/zone-schema";
@@ -25,6 +26,8 @@ export default function Home() {
       <div className="h-(--top-spacing) shrink-0" />
       <div className="xl:pr-(--sidebar-width)">
         <div className="mx-auto flex w-full min-w-0 max-w-[40rem] flex-col gap-6 py-6 lg:py-8">
+          {/* Root page only — the docs and marketing pages have their own navigation. */}
+          <ZoneBreadcrumb product="Blode UI" />
           <ShowcaseHero />
         </div>
       </div>
