@@ -100,12 +100,10 @@ const nextConfig: NextConfig = {
       // Machine-readable surfaces: the registry the shadcn CLI installs from,
       // the agent discovery documents, and the share cards. All are read by
       // other origins, so they opt out of the same-origin CORP above.
-      ...["/r/:path*", "/.well-known/:path*", "/opengraph-image", "/twitter-image"].map(
-        (source) => ({
-          headers: [{ key: "Cross-Origin-Resource-Policy", value: "cross-origin" }],
-          source,
-        }),
-      ),
+      ...["/r/:path*", "/.well-known/:path*", "/opengraph-image", "/og"].map((source) => ({
+        headers: [{ key: "Cross-Origin-Resource-Policy", value: "cross-origin" }],
+        source,
+      })),
       {
         headers: [
           { key: "Link", value: AGENT_DISCOVERY_LINKS },
