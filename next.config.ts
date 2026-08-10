@@ -11,6 +11,65 @@ const AGENT_DISCOVERY_LINKS = [
   `<${basePath}/sitemap.xml>; rel="sitemap"; type="application/xml"`,
 ].join(", ");
 
+// The PostHog ingestion host, set per Vercel project to our reverse proxy
+// (https://r.blode.co). posthog-js lazy-loads chunks from it, so it belongs in
+// script-src as well as connect-src.
+const posthogOrigin = process.env.NEXT_PUBLIC_POSTHOG_HOST ?? "";
+
+/*
+ * Every relaxation below was measured against a production build in a real
+ * browser, not reasoned about. Do not tighten one without reloading /ui/docs
+ * and a component page and re-reading the console.
+ *
+ * - **`'unsafe-eval'` in production.** `components/mdx-components.tsx` renders
+ *   docs through `useMDXComponent`, which compiles the MDX source into a
+ *   component in the browser. That is a string eval, so every docs page throws
+ *   and renders nothing without it. This is the one directive here that costs
+ *   real protection; the way to drop it is to move MDX compilation to build
+ *   time, not to delete the entry.
+ * - **lmsqueezy.com** is the Lemon Squeezy affiliate script in
+ *   `components/analytics.tsx`. Listed to preserve current behaviour; if that
+ *   component goes, this entry goes with it.
+ * - `frame-src 'self'` and X-Frame-Options SAMEORIGIN, because every component
+ *   demo is an iframe of this app's own /view route (components/component-preview.tsx).
+ *   DENY would blank all of them.
+ * - fonts.googleapis.com in style-src and fonts.gstatic.com in font-src, because
+ *   the theme visualiser injects a Google Fonts stylesheet at runtime for any
+ *   preview font that is not Glide.
+ * - `blob:` in img-src, for the object URLs registry/default/ui/file-thumbnail.tsx
+ *   creates to preview a picked file.
+ */
+const contentSecurityPolicy = [
+  "default-src 'self'",
+  // 'unsafe-inline' covers Next's bootstrap and the JSON-LD block. 'unsafe-eval'
+  // is the runtime MDX compiler, so unlike the other zones it is not dev-only.
+  `script-src 'self' 'unsafe-inline' 'unsafe-eval' ${posthogOrigin} https://lmsqueezy.com`,
+  `connect-src 'self' ${posthogOrigin} https://lmsqueezy.com`,
+  "img-src 'self' data: blob: https://images.unsplash.com https://avatar.vercel.sh https://avatars.githubusercontent.com",
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  "font-src 'self' https://fonts.gstatic.com",
+  "frame-src 'self'",
+  "worker-src 'self' blob:",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "frame-ancestors 'self'",
+  "upgrade-insecure-requests",
+].join("; ");
+
+const securityHeaders = [
+  { key: "Content-Security-Policy", value: contentSecurityPolicy },
+  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+  { key: "X-Frame-Options", value: "SAMEORIGIN" },
+  { key: "X-Content-Type-Options", value: "nosniff" },
+  {
+    key: "Permissions-Policy",
+    value: "camera=(), microphone=(), geolocation=(), payment=()",
+  },
+  { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
+  { key: "Cross-Origin-Resource-Policy", value: "same-origin" },
+];
+
 const nextConfig: NextConfig = {
   assetPrefix: basePath,
   basePath,
@@ -30,7 +89,26 @@ const nextConfig: NextConfig = {
     useOffline: true,
   },
   async headers() {
+    // Every matching rule applies in array order and a later value wins per
+    // header key, so the catch-all comes first and per-route rules after it.
+    //
+    // `/:path*`, not `/(.*)`. Next prefixes basePath onto the source, and
+    // `/ui/(.*)` needs the separator, so it misses the zone root: the one URL
+    // blode.co actually links to. `/:path*` matches `/ui` as well.
     return [
+      {
+        headers: securityHeaders,
+        source: "/:path*",
+      },
+      // Machine-readable surfaces: the registry the shadcn CLI installs from,
+      // the agent discovery documents, and the share cards. All are read by
+      // other origins, so they opt out of the same-origin CORP above.
+      ...["/r/:path*", "/.well-known/:path*", "/opengraph-image", "/twitter-image"].map(
+        (source) => ({
+          headers: [{ key: "Cross-Origin-Resource-Policy", value: "cross-origin" }],
+          source,
+        }),
+      ),
       {
         headers: [
           { key: "Link", value: AGENT_DISCOVERY_LINKS },
