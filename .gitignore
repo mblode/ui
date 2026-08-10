@@ -43,3 +43,6 @@ next-env.d.ts
 
 # generated .well-known skill discovery
 public/.well-known/agent-skills/
+
+# path lists content-collections writes for proxy.ts
+lib/generated/

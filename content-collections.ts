@@ -1,3 +1,4 @@
+import { mkdir, writeFile } from "node:fs/promises";
 import { defineCollection, defineConfig } from "@content-collections/core";
 import { compileMDX } from "@content-collections/mdx";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
@@ -17,6 +18,36 @@ import { rehypeNpmCommand } from "./lib/rehype-npm-command";
 const EVENT_META_REGEX = /event="(?<event>[^"]*)"/u;
 const INDEX_PATH_SUFFIX_REGEX = /(?:^|\/)index$/u;
 const WINDOWS_PATH_SEPARATOR_REGEX = /\\/gu;
+
+/*
+ * `proxy.ts` has to know whether a path is a real page before Next routes the
+ * request. Under Cache Components an unmatched param is answered with the
+ * route's prerendered App Shell and a 200, and the `notFound()` inside the
+ * Suspense boundary can no longer change a status that has already been sent:
+ * `/ui/<anything>` was a soft 404. The proxy cannot import these collections to
+ * find out, because the generated module carries every doc's compiled MDX
+ * (11 MB), so each build drops the slugs on their own here.
+ */
+const GENERATED_DIR = "lib/generated";
+
+// Both hooks are attached after `defineCollection` returns, not passed to it.
+// `onSuccess` is typed against the collection's own transformed document, so
+// inside the call it is an inference site for that type: annotate the parameter
+// and every `Doc` and `Page` in the repo collapses to this shape, leave it
+// inferred and the type is circular. Assigning afterwards is neither.
+interface Routable {
+  published?: boolean;
+  slug: string;
+}
+
+async function writeKnownPaths(file: string, documents: Routable[]) {
+  const paths = documents
+    .filter((document) => document.published !== false)
+    .map((document) => document.slug)
+    .toSorted();
+  await mkdir(GENERATED_DIR, { recursive: true });
+  await writeFile(`${GENERATED_DIR}/${file}`, `${JSON.stringify(paths, null, 2)}\n`);
+}
 
 const prettyCodeOptions: Options = {
   getHighlighter: (options) =>
@@ -216,6 +247,9 @@ const documents = defineCollection({
     };
   },
 });
+
+pages.onSuccess = (items: Routable[]) => writeKnownPaths("page-paths.json", items);
+documents.onSuccess = (items: Routable[]) => writeKnownPaths("doc-paths.json", items);
 
 export default defineConfig({
   content: [documents, pages],
