@@ -12,7 +12,7 @@ import { absoluteUrl, seoDescription } from "@/lib/utils";
  * fix that either: Next only carries a middleware status through for redirects,
  * so on Vercel the rewritten 404 page came back 200 as well.
  *
- * Three content files do not need a dynamic segment. With one route each, an
+ * The content files here do not need a dynamic segment. With one route each, an
  * unknown path matches nothing, and Vercel answers it the same way it answers
  * `/icons/icons` and `/glide/glide`: a real 404.
  */
