@@ -1,7 +1,6 @@
 import { Provider as JotaiProvider } from "jotai";
 import localFont from "next/font/local";
 import Script from "next/script";
-import { Analytics } from "@/components/analytics";
 import { ThemeProvider } from "@/components/theme-provider";
 import { absoluteUrl, cn, constructMetadata } from "@/lib/utils";
 import { Toaster } from "@/registry/default/ui/sonner";
@@ -88,7 +87,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <TooltipProvider>
               {children}
               <Toaster />
-              <Analytics />
             </TooltipProvider>
           </ThemeProvider>
         </JotaiProvider>

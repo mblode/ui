@@ -27,9 +27,6 @@ const posthogOrigin = process.env.NEXT_PUBLIC_POSTHOG_HOST ?? "";
  *   and renders nothing without it. This is the one directive here that costs
  *   real protection; the way to drop it is to move MDX compilation to build
  *   time, not to delete the entry.
- * - **lmsqueezy.com** is the Lemon Squeezy affiliate script in
- *   `components/analytics.tsx`. Listed to preserve current behaviour; if that
- *   component goes, this entry goes with it.
  * - `frame-src 'self'` and X-Frame-Options SAMEORIGIN, because every component
  *   demo is an iframe of this app's own /view route (components/component-preview.tsx).
  *   DENY would blank all of them.
@@ -43,8 +40,8 @@ const contentSecurityPolicy = [
   "default-src 'self'",
   // 'unsafe-inline' covers Next's bootstrap and the JSON-LD block. 'unsafe-eval'
   // is the runtime MDX compiler, so unlike the other zones it is not dev-only.
-  `script-src 'self' 'unsafe-inline' 'unsafe-eval' ${posthogOrigin} https://lmsqueezy.com`,
-  `connect-src 'self' ${posthogOrigin} https://lmsqueezy.com`,
+  `script-src 'self' 'unsafe-inline' 'unsafe-eval' ${posthogOrigin}`,
+  `connect-src 'self' ${posthogOrigin}`,
   "img-src 'self' data: blob: https://images.unsplash.com https://avatar.vercel.sh https://avatars.githubusercontent.com",
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src 'self' https://fonts.gstatic.com",
