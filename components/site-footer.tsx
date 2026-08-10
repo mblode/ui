@@ -16,9 +16,18 @@ export const SiteFooter = () => (
         href={siteConfig.links.author}
         rel="author"
       >
+        {/*
+          alt="" because the link's own text already reads "Matthew Blode".
+          Any alt here would make the accessible name "Matthew Blode Matthew
+          Blode". An image adjacent to its own label is decorative.
+
+          This comment sits ABOVE the directive below deliberately: that is a
+          next-line directive, so anything between it and the <img> detaches it
+          and no-img-element starts firing again.
+        */}
         {/* eslint-disable-next-line @next/next/no-img-element -- self-hosted 20px avatar, plain img avoids next/image overhead */}
         <img
-          alt="Matthew Blode"
+          alt=""
           className="rounded-full"
           height={20}
           loading="lazy"
