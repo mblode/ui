@@ -3,16 +3,23 @@ import { JsonLd } from "@/components/json-ld";
 import { ShowcaseGrid } from "@/components/sections/showcase-grid";
 import ShowcaseHero from "@/components/sections/showcase-hero";
 import { ZoneBreadcrumb } from "@/components/zone-breadcrumb";
-import { siteUrl } from "@/config/site";
+import { siteConfig, siteUrl } from "@/config/site";
 import { constructMetadata } from "@/lib/utils";
 import { zoneRootJsonLd } from "@/lib/zone-schema";
 
-const title = "Blode UI: React and Tailwind CSS component registry";
+// Ranked at position 8.6 on 73 impressions for three months and earned no
+// clicks at all, so the old snippet was losing the choice on the page it
+// already won. "shadcn" is the word people actually search, and it is accurate:
+// this is a shadcn-compatible registry. `title.absolute` opts out of the
+// layout's "%s | Blode UI" template, so 55 characters is what Google renders.
+const title = "Blode UI: shadcn-style React components for Tailwind v4";
 
 export const metadata: Metadata = {
+  // Read from the config rather than repeated here, because `zoneRootJsonLd`
+  // renders on this same page from `siteConfig.description`. A second copy would
+  // let the meta description and the WebPage node drift apart.
   ...constructMetadata({
-    description:
-      "An open source registry of accessible React components built with Tailwind CSS v4 and Base UI. Copy the source, own the code.",
+    description: siteConfig.description,
     title,
     url: siteUrl,
   }),

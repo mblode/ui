@@ -2,7 +2,7 @@ import clsx from "clsx";
 import type { ClassValue } from "clsx";
 import type { Metadata } from "next";
 import { twMerge } from "tailwind-merge";
-import { siteUrl } from "@/config/site";
+import { siteConfig, siteUrl } from "@/config/site";
 
 const WHITESPACE_REGEX = /\s+/u;
 const MULTISPACE_REGEX = /\s+/gu;
@@ -92,8 +92,11 @@ export function absoluteUrl(path: string) {
 }
 
 export function constructMetadata({
-  title = "Blode UI: React and Tailwind CSS component registry",
-  description = "An open source registry of accessible React components built with Tailwind CSS v4 and Base UI. Copy the source, own the code.",
+  // Read from the config, not repeated. These defaults used to be copies of the
+  // zone's title and description, so rewriting the originals left the wrong copy
+  // sitting behind every caller that omits one.
+  title = siteConfig.name,
+  description = siteConfig.description,
   image = absoluteUrl("/opengraph-image"),
   url,
   ...props

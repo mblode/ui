@@ -8,7 +8,7 @@ export const siteUrl = `https://blode.co${basePath}`;
 
 export const siteConfig = {
   description:
-    "An open source registry of accessible React components built with Tailwind CSS v4 and Base UI. Copy the source, own the code.",
+    "An open-source shadcn registry of accessible React components built on Base UI and Tailwind CSS v4. Install with one command, then own the source.",
   links: {
     author: "https://blode.co",
     github: "https://github.com/mblode/blode-ui",
