@@ -1,34 +1,16 @@
 ---
 title: Introduction
-description: An opinionated shadcn/ui registry with beautifully designed components you can customise, extend, and own.
+description: An open-source shadcn registry of React components built on Base UI and Tailwind CSS v4.
 ---
 
-Blode UI is an opinionated [shadcn/ui](https://ui.shadcn.com) component registry built by [Matthew Blode](https://blode.co), with a focus on good taste, care, and craft. Open source. Open code.
+Blode UI is a [shadcn/ui](https://ui.shadcn.com) registry built by [Matthew Blode](https://blode.co). Register the `@blode` namespace once, then pull components in one at a time. Each one lands in your codebase as source you own and edit, not as a package dependency.
 
-## Quick Start
+- **Accessibility from [Base UI](https://base-ui.com).** Keyboard navigation, focus management, and ARIA come from the primitive, not from markup written by hand for each component.
+- **Tailwind v4 tokens.** Colours, radii, and field metrics are CSS custom properties, so you can retheme a component without forking it.
+- **Open code.** No wrapper API to learn and no release to wait on. Change the file.
 
-```bash
-npx shadcn@latest init
-```
+## Get started
 
-Add the Blode registry, the design system, then your first component:
+[Installation](/docs/installation) has the setup for a new project, an existing shadcn project, and each supported framework.
 
-```bash
-npx shadcn@latest registry add @blode=https://blode.co/ui/r/{name}.json
-npx shadcn@latest add @blode/ui
-npx shadcn@latest add @blode/button
-```
-
-See the full guide at [Installation](/docs/installation).
-
-Using Claude Code or another AI assistant? See [Skills](/docs/skills).
-
-## Registry
-
-The shadcn registry is hosted at [blode.co/ui](https://blode.co/ui).
-
-## Contact
-
-- Website: [blode.co](https://blode.co)
-- Email: [m@blode.co](mailto:m@blode.co)
-- GitHub: [github.com/mblode](https://github.com/mblode)
+Working with Claude Code or another AI assistant? Install the [Blode UI skill](/docs/skills) so it writes the right commands and matches the design system.

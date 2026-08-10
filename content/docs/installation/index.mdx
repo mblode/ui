@@ -1,46 +1,17 @@
 ---
 title: Installation
-description: How to install dependencies and structure your app.
+description: Register the @blode namespace, add the design system, and install your first component.
 ---
 
-<Callout>
-
-**Note:** Blode UI is a third-party shadcn registry hosted at [blode.co/ui](https://blode.co/ui). The setup flow is the same as [shadcn/ui](https://ui.shadcn.com/docs/installation) with one extra step: add the registry namespace.
-
-</Callout>
-
-## Fastest path
-
-Point `init` straight at the design system. It registers the `@blode` namespace for you, sets `blode-icons-react` as the icon library, and writes Blode's tokens into your CSS in one step:
-
-```bash
-npx shadcn@latest init https://blode.co/ui/r/ui.json
-npx shadcn@latest add @blode/button
-```
-
-Use the steps below instead if you already have a shadcn project.
+Blode UI installs through the [shadcn CLI](https://ui.shadcn.com/docs/cli). Point `init` at the design system and it registers the `@blode` namespace, sets `blode-icons-react` as the icon library, and writes Blode's tokens into your CSS in one step.
 
 <Steps>
 
-### Create or initialise a project
+### Set up the project
 
 ```bash
-npx shadcn@latest init
+npx shadcn@latest init https://blode.co/ui/r/ui.json
 ```
-
-### Add the Blode registry
-
-```bash
-npx shadcn@latest registry add @blode=https://blode.co/ui/r/{name}.json
-```
-
-### Add the design system
-
-```bash
-npx shadcn@latest add @blode/ui
-```
-
-This writes Blode's design tokens into your CSS. Skip it and components still install, but they render unstyled: the variants compile to `rounded-[var(--field-radius)]` and `h-[var(--field-height)]`, and an undefined custom property resolves to nothing.
 
 ### Add a component
 
@@ -48,9 +19,7 @@ This writes Blode's design tokens into your CSS. Skip it and components still in
 npx shadcn@latest add @blode/button
 ```
 
-### Import component
-
-The command above will add the `Button` component to your project. You can then import it like this:
+### Import it
 
 ```tsx {1,6} showLineNumbers
 import { Button } from "@/components/ui/button";
@@ -61,3 +30,28 @@ export default function Home() {
 ```
 
 </Steps>
+
+## Already running shadcn
+
+Register the namespace and add the design system yourself, so `init` leaves your existing `components.json` alone:
+
+```bash
+npx shadcn@latest registry add @blode=https://blode.co/ui/r/{name}.json
+npx shadcn@latest add @blode/ui
+```
+
+Type `{name}` literally. It is the registry's URL template, and the CLI substitutes the component name on each request.
+
+`@blode/ui` is the design system, and components depend on it. Their variants compile to `rounded-[var(--field-radius)]` and `h-[var(--field-height)]`; without the tokens those custom properties resolve to nothing and everything renders unstyled.
+
+## Framework guides
+
+Step-by-step setup for a specific stack:
+
+- [Next.js](/docs/installation/next)
+- [Vite](/docs/installation/vite)
+- [Remix](/docs/installation/remix)
+- [Astro](/docs/installation/astro)
+- [Laravel](/docs/installation/laravel)
+- [Gatsby](/docs/installation/gatsby)
+- [Manual](/docs/installation/manual)
