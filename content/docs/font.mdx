@@ -85,8 +85,8 @@ Glide is a variable font shipped as two files: regular and italic. Each contains
 Glide Mono is the monospace companion to Glide, shipped as a single regular-weight file. It is applied with Tailwind's `font-mono` utility class and is ideal for code, tabular data, and anywhere fixed-width characters improve alignment.
 
 <div className="space-y-2">
-  <div className="text-sm text-muted-foreground">Glide Mono</div>
-  <p className="font-mono text-xl">The quick brown fox jumps over the lazy dog.</p>
+  <div className="text-muted-foreground text-sm">Glide Mono</div>
+  <div className="font-mono text-xl">The quick brown fox jumps over the lazy dog.</div>
   <pre className="font-mono text-sm">{`const glide = "mono";`}</pre>
 </div>
 
@@ -96,32 +96,27 @@ Explore how Glide looks at different font weights:
 
 <div className="space-y-6">
   <div>
-    <div className="text-sm text-muted-foreground mb-2">Font weight: 400 (Regular)</div>
+    <div className="mb-2 text-muted-foreground text-sm">Font weight: 400 (Regular)</div>
     <p className="font-sans font-normal text-xl">The quick brown fox jumps over the lazy dog.</p>
   </div>
-
-<div>
-  <div className="text-sm text-muted-foreground mb-2">Font weight: 500 (Medium)</div>
-  <p className="font-sans font-medium text-xl">The quick brown fox jumps over the lazy dog.</p>
-</div>
-
-<div>
-  <div className="text-sm text-muted-foreground mb-2">Font weight: 600 (Semibold)</div>
-  <p className="font-sans font-semibold text-xl">The quick brown fox jumps over the lazy dog.</p>
-</div>
-
-<div>
-  <div className="text-sm text-muted-foreground mb-2">Font weight: 700 (Bold)</div>
-  <p className="font-sans font-bold text-xl">The quick brown fox jumps over the lazy dog.</p>
-</div>
-
-<div>
-  <div className="text-sm text-muted-foreground mb-2">Font weight: 800 (Extrabold)</div>
-  <p className="font-sans font-extrabold text-xl">The quick brown fox jumps over the lazy dog.</p>
-</div>
-
   <div>
-    <div className="text-sm text-muted-foreground mb-2">Font weight: 900 (Black)</div>
+    <div className="mb-2 text-muted-foreground text-sm">Font weight: 500 (Medium)</div>
+    <p className="font-sans font-medium text-xl">The quick brown fox jumps over the lazy dog.</p>
+  </div>
+  <div>
+    <div className="mb-2 text-muted-foreground text-sm">Font weight: 600 (Semibold)</div>
+    <p className="font-sans font-semibold text-xl">The quick brown fox jumps over the lazy dog.</p>
+  </div>
+  <div>
+    <div className="mb-2 text-muted-foreground text-sm">Font weight: 700 (Bold)</div>
+    <p className="font-sans font-bold text-xl">The quick brown fox jumps over the lazy dog.</p>
+  </div>
+  <div>
+    <div className="mb-2 text-muted-foreground text-sm">Font weight: 800 (Extrabold)</div>
+    <p className="font-sans font-extrabold text-xl">The quick brown fox jumps over the lazy dog.</p>
+  </div>
+  <div>
+    <div className="mb-2 text-muted-foreground text-sm">Font weight: 900 (Black)</div>
     <p className="font-sans font-black text-xl">The quick brown fox jumps over the lazy dog.</p>
   </div>
 </div>
@@ -131,28 +126,28 @@ Explore how Glide looks at different font weights:
 Blode UI provides consistent styling for all heading levels:
 
 <div className="space-y-4">
-  <h2 className="h1">Heading 1</h2>
-  <h2 className="h2">Heading 2</h2>
-  <h3 className="h3">Heading 3</h3>
-  <h4 className="h4">Heading 4</h4>
-  <h5 className="h5">Heading 5</h5>
-  <h6 className="h6">Heading 6</h6>
+  <div className="h1">Heading 1</div>
+  <div className="h2">Heading 2</div>
+  <div className="h3">Heading 3</div>
+  <div className="h4">Heading 4</div>
+  <div className="h5">Heading 5</div>
+  <div className="h6">Heading 6</div>
 </div>
 
 ## Paragraph text
 
 The default paragraph text uses the Glide font at weight 400 (regular):
 
-<p>
+<div className="leading-relaxed [&:not(:first-child)]:mt-6">
   This is a standard paragraph with the Glide font. The font provides excellent readability at
   various sizes while maintaining a modern, clean aesthetic. The variable font technology ensures
   that characters remain crisp and balanced across different weights and sizes.
-</p>
+</div>
 
-<p className="text-sm">
+<div className="text-sm leading-relaxed [&:not(:first-child)]:mt-6">
   This is a smaller paragraph showing how Glide performs at reduced sizes. Even at smaller sizes,
   the font maintains its legibility and character.
-</p>
+</div>
 
 ## Usage in Tailwind
 

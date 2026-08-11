@@ -12,7 +12,7 @@ export function FontWeightSlider() {
           className="font-medium text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
           htmlFor="font-weight-slider"
         >
-          Font Weight: <span>{weight}</span>
+          {`Font Weight: ${weight}`}
         </label>
         <input
           aria-label="Font weight"
