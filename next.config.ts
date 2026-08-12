@@ -71,6 +71,8 @@ const nextConfig: NextConfig = {
   assetPrefix: basePath,
   basePath,
   cacheComponents: true,
+  // Bust stale client chunks after a deploy; Vercel sets this at build time.
+  deploymentId: process.env.VERCEL_DEPLOYMENT_ID,
   devIndicators: false,
   // next.config runs in Node at build time, outside any prerender, so it can
   // read the clock. The sitemap can't: Cache Components prerenders it, and
