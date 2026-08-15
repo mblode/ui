@@ -1,4 +1,6 @@
 import { renderZoneOgImage } from "@/app/og-image-shared";
+import { OgLogo } from "@/app/og-logo";
+
 import { siteConfig } from "@/config/site";
 
 export { OG_CONTENT_TYPE as contentType, OG_SIZE as size } from "@/app/og-image-shared";
@@ -13,9 +15,9 @@ export const alt = "Blode UI";
  */
 export default function OpengraphImage() {
   return renderZoneOgImage({
-    badge: "UI",
-    eyebrow: "blode.co/ui",
-    subtitle: "An opinionated shadcn/ui registry.",
+    background: "#1c1c1e",
+    color: "#ffffff",
+    logo: <OgLogo />,
     title: siteConfig.name,
   });
 }
