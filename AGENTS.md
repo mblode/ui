@@ -92,13 +92,20 @@ Do not "fix" these back toward upstream.
 
 ## Registry directory
 
-`@blode` is not yet listed in shadcn's directory (the PR to `shadcn-ui/ui` is open, unmerged), so `shadcn add @blode/button` cannot resolve on its own and all install docs must keep the `registry add` step. Confirm current state before changing them:
+`@blode` is not yet listed in shadcn's directory, so `shadcn add @blode/button` cannot resolve on its own and all install docs must keep the `registry add` step. Confirm current state before changing them:
 
 ```bash
 curl -s https://ui.shadcn.com/r/registries.json | grep -c blode
 ```
 
-Requirements if review comes back: open source, valid schema, flat registry (`/registry.json` and `/{name}.json` at the registry root), and no `content` inlined in `registry.json`'s `files` arrays. The legacy `/r/styles/default/` mirror is the most likely objection; 77 component docs still point at it, and every one has a working flat equivalent.
+Submission history, because this has now been wrong in this file twice:
+
+- [#10340](https://github.com/shadcn-ui/ui/pull/10340), Apr 2026. Closed by Matthew in Jul 2026, not by a maintainer: it drew no review and no objection. It also submitted the wrong name (`@blode-ui`) and the vanity host (`ui.blode.co`).
+- [#11543](https://github.com/shadcn-ui/ui/pull/11543), Aug 2026. Same entry with `@blode` and `https://blode.co/ui`. #10340 could not be reopened because its fork had been deleted.
+
+Checked Aug 2026 against the 280 live entries: every one carries a `logo`, and `author` is optional. Entries sort alphabetically, so `@blode` sits between `@blockus` and `@boldkit`.
+
+Requirements if review comes back: open source, valid schema, and no `content` inlined in `registry.json`'s `files` arrays. Verified: `registry.json` serves 161 items with `$schema` and no inlined content. The "flat registry at the root" requirement is not enforced in practice, since neither `@7ovr` nor `@23rd` serves a root `/registry.json`. The legacy `/r/styles/default/` mirror is still the most likely objection; 77 component docs point at it, and every one has a working flat equivalent.
 
 <!-- BEGIN:nextjs-agent-rules -->
 
