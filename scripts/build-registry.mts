@@ -21,6 +21,9 @@ interface NormalizedRegistryFile {
 }
 
 const REGISTRY_PATH = path.join(process.cwd(), "public/r");
+/** Served at blode.co/ui/registry.json. Formatted alongside REGISTRY_PATH so
+ * `npm run check` stays green after a rebuild. */
+const PUBLIC_REGISTRY_JSON = path.join(process.cwd(), "public/registry.json");
 const REGISTRY_SOURCE_PATH = path.join(process.cwd(), "__registry__");
 
 const REGISTRY_INDEX_WHITELIST = new Set<z.infer<typeof registryItemTypeSchema>>([
@@ -360,11 +363,21 @@ async function buildRegistryJson(registry: Registry): Promise<void> {
     name: registry.name,
   };
 
-  await fs.writeFile(
-    path.join(REGISTRY_PATH, "registry.json"),
-    JSON.stringify(payload, null, 2),
-    "utf-8",
-  );
+  const json = JSON.stringify(payload, null, 2);
+
+  // Written to both paths deliberately. `public/r/registry.json` is the one the
+  // shadcn CLI resolves against, and `public/registry.json` is what
+  // blode.co/ui/registry.json serves, which is the URL a directory reviewer
+  // opens first.
+  //
+  // Both were hand-maintained copies until now, and both had drifted: they
+  // carried `"name": "blode/ui"` long after registry/index.ts moved to the bare
+  // `blode` token, and neither had a `$schema`. A reviewer checking the
+  // advertised registry URL saw a namespace that contradicts `@blode`.
+  await Promise.all([
+    fs.writeFile(path.join(REGISTRY_PATH, "registry.json"), json, "utf-8"),
+    fs.writeFile(PUBLIC_REGISTRY_JSON, json, "utf-8"),
+  ]);
 }
 
 // ----------------------------------------------------------------------------
@@ -444,7 +457,7 @@ try {
   // diff that was byte-identical once parsed. Formatting the output here
   // means what this script writes is already what the formatter wants, so a
   // rebuild leaves a clean tree wherever it runs — not just on commit.
-  execFileSync("npx", ["oxfmt", REGISTRY_PATH, REGISTRY_SOURCE_PATH], {
+  execFileSync("npx", ["oxfmt", REGISTRY_PATH, REGISTRY_SOURCE_PATH, PUBLIC_REGISTRY_JSON], {
     stdio: "inherit",
   });
   console.log("💅 Formatted generated output");
