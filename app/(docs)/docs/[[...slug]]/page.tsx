@@ -11,6 +11,8 @@ import { getPagerForDoc } from "@/components/pager";
 import { TableOfContents } from "@/components/toc";
 import { getTableOfContents } from "@/lib/toc";
 import { absoluteUrl, seoDescription } from "@/lib/utils";
+import { docJsonLd } from "@/lib/zone-schema";
+import { JsonLd } from "@/components/json-ld";
 
 interface DocPageProps {
   params: Promise<{
@@ -38,8 +40,11 @@ export async function generateMetadata({ params }: DocPageProps): Promise<Metada
   }
 
   const description = seoDescription(doc.description);
-  // The root layout's title template appends the brand.
-  const title = doc.component ? `${doc.title} | React Component` : doc.title;
+  // The root layout's title template appends the brand. `seoTitle` wins when a
+  // doc sets one: `title` is also the rendered h1, so a page that needs a
+  // keyword-bearing search title should not have to carry it as a heading.
+  const searchTitle = doc.seoTitle ?? doc.title;
+  const title = doc.component ? `${searchTitle} | React Component` : searchTitle;
   // Title templates never reach og:title or twitter:title, and og:site_name is
   // the person, not the product — so a card title has to name the product itself.
   const cardTitle = `${doc.title} | Blode UI`;
@@ -94,6 +99,13 @@ async function DocBody({ params }: DocPageProps) {
 
   return (
     <>
+      <JsonLd
+        data={docJsonLd({
+          description: doc.description,
+          title: doc.seoTitle ?? doc.title,
+          url: absoluteUrl(doc.slug),
+        })}
+      />
       <div className="flex flex-col gap-2">
         <div className="flex flex-col gap-2">
           <div className="flex items-center justify-between md:items-start">

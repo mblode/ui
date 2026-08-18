@@ -129,6 +129,10 @@ const documents = defineCollection({
       })
       .optional(),
     published: z.boolean().default(true),
+    // Overrides `title` in the `<title>` tag only. `title` is also the rendered
+    // h1, so a doc that needs a keyword-bearing search title without an awkward
+    // heading sets both. Mirrors the `seoTitle` frontmatter on blode.co posts.
+    seoTitle: z.string().optional(),
     title: z.string(),
     toc: z.boolean().optional().default(true),
   }),

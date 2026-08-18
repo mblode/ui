@@ -47,6 +47,22 @@ export const metadata: Metadata = {
     image: absoluteUrl("/opengraph-image"),
     title: "Blode UI",
   }),
+  // The zone shipped with no robots directives at all, which left Google's
+  // defaults in force: a capped text snippet and a thumbnail-sized image. The
+  // cap is what AI surfaces read against, and /ui/docs is the most-surfaced
+  // page on the domain in them, so the ceiling was costing exactly the surface
+  // it was most visible in. blode.co sets the same three at its root.
+  robots: {
+    follow: true,
+    googleBot: {
+      follow: true,
+      index: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+    index: true,
+  },
   // Pages supply the leaf half of their title; ones that already carry the
   // brand opt out with `title.absolute`.
   title: {

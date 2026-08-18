@@ -1,6 +1,7 @@
 ---
 title: Introduction
-description: An open-source shadcn registry of React components built on Base UI and Tailwind CSS v4.
+seoTitle: "Docs: install and theme the component registry"
+description: An open-source shadcn registry of 80 React components built on Base UI and Tailwind CSS v4. Install them one at a time and own the source.
 ---
 
 Blode UI is a [shadcn/ui](https://ui.shadcn.com) registry built by [Matthew Blode](https://blode.co). Register the `@blode` namespace once, then pull components in one at a time. Each one lands in your codebase as source you own and edit, not as a package dependency.
@@ -11,6 +12,35 @@ Blode UI is a [shadcn/ui](https://ui.shadcn.com) registry built by [Matthew Blod
 
 ## Get started
 
+Point the shadcn CLI at the design system. It registers the `@blode` namespace, sets `blode-icons-react` as the icon library, and writes Blode's tokens into your CSS in one step:
+
+```bash
+npx shadcn@latest init https://blode.co/ui/r/ui.json
+```
+
+Then add a component:
+
+```bash
+npx shadcn@latest add @blode/button
+```
+
 [Installation](/docs/installation) has the setup for a new project, an existing shadcn project, and each supported framework.
+
+## What is in the registry
+
+80 components, all built on Base UI primitives and styled with the same token set:
+
+- **Forms.** Button, input, textarea, select, checkbox, radio group, switch, slider, and toggle, plus the harder ones: autocomplete, combobox, multi-combobox, date picker, number field, OTP input, and masked inputs for phone, password, and currency.
+- **Overlays.** Dialog, alert dialog, sheet, drawer, popover, tooltip, hover card, dropdown menu, context menu, and menubar. Paired elements share their open and close timing so nothing desyncs.
+- **Navigation.** Breadcrumb, tabs, pagination, sidebar, navigation menu, and a command palette.
+- **Data display.** Table, data table, bar list, stat, meter, badge, avatar, and skeleton.
+- **Feedback.** Alert, toasts through Sonner, progress, circular progress, spinner, and empty state.
+- **AI interfaces.** Chat message, bubble, prompt, attachment, thinking indicator, and thinking steps, for building assistant UIs on the same primitives.
+
+Browse them all under [Components](/docs/components).
+
+## Theming
+
+Every colour, radius, and field metric is a CSS custom property, shipped by the `@blode/ui` design system item rather than copied into each component. [Theming](/docs/theming) covers the token set, the light and dark palettes, and how to change the radius scale without touching a component file.
 
 Working with Claude Code or another AI assistant? Install the [Blode UI skill](/docs/skills) so it writes the right commands and matches the design system.

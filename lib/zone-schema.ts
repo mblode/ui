@@ -69,3 +69,40 @@ export const zoneRootJsonLd = {
     },
   ],
 };
+
+/**
+ * Emitted on every docs page.
+ *
+ * `TechArticle` rather than `WebPage`: these are technical how-to documents, and
+ * that is the type Google matches to developer-documentation intent.
+ *
+ * No `BreadcrumbList`, deliberately. The rule on `zoneRootJsonLd` above applies
+ * here in the negative: docs pages render no visible trail (`ZoneBreadcrumb` is
+ * root-only, see `app/(docs)/page.tsx`), and a breadcrumb in markup that no
+ * reader can see is exactly the mismatch Google treats as a markup error.
+ *
+ * Person, Organization and WebSite are referenced by `@id` and never redefined,
+ * for the same reason the zone root does it: blode.co owns those nodes, and a
+ * second copy on the same domain splits the entity.
+ */
+export const docJsonLd = ({
+  description,
+  title,
+  url,
+}: {
+  description: string;
+  title: string;
+  url: string;
+}) => ({
+  "@context": "https://schema.org",
+  "@id": `${url}#article`,
+  "@type": "TechArticle",
+  author: { "@id": personId },
+  description,
+  headline: title,
+  inLanguage: "en-US",
+  isPartOf: { "@id": websiteId },
+  name: title,
+  publisher: { "@id": orgId },
+  url,
+});
