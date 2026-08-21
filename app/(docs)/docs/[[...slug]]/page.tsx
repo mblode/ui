@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: DocPageProps): Promise<Metada
   const title = doc.component ? `${searchTitle} | React Component` : searchTitle;
   // Title templates never reach og:title or twitter:title, and og:site_name is
   // the person, not the product — so a card title has to name the product itself.
-  const cardTitle = `${doc.title} | Blode UI`;
+  const cardTitle = `${searchTitle} | Blode UI`;
 
   return {
     alternates: {
