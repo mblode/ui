@@ -102,7 +102,12 @@ async function DocBody({ params }: DocPageProps) {
       <JsonLd
         data={docJsonLd({
           description: doc.description,
-          title: doc.seoTitle ?? doc.title,
+          // `doc.title`, not `seoTitle`: this feeds `headline` and `name`, and
+          // structured data may only claim what the page renders. The h1 below
+          // is `doc.title`, so /docs declared "Blode UI docs" while rendering
+          // "Introduction" and failed check-schema. `seoTitle` still drives the
+          // search title and the card, which is what it is for.
+          title: doc.title,
           url: absoluteUrl(doc.slug),
         })}
       />
