@@ -1,0 +1,122 @@
+---
+title: Color Picker
+description: Pick any colour from a saturation area, a hue slider, a hex field, or the screen itself.
+component: true
+---
+
+<ComponentPreview
+  name="color-picker-demo"
+  description="A saturation area, hue slider, hex field, and suggested swatches."
+/>
+
+<Callout className="mt-6">
+  Reach for `<input type="color">` first. It is one line, it opens the operating system's own
+  picker, and it needs no JavaScript. Use this component when the picker has to sit inside your own
+  surface (a design editor, a theme panel), or when you want to put a curated palette in front
+  of the user before the full spectrum.
+</Callout>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://blode.co/ui/r/color-picker.json"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @base-ui/react blode-icons-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="color-picker" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import * as React from "react";
+import { ColorPicker } from "@/components/ui/color-picker";
+```
+
+```tsx
+const [color, setColor] = React.useState("#587EEB");
+
+<ColorPicker aria-label="Label colour" onValueChange={setColor} value={color} />;
+```
+
+The value is always a normalised `#RRGGBB` string. Three-digit input like `#f5a` is expanded on commit, so what you store never depends on how it was typed. There is no alpha channel.
+
+Hue, saturation, and brightness are held internally while the popover is open, and re-derived from `value` only when the incoming colour differs from the one shown. Black and white carry no hue, so deriving on every render would snap the hue slider back to red as soon as a user dragged into either corner.
+
+## Live and committed values
+
+`onValueChange` fires on every frame of a drag, so a preview can track the pointer. `onValueCommit` fires once the gesture settles: pointer release, `Enter` or blur in the hex field, a swatch click. That is where a network write or an undo entry belongs.
+
+<ComponentPreview
+  name="color-picker-commit"
+  description="onValueChange previews on every frame; onValueCommit fires once the gesture settles."
+/>
+
+## Accessibility
+
+The trigger is a real button whose accessible name carries the current colour, “Label colour, #587EEB”, so the swatch is never the only signal.
+
+The saturation area is a group holding two visually hidden range inputs, one per axis. Both carry real slider semantics and announce the resulting hex instead of a bare number. The hue slider and the eyedropper button both have accessible names.
+
+| Key                   | Where                       | Does                                    |
+| --------------------- | --------------------------- | --------------------------------------- |
+| `←` `→`               | Saturation, hue             | Steps by one                            |
+| `↑` `↓`               | Brightness, hue             | Steps by one                            |
+| `Page Up` `Page Down` | Saturation, brightness, hue | Steps by ten                            |
+| `Home` `End`          | Saturation, brightness, hue | Jumps to either end                     |
+| `←` `→` `↑` `↓`       | Suggested swatches          | Moves one swatch or one row             |
+| `Home` `End`          | Suggested swatches          | Jumps to the first or last swatch       |
+| `Enter` `Space`       | Suggested swatches          | Selects, leaving the popover open       |
+| `Escape`              | Anywhere in the popover     | Closes and returns focus to the trigger |
+
+Both thumbs carry a white border and a dark outer ring, because a white ring alone disappears against the white corner of the saturation area. The selected swatch carries a check mark as well as a ring, for the same reason on a light fill.
+
+The hex field commits on `Enter` or blur. While the text cannot be parsed it is marked `aria-invalid`, and on commit it reverts to the last valid colour instead of clearing the value.
+
+## Suggested swatches
+
+Pass your own palette through `swatches`. Each entry needs a `name`, which becomes the swatch's accessible name. Selecting one leaves the popover open: a swatch is a starting point to refine, not a final answer. Pass an empty array to drop the section.
+
+<ComponentPreview
+  name="color-picker-custom-swatches"
+  description="A colour picker whose suggested row is a brand palette."
+/>
+
+## In a field
+
+<ComponentPreview
+  name="color-picker-field"
+  description="A colour picker with a label and a description."
+/>
+
+## Eyedropper
+
+When the browser supports the [EyeDropper API](https://developer.mozilla.org/en-US/docs/Web/API/EyeDropper), a screen-sampling button appears beside the hex field. Support is detected after mount, so the server and client render the same markup and browsers without it never show the button.

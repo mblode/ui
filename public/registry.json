@@ -102,6 +102,24 @@
       ]
     },
     {
+      "name": "add-to-homescreen",
+      "type": "registry:ui",
+      "title": "Add to Homescreen",
+      "description": "A sheet of platform-aware instructions for installing a web app to the home screen.",
+      "registryDependencies": [
+        "button",
+        "sheet",
+        "@blode/copy-button",
+        "@blode/use-install-prompt"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/add-to-homescreen.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "alert",
       "type": "registry:ui",
       "title": "Alert",
@@ -200,6 +218,20 @@
       "files": [
         {
           "path": "registry/default/ui/breadcrumb.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "bulk-action-bar",
+      "type": "registry:ui",
+      "title": "Bulk Action Bar",
+      "description": "A sticky bar that surfaces actions for the currently selected rows.",
+      "dependencies": ["blode-icons-react"],
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/default/ui/bulk-action-bar.tsx",
           "type": "registry:ui"
         }
       ]
@@ -328,6 +360,20 @@
       ]
     },
     {
+      "name": "color-picker",
+      "type": "registry:ui",
+      "title": "Color Picker",
+      "description": "A saturation area, hue slider, hex input and suggested swatches for choosing a color.",
+      "dependencies": ["@base-ui/react", "blode-icons-react"],
+      "registryDependencies": ["button", "input", "popover", "separator"],
+      "files": [
+        {
+          "path": "registry/default/ui/color-picker.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "currency-input",
       "type": "registry:ui",
       "title": "Currency Input",
@@ -350,6 +396,38 @@
       "files": [
         {
           "path": "registry/default/ui/combobox.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "font-picker",
+      "type": "registry:ui",
+      "title": "Font Picker",
+      "description": "A searchable picker for Google Fonts with live previews.",
+      "dependencies": ["blode-icons-react"],
+      "registryDependencies": [
+        "@blode/button",
+        "@blode/combobox",
+        "@blode/spinner",
+        "@blode/google-fonts"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/font-picker.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "image-comparison",
+      "type": "registry:ui",
+      "title": "Image Comparison",
+      "description": "A draggable slider that wipes between a before and after image.",
+      "dependencies": ["blode-icons-react", "class-variance-authority"],
+      "files": [
+        {
+          "path": "registry/default/ui/image-comparison.tsx",
           "type": "registry:ui"
         }
       ]
@@ -740,6 +818,19 @@
       ]
     },
     {
+      "name": "responsive-dialog",
+      "type": "registry:ui",
+      "title": "Responsive Dialog",
+      "description": "A dialog on desktop that becomes a drawer on small screens.",
+      "registryDependencies": ["dialog", "drawer", "@blode/use-mobile"],
+      "files": [
+        {
+          "path": "registry/default/ui/responsive-dialog.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "scroll-area",
       "type": "registry:ui",
       "title": "Scroll Area",
@@ -748,6 +839,20 @@
       "files": [
         {
           "path": "registry/default/ui/scroll-area.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "search-input",
+      "type": "registry:ui",
+      "title": "Search Input",
+      "description": "A search field with a clear button and an optional cycling placeholder.",
+      "dependencies": ["blode-icons-react"],
+      "registryDependencies": ["input-group"],
+      "files": [
+        {
+          "path": "registry/default/ui/search-input.tsx",
           "type": "registry:ui"
         }
       ]
@@ -774,6 +879,20 @@
       "files": [
         {
           "path": "registry/default/ui/separator.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "share",
+      "type": "registry:ui",
+      "title": "Share",
+      "description": "A button that opens the native share sheet and falls back to copying the link.",
+      "dependencies": ["blode-icons-react", "motion", "sonner"],
+      "registryDependencies": ["button", "@blode/use-copy-to-clipboard"],
+      "files": [
+        {
+          "path": "registry/default/ui/share.tsx",
           "type": "registry:ui"
         }
       ]
@@ -898,6 +1017,19 @@
       ]
     },
     {
+      "name": "stepper",
+      "type": "registry:ui",
+      "title": "Stepper",
+      "description": "A numbered progress indicator for a multi-step flow.",
+      "dependencies": ["blode-icons-react", "class-variance-authority"],
+      "files": [
+        {
+          "path": "registry/default/ui/stepper.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "switch",
       "type": "registry:ui",
       "title": "Switch",
@@ -944,6 +1076,32 @@
       "files": [
         {
           "path": "registry/default/ui/textarea.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "time-picker",
+      "type": "registry:ui",
+      "title": "Time Picker",
+      "description": "A select of times at a fixed interval, formatted for the locale.",
+      "registryDependencies": ["select"],
+      "files": [
+        {
+          "path": "registry/default/ui/time-picker.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "timezone-picker",
+      "type": "registry:ui",
+      "title": "Timezone Picker",
+      "description": "A searchable list of IANA time zones with their current offset and time.",
+      "registryDependencies": ["@blode/combobox"],
+      "files": [
+        {
+          "path": "registry/default/ui/timezone-picker.tsx",
           "type": "registry:ui"
         }
       ]
@@ -1174,6 +1332,27 @@
       ]
     },
     {
+      "name": "weekly-hours",
+      "type": "registry:ui",
+      "title": "Weekly Hours",
+      "description": "An editor for opening hours across the days of the week.",
+      "dependencies": ["blode-icons-react"],
+      "registryDependencies": [
+        "button",
+        "dropdown-menu",
+        "field",
+        "switch",
+        "tooltip",
+        "@blode/time-picker"
+      ],
+      "files": [
+        {
+          "path": "registry/default/ui/weekly-hours.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
       "name": "utils",
       "type": "registry:lib",
       "title": "Utils",
@@ -1187,6 +1366,18 @@
       ]
     },
     {
+      "name": "google-fonts",
+      "type": "registry:lib",
+      "title": "Google Fonts",
+      "description": "Fetch and preview Google Fonts, with stylesheet injection and cleanup.",
+      "files": [
+        {
+          "path": "registry/default/lib/google-fonts.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
       "name": "use-copy-to-clipboard",
       "type": "registry:lib",
       "title": "Use Copy To Clipboard",
@@ -1194,6 +1385,18 @@
       "files": [
         {
           "path": "registry/default/hooks/use-copy-to-clipboard.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "use-install-prompt",
+      "type": "registry:lib",
+      "title": "Use Install Prompt",
+      "description": "A hook that exposes Chromium's deferred install prompt.",
+      "files": [
+        {
+          "path": "registry/default/hooks/use-install-prompt.ts",
           "type": "registry:lib"
         }
       ]

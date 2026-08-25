@@ -1,0 +1,76 @@
+---
+title: Share
+description: Open the native share sheet, falling back to copying the link.
+component: true
+---
+
+<ComponentPreview
+  name="share-demo"
+  description="An icon button that opens the share sheet where the browser has one."
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://blode.co/ui/r/share.json"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install blode-icons-react motion sonner
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="share" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { Share } from "@/components/ui/share";
+```
+
+```tsx
+<Share text="Our Q3 roadmap, now with dates." title="Q3 roadmap" value="https://blode.co/ui" />
+```
+
+`Share` calls `navigator.share` where the browser has it: a phone, or Safari and Edge on
+the desktop. Everywhere else it copies `value` to the clipboard and raises a toast, so the
+button always does something. Add a `<Toaster />` to your layout for the fallback to be
+visible.
+
+Dismissing the share sheet is not a failure. `AbortError` and `NotAllowedError` reset the
+button silently: no confirmation tick, no error toast. Any other failure falls through to
+the copy path.
+
+The tick appears only once the share resolves, so it means the sheet actually completed.
+
+## With a label
+
+Set `showLabel` to render `label` as visible text beside the icon. The accessible name
+then comes from the text itself, not from `aria-label`.
+
+<ComponentPreview name="share-with-text" description="A share button with a visible label." />

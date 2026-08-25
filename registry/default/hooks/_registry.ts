@@ -14,6 +14,18 @@ export const hooks: Registry["items"] = [
     type: "registry:lib",
   },
   {
+    description: "A hook that exposes Chromium's deferred install prompt.",
+    files: [
+      {
+        path: "hooks/use-install-prompt.ts",
+        type: "registry:lib",
+      },
+    ],
+    name: "use-install-prompt",
+    title: "Use Install Prompt",
+    type: "registry:lib",
+  },
+  {
     description: "A hook that detects whether the viewport matches a mobile breakpoint.",
     files: [
       {

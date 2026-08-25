@@ -50,6 +50,7 @@ npm run dev
 - `registry:base` items can ship without source files.
 - Content-collections must be built before the Next.js build — `npm run build` handles the ordering automatically.
 - Dark mode uses a custom variant: `@custom-variant dark (&:where(.dark, .dark *))` — not Tailwind's built-in dark mode.
+- **Never put a `max-h-*` on `SelectContent`.** In its default `item-aligned` mode Base UI sizes the _positioner_ and sets the popup to `height: 100%`; a popup `max-height` clamps it against the top of that positioner, so the list detaches from the trigger and pins to the top of the viewport. Base UI ignores the popup's `max-height` when it computes the anchor. Cap the height only with `position="popper"`, which turns item alignment off.
 - A `200` from `blode.co/ui/...` does not mean the path exists. Unmatched routes fall through to the docs site's HTML catch-all, so soft 404s look like successes. Check `content-type` is `application/json`.
 
 ## Authoring the `@blode/ui` design-system item

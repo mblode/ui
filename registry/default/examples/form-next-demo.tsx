@@ -94,7 +94,7 @@ export default function FormNextDemo() {
                   rows={6}
                 />
                 <InputGroupAddon align="block-end">
-                  <InputGroupText className="tabular-nums">
+                  <InputGroupText className="tabular-figures">
                     {descriptionLength}/100 characters
                   </InputGroupText>
                 </InputGroupAddon>

@@ -23,7 +23,7 @@ export default function InputGroupTextareaExample() {
           </InputGroupButton>
         </InputGroupAddon>
         <InputGroupAddon align="block-start" className="border-b">
-          <InputGroupText className="font-medium font-mono">
+          <InputGroupText className="font-mono">
             <CodeIcon />
             script.js
           </InputGroupText>

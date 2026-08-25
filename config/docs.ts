@@ -110,6 +110,11 @@ export const docsConfig: DocsConfig = {
           title: "Accordion",
         },
         {
+          href: "/docs/components/add-to-homescreen",
+          items: [],
+          title: "Add to Homescreen",
+        },
+        {
           href: "/docs/components/alert",
           items: [],
           title: "Alert",
@@ -165,6 +170,11 @@ export const docsConfig: DocsConfig = {
           title: "Bubble",
         },
         {
+          href: "/docs/components/bulk-action-bar",
+          items: [],
+          title: "Bulk Action Bar",
+        },
+        {
           href: "/docs/components/button",
           items: [],
           title: "Button",
@@ -213,6 +223,11 @@ export const docsConfig: DocsConfig = {
           href: "/docs/components/collapsible",
           items: [],
           title: "Collapsible",
+        },
+        {
+          href: "/docs/components/color-picker",
+          items: [],
+          title: "Color Picker",
         },
         {
           href: "/docs/components/combobox",
@@ -280,9 +295,19 @@ export const docsConfig: DocsConfig = {
           title: "Field",
         },
         {
+          href: "/docs/components/font-picker",
+          items: [],
+          title: "Font Picker",
+        },
+        {
           href: "/docs/components/hover-card",
           items: [],
           title: "Hover Card",
+        },
+        {
+          href: "/docs/components/image-comparison",
+          items: [],
+          title: "Image Comparison",
         },
         {
           href: "/docs/components/input",
@@ -405,9 +430,19 @@ export const docsConfig: DocsConfig = {
           title: "Resizable",
         },
         {
+          href: "/docs/components/responsive-dialog",
+          items: [],
+          title: "Responsive Dialog",
+        },
+        {
           href: "/docs/components/scroll-area",
           items: [],
           title: "Scroll Area",
+        },
+        {
+          href: "/docs/components/search-input",
+          items: [],
+          title: "Search Input",
         },
         {
           href: "/docs/components/select",
@@ -418,6 +453,11 @@ export const docsConfig: DocsConfig = {
           href: "/docs/components/separator",
           items: [],
           title: "Separator",
+        },
+        {
+          href: "/docs/components/share",
+          items: [],
+          title: "Share",
         },
         {
           href: "/docs/components/sheet",
@@ -455,6 +495,11 @@ export const docsConfig: DocsConfig = {
           title: "Stat",
         },
         {
+          href: "/docs/components/stepper",
+          items: [],
+          title: "Stepper",
+        },
+        {
           href: "/docs/components/switch",
           items: [],
           title: "Switch",
@@ -473,6 +518,16 @@ export const docsConfig: DocsConfig = {
           href: "/docs/components/textarea",
           items: [],
           title: "Textarea",
+        },
+        {
+          href: "/docs/components/time-picker",
+          items: [],
+          title: "Time Picker",
+        },
+        {
+          href: "/docs/components/timezone-picker",
+          items: [],
+          title: "Timezone Picker",
         },
         {
           href: "/docs/components/thinking-indicator",
@@ -503,6 +558,11 @@ export const docsConfig: DocsConfig = {
           href: "/docs/components/typography",
           items: [],
           title: "Typography",
+        },
+        {
+          href: "/docs/components/weekly-hours",
+          items: [],
+          title: "Weekly Hours",
         },
       ],
       title: "Components",

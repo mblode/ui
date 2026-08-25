@@ -72,7 +72,11 @@ const TooltipContent = ({
           {...props}
         >
           {asChild ? null : children}
-          <TooltipPrimitive.Arrow className="pointer-events-none absolute size-2.5 -rotate-45 rounded-bl-[3px] border border-border bg-primary [clip-path:polygon(0_100%,0_0,100%_100%)] data-[side=bottom]:top-0 data-[side=left]:right-0 data-[side=top]:bottom-0 data-[side=right]:left-0 data-[side=left]:translate-x-1/2 data-[side=right]:-translate-x-1/2 data-[side=bottom]:-translate-y-1/2 data-[side=top]:translate-y-1/2" />
+          {/* The clip-path half-square comes from creator-frontend, with the tip radius taken
+              from 3px to 5px because 3px on a 10px arrow still reads as a point at 1x. Radix
+              rotates its arrow per side; Base UI never does, so the per-side rotation has to
+              be spelled out here or the tip only points the right way on side="top". */}
+          <TooltipPrimitive.Arrow className="pointer-events-none absolute size-2.5 rounded-bl-[5px] border border-border bg-primary [clip-path:polygon(0_100%,0_0,100%_100%)] data-[side=bottom]:top-0 data-[side=left]:right-0 data-[side=top]:bottom-0 data-[side=right]:left-0 data-[side=left]:translate-x-1/2 data-[side=right]:-translate-x-1/2 data-[side=bottom]:-translate-y-1/2 data-[side=top]:translate-y-1/2 data-[side=bottom]:rotate-135 data-[side=left]:-rotate-135 data-[side=right]:rotate-45 data-[side=top]:-rotate-45" />
         </TooltipPrimitive.Popup>
       </TooltipPrimitive.Positioner>
     </TooltipPrimitive.Portal>

@@ -12,8 +12,8 @@ export default function FieldSlider() {
       <FieldTitle>Price Range</FieldTitle>
       <FieldDescription>
         Set your budget range ($
-        <span className="font-medium tabular-nums">{value[0]}</span> -{" "}
-        <span className="font-medium tabular-nums">{value[1]}</span>).
+        <span className="font-medium tabular-figures">{value[0]}</span> -{" "}
+        <span className="font-medium tabular-figures">{value[1]}</span>).
       </FieldDescription>
       <Slider
         aria-label="Price Range"

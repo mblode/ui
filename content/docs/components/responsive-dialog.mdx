@@ -1,0 +1,121 @@
+---
+title: Responsive Dialog
+description: One dialog API that renders a centred dialog on desktop and a drawer on mobile.
+component: true
+links:
+  doc: https://base-ui.com/react/components/dialog
+  api: https://base-ui.com/react/components/drawer
+---
+
+<ComponentPreview
+  name="responsive-dialog-demo"
+  description="A profile editor that becomes a drawer below 768px."
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://blode.co/ui/r/responsive-dialog.json"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="responsive-dialog" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  ResponsiveDialog,
+  ResponsiveDialogClose,
+  ResponsiveDialogContent,
+  ResponsiveDialogDescription,
+  ResponsiveDialogFooter,
+  ResponsiveDialogHeader,
+  ResponsiveDialogTitle,
+  ResponsiveDialogTrigger,
+} from "@/components/ui/responsive-dialog";
+```
+
+```tsx
+<ResponsiveDialog>
+  <ResponsiveDialogTrigger asChild>
+    <Button variant="outline">Edit profile</Button>
+  </ResponsiveDialogTrigger>
+  <ResponsiveDialogContent>
+    <ResponsiveDialogHeader>
+      <ResponsiveDialogTitle>Edit profile</ResponsiveDialogTitle>
+      <ResponsiveDialogDescription>
+        Update how your name appears to collaborators.
+      </ResponsiveDialogDescription>
+    </ResponsiveDialogHeader>
+    <ResponsiveDialogFooter>
+      <ResponsiveDialogClose asChild>
+        <Button variant="outline">Cancel</Button>
+      </ResponsiveDialogClose>
+    </ResponsiveDialogFooter>
+  </ResponsiveDialogContent>
+</ResponsiveDialog>
+```
+
+`ResponsiveDialog` picks the primitive once and publishes the decision through context, so every part below it renders the matching `Dialog*` or `Drawer*` piece. Both accept `asChild` on the trigger and close: you write the composition one way regardless of which one is live.
+
+`showCloseButton` on `ResponsiveDialogContent` only reaches the dialog. The drawer has no corner close button: it dismisses by swipe, by the overlay, or by a `ResponsiveDialogClose` you place in the footer. Give every dialog an explicit close control if mobile users need one.
+
+Timing is inherited, not invented: the dialog overlay and panel share 200ms, the drawer runs 500ms open and 300ms close.
+
+## Styling per layout
+
+Never style these parts with a viewport breakpoint. What varies is which primitive is mounted, and a media query only approximates that: `md:` happens to line up with the 768px swap, `sm:` does not. A dialog width written as `sm:max-w-[425px]` also clamps the **drawer** everywhere between 640 and 767px, turning a full-bleed sheet into a floating strip.
+
+`ResponsiveDialogContent` publishes the decision instead, as `data-layout="dialog" | "drawer"` plus a `responsive-dialog` group. Condition on that and the rule matches the rendered primitive exactly, at every width:
+
+```tsx
+<ResponsiveDialogContent className="data-[layout=dialog]:max-w-[425px]">
+  {/* the dialog supplies its own p-6; the drawer pads its own header and footer */}
+  <div className="grid gap-4 group-data-[layout=drawer]/responsive-dialog:px-4">{/* fields */}</div>
+</ResponsiveDialogContent>
+```
+
+Use `data-[layout=…]:` on the content root itself and `group-data-[layout=…]/responsive-dialog:` on anything below it.
+
+## Crossing the breakpoint
+
+The layout tracks the viewport at all times, including while the dialog is open. Resizing or rotating across 768px swaps the primitive under you: the panel that was a drawer becomes a centred dialog, or the reverse. The open state carries across, but the two layouts are separate React trees, so mounting one unmounts the other — focus, scroll position, and any uncontrolled input state inside go with it. Lift anything you need to survive above `ResponsiveDialog`, as the example above does with its two fields.
+
+Holding the primitive until close would avoid that state loss, but it strands a drawer at desktop widths, where a caller styling by layout has explicitly asked for a sheet's padding and no max-width. The mismatch is visible on every resize; the state loss is not, and unlike the mismatch, callers can prevent it.
+
+The swap itself is forced by Base UI, not chosen. `Drawer` extends `Dialog` with gestures, snap points, and indent effects, and none of them can be switched off: the swipe hook is enabled whenever the drawer is mounted, `swipeDirection` has no "none", and `Drawer.Viewport` takes no opt-out. A single `Drawer` restyled as a centred desktop dialog would still dismiss when dragged, so the two primitives stay separate.
+
+The first paint is still always the desktop dialog. `useIsMobile` has no window to measure on the server, so its server snapshot is `false`. A phone renders the centred dialog for one frame and flips to the drawer at hydration. The flip is invisible when the dialog is closed, which is the normal case; if you render one open on load, expect to see it.
+
+## Controlled
+
+Pass `open` and `onOpenChange` to drive the dialog from your own state. The handler receives a plain boolean, so the same callback works for either primitive.
+
+<ComponentPreview
+  name="responsive-dialog-controlled"
+  description="A destructive confirmation driven by external state."
+/>

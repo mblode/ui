@@ -1,0 +1,127 @@
+---
+title: Add to Homescreen
+description: A sheet of platform-aware instructions for installing a web app to the home screen.
+component: true
+---
+
+<ComponentPreview
+  name="add-to-homescreen-demo"
+  description="The iOS Safari recipe, pinned so the preview is deterministic."
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://blode.co/ui/r/add-to-homescreen.json"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install blode-icons-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="add-to-homescreen" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { AddToHomescreen } from "@/components/ui/add-to-homescreen";
+```
+
+```tsx
+const [open, setOpen] = React.useState(false);
+
+<AddToHomescreen
+  appIconUrl="/apple-touch-icon.png"
+  appName="Ledger"
+  onOpenChange={setOpen}
+  open={open}
+/>;
+```
+
+There is no browser API that tells you how to install a web app, so the component sniffs the user agent and picks a set of instructions. `appName` is the only required prop.
+
+## What each browser gets
+
+Three tiers, resolved in order.
+
+**1. The browser's own prompt.** On Chromium, `beforeinstallprompt` offers a real one-tap install, so the sheet shows an **Install** button and no instructions. It only fires if your site meets Chromium's install criteria, which [still require a service worker with a fetch handler](https://developer.chrome.com/blog/update-install-criteria); a manifest alone is not enough. The event is [non-standard and Chromium-only](https://developer.mozilla.org/en-US/docs/Web/API/BeforeInstallPromptEvent), so treat it as an enhancement, never the plan.
+
+**2. Written instructions**, for everything that can be installed by hand.
+
+**3. A copy-link panel**, where there is no install path at all.
+
+| Browser                       | Control                                        | Sheet edge | Arrow |
+| ----------------------------- | ---------------------------------------------- | ---------- | ----- |
+| iOS Safari                    | Share, bottom toolbar (`...` first in Compact) | `bottom`   | down  |
+| iOS Chrome, Edge, Firefox     | Share, beside the address bar                  | `bottom`   | none  |
+| Android Chrome, Edge, Samsung | menu, top right, then **Install app**          | `top`      | up    |
+| Android Firefox               | menu, top right                                | `top`      | up    |
+| Desktop Chrome, Edge          | install pill at the end of the address bar     | `top`      | up    |
+| macOS Safari (Sonoma 14+)     | **File → Add to Dock**                         | `top`      | up    |
+| Desktop Firefox               | no install path                                | n/a        | none  |
+| In-app browsers               | open in the system browser                     | `top`      | none  |
+
+## Arrows
+
+An arrow is drawn only where the control's position is knowable. iOS Chrome keeps Share beside an address bar [the reader can move to either end](https://support.google.com/chrome/answer/14181646), so that recipe names the landmark and draws nothing.
+
+`showArrow` can only remove an arrow. It cannot add one where the position is unknown, so the component cannot be configured into pointing at the wrong place.
+
+## Rendering
+
+The component is controlled: pass `open` and `onOpenChange`. It deliberately does not open itself, because an install prompt that hijacks a first page load is the reason people dismiss them unread.
+
+It renders nothing until an effect has resolved the platform, so the server and the first client render agree and no wrong-platform instructions flash on screen. It also renders nothing when the app is already installed, detected through `navigator.standalone` on iOS and `(display-mode: standalone)` everywhere else.
+
+`appIconUrl` shows the icon that will land on the home screen. Optional, but worth passing.
+
+## Detection
+
+The user agent is matched against `navigator.userAgentData.brands` first, then the legacy `navigator.userAgent` string, which Chromium freezes.
+
+In-app webviews (Facebook, Instagram, Threads, LinkedIn, X) are checked first, because they all masquerade as Safari or Chrome. None can install to the home screen, so they get an open-in-browser recipe.
+
+Anything the component cannot place falls through to a short explanation and the page URL beside a copy button, never a blank panel.
+
+## Overrides
+
+`platform` and `browser` pin the instructions instead of sniffing them, so docs, tests, and previews can show a variant deterministically. Both also skip the already-installed check and suppress the native install tier, so a pinned demo keeps showing the recipe it is demonstrating.
+
+`steps` replaces the instructions entirely, and suppresses the arrow with them. `messages` overrides the built-in English copy, including the install button label. `showArrow` turns the pointer off.
+
+<ComponentPreview
+  name="add-to-homescreen-variants"
+  description="Every state the component can reach, pinned with the platform and browser props."
+/>
+
+## Accessibility
+
+The instructions are a real `<ol>`, so a screen reader announces the step count and position. The step glyphs and the arrow are `aria-hidden`, and the numbers are decorative: each step's text carries the whole instruction on its own.
+
+Focus trapping, `Escape`, and the labelled dialog come from the underlying sheet. The arrow's bounce is a CSS animation, already covered by the global reduced-motion rule in `@blode/ui`.

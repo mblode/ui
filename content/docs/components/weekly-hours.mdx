@@ -1,0 +1,129 @@
+---
+title: Weekly Hours
+description: Set opening hours for each day of the week, with multiple ranges per day.
+component: true
+---
+
+<ComponentPreview
+  name="weekly-hours-demo"
+  description="A week of opening hours with a split Wednesday and a closed Sunday."
+  previewClassName="h-[42rem]"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://blode.co/ui/r/weekly-hours.json"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install blode-icons-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="weekly-hours" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { WeeklyHours, type WeeklyHoursValue } from "@/components/ui/weekly-hours";
+```
+
+```tsx
+const [hours, setHours] = React.useState<WeeklyHoursValue>({
+  sunday: [],
+  monday: [{ start: "09:00", end: "17:00" }],
+  tuesday: [{ start: "09:00", end: "17:00" }],
+  wednesday: [
+    { start: "09:00", end: "12:30" },
+    { start: "13:30", end: "17:00" },
+  ],
+  thursday: [{ start: "09:00", end: "17:00" }],
+  friday: [{ start: "08:00", end: "21:00" }],
+  saturday: [{ start: "10:00", end: "16:00" }],
+});
+
+<WeeklyHours onValueChange={setHours} value={hours} />;
+```
+
+The component is fully controlled. Every day key must be present; an empty array means the day is closed.
+
+## Value
+
+Times are 24-hour `"HH:mm"` strings, which sort correctly as plain strings. No date library is involved.
+
+```tsx
+type TimeRange = { start: string; end: string };
+type Weekday = "sunday" | "monday" | "tuesday" | "wednesday" | "thursday" | "friday" | "saturday";
+type WeeklyHoursValue = Record<Weekday, TimeRange[]>;
+```
+
+Toggling a closed day open, or pressing its add button, seeds it with a single 09:00–17:00 range. Toggling it closed clears its ranges.
+
+## Time format
+
+The pickers display in whatever format the locale prefers, so an `en-GB` or `de-DE` user gets a 24-hour clock and an `en-US` user gets AM/PM. The stored value never changes: it is a 24-hour `"HH:mm"` string either way.
+
+```tsx
+<WeeklyHours hour12 locale="en-US" onValueChange={setHours} value={hours} />
+```
+
+Without `locale`, the format follows `navigator.language` and is resolved after hydration, so the server never renders a string the client disagrees with. Pass `locale` when you know it up front, and `hour12` to override the locale's own preference in either direction.
+
+## Layout
+
+The day row lays out horizontally once the component itself is about `34rem` wide, and stacks below that. The breakpoint reads the component's own width, not the viewport's, so dropping it into a narrow card or a sidebar stacks it rather than squeezing the pickers until the times clip.
+
+## Validation
+
+Validation is presentational. The component marks the row invalid but never rewrites the value you passed in, so a schema on your form still decides whether it can be saved.
+
+Two conditions are reported inline, on the offending range:
+
+- **End at or before start.** A range must end later in the same day than it starts. The end picker only offers times after the range's start, so this error is unreachable through the UI. It is here for values that arrive from props or a form library.
+- **Overlap.** Two ranges on the same day may not cover the same minute. The later-starting range is the one flagged.
+
+Ranges that cross midnight are not supported. `22:00`–`02:00` reads as an end-before-start error instead of wrapping. Model an overnight shift as two ranges on two days.
+
+## Accessibility
+
+Each day is a `role="group"` labelled by its name, so a screen reader announces “Monday, group” before its controls. The day's switch borrows the same label. Add, remove, and copy buttons name their day, and the remove button names the range it removes: “Remove 9:00 AM to 5:00 PM on Monday”. Removing a range moves focus to the day's add button, or to the day's switch when the last range goes, never onto the document.
+
+The add, remove, and copy buttons are icon-only, so each carries a tooltip. The tooltip text is a substring of the button's accessible name, “Add hours” inside “Add hours for Monday”, so speech-input users can say what they see.
+
+Times use the `tabular-figures` utility so the columns hold still as values change.
+
+## With react-hook-form
+
+`WeeklyHours` takes no dependency on a form library. Wire it up with a `Controller`, as you would any other controlled input.
+
+<ComponentPreview
+  name="weekly-hours-rhf"
+  description="Weekly hours inside a react-hook-form form with a Zod schema."
+  previewClassName="h-[90rem]"
+/>

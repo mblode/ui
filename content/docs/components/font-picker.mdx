@@ -1,0 +1,169 @@
+---
+title: Font Picker
+description: Search the Google Fonts catalogue and preview families in their own typeface.
+component: true
+---
+
+<ComponentPreview
+  name="font-picker-demo"
+  description="The live Google Fonts catalogue, loaded through this site's own proxy route."
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://blode.co/ui/r/font-picker.json"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install blode-icons-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="font-picker" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { FontPicker } from "@/components/ui/font-picker";
+```
+
+```tsx
+const [family, setFamily] = React.useState("Inter");
+
+<FontPicker endpoint="/api/google-fonts" onValueChange={setFamily} value={family} />;
+```
+
+## Where the catalogue comes from
+
+The picker takes exactly one of three sources, and the types enforce it. A picker that can never populate does not compile.
+
+| Prop       | Use it when                                           |
+| ---------- | ----------------------------------------------------- |
+| `endpoint` | You have a server. Recommended.                       |
+| `apiKey`   | You have no server to hide a key behind.              |
+| `fonts`    | You already have the list, or want no network at all. |
+
+### `endpoint`: a proxy on your own origin
+
+The key stays on the server, one cached upstream request serves every visitor, and the browser only ever talks to your own origin, so no CSP `connect-src` entry is needed. This is what the demo above uses.
+
+Your route must answer with `{ items }`, where each row carries `category`, `family`, `subsets`, and `variants`. The picker filters the list itself, so a proxy needs no logic of its own, but it should drop everything else Google sends. Measured against the live catalogue of 1,951 families, the full response is 1.52MB, of which `files` (a download URL for every weight of every family) is 0.87MB and `menu` another 0.17MB. Neither is ever read. Forwarding only the four fields takes it to 0.29MB, or 0.02MB gzipped against 0.20MB. Google does not gzip its own response, so nothing upstream recovers that for you.
+
+The picker forwards its `sort` prop to your route as a query parameter, so read it back. The route below accepts that one parameter and rejects everything else, which also caps the cache: CDNs key on the full query string, so a parameter you merely ignore is still a distinct entry and another upstream request.
+
+```ts
+// app/api/google-fonts/route.ts
+const SORTS = new Set(["alpha", "popularity", "style", "trending"]);
+
+export async function GET(request: Request) {
+  const apiKey = process.env.GOOGLE_FONTS_API_KEY;
+  if (!apiKey) {
+    return Response.json({ error: "Font list unavailable" }, { status: 503 });
+  }
+
+  const params = new URL(request.url).searchParams;
+  const sort = params.get("sort") ?? "popularity";
+  if (!SORTS.has(sort) || [...params.keys()].some((key) => key !== "sort")) {
+    return Response.json({ error: "Unsupported query" }, { status: 400 });
+  }
+
+  const upstream = new URL("https://www.googleapis.com/webfonts/v1/webfonts");
+  upstream.searchParams.set("key", apiKey);
+  upstream.searchParams.set("sort", sort);
+
+  const response = await fetch(upstream, { signal: AbortSignal.timeout(10_000) });
+  if (!response.ok) {
+    return Response.json({ error: "Font list unavailable" }, { status: 502 });
+  }
+
+  const payload = await response.json();
+  const items = payload.items.map(({ category, family, subsets, variants }) => ({
+    category,
+    family,
+    subsets,
+    variants,
+  }));
+
+  return Response.json(
+    { items },
+    {
+      headers: {
+        "cdn-cache-control": "public, s-maxage=86400, stale-while-revalidate=604800",
+      },
+    },
+  );
+}
+```
+
+### `apiKey`: straight from the browser
+
+```tsx
+<FontPicker apiKey={apiKey} onValueChange={setFamily} value={family} />
+```
+
+Takes a [Google Fonts Developer API](https://developers.google.com/fonts/docs/developer_api) key. The component never embeds one.
+
+The key is public by design. It travels in the query string of a browser request, where anyone who opens the network tab can read it. Hiding it is not the answer: add an HTTP referrer restriction in the Google Cloud Console, limit the key to your own domains, and give it access to the Web Fonts Developer API only. You will also need `https://www.googleapis.com` in your CSP `connect-src`.
+
+## States
+
+Every state the picker can reach is designed:
+
+- **No source.** With no `endpoint`, `apiKey`, or `fonts`, the picker says so and offers no retry. Retrying cannot help. The types make this unreachable from TypeScript.
+- **Loading.** The input is disabled with a spinner and a live status line beside it.
+- **Failed.** Names what went wrong and offers a retry.
+- **Rate limited.** A distinct message. The fix is to wait, not to retry.
+- **Empty after filtering.** A message under the input, so a `categories` or `subsets` filter that matches nothing is never silent.
+
+## Previews
+
+Each family renders in its own typeface. Every preview is a `<link>` in `<head>`, so the component loads only what is on screen: an `IntersectionObserver` requests a family's stylesheet as its row scrolls into view (240px ahead of it) and releases it once the row leaves. The number of injected stylesheets therefore tracks the height of the list, not the size of the catalogue, and a row is previewed just as well at position 900 as at position 3. The selected family is always loaded, so the closed input reads in its own typeface too.
+
+Injected stylesheets are reference counted, deduplicated across pickers, and released on unmount, so closing one picker cannot pull a stylesheet out from under another.
+
+## Working without the network
+
+`fonts` supplies the catalogue directly and skips the request: no key, no proxy, no connection. Use it for tests, offline previews, and seeding a known list on the server.
+
+<ComponentPreview
+  name="font-picker-offline"
+  description="A picker seeded with twelve families, reaching nothing."
+/>
+
+```tsx
+<FontPicker
+  fonts={[{ family: "Inter", category: "sans-serif", subsets: ["latin"], variants: ["regular"] }]}
+  onValueChange={setFamily}
+  value={family}
+/>
+```
+
+## Filtering
+
+`categories`, `subsets`, and `variants` narrow the catalogue before it reaches the list. A family is kept only when it covers every requested subset and offers every requested variant. `limit` caps the result, and `sort` picks the order the API returns.

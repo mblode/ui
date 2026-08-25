@@ -1,0 +1,105 @@
+---
+title: Image Comparison
+description: Reveal one image over another with a draggable, keyboard-operable divider.
+component: true
+---
+
+<ComponentPreview
+  name="image-comparison-demo"
+  description="A before and after photo split by a draggable divider."
+  previewClassName="h-auto"
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://blode.co/ui/r/image-comparison.json"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install blode-icons-react class-variance-authority
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="image-comparison" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { ImageComparison } from "@/components/ui/image-comparison";
+```
+
+```tsx
+<ImageComparison
+  after={{ alt: "After retouching", src: "/after.jpg" }}
+  before={{ alt: "Before retouching", src: "/before.jpg" }}
+/>
+```
+
+Both sides take a required `alt`. They are different pictures, and a shared caption cannot describe either one.
+
+The container reserves `aspectRatio`, `16 / 9` by default, so the images cannot shift the page as they load. Pass any CSS aspect ratio to match your source.
+
+## Accessibility
+
+The divider is a real control: `role="slider"` with `aria-valuenow`, `aria-valuemin`, `aria-valuemax`, and `aria-orientation`, focusable in the tab order, and named “Comparison position” unless you override `label`.
+
+| Key                     | Action                  |
+| ----------------------- | ----------------------- |
+| `←` `→`                 | Move by 1% (horizontal) |
+| `↑` `↓`                 | Move by 1% (vertical)   |
+| `Shift` + arrow         | Move by 10%             |
+| `Page Up` / `Page Down` | Move by 10%             |
+| `Home` / `End`          | Jump to 0% or 100%      |
+
+`touch-action: none` is scoped to the handle, not the container, so a touch that starts anywhere else still scrolls the page. The drag uses pointer capture: the divider keeps tracking a finger or cursor that leaves the frame, and releases cleanly if the pointer is cancelled.
+
+## Controlled
+
+Pass `position` with `onPositionChange` to drive the divider from your own state. Useful when a caption, a readout, or a second comparison has to stay in sync.
+
+```tsx
+const [position, setPosition] = useState(40);
+
+<ImageComparison
+  after={{ alt: "Graded", src: "/graded.jpg" }}
+  before={{ alt: "Original", src: "/original.jpg" }}
+  onPositionChange={setPosition}
+  position={position}
+/>;
+```
+
+## Vertical
+
+Set `orientation="vertical"` to split the frame top and bottom. The arrow keys follow the axis, and the handle icon turns with it.
+
+<ComponentPreview
+  name="image-comparison-vertical"
+  description="A vertical divider driven by controlled state."
+  previewClassName="h-auto"
+/>

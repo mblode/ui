@@ -1,18 +1,25 @@
 "use client";
 
 import {
-  flexRender,
-  getCoreRowModel,
-  getFilteredRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  useReactTable,
+  columnFilteringFeature,
+  columnVisibilityFeature,
+  createFilteredRowModel,
+  createPaginatedRowModel,
+  createSortedRowModel,
+  filterFn_includesString,
+  rowPaginationFeature,
+  rowSelectionFeature,
+  rowSortingFeature,
+  sortFn_alphanumeric,
+  sortFn_text,
+  tableFeatures,
+  useTable,
 } from "@tanstack/react-table";
 import type {
   ColumnDef,
   ColumnFiltersState,
+  ColumnVisibilityState,
   SortingState,
-  VisibilityState,
 } from "@tanstack/react-table";
 import { ArrowUpDown, ChevronDown, MoreHorizontal } from "blode-icons-react";
 import { useState } from "react";
@@ -38,6 +45,26 @@ import {
   TableRow,
 } from "@/registry/default/ui/table";
 
+/**
+ * Every feature this table uses, declared up front. Anything left out is
+ * tree-shaken, so the row models and fn registries below are opt-in rather than
+ * bundled by default. The core row model is always built and needs no slot.
+ */
+const features = tableFeatures({
+  columnFilteringFeature,
+  columnVisibilityFeature,
+  filterFns: { includesString: filterFn_includesString },
+  filteredRowModel: createFilteredRowModel(),
+  paginatedRowModel: createPaginatedRowModel(),
+  rowPaginationFeature,
+  rowSelectionFeature,
+  rowSortingFeature,
+  sortFns: { alphanumeric: sortFn_alphanumeric, text: sortFn_text },
+  sortedRowModel: createSortedRowModel(),
+});
+
+type DataTableFeatures = typeof features;
+
 const data: Payment[] = [
   {
     amount: 316,
@@ -60,7 +87,7 @@ export interface Payment {
   status: "pending" | "processing" | "success" | "failed";
 }
 
-export const columns: ColumnDef<Payment>[] = [
+export const columns: ColumnDef<DataTableFeatures, Payment>[] = [
   {
     cell: ({ row }) => (
       <Checkbox
@@ -141,20 +168,17 @@ export const columns: ColumnDef<Payment>[] = [
   },
 ];
 
-// oxlint-disable-next-line react/react-compiler -- React Compiler skips this component because TanStack Table's useReactTable returns non-memoizable functions
+// oxlint-disable-next-line react/react-compiler -- React Compiler skips this component because TanStack Table's useTable returns non-memoizable functions
 export const DataTableDemo = () => {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
-  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
+  const [columnVisibility, setColumnVisibility] = useState<ColumnVisibilityState>({});
   const [rowSelection, setRowSelection] = useState({});
 
-  const table = useReactTable({
+  const table = useTable({
     columns,
     data,
-    getCoreRowModel: getCoreRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    getSortedRowModel: getSortedRowModel(),
+    features,
     onColumnFiltersChange: setColumnFilters,
     onColumnVisibilityChange: setColumnVisibility,
     onRowSelectionChange: setRowSelection,
@@ -206,9 +230,7 @@ export const DataTableDemo = () => {
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
                   <TableHead key={header.id}>
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(header.column.columnDef.header, header.getContext())}
+                    {header.isPlaceholder ? null : <table.FlexRender header={header} />}
                   </TableHead>
                 ))}
               </TableRow>
@@ -220,7 +242,7 @@ export const DataTableDemo = () => {
                 <TableRow data-state={row.getIsSelected() && "selected"} key={row.id}>
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                      <table.FlexRender cell={cell} />
                     </TableCell>
                   ))}
                 </TableRow>

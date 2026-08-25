@@ -59,3 +59,14 @@ import {
   <EmptyContent>...</EmptyContent>
 </Empty>
 ```
+
+## Illustration
+
+`EmptyMedia` takes any node, not just an icon. Leave the variant at its default and drop an inline SVG straight in: `variant="icon"` adds the muted 40px tile that suits a glyph and crops an illustration. Reserve this for a first-run state you want to invest in; a glyph is the right weight for a routine empty list.
+
+Draw it in tokens, not hex. `currentColor` on a wrapper carrying `text-muted` for fills and `text-border` for strokes tracks both themes with one asset, and an SVG stays sharp at any density. Mark it `aria-hidden="true"`: the title and description already carry the meaning, so a second announcement is just noise.
+
+<ComponentPreview
+  name="empty-illustration"
+  description="An empty state with a tokenised inline SVG illustration"
+/>

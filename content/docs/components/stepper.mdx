@@ -1,0 +1,107 @@
+---
+title: Stepper
+description: Show progress through an ordered flow, horizontally or vertically.
+component: true
+---
+
+<ComponentPreview
+  name="stepper-demo"
+  description="A checkout flow with the active step highlighted."
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://blode.co/ui/r/stepper.json"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install blode-icons-react class-variance-authority
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="stepper" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import {
+  Step,
+  StepContent,
+  StepDescription,
+  StepIndicator,
+  StepLabel,
+  StepSeparator,
+  Stepper,
+} from "@/components/ui/stepper";
+```
+
+```tsx
+<Stepper aria-label="Checkout" value={1}>
+  {steps.map((label) => (
+    <Step key={label}>
+      <StepIndicator />
+      <StepLabel>{label}</StepLabel>
+      <StepSeparator />
+    </Step>
+  ))}
+</Stepper>
+```
+
+`value` is the zero-based index of the active step. Every earlier step is `completed`,
+every later one `pending`. That is the same `data-state` vocabulary
+[progress-list](/docs/components/progress-list) uses, so one selector styles both.
+
+Stepper is a wayfinding control for a flow the user is moving through. For a read-only
+display of work already under way, reach for
+[progress-list](/docs/components/progress-list) or
+[thinking-steps](/docs/components/thinking-steps).
+
+The stepper renders an `<ol>` and each step an `<li>`: the flow is announced as an ordered
+list. The active step carries `aria-current="step"`, and each step opens with visually hidden
+text, “Step 2 of 4, current step”, so position and state never rest on colour alone.
+`<StepSeparator>` renders nothing after the last step. Place it inside every step without a
+special case.
+
+Numbers in the indicator use the `tabular-figures` utility. The circles hold their width from
+step 9 to step 10.
+
+## Vertical
+
+<ComponentPreview
+  name="stepper-vertical"
+  description="A vertical stepper with a description under each label."
+  previewClassName="h-96"
+/>
+
+## With description
+
+<ComponentPreview
+  name="stepper-with-description"
+  description="Wrap the label and description in StepContent to stack them beside the indicator."
+/>

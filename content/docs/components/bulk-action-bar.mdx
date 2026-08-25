@@ -1,0 +1,122 @@
+---
+title: Bulk Action Bar
+description: A bar of actions that floats over the list while rows are selected.
+component: true
+---
+
+<ComponentPreview
+  name="bulk-action-bar-demo"
+  description="Select contacts to reveal the actions that apply to them. Escape clears the selection."
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://blode.co/ui/r/bulk-action-bar.json"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install blode-icons-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="bulk-action-bar" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { BulkActionBar } from "@/components/ui/bulk-action-bar";
+```
+
+```tsx
+<div className="relative pb-16">
+  <ContactsTable />
+
+  <BulkActionBar count={selectedCount} onClear={() => setRowSelection({})}>
+    <Button aria-label={`Delete ${count} contacts`} size="xs" variant="destructive">
+      Delete
+    </Button>
+  </BulkActionBar>
+</div>
+```
+
+## Positioning
+
+The bar floats over the list instead of sitting above it. It is `absolute bottom-4`, centred
+on its nearest positioned ancestor, so give the wrapper `relative` and enough bottom padding
+that the bar never covers the last row.
+
+Being out of flow, it does not shift the list down when the first row is checked, and it does
+not scroll away on a long list.
+
+For a table that fills the page, pin the bar to the viewport instead:
+
+```tsx
+<BulkActionBar className="fixed bottom-6" count={count} onClear={clear}>
+  {actions}
+</BulkActionBar>
+```
+
+Render it after the list in the DOM. It reads last to a screen reader and is the last stop
+when tabbing out of the table, which matches where it sits on screen.
+
+## Usage notes
+
+`count` is however many rows are selected. With TanStack Table that is
+`table.getSelectedRowModel().rows.length`. Do not count the keys of the `rowSelection` map:
+TanStack leaves a `false` entry behind after a row is deselected, and the bar would stay open
+with the wrong number.
+
+The bar renders nothing visible while the count is zero, but its live region stays mounted so
+the first selection is announced. Escape clears the selection from anywhere on the page,
+unless something nested has already handled the key: closing a dialog does not also throw the
+selection away.
+
+The count line reads “2 selected” and the buttons carry the verb alone, so the bar does not
+say “contacts” three times in a strip an inch wide. Keep the object in each button’s
+`aria-label` though. A screen reader reaching the button does not get the count line with it,
+and “Delete” alone is ambiguous:
+
+```tsx
+<Button aria-label={`Delete ${count} contacts`} size="xs" variant="destructive">
+  <TrashIcon data-icon="inline-start" />
+  Delete
+</Button>
+```
+
+Pass `label` when the count line needs different wording: a different total, or the noun
+restored because the surrounding page does not make the object obvious:
+
+```tsx
+<BulkActionBar count={count} label={(n) => `${n} of 240 rows`} onClear={clear}>
+  {actions}
+</BulkActionBar>
+```
+
+`label` also feeds the live region, which is the lever to pull on a page holding more than one
+selectable list.

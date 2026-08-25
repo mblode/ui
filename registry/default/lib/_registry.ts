@@ -14,4 +14,16 @@ export const lib: Registry["items"] = [
     title: "Utils",
     type: "registry:lib",
   },
+  {
+    description: "Fetch and preview Google Fonts, with stylesheet injection and cleanup.",
+    files: [
+      {
+        path: "lib/google-fonts.ts",
+        type: "registry:lib",
+      },
+    ],
+    name: "google-fonts",
+    title: "Google Fonts",
+    type: "registry:lib",
+  },
 ];

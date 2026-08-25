@@ -1,0 +1,98 @@
+---
+title: Time Picker
+description: Choose a time from a stepped list, stored as a locale-independent 24-hour string.
+component: true
+---
+
+<ComponentPreview
+  name="time-picker-demo"
+  description="A time picker stepping every fifteen minutes."
+/>
+
+<Callout className="mt-6">
+  Reach for `<input type="time">` first. It is one line, it needs no JavaScript, and it
+  inherits the platform's own time entry, including the native wheel on iOS and Android. Use
+  this component when you need a fixed set of slots instead of free entry: booking windows,
+  opening hours, or anything where 09:07 is not a valid answer.
+</Callout>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://blode.co/ui/r/time-picker.json"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @base-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="time-picker" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import * as React from "react";
+import { TimePicker } from "@/components/ui/time-picker";
+```
+
+```tsx
+const [time, setTime] = React.useState("09:30");
+
+<TimePicker onValueChange={setTime} value={time} min="08:00" max="18:00" step={15} />;
+```
+
+## Values and display
+
+The value is always a 24-hour `"HH:mm"` string, so what you store never depends on where the user is. Only the display is localised, through `Intl.DateTimeFormat`.
+
+`hour12` follows what the locale itself prefers, not AM/PM, so an `en-GB` or `de-DE` user is not shown a format they do not use. Pass `hour12` to override it in either direction.
+
+Without `locale`, the picker formats with `navigator.language` rather than `Intl`'s own default. Chrome derives that default from the browser's UI language, which on macOS routinely disagrees with the language the user asked pages to be in: a browser reporting `en-US` still resolves `Intl.DateTimeFormat()` to `en-GB`, and would show 24-hour times to someone who has only ever asked for American English.
+
+The probe runs after hydration, so the server renders the raw 24-hour string and the two can never disagree. Pass `locale` when you know it up front and want the formatted time in the first paint.
+
+`size="sm"` drops the trigger to 40px and the text to `text-sm`, matching an `icon`-sized button. Use it where a time sits in a dense row rather than in a column of full-height fields.
+
+A `value` that does not sit on the step grid, say a time saved before `step` changed, is added to the list instead of dropped. The control never silently discards what it was given.
+
+## Range
+
+Constrain the end of a range with `min`, and move it along when the start passes it.
+
+<ComponentPreview
+  name="time-picker-range"
+  description="A start and end pair where the end is always after the start."
+/>
+
+## Forcing a 24-hour clock
+
+<ComponentPreview
+  name="time-picker-24-hour"
+  description="A time picker forced into 24-hour display."
+/>

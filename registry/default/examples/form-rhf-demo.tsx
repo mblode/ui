@@ -109,7 +109,7 @@ export default function BugReportForm() {
                       rows={6}
                     />
                     <InputGroupAddon align="block-end">
-                      <InputGroupText className="tabular-nums">
+                      <InputGroupText className="tabular-figures">
                         {field.value.length}/100 characters
                       </InputGroupText>
                     </InputGroupAddon>

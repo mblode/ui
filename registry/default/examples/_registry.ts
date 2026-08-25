@@ -59,6 +59,28 @@ export const examples: Registry["items"] = [
   {
     files: [
       {
+        path: "examples/add-to-homescreen-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "add-to-homescreen-demo",
+    registryDependencies: ["add-to-homescreen", "button"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/add-to-homescreen-variants.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "add-to-homescreen-variants",
+    registryDependencies: ["add-to-homescreen", "button"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
         path: "examples/alert-demo.tsx",
         type: "registry:example",
       },
@@ -241,6 +263,18 @@ export const examples: Registry["items"] = [
     ],
     name: "breadcrumb-responsive",
     registryDependencies: ["breadcrumb"],
+    type: "registry:example",
+  },
+  {
+    dependencies: ["@tanstack/react-table"],
+    files: [
+      {
+        path: "examples/bulk-action-bar-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "bulk-action-bar-demo",
+    registryDependencies: ["bulk-action-bar", "button", "checkbox", "table"],
     type: "registry:example",
   },
   {
@@ -664,6 +698,50 @@ export const examples: Registry["items"] = [
   {
     files: [
       {
+        path: "examples/color-picker-commit.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "color-picker-commit",
+    registryDependencies: ["color-picker"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/color-picker-custom-swatches.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "color-picker-custom-swatches",
+    registryDependencies: ["color-picker"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/color-picker-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "color-picker-demo",
+    registryDependencies: ["color-picker"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/color-picker-field.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "color-picker-field",
+    registryDependencies: ["color-picker", "field"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
         path: "examples/combobox-demo.tsx",
         type: "registry:example",
       },
@@ -797,6 +875,18 @@ export const examples: Registry["items"] = [
     type: "registry:example",
   },
   {
+    dependencies: ["date-fns", "react-day-picker"],
+    files: [
+      {
+        path: "examples/date-picker-with-range-apply.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "date-picker-with-range-apply",
+    registryDependencies: ["button", "calendar", "field", "popover", "separator"],
+    type: "registry:example",
+  },
+  {
     files: [
       {
         path: "examples/dialog-demo.tsx",
@@ -871,6 +961,17 @@ export const examples: Registry["items"] = [
     ],
     name: "empty-avatar-group",
     registryDependencies: ["empty", "button", "avatar"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/empty-illustration.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "empty-illustration",
+    registryDependencies: ["button", "empty"],
     type: "registry:example",
   },
   {
@@ -1036,6 +1137,28 @@ export const examples: Registry["items"] = [
     ],
     name: "field-responsive",
     registryDependencies: ["field"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/font-picker-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "font-picker-demo",
+    registryDependencies: ["field", "font-picker"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/font-picker-offline.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "font-picker-offline",
+    registryDependencies: ["field", "font-picker"],
     type: "registry:example",
   },
   {
@@ -1346,6 +1469,28 @@ export const examples: Registry["items"] = [
     ],
     name: "hover-card-demo",
     registryDependencies: ["hover-card"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/image-comparison-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "image-comparison-demo",
+    registryDependencies: ["image-comparison"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/image-comparison-vertical.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "image-comparison-vertical",
+    registryDependencies: ["image-comparison"],
     type: "registry:example",
   },
   {
@@ -1956,6 +2101,28 @@ export const examples: Registry["items"] = [
   {
     files: [
       {
+        path: "examples/responsive-dialog-controlled.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "responsive-dialog-controlled",
+    registryDependencies: ["button", "responsive-dialog"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/responsive-dialog-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "responsive-dialog-demo",
+    registryDependencies: ["button", "field", "input", "responsive-dialog"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
         path: "examples/scroll-area-demo.tsx",
         type: "registry:example",
       },
@@ -1973,6 +2140,39 @@ export const examples: Registry["items"] = [
     ],
     name: "scroll-area-horizontal-demo",
     registryDependencies: ["scroll-area"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/search-input-cycling.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "search-input-cycling",
+    registryDependencies: ["search-input"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/search-input-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "search-input-demo",
+    registryDependencies: ["search-input"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/search-input-with-results.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "search-input-with-results",
+    registryDependencies: ["empty", "item", "search-input"],
     type: "registry:example",
   },
   {
@@ -2006,6 +2206,28 @@ export const examples: Registry["items"] = [
     ],
     name: "separator-demo",
     registryDependencies: ["separator"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/share-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "share-demo",
+    registryDependencies: ["share"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/share-with-text.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "share-with-text",
+    registryDependencies: ["share"],
     type: "registry:example",
   },
   {
@@ -2220,6 +2442,39 @@ export const examples: Registry["items"] = [
   {
     files: [
       {
+        path: "examples/stepper-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "stepper-demo",
+    registryDependencies: ["button", "stepper"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/stepper-vertical.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "stepper-vertical",
+    registryDependencies: ["button", "stepper"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/stepper-with-description.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "stepper-with-description",
+    registryDependencies: ["stepper"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
         path: "examples/switch-demo.tsx",
         type: "registry:example",
       },
@@ -2303,6 +2558,61 @@ export const examples: Registry["items"] = [
     ],
     name: "textarea-with-text",
     registryDependencies: ["textarea", "label"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/time-picker-24-hour.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "time-picker-24-hour",
+    registryDependencies: ["field", "time-picker"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/time-picker-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "time-picker-demo",
+    registryDependencies: ["field", "time-picker"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/time-picker-range.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "time-picker-range",
+    registryDependencies: ["field", "time-picker"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/timezone-picker-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "timezone-picker-demo",
+    registryDependencies: ["timezone-picker"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/timezone-picker-field.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "timezone-picker-field",
+    registryDependencies: ["field", "timezone-picker"],
     type: "registry:example",
   },
   {
@@ -3034,6 +3344,29 @@ export const examples: Registry["items"] = [
     files: [{ path: "examples/marker-shimmer.tsx", type: "registry:example" }],
     name: "marker-shimmer",
     registryDependencies: ["marker"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/weekly-hours-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "weekly-hours-demo",
+    registryDependencies: ["weekly-hours"],
+    type: "registry:example",
+  },
+  {
+    dependencies: ["@hookform/resolvers", "react-hook-form", "sonner", "zod"],
+    files: [
+      {
+        path: "examples/weekly-hours-rhf.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "weekly-hours-rhf",
+    registryDependencies: ["button", "card", "field", "weekly-hours"],
     type: "registry:example",
   },
 ];

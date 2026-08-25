@@ -67,3 +67,12 @@ See the [React DayPicker](https://react-day-picker.js.org) documentation for mor
 ### With Presets
 
 <ComponentPreview name="date-picker-with-presets" description="A date picker with presets" />
+
+### Range with Apply
+
+The range is staged in local state while the calendar is open, and written to the field only when Apply is pressed. Reset reverts the draft to the applied value, and reopening the popover always starts from what is committed, so an abandoned selection never leaks into the filter behind it.
+
+<ComponentPreview
+  name="date-picker-with-range-apply"
+  description="A date range picker that defers commit until Apply"
+/>

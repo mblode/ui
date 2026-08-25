@@ -1,0 +1,97 @@
+---
+title: Search Input
+description: A search field with a leading icon, a clear button, and an optional cycling placeholder.
+component: true
+---
+
+<ComponentPreview
+  name="search-input-demo"
+  description="A search field with a clear button that returns focus to the input."
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://blode.co/ui/r/search-input.json"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install blode-icons-react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="search-input" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { SearchInput } from "@/components/ui/search-input";
+```
+
+```tsx
+const [query, setQuery] = React.useState("");
+
+<SearchInput onValueChange={setQuery} placeholder="Search invoices" value={query} />;
+```
+
+The field is a controlled input built on [Input Group](/docs/components/input-group): the magnifier sits in a leading addon and the clear button in a trailing one, so nothing is absolutely positioned over the text and the caret never runs under an icon.
+
+### What this adds over Input Group
+
+`InputGroup` with a `SearchIcon` addon gets you the layout. Use it directly if that is all you need. `SearchInput` adds two behaviours:
+
+**A clear button wired to the value.** It appears only while `value` is non-empty, carries the accessible name “Clear search”, and puts focus back in the input after clearing. Hand-rolled ones routinely miss that last part and drop a keyboard user at the top of the document.
+
+**A cycling placeholder that respects reduced motion.** The global reduced-motion stylesheet cannot reach a JavaScript typewriter, so the gate lives in the component.
+
+It renders a native `type="search"`, which carries `role="searchbox"` for free, and sets `autoComplete="off"` so the browser’s own history dropdown does not cover your results. WebKit’s built-in cancel button is suppressed: otherwise you get two clear affordances side by side.
+
+## Clearing
+
+The button exists only while `value` is non-empty. Override its “Clear search” name with `clearLabel`, and pass `onClear` to reset anything alongside the query.
+
+## Cycling placeholder
+
+Pass `placeholders` to type and delete a list of phrases in the placeholder.
+
+<ComponentPreview
+  name="search-input-cycling"
+  description="A placeholder that types through four search suggestions."
+/>
+
+The animation stops while the input has focus, stops as soon as the field holds a value, and never starts under reduced motion. The component subscribes to `matchMedia("(prefers-reduced-motion: reduce)")` itself and reacts to changes in it, rather than reading the preference once at mount.
+
+Assistive technology gets the stable string: `placeholder` is exposed through `aria-placeholder` whatever the animation is doing. It also becomes the input’s accessible name when you supply no `aria-label`, `aria-labelledby`, or `id`. An `id` is taken to mean a visible `<label htmlFor>` already names the field, and overriding a visible label would break voice control.
+
+## With results
+
+<ComponentPreview
+  name="search-input-with-results"
+  description="Filtering a local list, with an empty state when nothing matches."
+  previewClassName="h-[30rem]"
+/>

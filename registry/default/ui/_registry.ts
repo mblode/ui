@@ -16,6 +16,20 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
   },
   {
+    description:
+      "A sheet of platform-aware instructions for installing a web app to the home screen.",
+    files: [
+      {
+        path: "ui/add-to-homescreen.tsx",
+        type: "registry:ui",
+      },
+    ],
+    name: "add-to-homescreen",
+    registryDependencies: ["button", "sheet", "@blode/copy-button", "@blode/use-install-prompt"],
+    title: "Add to Homescreen",
+    type: "registry:ui",
+  },
+  {
     description: "A callout that displays a short, important message to attract attention.",
     files: [
       {
@@ -117,6 +131,20 @@ export const ui: Registry["items"] = [
     ],
     name: "breadcrumb",
     title: "Breadcrumb",
+    type: "registry:ui",
+  },
+  {
+    dependencies: ["blode-icons-react"],
+    description: "A sticky bar that surfaces actions for the currently selected rows.",
+    files: [
+      {
+        path: "ui/bulk-action-bar.tsx",
+        type: "registry:ui",
+      },
+    ],
+    name: "bulk-action-bar",
+    registryDependencies: ["button"],
+    title: "Bulk Action Bar",
     type: "registry:ui",
   },
   {
@@ -243,6 +271,21 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
   },
   {
+    dependencies: ["@base-ui/react", "blode-icons-react"],
+    description:
+      "A saturation area, hue slider, hex input and suggested swatches for choosing a color.",
+    files: [
+      {
+        path: "ui/color-picker.tsx",
+        type: "registry:ui",
+      },
+    ],
+    name: "color-picker",
+    registryDependencies: ["button", "input", "popover", "separator"],
+    title: "Color Picker",
+    type: "registry:ui",
+  },
+  {
     dependencies: ["blode-icons-react", "react-currency-input-field"],
     description: "A formatted input field for entering monetary values.",
     files: [
@@ -268,6 +311,38 @@ export const ui: Registry["items"] = [
     name: "combobox",
     registryDependencies: ["button", "input-group"],
     title: "Combobox",
+    type: "registry:ui",
+  },
+  {
+    dependencies: ["blode-icons-react"],
+    description: "A searchable picker for Google Fonts with live previews.",
+    files: [
+      {
+        path: "ui/font-picker.tsx",
+        type: "registry:ui",
+      },
+    ],
+    name: "font-picker",
+    registryDependencies: [
+      "@blode/button",
+      "@blode/combobox",
+      "@blode/spinner",
+      "@blode/google-fonts",
+    ],
+    title: "Font Picker",
+    type: "registry:ui",
+  },
+  {
+    dependencies: ["blode-icons-react", "class-variance-authority"],
+    description: "A draggable slider that wipes between a before and after image.",
+    files: [
+      {
+        path: "ui/image-comparison.tsx",
+        type: "registry:ui",
+      },
+    ],
+    name: "image-comparison",
+    title: "Image Comparison",
     type: "registry:ui",
   },
   {
@@ -657,6 +732,19 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
   },
   {
+    description: "A dialog on desktop that becomes a drawer on small screens.",
+    files: [
+      {
+        path: "ui/responsive-dialog.tsx",
+        type: "registry:ui",
+      },
+    ],
+    name: "responsive-dialog",
+    registryDependencies: ["dialog", "drawer", "@blode/use-mobile"],
+    title: "Responsive Dialog",
+    type: "registry:ui",
+  },
+  {
     dependencies: ["@base-ui/react"],
     description: "A scrollable container with custom styled scrollbars.",
     files: [
@@ -667,6 +755,20 @@ export const ui: Registry["items"] = [
     ],
     name: "scroll-area",
     title: "Scroll Area",
+    type: "registry:ui",
+  },
+  {
+    dependencies: ["blode-icons-react"],
+    description: "A search field with a clear button and an optional cycling placeholder.",
+    files: [
+      {
+        path: "ui/search-input.tsx",
+        type: "registry:ui",
+      },
+    ],
+    name: "search-input",
+    registryDependencies: ["input-group"],
+    title: "Search Input",
     type: "registry:ui",
   },
   {
@@ -693,6 +795,20 @@ export const ui: Registry["items"] = [
     ],
     name: "separator",
     title: "Separator",
+    type: "registry:ui",
+  },
+  {
+    dependencies: ["blode-icons-react", "motion", "sonner"],
+    description: "A button that opens the native share sheet and falls back to copying the link.",
+    files: [
+      {
+        path: "ui/share.tsx",
+        type: "registry:ui",
+      },
+    ],
+    name: "share",
+    registryDependencies: ["button", "@blode/use-copy-to-clipboard"],
+    title: "Share",
     type: "registry:ui",
   },
   {
@@ -815,6 +931,19 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
   },
   {
+    dependencies: ["blode-icons-react", "class-variance-authority"],
+    description: "A numbered progress indicator for a multi-step flow.",
+    files: [
+      {
+        path: "ui/stepper.tsx",
+        type: "registry:ui",
+      },
+    ],
+    name: "stepper",
+    title: "Stepper",
+    type: "registry:ui",
+  },
+  {
     dependencies: ["@base-ui/react"],
     description: "A toggle control for switching between on and off states.",
     files: [
@@ -863,6 +992,32 @@ export const ui: Registry["items"] = [
     ],
     name: "textarea",
     title: "Textarea",
+    type: "registry:ui",
+  },
+  {
+    description: "A select of times at a fixed interval, formatted for the locale.",
+    files: [
+      {
+        path: "ui/time-picker.tsx",
+        type: "registry:ui",
+      },
+    ],
+    name: "time-picker",
+    registryDependencies: ["select"],
+    title: "Time Picker",
+    type: "registry:ui",
+  },
+  {
+    description: "A searchable list of IANA time zones with their current offset and time.",
+    files: [
+      {
+        path: "ui/timezone-picker.tsx",
+        type: "registry:ui",
+      },
+    ],
+    name: "timezone-picker",
+    registryDependencies: ["@blode/combobox"],
+    title: "Timezone Picker",
     type: "registry:ui",
   },
   {
@@ -1113,6 +1268,27 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     ],
     name: "marker",
     title: "Marker",
+    type: "registry:ui",
+  },
+  {
+    dependencies: ["blode-icons-react"],
+    description: "An editor for opening hours across the days of the week.",
+    files: [
+      {
+        path: "ui/weekly-hours.tsx",
+        type: "registry:ui",
+      },
+    ],
+    name: "weekly-hours",
+    registryDependencies: [
+      "button",
+      "dropdown-menu",
+      "field",
+      "switch",
+      "tooltip",
+      "@blode/time-picker",
+    ],
+    title: "Weekly Hours",
     type: "registry:ui",
   },
 ];

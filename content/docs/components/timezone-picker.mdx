@@ -1,0 +1,94 @@
+---
+title: Timezone Picker
+description: Search every IANA time zone, grouped by region and showing the current local time.
+component: true
+---
+
+<ComponentPreview
+  name="timezone-picker-demo"
+  description="A searchable time zone picker defaulting to the viewer's own zone."
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://blode.co/ui/r/timezone-picker.json"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install @base-ui/react
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="timezone-picker" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import * as React from "react";
+import { TimezonePicker } from "@/components/ui/timezone-picker";
+```
+
+```tsx
+const [timeZone, setTimeZone] = React.useState("Australia/Melbourne");
+
+<TimezonePicker onValueChange={setTimeZone} value={timeZone} />;
+```
+
+## Where the list comes from
+
+Zones come from `Intl.supportedValuesOf("timeZone")`, around four hundred of them, grouped by the first path segment of the identifier. Each row carries the humanised city, its identifier with the underscores read as spaces, the short UTC offset, and the time it is there right now. Searching matches any of them, the raw `America/New_York` form included, so “gmt+9”, “kolkata” and “Asia” all find something.
+
+Engines without `Intl.supportedValuesOf` fall back to a short built-in list. Pass `timeZones` to supply your own: a shortlist of the zones your customers actually book in, for example.
+
+## Time and hydration
+
+The clock ticks on a one-minute interval aligned to the next wall-clock minute, not sixty seconds after mount, so the displayed times never sit up to a minute behind. It runs only while the list is open, and is cleared on unmount.
+
+Times take the viewer's own locale, so a US reader sees `7:23 PM` and a British one `19:23`. The hour is zero-padded where the locale is twenty-four hour, which is what keeps the column aligned.
+
+Left uncontrolled, the picker resolves `Intl.DateTimeFormat().resolvedOptions().timeZone` on the client only. The server renders empty, because the host's zone is not the viewer's, and resolving it during SSR would either mismatch on hydration or quietly show the wrong answer. Pass `defaultValue` or `value` when you know the zone up front.
+
+The resolved zone is adopted as a real selection: it fills the field, ticks its row in the list, and is reported once through `onValueChange`. A form left untouched submits the zone the user can see, not nothing at all.
+
+## Labelling and forms
+
+Pair the picker with a `FieldLabel htmlFor`, as below, or give it an `aria-label` when the surrounding layout has no room for a visible label. A placeholder is not a label.
+
+```tsx
+<TimezonePicker aria-label="Time zone" />
+```
+
+Pass `name` to submit the IANA identifier with a plain HTML form; the field carries `Australia/Melbourne`, not the `Melbourne` shown in the input.
+
+## In a field
+
+<ComponentPreview
+  name="timezone-picker-field"
+  description="A time zone picker with a label and a description."
+/>

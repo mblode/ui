@@ -46,3 +46,6 @@ public/.well-known/agent-skills/
 
 # path lists content-collections writes for proxy.ts
 lib/generated/
+
+# scratch Tailwind class-compilation probe
+.tw-probe/
