@@ -31,7 +31,7 @@ export const CurrencyInput = ({
   ...props
 }: CurrencyInputProps & InputProps) => (
   <label
-    className={cn("relative w-full", {
+    className={cn("relative block w-full", {
       "input-group": !!leftAddon || !!rightAddon,
     })}
     htmlFor={props.id}

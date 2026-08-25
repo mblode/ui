@@ -30,7 +30,7 @@ const Input = ({
   ...props
 }: InputProps & { ref?: React.Ref<HTMLInputElement> }) => (
   <label
-    className={cn("relative w-full", {
+    className={cn("relative block w-full", {
       "input-group": !!leftAddon || !!rightAddon,
     })}
   >

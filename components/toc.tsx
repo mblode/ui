@@ -45,8 +45,11 @@ function useActiveItem(itemIds: string[]) {
       { rootMargin: "0% 0% -80% 0%" },
     );
 
+    // CSS.escape: heading slugs are not always valid CSS identifiers. A leading digit
+    // ("11-03-2024-day_outside-colour") or a dot makes `#${id}` a syntax error, which
+    // throws out of the effect and takes the whole page down with the error boundary.
     for (const id of itemIds ?? []) {
-      const element = document.querySelector(`#${id}`);
+      const element = document.querySelector(`#${CSS.escape(id)}`);
       if (element) {
         observer.observe(element);
       }
@@ -54,7 +57,7 @@ function useActiveItem(itemIds: string[]) {
 
     return () => {
       for (const id of itemIds ?? []) {
-        const element = document.querySelector(`#${id}`);
+        const element = document.querySelector(`#${CSS.escape(id)}`);
         if (element) {
           observer.unobserve(element);
         }
