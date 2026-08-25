@@ -138,6 +138,7 @@ async function DocBody({ params }: DocPageProps) {
         <nav className="flex w-full rounded-2xl bg-muted/50 p-1 text-sm" id="pagination">
           {pager?.prev?.href ? (
             <Link
+              unstable_dynamicOnHover
               className="group flex items-center justify-between gap-1.5 pr-6 pl-3"
               href={pager.prev.href}
             >
@@ -151,7 +152,11 @@ async function DocBody({ params }: DocPageProps) {
             </Link>
           ) : null}
           {pager?.next?.href ? (
-            <Link className="group ml-auto flex w-full min-w-0 flex-1" href={pager.next.href}>
+            <Link
+              unstable_dynamicOnHover
+              className="group ml-auto flex w-full min-w-0 flex-1"
+              href={pager.next.href}
+            >
               <div className="flex flex-1 items-center justify-end rounded-xl bg-background hover:ring-1 hover:ring-border sm:h-16">
                 <div className="flex min-w-0 flex-col items-end justify-center px-5">
                   <span className="text-right font-semibold text-foreground/80">

@@ -95,6 +95,7 @@ export function DocsSidebar({
                         isActive={isItemActive(pathname, item)}
                       >
                         <Link
+                          unstable_dynamicOnHover
                           href={item.href}
                           rel={isExternal ? "noreferrer" : undefined}
                           target={isExternal ? "_blank" : undefined}

@@ -22,7 +22,7 @@ export function DocNavButtons({ className, next, prev }: DocNavButtonsProps) {
     <div className={cn("flex gap-2", className)}>
       {prev?.href && (
         <Button asChild className={NAV_BUTTON_CLASS} size="icon" variant="secondary">
-          <Link href={prev.href} title={prev.title}>
+          <Link unstable_dynamicOnHover href={prev.href} title={prev.title}>
             <ArrowLeftIcon />
             <span className="sr-only">Previous</span>
           </Link>
@@ -30,7 +30,7 @@ export function DocNavButtons({ className, next, prev }: DocNavButtonsProps) {
       )}
       {next?.href && (
         <Button asChild className={NAV_BUTTON_CLASS} size="icon" variant="secondary">
-          <Link href={next.href} title={next.title}>
+          <Link unstable_dynamicOnHover href={next.href} title={next.title}>
             <span className="sr-only">Next</span>
             <ArrowRightIcon />
           </Link>

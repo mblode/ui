@@ -51,10 +51,15 @@ const components = {
   FontWeightSlider,
   Image,
   Link: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
-    <Link className={cn("font-medium underline underline-offset-4", className)} {...props} />
+    <Link
+      unstable_dynamicOnHover
+      className={cn("font-medium underline underline-offset-4", className)}
+      {...props}
+    />
   ),
   LinkedCard: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
     <Link
+      unstable_dynamicOnHover
       className={cn(
         "flex w-full flex-col items-center rounded-xl bg-surface p-6 text-surface-foreground transition-colors hover:bg-surface/80 sm:p-10",
         className,
@@ -97,7 +102,7 @@ const components = {
     // Root-relative hrefs need the basePath, which next/link applies for us.
     if (href?.startsWith("/") && !href.startsWith("//")) {
       return (
-        <Link className={linkClassName} href={href} {...props}>
+        <Link unstable_dynamicOnHover className={linkClassName} href={href} {...props}>
           {children}
         </Link>
       );

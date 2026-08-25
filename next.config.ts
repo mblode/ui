@@ -79,6 +79,15 @@ const nextConfig: NextConfig = {
   // calling `new Date()` there would make the whole route render on demand.
   env: { BUILD_TIME: new Date().toISOString() },
   experimental: {
+    // Lets a link carry `unstable_dynamicOnHover` to upgrade its prefetch from
+    // the App Shell to the full payload on intent. Under `partialPrefetching` a
+    // plain <Link> pulls only the shell, and the shell for `/docs/[[...slug]]`
+    // is the two-column frame plus a body skeleton — a doc's body hangs off
+    // `params`, which is the one thing a shell shared by 110 docs cannot carry,
+    // so every doc-to-doc click flashed one. The upgrade resolves it, and since
+    // `generateStaticParams` lists every doc the payload comes from the static
+    // cache rather than waking a server.
+    dynamicOnHover: true,
     // Bailing out of a prerender throws, so anything logged after the abort is
     // noise from a render that was already discarded. Drop it.
     hideLogsAfterAbort: true,
