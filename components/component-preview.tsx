@@ -133,7 +133,10 @@ export function ComponentPreview({
         <div
           className={cn(
             // biome-ignore lint/nursery/useSortedClasses: keep class order identical to shadcn-ui v4
-            "preview relative flex h-72 w-full justify-center overflow-hidden p-10 isolate transform-gpu data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start data-[chromeless=true]:h-auto data-[chromeless=true]:p-0",
+            // `min-h-72`, not shadcn's `h-72`: a demo taller than the box was silently cropped, and
+            // upstream's remedy is a hand-tuned `previewClassName` per page. The floor keeps short
+            // previews uniform, and out-of-flow overlays never contributed to the height anyway.
+            "preview relative flex min-h-72 w-full justify-center overflow-hidden p-10 isolate transform-gpu data-[align=center]:items-center data-[align=end]:items-end data-[align=start]:items-start data-[chromeless=true]:min-h-0 data-[chromeless=true]:p-0",
             previewClassName,
           )}
           data-align={align}
@@ -161,7 +164,10 @@ export function ComponentPreview({
             Code
           ) : (
             <div className="relative">
-              <div className="[&_[data-rehype-pretty-code-figure]]:!m-0 [&_[data-rehype-pretty-code-figure]]:rounded-t-none [&_[data-rehype-pretty-code-figure]]:border-t [&_pre]:max-h-20 [&_pre]:overflow-hidden">
+              {/* Height, not max-height: the wrapper above sets `[&_pre]:max-h-72` at the same
+                  specificity, and Tailwind orders the larger value last, so a `max-h-*` peek here
+                  silently loses. `h-24` is the 14px top padding plus three 25px lines. */}
+              <div className="[&_[data-rehype-pretty-code-figure]]:!m-0 [&_[data-rehype-pretty-code-figure]]:rounded-t-none [&_[data-rehype-pretty-code-figure]]:border-t [&_pre]:h-24 [&_pre]:overflow-hidden">
                 {Code}
               </div>
               <div className="absolute inset-0 flex items-center justify-center pb-4">
