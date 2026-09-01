@@ -37,17 +37,13 @@ export const SiteFooter = () => (
         Matthew Blode
       </a>
     </div>
-    <div className="flex items-center gap-2 text-muted-foreground/30">
-      <span className="text-muted-foreground">v{siteConfig.version}</span>
-      <span aria-hidden="true">·</span>
-      <a
-        className="text-muted-foreground transition-colors hover:text-foreground"
-        href={siteConfig.links.github}
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        GitHub
-      </a>
-    </div>
+    <a
+      className="text-muted-foreground transition-colors hover:text-foreground"
+      href={siteConfig.links.github}
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      GitHub
+    </a>
   </footer>
 );

@@ -38,7 +38,7 @@ export default function Home() {
           <ShowcaseHero />
         </div>
       </div>
-      <div className="px-4 pb-16 md:px-0">
+      <div className="pb-16">
         <ShowcaseGrid />
       </div>
     </div>

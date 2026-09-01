@@ -1,5 +1,3 @@
-import packageJson from "../package.json" with { type: "json" };
-
 export const basePath = "/ui";
 
 export const asset = (path: string) => `${basePath}${path}`;
@@ -30,7 +28,6 @@ export const siteConfig = {
   ],
   ogImage: `${siteUrl}/opengraph-image`,
   url: siteUrl,
-  version: packageJson.version,
 };
 
 export const META_THEME_COLORS = {
