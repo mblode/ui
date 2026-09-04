@@ -2,7 +2,7 @@ import type { Registry } from "shadcn/schema";
 
 export const lib: Registry["items"] = [
   {
-    dependencies: ["clsx", "tailwind-merge"],
+    dependencies: ["cn"],
     description: "Utility functions including cn() for merging Tailwind CSS classes.",
     files: [
       {

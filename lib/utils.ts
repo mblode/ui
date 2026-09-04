@@ -1,8 +1,7 @@
-import clsx from "clsx";
-import type { ClassValue } from "clsx";
 import type { Metadata } from "next";
-import { twMerge } from "tailwind-merge";
 import { siteConfig, siteUrl } from "@/config/site";
+
+export { cn } from "cn";
 
 const WHITESPACE_REGEX = /\s+/u;
 const MULTISPACE_REGEX = /\s+/gu;
@@ -12,10 +11,6 @@ const META_DESCRIPTION_MIN = 120;
 const META_DESCRIPTION_MAX = 160;
 const META_DESCRIPTION_SUFFIX =
   "Part of Blode UI - an open-source React and Tailwind CSS component registry for building accessible, modern Next.js and React interfaces.";
-
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
 
 /**
  * Builds a 120-160 character meta description from a doc's short summary.

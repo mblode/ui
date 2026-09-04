@@ -4,11 +4,11 @@
   "title": "Utils",
   "author": "Matthew Blode",
   "description": "Utility functions including cn() for merging Tailwind CSS classes.",
-  "dependencies": ["clsx", "tailwind-merge"],
+  "dependencies": ["cn"],
   "files": [
     {
       "path": "lib/utils.ts",
-      "content": "import { clsx } from \"clsx\";\nimport type { ClassValue } from \"clsx\";\nimport { twMerge } from \"tailwind-merge\";\n\nexport const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs));\n",
+      "content": "export { cn } from \"cn\";\n",
       "type": "registry:lib",
       "target": ""
     }

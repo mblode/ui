@@ -39,7 +39,7 @@ npm run dev
 - **Tailwind v4**: Uses `@import "tailwindcss"` with CSS custom properties for design tokens. No `tailwind.config.js`.
 - **Icons**: Use `blode-icons-react` — don't install other icon libraries.
 - **Base UI primitives**: Components wrap Base UI. Preserve Base UI's accessibility patterns (proper `aria-*` attributes, keyboard navigation).
-- **CVA + tailwind-merge**: Use `cva` for variant definitions and `cn()` (from `registry/default/lib/utils.ts`) for class merging. `cn` is `twMerge(clsx(...))`.
+- **CVA + cn**: Use `cva` for variant definitions and `cn()` (from `registry/default/lib/utils.ts`) for class merging. `cn` is re-exported from the [`cn`](https://github.com/shadcn-ui/cn) package, which does clsx-style joining and Tailwind conflict resolution in one call. `clsx` and `tailwind-merge` are no longer direct dependencies; don't reintroduce them.
 - **Content collections**: MDX docs use `@content-collections/core`. Two collections: `documents` (docs) and `pages`.
 
 ## Gotchas

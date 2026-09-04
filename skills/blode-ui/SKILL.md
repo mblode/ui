@@ -44,7 +44,7 @@ Load the matching rule file before writing component code. `rules/_sections.md` 
 ## Gotchas
 
 - `@blode` is not in shadcn's registry directory, so a bare `npx shadcn@latest add @blode/button` cannot resolve. Register the namespace first, or point `init` at `https://blode.co/ui/r/ui.json`. Never hand someone the bare form.
-- An unstyled Blode component is a missing `@blode/ui` install until proven otherwise. Chasing it as a specificity or `tailwind-merge` problem produces cosmetic patches on a component that was never styled at all.
+- An unstyled Blode component is a missing `@blode/ui` install until proven otherwise. Chasing it as a specificity or class-merge problem produces cosmetic patches on a component that was never styled at all.
 - Blode wraps Base UI, not Radix. `asChild` does not exist here; composition goes through `render`. Radix habits are the most common source of broken Blode code.
 - `add` overwrites a customised component with no warning. Preview with `--diff` first.
 - The design system already settles accents, radii, motion, and surface treatments. Inventing new ones is how Blode work drifts into generic SaaS styling.
