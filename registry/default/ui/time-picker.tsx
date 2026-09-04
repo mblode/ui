@@ -178,7 +178,7 @@ const TimePicker = ({
       {/* `font-mono` is what actually swaps the family here and on the items
           below: `tabular-figures` sets one too, but the `font-sans` baked into
           the trigger and the item outranks it, and only `font-mono` is in a
-          twMerge group that drops it. */}
+          `cn` merge group that drops it. */}
       <SelectTrigger
         className={cn("font-mono tabular-figures", size === "sm" && "pr-2.5 text-sm", className)}
         id={id}
