@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { JsonLd } from "@/components/json-ld";
 import { ShowcaseGrid } from "@/components/sections/showcase-grid";
 import ShowcaseHero from "@/components/sections/showcase-hero";
+import { SponsorSupport } from "@/components/sponsor-support";
 import { ZoneBreadcrumb } from "@/components/zone-breadcrumb";
 import { siteConfig, siteUrl } from "@/config/site";
 import { constructMetadata } from "@/lib/utils";
@@ -40,6 +41,7 @@ export default function Home() {
       </div>
       <div className="pb-16">
         <ShowcaseGrid />
+        <SponsorSupport />
       </div>
     </div>
   );

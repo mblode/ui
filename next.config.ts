@@ -147,6 +147,12 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // The premium registry reads source files only after a licence succeeds.
+  // They are intentionally outside public/r, so include them in this route's
+  // server trace without exposing them as static assets.
+  outputFileTracingIncludes: {
+    "/api/pro/registry/*": ["./registry/pro/blocks/*.tsx"],
+  },
   // No `output: "standalone"`. It is for self-hosting, and this only deploys to
   // Vercel, which builds its own output and needs the file traces that
   // standalone mode writes into `.next/standalone` instead. Under 16.3 that
