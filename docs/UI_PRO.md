@@ -29,8 +29,46 @@ pack while leaving room below the $299 Tailwind Plus bundle.
 
 Create a published product in Lemon Squeezy test mode, enable licence keys, and
 set the variables documented in `.env.example`. The preview route is
-`/ui/pro-preview`. It returns a not-found page unless the test switch, exact
-store and product IDs, hosted test checkout URL, and price label are all valid.
+`/ui/pro-preview`. It remains visible for review with a disabled button and
+“Price pending” until the explicit test switch, exact store/product/founder
+variant IDs, test API key, webhook secret, Redis REST credentials, and price
+label are all valid. A separate reconciliation secret is also required. There
+is no live-mode code path.
+
+The enabled button posts to `/ui/api/pro/checkout`. That route atomically holds
+one of 50 founder seats in Redis, then asks Lemon Squeezy's Checkouts API for a
+checkout with `test_mode: true` and a 15-minute expiry. The Redis hold remains
+until an order webhook converts it into an entitlement, checkout creation
+fails, or an operator confirms with Lemon Squeezy that the checkout was not
+paid and calls the authenticated reconciliation endpoint. Holds never expire
+on an application clock: a payment completed just before checkout expiry can
+therefore arrive late without capacity having been reallocated. The checkout
+carries an opaque reservation ID in Lemon Squeezy custom data; no email address
+or licence key is stored in the seat ledger.
+
+Configure a **test-mode** webhook for `order_created` and `order_refunded` at
+`/ui/api/pro/webhook`. The handler verifies the raw-body HMAC signature, requires
+`test_mode: true`, and matches the exact store, product and founder variant.
+One atomic Redis script converts exactly one existing reservation into a
+claimed order. Repeated creation events do not consume another seat, and a new
+order cannot reuse a reservation after it has been claimed. Refunds release the
+claim and add a tombstone, so a refund that arrives before or after creation
+prevents a late or replayed creation event from restoring refunded access.
+
+The atomic ledger guarantees at most 50 held or active founder entitlements.
+Lemon Squeezy reports orders asynchronously, and its API documentation does not
+state that a custom checkout URL is single-use or provide an inventory cap.
+Application inventory therefore cannot guarantee a strict maximum number of
+completed provider payments. This branch does not attempt that claim: it only
+creates test-mode checkouts, where no real card is charged. A future live offer
+needs a provider-enforced sales limit, verified single-use checkout semantics,
+or another reviewed payment design before live checkout code is added.
+
+Pending holds deliberately trade availability for cap safety. To release an
+abandoned hold, an operator must first confirm non-payment in Lemon Squeezy,
+then send its reservation UUID and `providerConfirmedUnpaid: true` to
+`/ui/api/pro/reconcile` with the configured bearer reconciliation secret. There
+is no automatic cleanup job or public reconciliation control.
 
 Consumers can configure the gated registry with shadcn's supported header
 authentication:
@@ -59,21 +97,31 @@ The server calls Lemon Squeezy's
 [`POST /v1/licenses/validate`](https://docs.lemonsqueezy.com/api/license-api/validate-license-key),
 accepts only a valid active or inactive key, and matches `store_id`, `product_id`,
 and any configured variant allowlist. Expired, disabled, cross-product, and
-malformed responses fail closed. Responses are private and never cached.
+malformed responses fail closed. Premium source responses always send
+`private, no-store`, `CDN-Cache-Control: no-store`, and
+`Vercel-CDN-Cache-Control: no-store`.
+
+Licence checks use the same Redis provider as the seat ledger. A SHA-256 digest,
+never the raw licence key, indexes a one-minute valid cache and a 30-second
+invalid cache. Cache misses are limited to 50 upstream validations per minute,
+leaving headroom under Lemon Squeezy's documented 60-request limit. Redis or
+Lemon Squeezy failure closes the registry; a local or upstream rate limit returns
+`429` with `Retry-After: 60`.
 
 ## Launch blockers
 
 - Lemon Squeezy seller onboarding and store activation are incomplete, including
   the required legal country and identity details.
-- There is no confirmed test store ID, product ID, optional variant ID, hosted
-  test checkout URL, or product price. No product has been represented as live.
-- A 50-place founder offer is absent. There is no atomic inventory source or
-  verified Lemon Squeezy limit in this repository, so displaying “50 only”
-  would be unenforced.
-- Before live launch, add registry request throttling and a short-lived server
-  entitlement cache. Lemon Squeezy documents a 60-request-per-minute License
-  API limit, so validating every file request is suitable for this test slice,
-  not a public launch.
+- There is no confirmed test store ID, product ID, founder variant ID, API key,
+  webhook secret, reconciliation secret, Redis store, or product price. No
+  product has been represented as live.
+- The application now enforces at most 50 held or active entitlements atomically
+  in the test checkout and webhook path. It is disabled until the durable Redis
+  and Lemon Squeezy test configuration exists, so the page never displays a fake
+  remaining counter. It does not claim to cap provider payments.
+- Live mode remains unsupported. A future live launch needs separately created
+  live product IDs, keys and webhooks plus a deliberate code review; copying a
+  test product in Lemon Squeezy creates new IDs.
 - Legal terms, refund copy, tax display, support scope, and the final individual
   or team licence need approval before a live checkout is created.
 

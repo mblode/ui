@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-
 import { getProPreviewConfig } from "@/lib/pro-config";
 import { PricingSection } from "@/registry/pro/blocks/pricing-section";
 
@@ -12,11 +10,12 @@ export const metadata: Metadata = {
 
 export default function ProPreviewPage() {
   const config = getProPreviewConfig();
-  if (!config) {
-    notFound();
-  }
-
   return (
-    <PricingSection checkoutUrl={config.checkoutUrl} priceLabel={config.priceLabel} testMode />
+    <PricingSection
+      checkoutUrl={config.checkoutUrl}
+      founderLimit={config.founderLimit}
+      priceLabel={config.priceLabel}
+      testMode
+    />
   );
 }

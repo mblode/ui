@@ -14,10 +14,31 @@ function licenceResponse(overrides: Record<string, unknown> = {}) {
   });
 }
 
+function integrationFetch(response = licenceResponse()) {
+  return vi.fn(async (input: string | URL | Request, init?: RequestInit) => {
+    const url = String(input);
+    if (url.startsWith("https://redis.example")) {
+      const command = JSON.parse(String(init?.body)) as string[];
+      if (command[0] === "GET") {
+        return Response.json({ result: null });
+      }
+      if (command[0] === "EVAL") {
+        return Response.json({ result: 1 });
+      }
+      if (command[0] === "SETEX") {
+        return Response.json({ result: "OK" });
+      }
+    }
+    return response;
+  });
+}
+
 describe("GET /api/pro/registry/[name]", () => {
   beforeEach(() => {
     process.env.BLODE_UI_PRO_LEMON_SQUEEZY_PRODUCT_ID = "456";
     process.env.BLODE_UI_PRO_LEMON_SQUEEZY_STORE_ID = "123";
+    process.env.BLODE_UI_PRO_REDIS_REST_TOKEN = "redis-token";
+    process.env.BLODE_UI_PRO_REDIS_REST_URL = "https://redis.example";
     process.env.BLODE_UI_PRO_TEST_MODE = "true";
   });
 
@@ -26,6 +47,8 @@ describe("GET /api/pro/registry/[name]", () => {
     delete process.env.BLODE_UI_PRO_LEMON_SQUEEZY_PRODUCT_ID;
     delete process.env.BLODE_UI_PRO_LEMON_SQUEEZY_STORE_ID;
     delete process.env.BLODE_UI_PRO_LEMON_SQUEEZY_VARIANT_IDS;
+    delete process.env.BLODE_UI_PRO_REDIS_REST_TOKEN;
+    delete process.env.BLODE_UI_PRO_REDIS_REST_URL;
     delete process.env.BLODE_UI_PRO_TEST_MODE;
   });
 
@@ -38,7 +61,7 @@ describe("GET /api/pro/registry/[name]", () => {
 
     expect(response.status).toBe(503);
     expect(fetchSpy).not.toHaveBeenCalled();
-    expect(response.headers.get("cache-control")).toBe("private, no-store");
+    expect(response.headers.get("cache-control")).toBe("private, no-store, max-age=0");
     expect(response.headers.get("cdn-cache-control")).toBe("no-store");
     expect(response.headers.get("vercel-cdn-cache-control")).toBe("no-store");
   });
@@ -54,7 +77,7 @@ describe("GET /api/pro/registry/[name]", () => {
   });
 
   it("serves transformed source for a key belonging to the configured product", async () => {
-    const fetchSpy = vi.fn().mockResolvedValue(licenceResponse());
+    const fetchSpy = integrationFetch();
     vi.stubGlobal("fetch", fetchSpy);
 
     const response = await GET(
@@ -68,7 +91,7 @@ describe("GET /api/pro/registry/[name]", () => {
     };
 
     expect(response.status).toBe(200);
-    expect(response.headers.get("cache-control")).toBe("private, no-store");
+    expect(response.headers.get("cache-control")).toBe("private, no-store, max-age=0");
     expect(response.headers.get("cdn-cache-control")).toBe("no-store");
     expect(response.headers.get("vercel-cdn-cache-control")).toBe("no-store");
     expect(response.headers.get("vary")).toBe("Authorization");
@@ -77,7 +100,10 @@ describe("GET /api/pro/registry/[name]", () => {
     expect(body.files[0]?.content).toContain('from "@/components/ui/button"');
     expect(body.registryDependencies).toEqual(["@blode/badge", "@blode/button", "@blode/card"]);
 
-    const request = fetchSpy.mock.calls[0]?.[1] as RequestInit;
+    const licenseCall = fetchSpy.mock.calls.find(([url]) =>
+      String(url).includes("licenses/validate"),
+    );
+    const request = licenseCall?.[1] as RequestInit;
     expect(request.method).toBe("POST");
     expect(String(request.body)).toBe("license_key=test-licence");
   });
@@ -85,7 +111,7 @@ describe("GET /api/pro/registry/[name]", () => {
   it("rejects a valid Lemon Squeezy key for another product", async () => {
     vi.stubGlobal(
       "fetch",
-      vi.fn().mockResolvedValue(
+      integrationFetch(
         licenceResponse({
           meta: { product_id: 999, store_id: 123, variant_id: 7 },
         }),
@@ -102,7 +128,7 @@ describe("GET /api/pro/registry/[name]", () => {
 
   it("rejects a variant outside the configured allowlist", async () => {
     process.env.BLODE_UI_PRO_LEMON_SQUEEZY_VARIANT_IDS = "8";
-    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(licenceResponse()));
+    vi.stubGlobal("fetch", integrationFetch(licenceResponse()));
 
     const response = await GET(
       new Request(ROUTE, { headers: { authorization: "Bearer wrong-variant" } }),
@@ -113,7 +139,7 @@ describe("GET /api/pro/registry/[name]", () => {
   });
 
   it("turns malformed upstream data into a non-cacheable gateway error", async () => {
-    vi.stubGlobal("fetch", vi.fn().mockResolvedValue(Response.json({ valid: true })));
+    vi.stubGlobal("fetch", integrationFetch(Response.json({ valid: true })));
 
     const response = await GET(
       new Request(ROUTE, { headers: { authorization: "Bearer malformed" } }),
@@ -122,5 +148,42 @@ describe("GET /api/pro/registry/[name]", () => {
 
     expect(response.status).toBe(502);
     expect(response.headers.get("cache-control")).toContain("no-store");
+  });
+
+  it("serves a cached entitlement without spending a Lemon Squeezy request", async () => {
+    const fetchSpy = vi.fn(async (input: string | URL | Request, init?: RequestInit) => {
+      expect(String(input)).toContain("redis.example");
+      const command = JSON.parse(String(init?.body)) as string[];
+      expect(command[0]).toBe("GET");
+      expect(String(init?.body)).not.toContain("cached-licence");
+      return Response.json({ result: "valid" });
+    });
+    vi.stubGlobal("fetch", fetchSpy);
+
+    const response = await GET(
+      new Request(ROUTE, { headers: { authorization: "Bearer cached-licence" } }),
+      context,
+    );
+
+    expect(response.status).toBe(200);
+    expect(fetchSpy).toHaveBeenCalledOnce();
+  });
+
+  it("returns retry guidance before exceeding the upstream validation budget", async () => {
+    const fetchSpy = vi.fn(async (_input: string | URL | Request, init?: RequestInit) => {
+      const command = JSON.parse(String(init?.body)) as string[];
+      return command[0] === "GET" ? Response.json({ result: null }) : Response.json({ result: 51 });
+    });
+    vi.stubGlobal("fetch", fetchSpy);
+
+    const response = await GET(
+      new Request(ROUTE, { headers: { authorization: "Bearer uncached-licence" } }),
+      context,
+    );
+
+    expect(response.status).toBe(429);
+    expect(response.headers.get("retry-after")).toBe("60");
+    expect(response.headers.get("cache-control")).toContain("no-store");
+    expect(fetchSpy).toHaveBeenCalledTimes(2);
   });
 });

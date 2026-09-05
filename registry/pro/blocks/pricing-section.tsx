@@ -12,8 +12,9 @@ import {
 } from "@/registry/default/ui/card";
 
 interface PricingSectionProps {
-  checkoutUrl: string;
+  checkoutUrl?: string | null;
   docsUrl?: string;
+  founderLimit?: number;
   priceLabel: string;
   testMode?: boolean;
 }
@@ -32,9 +33,40 @@ const FeatureList = ({ features }: { features: string[] }) => (
   </ul>
 );
 
+const CheckoutControl = ({
+  checkoutUrl,
+  testMode,
+}: {
+  checkoutUrl?: string | null;
+  testMode: boolean;
+}) => {
+  if (!checkoutUrl) {
+    return (
+      <Button className="w-full" disabled>
+        Test checkout unavailable
+      </Button>
+    );
+  }
+  if (testMode) {
+    return (
+      <form action={checkoutUrl} method="post">
+        <Button className="w-full" type="submit">
+          Open test checkout
+        </Button>
+      </form>
+    );
+  }
+  return (
+    <Button asChild className="w-full">
+      <a href={checkoutUrl}>Get Blode UI Pro</a>
+    </Button>
+  );
+};
+
 export const PricingSection = ({
   checkoutUrl,
   docsUrl = "/ui/docs",
+  founderLimit,
   priceLabel,
   testMode = false,
 }: PricingSectionProps) => (
@@ -78,14 +110,18 @@ export const PricingSection = ({
             <span className="text-muted-foreground text-sm">one time</span>
           </div>
           <FeatureList features={proFeatures} />
+          {founderLimit ? (
+            <p className="text-muted-foreground text-sm">
+              Founder pre-order, limited to {founderLimit} test seats. Availability is checked when
+              checkout opens.
+            </p>
+          ) : null}
         </CardContent>
         <CardFooter className="flex flex-col items-stretch gap-2">
-          <Button asChild className="w-full">
-            <a href={checkoutUrl}>{testMode ? "Open test checkout" : "Get Blode UI Pro"}</a>
-          </Button>
+          <CheckoutControl checkoutUrl={checkoutUrl} testMode={testMode} />
           {testMode ? (
             <p className="text-center text-muted-foreground text-xs">
-              Lemon Squeezy test checkout. Use test details only.
+              Lemon Squeezy test checkout. No real card will be charged.
             </p>
           ) : null}
         </CardFooter>
