@@ -299,7 +299,7 @@ export const ui: Registry["items"] = [
     type: "registry:ui",
   },
   {
-    dependencies: ["@base-ui/react", "blode-icons-react"],
+    dependencies: ["@base-ui/react", "blode-icons-react", "motion"],
     description:
       "An autocomplete input that combines a text field with a filterable dropdown list.",
     files: [

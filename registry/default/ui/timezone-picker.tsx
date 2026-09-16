@@ -399,12 +399,16 @@ const TimezonePicker = ({
       />
       <ComboboxContent data-slot="timezone-picker-content">
         <ComboboxEmpty>No time zones found.</ComboboxEmpty>
-        <ComboboxList>
+        {/* Kill the top fade: `scroll-fade` masks the first 40px of the
+            scroller, which is exactly where the sticky region heading lives,
+            and a heading you can barely read is worse than no fade. The
+            bottom fade stays. */}
+        <ComboboxList className="[--scroll-fade-t-size:0px]">
           {(group: TimeZoneGroup) => (
             <ComboboxGroup items={group.items} key={group.value}>
               {/* Sticky: ten regions across four hundred rows, so the heading
                   has to survive the scroll that takes you away from it. */}
-              <ComboboxLabel className="sticky -top-1 z-10 bg-popover pt-2.5 pl-1.5">
+              <ComboboxLabel className="sticky -top-1 z-10 bg-popover pt-2.5">
                 {group.value}
               </ComboboxLabel>
               <ComboboxCollection>

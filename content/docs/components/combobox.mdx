@@ -77,3 +77,16 @@ const options = ["Next.js", "SvelteKit", "Nuxt.js", "Remix", "Astro"] as const;
   </ComboboxContent>
 </Combobox>;
 ```
+
+## Examples
+
+### Multiple selection
+
+Add `multiple` and swap `ComboboxInput` for `ComboboxChips`. Its child is a function
+that returns one keyed `ComboboxChip` per selected value; the field and its
+placeholder come with it. Backspace in an empty field removes the last chip.
+
+<ComponentPreview
+  name="combobox-multiple"
+  description="A combobox that accepts several picks as chips."
+/>

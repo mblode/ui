@@ -3545,7 +3545,7 @@ export const Index: Record<string, unknown> = {
       name: "combobox-demo",
       description: "",
       type: "registry:example",
-      registryDependencies: ["command"],
+      registryDependencies: ["combobox"],
       files: [
         {
           path: "registry/default/examples/combobox-demo.tsx",
@@ -3577,6 +3577,27 @@ export const Index: Record<string, unknown> = {
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/combobox-dropdown-menu.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "combobox-multiple": {
+      name: "combobox-multiple",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["combobox"],
+      files: [
+        {
+          path: "registry/default/examples/combobox-multiple.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/combobox-multiple.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
         })),
       ),
