@@ -747,7 +747,7 @@ export const examples: Registry["items"] = [
       },
     ],
     name: "combobox-demo",
-    registryDependencies: ["command"],
+    registryDependencies: ["combobox"],
     type: "registry:example",
   },
   {
@@ -759,6 +759,17 @@ export const examples: Registry["items"] = [
     ],
     name: "combobox-dropdown-menu",
     registryDependencies: ["command", "dropdown-menu", "button"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/combobox-multiple.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "combobox-multiple",
+    registryDependencies: ["combobox"],
     type: "registry:example",
   },
   {
