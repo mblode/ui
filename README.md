@@ -63,7 +63,7 @@ What `@blode/ui` writes into your project:
 
 - **Fields:** a 48px control height, a `--radius-2xl` corner, and one shared padding scale across input, select, and button.
 - **Shadows:** layered `--shadow-xs` through `--shadow-lg`, plus a dedicated `--shadow-popover`, instead of a flat border.
-- **Icons:** [blode-icons-react](https://github.com/mblode/blode-icons) is set as the project icon library, so generated code reaches for it.
+- **Icons:** [blode-icons-react](https://github.com/mblode/icons) is set as the project icon library, so generated code reaches for it.
 - **Dark mode:** a `.dark` class variant, not Tailwind's built-in media strategy.
 
 ## Agent skills
@@ -71,7 +71,7 @@ What `@blode/ui` writes into your project:
 Teach your coding agent the registry, the install flow, and the visual defaults:
 
 ```bash
-npx skills add mblode/blode-ui
+npx skills add mblode/ui
 ```
 
 - **[blode-ui](./skills/blode-ui/SKILL.md)**: install flow, registry commands, design-system defaults, and Blode component rules.

@@ -8,7 +8,7 @@ description: Installs and builds with Blode UI, the opinionated shadcn/ui compon
 Blode UI is an opinionated shadcn/ui component registry built by Matthew Blode, with a focus on good taste, care, and craft. Components install as source you own and edit.
 
 - **IS:** installing `@blode` components into a project and writing code with them.
-- **IS NOT:** maintaining the Blode registry itself (that lives in the `mblode/blode-ui` repo's own instructions), scaffolding a whole Next.js app (use `scaffold-nextjs`), or visual direction for a non-Blode product (use `ui-design`).
+- **IS NOT:** maintaining the Blode registry itself (that lives in the `mblode/ui` repo's own instructions), scaffolding a whole Next.js app (use `scaffold-nextjs`), or visual direction for a non-Blode product (use `ui-design`).
 
 ## Before Adding Anything
 

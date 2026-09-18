@@ -9,7 +9,7 @@ export const siteConfig = {
     "An open-source shadcn registry of accessible React components built on Base UI and Tailwind CSS v4. Install with one command, then own the source.",
   links: {
     author: "https://blode.co",
-    github: "https://github.com/mblode/blode-ui",
+    github: "https://github.com/mblode/ui",
   },
   name: "Blode UI",
   navItems: [

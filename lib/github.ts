@@ -45,7 +45,7 @@ export function getGitHubIssueUrl(params: GitHubIssueUrlParams): string {
 }
 
 export function getGithubFileUrl(slug: string) {
-  return `https://github.com/mblode/blode-ui/blob/main/content${
+  return `https://github.com/mblode/ui/blob/main/content${
     slug === "/docs" ? "/docs/index" : slug
   }.mdx`;
 }
