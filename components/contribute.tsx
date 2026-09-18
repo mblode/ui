@@ -10,7 +10,7 @@ export function Contribute({ doc }: { doc: Doc }) {
       href: getGitHubIssueUrl({
         labels: ["bug", "documentation"],
         owner: "mblode",
-        repo: "blode-ui",
+        repo: "ui",
         template: "bug_report.md",
         title: `[bug]: ${doc.slug}`,
       }),
@@ -21,7 +21,7 @@ export function Contribute({ doc }: { doc: Doc }) {
       href: getGitHubIssueUrl({
         labels: ["enhancement"],
         owner: "mblode",
-        repo: "blode-ui",
+        repo: "ui",
         template: "feature_request.md",
         title: `[feat]: ${doc.slug}`,
       }),
