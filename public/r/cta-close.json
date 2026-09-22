@@ -1,0 +1,17 @@
+{
+  "$schema": "https://blode.co/ui/schema/registry-item.json",
+  "name": "cta-close",
+  "title": "CTA Close",
+  "author": "Matthew Blode",
+  "description": "The closing section of a landing page: the primary action again, plus a command.",
+  "files": [
+    {
+      "path": "blocks/cta-close.tsx",
+      "content": "import type * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ninterface CtaCloseProps extends Omit<React.ComponentProps<\"section\">, \"title\"> {\n  /** The page's primary action, repeated. Pass the same one the hero uses. */\n  action: React.ReactNode;\n  /** Optional command or snippet the reader can take away, such as `InstallCommand`. */\n  command?: React.ReactNode;\n  description?: React.ReactNode;\n  title: React.ReactNode;\n}\n\n/**\n * The last section on a marketing page: one heading, one line, the primary\n * action again, and the command to run. No new offer and no second action.\n */\nconst CtaClose = ({ action, className, command, description, title, ...props }: CtaCloseProps) => (\n  <section\n    className={cn(\"flex flex-col gap-6 border-t pt-12\", className)}\n    data-slot=\"cta-close\"\n    {...props}\n  >\n    <div className=\"flex max-w-xl flex-col gap-2\">\n      <h2 className=\"text-balance font-semibold text-2xl tracking-tight sm:text-3xl\">{title}</h2>\n      {description ? (\n        <p className=\"text-pretty text-muted-foreground leading-relaxed\">{description}</p>\n      ) : null}\n    </div>\n    <div className=\"flex flex-wrap items-center gap-3\">{action}</div>\n    {command ? <div className=\"min-w-0 max-w-2xl\">{command}</div> : null}\n  </section>\n);\n\nexport { CtaClose };\nexport type { CtaCloseProps };\n",
+      "type": "registry:component",
+      "target": ""
+    }
+  ],
+  "categories": ["marketing"],
+  "type": "registry:block"
+}

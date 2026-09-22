@@ -2050,6 +2050,28 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
+    "live-stats": {
+      name: "live-stats",
+      description:
+        "Cached server fetches for GitHub stars and npm downloads that fail closed to null.",
+      type: "registry:lib",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/default/lib/live-stats.ts",
+          type: "registry:lib",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/lib/live-stats.ts").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
     "use-copy-to-clipboard": {
       name: "use-copy-to-clipboard",
       description: "A hook that copies text to the clipboard and resets after a timeout.",
@@ -2128,6 +2150,159 @@ export const Index: Record<string, unknown> = {
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/hooks/use-tab-observer.ts").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "marketing-hero": {
+      name: "marketing-hero",
+      description:
+        "A landing page hero: eyebrow, headline, one-sentence subhead, one primary action, and a slot for the product.",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/default/blocks/marketing-hero.tsx",
+          type: "registry:component",
+          target: "",
+        },
+      ],
+      categories: ["marketing"],
+      component: React.lazy(() =>
+        import("@/registry/default/blocks/marketing-hero.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "install-command": {
+      name: "install-command",
+      description:
+        "A copyable install command, with tabs for alternative setups and copied and failed states.",
+      type: "registry:block",
+      registryDependencies: ["button", "tabs"],
+      files: [
+        {
+          path: "registry/default/blocks/install-command.tsx",
+          type: "registry:component",
+          target: "",
+        },
+      ],
+      categories: ["marketing"],
+      component: React.lazy(() =>
+        import("@/registry/default/blocks/install-command.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "feature-rows": {
+      name: "feature-rows",
+      description:
+        "Alternating rows of text and real product media, with an optional once-only reveal.",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/default/blocks/feature-rows.tsx",
+          type: "registry:component",
+          target: "",
+        },
+      ],
+      categories: ["marketing"],
+      component: React.lazy(() =>
+        import("@/registry/default/blocks/feature-rows.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "proof-stats": {
+      name: "proof-stats",
+      description:
+        "A strip of live numbers in tabular figures that hides any stat it could not fetch.",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/default/blocks/proof-stats.tsx",
+          type: "registry:component",
+          target: "",
+        },
+      ],
+      categories: ["marketing"],
+      component: React.lazy(() =>
+        import("@/registry/default/blocks/proof-stats.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    faq: {
+      name: "faq",
+      description:
+        "Questions and answers as native disclosures, with FAQPage JSON-LD built from the same data.",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/default/blocks/faq.tsx",
+          type: "registry:component",
+          target: "",
+        },
+      ],
+      categories: ["marketing"],
+      component: React.lazy(() =>
+        import("@/registry/default/blocks/faq.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "cta-close": {
+      name: "cta-close",
+      description:
+        "The closing section of a landing page: the primary action again, plus a command.",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/default/blocks/cta-close.tsx",
+          type: "registry:component",
+          target: "",
+        },
+      ],
+      categories: ["marketing"],
+      component: React.lazy(() =>
+        import("@/registry/default/blocks/cta-close.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "section-toc": {
+      name: "section-toc",
+      description: "Jump links for a long page that mark the section currently in view.",
+      type: "registry:block",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/default/blocks/section-toc.tsx",
+          type: "registry:component",
+          target: "",
+        },
+      ],
+      categories: ["marketing"],
+      component: React.lazy(() =>
+        import("@/registry/default/blocks/section-toc.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
         })),
       ),
@@ -8851,6 +9026,174 @@ export const Index: Record<string, unknown> = {
       categories: undefined,
       component: React.lazy(() =>
         import("@/registry/default/examples/weekly-hours-rhf.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "marketing-hero-demo": {
+      name: "marketing-hero-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["@blode/marketing-hero", "button"],
+      files: [
+        {
+          path: "registry/default/examples/marketing-hero-demo.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/marketing-hero-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "install-command-demo": {
+      name: "install-command-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["@blode/install-command"],
+      files: [
+        {
+          path: "registry/default/examples/install-command-demo.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/install-command-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "install-command-single": {
+      name: "install-command-single",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["@blode/install-command"],
+      files: [
+        {
+          path: "registry/default/examples/install-command-single.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/install-command-single.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "feature-rows-demo": {
+      name: "feature-rows-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["@blode/feature-rows", "button", "switch"],
+      files: [
+        {
+          path: "registry/default/examples/feature-rows-demo.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/feature-rows-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "proof-stats-demo": {
+      name: "proof-stats-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["@blode/proof-stats"],
+      files: [
+        {
+          path: "registry/default/examples/proof-stats-demo.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/proof-stats-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "faq-demo": {
+      name: "faq-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["@blode/faq"],
+      files: [
+        {
+          path: "registry/default/examples/faq-demo.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/faq-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "cta-close-demo": {
+      name: "cta-close-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["@blode/cta-close", "@blode/install-command", "button"],
+      files: [
+        {
+          path: "registry/default/examples/cta-close-demo.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/cta-close-demo.tsx").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
+    "section-toc-demo": {
+      name: "section-toc-demo",
+      description: "",
+      type: "registry:example",
+      registryDependencies: ["@blode/section-toc"],
+      files: [
+        {
+          path: "registry/default/examples/section-toc-demo.tsx",
+          type: "registry:example",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/examples/section-toc-demo.tsx").then((mod) => ({
           default: resolveRegistryComponent(mod as Record<string, unknown>),
         })),
       ),

@@ -1,0 +1,74 @@
+---
+title: Feature Rows
+description: Alternating rows of text and real product media, with an optional once-only reveal.
+component: true
+---
+
+<ComponentPreview
+  name="feature-rows-demo"
+  description="Two rows, each pairing a claim with the live component that proves it."
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://blode.co/ui/r/feature-rows.json"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="feature-rows" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { FeatureRows } from "@/components/feature-rows";
+```
+
+```tsx
+<FeatureRows
+  items={[
+    {
+      title: "Buttons that wait",
+      description: "Every action is one button, with a loading state that holds its width.",
+      media: <Button loading>Saving</Button>,
+    },
+  ]}
+  reveal
+/>
+```
+
+Rows alternate text and media on wider screens and stack on phones. There are no cards: space separates the rows, and the media carries the proof. Use real output for `media`, such as a live component, a screenshot, or code, never a stock illustration.
+
+## Motion
+
+`reveal` fades each row up once, the first time it scrolls into view. It is off by default. A marketing page gets at most two once-only reveals, both below the fold, so only turn it on when the rows start below the first viewport. With reduced motion on, rows appear in place with no movement.
+
+## Props
+
+| Prop     | Type                                                         | Default | Description                              |
+| -------- | ------------------------------------------------------------ | ------- | ---------------------------------------- |
+| `items`  | `{ title: string; description: string; media: ReactNode }[]` | -       | One entry per row (required).            |
+| `reveal` | `boolean`                                                    | `false` | Fade each row up once as it enters view. |

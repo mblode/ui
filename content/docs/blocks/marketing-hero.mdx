@@ -1,0 +1,72 @@
+---
+title: Marketing Hero
+description: The first viewport of a landing page. Eyebrow, headline, one-sentence subhead, one primary action.
+component: true
+---
+
+<ComponentPreview
+  name="marketing-hero-demo"
+  description="A hero with an eyebrow, a headline, and one action."
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://blode.co/ui/r/marketing-hero.json"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="marketing-hero" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { MarketingHero } from "@/components/marketing-hero";
+```
+
+```tsx
+<MarketingHero
+  action={<Button size="lg">Start a free trial</Button>}
+  description="For small teams who invoice by the hour: log time in one click and send the invoice from the same screen."
+  eyebrow="Timesheet"
+  title="Bill every hour you work"
+/>
+```
+
+The title renders as the page's only `h1`, so put the words people search for in it. Keep it to three to six words a stranger understands in five seconds, and keep the subhead to one sentence: who it is for and what changes.
+
+Nothing in the hero animates. It sits above the fold, and a hero that fades in on load delays the one thing the reader came to see.
+
+## Props
+
+| Prop          | Type        | Default | Description                                                          |
+| ------------- | ----------- | ------- | -------------------------------------------------------------------- |
+| `title`       | `ReactNode` | -       | The headline, rendered as an `h1` (required).                        |
+| `description` | `ReactNode` | -       | One sentence under the headline (required).                          |
+| `action`      | `ReactNode` | -       | The one primary action (required).                                   |
+| `eyebrow`     | `ReactNode` | -       | Brand or product name above the headline.                            |
+| `secondary`   | `ReactNode` | -       | A supporting action under the primary one, such as `InstallCommand`. |
+| `children`    | `ReactNode` | -       | The signature moment: a live demo or the product itself.             |

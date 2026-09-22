@@ -1,0 +1,16 @@
+{
+  "$schema": "https://blode.co/ui/schema/registry-item.json",
+  "name": "live-stats",
+  "title": "Live Stats",
+  "author": "Matthew Blode",
+  "description": "Cached server fetches for GitHub stars and npm downloads that fail closed to null.",
+  "files": [
+    {
+      "path": "lib/live-stats.ts",
+      "content": "export const LIVE_STATS_REVALIDATE = 86_400;\n\nconst TIMEOUT_MS = 5000;\nconst REPO_PATTERN = /^[\\w.-]+\\/[\\w.-]+$/u;\n\ntype NextFetchInit = RequestInit & { next?: { revalidate?: number | false; tags?: string[] } };\n\nconst fetchJson = async (url: string, headers: Record<string, string> = {}): Promise<unknown> => {\n  try {\n    const init: NextFetchInit = {\n      headers: { accept: \"application/json\", ...headers },\n      next: { revalidate: LIVE_STATS_REVALIDATE },\n      signal: AbortSignal.timeout(TIMEOUT_MS),\n    };\n    const response = await fetch(url, init);\n\n    if (!response.ok) {\n      return null;\n    }\n\n    return await response.json();\n  } catch {\n    return null;\n  }\n};\n\nconst toCount = (value: unknown): number | null =>\n  typeof value === \"number\" && Number.isFinite(value) && value >= 0 ? value : null;\n\n/**\n * Stargazer count for a public GitHub repository, e.g. `getGitHubStars(\"mblode/ui\")`.\n */\nexport const getGitHubStars = async (repo: string): Promise<number | null> => {\n  if (!REPO_PATTERN.test(repo)) {\n    return null;\n  }\n\n  const token = typeof process === \"undefined\" ? undefined : process.env.GITHUB_TOKEN;\n  const data = await fetchJson(`https://api.github.com/repos/${repo}`, {\n    accept: \"application/vnd.github+json\",\n    ...(token ? { authorization: `Bearer ${token}` } : {}),\n    \"x-github-api-version\": \"2022-11-28\",\n  });\n\n  if (!data || typeof data !== \"object\" || !(\"stargazers_count\" in data)) {\n    return null;\n  }\n\n  return toCount(data.stargazers_count);\n};\n\nexport type NpmDownloadsPeriod = \"last-day\" | \"last-week\" | \"last-month\" | \"last-year\";\n\n/**\n * Download count for an npm package over a rolling period, e.g.\n * `getNpmDownloads(\"blode-icons-react\", \"last-week\")`.\n */\nexport const getNpmDownloads = async (\n  pkg: string,\n  period: NpmDownloadsPeriod = \"last-week\",\n): Promise<number | null> => {\n  if (!pkg || pkg.length > 214) {\n    return null;\n  }\n\n  // Scoped names keep their slash: the endpoint expects `@scope/name` as is.\n  const name = pkg.startsWith(\"@\")\n    ? `@${encodeURIComponent(pkg.slice(1)).replace(\"%2F\", \"/\")}`\n    : encodeURIComponent(pkg);\n  const data = await fetchJson(`https://api.npmjs.org/downloads/point/${period}/${name}`);\n\n  if (!data || typeof data !== \"object\" || !(\"downloads\" in data)) {\n    return null;\n  }\n\n  return toCount(data.downloads);\n};\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "type": "registry:lib"
+}

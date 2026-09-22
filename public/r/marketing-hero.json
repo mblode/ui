@@ -1,0 +1,17 @@
+{
+  "$schema": "https://blode.co/ui/schema/registry-item.json",
+  "name": "marketing-hero",
+  "title": "Marketing Hero",
+  "author": "Matthew Blode",
+  "description": "A landing page hero: eyebrow, headline, one-sentence subhead, one primary action, and a slot for the product.",
+  "files": [
+    {
+      "path": "blocks/marketing-hero.tsx",
+      "content": "import type * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\ninterface MarketingHeroProps extends Omit<React.ComponentProps<\"section\">, \"title\"> {\n  /** One primary action. Pass a single button or link. */\n  action: React.ReactNode;\n  /** One sentence: who it is for and what changes. */\n  description: React.ReactNode;\n  /** The brand or product name, shown above the headline. */\n  eyebrow?: React.ReactNode;\n  /** Optional supporting action, such as an install command. */\n  secondary?: React.ReactNode;\n  /** The headline. Rendered as the page's only `h1`. */\n  title: React.ReactNode;\n}\n\n/**\n * The first viewport of a marketing page: brand, headline, subhead, one action.\n *\n * Nothing here animates. The hero is above the fold, so it paints in its final\n * state; reveals belong further down the page. `children` is the slot for the\n * page's signature moment, rendered under the text column.\n */\nconst MarketingHero = ({\n  action,\n  children,\n  className,\n  description,\n  eyebrow,\n  secondary,\n  title,\n  ...props\n}: MarketingHeroProps) => (\n  <section className={cn(\"flex flex-col gap-10\", className)} data-slot=\"marketing-hero\" {...props}>\n    <div className=\"flex max-w-2xl flex-col gap-6\">\n      <div className=\"flex flex-col gap-3\">\n        {eyebrow ? (\n          <p\n            className=\"font-medium text-muted-foreground text-sm\"\n            data-slot=\"marketing-hero-eyebrow\"\n          >\n            {eyebrow}\n          </p>\n        ) : null}\n        <h1 className=\"text-balance font-semibold text-[clamp(2.25rem,6vw,3.5rem)] leading-[1.05] tracking-[-0.035em]\">\n          {title}\n        </h1>\n        <p className=\"max-w-xl text-pretty text-lg text-muted-foreground leading-relaxed\">\n          {description}\n        </p>\n      </div>\n      <div className=\"flex flex-col gap-4\" data-slot=\"marketing-hero-actions\">\n        <div className=\"flex flex-wrap items-center gap-3\">{action}</div>\n        {secondary ? <div className=\"min-w-0\">{secondary}</div> : null}\n      </div>\n    </div>\n    {children}\n  </section>\n);\n\nexport { MarketingHero };\nexport type { MarketingHeroProps };\n",
+      "type": "registry:component",
+      "target": ""
+    }
+  ],
+  "categories": ["marketing"],
+  "type": "registry:block"
+}

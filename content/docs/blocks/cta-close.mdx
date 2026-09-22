@@ -1,0 +1,70 @@
+---
+title: CTA Close
+description: The closing section of a landing page. The primary action again, plus a command to take away.
+component: true
+---
+
+<ComponentPreview
+  name="cta-close-demo"
+  description="A closing section with the primary action and an install command."
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://blode.co/ui/r/cta-close.json"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="cta-close" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { CtaClose } from "@/components/cta-close";
+```
+
+```tsx
+<CtaClose
+  action={<Button size="lg">Open the install guide</Button>}
+  command={
+    <InstallCommand commands={[{ label: "npm", command: "npx shadcn@latest add @blode/button" }]} />
+  }
+  description="Add one component, read the file it writes, and decide from there."
+  title="Add your first component"
+/>
+```
+
+Repeat the hero's primary action here instead of adding a new one, so the whole page asks for one decision.
+
+## Props
+
+| Prop          | Type        | Default | Description                                     |
+| ------------- | ----------- | ------- | ----------------------------------------------- |
+| `title`       | `ReactNode` | -       | Rendered as an `h2` (required).                 |
+| `action`      | `ReactNode` | -       | The page's primary action, repeated (required). |
+| `description` | `ReactNode` | -       | One line under the title.                       |
+| `command`     | `ReactNode` | -       | A command or snippet, such as `InstallCommand`. |

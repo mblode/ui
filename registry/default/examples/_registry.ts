@@ -3380,4 +3380,92 @@ export const examples: Registry["items"] = [
     registryDependencies: ["button", "card", "field", "weekly-hours"],
     type: "registry:example",
   },
+  {
+    files: [
+      {
+        path: "examples/marketing-hero-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "marketing-hero-demo",
+    registryDependencies: ["@blode/marketing-hero", "button"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/install-command-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "install-command-demo",
+    registryDependencies: ["@blode/install-command"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/install-command-single.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "install-command-single",
+    registryDependencies: ["@blode/install-command"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/feature-rows-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "feature-rows-demo",
+    registryDependencies: ["@blode/feature-rows", "button", "switch"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/proof-stats-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "proof-stats-demo",
+    registryDependencies: ["@blode/proof-stats"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/faq-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "faq-demo",
+    registryDependencies: ["@blode/faq"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/cta-close-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "cta-close-demo",
+    registryDependencies: ["@blode/cta-close", "@blode/install-command", "button"],
+    type: "registry:example",
+  },
+  {
+    files: [
+      {
+        path: "examples/section-toc-demo.tsx",
+        type: "registry:example",
+      },
+    ],
+    name: "section-toc-demo",
+    registryDependencies: ["@blode/section-toc"],
+    type: "registry:example",
+  },
 ];

@@ -26,4 +26,17 @@ export const lib: Registry["items"] = [
     title: "Google Fonts",
     type: "registry:lib",
   },
+  {
+    description:
+      "Cached server fetches for GitHub stars and npm downloads that fail closed to null.",
+    files: [
+      {
+        path: "lib/live-stats.ts",
+        type: "registry:lib",
+      },
+    ],
+    name: "live-stats",
+    title: "Live Stats",
+    type: "registry:lib",
+  },
 ];

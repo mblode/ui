@@ -105,6 +105,46 @@ export const docsConfig: DocsConfig = {
     {
       items: [
         {
+          href: "/docs/blocks/cta-close",
+          items: [],
+          title: "CTA Close",
+        },
+        {
+          href: "/docs/blocks/faq",
+          items: [],
+          title: "FAQ",
+        },
+        {
+          href: "/docs/blocks/feature-rows",
+          items: [],
+          title: "Feature Rows",
+        },
+        {
+          href: "/docs/blocks/install-command",
+          items: [],
+          title: "Install Command",
+        },
+        {
+          href: "/docs/blocks/marketing-hero",
+          items: [],
+          title: "Marketing Hero",
+        },
+        {
+          href: "/docs/blocks/proof-stats",
+          items: [],
+          title: "Proof Stats",
+        },
+        {
+          href: "/docs/blocks/section-toc",
+          items: [],
+          title: "Section TOC",
+        },
+      ],
+      title: "Blocks",
+    },
+    {
+      items: [
+        {
           href: "/docs/components/accordion",
           items: [],
           title: "Accordion",

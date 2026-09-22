@@ -2,6 +2,7 @@ import type { registrySchema } from "shadcn/schema";
 import type { z } from "zod";
 
 import { base } from "@/registry/default/base/_registry";
+import { blocks } from "@/registry/default/blocks/_registry";
 import { examples } from "@/registry/default/examples/_registry";
 import { fonts } from "@/registry/default/fonts/_registry";
 import { hooks } from "@/registry/default/hooks/_registry";
@@ -16,6 +17,7 @@ export const registry = {
     ...ui,
     ...lib,
     ...hooks,
+    ...blocks,
 
     // Internal use only.
     ...examples,

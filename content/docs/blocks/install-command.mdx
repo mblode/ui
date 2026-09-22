@@ -1,0 +1,75 @@
+---
+title: Install Command
+description: A copyable install command, with tabs for alternative setups and copied and failed states.
+component: true
+---
+
+<ComponentPreview
+  name="install-command-demo"
+  description="Two setups in tabs, each with its own copy button."
+/>
+
+## Installation
+
+<CodeTabs>
+
+<TabsList>
+  <TabsTrigger value="cli">CLI</TabsTrigger>
+  <TabsTrigger value="manual">Manual</TabsTrigger>
+</TabsList>
+<TabsContent value="cli">
+
+```bash
+npx shadcn@latest add "https://blode.co/ui/r/install-command.json"
+```
+
+</TabsContent>
+
+<TabsContent value="manual">
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="install-command" />
+
+<Step>Update the import paths to match your project setup.</Step>
+
+</Steps>
+
+</TabsContent>
+
+</CodeTabs>
+
+## Usage
+
+```tsx
+import { InstallCommand } from "@/components/install-command";
+```
+
+```tsx
+<InstallCommand
+  commands={[
+    { command: "npx shadcn@latest init https://blode.co/ui/r/ui.json", label: "New project" },
+    { command: "npx shadcn@latest add @blode/ui", label: "Existing project" },
+  ]}
+  onCopy={(label) => posthog.capture("install_command_copied", { variant: label })}
+/>
+```
+
+One command renders as a single line with no tabs. Several render as tabs, and the copy button copies whichever tab is open.
+
+When the clipboard is unavailable (an insecure context, or permission denied) the button shows an alert icon and the block tells the reader to copy the command by hand. `onCopy` only fires after a copy succeeds.
+
+## Props
+
+| Prop       | Type                                   | Default | Description                                           |
+| ---------- | -------------------------------------- | ------- | ----------------------------------------------------- |
+| `commands` | `{ label: string; command: string }[]` | -       | One entry per setup. Labels name the tabs (required). |
+| `onCopy`   | `(label: string) => void`              | -       | Fires after a successful copy with the active label.  |
+
+## Examples
+
+### Single command
+
+<ComponentPreview name="install-command-single" description="One command, no tabs." />

@@ -472,7 +472,16 @@ Motion confirms a state change and nothing else.
 - Sheets and drawers open at `500ms` and close at `300ms`. They earn the longer duration by sliding the full width or height of the viewport, and closing is faster because a dismissal should never feel like waiting.
 - Components honour `motion-reduce`. Keep the base experience complete without animation.
 
-No parallax, no scroll-triggered reveals, no decorative pulsing, no bounce.
+No parallax, no decorative pulsing, no bounce.
+
+Marketing surfaces (landing pages built from the `marketing-*` blocks) get one exception: at most 2 once-only reveals per page, below the fold only.
+
+- Never above the fold. The header, hero, and primary action render in their final state on first paint, with nothing animating on mount.
+- Once only. A reveal fires the first time its section enters the viewport and never replays on scroll back.
+- Opacity and a short translate only (`transform` plus `opacity`), eased on `cubic-bezier(0.22,1,0.36,1)`, at `300ms` to `500ms`.
+- Reduced motion is honoured: under `prefers-reduced-motion: reduce` the content renders in place with no reveal.
+
+Product and docs surfaces keep the rule above: no scroll-triggered reveals.
 
 ## Components
 
