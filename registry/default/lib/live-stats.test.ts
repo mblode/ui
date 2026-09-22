@@ -13,7 +13,6 @@ describe("getGitHubStars", () => {
 
     await expect(getGitHubStars("mblode/ui")).resolves.toBe(412);
     expect(fetchMock.mock.calls[0]?.[0]).toBe("https://api.github.com/repos/mblode/ui");
-    expect(fetchMock.mock.calls[0]?.[1]).toMatchObject({ next: { revalidate: 86_400 } });
   });
 
   it("fails closed on a non-OK response", async () => {

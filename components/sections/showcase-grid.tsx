@@ -1,6 +1,5 @@
 "use client";
 
-import { CheckIcon, CircleAlertIcon, ClipboardIcon } from "blode-icons-react";
 import Link from "next/link";
 import React from "react";
 
@@ -9,6 +8,7 @@ import { trackInstallCommandCopied } from "@/analytics";
 import { showcaseDemos } from "@/components/sections/showcase-demos";
 import { docsConfig } from "@/config/docs";
 import { cn } from "@/lib/utils";
+import { CopyIcon, useCopyState } from "@/registry/default/blocks/install-command";
 import { ui } from "@/registry/default/ui/_registry";
 import { Button } from "@/registry/default/ui/button";
 import { Spinner } from "@/registry/default/ui/spinner";
@@ -71,8 +71,6 @@ function getShowcaseItems(): ShowcaseItem[] {
     });
 }
 
-type CopyState = "idle" | "copied" | "error";
-
 /**
  * Copies one component's install command. A failed copy (no clipboard access)
  * shows an alert icon and is announced through the wall's live region, so it
@@ -89,56 +87,28 @@ function CardCopyButton({
   slug: string;
   title: string;
 }) {
-  const [state, setState] = React.useState<CopyState>("idle");
-  const timer = React.useRef<ReturnType<typeof setTimeout> | null>(null);
+  const { copy, state } = useCopyState();
 
-  React.useEffect(
-    () => () => {
-      if (timer.current) {
-        clearTimeout(timer.current);
-      }
-    },
-    [],
-  );
-
-  const copy = async () => {
-    if (timer.current) {
-      clearTimeout(timer.current);
-    }
-    try {
-      if (!navigator.clipboard?.writeText) {
-        throw new Error("Clipboard unavailable");
-      }
-      await navigator.clipboard.writeText(command);
-      setState("copied");
+  const handleCopy = async () => {
+    if (await copy(command)) {
       onAnnounce?.(`Copied the install command for ${title}`);
       trackInstallCommandCopied(`component:${slug}`);
-    } catch {
-      setState("error");
+    } else {
       onAnnounce?.(`Couldn't copy. The ${title} command is on its docs page.`);
-    } finally {
-      timer.current = setTimeout(() => setState("idle"), 2000);
     }
   };
-
-  let icon = <ClipboardIcon aria-hidden="true" />;
-  if (state === "copied") {
-    icon = <CheckIcon aria-hidden="true" />;
-  } else if (state === "error") {
-    icon = <CircleAlertIcon aria-hidden="true" />;
-  }
 
   return (
     <Button
       aria-label={`Copy install command for ${title}`}
       className="absolute top-2.5 right-2.5 z-10 text-muted-foreground hover:text-foreground"
       data-state={state}
-      onClick={copy}
+      onClick={handleCopy}
       size="icon-xs"
       title={command}
       variant="ghost"
     >
-      {icon}
+      <CopyIcon state={state} />
     </Button>
   );
 }

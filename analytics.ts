@@ -8,7 +8,8 @@ import posthog from "posthog-js";
  *
  * PostHog is initialised in `instrumentation-client.ts`, and not at all on
  * localhost. Capturing before init only logs a warning, so each call checks
- * first and development stays quiet.
+ * first and development stays quiet. These run inside click, copy and toggle
+ * handlers, so a tracking failure is swallowed rather than breaking the UI.
  */
 const SITE = "blode-ui";
 
@@ -16,7 +17,11 @@ const capture = (event: string, properties: Record<string, string>) => {
   if (typeof window === "undefined" || !posthog.__loaded) {
     return;
   }
-  posthog.capture(event, { site: SITE, ...properties });
+  try {
+    posthog.capture(event, { site: SITE, ...properties });
+  } catch {
+    // A lost event is better than a copy reported as failed or a broken toggle.
+  }
 };
 
 /** A click on a call to action. `location` is the section, `label` the visible text. */

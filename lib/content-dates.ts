@@ -59,16 +59,19 @@ function readGitDates(): Map<string, string> {
 
 let cache: Map<string, string> | undefined;
 
-/** The latest git date across `paths`, or `undefined` when none is known. */
-export function lastModifiedFromGit(...paths: string[]): string | undefined {
-  cache ??= readGitDates();
-  const known = paths
-    .map((path) => cache?.get(path))
-    .filter((date): date is string => Boolean(date));
+/** The latest of `dates`, ignoring unknowns, or `undefined` when none is known. */
+export function latestDate(...dates: (string | undefined)[]): string | undefined {
+  const known = dates.filter((date): date is string => Boolean(date));
 
   if (known.length === 0) {
     return undefined;
   }
 
   return known.reduce((latest, date) => (Date.parse(date) > Date.parse(latest) ? date : latest));
+}
+
+/** The latest git date across `paths`, or `undefined` when none is known. */
+export function lastModifiedFromGit(...paths: string[]): string | undefined {
+  const dates = (cache ??= readGitDates());
+  return latestDate(...paths.map((path) => dates.get(path)));
 }

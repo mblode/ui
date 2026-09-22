@@ -11,7 +11,7 @@ interface ProofStat {
 }
 
 interface ProofStatsProps extends React.ComponentProps<"dl"> {
-  /** Formats each value. Defaults to a grouped integer in the reader's locale. */
+  /** Formats each value. Defaults to a grouped integer in `en-AU`, fixed so server and client agree. */
   format?: (value: number) => string;
   stats: ProofStat[];
 }
