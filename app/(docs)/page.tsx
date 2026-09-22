@@ -6,6 +6,7 @@ import { JsonLd } from "@/components/json-ld";
 import { ComponentWall } from "@/components/sections/component-wall";
 import {
   BaseUiMedia,
+  SectionViews,
   TrackedCta,
   TrackedFaq,
   TrackedInstallCommand,
@@ -63,6 +64,9 @@ const pageJsonLd = {
     { ...faqNode, "@id": `${siteUrl}/#faq`, isPartOf: { "@id": `${siteUrl}/#webpage` } },
   ],
 };
+
+// Every tracked section, in page order. The hero is not one of them.
+const sectionIds = sections.map((section) => section.id);
 
 function SectionHeading({
   children,
@@ -153,6 +157,7 @@ export default function Home() {
   return (
     <div className="flex min-w-0 flex-1 flex-col pb-8 text-[1.05rem] sm:text-[15px]">
       <JsonLd data={pageJsonLd} />
+      <SectionViews ids={sectionIds} />
       <div className="h-(--top-spacing) shrink-0" />
       <div className="flex items-start">
         <div className="flex min-w-0 flex-1 flex-col gap-20 px-2 py-6 sm:gap-24 md:px-4 lg:py-8">

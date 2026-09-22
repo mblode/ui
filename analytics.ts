@@ -37,3 +37,79 @@ export const trackDemoOpened = () => capture("demo_opened", {});
 
 /** An FAQ item opened. */
 export const trackFaqOpened = (question: string) => capture("faq_opened", { question });
+
+/** A landing section to report on, keyed by the stable id the page gives it. */
+export interface TrackedSection {
+  element: Element;
+  id: string;
+}
+
+/** How much of a section has to be on screen before it counts as seen. */
+const SECTION_VISIBLE = 0.5;
+// Steps under 0.5 as well, because a section taller than two viewports can
+// never reach a 0.5 ratio. It counts once it fills half the viewport instead.
+const SECTION_THRESHOLDS = [0, 0.1, 0.2, 0.3, 0.4, SECTION_VISIBLE];
+
+const isHalfVisible = (entry: IntersectionObserverEntry) =>
+  entry.isIntersecting &&
+  (entry.intersectionRatio >= SECTION_VISIBLE ||
+    (entry.rootBounds !== null &&
+      entry.intersectionRect.height >= entry.rootBounds.height * SECTION_VISIBLE));
+
+const noop = () => {
+  // Nothing was observed, so there is nothing to disconnect.
+};
+
+/**
+ * `section_viewed` once per section per page view, when half of it is on
+ * screen. A section already that visible on the observer's first report was
+ * seen on load rather than scrolled to, so it is marked seen without firing;
+ * the hero is simply never passed in. Returns a disconnect for an effect
+ * cleanup. Without IntersectionObserver it observes nothing, and nothing here
+ * can throw into the page.
+ */
+export const observeSectionViews = (sections: Iterable<TrackedSection>): (() => void) => {
+  try {
+    if (typeof window === "undefined" || typeof window.IntersectionObserver !== "function") {
+      return noop;
+    }
+    const ids = new Map<Element, string>();
+    const reported = new Set<Element>();
+    const seen = new Set<string>();
+    const observer = new window.IntersectionObserver(
+      (entries) => {
+        try {
+          for (const entry of entries) {
+            const id = ids.get(entry.target);
+            const onLoad = !reported.has(entry.target);
+            reported.add(entry.target);
+            if (id === undefined || seen.has(id) || !isHalfVisible(entry)) {
+              continue;
+            }
+            seen.add(id);
+            observer.unobserve(entry.target);
+            if (!onLoad) {
+              capture("section_viewed", { section: id });
+            }
+          }
+        } catch {
+          // A lost view is better than an error thrown from a scroll.
+        }
+      },
+      { threshold: SECTION_THRESHOLDS },
+    );
+    for (const { element, id } of sections) {
+      ids.set(element, id);
+      observer.observe(element);
+    }
+    return () => {
+      try {
+        observer.disconnect();
+      } catch {
+        // Already gone.
+      }
+    };
+  } catch {
+    return noop;
+  }
+};

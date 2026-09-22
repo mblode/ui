@@ -1,7 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { trackCtaClicked, trackFaqOpened, trackInstallCommandCopied } from "@/analytics";
+import { useEffect } from "react";
+
+import {
+  observeSectionViews,
+  trackCtaClicked,
+  trackFaqOpened,
+  trackInstallCommandCopied,
+} from "@/analytics";
 import { cn } from "@/lib/utils";
 import { Faq } from "@/registry/default/blocks/faq";
 import type { FaqItem } from "@/registry/default/blocks/faq";
@@ -16,6 +23,23 @@ import { RadioGroup, RadioGroupItem } from "@/registry/default/ui/radio-group";
  * the browser: the analytics callbacks the registry blocks accept, and one live
  * control for the "How it works" section.
  */
+
+/**
+ * Reports `section_viewed` for the landing sections. Each is found by its
+ * heading's id, the same one the section jump links use, so the ids are stable
+ * and no markup is added for tracking. The hero is left out on purpose.
+ */
+export function SectionViews({ ids }: { ids: string[] }) {
+  useEffect(() => {
+    const sections = ids.flatMap((id) => {
+      const element = document.querySelector(`#${id}`)?.closest("section");
+      return element ? [{ element, id }] : [];
+    });
+    return observeSectionViews(sections);
+  }, [ids]);
+
+  return null;
+}
 
 export function TrackedCta({
   children,
