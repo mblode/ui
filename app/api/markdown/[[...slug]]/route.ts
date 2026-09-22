@@ -1,29 +1,11 @@
 import { allDocs, allPages } from "content-collections";
-import { siteConfig, siteUrl } from "@/config/site";
+import { landingMarkdown } from "@/lib/landing";
 
 interface RouteParams {
   params: Promise<{
     slug?: string[];
   }>;
 }
-
-const HOME_MARKDOWN = `# ${siteConfig.name}
-
-${siteConfig.description}
-
-## Sections
-
-- [Documentation](${siteUrl}/docs)
-- [Components](${siteUrl}/docs/components)
-- [Installation](${siteUrl}/docs/installation)
-
-## Machine-readable resources
-
-- Registry manifest: [${siteUrl}/r/index.json](${siteUrl}/r/index.json)
-- API catalog: [${siteUrl}/.well-known/api-catalog](${siteUrl}/.well-known/api-catalog)
-- Agent skills: [${siteUrl}/.well-known/agent-skills/index.json](${siteUrl}/.well-known/agent-skills/index.json)
-- Sitemap: [${siteUrl}/sitemap.xml](${siteUrl}/sitemap.xml)
-`;
 
 function buildMarkdown(title: string, description: string | undefined, body: string) {
   const heading = `# ${title}\n`;
@@ -60,7 +42,7 @@ export async function GET(_request: Request, { params }: RouteParams) {
   const path = slug.join("/");
 
   if (path === "" || path === "index") {
-    return markdownResponse(HOME_MARKDOWN);
+    return markdownResponse(landingMarkdown);
   }
 
   if (path === "docs" || path.startsWith("docs/")) {

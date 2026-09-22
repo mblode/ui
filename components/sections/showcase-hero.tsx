@@ -1,43 +1,30 @@
-import Link from "next/link";
+import { TrackedCta, TrackedInstallCommand } from "@/components/sections/landing-client";
+import { hero, installCommands, primaryCta } from "@/lib/landing";
+import { MarketingHero } from "@/registry/default/blocks/marketing-hero";
 
-import { DocNavButtons } from "@/components/doc-nav-buttons";
-import { getPagerForPath } from "@/components/pager";
-import { docsConfig } from "@/config/docs";
-import { cn } from "@/lib/utils";
-import { buttonVariants } from "@/registry/default/ui/button";
-
-// Counted rather than written out, so the claim in the subhead cannot drift
-// from the sidebar the reader is looking at.
-const componentCount =
-  docsConfig.sidebarNav.find((group) => group.title === "Components")?.items?.length ?? 0;
-
+/**
+ * The landing hero, built from the `@blode/marketing-hero` block this registry
+ * ships. It sells ownership of the source and carries the install command, so
+ * a reader who already knows shadcn can leave the first viewport installed.
+ * Nothing here animates: it is above the fold.
+ */
 export default function ShowcaseHero() {
-  const pager = getPagerForPath("/");
-
   return (
-    <section className="flex flex-col gap-6" id="hero">
-      <div className="flex flex-col gap-2">
-        <div className="flex items-center justify-between md:items-start">
-          <h1 className="scroll-m-24 font-semibold text-3xl tracking-tight sm:text-3xl">
-            Blode UI
-          </h1>
-          <div className="docs-nav flex items-center gap-2">
-            <DocNavButtons next={pager?.next} prev={pager?.prev} />
-          </div>
+    <MarketingHero
+      action={
+        <TrackedCta href={primaryCta.href} location="hero">
+          {primaryCta.label}
+        </TrackedCta>
+      }
+      description={hero.description}
+      eyebrow={hero.eyebrow}
+      id="hero"
+      secondary={
+        <div className="max-w-xl">
+          <TrackedInstallCommand commands={installCommands} location="hero" />
         </div>
-        <p className="text-[1.05rem] text-muted-foreground sm:text-balance sm:text-base md:max-w-[80%]">
-          {componentCount} React components built on Base UI and Tailwind CSS v4. Install them with
-          the shadcn CLI, then own the source.
-        </p>
-      </div>
-      <div className="flex flex-wrap gap-2">
-        <Link className={cn(buttonVariants({ variant: "default" }))} href="/docs/installation">
-          Install Blode UI
-        </Link>
-        <Link className={cn(buttonVariants({ variant: "secondary" }))} href="/docs">
-          Read the docs
-        </Link>
-      </div>
-    </section>
+      }
+      title={hero.title}
+    />
   );
 }

@@ -1,11 +1,38 @@
 import type { Metadata } from "next";
+import type * as React from "react";
+import { Suspense } from "react";
+
 import { JsonLd } from "@/components/json-ld";
-import { ShowcaseGrid } from "@/components/sections/showcase-grid";
+import { ComponentWall } from "@/components/sections/component-wall";
+import {
+  BaseUiMedia,
+  TrackedCta,
+  TrackedFaq,
+  TrackedInstallCommand,
+} from "@/components/sections/landing-client";
 import ShowcaseHero from "@/components/sections/showcase-hero";
 import { ZoneBreadcrumb } from "@/components/zone-breadcrumb";
 import { siteConfig, siteUrl } from "@/config/site";
-import { constructMetadata } from "@/lib/utils";
+import {
+  close,
+  componentCount,
+  faqs,
+  features,
+  installCommands,
+  pointOfView,
+  primaryCta,
+  proof,
+  sections,
+  wall,
+} from "@/lib/landing";
+import { getRepoStars } from "@/lib/landing-stats";
+import { absoluteUrl, constructMetadata } from "@/lib/utils";
 import { zoneRootJsonLd } from "@/lib/zone-schema";
+import { CtaClose } from "@/registry/default/blocks/cta-close";
+import { faqJsonLd } from "@/registry/default/blocks/faq";
+import { FeatureRows } from "@/registry/default/blocks/feature-rows";
+import { ProofStats, ProofStatsSkeleton } from "@/registry/default/blocks/proof-stats";
+import { SectionToc } from "@/registry/default/blocks/section-toc";
 
 // Ranked at position 8.6 on 73 impressions for three months and earned no
 // clicks at all, so the old snippet was losing the choice on the page it
@@ -26,20 +53,162 @@ export const metadata: Metadata = {
   title: { absolute: title },
 };
 
+// One `@graph` for the page. The FAQPage node is built from the same `faqs`
+// array the visible list renders, so the two cannot disagree.
+const { "@context": _faqContext, ...faqNode } = faqJsonLd(faqs);
+const pageJsonLd = {
+  ...zoneRootJsonLd,
+  "@graph": [
+    ...zoneRootJsonLd["@graph"],
+    { ...faqNode, "@id": `${siteUrl}/#faq`, isPartOf: { "@id": `${siteUrl}/#webpage` } },
+  ],
+};
+
+function SectionHeading({
+  children,
+  description,
+  id,
+}: {
+  children: React.ReactNode;
+  description?: React.ReactNode;
+  id: string;
+}) {
+  return (
+    <div className="flex max-w-2xl flex-col gap-2">
+      <h2 className="scroll-m-24 text-balance font-semibold text-2xl tracking-tight" id={id}>
+        {children}
+      </h2>
+      {description ? (
+        <p className="text-pretty text-muted-foreground leading-relaxed">{description}</p>
+      ) : null}
+    </div>
+  );
+}
+
+function CodeMedia({ lines }: { lines: React.ReactNode[] }) {
+  return (
+    <div className="overflow-hidden rounded-xl border bg-code">
+      <pre className="no-scrollbar overflow-x-auto p-5 font-mono text-[0.8125rem] text-code-foreground leading-7">
+        <code>
+          {lines.map((line, index) => (
+            // Static lines that never reorder.
+            // oxlint-disable-next-line react/no-array-index-key
+            <span className="block" key={index}>
+              {line}
+            </span>
+          ))}
+        </code>
+      </pre>
+    </div>
+  );
+}
+
+const prompt = (
+  <span aria-hidden="true" className="select-none text-muted-foreground">
+    ${" "}
+  </span>
+);
+const comment = (text: string) => <span className="text-muted-foreground">{text}</span>;
+
+const featureMedia = [
+  <CodeMedia
+    key="file"
+    lines={[
+      <>{prompt}npx shadcn@latest add @blode/button</>,
+      "",
+      comment("# writes"),
+      "components/ui/button.tsx",
+      "",
+      comment("# then, like any file of yours"),
+      'import { Button } from "@/components/ui/button";',
+    ]}
+  />,
+  <BaseUiMedia key="base-ui" />,
+  <CodeMedia
+    key="agent"
+    lines={[
+      <>{prompt}npx skills add mblode/ui</>,
+      "",
+      comment("# from blode.co/ui/design.md"),
+      "Motion confirms a state change and nothing else.",
+      "Focus ring. Always visible, never a glow.",
+    ]}
+  />,
+];
+
+async function OpenSourceStats() {
+  const stars = await getRepoStars();
+
+  return (
+    <ProofStats
+      stats={[
+        { href: absoluteUrl("/docs/components"), label: "Components", value: componentCount },
+        { href: siteConfig.links.github, label: "GitHub stars", value: stars },
+      ]}
+    />
+  );
+}
+
 export default function Home() {
   return (
     <div className="flex min-w-0 flex-1 flex-col pb-8 text-[1.05rem] sm:text-[15px]">
-      <JsonLd data={zoneRootJsonLd} />
+      <JsonLd data={pageJsonLd} />
       <div className="h-(--top-spacing) shrink-0" />
-      <div className="xl:pr-(--sidebar-width)">
-        <div className="mx-auto flex w-full min-w-0 max-w-[40rem] flex-col gap-6 py-6 lg:py-8">
-          {/* Root page only — the docs and marketing pages have their own navigation. */}
-          <ZoneBreadcrumb product="Blode UI" />
-          <ShowcaseHero />
+      <div className="flex items-start">
+        <div className="flex min-w-0 flex-1 flex-col gap-20 px-2 py-6 sm:gap-24 md:px-4 lg:py-8">
+          <div className="flex flex-col gap-8">
+            {/* Root page only. The docs and marketing pages have their own navigation. */}
+            <ZoneBreadcrumb product="Blode UI" />
+            <ShowcaseHero />
+          </div>
+
+          <section aria-labelledby="components" className="flex flex-col gap-6">
+            <SectionHeading description={wall.description} id="components">
+              {wall.title}
+            </SectionHeading>
+            <ComponentWall />
+          </section>
+
+          <section aria-labelledby="how-it-works" className="flex flex-col gap-12">
+            <SectionHeading description={pointOfView} id="how-it-works">
+              How it works
+            </SectionHeading>
+            {/* The page's one once-only reveal. It starts well below the fold. */}
+            <FeatureRows
+              items={features.map((feature, index) => ({ ...feature, media: featureMedia[index] }))}
+              reveal
+            />
+          </section>
+
+          <section aria-labelledby="open-source" className="flex flex-col gap-8">
+            <SectionHeading id="open-source">{proof.title}</SectionHeading>
+            <Suspense fallback={<ProofStatsSkeleton />}>
+              <OpenSourceStats />
+            </Suspense>
+          </section>
+
+          <section aria-labelledby="faq" className="flex flex-col gap-6">
+            <SectionHeading id="faq">Questions</SectionHeading>
+            <TrackedFaq items={faqs} />
+          </section>
+
+          <CtaClose
+            action={
+              <TrackedCta href={primaryCta.href} location="close">
+                {primaryCta.label}
+              </TrackedCta>
+            }
+            aria-labelledby="install-heading"
+            command={<TrackedInstallCommand commands={installCommands} location="close" />}
+            description={close.description}
+            id="install"
+            title={<span id="install-heading">{close.title}</span>}
+          />
         </div>
-      </div>
-      <div className="pb-16">
-        <ShowcaseGrid />
+
+        <aside className="sticky top-[calc(var(--header-height)+1px)] hidden w-(--sidebar-width) shrink-0 px-8 pt-10 xl:block">
+          <SectionToc items={sections} />
+        </aside>
       </div>
     </div>
   );
