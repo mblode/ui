@@ -1470,7 +1470,6 @@
       "type": "registry:block",
       "title": "Feature Rows",
       "description": "Alternating rows of text and real product media, with an optional once-only reveal.",
-      "dependencies": ["motion"],
       "categories": ["marketing"],
       "files": [
         {

@@ -1,4 +1,4 @@
-import posthog from "posthog-js";
+import type { PostHog } from "posthog-js";
 
 /**
  * Conversion events for the landing page, on the cross-site contract every
@@ -6,19 +6,27 @@ import posthog from "posthog-js";
  * so one PostHog funnel can compare them. Never rename an event here; add a new
  * one instead, or the history behind every existing insight breaks.
  *
- * PostHog is initialised in `instrumentation-client.ts`, and not at all on
- * localhost. Capturing before init only logs a warning, so each call checks
- * first and development stays quiet. These run inside click, copy and toggle
+ * PostHog is loaded and initialised by `instrumentation-client.ts` once the
+ * page is idle, and not at all on localhost, so it never sits in the first-load
+ * bundle. Until it hands its client over through `setAnalyticsClient`, events
+ * are dropped, as they were before init. These run inside click, copy and toggle
  * handlers, so a tracking failure is swallowed rather than breaking the UI.
  */
 const SITE = "blode-ui";
 
+let client: PostHog | null = null;
+
+/** Called by `instrumentation-client.ts` once PostHog has initialised. */
+export const setAnalyticsClient = (next: PostHog | null) => {
+  client = next;
+};
+
 const capture = (event: string, properties: Record<string, string>) => {
-  if (typeof window === "undefined" || !posthog.__loaded) {
+  if (typeof window === "undefined" || !client?.__loaded) {
     return;
   }
   try {
-    posthog.capture(event, { site: SITE, ...properties });
+    client.capture(event, { site: SITE, ...properties });
   } catch {
     // A lost event is better than a copy reported as failed or a broken toggle.
   }

@@ -1,7 +1,8 @@
 import posthog from "posthog-js";
+import type { PostHog } from "posthog-js";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-import { observeSectionViews } from "./analytics";
+import { observeSectionViews, setAnalyticsClient } from "./analytics";
 
 vi.mock("posthog-js", () => ({ default: { __loaded: true, capture: vi.fn() } }));
 
@@ -34,6 +35,7 @@ const entry = (ratio: number): Partial<IntersectionObserverEntry> => ({
 describe("observeSectionViews", () => {
   beforeEach(() => {
     vi.mocked(posthog.capture).mockClear();
+    setAnalyticsClient(posthog as unknown as PostHog);
   });
 
   afterEach(() => {

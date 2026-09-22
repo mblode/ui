@@ -1,7 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
-import type * as React from "react";
+import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -22,12 +21,59 @@ interface FeatureRowsProps extends React.ComponentProps<"div"> {
   reveal?: boolean;
 }
 
-const EASE_OUT = [0.22, 1, 0.36, 1] as const;
+type RevealPhase = "static" | "waiting" | "shown";
+
+/**
+ * A once-only reveal with no animation library. The row renders visible on the
+ * server and without script. At hydration it stays put when it is already on
+ * screen or the reader prefers reduced motion; otherwise it hides, and fades
+ * and lifts in the first time it scrolls into view.
+ */
+const useRevealOnce = (ref: React.RefObject<HTMLLIElement | null>, enabled: boolean) => {
+  const [phase, setPhase] = React.useState<RevealPhase>("static");
+
+  React.useEffect(() => {
+    const node = ref.current;
+    if (
+      !(enabled && node) ||
+      typeof IntersectionObserver === "undefined" ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      node.getBoundingClientRect().top < window.innerHeight
+    ) {
+      return;
+    }
+    setPhase("waiting");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setPhase("shown");
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 },
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [enabled, ref]);
+
+  return phase;
+};
 
 const Row = ({ item, index, reveal }: { index: number; item: FeatureRowItem; reveal: boolean }) => {
-  const reduceMotion = useReducedMotion();
-  const content = (
-    <>
+  const ref = React.useRef<HTMLLIElement>(null);
+  const phase = useRevealOnce(ref, reveal);
+
+  return (
+    <li
+      className={cn(
+        "grid items-center gap-6 md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] md:gap-12 md:even:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]",
+        "data-[phase=waiting]:translate-y-4 data-[phase=waiting]:opacity-0",
+        "data-[phase=shown]:transition-[opacity,translate] data-[phase=shown]:duration-500 data-[phase=shown]:ease-[cubic-bezier(0.22,1,0.36,1)]",
+      )}
+      data-phase={reveal ? phase : undefined}
+      data-slot="feature-rows-item"
+      ref={ref}
+    >
       <div className="flex flex-col gap-2 md:max-w-sm">
         <h3 className="text-balance font-semibold text-xl tracking-tight">{item.title}</h3>
         <p className="text-pretty text-muted-foreground leading-relaxed">{item.description}</p>
@@ -38,32 +84,7 @@ const Row = ({ item, index, reveal }: { index: number; item: FeatureRowItem; rev
       >
         {item.media}
       </div>
-    </>
-  );
-  const className =
-    "grid items-center gap-6 md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] md:gap-12 md:even:grid-cols-[minmax(0,3fr)_minmax(0,2fr)]";
-
-  if (!reveal) {
-    return (
-      <li className={className} data-slot="feature-rows-item">
-        {content}
-      </li>
-    );
-  }
-
-  return (
-    <motion.li
-      className={className}
-      data-slot="feature-rows-item"
-      initial={{ opacity: 0, y: 16 }}
-      // The server cannot read the media query, so the row always starts hidden
-      // and reduced motion shows it at once rather than skipping the element.
-      transition={reduceMotion ? { duration: 0 } : { duration: 0.5, ease: EASE_OUT }}
-      viewport={{ amount: 0.3, once: true }}
-      whileInView={{ opacity: 1, y: 0 }}
-    >
-      {content}
-    </motion.li>
+    </li>
   );
 };
 

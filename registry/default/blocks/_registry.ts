@@ -36,7 +36,6 @@ export const blocks: Registry["items"] = [
   },
   {
     categories: ["marketing"],
-    dependencies: ["motion"],
     description:
       "Alternating rows of text and real product media, with an optional once-only reveal.",
     files: [

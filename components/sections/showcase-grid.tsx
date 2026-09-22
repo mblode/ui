@@ -5,7 +5,6 @@ import React from "react";
 
 import { Index } from "@/__registry__";
 import { trackInstallCommandCopied } from "@/analytics";
-import { showcaseDemos } from "@/components/sections/showcase-demos";
 import { docsConfig } from "@/config/docs";
 import { cn } from "@/lib/utils";
 import { CopyIcon, useCopyState } from "@/registry/default/blocks/install-command";
@@ -35,6 +34,26 @@ const installCommandFor = (slug: string) =>
 // Components whose demos render a full-page layout that doesn't fit a grid cell.
 const EXCLUDED_SLUGS = new Set(["sidebar", "typography", "data-table", "form"]);
 
+// The hand-built showcase demos import most of the component library, and a
+// card only renders its demo once it scrolls near the viewport. Loading that
+// module on the first visible card keeps it out of the page's first-load bundle.
+const loadShowcaseDemos = () => import("@/components/sections/showcase-demos");
+
+interface ShowcaseDemoProps {
+  /** The registry demo, used when there is no hand-built showcase for the slug. */
+  fallback?: React.ComponentType;
+  slug: string;
+}
+
+const ShowcaseDemo = React.lazy(async () => {
+  const { showcaseDemos } = await loadShowcaseDemos();
+  function LoadedShowcaseDemo({ fallback, slug }: ShowcaseDemoProps) {
+    const Component = showcaseDemos[slug] ?? fallback;
+    return Component ? <Component /> : null;
+  }
+  return { default: LoadedShowcaseDemo };
+});
+
 function getShowcaseItems(): ShowcaseItem[] {
   const registry = Index.default as Record<string, RegistryComponentEntry> | undefined;
 
@@ -55,7 +74,9 @@ function getShowcaseItems(): ShowcaseItem[] {
 
       const demoName = `${slug}-demo`;
 
-      if (!(showcaseDemos[slug] || registry[demoName]?.component)) {
+      // Every hand-built showcase demo also has a registry demo, so the
+      // registry alone decides which components get a card.
+      if (!registry[demoName]?.component) {
         return [];
       }
 
@@ -146,7 +167,7 @@ function ShowcaseCard({
   }, [inView]);
 
   const registry = Index.default as Record<string, RegistryComponentEntry>;
-  const Component = showcaseDemos[slug] ?? registry[demoName]?.component;
+  const fallback = registry[demoName]?.component;
 
   return (
     <li
@@ -168,9 +189,9 @@ function ShowcaseCard({
         />
       ) : null}
       <div className="flex w-full items-center justify-center px-6 pt-14 pb-8 isolate">
-        {inView && Component ? (
+        {inView ? (
           <React.Suspense fallback={<Spinner aria-label={`Loading ${title}`} size={16} />}>
-            <Component />
+            <ShowcaseDemo fallback={fallback} slug={slug} />
           </React.Suspense>
         ) : (
           <Spinner aria-label={`Loading ${title}`} size={16} />

@@ -5,44 +5,14 @@ import React from "react";
 
 import { trackDemoOpened } from "@/analytics";
 import { ShowcaseGrid } from "@/components/sections/showcase-grid";
-import {
-  buildPreviewStyle,
-  DEFAULT_THEME_STATE,
-  THEME_COLOR_SCALES,
-} from "@/components/theme-visualizer/theme-config";
-import type { ThemeState } from "@/components/theme-visualizer/theme-config";
+import { WALL_THEMES } from "@/components/sections/wall-themes";
 import { ToggleGroup, ToggleGroupItem } from "@/registry/default/ui/toggle-group";
 
-interface WallTheme {
-  /** Swatch colour for the toggle. */
-  swatch: string;
-  /** `null` is the shipped Blode theme: no overrides at all. */
-  theme: Pick<ThemeState, "colorFamily" | "radius" | "shade"> | null;
-  value: string;
-  label: string;
-}
+type ThemeConfig = typeof import("@/components/theme-visualizer/theme-config");
 
-const WALL_THEMES: WallTheme[] = [
-  { label: "Blode", swatch: THEME_COLOR_SCALES.neutral["900"], theme: null, value: "blode" },
-  {
-    label: "Indigo",
-    swatch: THEME_COLOR_SCALES.indigo["600"],
-    theme: { colorFamily: "indigo", radius: "medium", shade: "600" },
-    value: "indigo",
-  },
-  {
-    label: "Rose",
-    swatch: THEME_COLOR_SCALES.rose["600"],
-    theme: { colorFamily: "rose", radius: "large", shade: "600" },
-    value: "rose",
-  },
-  {
-    label: "Teal",
-    swatch: THEME_COLOR_SCALES.teal["700"],
-    theme: { colorFamily: "teal", radius: "none", shade: "700" },
-    value: "teal",
-  },
-];
+// The theme config carries every Tailwind colour scale. Nothing needs it until
+// a reader picks a theme, so it stays out of the page's first-load bundle.
+const loadThemeConfig = () => import("@/components/theme-visualizer/theme-config");
 
 /**
  * The signature moment: every component preview on one wall, restyled live by
@@ -53,21 +23,32 @@ const WALL_THEMES: WallTheme[] = [
 export function ComponentWall() {
   const { resolvedTheme } = useTheme();
   const [value, setValue] = React.useState("blode");
+  const [config, setConfig] = React.useState<ThemeConfig | null>(null);
   const [announcement, setAnnouncement] = React.useState("");
   const opened = React.useRef(false);
 
   const selected = WALL_THEMES.find((item) => item.value === value) ?? WALL_THEMES[0];
   const style = React.useMemo(
     () =>
-      selected.theme
-        ? buildPreviewStyle({
-            ...DEFAULT_THEME_STATE,
+      selected.theme && config
+        ? config.buildPreviewStyle({
+            ...config.DEFAULT_THEME_STATE,
             ...selected.theme,
             darkMode: resolvedTheme === "dark",
           })
         : undefined,
-    [resolvedTheme, selected.theme],
+    [config, resolvedTheme, selected.theme],
   );
+
+  const ensureConfig = () => {
+    if (!config) {
+      loadThemeConfig()
+        .then(setConfig)
+        .catch(() => {
+          // The wall stays on the Blode theme if the chunk cannot load.
+        });
+    }
+  };
 
   const handleChange = (next: string | string[]) => {
     const nextValue = Array.isArray(next) ? next[0] : next;
@@ -80,6 +61,7 @@ export function ComponentWall() {
       opened.current = true;
       trackDemoOpened();
     }
+    ensureConfig();
     setValue(nextValue);
     setAnnouncement(`${WALL_THEMES.find((item) => item.value === nextValue)?.label} theme applied`);
   };
@@ -93,6 +75,8 @@ export function ComponentWall() {
         <ToggleGroup
           aria-labelledby="wall-theme-label"
           className="flex-wrap"
+          onFocus={ensureConfig}
+          onPointerEnter={ensureConfig}
           onValueChange={handleChange}
           size="lg"
           spacing={1}
