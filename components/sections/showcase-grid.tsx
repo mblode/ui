@@ -174,7 +174,9 @@ function ShowcaseCard({
       className="relative flex min-h-64 items-center justify-center overflow-x-hidden bg-card"
       ref={ref}
     >
+      {/* Each tile opens a component doc; upgrade on hover like the sidebar. */}
       <Link
+        unstable_dynamicOnHover
         className="absolute top-4 left-4 z-10 rounded-sm font-medium text-muted-foreground text-sm tracking-tight outline-none transition-[color,box-shadow] hover:text-foreground focus-visible:ring-[3px] focus-visible:ring-ring/50"
         href={href}
       >

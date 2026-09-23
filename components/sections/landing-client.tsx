@@ -52,11 +52,16 @@ export function TrackedCta({
   href: string;
   location: string;
 }) {
+  // The CTA points at a doc, whose body hangs off `params` and so is not in
+  // the App Shell a plain prefetch pulls. Upgrading on hover carries the whole
+  // page, so the landing page's one primary action lands on content, not a
+  // skeleton. See the `dynamicOnHover` note in next.config.ts.
   return (
     <Link
       className={cn(buttonVariants({ size: "lg", variant: "default" }), className)}
       href={href}
       onClick={() => trackCtaClicked(location, children)}
+      unstable_dynamicOnHover
     >
       {children}
     </Link>

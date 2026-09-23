@@ -54,6 +54,13 @@ export const metadata: Metadata = {
   title: { absolute: title },
 };
 
+// Navigations into the landing page must paint from the static shell. The one
+// runtime read, the GitHub star count, is cached and sits behind its own
+// <Suspense>, so validation turns any new uncached or URL read above that
+// boundary into a dev error instead of a silent blocking navigation. Locked in
+// by e2e/instant-navigation.spec.ts.
+export const instant = true;
+
 // One `@graph` for the page. The FAQPage node is built from the same `faqs`
 // array the visible list renders, so the two cannot disagree.
 const { "@context": _faqContext, ...faqNode } = faqJsonLd(faqs);

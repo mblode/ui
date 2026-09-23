@@ -84,6 +84,11 @@ const nextConfig: NextConfig = {
     // `generateStaticParams` lists every doc the payload comes from the static
     // cache rather than waking a server.
     dynamicOnHover: true,
+    // The `@next/playwright` instant() helper drives a testing API that
+    // `next dev` exposes on its own. `npm run test:instant` runs against a
+    // production build, so it sets this env var for that build and start only.
+    // Never on in a deployed build.
+    exposeTestingApiInProductionBuild: process.env.NEXT_EXPOSE_TESTING_API === "1",
     // Bailing out of a prerender throws, so anything logged after the abort is
     // noise from a render that was already discarded. Drop it.
     hideLogsAfterAbort: true,

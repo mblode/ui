@@ -22,7 +22,8 @@
     "check:registry-deps": "tsx --tsconfig ./tsconfig.scripts.json ./scripts/check-registry-deps.mts",
     "fix": "ultracite fix",
     "knip": "knip",
-    "knip:production": "knip --production --strict"
+    "knip:production": "knip --production --strict",
+    "test:instant": "playwright test"
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",
@@ -76,6 +77,8 @@
     "@content-collections/core": "^0.15.3",
     "@content-collections/mdx": "^0.2.2",
     "@content-collections/next": "^0.2.11",
+    "@next/playwright": "16.3.6",
+    "@playwright/test": "^1.63.0",
     "@tailwindcss/typography": "^0.5.20",
     "@types/canvas-confetti": "^1.9.0",
     "@types/node": "^26.6.2",
