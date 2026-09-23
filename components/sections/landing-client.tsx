@@ -13,21 +13,20 @@ import { cn } from "@/lib/utils";
 import { Faq } from "@/components/marketing/faq";
 import type { FaqItem } from "@/components/marketing/faq";
 import { InstallCommand } from "@/components/marketing/install-command";
-import type { InstallCommandItem } from "@/components/marketing/install-command";
 import { buttonVariants } from "@/registry/default/ui/button";
 import { Label } from "@/registry/default/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/registry/default/ui/radio-group";
 
 /*
  * The landing page is a server component. These are the few pieces that need
- * the browser: the analytics callbacks the registry blocks accept, and one live
- * control for the "How it works" section.
+ * the browser: the analytics callbacks the marketing components accept, and one
+ * live control for the "How it works" section.
  */
 
 /**
  * Reports `section_viewed` for the landing sections. Each is found by its
- * heading's id, the same one the section jump links use, so the ids are stable
- * and no markup is added for tracking. The hero is left out on purpose.
+ * heading's id, so the ids are stable and no markup is added for tracking. The
+ * hero is left out on purpose.
  */
 export function SectionViews({ ids }: { ids: string[] }) {
   useEffect(() => {
@@ -69,16 +68,19 @@ export function TrackedCta({
 }
 
 export function TrackedInstallCommand({
-  commands,
+  command,
+  label,
   location,
 }: {
-  commands: InstallCommandItem[];
+  command: string;
+  /** Kept in the event's `variant`, so existing insights keep matching. */
+  label: string;
   location: string;
 }) {
   return (
     <InstallCommand
-      commands={commands}
-      onCopy={(label) => trackInstallCommandCopied(`${location}:${label}`)}
+      command={command}
+      onCopy={() => trackInstallCommandCopied(`${location}:${label}`)}
     />
   );
 }

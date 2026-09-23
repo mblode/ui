@@ -2,8 +2,10 @@ import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import docPaths from "@/lib/generated/doc-paths.json";
 
+// "/" on its own: Next prefixes basePath onto each matcher, and `/ui/(...)`
+// needs the separator, so the second pattern alone misses the zone root.
 export const config = {
-  matcher: ["/((?!_next|api|\\.well-known|r/|[\\w-]+\\.\\w+).*)"],
+  matcher: ["/", "/((?!_next|api|\\.well-known|r/|[\\w-]+\\.\\w+).*)"],
 };
 
 const MARKDOWN_MEDIA_TYPE = /(?:^|,\s*)text\/markdown(?:\s*;|\s*,|\s*$)/iu;
