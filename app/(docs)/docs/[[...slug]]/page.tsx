@@ -1,13 +1,11 @@
-import { ChevronLeftIcon, ChevronRightIcon } from "blode-icons-react";
 import { allDocs } from "content-collections";
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { DocNavButtons } from "@/components/doc-nav-buttons";
 import { DocsCopyPage } from "@/components/docs-copy-page";
 import { Mdx } from "@/components/mdx-components";
-import { getPagerForDoc } from "@/components/pager";
+import { getPagerForDoc, PagerNav } from "@/components/pager";
 import { TableOfContents } from "@/components/toc";
 import { getTableOfContents } from "@/lib/toc";
 import { absoluteUrl, seoDescription } from "@/lib/utils";
@@ -142,50 +140,7 @@ async function DocBody({ params }: DocPageProps) {
       <div className="w-full flex-1 pb-16 *:data-[slot=alert]:first:mt-0 sm:pb-0">
         <Mdx code={doc.body.code} />
       </div>
-      {pager?.prev?.href || pager?.next?.href ? (
-        <nav className="flex w-full rounded-2xl bg-muted/50 p-1 text-sm" id="pagination">
-          {pager?.prev?.href ? (
-            <Link
-              unstable_dynamicOnHover
-              className="group flex items-center justify-between gap-1.5 pr-6 pl-3"
-              href={pager.prev.href}
-            >
-              <ChevronLeftIcon
-                aria-hidden="true"
-                className="size-3 text-muted-foreground/50 group-hover:text-muted-foreground"
-              />
-              <span className="font-medium text-muted-foreground tracking-tight group-hover:text-foreground">
-                Previous
-              </span>
-            </Link>
-          ) : null}
-          {pager?.next?.href ? (
-            <Link
-              unstable_dynamicOnHover
-              className="group ml-auto flex w-full min-w-0 flex-1"
-              href={pager.next.href}
-            >
-              <div className="flex flex-1 items-center justify-end rounded-xl bg-background hover:ring-1 hover:ring-border sm:h-16">
-                <div className="flex min-w-0 flex-col items-end justify-center px-5">
-                  <span className="text-right font-semibold text-foreground/80">
-                    {pager.next.title}
-                  </span>
-                </div>
-                <div className="h-8 w-px bg-border/50" />
-                <div className="flex items-center gap-1.5 pr-3 pl-5">
-                  <span className="font-medium text-muted-foreground tracking-tight group-hover:text-foreground">
-                    Next
-                  </span>
-                  <ChevronRightIcon
-                    aria-hidden="true"
-                    className="size-3 text-muted-foreground/50 group-hover:text-muted-foreground"
-                  />
-                </div>
-              </div>
-            </Link>
-          ) : null}
-        </nav>
-      ) : null}
+      <PagerNav next={pager?.next} prev={pager?.prev} />
     </>
   );
 }

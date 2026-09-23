@@ -1,39 +1,18 @@
 import type { Metadata } from "next";
 import type * as React from "react";
-import { Suspense } from "react";
 
 import { JsonLd } from "@/components/json-ld";
 import { ComponentWall } from "@/components/sections/component-wall";
-import {
-  BaseUiMedia,
-  SectionViews,
-  TrackedCta,
-  TrackedFaq,
-  TrackedInstallCommand,
-} from "@/components/sections/landing-client";
+import { BaseUiMedia, SectionViews, TrackedFaq } from "@/components/sections/landing-client";
 import ShowcaseHero from "@/components/sections/showcase-hero";
 import { ZoneBreadcrumb } from "@/components/zone-breadcrumb";
 import { siteConfig, siteUrl } from "@/config/site";
-import {
-  close,
-  componentCount,
-  faqs,
-  features,
-  installCommands,
-  pointOfView,
-  primaryCta,
-  proof,
-  sections,
-  wall,
-} from "@/lib/landing";
-import { getRepoStars } from "@/lib/landing-stats";
-import { absoluteUrl, constructMetadata } from "@/lib/utils";
+import { faqs, features, pointOfView, sections, wall } from "@/lib/landing";
+import { constructMetadata } from "@/lib/utils";
 import { zoneRootJsonLd } from "@/lib/zone-schema";
-import { CtaClose } from "@/components/marketing/cta-close";
 import { faqJsonLd } from "@/components/marketing/faq";
 import { FeatureRows } from "@/components/marketing/feature-rows";
-import { ProofStats, ProofStatsSkeleton } from "@/components/marketing/proof-stats";
-import { SectionToc } from "@/components/marketing/section-toc";
+import { getPagerForPath, PagerNav } from "@/components/pager";
 
 // Ranked at position 8.6 on 73 impressions for three months and earned no
 // clicks at all, so the old snippet was losing the choice on the page it
@@ -54,11 +33,9 @@ export const metadata: Metadata = {
   title: { absolute: title },
 };
 
-// Navigations into the landing page must paint from the static shell. The one
-// runtime read, the GitHub star count, is cached and sits behind its own
-// <Suspense>, so validation turns any new uncached or URL read above that
-// boundary into a dev error instead of a silent blocking navigation. Locked in
-// by e2e/instant-navigation.spec.ts.
+// Navigations into the landing page must paint from the static shell, so
+// validation turns any uncached or URL read into a dev error instead of a
+// silent blocking navigation. Locked in by e2e/instant-navigation.spec.ts.
 export const instant = true;
 
 // One `@graph` for the page. The FAQPage node is built from the same `faqs`
@@ -147,18 +124,9 @@ const featureMedia = [
   />,
 ];
 
-async function OpenSourceStats() {
-  const stars = await getRepoStars();
-
-  return (
-    <ProofStats
-      stats={[
-        { href: absoluteUrl("/docs/components"), label: "Components", value: componentCount },
-        { href: siteConfig.links.github, label: "GitHub stars", value: stars },
-      ]}
-    />
-  );
-}
+// The landing page is the first entry in the docs sidebar, so it pages
+// forward into the docs like any other page.
+const pager = getPagerForPath("/");
 
 export default function Home() {
   return (
@@ -166,61 +134,37 @@ export default function Home() {
       <JsonLd data={pageJsonLd} />
       <SectionViews ids={sectionIds} />
       <div className="h-(--top-spacing) shrink-0" />
-      <div className="flex items-start">
-        <div className="flex min-w-0 flex-1 flex-col gap-20 px-2 py-6 sm:gap-24 md:px-4 lg:py-8">
-          <div className="flex flex-col gap-8">
-            {/* Root page only. The docs and marketing pages have their own navigation. */}
-            <ZoneBreadcrumb product="Blode UI" />
-            <ShowcaseHero />
-          </div>
-
-          <section aria-labelledby="components" className="flex flex-col gap-6">
-            <SectionHeading description={wall.description} id="components">
-              {wall.title}
-            </SectionHeading>
-            <ComponentWall />
-          </section>
-
-          <section aria-labelledby="how-it-works" className="flex flex-col gap-12">
-            <SectionHeading description={pointOfView} id="how-it-works">
-              How it works
-            </SectionHeading>
-            {/* The page's one once-only reveal. It starts well below the fold. */}
-            <FeatureRows
-              items={features.map((feature, index) => ({ ...feature, media: featureMedia[index] }))}
-              reveal
-            />
-          </section>
-
-          <section aria-labelledby="open-source" className="flex flex-col gap-8">
-            <SectionHeading id="open-source">{proof.title}</SectionHeading>
-            <Suspense fallback={<ProofStatsSkeleton />}>
-              <OpenSourceStats />
-            </Suspense>
-          </section>
-
-          <section aria-labelledby="faq" className="flex flex-col gap-6">
-            <SectionHeading id="faq">Questions</SectionHeading>
-            <TrackedFaq items={faqs} />
-          </section>
-
-          <CtaClose
-            action={
-              <TrackedCta href={primaryCta.href} location="close">
-                {primaryCta.label}
-              </TrackedCta>
-            }
-            aria-labelledby="install-heading"
-            command={<TrackedInstallCommand commands={installCommands} location="close" />}
-            description={close.description}
-            id="install"
-            title={<span id="install-heading">{close.title}</span>}
-          />
+      <div className="flex min-w-0 flex-1 flex-col gap-20 px-2 py-6 sm:gap-24 md:px-4 lg:py-8">
+        <div className="flex flex-col gap-8">
+          {/* Root page only. The docs and marketing pages have their own navigation. */}
+          <ZoneBreadcrumb product="Blode UI" />
+          <ShowcaseHero />
         </div>
 
-        <aside className="sticky top-[calc(var(--header-height)+1px)] hidden w-(--sidebar-width) shrink-0 px-8 pt-10 xl:block">
-          <SectionToc items={sections} />
-        </aside>
+        <section aria-labelledby="components" className="flex flex-col gap-6">
+          <SectionHeading description={wall.description} id="components">
+            {wall.title}
+          </SectionHeading>
+          <ComponentWall />
+        </section>
+
+        <section aria-labelledby="how-it-works" className="flex flex-col gap-12">
+          <SectionHeading description={pointOfView} id="how-it-works">
+            How it works
+          </SectionHeading>
+          {/* The page's one once-only reveal. It starts well below the fold. */}
+          <FeatureRows
+            items={features.map((feature, index) => ({ ...feature, media: featureMedia[index] }))}
+            reveal
+          />
+        </section>
+
+        <section aria-labelledby="faq" className="flex flex-col gap-6">
+          <SectionHeading id="faq">Questions</SectionHeading>
+          <TrackedFaq items={faqs} />
+        </section>
+
+        <PagerNav next={pager?.next} prev={pager?.prev} />
       </div>
     </div>
   );
