@@ -1,10 +1,10 @@
-import posthog from "posthog-js";
 import type { PostHog } from "posthog-js";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { observeSectionViews, setAnalyticsClient } from "./analytics";
 
-vi.mock("posthog-js", () => ({ default: { __loaded: true, capture: vi.fn() } }));
+// analytics.ts only ever sees the client instrumentation-client.ts hands it.
+const posthog = { __loaded: true, capture: vi.fn() };
 
 type Callback = (entries: Partial<IntersectionObserverEntry>[]) => void;
 
@@ -19,10 +19,6 @@ function FakeObserver(callback: Callback) {
   return { disconnect: vi.fn(), observe: vi.fn(), unobserve: vi.fn() };
 }
 
-function BlockedObserver() {
-  throw new Error("blocked");
-}
-
 const element = {} as Element;
 const entry = (ratio: number): Partial<IntersectionObserverEntry> => ({
   intersectionRatio: ratio,
@@ -34,7 +30,7 @@ const entry = (ratio: number): Partial<IntersectionObserverEntry> => ({
 
 describe("observeSectionViews", () => {
   beforeEach(() => {
-    vi.mocked(posthog.capture).mockClear();
+    posthog.capture.mockReset();
     setAnalyticsClient(posthog as unknown as PostHog);
   });
 
@@ -67,18 +63,14 @@ describe("observeSectionViews", () => {
     expect(posthog.capture).not.toHaveBeenCalled();
   });
 
-  it("never throws", () => {
-    vi.stubGlobal("window", {
-      IntersectionObserver: BlockedObserver,
-    });
-    expect(() => observeSectionViews([{ element, id: "faq" }])()).not.toThrow();
-
+  it("swallows a capture failure inside the observer callback", () => {
     vi.stubGlobal("window", { IntersectionObserver: FakeObserver });
-    vi.mocked(posthog.capture).mockImplementation(() => {
+    posthog.capture.mockImplementation(() => {
       throw new Error("capture failed");
     });
     observeSectionViews([{ element, id: "faq" }]);
     fire([entry(0)]);
     expect(() => fire([entry(1)])).not.toThrow();
+    expect(posthog.capture).toHaveBeenCalledTimes(1);
   });
 });

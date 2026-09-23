@@ -7,7 +7,7 @@ import { BaseUiMedia, SectionViews, TrackedFaq } from "@/components/sections/lan
 import ShowcaseHero from "@/components/sections/showcase-hero";
 import { ZoneBreadcrumb } from "@/components/zone-breadcrumb";
 import { siteConfig, siteUrl } from "@/config/site";
-import { faqs, features, pointOfView, sections, wall } from "@/lib/landing";
+import { faqs, features, pointOfView, wall } from "@/lib/landing";
 import { constructMetadata } from "@/lib/utils";
 import { zoneRootJsonLd } from "@/lib/zone-schema";
 import { faqJsonLd } from "@/components/marketing/faq";
@@ -49,8 +49,9 @@ const pageJsonLd = {
   ],
 };
 
-// Every tracked section, in page order. The hero is not one of them.
-const sectionIds = sections.map((section) => section.id);
+// The `section_viewed` ids: each section's heading id, in page order. The hero
+// is not one of them.
+const sectionIds = ["components", "how-it-works", "faq"];
 
 function SectionHeading({
   children,

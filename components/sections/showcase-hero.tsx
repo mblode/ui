@@ -1,10 +1,9 @@
 import { TrackedCta, TrackedInstallCommand } from "@/components/sections/landing-client";
-import { hero, installCommands, primaryCta } from "@/lib/landing";
+import { hero, installCommand, primaryCta } from "@/lib/landing";
 import { MarketingHero } from "@/components/marketing/marketing-hero";
 
 /**
- * The landing hero, built from the `@blode/marketing-hero` block this registry
- * ships. It sells ownership of the source and carries the install command, so
+ * The landing hero, built on the site's `MarketingHero`. It sells ownership of the source and carries the install command, so
  * a reader who already knows shadcn can leave the first viewport installed.
  * Nothing here animates: it is above the fold.
  */
@@ -21,7 +20,11 @@ export default function ShowcaseHero() {
       id="hero"
       secondary={
         <div className="max-w-xl">
-          <TrackedInstallCommand commands={installCommands} location="hero" />
+          <TrackedInstallCommand
+            command={installCommand.command}
+            label={installCommand.label}
+            location="hero"
+          />
         </div>
       }
       title={hero.title}

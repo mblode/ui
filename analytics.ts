@@ -22,7 +22,7 @@ export const setAnalyticsClient = (next: PostHog | null) => {
 };
 
 const capture = (event: string, properties: Record<string, string>) => {
-  if (typeof window === "undefined" || !client?.__loaded) {
+  if (!client?.__loaded) {
     return;
   }
   try {
@@ -73,51 +73,37 @@ const noop = () => {
  * screen. A section already that visible on the observer's first report was
  * seen on load rather than scrolled to, so it is marked seen without firing;
  * the hero is simply never passed in. Returns a disconnect for an effect
- * cleanup. Without IntersectionObserver it observes nothing, and nothing here
- * can throw into the page.
+ * cleanup. Without IntersectionObserver it observes nothing. `capture` swallows
+ * its own failures, so a tracking error never reaches the scroll handler.
  */
 export const observeSectionViews = (sections: Iterable<TrackedSection>): (() => void) => {
-  try {
-    if (typeof window === "undefined" || typeof window.IntersectionObserver !== "function") {
-      return noop;
-    }
-    const ids = new Map<Element, string>();
-    const reported = new Set<Element>();
-    const seen = new Set<string>();
-    const observer = new window.IntersectionObserver(
-      (entries) => {
-        try {
-          for (const entry of entries) {
-            const id = ids.get(entry.target);
-            const onLoad = !reported.has(entry.target);
-            reported.add(entry.target);
-            if (id === undefined || seen.has(id) || !isHalfVisible(entry)) {
-              continue;
-            }
-            seen.add(id);
-            observer.unobserve(entry.target);
-            if (!onLoad) {
-              capture("section_viewed", { section: id });
-            }
-          }
-        } catch {
-          // A lost view is better than an error thrown from a scroll.
-        }
-      },
-      { threshold: SECTION_THRESHOLDS },
-    );
-    for (const { element, id } of sections) {
-      ids.set(element, id);
-      observer.observe(element);
-    }
-    return () => {
-      try {
-        observer.disconnect();
-      } catch {
-        // Already gone.
-      }
-    };
-  } catch {
+  if (typeof window === "undefined" || typeof window.IntersectionObserver !== "function") {
     return noop;
   }
+  const ids = new Map<Element, string>();
+  const reported = new Set<Element>();
+  const seen = new Set<string>();
+  const observer = new window.IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        const id = ids.get(entry.target);
+        const onLoad = !reported.has(entry.target);
+        reported.add(entry.target);
+        if (id === undefined || seen.has(id) || !isHalfVisible(entry)) {
+          continue;
+        }
+        seen.add(id);
+        observer.unobserve(entry.target);
+        if (!onLoad) {
+          capture("section_viewed", { section: id });
+        }
+      }
+    },
+    { threshold: SECTION_THRESHOLDS },
+  );
+  for (const { element, id } of sections) {
+    ids.set(element, id);
+    observer.observe(element);
+  }
+  return () => observer.disconnect();
 };

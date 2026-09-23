@@ -24,12 +24,10 @@ export const primaryCta = {
   label: "Open the install guide",
 } as const;
 
-export const installCommands = [
-  {
-    command: "npx shadcn@latest init https://blode.co/ui/r/ui.json",
-    label: "New project",
-  },
-];
+export const installCommand = {
+  command: "npx shadcn@latest init https://blode.co/ui/r/ui.json",
+  label: "New project",
+} as const;
 
 /** What Blode UI refuses to be. */
 export const pointOfView =
@@ -81,12 +79,6 @@ export const faqs = [
   },
 ];
 
-export const sections = [
-  { id: "components", label: "Components" },
-  { id: "how-it-works", label: "How it works" },
-  { id: "faq", label: "FAQ" },
-];
-
 /**
  * The page as Markdown, for `Accept: text/markdown` requests to the zone root.
  */
@@ -100,7 +92,11 @@ ${pointOfView}
 
 ## Install
 
-${installCommands.map((item) => `${item.label}:\n\n\`\`\`bash\n${item.command}\n\`\`\``).join("\n\n")}
+${installCommand.label}:
+
+\`\`\`bash
+${installCommand.command}
+\`\`\`
 
 ## ${wall.title}
 
