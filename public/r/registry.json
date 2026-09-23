@@ -1378,6 +1378,18 @@
       ]
     },
     {
+      "name": "live-stats",
+      "type": "registry:lib",
+      "title": "Live Stats",
+      "description": "Cached server fetches for GitHub stars and npm downloads that fail closed to null.",
+      "files": [
+        {
+          "path": "registry/default/lib/live-stats.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
       "name": "use-copy-to-clipboard",
       "type": "registry:lib",
       "title": "Use Copy To Clipboard",

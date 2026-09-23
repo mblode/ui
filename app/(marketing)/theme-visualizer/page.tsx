@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import ThemeVisualizerPage from "@/components/theme-visualizer/theme-visualizer-page";
 import { absoluteUrl, constructMetadata } from "@/lib/utils";
 
+// Linked from the landing page. Fully static, and `instant` keeps it that way.
+export const instant = true;
+
 const title = "Theme Visualiser: preview Blode UI colour themes";
 
 export const metadata: Metadata = {

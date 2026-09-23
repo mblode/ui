@@ -74,10 +74,6 @@ const nextConfig: NextConfig = {
   // Bust stale client chunks after a deploy; Vercel sets this at build time.
   deploymentId: process.env.VERCEL_DEPLOYMENT_ID,
   devIndicators: false,
-  // next.config runs in Node at build time, outside any prerender, so it can
-  // read the clock. The sitemap can't: Cache Components prerenders it, and
-  // calling `new Date()` there would make the whole route render on demand.
-  env: { BUILD_TIME: new Date().toISOString() },
   experimental: {
     // Lets a link carry `unstable_dynamicOnHover` to upgrade its prefetch from
     // the App Shell to the full payload on intent. Under `partialPrefetching` a
@@ -88,6 +84,11 @@ const nextConfig: NextConfig = {
     // `generateStaticParams` lists every doc the payload comes from the static
     // cache rather than waking a server.
     dynamicOnHover: true,
+    // The `@next/playwright` instant() helper drives a testing API that
+    // `next dev` exposes on its own. `npm run test:instant` runs against a
+    // production build, so it sets this env var for that build and start only.
+    // Never on in a deployed build.
+    exposeTestingApiInProductionBuild: process.env.NEXT_EXPOSE_TESTING_API === "1",
     // Bailing out of a prerender throws, so anything logged after the abort is
     // noise from a render that was already discarded. Drop it.
     hideLogsAfterAbort: true,

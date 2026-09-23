@@ -2,27 +2,47 @@ import { allDocs, allPages } from "content-collections";
 import type { MetadataRoute } from "next";
 
 import { siteUrl } from "@/config/site";
+import { lastModifiedFromGit, latestDate } from "@/lib/content-dates";
 
-// Stamped in next.config at build time. Prerendering can't read the clock.
-const buildTime = process.env.BUILD_TIME;
+// `lastModified` comes from the content: the last git commit that touched the
+// page's source, or its frontmatter `date`, whichever is later. It used to be
+// the build time on every URL, which tells a crawler everything changed on
+// every deploy, so it learns to ignore the field. Where neither date is known
+// the field is left out rather than guessed.
+
+const entry = (url: string, lastModified: string | undefined): MetadataRoute.Sitemap[number] =>
+  lastModified ? { lastModified, url } : { url };
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
-    {
-      lastModified: buildTime,
-      url: siteUrl,
-    },
-    {
-      lastModified: buildTime,
-      url: `${siteUrl}/theme-visualizer`,
-    },
-    ...allPages.map((post) => ({
-      lastModified: buildTime,
-      url: `${siteUrl}/${post.slugAsParams}`,
-    })),
-    ...allDocs.map((post) => ({
-      lastModified: post.date,
-      url: `${siteUrl}/docs${post.slugAsParams ? `/${post.slugAsParams}` : ""}`,
-    })),
+    entry(
+      siteUrl,
+      lastModifiedFromGit(
+        "app/(docs)/page.tsx",
+        "lib/landing.ts",
+        "components/sections/showcase-hero.tsx",
+      ),
+    ),
+    entry(
+      `${siteUrl}/theme-visualizer`,
+      lastModifiedFromGit(
+        "app/(marketing)/theme-visualizer/page.tsx",
+        "components/theme-visualizer/theme-visualizer-page.tsx",
+      ),
+    ),
+    ...allPages.map((page) =>
+      entry(
+        `${siteUrl}/${page.slugAsParams}`,
+        lastModifiedFromGit(`content/pages/${page._meta.filePath}`),
+      ),
+    ),
+    ...allDocs
+      .filter((doc) => doc.published)
+      .map((doc) =>
+        entry(
+          `${siteUrl}/docs${doc.slugAsParams ? `/${doc.slugAsParams}` : ""}`,
+          latestDate(doc.date, lastModifiedFromGit(`content/docs/${doc._meta.filePath}`)),
+        ),
+      ),
   ];
 }

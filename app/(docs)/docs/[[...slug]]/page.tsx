@@ -32,6 +32,14 @@ async function getDocFromParams({ params }: DocPageProps) {
   return doc;
 }
 
+// Every doc, from /docs and the install page to each component page, navigates
+// instantly: the two-column frame is the App Shell and the slug-dependent body
+// and TOC stream behind their own boundaries (upgraded to the full payload on
+// hover by `unstable_dynamicOnHover`). `instant` makes a regression, such as
+// reading `params` above those boundaries, a dev error. Locked in by
+// e2e/instant-navigation.spec.ts.
+export const instant = true;
+
 export async function generateMetadata({ params }: DocPageProps): Promise<Metadata> {
   const doc = await getDocFromParams({ params });
 
