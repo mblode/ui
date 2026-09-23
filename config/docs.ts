@@ -569,3 +569,8 @@ export const docsConfig: DocsConfig = {
     },
   ],
 };
+
+// Counted rather than written out, so every claim on the site matches the
+// sidebar the reader is looking at.
+export const componentCount =
+  docsConfig.sidebarNav.find((group) => group.title === "Components")?.items?.length ?? 0;

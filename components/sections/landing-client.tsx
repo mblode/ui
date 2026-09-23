@@ -99,9 +99,16 @@ const DENSITIES = [
 export function BaseUiMedia() {
   return (
     <figure className="flex min-h-48 flex-col items-center justify-center gap-5 rounded-xl border bg-muted/40 p-6">
-      <RadioGroup aria-label="Density" className="w-fit" defaultValue="comfortable">
+      <RadioGroup
+        aria-label="Density"
+        className="w-fit pointer-coarse:gap-0"
+        defaultValue="comfortable"
+      >
         {DENSITIES.map((density) => (
-          <Label className="flex items-center gap-3 font-normal" key={density.value}>
+          <Label
+            className="flex items-center gap-3 font-normal pointer-coarse:min-h-11"
+            key={density.value}
+          >
             <RadioGroupItem value={density.value} />
             {density.label}
           </Label>
