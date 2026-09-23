@@ -99,18 +99,6 @@ const prompt = (
 const comment = (text: string) => <span className="text-muted-foreground">{text}</span>;
 
 const featureMedia = [
-  <CodeMedia
-    key="file"
-    lines={[
-      <>{prompt}npx shadcn@latest add @blode/button</>,
-      "",
-      comment("# writes"),
-      "components/ui/button.tsx",
-      "",
-      comment("# then, like any file of yours"),
-      'import { Button } from "@/components/ui/button";',
-    ]}
-  />,
   <BaseUiMedia key="base-ui" />,
   <CodeMedia
     key="agent"
