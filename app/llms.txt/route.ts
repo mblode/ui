@@ -1,8 +1,8 @@
 import { allDocs } from "content-collections";
 
-import { docsConfig } from "@/config/docs";
+import { componentCount, docsConfig } from "@/config/docs";
 import { siteConfig, siteUrl } from "@/config/site";
-import { componentCount, hero, pointOfView } from "@/lib/landing";
+import { hero, pointOfView } from "@/lib/landing";
 
 // https://llmstxt.org: a Markdown index an agent can read in one request.
 //

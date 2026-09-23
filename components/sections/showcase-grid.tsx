@@ -122,7 +122,8 @@ function CardCopyButton({
   return (
     <Button
       aria-label={`Copy install command for ${title}`}
-      className="absolute top-2.5 right-2.5 z-10 text-muted-foreground hover:text-foreground"
+      // 32px drawn, 44px to a finger: the ::after pads the hit area on touch.
+      className="absolute top-2.5 right-2.5 z-10 text-muted-foreground after:absolute after:-inset-1.5 hover:text-foreground pointer-fine:after:hidden"
       data-state={state}
       onClick={handleCopy}
       size="icon-xs"
@@ -177,7 +178,7 @@ function ShowcaseCard({
       {/* Each tile opens a component doc; upgrade on hover like the sidebar. */}
       <Link
         unstable_dynamicOnHover
-        className="absolute top-4 left-4 z-10 rounded-sm font-medium text-muted-foreground text-sm tracking-tight outline-none transition-[color,box-shadow] hover:text-foreground focus-visible:ring-[3px] focus-visible:ring-ring/50"
+        className="absolute top-4 left-4 z-10 rounded-sm font-medium text-muted-foreground text-sm tracking-tight outline-none transition-[color,box-shadow] after:absolute after:-inset-3 hover:text-foreground focus-visible:ring-[3px] focus-visible:ring-ring/50 pointer-fine:after:hidden"
         href={href}
       >
         {title}
