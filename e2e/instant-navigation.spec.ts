@@ -10,7 +10,7 @@ import { expect, test } from "@playwright/test";
  */
 
 test.describe("landing page (/ui)", () => {
-  test("paints the hero and the proof strip from the static shell", async ({ baseURL, page }) => {
+  test("paints the hero and the pager from the static shell", async ({ baseURL, page }) => {
     await instant(
       page,
       async () => {
@@ -18,8 +18,7 @@ test.describe("landing page (/ui)", () => {
         await expect(page.getByRole("heading", { level: 1 })).toContainText(
           "React components you own",
         );
-        // The star count is `use cache`, so it belongs to the shell too.
-        await expect(page.locator("#open-source")).toBeVisible();
+        await expect(page.locator("#pagination")).toBeVisible();
         await expect(
           page.getByRole("link", { name: "Open the install guide" }).first(),
         ).toBeVisible();

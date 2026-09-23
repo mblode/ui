@@ -12,16 +12,13 @@ import { siteConfig, siteUrl } from "@/config/site";
 export const componentCount =
   docsConfig.sidebarNav.find((group) => group.title === "Components")?.items?.length ?? 0;
 
-/** `owner/repo`, read from the GitHub link rather than repeated. */
-export const repoSlug = new URL(siteConfig.links.github).pathname.replaceAll(/^\/|\/$/gu, "");
-
 export const hero = {
   description: `For React teams on Tailwind v4: install any of ${componentCount} Base UI components with the shadcn CLI, and the source lands in your repo, ready to edit.`,
   eyebrow: siteConfig.name,
   title: "React components you own",
 } as const;
 
-/** The page's one primary action, used in the hero and again at the close. */
+/** The page's one primary action, in the hero. */
 export const primaryCta = {
   href: "/docs/installation",
   label: "Open the install guide",
@@ -67,10 +64,6 @@ export const features = [
   },
 ] as const;
 
-export const proof = {
-  title: "Open source, MIT licensed",
-} as const;
-
 export const faqs = [
   {
     answer: `Blode UI is an open-source shadcn registry of ${componentCount} React components built on Base UI and Tailwind CSS v4. You install each component with the shadcn CLI, and its source is copied into your project, where you read it and change it like any other file.`,
@@ -113,23 +106,14 @@ export const faqs = [
   },
 ];
 
-export const close = {
-  description:
-    "Initialise the design system once, then add components one at a time. Each lands in components/ui as a file you can read and change.",
-  title: "Add your first component",
-} as const;
-
 export const sections = [
   { id: "components", label: "Components" },
   { id: "how-it-works", label: "How it works" },
-  { id: "open-source", label: "Open source" },
   { id: "faq", label: "FAQ" },
-  { id: "install", label: "Install" },
 ];
 
 /**
  * The page as Markdown, for `Accept: text/markdown` requests to the zone root.
- * Stars are left out: they are fetched live and a mirror should not cache them.
  */
 export const landingMarkdown = `# ${hero.eyebrow}: ${hero.title}
 
@@ -151,18 +135,9 @@ ${wall.description} Browse all ${componentCount} components at [${siteUrl}/docs/
 
 ${features.map((item) => `### ${item.title}\n\n${item.description}`).join("\n\n")}
 
-## ${proof.title}
-
-- Components: ${componentCount}
-- Source: [${siteConfig.links.github}](${siteConfig.links.github})
-
 ## FAQ
 
 ${faqs.map((item) => `### ${item.question}\n\n${item.answer}`).join("\n\n")}
-
-## ${close.title}
-
-${close.description}
 
 ## Machine-readable resources
 

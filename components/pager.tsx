@@ -43,6 +43,56 @@ export function DocPager({ doc }: DocsPagerProps) {
   );
 }
 
+/** The Previous / Next strip at the foot of a docs page, and of the landing page. */
+export function PagerNav({ next, prev }: { next?: NavItem | null; prev?: NavItem | null }) {
+  if (!(prev?.href || next?.href)) {
+    return null;
+  }
+
+  return (
+    <nav className="flex w-full rounded-2xl bg-muted/50 p-1 text-sm" id="pagination">
+      {prev?.href ? (
+        <Link
+          unstable_dynamicOnHover
+          className="group flex items-center justify-between gap-1.5 pr-6 pl-3"
+          href={prev.href}
+        >
+          <ChevronLeftIcon
+            aria-hidden="true"
+            className="size-3 text-muted-foreground/50 group-hover:text-muted-foreground"
+          />
+          <span className="font-medium text-muted-foreground tracking-tight group-hover:text-foreground">
+            Previous
+          </span>
+        </Link>
+      ) : null}
+      {next?.href ? (
+        <Link
+          unstable_dynamicOnHover
+          className="group ml-auto flex w-full min-w-0 flex-1"
+          href={next.href}
+        >
+          <div className="flex flex-1 items-center justify-end rounded-xl bg-background hover:ring-1 hover:ring-border sm:h-16">
+            <div className="flex min-w-0 flex-col items-end justify-center px-5">
+              <span className="text-right font-semibold text-foreground/80">{next.title}</span>
+            </div>
+            <div className="h-8 w-px bg-border/50" />
+            <div className="flex items-center gap-1.5 pr-3 pl-5">
+              <span className="font-medium text-muted-foreground tracking-tight group-hover:text-foreground">
+                Next
+              </span>
+              <ChevronRightIcon
+                aria-hidden="true"
+                className="size-3 text-muted-foreground/50 group-hover:text-muted-foreground"
+              />
+            </div>
+          </div>
+        </Link>
+      ) : null}
+    </nav>
+  );
+}
+
 export function getPagerForDoc(doc: Doc) {
   const flattenedLinks = [null, ...flatten(docsConfig.sidebarNav), null];
   const activeIndex = flattenedLinks.findIndex(
