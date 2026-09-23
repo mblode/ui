@@ -34,9 +34,9 @@ function buildLlmsTxt() {
       if (!item.href?.startsWith("/docs")) {
         return [];
       }
-      const children = (item.items ?? [])
-        .filter((child) => child.href?.startsWith("/docs"))
-        .map((child) => `  ${linkLine(child.href as string, child.title)}`);
+      const children = (item.items ?? []).flatMap((child) =>
+        child.href?.startsWith("/docs") ? [`  ${linkLine(child.href, child.title)}`] : [],
+      );
       return [linkLine(item.href, item.title), ...children];
     });
     return section(group.title === "Sections" ? "Docs" : group.title, lines);
@@ -53,7 +53,7 @@ ${groups.filter(Boolean).join("\n")}
 
 - [Design rules](${siteUrl}/design.md): the visual system as Markdown, for agents writing UI.
 - [Registry index](${siteUrl}/r/index.json): every installable item, as the shadcn CLI reads it.
-- [Registry manifest](${siteUrl}/registry.json): the full registry, including blocks and libraries.
+- [Registry manifest](${siteUrl}/registry.json): the full registry, including the design system and libraries.
 - [Theme Visualiser](${siteUrl}/theme-visualizer): preview a colour theme and copy its CSS variables.
 - [Source code](${siteConfig.links.github}): MIT licensed.
 `;
