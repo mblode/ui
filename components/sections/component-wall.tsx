@@ -85,7 +85,11 @@ export function ComponentWall() {
           variant="outline"
         >
           {WALL_THEMES.map((item) => (
-            <ToggleGroupItem className="gap-2 px-3" key={item.value} value={item.value}>
+            <ToggleGroupItem
+              className="gap-2 px-3 pointer-coarse:h-11"
+              key={item.value}
+              value={item.value}
+            >
               <span
                 aria-hidden="true"
                 className="size-3 rounded-full ring-1 ring-foreground/15"
