@@ -101,7 +101,8 @@ const InstallCommand = ({ className, command, onCopy, ...props }: InstallCommand
         </pre>
         <Button
           aria-label="Copy install command"
-          className="mr-1.5 shrink-0 self-center"
+          // 36px drawn, 46px to a finger: the ::after pads the hit area on touch.
+          className="mr-1.5 shrink-0 self-center after:absolute after:-inset-1.5 pointer-fine:after:hidden"
           data-state={state}
           onClick={handleCopy}
           size="icon-sm"
