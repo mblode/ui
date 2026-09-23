@@ -72,7 +72,7 @@ export function PagerNav({ next, prev }: { next?: NavItem | null; prev?: NavItem
           className="group ml-auto flex w-full min-w-0 flex-1"
           href={next.href}
         >
-          <div className="flex flex-1 items-center justify-end rounded-xl bg-background hover:ring-1 hover:ring-border sm:h-16">
+          <div className="flex flex-1 items-center justify-end min-h-11 rounded-xl bg-background hover:ring-1 hover:ring-border sm:h-16">
             <div className="flex min-w-0 flex-col items-end justify-center px-5">
               <span className="text-right font-semibold text-foreground/80">{next.title}</span>
             </div>

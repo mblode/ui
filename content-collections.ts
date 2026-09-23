@@ -11,6 +11,7 @@ import { createHighlighter } from "shiki";
 import { visit } from "unist-util-visit";
 import { z } from "zod";
 
+import { componentCount } from "./config/docs";
 import { siteUrl } from "./config/site";
 import { rehypeComponent } from "./lib/rehype-component";
 import { rehypeNpmCommand } from "./lib/rehype-npm-command";
@@ -18,6 +19,7 @@ import { rehypeNpmCommand } from "./lib/rehype-npm-command";
 const EVENT_META_REGEX = /event="(?<event>[^"]*)"/u;
 const INDEX_PATH_SUFFIX_REGEX = /(?:^|\/)index$/u;
 const WINDOWS_PATH_SEPARATOR_REGEX = /\\/gu;
+const COMPONENT_COUNT_REGEX = /\{componentCount\}/gu;
 
 /*
  * `proxy.ts` has to know whether a doc path is real before Next routes the
@@ -136,7 +138,14 @@ const documents = defineCollection({
     title: z.string(),
     toc: z.boolean().optional().default(true),
   }),
-  transform: async (document, context) => {
+  transform: async (source, context) => {
+    // Docs write `{componentCount}` instead of a number, so the prose, the
+    // meta description and the Markdown mirror all follow the sidebar.
+    const document = {
+      ...source,
+      content: source.content.replace(COMPONENT_COUNT_REGEX, String(componentCount)),
+      description: source.description.replace(COMPONENT_COUNT_REGEX, String(componentCount)),
+    };
     const slugAsParams = document._meta.path
       .replace(WINDOWS_PATH_SEPARATOR_REGEX, "/")
       .replace(INDEX_PATH_SUFFIX_REGEX, "");

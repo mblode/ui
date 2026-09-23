@@ -95,6 +95,9 @@ const ThinkingIndicator = ({
       >
         <motion.path
           animate={{ d: [circleA, infinity, circleB, infinity, circleA] }}
+          // Seed `d` so Motion never renders the path before it has a value,
+          // which the browser logs as `d="undefined"`.
+          initial={{ d: circleA }}
           transition={{
             d: {
               duration: 6,

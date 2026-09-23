@@ -1,4 +1,4 @@
-import { docsConfig } from "@/config/docs";
+import { componentCount } from "@/config/docs";
 import { siteConfig, siteUrl } from "@/config/site";
 
 /**
@@ -6,11 +6,6 @@ import { siteConfig, siteUrl } from "@/config/site";
  * Markdown mirror (`app/api/markdown`) and `llms.txt` all read from here, so
  * what a crawler or an agent is told can never drift from what a reader sees.
  */
-
-// Counted rather than written out, so every claim on the page matches the
-// sidebar the reader is looking at.
-export const componentCount =
-  docsConfig.sidebarNav.find((group) => group.title === "Components")?.items?.length ?? 0;
 
 export const hero = {
   description: `For React teams on Tailwind v4: install any of ${componentCount} Base UI components with the shadcn CLI, and the source lands in your repo, ready to edit.`,
