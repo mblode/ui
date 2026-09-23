@@ -29,11 +29,11 @@ import {
 import { getRepoStars } from "@/lib/landing-stats";
 import { absoluteUrl, constructMetadata } from "@/lib/utils";
 import { zoneRootJsonLd } from "@/lib/zone-schema";
-import { CtaClose } from "@/registry/default/blocks/cta-close";
-import { faqJsonLd } from "@/registry/default/blocks/faq";
-import { FeatureRows } from "@/registry/default/blocks/feature-rows";
-import { ProofStats, ProofStatsSkeleton } from "@/registry/default/blocks/proof-stats";
-import { SectionToc } from "@/registry/default/blocks/section-toc";
+import { CtaClose } from "@/components/marketing/cta-close";
+import { faqJsonLd } from "@/components/marketing/faq";
+import { FeatureRows } from "@/components/marketing/feature-rows";
+import { ProofStats, ProofStatsSkeleton } from "@/components/marketing/proof-stats";
+import { SectionToc } from "@/components/marketing/section-toc";
 
 // Ranked at position 8.6 on 73 impressions for three months and earned no
 // clicks at all, so the old snippet was losing the choice on the page it

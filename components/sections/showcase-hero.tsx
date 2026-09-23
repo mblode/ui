@@ -1,6 +1,6 @@
 import { TrackedCta, TrackedInstallCommand } from "@/components/sections/landing-client";
 import { hero, installCommands, primaryCta } from "@/lib/landing";
-import { MarketingHero } from "@/registry/default/blocks/marketing-hero";
+import { MarketingHero } from "@/components/marketing/marketing-hero";
 
 /**
  * The landing hero, built from the `@blode/marketing-hero` block this registry

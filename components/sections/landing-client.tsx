@@ -10,10 +10,10 @@ import {
   trackInstallCommandCopied,
 } from "@/analytics";
 import { cn } from "@/lib/utils";
-import { Faq } from "@/registry/default/blocks/faq";
-import type { FaqItem } from "@/registry/default/blocks/faq";
-import { InstallCommand } from "@/registry/default/blocks/install-command";
-import type { InstallCommandItem } from "@/registry/default/blocks/install-command";
+import { Faq } from "@/components/marketing/faq";
+import type { FaqItem } from "@/components/marketing/faq";
+import { InstallCommand } from "@/components/marketing/install-command";
+import type { InstallCommandItem } from "@/components/marketing/install-command";
 import { buttonVariants } from "@/registry/default/ui/button";
 import { Label } from "@/registry/default/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/registry/default/ui/radio-group";

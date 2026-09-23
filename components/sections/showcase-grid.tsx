@@ -7,7 +7,7 @@ import { Index } from "@/__registry__";
 import { trackInstallCommandCopied } from "@/analytics";
 import { docsConfig } from "@/config/docs";
 import { cn } from "@/lib/utils";
-import { CopyIcon, useCopyState } from "@/registry/default/blocks/install-command";
+import { CopyIcon, useCopyState } from "@/components/marketing/install-command";
 import { ui } from "@/registry/default/ui/_registry";
 import { Button } from "@/registry/default/ui/button";
 import { Spinner } from "@/registry/default/ui/spinner";

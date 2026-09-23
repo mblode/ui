@@ -475,7 +475,7 @@ Motion confirms a state change and nothing else.
 
 No parallax, no decorative pulsing, no bounce.
 
-Marketing surfaces (landing pages built from the `marketing-*` blocks) get one exception: at most 2 once-only reveals per page, below the fold only.
+Marketing surfaces (landing pages) get one exception: at most 2 once-only reveals per page, below the fold only.
 
 - Never above the fold. The header, hero, and primary action render in their final state on first paint, with nothing animating on mount.
 - Once only. A reveal fires the first time its section enters the viewport and never replays on scroll back.
