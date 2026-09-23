@@ -167,34 +167,6 @@ export const Index: Record<string, unknown> = {
 
       const [firstFile] = files;
       const usesStringFiles = typeof item.files?.[0] === "string";
-      const resolvedFiles = files.map((file) => `registry/${style.name}/${file.path}`);
-      let sourceFilename = "";
-
-      if (item.type === "registry:block") {
-        const file = resolvedFiles[0];
-        const filename = path.basename(file);
-        let raw: string;
-        try {
-          raw = await fs.readFile(file, "utf-8");
-        } catch {
-          continue;
-        }
-        const tempFile = await createTempSourceFile(filename);
-        const sourceFile = project.createSourceFile(tempFile, raw, {
-          scriptKind: ScriptKind.TSX,
-        });
-
-        // Write the source file for blocks only.
-        sourceFilename = `__registry__/${style.name}/${firstFile.path}`;
-
-        const sourcePath = path.join(process.cwd(), sourceFilename);
-        if (!existsSync(sourcePath)) {
-          await fs.mkdir(sourcePath, { recursive: true });
-        }
-
-        rimraf.sync(sourcePath);
-        await fs.writeFile(sourcePath, sourceFile.getText());
-      }
 
       const componentPath = `@/registry/${style.name}/${firstFile.path}`;
 
@@ -221,7 +193,7 @@ export const Index: Record<string, unknown> = {
           default: resolveRegistryComponent(mod as Record<string, unknown>),
         }))
       ),
-      source: "${sourceFilename}",
+      source: "",
       meta: ${JSON.stringify(item.meta)},
     },`;
     }

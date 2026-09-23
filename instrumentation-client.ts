@@ -1,5 +1,6 @@
 import type { CaptureResult } from "posthog-js";
-import posthog from "posthog-js";
+
+import { setAnalyticsClient } from "@/analytics";
 
 const isLocalHost = () => {
   if (typeof window === "undefined") {
@@ -133,16 +134,40 @@ const isNoisyException = (event: CaptureResult): boolean => {
   });
 };
 
-if (!isLocalHost()) {
-  posthog.init("phc_yYatHXysbRxjTyfmyCKSUyMSQpgepJPuxegz2HtpfX35", {
-    api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
-    before_send: (event) => {
-      if (event && isNoisyException(event)) {
-        return null;
-      }
-      return event;
-    },
-    defaults: "2026-05-30",
-    ui_host: "https://us.posthog.com",
-  });
+const start = async () => {
+  try {
+    const { default: posthog } = await import("posthog-js");
+    posthog.init("phc_yYatHXysbRxjTyfmyCKSUyMSQpgepJPuxegz2HtpfX35", {
+      api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
+      before_send: (event) => {
+        if (event && isNoisyException(event)) {
+          return null;
+        }
+        return event;
+      },
+      defaults: "2026-05-30",
+      ui_host: "https://us.posthog.com",
+    });
+    setAnalyticsClient(posthog);
+  } catch {
+    // Analytics must never break the page; a blocked script is fine.
+  }
+};
+
+// posthog-js is ~250 KB of script. Loading it after the load event, once the
+// main thread is idle, keeps it off the path to the first paint and the LCP.
+const whenIdle = () => {
+  if ("requestIdleCallback" in window) {
+    window.requestIdleCallback(start, { timeout: 4000 });
+  } else {
+    setTimeout(start, 1);
+  }
+};
+
+if (typeof window !== "undefined" && !isLocalHost()) {
+  if (document.readyState === "complete") {
+    whenIdle();
+  } else {
+    window.addEventListener("load", whenIdle, { once: true });
+  }
 }

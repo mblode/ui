@@ -2050,6 +2050,28 @@ export const Index: Record<string, unknown> = {
       source: "",
       meta: undefined,
     },
+    "live-stats": {
+      name: "live-stats",
+      description:
+        "Cached server fetches for GitHub stars and npm downloads that fail closed to null.",
+      type: "registry:lib",
+      registryDependencies: undefined,
+      files: [
+        {
+          path: "registry/default/lib/live-stats.ts",
+          type: "registry:lib",
+          target: "",
+        },
+      ],
+      categories: undefined,
+      component: React.lazy(() =>
+        import("@/registry/default/lib/live-stats.ts").then((mod) => ({
+          default: resolveRegistryComponent(mod as Record<string, unknown>),
+        })),
+      ),
+      source: "",
+      meta: undefined,
+    },
     "use-copy-to-clipboard": {
       name: "use-copy-to-clipboard",
       description: "A hook that copies text to the clipboard and resets after a timeout.",
