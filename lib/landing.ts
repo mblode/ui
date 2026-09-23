@@ -29,11 +29,6 @@ export const installCommands = [
     command: "npx shadcn@latest init https://blode.co/ui/r/ui.json",
     label: "New project",
   },
-  {
-    command:
-      "npx shadcn@latest registry add @blode=https://blode.co/ui/r/{name}.json && npx shadcn@latest add @blode/ui",
-    label: "Existing shadcn app",
-  },
 ];
 
 /** What Blode UI refuses to be. */
@@ -47,11 +42,6 @@ export const wall = {
 } as const;
 
 export const features = [
-  {
-    description:
-      "Adding a component writes one file to components/ui. There is no wrapper to learn and no release to wait on. Open the file and change it.",
-    title: "One command, one file",
-  },
   {
     description:
       "Keyboard navigation, focus management and ARIA come from Base UI primitives, so you can restyle a component without solving accessibility again.",
@@ -76,11 +66,6 @@ export const faqs = [
   },
   {
     answer:
-      "Run npx shadcn@latest init https://blode.co/ui/r/ui.json once to add the design system and register the @blode namespace. Then run npx shadcn@latest add @blode/button, swapping in any component name. The file lands in components/ui.",
-    question: "How do I install a component?",
-  },
-  {
-    answer:
       "Yes. Register the namespace with npx shadcn@latest registry add @blode=https://blode.co/ui/r/{name}.json, then add the design system with npx shadcn@latest add @blode/ui. Your existing components.json is left alone.",
     question: "Can I add it to an existing shadcn project?",
   },
@@ -93,16 +78,6 @@ export const faqs = [
     answer:
       "No. There is no package to upgrade, because every component is a file in your repo. When a component changes upstream, run its add command again and review the diff, or keep your version.",
     question: "Do I have to keep it updated?",
-  },
-  {
-    answer:
-      "Yes. npx skills add mblode/ui installs the blode-ui skill, which teaches agents like Claude Code the @blode install commands and the design rules. The same rules are published as plain Markdown at blode.co/ui/design.md.",
-    question: "Does it work with AI coding agents?",
-  },
-  {
-    answer:
-      "Any React project the shadcn CLI supports. The docs have setup guides for Next.js, Vite, Remix, Astro, Laravel and Gatsby, plus a manual path for everything else. Components are written for React 19 and Tailwind CSS v4.",
-    question: "Which frameworks does it support?",
   },
 ];
 
