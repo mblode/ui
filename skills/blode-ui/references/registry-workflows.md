@@ -1,6 +1,6 @@
 # Registry Workflows
 
-Commands for finding, adding, and updating `@blode` items in your project. These assume the `@blode` namespace is already registered; `references/install-flow.md` covers setting it up.
+Commands for finding, adding, and updating `@blode` items in your project. A current shadcn CLI resolves `@blode` through shadcn's registry directory; `references/install-flow.md` covers the fallback for an older CLI and installing the design system.
 
 ## Core Commands
 

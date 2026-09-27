@@ -8,7 +8,7 @@
       "files": [],
       "expectations": [
         "Starts with `npx shadcn@latest init`",
-        "Includes `npx shadcn@latest registry add @blode=https://blode.co/ui/r/{name}.json`",
+        "Does not require `npx shadcn@latest registry add` before `add @blode/...`; mentions it at most as a fallback for an older shadcn CLI",
         "Includes `npx shadcn@latest add @blode/ui` before adding the button",
         "Explains that skipping `@blode/ui` leaves components unstyled because the `--field-*` tokens are missing",
         "Uses `npx shadcn@latest add @blode/button` instead of `@shadcn/button`",

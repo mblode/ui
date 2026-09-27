@@ -1,6 +1,6 @@
 ---
 title: Installation
-description: Register the @blode namespace, add the design system, and install your first component.
+description: Add the design system and install your first Blode UI component with the shadcn CLI.
 ---
 
 Blode UI installs through the [shadcn CLI](https://ui.shadcn.com/docs/cli). Point `init` at the design system and it registers the `@blode` namespace, sets `blode-icons-react` as the icon library, and writes Blode's tokens into your CSS in one step.
@@ -33,11 +33,16 @@ export default function Home() {
 
 ## Already running shadcn
 
-Register the namespace and add the design system yourself, so `init` leaves your existing `components.json` alone:
+Add the design system yourself, so `init` leaves your existing `components.json` alone. `@blode` is listed in shadcn's registry directory, so the CLI resolves it with no setup:
+
+```bash
+npx shadcn@latest add @blode/ui
+```
+
+If an older shadcn CLI can't resolve `@blode`, register the namespace first:
 
 ```bash
 npx shadcn@latest registry add @blode=https://blode.co/ui/r/{name}.json
-npx shadcn@latest add @blode/ui
 ```
 
 Type `{name}` literally. It is the registry's URL template, and the CLI substitutes the component name on each request.

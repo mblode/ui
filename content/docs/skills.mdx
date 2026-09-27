@@ -45,12 +45,11 @@ The skill teaches the canonical setup flow:
 
 ```bash
 npx shadcn@latest init
-npx shadcn@latest registry add @blode=https://blode.co/ui/r/{name}.json
 npx shadcn@latest add @blode/ui
 npx shadcn@latest add @blode/button
 ```
 
-It prefers the namespace flow for quick starts and only falls back to raw registry URLs for manual or low-level workflows.
+`@blode` is listed in shadcn's registry directory, so the CLI resolves the namespace on its own. The skill only reaches for `registry add` or raw registry URLs when an older shadcn CLI can't resolve `@blode`, or for manual, low-level workflows.
 
 ### Registry Workflows
 

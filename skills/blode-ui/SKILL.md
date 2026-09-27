@@ -14,7 +14,7 @@ Blode UI is an opinionated shadcn/ui component registry built by Matthew Blode, 
 
 Two things have to be true, and both fail quietly:
 
-- The `@blode` namespace is registered in `components.json`. It is not in shadcn's registry directory, so the CLI cannot resolve it unaided.
+- The CLI can resolve `@blode`. shadcn's registry directory has listed it since Aug 2026, so a current CLI needs no setup. Only an older CLI that reports an unknown registry needs the namespace registered in `components.json`.
 - `@blode/ui` is installed. Grep the project's CSS for `--field-radius`; if it is absent, the design system was never added and every component will render unstyled.
 
 `references/install-flow.md` has the commands for both.
@@ -43,7 +43,7 @@ Load the matching rule file before writing component code. `rules/_sections.md` 
 
 ## Gotchas
 
-- `@blode` is not in shadcn's registry directory, so a bare `npx shadcn@latest add @blode/button` cannot resolve. Register the namespace first, or point `init` at `https://blode.co/ui/r/ui.json`. Never hand someone the bare form.
+- A bare `npx shadcn@latest add @blode/button` resolves through shadcn's registry directory. Keep `npx shadcn@latest registry add @blode=https://blode.co/ui/r/{name}.json` as the fallback for an older CLI that cannot resolve `@blode`, not as a required first step.
 - An unstyled Blode component is a missing `@blode/ui` install until proven otherwise. Chasing it as a specificity or class-merge problem produces cosmetic patches on a component that was never styled at all.
 - Blode wraps Base UI, not Radix. `asChild` does not exist here; composition goes through `render`. Radix habits are the most common source of broken Blode code.
 - `add` overwrites a customised component with no warning. Preview with `--diff` first.
