@@ -18,7 +18,7 @@ Node 22.12 or later (vitest and oxlint's floor; Next 16 alone needs 20.9); verif
 
 ## Verification
 
-- `.github/workflows/ci.yml` runs `check`, `typecheck`, `test`, `build` and `knip` on every push and PR to `main`. `vercel.json`'s `ignoreCommand` still skips every preview build, so the production deploy from `main` remains the first place a broken build renders, but CI now catches it earlier.
+- `.github/workflows/ci.yml` runs `check`, `typecheck`, `test`, `build`, `test:instant` (Playwright) and `knip` on every push and PR to `main`. `vercel.json`'s `ignoreCommand` still skips every preview build, so the production deploy from `main` remains the first place a broken build renders, but CI now catches it earlier.
 - Prove a change with `npm run check && npm run typecheck && npm test && npm run build`. All passed on 27 Sep 2026 (25 vitest tests). Add `npm run test:instant` for pages, navigation or layout (5 Playwright tests passed), and for a change to the `@blode/ui` item, run both checks under Authoring (the emitted-JSON shape, then `shadcn add` into a scratch project).
 - `npm run knip` is clean (zero findings) and is a CI gate; keep it that way — don't reintroduce `ignoreFiles` for `content-collections.ts` (use `entry` instead, or its own imports go blind) and don't delete a file or export without grepping for its references first, including `.mdx` code fences and `registry/**/_registry.ts`.
 - Gaps: no `verify` script (the chain above is the de facto one), no `doctor` script and no feature map.
