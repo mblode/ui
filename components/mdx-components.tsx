@@ -17,7 +17,6 @@ import { ComponentsList } from "@/components/components-list";
 import { CopyButton } from "@/components/copy-button";
 import { FontWeightSlider } from "@/components/font-weight-slider";
 import { useConfig } from "@/hooks/use-config";
-import type { Event } from "@/lib/events";
 import { cn } from "@/lib/utils";
 import {
   Accordion,
@@ -248,7 +247,8 @@ const components = {
     __rawString__?: string;
     __withMeta__?: boolean;
     __src__?: string;
-    __event__?: Event["name"];
+    /** Set by the rehype pipeline (content-collections.ts) when a code block names a tracked event; not currently read here, only stripped from the DOM spread. */
+    __event__?: string;
   } & NpmCommands) => {
     const isNpmCommand = __npmCommand__ && __yarnCommand__ && __pnpmCommand__ && __bunCommand__;
 

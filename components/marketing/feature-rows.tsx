@@ -103,4 +103,3 @@ const FeatureRows = ({ className, items, reveal = false, ...props }: FeatureRows
 );
 
 export { FeatureRows };
-export type { FeatureRowItem, FeatureRowsProps };

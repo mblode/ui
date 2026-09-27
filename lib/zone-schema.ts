@@ -11,9 +11,9 @@ import { siteConfig, siteUrl } from "@/config/site";
  */
 const host = "https://blode.co";
 
-export const personId = `${host}/#person`;
-export const websiteId = `${host}/#website`;
-export const orgId = `${host}/#organization`;
+const personId = `${host}/#person`;
+const websiteId = `${host}/#website`;
+const orgId = `${host}/#organization`;
 
 const softwareId = `${siteUrl}/#software`;
 const webPageId = `${siteUrl}/#webpage`;

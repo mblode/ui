@@ -29,10 +29,3 @@ export const siteConfig = {
   ogImage: `${siteUrl}/opengraph-image`,
   url: siteUrl,
 };
-
-export const META_THEME_COLORS = {
-  dark: "#09090b",
-  light: "#ffffff",
-};
-
-export type SiteConfig = typeof siteConfig;
