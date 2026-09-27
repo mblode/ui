@@ -2,9 +2,9 @@
 
 ## Canonical Note
 
-Blode UI is a third-party shadcn registry hosted at `blode.co/ui`. The setup flow is the same as shadcn/ui with two extra steps: add the registry namespace, then add the design system.
+Blode UI is a third-party shadcn registry hosted at `blode.co/ui`. The setup flow is the same as shadcn/ui with one extra step: add the design system before any component.
 
-`@blode` is not in shadcn's registry directory, so the CLI cannot resolve the namespace by itself. Every flow below establishes it first, either with `registry add` or by pointing `init` at the design system's URL. A bare `npx shadcn@latest add @blode/button` fails with an unknown-registry error, so never open a quick start with it.
+`@blode` has been listed in shadcn's registry directory since Aug 2026 ([shadcn-ui/ui#11543](https://github.com/shadcn-ui/ui/pull/11543)), so a current CLI resolves `@blode/<item>` with no setup. Installing `@blode/ui` also writes the `@blode` namespace into `components.json`. An older CLI that cannot resolve it fails with an unknown-registry error; register the namespace first with `registry add` (below).
 
 ## Quick Start
 
@@ -15,15 +15,14 @@ npx shadcn@latest init https://blode.co/ui/r/ui.json
 npx shadcn@latest add @blode/button
 ```
 
-For a project that already runs shadcn, use the namespace flow:
+For a project that already runs shadcn:
 
 ```bash
-npx shadcn@latest registry add @blode=https://blode.co/ui/r/{name}.json
 npx shadcn@latest add @blode/ui
 npx shadcn@latest add @blode/button
 ```
 
-Pick based on whether the project already has a `components.json`.
+Pick based on whether the project already has a `components.json`. If an older CLI cannot resolve `@blode`, run `npx shadcn@latest registry add @blode=https://blode.co/ui/r/{name}.json` first.
 
 ## Step Breakdown
 
@@ -31,12 +30,6 @@ Pick based on whether the project already has a `components.json`.
 
 ```bash
 npx shadcn@latest init
-```
-
-### Add the Blode registry
-
-```bash
-npx shadcn@latest registry add @blode=https://blode.co/ui/r/{name}.json
 ```
 
 ### Add the design system
@@ -53,6 +46,16 @@ npx shadcn@latest add @blode/ui
 
 ```bash
 npx shadcn@latest add @blode/button
+```
+
+A default `init` can already have written shadcn's stock `components/ui/button.tsx`, and `add` then stops at an overwrite prompt. Replace it with `--overwrite` only if the stock file has no edits worth keeping.
+
+### Fallback for an older CLI
+
+If `add` fails with an unknown-registry error, register the namespace and retry. Type `{name}` literally; the CLI substitutes the item name per request.
+
+```bash
+npx shadcn@latest registry add @blode=https://blode.co/ui/r/{name}.json
 ```
 
 ### Import component

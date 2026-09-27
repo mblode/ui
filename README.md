@@ -27,14 +27,13 @@ npx shadcn@latest init https://blode.co/ui/r/ui.json
 npx shadcn@latest add @blode/button
 ```
 
-Already running shadcn? Register the namespace and add the design system yourself:
+Already running shadcn? Add the design system yourself. `@blode` is listed in shadcn's registry directory, so no registry setup is needed:
 
 ```bash
-npx shadcn@latest registry add @blode=https://blode.co/ui/r/{name}.json
 npx shadcn@latest add @blode/ui
 ```
 
-Type `{name}` literally. It is the registry's URL template, and the shadcn CLI substitutes the component name per request.
+If an older shadcn CLI can't resolve `@blode`, register the namespace first with `npx shadcn@latest registry add @blode=https://blode.co/ui/r/{name}.json`. Type `{name}` literally: it is the registry's URL template, and the CLI substitutes the component name per request.
 
 `@blode/ui` is the design system. It writes Blode's tokens into your CSS, and component variants reference them directly (`rounded-[var(--field-radius)]`, `h-[var(--field-height)]`). Skip it and components install but render unstyled.
 
