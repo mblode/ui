@@ -19,7 +19,7 @@ export interface EvaluatedContrastPair extends ContrastPair {
   ratio: number | null;
 }
 
-export const defaultContrastPairs: ContrastPair[] = [
+const defaultContrastPairs: ContrastPair[] = [
   {
     id: "primary",
     label: "Primary",
@@ -394,7 +394,7 @@ function parseOklchColor(input: string): RgbColor | null {
   };
 }
 
-export function parseRgbColor(input: string): RgbColor | null {
+function parseRgbColor(input: string): RgbColor | null {
   const normalized = input.trim();
   if (!normalized) {
     return null;
@@ -408,7 +408,7 @@ export function parseRgbColor(input: string): RgbColor | null {
   );
 }
 
-export function relativeLuminance(rgb: RgbColor): number {
+function relativeLuminance(rgb: RgbColor): number {
   const toLinear = (channel: number) => {
     const normalized = channel / 255;
     if (normalized <= 0.03928) {
@@ -424,7 +424,7 @@ export function relativeLuminance(rgb: RgbColor): number {
   return 0.2126 * r + 0.7152 * g + 0.0722 * b;
 }
 
-export function contrastRatio(foregroundRgb: RgbColor, backgroundRgb: RgbColor): number {
+function contrastRatio(foregroundRgb: RgbColor, backgroundRgb: RgbColor): number {
   const foregroundLuminance = relativeLuminance(foregroundRgb);
   const backgroundLuminance = relativeLuminance(backgroundRgb);
   const lighter = Math.max(foregroundLuminance, backgroundLuminance);
@@ -433,11 +433,11 @@ export function contrastRatio(foregroundRgb: RgbColor, backgroundRgb: RgbColor):
   return (lighter + 0.05) / (darker + 0.05);
 }
 
-export function passesAA(ratio: number): boolean {
+function passesAA(ratio: number): boolean {
   return ratio >= 4.5;
 }
 
-export function passesAAA(ratio: number): boolean {
+function passesAAA(ratio: number): boolean {
   return ratio >= 7;
 }
 
@@ -455,10 +455,7 @@ function normalizeCssVariableName(cssVariableName: string): string {
   return `--${cssVariableName}`;
 }
 
-export function resolveCssVariableColor(
-  scopeEl: HTMLElement,
-  cssVariableName: string,
-): RgbColor | null {
+function resolveCssVariableColor(scopeEl: HTMLElement, cssVariableName: string): RgbColor | null {
   if (typeof window === "undefined" || !scopeEl) {
     return null;
   }

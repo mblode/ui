@@ -1,7 +1,7 @@
 import { useTheme } from "next-themes";
 import { useCallback, useMemo } from "react";
 
-export const META_THEME_COLORS = {
+const META_THEME_COLORS = {
   dark: "#0a0a0a",
   light: "#ffffff",
 };

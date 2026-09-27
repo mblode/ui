@@ -60,4 +60,3 @@ const MarketingHero = ({
 );
 
 export { MarketingHero };
-export type { MarketingHeroProps };

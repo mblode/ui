@@ -47,41 +47,6 @@ export function humanize(name: string): string {
     .join(" ");
 }
 
-export const truncate = (str: string | null, length: number) => {
-  if (!str || str.length <= length) {
-    return str;
-  }
-  return `${str.slice(0, length - 3)}...`;
-};
-
-export const fetcher = (...args: Parameters<typeof fetch>) =>
-  fetch(...args).then((res) => res.json());
-
-/**
- * Capitalizes first letters of words in string.
- * @param {string} str String to be modified
- * @param {boolean=false} lower Whether all other letters should be lowercased
- * @return {string}
- * @see https://stackoverflow.com/questions/2332811/capitalize-words-in-string/7592235#7592235
- * @usage
- *   capitalize('fix this string');     // -> 'Fix This String'
- *   capitalize('javaSCrIPT');          // -> 'JavaSCrIPT'
- *   capitalize('javaSCrIPT', true);    // -> 'Javascript'
- */
-export const capitalize = (str: string, lower = false) =>
-  (lower ? str.toLowerCase() : str).replaceAll(/(?:^|\s|["'([{])+\S/gu, (match) =>
-    match.toUpperCase(),
-  );
-
-export function formatDate(input: string | number): string {
-  const date = new Date(input);
-  return date.toLocaleDateString("en-US", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
-}
-
 export function absoluteUrl(path: string) {
   return `${siteUrl}${path}`;
 }
@@ -145,6 +110,3 @@ export function constructMetadata({
     ...props,
   };
 }
-
-export const pluralize = (count: number | undefined, singular: string, plural?: string) =>
-  count === 1 ? singular : plural || `${singular}s`;

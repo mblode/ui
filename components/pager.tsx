@@ -2,46 +2,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from "blode-icons-react";
 import type { Doc } from "content-collections";
 import Link from "next/link";
 import { docsConfig } from "@/config/docs";
-import { cn } from "@/lib/utils";
-import { buttonVariants } from "@/registry/default/ui/button";
 import type { NavItem, NavItemWithChildren } from "@/types";
-
-interface DocsPagerProps {
-  doc: Doc;
-}
-
-export function DocPager({ doc }: DocsPagerProps) {
-  const pager = getPagerForDoc(doc);
-
-  if (!pager) {
-    return null;
-  }
-
-  return (
-    <div className="flex flex-row items-center justify-between gap-4">
-      {pager?.prev?.href && (
-        <Link
-          className={cn(buttonVariants({ variant: "ghost" }), "min-w-0")}
-          href={pager.prev.href}
-          title={pager.prev.title}
-        >
-          <ChevronLeftIcon aria-hidden="true" className="mr-2 size-4 shrink-0" />
-          <span className="truncate">{pager.prev.title}</span>
-        </Link>
-      )}
-      {pager?.next?.href && (
-        <Link
-          className={cn(buttonVariants({ variant: "ghost" }), "ml-auto min-w-0 text-right")}
-          href={pager.next.href}
-          title={pager.next.title}
-        >
-          <span className="truncate">{pager.next.title}</span>
-          <ChevronRightIcon aria-hidden="true" className="ml-2 size-4 shrink-0" />
-        </Link>
-      )}
-    </div>
-  );
-}
 
 /** The Previous / Next strip at the foot of a docs page, and of the landing page. */
 export function PagerNav({ next, prev }: { next?: NavItem | null; prev?: NavItem | null }) {
@@ -136,7 +97,7 @@ export function getPagerForPath(pathname: string) {
   };
 }
 
-export function flatten(links: NavItemWithChildren[]): NavItem[] {
+function flatten(links: NavItemWithChildren[]): NavItem[] {
   return links
     .reduce<NavItem[]>((flat, link) => {
       if (link.items?.length) {

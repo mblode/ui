@@ -124,4 +124,3 @@ const InstallCommand = ({ className, command, onCopy, ...props }: InstallCommand
 };
 
 export { CopyIcon, InstallCommand, useCopyState };
-export type { InstallCommandProps };
