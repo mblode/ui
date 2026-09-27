@@ -75,4 +75,4 @@ const faqJsonLd = (items: FaqItem[]) =>
   }) as const;
 
 export { Faq, faqJsonLd };
-export type { FaqItem, FaqProps };
+export type { FaqItem };
