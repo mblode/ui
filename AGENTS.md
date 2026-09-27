@@ -96,7 +96,7 @@ Do not "fix" these back toward upstream.
 
 ## Registry directory
 
-`@blode` has been in shadcn's directory since [#11543](https://github.com/shadcn-ui/ui/pull/11543) merged in Aug 2026, so `npx shadcn@latest add @blode/button` resolves with no `registry add` step (checked 27 Sep 2026 in an empty directory). The install docs in `content/docs/installation/` and `skills/blode-ui/references/install-flow.md` still lead with `registry add`, which works on older CLIs too. Confirm the listing before changing them:
+`@blode` has been in shadcn's directory since [#11543](https://github.com/shadcn-ui/ui/pull/11543) merged in Aug 2026, so `npx shadcn@latest add @blode/<item>` resolves with no `registry add` step. Checked on 27 Sep 2026 in a scratch Next app with shadcn 4.0.0, 4.13.0 and 4.21.0. The install docs, README, landing FAQ and `skills/blode-ui` lead with the bare form and keep `registry add` as the fallback for an older CLI; keep them in step. If the listing ever lapses, revert them. Check it with:
 
 ```bash
 curl -s https://ui.shadcn.com/r/registries.json | grep -c blode
