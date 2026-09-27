@@ -59,7 +59,7 @@ export const faqs = [
   },
   {
     answer:
-      "Yes. Register the namespace with npx shadcn@latest registry add @blode=https://blode.co/ui/r/{name}.json, then add the design system with npx shadcn@latest add @blode/ui. Your existing components.json is left alone.",
+      "Yes. Add the design system with npx shadcn@latest add @blode/ui, then add components as usual. @blode is listed in shadcn's registry directory, so there is nothing to register first, and your existing components.json is left alone. If an older shadcn CLI can't resolve @blode, run npx shadcn@latest registry add @blode=https://blode.co/ui/r/{name}.json first.",
     question: "Can I add it to an existing shadcn project?",
   },
   {
