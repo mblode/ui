@@ -2,7 +2,7 @@
 ---
 version: alpha
 name: Blode UI
-description: Neutral-first design system for the Blode UI registry. Built around Glide typography, soft radii, restrained depth, and source-first shadcn/Base UI components. Colour values mirror the deployed blode.co/ui theme.
+description: Neutral-first design system for the Blode UI registry. Built around Inter typography, soft radii, restrained depth, and source-first shadcn/Base UI components. Colour values mirror the deployed blode.co/ui theme.
 colors:
   background: "#FFFFFF"
   foreground: "#0A0A0A"
@@ -53,62 +53,62 @@ colors:
   overlay: "#C1C9D2B3"
 typography:
   display-xl:
-    fontFamily: Glide
+    fontFamily: Inter
     fontSize: 72px
     fontWeight: 600
     lineHeight: 1
     letterSpacing: -0.04em
   headline-lg:
-    fontFamily: Glide
+    fontFamily: Inter
     fontSize: 48px
     fontWeight: 700
     lineHeight: 1.1
     letterSpacing: -0.03em
   headline-md:
-    fontFamily: Glide
+    fontFamily: Inter
     fontSize: 30px
     fontWeight: 600
     lineHeight: 1.15
     letterSpacing: -0.02em
   headline-sm:
-    fontFamily: Glide
+    fontFamily: Inter
     fontSize: 24px
     fontWeight: 600
     lineHeight: 1.2
     letterSpacing: -0.02em
   title-md:
-    fontFamily: Glide
+    fontFamily: Inter
     fontSize: 18px
     fontWeight: 500
     lineHeight: 1.4
     letterSpacing: -0.01em
   body-lg:
-    fontFamily: Glide
+    fontFamily: Inter
     fontSize: 18px
     fontWeight: 400
     lineHeight: 1.6
   body-md:
-    fontFamily: Glide
+    fontFamily: Inter
     fontSize: 16px
     fontWeight: 400
     lineHeight: 1.6
   body-sm:
-    fontFamily: Glide
+    fontFamily: Inter
     fontSize: 14px
     fontWeight: 400
     lineHeight: 1.5
   label-md:
-    fontFamily: Glide
+    fontFamily: Inter
     fontSize: 14px
     fontWeight: 500
     lineHeight: 1.2
   label-sm:
-    fontFamily: Glide
+    fontFamily: Inter
     fontSize: 12px
     fontWeight: 500
     lineHeight: 1.2
   code-sm:
-    fontFamily: "Glide Mono"
+    fontFamily: "Geist Mono"
     fontSize: 12px
     fontWeight: 400
     lineHeight: 1.4
@@ -385,24 +385,20 @@ Add it to both `:root` and `.dark` in `styles/globals.css`, bridge it in `@theme
 
 ## Typography
 
-Typography is the main source of personality in Blode. **Glide** is the default sans across docs, marketing, and components, shipped as a variable font in roman and italic with a single `wght` axis spanning 100 to 950. Apply it through `font-sans`, mapped by `--font-sans: var(--font-glide)`.
+Typography is the main source of personality in Blode. **Inter** is the default sans across docs, marketing, and components, shipped as a variable font with a single `wght` axis spanning 100 to 900. Apply it through `font-sans`, mapped by `--font-sans: var(--font-inter)`.
 
 - Headlines are compact and slightly tight-tracked. Hero moments may reach `display-xl`. Most headings live between `headline-lg` and `headline-sm`.
 - Body copy sits at `body-md` or `body-sm` with relaxed line height. Keep prose near 60 to 68 characters per line and rewrite before shrinking type.
 - Labels, buttons, and tabs use medium weight at 14px. They should read precise, not loud.
-- Monospace is Glide Mono, a static 400-weight face. It is for code, commands, paths, and token-like values only. Set the identifier in mono, never the sentence around it.
+- Monospace is Geist Mono, a variable face. It is for code, commands, paths, and token-like values only. Set the identifier in mono, never the sentence around it.
 - Peers share a role. Never resize one value because its string is longer.
 - Use `tabular-figures` wherever figures align in a column, not `tabular-nums`. See below.
 
 Use 400 regular, 500 medium, 600 semibold, and 700 bold. The rest of the axis exists but carries no assigned role. Emphasis is scarce: if everything is medium weight, nothing is emphasised.
 
-Glide Mono is static at 400. Asking it for 500 or heavier renders 400, because `font-synthesis-weight: none` is set globally to prevent faux bold. Never pair `font-mono` with `font-medium`; the class is inert.
-
 ### Aligned figures
 
-Glide Sans has **proportional** figures. Digit `1` is 353 units wide against `0` at 620, and the font ships no OpenType features at all, so `font-variant-numeric: tabular-nums` does nothing on the sans. A counter, timer, price, or numeric column set in Glide Sans will visibly jitter as its digits change.
-
-Use the `tabular-figures` utility instead. It borrows Glide Mono, whose digits are uniformly 600 units, which is the only mechanism these two fonts offer:
+Use the `tabular-figures` utility wherever figures align in a column (counters, timers, prices). It borrows Geist Mono, whose digits are uniformly spaced, so a numeric column never jitters as its digits change:
 
 ```tsx
 <span className="tabular-figures">{elapsed}</span>

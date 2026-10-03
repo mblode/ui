@@ -32,7 +32,7 @@ const posthogOrigin = process.env.NEXT_PUBLIC_POSTHOG_HOST ?? "";
  *   DENY would blank all of them.
  * - fonts.googleapis.com in style-src and fonts.gstatic.com in font-src, because
  *   the theme visualiser injects a Google Fonts stylesheet at runtime for any
- *   preview font that is not Glide.
+ *   preview font that is not Inter.
  * - `blob:` in img-src, for the object URLs registry/default/ui/file-thumbnail.tsx
  *   creates to preview a picked file.
  */

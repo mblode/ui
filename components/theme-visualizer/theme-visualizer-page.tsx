@@ -98,7 +98,7 @@ function getFontStylesheetId(fontFamily: string): string {
     .replaceAll(/^-+|-+$/gu, "")}`;
 }
 
-const LOCAL_FONTS = new Set<ThemeFontFamily>(["Glide"]);
+const LOCAL_FONTS = new Set<ThemeFontFamily>(["Inter"]);
 
 function ensureGoogleFontLoaded(fontFamily: ThemeFontFamily): void {
   if (typeof document === "undefined" || LOCAL_FONTS.has(fontFamily)) {

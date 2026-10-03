@@ -105,7 +105,6 @@ const SANS_FALLBACK_STACK =
 const SERIF_FALLBACK_STACK = 'ui-serif, Georgia, Cambria, "Times New Roman", Times, serif';
 
 export const THEME_SANS_FONT_OPTIONS = [
-  { fallback: SANS_FALLBACK_STACK, family: "Glide", label: "Glide" },
   { fallback: SANS_FALLBACK_STACK, family: "Inter", label: "Inter" },
   { fallback: SANS_FALLBACK_STACK, family: "DM Sans", label: "DM Sans" },
   {
@@ -190,8 +189,8 @@ export const THEME_FONT_OPTIONS = [
 
 export type ThemeFontFamily = (typeof THEME_FONT_OPTIONS)[number]["family"];
 
-export const DEFAULT_THEME_TEXT_FONT: ThemeFontFamily = "Glide";
-export const DEFAULT_THEME_HEADING_FONT: ThemeFontFamily = "Glide";
+export const DEFAULT_THEME_TEXT_FONT: ThemeFontFamily = "Inter";
+export const DEFAULT_THEME_HEADING_FONT: ThemeFontFamily = "Inter";
 export const DEFAULT_THEME_IS_FONT_LOCKED = true;
 export const DEFAULT_THEME_DARK_MODE = false;
 
@@ -336,7 +335,7 @@ export function getThemeVariables(state: ThemeState = DEFAULT_THEME_STATE): {
     "--chart-5": getColorVar(state.colorFamily, shiftShade(primaryShade, 2)),
     "--destructive": `var(--color-red-600, ${THEME_COLOR_SCALES.red["600"]})`,
     "--destructive-foreground": `var(--color-white, ${WHITE_COLOR_FALLBACK})`,
-    "--font-glide": getFontStack(state.textFont),
+    "--font-sans": getFontStack(state.textFont),
     "--foreground": getColorVar(neutralFamily, "900"),
     "--input": getColorVar(neutralFamily, "300"),
     "--muted": getColorVar(neutralFamily, "200"),

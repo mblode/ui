@@ -30,10 +30,9 @@ export const base: Registry["items"] = [
           "transition-duration": "0.01ms !important",
         },
       },
-      // Glide's figures are proportional (digit "1" is 353 units against "0" at
-      // 620) and the font ships no `tnum` feature, so `font-variant-numeric:
-      // tabular-nums` is inert on the sans. Glide Mono is genuinely monospaced
-      // at 600 per digit, so aligned columns and counters borrow it.
+      // Aligned columns and counters borrow the monospace family so every
+      // digit occupies the same width regardless of `tabular-nums` support on
+      // the sans face.
       "@utility tabular-figures": {
         "font-family": "var(--font-mono)",
         "font-variant-numeric": "tabular-nums",

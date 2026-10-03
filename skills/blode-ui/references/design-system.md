@@ -10,8 +10,8 @@ Blode UI's visual defaults. Load this when styling a screen so the result sits a
 
 ## Typography
 
-- Default sans: `Glide` variable font, weights `400` through `900`
-- Use Glide for headings, body, labels, and UI chrome
+- Default sans: `Inter` variable font, weights `400` through `900`
+- Use Inter for headings, body, labels, and UI chrome
 - Use monospace only for code, commands, tokens, and data-like values
 - Headings should be tight-tracked and medium/bold weight; body copy should use relaxed line height
 

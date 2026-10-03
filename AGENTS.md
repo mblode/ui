@@ -26,7 +26,7 @@ Node 22.12 or later (vitest and oxlint's floor; Next 16 alone needs 20.9); verif
 ## Project Structure
 
 - `registry/default/base/`: design-system payloads emitted as `registry:base` items
-- `registry/default/fonts/`: font registry (currently empty; Glide uses `next/font/local`)
+- `registry/default/fonts/`: font registry (currently empty; Inter and Geist Mono use `next/font/google`)
 - `registry/default/ui/`: component source files (shadcn-style registry)
 - `registry/default/examples/`: example and demo components
 - `registry/default/hooks/`: shared hooks distributed as `registry:lib`
@@ -78,8 +78,7 @@ Node 22.12 or later (vitest and oxlint's floor; Next 16 alone needs 20.9); verif
 Verified with fontTools and measured contrast; do not undo them without re-measuring.
 
 - **Dark-mode semantic fills carry a near-black ink, never white.** `--destructive`, `--success`, and `--warning` all brighten in dark mode, where white scores 2.89, 2.22, and 2.10 against a 4.5 floor. The 950-weight inks give 5.60, 6.74, 7.60. Light mode is the reverse except for warning, which is near-black in both because yellow carries white at no usable saturation.
-- **`tabular-nums` does nothing on Glide Sans.** It ships zero OpenType features and proportional figures (digit `1` is 353 units against `0` at 620), so counters and columns jitter. Use the `tabular-figures` utility, which borrows the genuinely monospaced Glide Mono.
-- **Glide Mono is static 400.** With `font-synthesis-weight: none` set globally, `font-mono font-medium` silently renders 400. The class is inert, not subtle.
+- **Use `tabular-figures`, not `tabular-nums`, for aligned columns.** It borrows the monospaced Geist Mono so counters and columns never jitter, regardless of the sans face's own numeral support.
 - **Reduced motion is handled once, globally**, in `styles/globals.css` and shipped via `@blode/ui`. Do not add per-component `motion-reduce:` variants; only 6 of 26 moving components ever had them, which is why it moved to the stylesheet.
 - **No `transition-all`.** List the properties. Upstream shadcn uses it in eight components; Blode deliberately does not.
 - **No raw Tailwind palette colours in components.** Every semantic fill and neutral resolves to a token. Only the `*Secondary` wash tints (50/100/950) still use the ramp, deliberately.
