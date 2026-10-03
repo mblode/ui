@@ -8,9 +8,11 @@
 @theme inline {
   --breakpoint-3xl: 1600px;
   --breakpoint-4xl: 2000px;
-  --font-sans: var(--font-glide);
+  --font-sans:
+    var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
   --font-mono:
-    var(--font-glide-mono), ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+    var(--font-geist-mono), ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
     "Liberation Mono", "Courier New", monospace;
   /* Linear offsets, deliberately not shadcn's multiplicative scale. Both land on
      6/8/10/14/18/22/26px at the default --radius, but they diverge the moment a
@@ -283,10 +285,9 @@
 }
 
 @utility tabular-figures {
-  /* Glide's figures are proportional (digit "1" is 353 units against "0" at 620)
-     and the font ships no `tnum` feature, so `font-variant-numeric: tabular-nums`
-     is a no-op on the sans. Glide Mono is genuinely monospaced at 600 per digit,
-     so aligned columns, timers, and counters have to borrow it. */
+  /* Aligned columns, timers, and counters borrow the monospace family so every
+     digit occupies the same width regardless of `tabular-nums` support on the
+     sans face. */
   font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
 }

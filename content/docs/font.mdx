@@ -1,178 +1,47 @@
 ---
 title: Font
-description: Install and use the Glide font system used throughout Blode UI.
+description: Blode UI ships Inter for sans-serif and Geist Mono for monospace, loaded with next/font/google.
 ---
 
 ## Font family
 
-The default font family in Blode UI is "Glide", a variable font that supports weights from 100 (thin) to 950 (black) in both roman and italic styles. This versatile font is applied using Tailwind's `font-sans` utility class. The system also ships with "Glide Mono", a monospace companion applied with `font-mono`.
+Blode UI uses [Inter](https://rsms.me/inter/) as the default sans-serif font, applied with Tailwind's `font-sans` utility class, and [Geist Mono](https://vercel.com/font) as the monospace companion, applied with `font-mono`. Both are variable fonts loaded through `next/font/google`, so there are no font files to download or self-host.
 
 ```tsx
-<p className="font-sans">This text uses the Glide font</p>
-<p className="font-sans italic">This text uses Glide italic</p>
-<code className="font-mono">This text uses Glide Mono</code>
+<p className="font-sans">This text uses Inter</p>
+<code className="font-mono">This text uses Geist Mono</code>
 ```
 
-## Install Glide
+## Configure the fonts in your root layout
 
-<Steps>
-
-### Download the fonts
-
-Download [glide-variable.woff2](https://blode.co/ui/glide-variable.woff2), [glide-variable-italic.woff2](https://blode.co/ui/glide-variable-italic.woff2) and [glide-mono.woff2](https://blode.co/ui/glide-mono.woff2) and place them in your project's `public/` directory.
-
-### Configure the fonts in your root layout
-
-In `app/layout.tsx`, import `localFont` and configure the Glide variable and Glide Mono fonts:
+In `app/layout.tsx`, import the fonts from `next/font/google`:
 
 ```tsx showLineNumbers
-import localFont from "next/font/local";
+import { Geist_Mono, Inter } from "next/font/google";
 
-const glide = localFont({
-  src: [
-    { path: "../public/glide-variable.woff2", style: "normal" },
-    { path: "../public/glide-variable-italic.woff2", style: "italic" },
-  ],
-  variable: "--font-glide",
-  weight: "100 950",
-  display: "swap",
-});
-
-const glideMono = localFont({
-  src: [{ path: "../public/glide-mono.woff2", style: "normal" }],
-  variable: "--font-glide-mono",
-  weight: "400",
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
   display: "swap",
 });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${glide.variable} ${glideMono.variable}`}>
+    <html lang="en" className={`${inter.variable} ${geistMono.variable}`}>
       <body>{children}</body>
     </html>
   );
 }
 ```
 
-### Map the CSS variables in Tailwind
+## Map the CSS variables in Tailwind
 
-In your global CSS file, map `--font-glide` to Tailwind's `--font-sans` and `--font-glide-mono` to `--font-mono`:
+In your global CSS file, map `--font-inter` to Tailwind's `--font-sans` and `--font-geist-mono` to `--font-mono`:
 
 ```css showLineNumbers
 @theme inline {
-  --font-sans: var(--font-glide);
-  --font-mono: var(--font-glide-mono);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-geist-mono);
 }
 ```
-
-### Use it
-
-Glide is now your default sans-serif font, and Glide Mono is your monospace font. Use `font-sans` with any weight from 100 to 950, and `font-mono` for code:
-
-```tsx
-<p className="font-sans font-medium">Medium text with Glide</p>
-<code className="font-mono">const glide = "mono";</code>
-```
-
-</Steps>
-
-## Variable font
-
-Glide is a variable font shipped as two files: regular and italic. Each contains all weights in a single file, allowing for precise typography with minimal file size impact. This technology enables smooth transitions between font weights and provides greater design flexibility.
-
-## Monospace
-
-Glide Mono is the monospace companion to Glide, shipped as a single regular-weight file. It is applied with Tailwind's `font-mono` utility class and is ideal for code, tabular data, and anywhere fixed-width characters improve alignment.
-
-<div className="space-y-2">
-  <div className="text-muted-foreground text-sm">Glide Mono</div>
-  <div className="font-mono text-xl">The quick brown fox jumps over the lazy dog.</div>
-  <pre className="font-mono text-sm">{`const glide = "mono";`}</pre>
-</div>
-
-## Font weights
-
-Explore how Glide looks at different font weights:
-
-<div className="space-y-6">
-  <div>
-    <div className="mb-2 text-muted-foreground text-sm">Font weight: 400 (Regular)</div>
-    <p className="font-sans font-normal text-xl">The quick brown fox jumps over the lazy dog.</p>
-  </div>
-  <div>
-    <div className="mb-2 text-muted-foreground text-sm">Font weight: 500 (Medium)</div>
-    <p className="font-sans font-medium text-xl">The quick brown fox jumps over the lazy dog.</p>
-  </div>
-  <div>
-    <div className="mb-2 text-muted-foreground text-sm">Font weight: 600 (Semibold)</div>
-    <p className="font-sans font-semibold text-xl">The quick brown fox jumps over the lazy dog.</p>
-  </div>
-  <div>
-    <div className="mb-2 text-muted-foreground text-sm">Font weight: 700 (Bold)</div>
-    <p className="font-sans font-bold text-xl">The quick brown fox jumps over the lazy dog.</p>
-  </div>
-  <div>
-    <div className="mb-2 text-muted-foreground text-sm">Font weight: 800 (Extrabold)</div>
-    <p className="font-sans font-extrabold text-xl">The quick brown fox jumps over the lazy dog.</p>
-  </div>
-  <div>
-    <div className="mb-2 text-muted-foreground text-sm">Font weight: 900 (Black)</div>
-    <p className="font-sans font-black text-xl">The quick brown fox jumps over the lazy dog.</p>
-  </div>
-</div>
-
-## Heading elements
-
-Blode UI provides consistent styling for all heading levels:
-
-<div className="space-y-4">
-  <div className="h1">Heading 1</div>
-  <div className="h2">Heading 2</div>
-  <div className="h3">Heading 3</div>
-  <div className="h4">Heading 4</div>
-  <div className="h5">Heading 5</div>
-  <div className="h6">Heading 6</div>
-</div>
-
-## Paragraph text
-
-The default paragraph text uses the Glide font at weight 400 (regular):
-
-<div className="leading-relaxed [&:not(:first-child)]:mt-6">
-  This is a standard paragraph with the Glide font. The font provides excellent readability at
-  various sizes while maintaining a modern, clean aesthetic. The variable font technology ensures
-  that characters remain crisp and balanced across different weights and sizes.
-</div>
-
-<div className="text-sm leading-relaxed [&:not(:first-child)]:mt-6">
-  This is a smaller paragraph showing how Glide performs at reduced sizes. Even at smaller sizes,
-  the font maintains its legibility and character.
-</div>
-
-## Usage in Tailwind
-
-Blode UI has configured Tailwind CSS to use Glide as the default sans-serif font. You can apply it using the `font-sans` utility class:
-
-```tsx
-// Examples of using font-sans with different weights
-<p className="font-sans font-normal">Regular text (400)</p>
-<p className="font-sans font-medium">Medium text (500)</p>
-<p className="font-sans font-semibold">Semibold text (600)</p>
-<p className="font-sans font-bold">Bold text (700)</p>
-<p className="font-sans font-extrabold">Extra Bold text (800)</p>
-<p className="font-sans font-black">Black text (900)</p>
-
-// Italic variants
-<p className="font-sans italic">Regular italic (400)</p>
-<p className="font-sans font-bold italic">Bold italic (700)</p>
-```
-
-## Technical details
-
-Glide is loaded as a variable font using Next.js's `localFont` utility, with Glide Mono loaded as a static monospace face. This ensures optimal performance by:
-
-- Loading the fonts locally rather than from an external CDN
-- Utilizing the variable font format to reduce file size
-- Enabling the full range of weights (100-950) in two files (regular and italic), plus a single Glide Mono file
-
-The fonts are applied site-wide via CSS variables (`font-sans` and `font-mono`), making them consistent across all components and pages.

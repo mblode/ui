@@ -18,7 +18,7 @@ export function FontWeightSlider() {
           aria-label="Font weight"
           className="w-full"
           id="font-weight-slider"
-          max="950"
+          max="900"
           min="100"
           onChange={(e) => setWeight(Number(e.target.value))}
           step="1"
@@ -27,7 +27,7 @@ export function FontWeightSlider() {
         />
       </div>
       <p className="font-sans text-2xl" style={{ fontWeight: weight }}>
-        Glide Variable Font
+        Inter Variable Font
       </p>
     </div>
   );
