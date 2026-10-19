@@ -143,6 +143,9 @@ const start = async () => {
         if (event && isNoisyException(event)) {
           return null;
         }
+        if (event) {
+          event.properties.project = "ui";
+        }
         return event;
       },
       defaults: "2026-05-30",
